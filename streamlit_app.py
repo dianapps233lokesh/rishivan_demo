@@ -31,11 +31,27 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;1,400&display=swap');
 
-html, body, [data-testid="stAppViewContainer"] {
-    background: radial-gradient(circle at 50% 0%, #1b1035 0%, #060612 70%);
-    background-attachment: fixed;
+/* Never style html/body: Streamlit sets overflow on them to drive scrolling,
+   and background-attachment:fixed on the scroll container silently killed
+   scrolling on newer Streamlit builds. The gradient goes on a fixed
+   pseudo-element behind the app instead, which stays put without touching
+   any scroll mechanics. */
+[data-testid="stAppViewContainer"] {
     font-family: 'Inter', sans-serif;
     color: #ddd8f0;
+}
+[data-testid="stAppViewContainer"]::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, #1b1035 0%, #060612 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+/* Belt and braces: keep the main column scrollable whatever the version calls it. */
+[data-testid="stAppViewContainer"], [data-testid="stMain"], section.main {
+    overflow-y: auto !important;
+    max-height: none !important;
 }
 [data-testid="stHeader"]  { background: transparent; }
 [data-testid="stSidebarCollapsedControl"] { display: none; }

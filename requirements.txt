@@ -3,9 +3,12 @@
 # Redis, asyncpg, boto3, PyMuPDF): the demo reads from Qdrant and computes
 # charts locally, so none of it is needed and each one slows the cold start.
 
-streamlit>=1.40
+# Pinned, not >=. A floating version let Streamlit Cloud install a newer build
+# whose DOM differed from local, and the custom CSS silently broke scrolling.
+streamlit==1.60.0
+
 markdown-it-py>=3.0        # renders the streamed answer
 google-genai>=2.14.0       # Gemini API + Vertex AI
-google-auth>=2.35           # service-account credentials for Vertex
+google-auth>=2.35          # service-account credentials for Vertex
 qdrant-client>=1.18.0      # vector search over the 15-book corpus
 pyswisseph>=2.10.3.2       # Swiss Ephemeris — charts, dashas, panchang
