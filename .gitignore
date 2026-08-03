@@ -1,0 +1,21 @@
+# Secrets — never commit. Streamlit Cloud injects these via Settings → Secrets.
+.streamlit/secrets.toml
+.env
+*.pem
+*service-account*.json
+*credentials*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Local vector store (cloud uses Qdrant)
+.chroma/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,199 @@
+"""Shared RAG retrieval helpers: page-window expansion + answer prompt.
+
+Vector search finds the relevant *region*; page-window expansion then widens
+each hit to its neighbouring pages so lists, tables, or shlokas that straddle a
+page break arrive whole (the top-k alone often truncates them).
+"""
+
+from __future__ import annotations
+
+from itertools import groupby
+
+from rishivan.rag.books import title_for_slug
+
+PAGE_WINDOW = 1          # pages to include on either side of each hit
+DEFAULT_N_RESULTS = 5
+
+# Chart-grounded retrieval: look each placement up in BPHS rather than the
+# question wording. Tunable POC defaults.
+FACT_PER_QUERY_K = 2     # BPHS hits to pull per chart fact
+FACT_MAX_PAGES = 10     # cap on distinct source pages fed to the model
+
+
+def expand_to_page_window(store, hit_metadatas: list[dict], window: int = PAGE_WINDOW):
+    """Widen retrieval hits to full neighbouring pages.
+
+    `store` is a VectorStore (see app.rag.vector_store). Returns
+    (context_text, page_groups) where page_groups is an ordered list of
+    {"page_number", "text", "n_elements"} for display.
+    """
+    # Pages needed per document: each hit's page +/- window (page numbers >= 1).
+    per_doc: dict[int, set[int]] = {}
+    for m in hit_metadatas:
+        pages = per_doc.setdefault(m["document_id"], set())
+        for p in range(m["page_number"] - window, m["page_number"] + window + 1):
+            if p >= 1:
+                pages.add(p)
+    if not per_doc:
+        return "", []
+
+    pages_by_doc = {doc: sorted(pages) for doc, pages in per_doc.items()}
+    rows = store.fetch_pages(pages_by_doc)
+    # Reading order: document, then page, then element position on the page.
+    rows.sort(
+        key=lambda r: (
+            r["metadata"]["document_id"],
+            r["metadata"]["page_number"],
+            r["metadata"]["element_index"],
+        )
+    )
+
+    context_parts: list[str] = []
+    page_groups: list[dict] = []
+    for (_doc, page), grp in groupby(
+        rows,
+        key=lambda r: (r["metadata"]["document_id"], r["metadata"]["page_number"]),
+    ):
+        grp = list(grp)
+        body = "\n".join(r["document"] for r in grp)
+        # Name the book in the header. Without it the model knows only a page
+        # number and invents the title when asked to cite — and a given page
+        # number exists in most of the corpus, so the guess is rarely right.
+        slug = grp[0]["metadata"].get("book_slug")
+        title = title_for_slug(slug)
+        context_parts.append(f"--- Source: {title}, Page {page} ---\n{body}")
+        page_groups.append({
+            "page_number": page,
+            "text": body,
+            "n_elements": len(grp),
+            "book_slug": slug,
+            "book_title": title,
+        })
+
+    return "\n\n".join(context_parts), page_groups
+
+
+def _fact_queries(
+    question: str, facts: list[str], max_queries: int | None = None
+) -> list[str]:
+    """Retrieval queries from the chart: the question + interpretable facts.
+
+    The daśā line is dropped (BPHS Vol 1 does not cover daśā effects); it still
+    reaches the model as ground truth, just not as a search query.
+
+    ``max_queries`` caps the total. Embedding and vector search both scale
+    linearly with this count, and a full chart yields ~30 facts, so an
+    uncapped call dominates request latency. The question is always kept.
+    """
+    queries = [q for q in (question,) if q]
+    queries += [f for f in facts if not f.startswith("Currently running")]
+    if max_queries is not None and len(queries) > max_queries:
+        queries = queries[:max_queries]
+    return queries
+
+
+def collect_chart_context(
+    store,
+    embed_fn,
+    question: str,
+    facts: list[str],
+    per_query_k: int = FACT_PER_QUERY_K,
+    max_pages: int = FACT_MAX_PAGES,
+    domain_filter: list[str] | None = None,
+    max_queries: int | None = None,
+):
+    """Retrieve context by looking each chart fact up in the corpus.
+
+    `embed_fn` maps a list of texts to a list of embedding vectors (one batch
+    call). Pages are ranked by how many facts point to them (a page many
+    placements share is central to the reading), capped at `max_pages`, then
+    fetched whole. Returns (context_text, page_groups) like expand_to_page_window.
+
+    When ``domain_filter`` is provided (e.g. ``["core", "prediction"]``), only
+    books tagged with those domains are searched.
+    """
+    queries = _fact_queries(question, facts, max_queries)
+    if not queries:
+        return "", []
+
+    embeddings = embed_fn(queries)
+
+    # Use domain-filtered search when a filter is specified.
+    if domain_filter:
+        all_hits = store.search_batch_filtered(embeddings, per_query_k, domain_filter)
+    else:
+        all_hits = store.search_batch(embeddings, per_query_k)
+
+    hits_per_page: dict[tuple[int, int], int] = {}
+    first_seen: dict[tuple[int, int], int] = {}
+    order = 0
+
+    # Force-include the top-ranked page specifically matching the user's main question
+    question_pages = []
+    if all_hits:
+        for h in all_hits[0]:
+            m = h["metadata"]
+            question_pages.append((m["document_id"], m["page_number"]))
+
+    # Rank the rest of the pages by how many chart facts hit them
+    for hits in all_hits[1:]:
+        seen_this_query: set[tuple[int, int]] = set()
+        for h in hits:
+            m = h["metadata"]
+            key = (m["document_id"], m["page_number"])
+            if key in seen_this_query:
+                continue
+            seen_this_query.add(key)
+            hits_per_page[key] = hits_per_page.get(key, 0) + 1
+            if key not in first_seen:
+                first_seen[key] = order
+                order += 1
+
+    # Combine: start with the top question page, then fill with the highest-ranked fact pages
+    final_pages = []
+    if question_pages:
+        final_pages.append(question_pages[0])  # Force-include user's question match
+
+    # Add other high-density fact pages up to max_pages
+    for fp in sorted(hits_per_page, key=lambda k: (-hits_per_page[k], first_seen[k])):
+        if len(final_pages) >= max_pages:
+            break
+        if fp not in final_pages:
+            final_pages.append(fp)
+
+    if not final_pages:
+        return "", []
+
+    hit_metadatas = [{"document_id": d, "page_number": p} for d, p in final_pages]
+
+    # window=0: these pages already give breadth; no neighbour expansion needed.
+    return expand_to_page_window(store, hit_metadatas, window=0)
+
+
+def build_answer_prompt(query: str, context_text: str, chart_facts=None) -> str:
+    """Assemble the generation prompt (natural, cited, complete answers)."""
+    facts_block = ""
+    if chart_facts:
+        facts_lines = "\n".join(f"- {f}" for f in chart_facts)
+        facts_block = (
+            "\n\nQUERENT'S CHART FACTS (ground truth — do NOT recompute or invent "
+            f"placements; interpret these against the source text):\n{facts_lines}"
+        )
+
+    guidance = (
+        "You are a knowledgeable Vedic astrology scholar answering from classical "
+        "texts.\n\n"
+        "Answer the question directly and naturally, as an expert would, using ONLY "
+        "the information in the source excerpts below.\n"
+        "- Give a complete answer. If the answer is a list (e.g. names or values), "
+        "provide the full list, not a partial one.\n"
+        "- Cite the page number(s) you drew from, naturally in-line, "
+        'e.g. "(Page 24)".\n'
+        "- If the question was asked in Hindi or Hinglish, reply in the same language "
+        "and script.\n"
+        "- Only if the excerpts genuinely do not contain the answer, say so plainly in "
+        "one sentence and stop — never speculate or invent verse numbers.\n"
+    )
+    return (
+        f"{guidance}\nSources:\n{context_text}{facts_block}\n\nQuestion: {query}\n"
+    )

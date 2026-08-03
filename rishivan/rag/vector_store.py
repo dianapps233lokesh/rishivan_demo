@@ -1,0 +1,352 @@
+"""Backend-agnostic vector store for the RAG POC.
+
+Embeddings are computed by Vertex (text-embedding-004) and handed to the store
+as finished vectors, so the backend only stores and searches them. Two
+implementations — ChromaDB (embedded, local folder) and Qdrant (server / Cloud)
+— behind one interface, selected by ``settings.VECTOR_BACKEND``.
+
+A "hit" is normalised across backends as ``{"document": str, "metadata": dict}``.
+"""
+
+from __future__ import annotations
+
+import time
+from abc import ABC, abstractmethod
+
+from rishivan.config import settings
+
+Hit = dict  # {"document": str, "metadata": dict}
+
+
+class VectorStore(ABC):
+    """Storage/query interface shared by the Chroma and Qdrant backends."""
+
+    @abstractmethod
+    def reset(self) -> None:
+        """Drop the collection so a fresh embed run starts clean."""
+
+    @abstractmethod
+    def upsert(
+        self,
+        ids: list[str],
+        embeddings: list[list[float]],
+        documents: list[str],
+        metadatas: list[dict],
+    ) -> None:
+        """Insert/replace points; create the collection on first call if needed."""
+
+    @abstractmethod
+    def search(self, embedding: list[float], n_results: int) -> list[Hit]:
+        """Nearest-neighbour search; returns normalised hits."""
+
+    @abstractmethod
+    def search_filtered(
+        self,
+        embedding: list[float],
+        n_results: int,
+        domain_filter: list[str],
+    ) -> list[Hit]:
+        """Search with metadata filter on ``book_domain``."""
+
+    @abstractmethod
+    def search_batch(
+        self, embeddings: list[list[float]], n_results: int
+    ) -> list[list[Hit]]:
+        """Search many query vectors in one round-trip; one hit-list per query."""
+
+    @abstractmethod
+    def search_batch_filtered(
+        self,
+        embeddings: list[list[float]],
+        n_results: int,
+        domain_filter: list[str],
+    ) -> list[list[Hit]]:
+        """Batch search with domain filter on ``book_domain``."""
+
+    @abstractmethod
+    def fetch_pages(self, pages_by_doc: dict[int, list[int]]) -> list[Hit]:
+        """Fetch every element on the given pages per document (page-window)."""
+
+    @abstractmethod
+    def count(self) -> int:
+        """Number of stored points (0 if the collection is absent)."""
+
+    @abstractmethod
+    def exists(self) -> bool:
+        """Whether the collection has been created and is queryable."""
+
+
+class ChromaVectorStore(VectorStore):
+    """Embedded ChromaDB backed by a local folder."""
+
+    def __init__(self, path: str, collection_name: str):
+        import chromadb
+
+        self._client = chromadb.PersistentClient(path=path)
+        self._name = collection_name
+        self._collection = None
+
+    def _get(self):
+        if self._collection is None:
+            self._collection = self._client.get_or_create_collection(name=self._name)
+        return self._collection
+
+    def reset(self) -> None:
+        try:
+            self._client.delete_collection(name=self._name)
+        except Exception:
+            pass
+        self._collection = None
+
+    def upsert(self, ids, embeddings, documents, metadatas) -> None:
+        self._get().upsert(
+            ids=ids,
+            embeddings=embeddings,
+            documents=documents,
+            metadatas=metadatas,
+        )
+
+    def search(self, embedding, n_results) -> list[Hit]:
+        return self.search_batch([embedding], n_results)[0]
+
+    def search_filtered(self, embedding, n_results, domain_filter) -> list[Hit]:
+        return self.search_batch_filtered([embedding], n_results, domain_filter)[0]
+
+    def search_batch(self, embeddings, n_results) -> list[list[Hit]]:
+        # Chroma queries multiple embeddings in one call: results are per-query.
+        res = self._get().query(query_embeddings=embeddings, n_results=n_results)
+        out: list[list[Hit]] = []
+        for docs, metas in zip(res["documents"], res["metadatas"]):
+            out.append(
+                [{"document": d, "metadata": m} for d, m in zip(docs, metas)]
+            )
+        return out
+
+    def search_batch_filtered(self, embeddings, n_results, domain_filter) -> list[list[Hit]]:
+        where = {"book_domain": {"$in": domain_filter}} if domain_filter else None
+        res = self._get().query(
+            query_embeddings=embeddings, n_results=n_results, where=where
+        )
+        out: list[list[Hit]] = []
+        for docs, metas in zip(res["documents"], res["metadatas"]):
+            out.append(
+                [{"document": d, "metadata": m} for d, m in zip(docs, metas)]
+            )
+        return out
+
+    def fetch_pages(self, pages_by_doc) -> list[Hit]:
+        # Translate to Chroma's filter DSL: OR across docs, each doc AND page-in.
+        clauses = [
+            {
+                "$and": [
+                    {"document_id": {"$eq": doc}},
+                    {"page_number": {"$in": sorted(pages)}},
+                ]
+            }
+            for doc, pages in pages_by_doc.items()
+        ]
+        where = clauses[0] if len(clauses) == 1 else {"$or": clauses}
+        got = self._get().get(where=where)
+        return [
+            {"document": doc, "metadata": meta}
+            for doc, meta in zip(got["documents"], got["metadatas"])
+        ]
+
+    def count(self) -> int:
+        try:
+            return self._client.get_collection(name=self._name).count()
+        except Exception:
+            return 0
+
+    def exists(self) -> bool:
+        try:
+            self._client.get_collection(name=self._name)
+            return True
+        except Exception:
+            return False
+
+
+class QdrantVectorStore(VectorStore):
+    """Qdrant server / Cloud backend (payload carries the document + metadata)."""
+
+    _DOC_KEY = "document"
+    _MAX_RETRIES = 3
+
+    def __init__(
+        self, url: str, api_key: str, collection_name: str, timeout: int = 120
+    ):
+        from qdrant_client import QdrantClient
+
+        if not url:
+            raise ValueError("QDRANT_URL is not configured")
+        # Generous timeout: Cloud upserts of a full batch can exceed the short
+        # httpx default (5s) and abort an otherwise-healthy run.
+        self._client = QdrantClient(url=url, api_key=api_key or None, timeout=timeout)
+        self._name = collection_name
+
+    def reset(self) -> None:
+        if self._client.collection_exists(self._name):
+            self._client.delete_collection(self._name)
+
+    # Payload fields filtered on by fetch_pages and domain-filtered search.
+    # Unlike Chroma, Qdrant rejects a filter on any field without an explicit
+    # payload index.
+    _INDEXED_FIELDS = ("document_id", "page_number")
+    _KEYWORD_INDEXED_FIELDS = ("book_domain", "book_slug")
+
+    def _ensure(self, dim: int) -> None:
+        from qdrant_client.models import Distance, PayloadSchemaType, VectorParams
+
+        if self._client.collection_exists(self._name):
+            return
+        self._client.create_collection(
+            collection_name=self._name,
+            vectors_config=VectorParams(size=dim, distance=Distance.COSINE),
+        )
+        for field in self._INDEXED_FIELDS:
+            self._client.create_payload_index(
+                collection_name=self._name,
+                field_name=field,
+                field_schema=PayloadSchemaType.INTEGER,
+            )
+        for field in self._KEYWORD_INDEXED_FIELDS:
+            self._client.create_payload_index(
+                collection_name=self._name,
+                field_name=field,
+                field_schema=PayloadSchemaType.KEYWORD,
+            )
+
+    def upsert(self, ids, embeddings, documents, metadatas) -> None:
+        from qdrant_client.models import PointStruct
+
+        self._ensure(len(embeddings[0]))
+        points = [
+            PointStruct(
+                id=pid,
+                vector=vec,
+                payload={**meta, self._DOC_KEY: doc},
+            )
+            for pid, vec, doc, meta in zip(ids, embeddings, documents, metadatas)
+        ]
+        # Retry transient network errors; upsert is idempotent (deterministic ids),
+        # so a re-sent batch simply overwrites itself.
+        last_exc = None
+        for attempt in range(self._MAX_RETRIES):
+            try:
+                self._client.upsert(collection_name=self._name, points=points)
+                return
+            except Exception as exc:  # noqa: BLE001 — retry any transport error
+                last_exc = exc
+                time.sleep(2 * (attempt + 1))  # 2s, 4s, 6s backoff
+        raise last_exc
+
+    def _to_hit(self, payload: dict) -> Hit:
+        payload = dict(payload)
+        document = payload.pop(self._DOC_KEY, "")
+        return {"document": document, "metadata": payload}
+
+    def _domain_filter(self, domain_filter: list[str]):
+        """Build a Qdrant Filter for book_domain ∈ domain_filter."""
+        from qdrant_client.models import FieldCondition, Filter, MatchAny
+
+        return Filter(
+            must=[FieldCondition(key="book_domain", match=MatchAny(any=domain_filter))]
+        )
+
+    def search(self, embedding, n_results) -> list[Hit]:
+        res = self._client.query_points(
+            collection_name=self._name,
+            query=embedding,
+            limit=n_results,
+            with_payload=True,
+        )
+        return [self._to_hit(p.payload) for p in res.points]
+
+    def search_filtered(self, embedding, n_results, domain_filter) -> list[Hit]:
+        res = self._client.query_points(
+            collection_name=self._name,
+            query=embedding,
+            limit=n_results,
+            with_payload=True,
+            query_filter=self._domain_filter(domain_filter),
+        )
+        return [self._to_hit(p.payload) for p in res.points]
+
+    def search_batch(self, embeddings, n_results) -> list[list[Hit]]:
+        from qdrant_client.models import QueryRequest
+
+        requests = [
+            QueryRequest(query=emb, limit=n_results, with_payload=True)
+            for emb in embeddings
+        ]
+        results = self._client.query_batch_points(
+            collection_name=self._name, requests=requests
+        )
+        return [[self._to_hit(p.payload) for p in r.points] for r in results]
+
+    def search_batch_filtered(self, embeddings, n_results, domain_filter) -> list[list[Hit]]:
+        from qdrant_client.models import QueryRequest
+
+        flt = self._domain_filter(domain_filter)
+        requests = [
+            QueryRequest(query=emb, limit=n_results, with_payload=True, filter=flt)
+            for emb in embeddings
+        ]
+        results = self._client.query_batch_points(
+            collection_name=self._name, requests=requests
+        )
+        return [[self._to_hit(p.payload) for p in r.points] for r in results]
+
+    def fetch_pages(self, pages_by_doc) -> list[Hit]:
+        from qdrant_client.models import FieldCondition, Filter, MatchAny, MatchValue
+
+        # OR across docs (should), each doc = document_id AND page_number-in.
+        should = [
+            Filter(
+                must=[
+                    FieldCondition(key="document_id", match=MatchValue(value=doc)),
+                    FieldCondition(
+                        key="page_number", match=MatchAny(any=sorted(pages))
+                    ),
+                ]
+            )
+            for doc, pages in pages_by_doc.items()
+        ]
+        flt = Filter(should=should)
+
+        hits: list[Hit] = []
+        offset = None
+        while True:
+            rows, offset = self._client.scroll(
+                collection_name=self._name,
+                scroll_filter=flt,
+                with_payload=True,
+                limit=256,
+                offset=offset,
+            )
+            hits.extend(self._to_hit(p.payload) for p in rows)
+            if offset is None:
+                break
+        return hits
+
+    def count(self) -> int:
+        if not self._client.collection_exists(self._name):
+            return 0
+        return self._client.count(collection_name=self._name, exact=True).count
+
+    def exists(self) -> bool:
+        return self._client.collection_exists(self._name)
+
+
+def get_vector_store() -> VectorStore:
+    """Construct the configured backend (``settings.VECTOR_BACKEND``)."""
+    if settings.VECTOR_BACKEND == "qdrant":
+        return QdrantVectorStore(
+            url=settings.QDRANT_URL,
+            api_key=settings.QDRANT_API_KEY,
+            collection_name=settings.VECTOR_COLLECTION,
+        )
+    return ChromaVectorStore(
+        path=settings.CHROMA_PATH,
+        collection_name=settings.VECTOR_COLLECTION,
+    )

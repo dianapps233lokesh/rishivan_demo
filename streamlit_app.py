@@ -1,0 +1,492 @@
+"""Rishivan — Council of Rishis · Streamlit POC UI."""
+
+from __future__ import annotations
+
+import datetime as dt
+
+import streamlit as st
+from markdown_it import MarkdownIt
+
+from rishivan.config import settings
+from rishivan.council.conversation import Conversation
+from rishivan.council.personas import get_persona
+
+_MD = MarkdownIt("commonmark", {"breaks": True, "html": False})
+_MD.enable("table")
+
+
+def _md(text: str) -> str:
+    return _MD.render(text or "")
+
+
+# ── Page config ──────────────────────────────────────────────────────────────
+st.set_page_config(
+    page_title="Rishivan · Council of Rishis",
+    page_icon="🪐",
+    layout="wide",
+)
+
+# ── CSS ──────────────────────────────────────────────────────────────────────
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;1,400&display=swap');
+
+html, body, [data-testid="stAppViewContainer"] {
+    background: radial-gradient(circle at 50% 0%, #1b1035 0%, #060612 70%);
+    background-attachment: fixed;
+    font-family: 'Inter', sans-serif;
+    color: #ddd8f0;
+}
+[data-testid="stHeader"]  { background: transparent; }
+[data-testid="stSidebarCollapsedControl"] { display: none; }
+/* Streamlit's built-in RUNNING spinner / status widget */
+[data-testid="stStatusWidget"] { display: none !important; }
+.stSpinner { display: none !important; }
+[data-testid="stSpinner"] { display: none !important; }
+
+h1, h2, h3 { font-family:'Cinzel',serif !important; }
+h1 { font-size:2.4rem !important; color:#e9d8fd; text-shadow: 0 0 20px rgba(196,162,248,0.3); }
+h2 { font-size:1.1rem !important; color:#9fa6d2; font-weight:500; letter-spacing:3px; text-transform:uppercase; }
+h3 { color:#c4b5fd; font-size:1.2rem !important; font-weight:600; }
+
+/* Hero */
+.hero { text-align:center; padding:50px 0 30px; position: relative; }
+.hero-title { 
+    font-family:'Cinzel',serif; font-size:3.5rem; font-weight:700;
+    background:linear-gradient(135deg, #e9d5ff, #a78bfa, #818cf8); 
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; 
+    margin:0; letter-spacing: 2px;
+    animation: titleGlow 4s ease-in-out infinite alternate;
+}
+@keyframes titleGlow {
+    0% { filter: drop-shadow(0 0 10px rgba(167,139,250,0.2)); }
+    100% { filter: drop-shadow(0 0 25px rgba(167,139,250,0.6)); }
+}
+.hero-sub { color:#8b8ba7; font-size:1rem; letter-spacing:4px; text-transform:uppercase; margin-top:8px; }
+.hero-glow { 
+    position:absolute; top:-50px; left:50%; transform:translateX(-50%);
+    width:600px; height:300px;
+    background:radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 60%);
+    pointer-events:none; z-index: -1;
+}
+
+
+/* Input Area (The Sanctum) */
+.stTextArea textarea {
+    background: rgba(10,10,25,0.6) !important; 
+    border: 1px solid rgba(139,92,246,0.2) !important;
+    color:#f3f0ff !important; border-radius:16px !important;
+    font-size:1.1rem !important; font-family:'Noto Serif',serif !important;
+    padding: 20px !important; transition:all .3s ease;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+}
+.stTextArea textarea:focus {
+    border-color:#a78bfa !important;
+    box-shadow: 0 0 30px rgba(139,92,246,0.2), inset 0 2px 10px rgba(0,0,0,0.5) !important;
+}
+
+/* Consult button */
+.stButton > button {
+    background:linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+    color:white !important; border:1px solid rgba(255,255,255,0.1) !important; 
+    border-radius:14px !important; padding:14px 40px !important; 
+    font-weight:600 !important; font-size:1.05rem !important; letter-spacing: 1px;
+    transition:all .3s ease !important; 
+    box-shadow:0 10px 30px rgba(124,58,237,.4), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+    text-transform: uppercase; font-family: 'Cinzel', serif !important;
+}
+.stButton > button:hover { 
+    transform:translateY(-2px) scale(1.02) !important;
+    box-shadow:0 15px 40px rgba(124,58,237,.6), inset 0 1px 0 rgba(255,255,255,0.3) !important; 
+}
+
+/* The Answer Card (Channelling) */
+@keyframes etherealBreathe {
+    0% { box-shadow: 0 10px 40px rgba(124,58,237,.1), inset 0 1px 0 rgba(255,255,255,.03); }
+    50% { box-shadow: 0 15px 50px rgba(124,58,237,.25), inset 0 1px 0 rgba(255,255,255,.08); }
+    100% { box-shadow: 0 10px 40px rgba(124,58,237,.1), inset 0 1px 0 rgba(255,255,255,.03); }
+}
+.answer-card {
+    background:linear-gradient(160deg, rgba(20,20,45,0.8), rgba(10,10,25,0.95));
+    backdrop-filter: blur(12px);
+    border:1px solid rgba(124,58,237,.2); border-radius:24px;
+    padding:40px 48px; margin:30px 0;
+    position:relative; overflow:hidden;
+    animation: etherealBreathe 6s infinite ease-in-out;
+}
+.answer-card::before {
+    content:''; position:absolute; top:0;left:0;right:0; height:3px;
+    background:linear-gradient(90deg, transparent, var(--ac,#a78bfa), transparent);
+    opacity: 0.8;
+}
+.rishi-header { display:flex; align-items:center; gap:20px; margin-bottom:30px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;}
+.rishi-avatar { font-size:3rem; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+.rishi-name-block .rn { font-family:'Cinzel',serif; font-size:1.6rem; color:#f5f3ff; font-weight: 600;}
+.rishi-name-block .rt { font-size:.85rem; color:#a78bfa; letter-spacing:2px; text-transform:uppercase; margin-top: 4px;}
+.answer-body { font-family:'Noto Serif',serif; font-size:1.1rem; line-height:2; color:#e2e0ed; }
+.answer-body p { margin:0 0 18px; }
+.answer-body h1,.answer-body h2,.answer-body h3 {
+    font-family:'Cinzel',serif !important; color:#ddd6fe !important;
+    font-size:1.2rem !important; margin:28px 0 12px !important;
+}
+.answer-body strong { color:#ffffff; font-weight: 600; }
+.sign-off { margin-top:30px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.05);
+    font-family:'Cinzel',serif; font-size:.95rem; color:#8b8ba7; font-style:italic; text-align: right;}
+
+/* Pipeline steps */
+@keyframes pulseStep {
+    0% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 0 0 rgba(167,139,250, 0.4); }
+    70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 10px rgba(167,139,250, 0); }
+    100% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 0 0 rgba(167,139,250, 0); }
+}
+.step { display:inline-flex; align-items:center; gap:8px;
+    background:rgba(10,10,25,0.5); border:1px solid rgba(255,255,255,0.1); padding:8px 16px;
+    border-radius:30px; font-size:.8rem; color:#6b7280; margin:0 8px 15px 0; 
+    font-family: 'Cinzel', serif; letter-spacing: 1px;}
+.step.active { border-color:#a78bfa; color:#ddd6fe; background: rgba(139,92,246,0.1); animation: pulseStep 2s infinite; }
+.step.done   { border-color:#34d399; color:#6ee7b7; background: rgba(16,185,129,0.05);}
+
+[data-testid="stExpander"] { background: rgba(20,20,35,0.4) !important; border:1px solid rgba(255,255,255,0.05) !important; border-radius:16px !important; }
+[data-testid="stExpander"] summary { color:#a78bfa !important; font-size:.95rem; font-family: 'Cinzel', serif; }
+</style>
+""", unsafe_allow_html=True)
+
+
+# ── Cached resources ─────────────────────────────────────────────────────────
+@st.cache_resource(show_spinner=False)
+def _get_vertex_client():
+    from rishivan.council.client import get_vertex_client
+    return get_vertex_client()
+
+
+def _get_gemini_client(api_key: str):
+    """Not cached — key may change. Fast to init."""
+    from rishivan.council.client import get_gemini_api_client
+    return get_gemini_api_client(api_key)
+
+
+@st.cache_resource(show_spinner=False)
+def _get_store():
+    try:
+        from rishivan.rag.vector_store import get_vector_store
+        s = get_vector_store()
+        return s if s.exists() else None
+    except Exception:
+        return None
+
+
+# ── Configuration check ──────────────────────────────────────────────────────
+# Fail loudly and legibly here rather than deep inside the pipeline: a missing
+# secret is the most likely thing to go wrong on a fresh deployment.
+_missing = settings.missing()
+if _missing:
+    st.error(
+        "**Configuration incomplete.** Add the following to "
+        "`.streamlit/secrets.toml` (locally) or to *Settings → Secrets* in "
+        "Streamlit Cloud:\n\n" + "\n".join(f"- `{name}`" for name in _missing)
+    )
+    st.caption("See `.streamlit/secrets.toml.example` for the expected shape.")
+    st.stop()
+
+
+# ── Session state defaults ───────────────────────────────────────────────────
+for k, v in [
+    ("history", []),
+    ("prefill", ""),
+    ("backend", settings.default_backend),
+    ("gemini_api_key", settings.GEMINI_API_KEY),
+    ("conversation", Conversation()),
+]:
+    if k not in st.session_state:
+        st.session_state[k] = v
+
+
+# ── Hero ─────────────────────────────────────────────────────────────────────
+st.markdown("""
+<div class="hero" style="position:relative;">
+  <div class="hero-glow"></div>
+  <div class="hero-title">Council of Rishis</div>
+  <div class="hero-sub">Rishivan · Ancient Wisdom · Modern Guidance</div>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# ── Birth Data Panel ──────────────────────────────────────────────────────────
+def _build_birth_data():
+    with st.expander("🌙 Birth Details (for personalised natal readings)", expanded=False):
+        st.caption("Required for natal chart readings. Leave collapsed for muhurta / prashna / general questions.")
+        use = st.checkbox("Use my birth chart", key="use_chart")
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            d = st.date_input("Date", value=dt.date(1990, 1, 1),
+                              min_value=dt.date(1900, 1, 1),
+                              max_value=dt.date.today(), key="bd_date")
+            lat = st.number_input("Latitude", value=28.6139, format="%.4f", key="bd_lat")
+        with c2:
+            t = st.time_input("Time", key="bd_time")
+            lon = st.number_input("Longitude", value=77.2090, format="%.4f", key="bd_lon")
+        with c3:
+            tz = st.number_input("TZ offset", value=5.5, step=0.5, format="%.1f", key="bd_tz")
+            place = st.text_input("Place", value="New Delhi", key="bd_place")
+        if not use:
+            return None
+        try:
+            from rishivan.chart.ephemeris import BirthData
+            return BirthData(
+                year=d.year, month=d.month, day=d.day,
+                hour=t.hour, minute=t.minute,
+                tz_offset_hours=tz, lat=lat, lon=lon, place=place,
+            )
+        except ImportError:
+            st.error("pyswisseph not installed.")
+            return None
+
+birth_data = _build_birth_data()
+
+# ── Query Input ───────────────────────────────────────────────────────────────
+prefill_val = st.session_state.get("prefill", "")
+question = st.text_area(
+    "Enter the Sanctum:",
+    value=prefill_val,
+    placeholder="Present your life's query to the sacred fire... (e.g. What is my soul's true purpose?)",
+    key="query_input",
+    height=120,
+    label_visibility="collapsed",
+)
+if prefill_val and question == prefill_val:
+    st.session_state.prefill = ""
+
+_convo = st.session_state.conversation
+_c1, _c2 = st.columns([3, 1])
+with _c1:
+    ask_btn = st.button("Invoke the Council", key="ask_btn")
+with _c2:
+    if not _convo.is_empty and st.button("Start fresh", key="reset_convo",
+                                         use_container_width=True):
+        st.session_state.conversation = Conversation()
+        st.session_state.history = []
+        st.rerun()
+
+if not _convo.is_empty:
+    _p = get_persona(_convo.current_rishi)
+    st.caption(
+        f"{_p.emoji} Continuing with **{_p.display_name}** · "
+        f"{len(_convo.turns)} exchange(s) remembered — reply naturally, or "
+        "take up the thread they offered."
+    )
+
+# ── Pipeline Execution ────────────────────────────────────────────────────────
+if ask_btn and question.strip():
+    store = _get_store()
+    if store is None:
+        st.error(
+            "Vector store unreachable. Check `QDRANT_URL` and "
+            "`QDRANT_API_KEY`, and that the collection "
+            f"`{settings.VECTOR_COLLECTION}` exists."
+        )
+        st.stop()
+
+    # Backend comes from .env now that the sidebar is gone: Vertex by default,
+    # Gemini API only if a key is present.
+    backend = st.session_state.backend
+    try:
+        client = (_get_gemini_client(st.session_state.gemini_api_key)
+                  if backend == "gemini" else _get_vertex_client())
+    except Exception as exc:  # noqa: BLE001
+        st.error(f"Could not reach the AI backend ({backend}): {exc}")
+        st.stop()
+
+    # No selector in the UI — the classifier always chooses the Rishi.
+    rishi_override = None
+
+    # Pipeline step indicator
+    steps_ph = st.empty()
+    def _steps(classify="", chart="", retrieve="", generate=""):
+        cls = {"": "", "active": "active", "done": "done"}
+        steps_ph.markdown(
+            f"<div style='margin: 30px 0 20px; text-align: center;'>"
+            f"<span class='step {cls[classify]}'>I. Aligning Stars</span>"
+            f"<span class='step {cls[chart]}'>II. Casting Chart</span>"
+            f"<span class='step {cls[retrieve]}'>III. Reading Shastras</span>"
+            f"<span class='step {cls[generate]}'>IV. Channelling</span>"
+            f"</div>",
+            unsafe_allow_html=True,
+        )
+
+    _steps(classify="active")
+
+    # No st.spinner — the step chips above already show progress.
+    from rishivan.council.orchestrator import council_consult
+    result = council_consult(
+        client, store, question.strip(),
+        rishi_override=rishi_override,
+        birth_data=birth_data,
+        query_time=dt.datetime.now(),
+        backend=backend,
+        conversation=st.session_state.conversation,
+    )
+
+    if result is None:
+        st.warning("Consultation failed — please try again.")
+        st.stop()
+
+    rishi_name = result["primary_rishi"]
+    persona = get_persona(rishi_name)
+
+    classification = result.get("classification", {})
+    domain = result.get("query_domain", "general")
+    domain_str = domain.value if hasattr(domain, "value") else str(domain)
+
+    _steps(classify="done", chart="done", retrieve="done", generate="active")
+
+    # ── Rishi header ──
+    conf = classification.get("confidence", 0)
+    reasoning = classification.get("reasoning", "")
+    supporting = classification.get("supporting_rishis", [])
+
+    st.markdown(
+        f"""<div style="display:flex;align-items:center;gap:12px;margin:18px 0 6px;">
+        <span style="font-size:2rem">{persona.emoji}</span>
+        <div>
+          <div style="font-family:'Cinzel',serif;color:{persona.color};font-size:1.4rem;font-weight:600">
+            {persona.display_name} has entered the sanctum
+          </div>
+          <div style="color:#5a5a80;font-size:.78rem">
+            {persona.title} · {domain_str.upper()} · {conf:.0%} confidence
+          </div>
+        </div>
+        </div>""",
+        unsafe_allow_html=True,
+    )
+
+    if reasoning:
+        st.caption(f"*{reasoning}*")
+
+    # ── Computed timings ──
+    # Shown as data, not narration. These are Swiss Ephemeris values; the model
+    # has been caught restating them wrongly, so the authoritative copy lives
+    # here where it cannot be paraphrased.
+    if result.get("panchang"):
+        rows = [ln for ln in result["panchang"].splitlines() if ":" in ln]
+        chips = ""
+        for ln in rows:
+            label, _, val = ln.partition(":")
+            chips += (
+                "<div style='display:inline-block;margin:0 18px 8px 0'>"
+                f"<div style='color:#5a5a80;font-size:.68rem;letter-spacing:1px;"
+                f"text-transform:uppercase'>{label.strip()}</div>"
+                f"<div style='color:#f5f3ff;font-size:.95rem;"
+                f"font-variant-numeric:tabular-nums'>{val.strip()}</div></div>"
+            )
+        st.markdown(
+            "<div style='background:rgba(245,158,11,.07);"
+            "border:1px solid rgba(245,158,11,.28);border-radius:14px;"
+            "padding:14px 18px;margin:10px 0'>"
+            "<div style='color:#f59e0b;font-size:.72rem;letter-spacing:1.5px;"
+            "text-transform:uppercase;margin-bottom:10px'>"
+            "Computed timings · Swiss Ephemeris</div>"
+            f"{chips}</div>",
+            unsafe_allow_html=True,
+        )
+
+    # ── Chart summary ──
+    if result.get("chart_summary"):
+        with st.expander("📊 Computed Chart", expanded=False):
+            st.code(result["chart_summary"], language=None)
+            if result.get("chart_facts"):
+                st.caption(f"{len(result['chart_facts'])} ground-truth facts extracted via Swiss Ephemeris")
+
+    # ── Stream answer ──
+    answer_stream = result.get("answer_stream")
+    if answer_stream is None:
+        st.warning("No relevant context found in the classical texts for this query.")
+    else:
+        answer_ph = st.empty()
+        answer = ""
+
+        for chunk in answer_stream:
+            answer += chunk
+            answer_ph.markdown(
+                f"""<div class="answer-card" style="--ac:{persona.color};">
+  <div class="rishi-header">
+    <div class="rishi-avatar">{persona.emoji}</div>
+    <div class="rishi-name-block">
+      <div class="rn">{persona.display_name}</div>
+      <div class="rt">{persona.title}</div>
+    </div>
+  </div>
+  <div class="answer-body">{_md(answer)}</div>
+  <div class="sign-off">— {persona.sign_off}</div>
+</div>""",
+                unsafe_allow_html=True,
+            )
+
+        _steps(classify="done", chart="done", retrieve="done", generate="done")
+
+        page_groups = result.get("sources", [])
+
+        # Citation strip. The Rishi no longer speaks page numbers aloud (they
+        # made the reading sound like a search engine), so the proof of
+        # authority lives here instead — visible, but out of the voice.
+        if page_groups:
+            cites = sorted({
+                f"{g.get('book_title', 'Classical text')} · p. {g['page_number']}"
+                for g in page_groups
+            })
+            chips = " ".join(
+                f"<span style='display:inline-block;background:rgba(139,92,246,.10);"
+                f"border:1px solid rgba(139,92,246,.28);border-radius:20px;"
+                f"padding:4px 12px;margin:3px 4px 0 0;font-size:.75rem;"
+                f"color:#c4b5fd'>{c}</span>"
+                for c in cites
+            )
+            st.markdown(
+                "<div style='margin:-14px 0 6px'>"
+                "<span style='color:#5a5a80;font-size:.72rem;letter-spacing:1px;"
+                "text-transform:uppercase'>Drawn from</span><br>"
+                f"{chips}</div>",
+                unsafe_allow_html=True,
+            )
+
+            with st.expander(f"🔍 Read the source pages ({len(page_groups)})",
+                             expanded=False):
+                st.caption(f"**Search query used:** {result.get('search_query', '')}")
+                for g in page_groups:
+                    flat = g["text"].replace("\n", " ")
+                    preview = flat[:200] + ("…" if len(flat) > 200 else "")
+                    st.markdown(
+                        f"""<div class="src-chip" style="margin-bottom:8px;display:block;">
+<span>{g.get('book_title', 'Classical text')} · Page {g['page_number']}</span>
+· {g['n_elements']} elements<br>
+<span style="color:#5a5a80;font-size:.76rem">{preview}</span></div>""",
+                        unsafe_allow_html=True,
+                    )
+
+        # Remember the exchange so the Rishi's closing hook leads somewhere.
+        st.session_state.conversation.add(question.strip(), answer, rishi_name)
+        st.session_state.history.insert(0, {
+            "q": question.strip(), "a": answer,
+            "rishi": rishi_name, "domain": domain_str,
+        })
+
+        st.caption(
+            "Rishivan shares traditional Vedic interpretation for reflection "
+            "and guidance. It is not medical, legal, or financial advice — "
+            "please consult a qualified professional for those decisions."
+        )
+
+# ── History ───────────────────────────────────────────────────────────────────
+if st.session_state.history:
+    st.markdown("---")
+    st.markdown("### 🕑 Previous Consultations")
+    for item in st.session_state.history[1:5]:
+        p = get_persona(item["rishi"])
+        with st.expander(f"{p.emoji} {item['q'][:80]}", expanded=False):
+            st.markdown(
+                f"""<div class="answer-card" style="--ac:{p.color};">
+<div class="answer-body">{_md(item['a'])}</div>
+<div class="sign-off">— {p.sign_off}</div>
+</div>""",
+                unsafe_allow_html=True,
+            )

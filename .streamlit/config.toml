@@ -1,0 +1,15 @@
+# Matches the app's own dark styling so the first paint does not flash white.
+[theme]
+base = "dark"
+primaryColor = "#a78bfa"
+backgroundColor = "#0a0a18"
+secondaryBackgroundColor = "#14142b"
+textColor = "#ddd8f0"
+font = "sans serif"
+
+[server]
+# Answers stream for ~25s; keep the socket patient.
+enableWebsocketCompression = false
+
+[browser]
+gatherUsageStats = false
