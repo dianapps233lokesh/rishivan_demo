@@ -240,7 +240,7 @@ def _build_birth_data():
                               max_value=dt.date.today(), key="bd_date")
             lat = st.number_input("Latitude", value=28.6139, format="%.4f", key="bd_lat")
         with c2:
-            t = st.time_input("Time", key="bd_time")
+            t = st.time_input("Time", key="bd_time", step=60)
             lon = st.number_input("Longitude", value=77.2090, format="%.4f", key="bd_lon")
         with c3:
             tz = st.number_input("TZ offset", value=5.5, step=0.5, format="%.1f", key="bd_tz")

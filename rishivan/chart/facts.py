@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from rishivan.chart.dasha import current_periods
+from rishivan.chart.dasha import current_periods, mahadasha_timeline
 from rishivan.chart.ephemeris import Chart
 
 _ORDINAL = {
@@ -73,6 +73,15 @@ def derive_facts(chart: Chart, when: datetime | None = None) -> list[str]:
             facts.append(f"Yoga: {y.name} — {y.description}")
     except Exception:  # noqa: BLE001 — yoga detection is supplementary
         pass
+
+    # full mahadasha timeline — birth through end of cycle, so past (and
+    # future) periods are grounded facts too, not just whichever is running now
+    timeline = mahadasha_timeline(chart)
+    if timeline:
+        spans = ", ".join(
+            f"{p.lord} ({p.start.date()} to {p.end.date()})" for p in timeline
+        )
+        facts.append("Mahadasha timeline from birth: " + spans + ".")
 
     # current dasha
     cur = current_periods(chart, when)
