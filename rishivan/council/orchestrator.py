@@ -98,9 +98,18 @@ def council_consult(
     if domain == QueryDomain.NATAL and birth_data is not None:
         from rishivan.chart.ephemeris import compute_chart, summarize
         from rishivan.chart.facts import derive_facts
+        from rishivan.chart import p1_bridge
+
+        # Real P1 backend first — all 16 vargas, not just D1 — falling back
+        # to this demo's own D1-only Swiss Ephemeris calc when it's not
+        # configured or the request fails for any reason.
+        real_facts = p1_bridge.fetch_real_chart_facts()
         chart = compute_chart(birth_data)
-        chart_facts = derive_facts(chart)
         result["chart_summary"] = summarize(chart)
+        if real_facts:
+            chart_facts = real_facts
+        else:
+            chart_facts = derive_facts(chart)
         result["chart_facts"] = chart_facts
 
     # Daily timing windows are pure arithmetic on sunrise/sunset, so compute

@@ -11,12 +11,32 @@ with a .env file and unchanged in the cloud.
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass, field
-from functools import cached_property
+from functools import cache, cached_property
+from pathlib import Path
+
+_MAIN_REPO_ENV = Path(__file__).resolve().parents[2] / ".env"
+"""The main backend's own .env, one directory up from this demo — same
+Google Cloud project and Qdrant instance, so its Vertex/Qdrant credentials
+are valid here too. Read-only, in-process; never written or echoed."""
+
+
+@cache
+def _main_repo_env_values() -> dict[str, str]:
+    if not _MAIN_REPO_ENV.is_file():
+        return {}
+    values: dict[str, str] = {}
+    for line in _MAIN_REPO_ENV.read_text(encoding="utf-8").splitlines():
+        match = re.match(r"^([A-Z_][A-Z0-9_]*)=(.*)$", line)
+        if match:
+            values[match.group(1)] = match.group(2)
+    return values
 
 
 def _secret(name: str, default: str = "") -> str:
-    """Streamlit secret, else environment variable, else default."""
+    """Streamlit secret, else environment variable, else the main repo's own
+    .env (demo-local convenience only), else default."""
     try:  # Streamlit is absent in scripts and tests; fall back quietly.
         import streamlit as st
 
@@ -24,7 +44,9 @@ def _secret(name: str, default: str = "") -> str:
             return str(st.secrets[name])
     except Exception:  # noqa: BLE001 — no secrets file, or not under Streamlit
         pass
-    return os.environ.get(name, default)
+    if name in os.environ:
+        return os.environ[name]
+    return _main_repo_env_values().get(name, default)
 
 
 @dataclass
@@ -75,6 +97,17 @@ class Settings:
     def GCP_PRIVATE_KEY(self) -> str:
         # TOML and .env both escape newlines; the PEM parser needs them real.
         return _secret("GCP_PRIVATE_KEY").replace("\\n", "\n")
+
+    # ── Real P1 chart engine (optional) ──────────────────────────────────────
+    # Empty means "no real chart data" — falls back to this demo's own
+    # D1-only Swiss Ephemeris computation, unchanged.
+    @cached_property
+    def BACKEND_URL(self) -> str:
+        return _secret("BACKEND_URL")
+
+    @cached_property
+    def BACKEND_DEMO_TOKEN(self) -> str:
+        return _secret("BACKEND_DEMO_TOKEN")
 
     # ── Derived ──────────────────────────────────────────────────────────────
     @cached_property
