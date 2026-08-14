@@ -14,6 +14,8 @@ import logging
 from collections.abc import Generator
 from datetime import datetime, timedelta
 
+from rishivan.chart.local_numerology import numerology_table_markdown
+from rishivan.chart.local_varga import varga_table_markdown
 from rishivan.chart.panchang import mentions_panchang, relative_day_offset
 from rishivan.council.classifier import classify_query
 from rishivan.council.domains import RISHI_BOOK_DOMAINS, QueryDomain
@@ -60,6 +62,10 @@ def council_consult(
         "classification": {},
         "chart_summary": None,
         "chart_facts": None,
+        "chart_table": None,
+        "chart_table_error": None,
+        "nakshatra_now": None,
+        "relevant_chart_tables": {},
         "sources": [],
         "search_query": question,
         "answer_stream": None,
@@ -108,8 +114,35 @@ def council_consult(
         result["chart_summary"] = summarize(chart)
         if real_facts:
             chart_facts = real_facts
+            covered_vargas = set(p1_bridge.VARGAS_FOR_DEMO)  # D1, D9, D10
         else:
             chart_facts = derive_facts(chart)
+            covered_vargas = {"D1"}
+
+        # Every divisional chart governs a specific life area, and only the
+        # ones this SPECIFIC question actually touches should ground the
+        # reading — the classifier (same LLM call as intent/domain routing)
+        # already decided this as "relevant_vargas". Add whichever of those
+        # aren't already covered above, computed locally via the same
+        # zero-IO engine as the chart-table feature, so this works even when
+        # the real P1 backend is unreachable.
+        extra_codes = [
+            c for c in classification.get("relevant_vargas", [])
+            if c not in covered_vargas
+        ]
+        if extra_codes:
+            from rishivan.chart.local_varga import varga_facts
+            for code in extra_codes:
+                extra = varga_facts(chart, code)
+                if extra:
+                    chart_facts = chart_facts + extra
+                    # The "Computed Chart" UI only ever showed D1, so a
+                    # marriage reading grounded in D9 (or any other varga)
+                    # had no visible chart to check it against — surface the
+                    # table for whatever actually grounded this answer.
+                    table = varga_table_markdown(chart, code)
+                    if table:
+                        result["relevant_chart_tables"][code] = table
         result["chart_facts"] = chart_facts
 
     # Daily timing windows are pure arithmetic on sunrise/sunset, so compute
@@ -159,11 +192,99 @@ def council_consult(
         chart_facts = panchang_summary.splitlines() + (chart_facts or [])
         result["chart_facts"] = chart_facts
 
+    # "Show me my chart" / "compute d9 chart" / "what's my mulank" is a
+    # display request, not an interpretation question — the classifier LLM
+    # call above already decided this (intent/chart_type/varga_code), so
+    # answer it with a deterministic table and skip retrieval/LLM entirely:
+    # no Rishi voice, no closing question. A question ABOUT the chart
+    # ("what sign is my moon in?") comes back with intent "fact" and falls
+    # through to the normal LLM path below.
+    #
+    # All three table builders compute locally with the main repo's own
+    # pure-arithmetic engines (app.astro.kundli.varga, app.astro.ankshastra
+    # .numbers, app.astro.bala.ashtakavarga — same maths the real backend
+    # uses), so every divisional chart, numerology number, and ashtakavarga
+    # table works straight from the birth data just entered here, without
+    # that backend's HTTP server, database, or auth needing to be running.
+    if chart is not None and classification.get("intent") == "chart":
+        chart_type = classification.get("chart_type", "varga")
+        if chart_type == "numerology":
+            if birth_data is None:
+                result["chart_table_error"] = (
+                    "Numerology needs a date of birth, and none was given for "
+                    "this reading."
+                )
+                return result
+            table = numerology_table_markdown(birth_data, chart)
+            error_subject = "numerology"
+        elif chart_type == "ashtakavarga":
+            from rishivan.chart.local_ashtakavarga import ashtakavarga_table_markdown
+            table = ashtakavarga_table_markdown(chart)
+            error_subject = "ashtakavarga"
+        else:
+            code = classification.get("varga_code", "D1")
+            table = varga_table_markdown(chart, code)
+            error_subject = f"{code} chart"
+        if table:
+            result["chart_table"] = table
+        else:
+            # Never fall back to a different chart/number than what was
+            # asked for — an honest "can't compute this" beats a silently
+            # wrong table.
+            result["chart_table_error"] = (
+                f"I can't compute {error_subject} in this environment right now."
+            )
+        return result
+
+    # Ground-truth nakshatra & dasha, shown in the UI regardless of what the
+    # Rishi's prose says: an LLM instruction to "name the nakshatra plainly
+    # when asked" is not reliably followed (it gets paraphrased into flavour
+    # text like "the star of unshakeable victory" instead of the real name),
+    # so the accurate names must be surfaced independently of the voice.
+    if chart is not None and domain == QueryDomain.NATAL:
+        from rishivan.chart.dasha import current_periods
+        from rishivan.chart.transit import transit_chart
+
+        birth_moon = chart.planets["Moon"]
+        today_moon = transit_chart().planets["Moon"]
+        cur = current_periods(chart, query_time or datetime.now())
+        result["nakshatra_now"] = {
+            "birth": {
+                "nakshatra": birth_moon.nakshatra,
+                "pada": birth_moon.pada,
+                "rashi": birth_moon.rashi,
+            },
+            "today": {
+                "nakshatra": today_moon.nakshatra,
+                "pada": today_moon.pada,
+                "rashi": today_moon.rashi,
+            },
+            "dasha": [
+                {"level": level, "lord": p.lord, "ends": p.end.date().isoformat()}
+                for level, p in cur.items() if p is not None
+            ],
+        }
+
     # ── Step 3: Search query ──────────────────────────────────────────────────
     # The classifier returns this alongside the routing decision; it used to be
     # a second serial LLM round-trip costing ~5s on every consultation.
     search_query = classification.get("search_query") or question
     result["search_query"] = search_query
+
+    # Remedies are grounded by planet, not by the word "remedy" — BPHS titles
+    # its remedy chapters by planet name ("Saturn", "Mercury"), so a bare
+    # "remedies" query misses them. Tejan (the remedies Rishi) is the signal
+    # that this reading needs one; the running Mahadasha lord is who the
+    # remedy is actually for.
+    if rishi == "tejan" and chart is not None:
+        from rishivan.chart.dasha import current_periods
+        cur = current_periods(chart, query_time or datetime.now())
+        if cur["maha"]:
+            search_query = (
+                f"{search_query} — remedies for {cur['maha'].lord}: "
+                "mantra, gemstone, donation, ritual"
+            )
+            result["search_query"] = search_query
 
     # ── Step 4: Domain-filtered RAG retrieval ────────────────────────────────
     from rishivan.rag.retrieve import collect_chart_context, expand_to_page_window

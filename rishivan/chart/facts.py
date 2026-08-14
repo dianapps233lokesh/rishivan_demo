@@ -36,6 +36,14 @@ def derive_facts(chart: Chart, when: datetime | None = None) -> list[str]:
 
     facts.append(f"Ascendant (Lagna) is {chart.lagna_rashi}.")
 
+    # Restated up front, plainly labelled: otherwise it is buried inside the
+    # generic per-planet loop below, and "which nakshatra is running for me"
+    # gets no clear answer to point to.
+    moon = chart.planets["Moon"]
+    facts.append(
+        f"Birth nakshatra (Janma Nakshatra): {moon.nakshatra}, pada {moon.pada}."
+    )
+
     # planet placements
     for name in _PLANET_ORDER:
         p = chart.planets[name]
@@ -92,6 +100,18 @@ def derive_facts(chart: Chart, when: datetime | None = None) -> list[str]:
         if cur["pratyantar"]:
             parts.append(f"{cur['pratyantar'].lord} Pratyantardasha")
         facts.append("Currently running: " + ", ".join(parts) + ".")
+
+    # Today's transiting Moon nakshatra — the literal answer to "which
+    # nakshatra is running for me right now?" Distinct from both the birth
+    # nakshatra above (fixed at birth) and the dasha lord above (a planet,
+    # not a nakshatra — Vimshottari dasha periods are planetary).
+    from rishivan.chart.transit import transit_chart
+    today = transit_chart()
+    tm = today.planets["Moon"]
+    facts.append(
+        f"Nakshatra running today (transiting Moon, not birth nakshatra): "
+        f"{tm.nakshatra}, pada {tm.pada}, Moon in {tm.rashi}."
+    )
 
     return facts
 

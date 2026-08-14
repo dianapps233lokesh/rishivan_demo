@@ -161,6 +161,15 @@ def compute_chart(birth: BirthData) -> Chart:
     return chart
 
 
+# Whether a question is a display request ("show me my chart") versus an
+# interpretation question ("what sign is my moon in?") is decided by the
+# classifier LLM call (rishivan.council.classifier — intent/chart_type/
+# varga_code fields). The tables themselves are rendered by
+# rishivan.chart.local_varga (all sixteen vargas, D1 included) and
+# rishivan.chart.local_numerology — both compute locally via the main
+# repo's pure-arithmetic engines.
+
+
 def summarize(chart: Chart) -> str:
     """Human-readable one-screen chart summary (for the UI + sanity checking)."""
     lines = [

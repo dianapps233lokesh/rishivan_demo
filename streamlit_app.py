@@ -406,25 +406,95 @@ if ask_btn and question.strip():
             unsafe_allow_html=True,
         )
 
+    # ── Nakshatra & dasha ──
+    # Ground truth, shown regardless of what the Rishi's prose says: an
+    # instruction to "name the nakshatra plainly when asked" is not reliably
+    # followed (it can get paraphrased into flavour text instead of the real
+    # name), so the accurate names live here too, where they cannot be lost.
+    if result.get("nakshatra_now"):
+        nn = result["nakshatra_now"]
+        rows = [
+            ("Birth Nakshatra", f"{nn['birth']['nakshatra']} (pada {nn['birth']['pada']})"),
+            ("Nakshatra Today", f"{nn['today']['nakshatra']} (pada {nn['today']['pada']})"),
+        ]
+        if nn["dasha"]:
+            rows.append((
+                "Current Dasha",
+                " → ".join(d["lord"] for d in nn["dasha"])
+                + f" (until {nn['dasha'][-1]['ends']})",
+            ))
+        chips = ""
+        for label, val in rows:
+            chips += (
+                "<div style='display:inline-block;margin:0 18px 8px 0'>"
+                f"<div style='color:#5a5a80;font-size:.68rem;letter-spacing:1px;"
+                f"text-transform:uppercase'>{label}</div>"
+                f"<div style='color:#f5f3ff;font-size:.95rem;"
+                f"font-variant-numeric:tabular-nums'>{val}</div></div>"
+            )
+        st.markdown(
+            "<div style='background:rgba(245,158,11,.07);"
+            "border:1px solid rgba(245,158,11,.28);border-radius:14px;"
+            "padding:14px 18px;margin:10px 0'>"
+            "<div style='color:#f59e0b;font-size:.72rem;letter-spacing:1.5px;"
+            "text-transform:uppercase;margin-bottom:10px'>"
+            "Computed Nakshatra &amp; Dasha · Swiss Ephemeris</div>"
+            f"{chips}</div>",
+            unsafe_allow_html=True,
+        )
+
     # ── Chart summary ──
+    # Always the D1 (Rashi) chart — the base placements every reading uses.
     if result.get("chart_summary"):
-        with st.expander("📊 Computed Chart", expanded=False):
+        with st.expander("📊 Computed Chart (D1 Rashi)", expanded=False):
             st.code(result["chart_summary"], language=None)
             if result.get("chart_facts"):
                 st.caption(f"{len(result['chart_facts'])} ground-truth facts extracted via Swiss Ephemeris")
 
-    # ── Stream answer ──
-    answer_stream = result.get("answer_stream")
-    if answer_stream is None:
-        st.warning("No relevant context found in the classical texts for this query.")
-    else:
-        answer_ph = st.empty()
-        answer = ""
+    # ── Relevant divisional charts ──
+    # Beyond D1, only the vargas this specific question actually needed were
+    # computed (see orchestrator.py — the classifier decides relevance per
+    # question, e.g. D9 for marriage, D7 for children). Shown here so the
+    # reading can be checked against the exact chart it was grounded in,
+    # not just the always-present D1.
+    for code, table in result.get("relevant_chart_tables", {}).items():
+        with st.expander(f"📊 Computed Chart ({code}) — used for this reading", expanded=False):
+            st.markdown(_md(table), unsafe_allow_html=True)
 
-        for chunk in answer_stream:
-            answer += chunk
-            answer_ph.markdown(
-                f"""<div class="answer-card" style="--ac:{persona.color};">
+    # ── Chart table — a display request, answered deterministically, no LLM ──
+    if result.get("chart_table"):
+        st.markdown(
+            f"""<div class="answer-card" style="--ac:{persona.color};">
+  <div class="rishi-header">
+    <div class="rishi-avatar">{persona.emoji}</div>
+    <div class="rishi-name-block">
+      <div class="rn">{persona.display_name}</div>
+      <div class="rt">{persona.title}</div>
+    </div>
+  </div>
+  <div class="answer-body">{_md(result["chart_table"])}</div>
+</div>""",
+            unsafe_allow_html=True,
+        )
+        _steps(classify="done", chart="done", retrieve="done", generate="done")
+
+    elif result.get("chart_table_error"):
+        st.warning(result["chart_table_error"])
+        _steps(classify="done", chart="done", retrieve="done", generate="done")
+
+    else:
+        # ── Stream answer ──
+        answer_stream = result.get("answer_stream")
+        if answer_stream is None:
+            st.warning("No relevant context found in the classical texts for this query.")
+        else:
+            answer_ph = st.empty()
+            answer = ""
+
+            for chunk in answer_stream:
+                answer += chunk
+                answer_ph.markdown(
+                    f"""<div class="answer-card" style="--ac:{persona.color};">
   <div class="rishi-header">
     <div class="rishi-avatar">{persona.emoji}</div>
     <div class="rishi-name-block">
@@ -435,62 +505,62 @@ if ask_btn and question.strip():
   <div class="answer-body">{_md(answer)}</div>
   <div class="sign-off">— {persona.sign_off}</div>
 </div>""",
-                unsafe_allow_html=True,
-            )
+                    unsafe_allow_html=True,
+                )
 
-        _steps(classify="done", chart="done", retrieve="done", generate="done")
+            _steps(classify="done", chart="done", retrieve="done", generate="done")
 
-        page_groups = result.get("sources", [])
+            page_groups = result.get("sources", [])
 
-        # Citation strip. The Rishi no longer speaks page numbers aloud (they
-        # made the reading sound like a search engine), so the proof of
-        # authority lives here instead — visible, but out of the voice.
-        if page_groups:
-            cites = sorted({
-                f"{g.get('book_title', 'Classical text')} · p. {g['page_number']}"
-                for g in page_groups
-            })
-            chips = " ".join(
-                f"<span style='display:inline-block;background:rgba(139,92,246,.10);"
-                f"border:1px solid rgba(139,92,246,.28);border-radius:20px;"
-                f"padding:4px 12px;margin:3px 4px 0 0;font-size:.75rem;"
-                f"color:#c4b5fd'>{c}</span>"
-                for c in cites
-            )
-            st.markdown(
-                "<div style='margin:-14px 0 6px'>"
-                "<span style='color:#5a5a80;font-size:.72rem;letter-spacing:1px;"
-                "text-transform:uppercase'>Drawn from</span><br>"
-                f"{chips}</div>",
-                unsafe_allow_html=True,
-            )
+            # Citation strip. The Rishi no longer speaks page numbers aloud (they
+            # made the reading sound like a search engine), so the proof of
+            # authority lives here instead — visible, but out of the voice.
+            if page_groups:
+                cites = sorted({
+                    f"{g.get('book_title', 'Classical text')} · p. {g['page_number']}"
+                    for g in page_groups
+                })
+                chips = " ".join(
+                    f"<span style='display:inline-block;background:rgba(139,92,246,.10);"
+                    f"border:1px solid rgba(139,92,246,.28);border-radius:20px;"
+                    f"padding:4px 12px;margin:3px 4px 0 0;font-size:.75rem;"
+                    f"color:#c4b5fd'>{c}</span>"
+                    for c in cites
+                )
+                st.markdown(
+                    "<div style='margin:-14px 0 6px'>"
+                    "<span style='color:#5a5a80;font-size:.72rem;letter-spacing:1px;"
+                    "text-transform:uppercase'>Drawn from</span><br>"
+                    f"{chips}</div>",
+                    unsafe_allow_html=True,
+                )
 
-            with st.expander(f"🔍 Read the source pages ({len(page_groups)})",
-                             expanded=False):
-                st.caption(f"**Search query used:** {result.get('search_query', '')}")
-                for g in page_groups:
-                    flat = g["text"].replace("\n", " ")
-                    preview = flat[:200] + ("…" if len(flat) > 200 else "")
-                    st.markdown(
-                        f"""<div class="src-chip" style="margin-bottom:8px;display:block;">
+                with st.expander(f"🔍 Read the source pages ({len(page_groups)})",
+                                 expanded=False):
+                    st.caption(f"**Search query used:** {result.get('search_query', '')}")
+                    for g in page_groups:
+                        flat = g["text"].replace("\n", " ")
+                        preview = flat[:200] + ("…" if len(flat) > 200 else "")
+                        st.markdown(
+                            f"""<div class="src-chip" style="margin-bottom:8px;display:block;">
 <span>{g.get('book_title', 'Classical text')} · Page {g['page_number']}</span>
 · {g['n_elements']} elements<br>
 <span style="color:#5a5a80;font-size:.76rem">{preview}</span></div>""",
-                        unsafe_allow_html=True,
-                    )
+                            unsafe_allow_html=True,
+                        )
 
-        # Remember the exchange so the Rishi's closing hook leads somewhere.
-        st.session_state.conversation.add(question.strip(), answer, rishi_name)
-        st.session_state.history.insert(0, {
-            "q": question.strip(), "a": answer,
-            "rishi": rishi_name, "domain": domain_str,
-        })
+            # Remember the exchange so the Rishi's closing hook leads somewhere.
+            st.session_state.conversation.add(question.strip(), answer, rishi_name)
+            st.session_state.history.insert(0, {
+                "q": question.strip(), "a": answer,
+                "rishi": rishi_name, "domain": domain_str,
+            })
 
-        st.caption(
-            "Rishivan shares traditional Vedic interpretation for reflection "
-            "and guidance. It is not medical, legal, or financial advice — "
-            "please consult a qualified professional for those decisions."
-        )
+            st.caption(
+                "Rishivan shares traditional Vedic interpretation for reflection "
+                "and guidance. It is not medical, legal, or financial advice — "
+                "please consult a qualified professional for those decisions."
+            )
 
 # ── History ───────────────────────────────────────────────────────────────────
 if st.session_state.history:

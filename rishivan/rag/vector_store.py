@@ -175,14 +175,48 @@ class QdrantVectorStore(VectorStore):
     def __init__(
         self, url: str, api_key: str, collection_name: str, timeout: int = 120
     ):
-        from qdrant_client import QdrantClient
-
         if not url:
             raise ValueError("QDRANT_URL is not configured")
+        self._url = url
+        self._api_key = api_key
+        self._timeout = timeout
+        self._name = collection_name
+        self._client = self._new_client()
+
+    def _new_client(self):
+        from qdrant_client import QdrantClient
+
         # Generous timeout: Cloud upserts of a full batch can exceed the short
         # httpx default (5s) and abort an otherwise-healthy run.
-        self._client = QdrantClient(url=url, api_key=api_key or None, timeout=timeout)
-        self._name = collection_name
+        return QdrantClient(url=self._url, api_key=self._api_key or None, timeout=self._timeout)
+
+    def _with_retry(self, fn_factory):
+        """Retry a transient Qdrant Cloud/network error on a FRESH client.
+
+        ``fn_factory`` is called with no arguments and must read ``self._client``
+        itself at call time (not close over a stale reference), since a retry
+        may swap it out.
+
+        The client is built once and cached for the app's whole lifetime (see
+        streamlit_app.py's ``@st.cache_resource``), so its connection pool can
+        go stale after long idle stretches — Qdrant Cloud's edge then answers
+        a live query with ``421 Misdirected Request``. Critically, a 421 is a
+        complete, valid HTTP response, not a connection-level error, so httpx
+        has no reason to evict that connection from its pool — simply retrying
+        on the SAME client reuses the SAME stale connection and fails again
+        every time (verified empirically). Retrying only helps once the
+        client itself — and so its whole connection pool — is rebuilt.
+        """
+        last_exc = None
+        for attempt in range(self._MAX_RETRIES):
+            try:
+                return fn_factory()
+            except Exception as exc:  # noqa: BLE001 — retry any transport error
+                last_exc = exc
+                if attempt < self._MAX_RETRIES - 1:
+                    self._client = self._new_client()
+                    time.sleep(0.5 * (attempt + 1))  # 0.5s, 1s
+        raise last_exc
 
     def reset(self) -> None:
         if self._client.collection_exists(self._name):
@@ -228,17 +262,13 @@ class QdrantVectorStore(VectorStore):
             )
             for pid, vec, doc, meta in zip(ids, embeddings, documents, metadatas)
         ]
-        # Retry transient network errors; upsert is idempotent (deterministic ids),
-        # so a re-sent batch simply overwrites itself.
-        last_exc = None
-        for attempt in range(self._MAX_RETRIES):
-            try:
-                self._client.upsert(collection_name=self._name, points=points)
-                return
-            except Exception as exc:  # noqa: BLE001 — retry any transport error
-                last_exc = exc
-                time.sleep(2 * (attempt + 1))  # 2s, 4s, 6s backoff
-        raise last_exc
+        # Retry transient network errors (via _with_retry, which rebuilds the
+        # client between attempts — see its docstring for why that matters);
+        # upsert is idempotent (deterministic ids), so a re-sent batch simply
+        # overwrites itself.
+        self._with_retry(
+            lambda: self._client.upsert(collection_name=self._name, points=points)
+        )
 
     def _to_hit(self, payload: dict) -> Hit:
         payload = dict(payload)
@@ -254,22 +284,22 @@ class QdrantVectorStore(VectorStore):
         )
 
     def search(self, embedding, n_results) -> list[Hit]:
-        res = self._client.query_points(
+        res = self._with_retry(lambda: self._client.query_points(
             collection_name=self._name,
             query=embedding,
             limit=n_results,
             with_payload=True,
-        )
+        ))
         return [self._to_hit(p.payload) for p in res.points]
 
     def search_filtered(self, embedding, n_results, domain_filter) -> list[Hit]:
-        res = self._client.query_points(
+        res = self._with_retry(lambda: self._client.query_points(
             collection_name=self._name,
             query=embedding,
             limit=n_results,
             with_payload=True,
             query_filter=self._domain_filter(domain_filter),
-        )
+        ))
         return [self._to_hit(p.payload) for p in res.points]
 
     def search_batch(self, embeddings, n_results) -> list[list[Hit]]:
@@ -279,9 +309,9 @@ class QdrantVectorStore(VectorStore):
             QueryRequest(query=emb, limit=n_results, with_payload=True)
             for emb in embeddings
         ]
-        results = self._client.query_batch_points(
+        results = self._with_retry(lambda: self._client.query_batch_points(
             collection_name=self._name, requests=requests
-        )
+        ))
         return [[self._to_hit(p.payload) for p in r.points] for r in results]
 
     def search_batch_filtered(self, embeddings, n_results, domain_filter) -> list[list[Hit]]:
@@ -292,9 +322,9 @@ class QdrantVectorStore(VectorStore):
             QueryRequest(query=emb, limit=n_results, with_payload=True, filter=flt)
             for emb in embeddings
         ]
-        results = self._client.query_batch_points(
+        results = self._with_retry(lambda: self._client.query_batch_points(
             collection_name=self._name, requests=requests
-        )
+        ))
         return [[self._to_hit(p.payload) for p in r.points] for r in results]
 
     def fetch_pages(self, pages_by_doc) -> list[Hit]:
@@ -317,13 +347,14 @@ class QdrantVectorStore(VectorStore):
         hits: list[Hit] = []
         offset = None
         while True:
-            rows, offset = self._client.scroll(
+            cursor = offset
+            rows, offset = self._with_retry(lambda: self._client.scroll(
                 collection_name=self._name,
                 scroll_filter=flt,
                 with_payload=True,
                 limit=256,
-                offset=offset,
-            )
+                offset=cursor,
+            ))
             hits.extend(self._to_hit(p.payload) for p in rows)
             if offset is None:
                 break
