@@ -27,6 +27,12 @@ BOOK_TITLES: dict[str, str] = {
     "prasnamarga-raman-part2": "Prashna Marga, Part 2",
     "prashna-tantra": "Prashna Tantra",
     "devakeralam-chandrakalanadi-vol1": "Deva Keralam (Chandra Kala Nadi), Vol. 1",
+    "hindupredictiveastrology-raman": "Hindu Predictive Astrology",
+    "dharma-sindhu": "Dharma Sindhu",
+    "vivaha-patalam": "Vivaha Patalam",
+    "cheiros-book-of-numbers": "Cheiro's Book of Numbers",
+    "the-complete-book-of-numerology": "The Complete Book of Numerology",
+    "numerology-key-to-your-inner-self": "Numerology: Key to Your Inner Self",
 }
 
 

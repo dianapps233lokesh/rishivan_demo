@@ -9,15 +9,16 @@ from enum import Enum
 
 
 class BookDomain(str, Enum):
-    FOUNDATION   = "foundation"    # BPHS, Phaladeepika, Saravali, Jataka Parijata
-    PREDICTION   = "prediction"    # Brihat Jataka, Laghu Parashari, Sarvartha Chintamani
+    FOUNDATION   = "foundation"    # BPHS, Phaladeepika, Saravali, Jataka Parijata, Hindu Predictive Astrology
+    PREDICTION   = "prediction"    # Brihat Jataka, Laghu Parashari, Sarvartha Chintamani, Hindu Predictive Astrology
     TIMING       = "timing"        # Laghu Parashari, BPHS timing chapters
-    MUHURTA      = "muhurta"       # Muhurta Chintamani
+    MUHURTA      = "muhurta"       # Muhurta Chintamani, Dharma Sindhu, Vivaha Patalam
     PRASHNA      = "prashna"       # Prashna Marga, Prashna Tantra
     REMEDIAL     = "remedial"      # BPHS remedies chapters
     NADI         = "nadi"          # Deva Keralam / Chandra Kala Nadi
     WEALTH       = "wealth"        # Bhavartha Ratnakara, Sarvartha Chintamani
-    COMPATIBILITY = "compatibility" # Muhurta vivaha sections
+    COMPATIBILITY = "compatibility" # Muhurta vivaha sections, Vivaha Patalam
+    NUMEROLOGY   = "numerology"    # Cheiro's Book of Numbers, Complete Book of Numerology, Numerology: Key to Your Inner Self
 
 
 # ── Book slug → domain tags (multi-tag per book) ────────────────────────────
@@ -38,6 +39,12 @@ SLUG_DOMAINS: dict[str, list[str]] = {
     "prasnamarga-raman-part2":              [BookDomain.PRASHNA],
     "prashna-tantra":                       [BookDomain.PRASHNA],
     "devakeralam-chandrakalanadi-vol1":     [BookDomain.NADI],
+    "hindupredictiveastrology-raman":       [BookDomain.FOUNDATION, BookDomain.PREDICTION],
+    "dharma-sindhu":                        [BookDomain.MUHURTA],
+    "vivaha-patalam":                       [BookDomain.MUHURTA, BookDomain.COMPATIBILITY],
+    "cheiros-book-of-numbers":              [BookDomain.NUMEROLOGY],
+    "the-complete-book-of-numerology":      [BookDomain.NUMEROLOGY],
+    "numerology-key-to-your-inner-self":    [BookDomain.NUMEROLOGY],
 }
 
 
@@ -57,10 +64,10 @@ def domains_for_slug(slug: str) -> list[str]:
 RISHI_BOOK_DOMAINS: dict[str, list[str]] = {
     "agam":    [BookDomain.FOUNDATION, BookDomain.NADI],
     "vyom":    [BookDomain.FOUNDATION, BookDomain.PREDICTION, BookDomain.NADI],
-    "dhruvan": [BookDomain.WEALTH, BookDomain.PREDICTION, BookDomain.FOUNDATION],
+    "dhruvan": [BookDomain.WEALTH, BookDomain.PREDICTION, BookDomain.FOUNDATION, BookDomain.NUMEROLOGY],
     "ritam":   [BookDomain.TIMING, BookDomain.MUHURTA, BookDomain.FOUNDATION],
     "tejan":   [BookDomain.REMEDIAL, BookDomain.FOUNDATION],
-    "medhan":  [BookDomain.FOUNDATION, BookDomain.PREDICTION, BookDomain.PRASHNA, BookDomain.COMPATIBILITY],
+    "medhan":  [BookDomain.FOUNDATION, BookDomain.PREDICTION, BookDomain.PRASHNA, BookDomain.COMPATIBILITY, BookDomain.NUMEROLOGY],
     "tattvan": [BookDomain.PREDICTION, BookDomain.NADI, BookDomain.FOUNDATION],
     "pragnav": [BookDomain.FOUNDATION, BookDomain.NADI],
 }
