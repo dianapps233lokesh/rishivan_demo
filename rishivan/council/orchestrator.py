@@ -23,10 +23,10 @@ from rishivan.council.prompts import build_rishi_prompt
 
 logger = logging.getLogger(__name__)
 
-# Retrieval budget. A full natal chart yields ~30 facts; using every one as a
-# search query cost ~14s of embedding plus ~4s of vector search per request.
-MAX_FACT_QUERIES = 8
-MAX_PAGES = 4
+# Retrieval budget. None = no cap: every chart fact (a full natal chart
+# yields ~30) is used as a search query against the corpus.
+MAX_FACT_QUERIES = None
+MAX_PAGES = 20
 
 
 def council_consult(
@@ -337,7 +337,7 @@ def council_consult(
     # Use this Rishi's book domain filter
     domain_filter = [d.value for d in RISHI_BOOK_DOMAINS.get(rishi, [])]
     # Fallback: remove filter if store has no tagged docs (POC compatibility)
-    def _search_with_fallback(emb, n=5):
+    def _search_with_fallback(emb, n=10):
         if domain_filter:
             hits = store.search_filtered(emb, n_results=n, domain_filter=domain_filter)
             if hits:

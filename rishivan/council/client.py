@@ -66,8 +66,8 @@ GEMINI_MODELS = {
 }
 
 VERTEX_MODELS = {
-    "flash": "gemini-3.6-flash",
-    "pro":   "gemini-3.6-flash",
+    "flash": "gemini-3.7-flash",
+    "pro":   "gemini-3.7-flash",
     "embed": "text-embedding-004",           # Vertex AI embedding model
 }
 
