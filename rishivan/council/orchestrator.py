@@ -113,7 +113,13 @@ def council_consult(
         chart = compute_chart(birth_data)
         result["chart_summary"] = summarize(chart)
         if real_facts:
-            chart_facts = real_facts
+            # p1_bridge only ever returns varga placements (D1/D9/D10) — it
+            # has no dasha endpoint — so without this, any reading grounded
+            # via the real backend lost all Vimshottari dasha facts, even
+            # though dasha is pure local arithmetic on the Moon's birth
+            # nakshatra and never depended on that backend being reachable.
+            from rishivan.chart.facts import derive_dasha_facts
+            chart_facts = real_facts + derive_dasha_facts(chart, query_time or datetime.now())
             covered_vargas = set(p1_bridge.VARGAS_FOR_DEMO)  # D1, D9, D10
         else:
             chart_facts = derive_facts(chart)
@@ -221,6 +227,10 @@ def council_consult(
             from rishivan.chart.local_ashtakavarga import ashtakavarga_table_markdown
             table = ashtakavarga_table_markdown(chart)
             error_subject = "ashtakavarga"
+        elif chart_type == "dasha":
+            from rishivan.chart.local_dasha import dasha_table_markdown
+            table = dasha_table_markdown(chart, query_time or datetime.now())
+            error_subject = "vimshottari dasha"
         else:
             code = classification.get("varga_code", "D1")
             table = varga_table_markdown(chart, code)
@@ -270,6 +280,27 @@ def council_consult(
     # a second serial LLM round-trip costing ~5s on every consultation.
     search_query = classification.get("search_query") or question
     result["search_query"] = search_query
+
+    # When the seeker specifically named one dasha level (maha/antar/
+    # pratyantar), the classifier itself decided that — not a keyword guess
+    # — so ground retrieval in exactly that period's ruling planet, the same
+    # way the tejan remedy branch below grounds by the Mahadasha lord.
+    dasha_level = classification.get("dasha_level", "none")
+    if dasha_level != "none" and chart is not None:
+        from rishivan.chart.dasha import current_periods
+        cur_dasha = current_periods(chart, query_time or datetime.now())
+        if dasha_level == "all":
+            levels = [(lvl, cur_dasha.get(lvl)) for lvl in ("maha", "antar", "pratyantar")]
+            levels = [(lvl, p) for lvl, p in levels if p]
+            if levels:
+                chain = " → ".join(f"{p.lord} {lvl}dasha" for lvl, p in levels)
+                search_query = f"{search_query} — current dasha: {chain}"
+                result["search_query"] = search_query
+        else:
+            p = cur_dasha.get(dasha_level)
+            if p:
+                search_query = f"{search_query} — current {dasha_level}dasha lord: {p.lord}"
+                result["search_query"] = search_query
 
     # Remedies are grounded by planet, not by the word "remedy" — BPHS titles
     # its remedy chapters by planet name ("Saturn", "Mercury"), so a bare

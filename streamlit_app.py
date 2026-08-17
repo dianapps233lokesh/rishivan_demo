@@ -228,6 +228,30 @@ st.markdown("""
 
 st.markdown("<br>", unsafe_allow_html=True)
 
+def _geocode_place_on_change():
+    """Resolve the just-typed Place to lat/lon before the next rerun.
+
+    Setting session_state here (in an on_change callback, which runs before
+    Streamlit reruns the script) is what lets the Latitude/Longitude widgets
+    below pick up the new value on their next render — they still read the
+    key straight after, so the user can freely overwrite it by hand too.
+    """
+    place = st.session_state.get("bd_place", "").strip()
+    if not place:
+        return
+    from rishivan.chart.geocode import geocode_place
+    coords = geocode_place(place)
+    if coords:
+        st.session_state["bd_lat"], st.session_state["bd_lon"] = coords
+        st.session_state["bd_geocode_status"] = (
+            f"📍 Resolved \"{place}\" to {coords[0]:.4f}, {coords[1]:.4f}"
+        )
+    else:
+        st.session_state["bd_geocode_status"] = (
+            f"⚠️ Couldn't resolve \"{place}\" — enter latitude/longitude manually."
+        )
+
+
 # ── Birth Data Panel ──────────────────────────────────────────────────────────
 def _build_birth_data():
     with st.expander("🌙 Birth Details (for personalised natal readings)", expanded=False):
@@ -244,7 +268,10 @@ def _build_birth_data():
             lon = st.number_input("Longitude", value=77.2090, format="%.4f", key="bd_lon")
         with c3:
             tz = st.number_input("TZ offset", value=5.5, step=0.5, format="%.1f", key="bd_tz")
-            place = st.text_input("Place", value="New Delhi", key="bd_place")
+            place = st.text_input("Place", value="New Delhi", key="bd_place",
+                                   on_change=_geocode_place_on_change)
+        if st.session_state.get("bd_geocode_status"):
+            st.caption(st.session_state["bd_geocode_status"])
         if not use:
             return None
         try:
@@ -417,11 +444,17 @@ if ask_btn and question.strip():
             ("Birth Nakshatra", f"{nn['birth']['nakshatra']} (pada {nn['birth']['pada']})"),
             ("Nakshatra Today", f"{nn['today']['nakshatra']} (pada {nn['today']['pada']})"),
         ]
-        if nn["dasha"]:
+        # Each level shown with its own lord and end date — a single chained
+        # line ("Saturn → Mercury → Mercury, until <pratyantar's end date>")
+        # hid the maha/antar end dates entirely, which is exactly the level
+        # of detail asked for when someone names pratyantardasha specifically.
+        _LEVEL_LABEL = {
+            "maha": "Mahadasha", "antar": "Antardasha", "pratyantar": "Pratyantardasha",
+        }
+        for d in nn["dasha"]:
             rows.append((
-                "Current Dasha",
-                " → ".join(d["lord"] for d in nn["dasha"])
-                + f" (until {nn['dasha'][-1]['ends']})",
+                _LEVEL_LABEL.get(d["level"], d["level"]),
+                f"{d['lord']} (until {d['ends']})",
             ))
         chips = ""
         for label, val in rows:

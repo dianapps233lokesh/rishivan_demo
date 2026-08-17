@@ -30,6 +30,38 @@ _PLANET_ORDER = [
 ]
 
 
+def derive_dasha_facts(chart: Chart, when: datetime | None = None) -> list[str]:
+    """Mahadasha timeline + currently running periods, as plain-language facts.
+
+    Split out from derive_facts so the orchestrator can append it even when
+    chart_facts came from the real P1 backend's varga-only facts — dasha
+    timing is pure local arithmetic on the Moon's birth nakshatra and never
+    depends on that backend.
+    """
+    facts: list[str] = []
+
+    # full mahadasha timeline — birth through end of cycle, so past (and
+    # future) periods are grounded facts too, not just whichever is running now
+    timeline = mahadasha_timeline(chart)
+    if timeline:
+        spans = ", ".join(
+            f"{p.lord} ({p.start.date()} to {p.end.date()})" for p in timeline
+        )
+        facts.append("Mahadasha timeline from birth: " + spans + ".")
+
+    # current dasha
+    cur = current_periods(chart, when)
+    if cur["maha"]:
+        parts = [f"{cur['maha'].lord} Mahadasha"]
+        if cur["antar"]:
+            parts.append(f"{cur['antar'].lord} Antardasha")
+        if cur["pratyantar"]:
+            parts.append(f"{cur['pratyantar'].lord} Pratyantardasha")
+        facts.append("Currently running: " + ", ".join(parts) + ".")
+
+    return facts
+
+
 def derive_facts(chart: Chart, when: datetime | None = None) -> list[str]:
     """Return an ordered list of plain-language facts describing this chart."""
     facts: list[str] = []
@@ -82,24 +114,7 @@ def derive_facts(chart: Chart, when: datetime | None = None) -> list[str]:
     except Exception:  # noqa: BLE001 — yoga detection is supplementary
         pass
 
-    # full mahadasha timeline — birth through end of cycle, so past (and
-    # future) periods are grounded facts too, not just whichever is running now
-    timeline = mahadasha_timeline(chart)
-    if timeline:
-        spans = ", ".join(
-            f"{p.lord} ({p.start.date()} to {p.end.date()})" for p in timeline
-        )
-        facts.append("Mahadasha timeline from birth: " + spans + ".")
-
-    # current dasha
-    cur = current_periods(chart, when)
-    if cur["maha"]:
-        parts = [f"{cur['maha'].lord} Mahadasha"]
-        if cur["antar"]:
-            parts.append(f"{cur['antar'].lord} Antardasha")
-        if cur["pratyantar"]:
-            parts.append(f"{cur['pratyantar'].lord} Pratyantardasha")
-        facts.append("Currently running: " + ", ".join(parts) + ".")
+    facts.extend(derive_dasha_facts(chart, when))
 
     # Today's transiting Moon nakshatra — the literal answer to "which
     # nakshatra is running for me right now?" Distinct from both the birth

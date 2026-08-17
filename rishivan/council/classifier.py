@@ -57,6 +57,10 @@ ROUTING RULES:
 - "Is tomorrow good for travel?" → ritam, muhurta
 - "What is my life purpose?" → agam, natal
 - "What are my hidden strengths?" → tattvan, natal
+- "What is my current mahadasha?" / "when does my antardasha change?" /
+  "explain my pratyantardasha" / "what dasha am I running?" → ritam (timing),
+  natal — dasha is always about THIS seeker's own birth chart, never general,
+  even though it is also a piece of astrological theory.
 
 If the question is ambiguous between natal and prashna, prefer natal
 (the orchestrator will downgrade to prashna if birth data is unavailable).
@@ -77,9 +81,13 @@ question that needs interpreting?
 
 When intent is "chart", also say which kind:
 - "chart_type": "varga" (a divisional birth chart), "numerology" (mulank/
-  bhagyaank), or "ashtakavarga" (the benefic bindu/point table — NOT a
+  bhagyaank), "ashtakavarga" (the benefic bindu/point table — NOT a
   divisional chart, so never map "ashtakavarga"/"sarvashtakavarga"/"bindu
-  table"/"SAV" requests to varga_code "D1" or any other D-code). Default
+  table"/"SAV" requests to varga_code "D1" or any other D-code), or "dasha"
+  (the Vimshottari Mahadasha timeline — "show me my dasha", "what's my
+  mahadasha sequence", "list my dasha periods/timeline", "give me my
+  vimshottari dasha table". NOT the same as asking what dasha is currently
+  running as a fact/interpretation — that stays intent "fact"). Default
   "varga" when unclear.
 - "varga_code" (only when chart_type is "varga"): the divisional chart code
   — D1 Rashi (whole chart, default when none is named), D2 Hora (wealth),
@@ -107,6 +115,20 @@ touches should be pulled in, never all of them:
   list several. A question about today's timing or general astrology
   concepts needs none — return an empty list rather than guessing.
 
+When the question is about Vimshottari dasha timing (any "fact"-intent
+question naming dasha, mahadasha, antardasha/bhukti, or pratyantardasha),
+also decide which level of the dasha hierarchy the seeker actually means —
+do not guess from keywords, read what they are actually asking about:
+- "dasha_level": "maha" (they said/meant only the Mahadasha — "what
+  mahadasha am I in", "when does my Saturn mahadasha end"), "antar" (they
+  named the Antardasha/bhukti specifically, or asked about the sub-period
+  within a stated mahadasha), "pratyantar" (they named the Pratyantardasha,
+  or asked for this level of granularity — "day to day", "right now
+  precisely"), or "all" (they asked generally — "what dasha am I running",
+  "explain my current dasha period" — with no specific level named, or the
+  question needs the full maha→antar→pratyantar chain to answer). "none"
+  when the question is not about dasha at all.
+
 Also rewrite the question into an optimised semantic search query for
 retrieving pages from classical Sanskrit texts in English translation:
 preserve Sanskrit terms (dasha, lagna, yoga), and name the relevant houses,
@@ -122,9 +144,10 @@ Return ONLY a JSON object (no markdown, no explanation):
   "supporting_rishis": ["<optional secondary rishis who may contribute>"],
   "search_query": "<the optimised retrieval query>",
   "intent": "<chart|fact>",
-  "chart_type": "<varga|numerology|ashtakavarga — only meaningful when intent is chart>",
+  "chart_type": "<varga|numerology|ashtakavarga|dasha — only meaningful when intent is chart>",
   "varga_code": "<D1|D2|D3|D4|D7|D9|D10|D12|D16|D20|D24|D27|D30|D40|D45|D60 — only meaningful when chart_type is varga>",
-  "relevant_vargas": ["<codes from D2|D3|D4|D7|D9|D10|D12|D16|D20|D24|D27|D30|D40|D45|D60 — only meaningful when intent is fact; [] if none apply>"]
+  "relevant_vargas": ["<codes from D2|D3|D4|D7|D9|D10|D12|D16|D20|D24|D27|D30|D40|D45|D60 — only meaningful when intent is fact; [] if none apply>"],
+  "dasha_level": "<maha|antar|pratyantar|all|none — only meaningful when intent is fact>"
 }
 """
 
@@ -181,7 +204,7 @@ def classify_query(
         if intent not in ("chart", "fact"):
             intent = "fact"
         chart_type = result.get("chart_type", "varga")
-        if chart_type not in ("varga", "numerology", "ashtakavarga"):
+        if chart_type not in ("varga", "numerology", "ashtakavarga", "dasha"):
             chart_type = "varga"
         varga_code = str(result.get("varga_code", "D1")).upper()
         if varga_code not in _VARGA_CODES:
@@ -198,6 +221,10 @@ def classify_query(
             c for c in (str(v).upper() for v in raw_vargas)
             if c in _VARGA_CODES and c != "D1"
         ][:4]
+
+        dasha_level = str(result.get("dasha_level", "none")).lower()
+        if dasha_level not in ("maha", "antar", "pratyantar", "all", "none"):
+            dasha_level = "none"
 
         # Keep the thread with one Rishi even if the model forgot to.
         is_followup = bool(result.get("is_followup", False))
@@ -221,6 +248,7 @@ def classify_query(
             "chart_type": chart_type,
             "varga_code": varga_code,
             "relevant_vargas": relevant_vargas,
+            "dasha_level": dasha_level,
         }
     except Exception as exc:  # noqa: BLE001
         logger.warning("Rishi classification failed (%s) — defaulting to Vyom/general", exc)
@@ -246,4 +274,5 @@ def classify_query(
             # Classification failed outright — no signal on relevance, so
             # add nothing rather than guess.
             "relevant_vargas": [],
+            "dasha_level": "none",
         }

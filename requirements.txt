@@ -13,3 +13,4 @@ google-auth>=2.35          # service-account credentials for Vertex
 qdrant-client>=1.18.0      # vector search over the 15-book corpus
 pyswisseph>=2.10.3.2       # Swiss Ephemeris — charts, dashas, panchang
 httpx>=0.27                # fetches real P1 varga data when BACKEND_URL is set
+geopy>=2.4                 # place name -> latitude/longitude (Nominatim)
