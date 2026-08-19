@@ -1,0 +1,2101 @@
+{
+  "tier1": [
+    {
+      "id": "smalltalk-01",
+      "category": "smalltalk",
+      "question": "hi",
+      "status": "PASS",
+      "elapsed_s": 3.97,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The user is offering a standard greeting with no astrological content.",
+        "supporting_rishis": [],
+        "search_query": "greeting",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "smalltalk-02",
+      "category": "smalltalk",
+      "question": "hello there!",
+      "status": "PASS",
+      "elapsed_s": 3.17,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The user input is a standard casual greeting with no astrological content.",
+        "supporting_rishis": [],
+        "search_query": "greeting",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "smalltalk-03",
+      "category": "smalltalk",
+      "question": "thanks so much, that helped",
+      "status": "PASS",
+      "elapsed_s": 3.79,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The user is expressing gratitude with no astrological question or context.",
+        "supporting_rishis": [],
+        "search_query": "thanks",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "smalltalk-04",
+      "category": "smalltalk",
+      "question": "namaste \ud83d\ude4f",
+      "status": "PASS",
+      "elapsed_s": 3.71,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "pragnav",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "User is greeting with 'namaste', which is standard small talk.",
+        "supporting_rishis": [],
+        "search_query": "namaste greeting",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "smalltalk-05",
+      "category": "smalltalk",
+      "question": "who are you?",
+      "status": "PASS",
+      "elapsed_s": 4.03,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The user is asking a casual chit-chat question with no astrological content.",
+        "supporting_rishis": [],
+        "search_query": "who are you",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "smalltalk-06",
+      "category": "smalltalk",
+      "question": "what can you do?",
+      "status": "PASS",
+      "elapsed_s": 3.53,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The user is asking a general casual question about the system's capabilities with no astrological query content.",
+        "supporting_rishis": [],
+        "search_query": "what can you do",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "smalltalk-07",
+      "category": "smalltalk",
+      "question": "lol ok bye",
+      "status": "PASS",
+      "elapsed_s": 2.94,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The user message is a casual farewell/small talk with no astrological content.",
+        "supporting_rishis": [],
+        "search_query": "lol ok bye",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "smalltalk-08",
+      "category": "smalltalk",
+      "question": "namaste, kaise ho?",
+      "status": "PASS",
+      "elapsed_s": 3.42,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The user is offering a casual greeting and asking how we are in Hindi with no astrology query.",
+        "supporting_rishis": [],
+        "search_query": "namaste kaise ho greeting",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": "Hinglish greeting"
+    },
+    {
+      "id": "gibberish-01",
+      "category": "gibberish",
+      "question": "asdkj alksjd alksjdlk qwop",
+      "status": "PASS",
+      "elapsed_s": 3.01,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The query consists of random characters/keyboard mashing with no discernible astrological meaning.",
+        "supporting_rishis": [],
+        "search_query": "asdkj alksjd alksjdlk qwop",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "gibberish-02",
+      "category": "gibberish",
+      "question": "aaaaa bbbbb ccccc ddddd",
+      "status": "PASS",
+      "elapsed_s": 5.23,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "vyom",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The input consists of repetitive random characters with no discernible meaning or astrological content.",
+        "supporting_rishis": [],
+        "search_query": "aaaaa bbbbb ccccc ddddd",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "gibberish-03",
+      "category": "gibberish",
+      "question": "asdf;lkj1234!!!???",
+      "status": "PASS",
+      "elapsed_s": 2.97,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The input consists of random keyboard mashing and characters with no discernible meaning.",
+        "supporting_rishis": [],
+        "search_query": "asdf;lkj1234!!!???",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "general-01",
+      "category": "general",
+      "question": "explain Gajakesari yoga",
+      "status": "PASS",
+      "elapsed_s": 3.92,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 0.99,
+        "reasoning": "The user is asking for a conceptual explanation of Gajakesari yoga, which falls directly under Vyom's domain of planetary combinations and yogas.",
+        "supporting_rishis": [
+          "dhruvan"
+        ],
+        "search_query": "Gajakesari yoga Jupiter Moon kendra planetary combination effects classical texts",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "general-02",
+      "category": "general",
+      "question": "what is a dasha in vedic astrology",
+      "status": "PASS",
+      "elapsed_s": 5.3,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for a conceptual explanation of the planetary period timing system (dasha) in Vedic astrology.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "vimshottari dasha system planetary periods nakshatra timing rules classical texts",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "dasha",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "general-03",
+      "category": "general",
+      "question": "how does ashtakavarga work",
+      "status": "PASS",
+      "elapsed_s": 5.76,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for a conceptual explanation of the Ashtakavarga calculation and transit evaluation system.",
+        "supporting_rishis": [
+          "ritam",
+          "tattvan"
+        ],
+        "search_query": "Ashtakavarga principles bindus rekhas Bhinnashtakavarga Sarvashtakavarga planetary transit evaluation Parashara",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "ashtakavarga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "general-04",
+      "category": "general",
+      "question": "what is the difference between D1 and D9 charts",
+      "status": "PASS",
+      "elapsed_s": 5.24,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 0.95,
+        "reasoning": "The user is asking a conceptual question comparing the primary Rashi chart (D1) with the Navamsha divisional chart (D9).",
+        "supporting_rishis": [
+          "agam",
+          "medhan"
+        ],
+        "search_query": "difference between Rashi chart D1 and Navamsha D9 significance interpretation classical Vedic astrology",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "general-05",
+      "category": "general",
+      "question": "what is prashna astrology",
+      "status": "PASS",
+      "elapsed_s": 7.08,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for a conceptual explanation of Prashna (horary) astrology, which is a theoretical and definitional query for Vyom.",
+        "supporting_rishis": [
+          "ritam"
+        ],
+        "search_query": "Prashna Shastra horary astrology principles methodology Prashna Marga Arudha Lagna",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "career-01",
+      "category": "natal-career",
+      "question": "will I be successful in my career",
+      "status": "PASS",
+      "elapsed_s": 4.94,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Career success and professional achievement fall directly under Dhruvan's governance of vocation, 10th house matters, and Dashamsha analysis.",
+        "supporting_rishis": [
+          "ritam",
+          "vyom"
+        ],
+        "search_query": "10th house career success profession karma bhava dashamsha D10 Sun Saturn rajayoga status",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D10"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "career-02",
+      "category": "natal-career",
+      "question": "career guidance please",
+      "status": "PASS",
+      "elapsed_s": 4.8,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is seeking personalized career guidance and vocational direction, which is the primary domain of Dhruvan.",
+        "supporting_rishis": [
+          "ritam",
+          "tattvan"
+        ],
+        "search_query": "10th house karmasthana profession career lord Dashamsha D10 Sun Saturn livelihood",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D10",
+        "relevant_vargas": [
+          "D10"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "career-03",
+      "category": "natal-career",
+      "question": "should I start my own business",
+      "status": "PASS",
+      "elapsed_s": 4.47,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The seeker is asking about career direction and entrepreneurship, which falls under Dhruvan's domain of business, career, and wealth.",
+        "supporting_rishis": [
+          "ritam",
+          "tattvan"
+        ],
+        "search_query": "business entrepreneurship independent trade 10th house 7th house 2nd house 11th house dhana yoga Dashamsha D10 Mercury Sun",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D10",
+        "relevant_vargas": [
+          "D10",
+          "D2"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "career-04",
+      "category": "natal-career",
+      "question": "what does my chart say about wealth",
+      "status": "PASS",
+      "elapsed_s": 5.03,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for an interpretation of wealth and financial prospects from their birth chart, which is dhruvan's core domain.",
+        "supporting_rishis": [
+          "vyom",
+          "ritam"
+        ],
+        "search_query": "wealth Dhana yoga 2nd house Dhana bhava 11th house Labha bhava Jupiter Venus D2 Hora chart",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D2"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "marriage-01",
+      "category": "natal-marriage",
+      "question": "when will I get married",
+      "status": "PASS",
+      "elapsed_s": 5.54,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Determining the timing of marriage requires analyzing the 7th house, Venus/Jupiter karakas, transits, and Vimshottari dasha timing.",
+        "supporting_rishis": [
+          "medhan"
+        ],
+        "search_query": "vivaha marriage timing 7th house 7th lord Venus Jupiter transit gochara Vimshottari dasha Navamsha D9",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D9",
+        "relevant_vargas": [
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": "Explicit routing rule in the classifier prompt itself"
+    },
+    {
+      "id": "marriage-02",
+      "category": "natal-marriage",
+      "question": "will my marriage be happy",
+      "status": "PASS",
+      "elapsed_s": 4.3,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "medhan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The query concerns marital happiness and relationship harmony, which falls squarely under Medhan's domain of relationships and marriage.",
+        "supporting_rishis": [
+          "vyom",
+          "ritam"
+        ],
+        "search_query": "7th house 7th lord Venus Jupiter Navamsha D9 marital happiness spouse harmony",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D9",
+        "relevant_vargas": [
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "marriage-03",
+      "category": "natal-marriage",
+      "question": "tell me about my compatibility with my partner",
+      "status": "PASS",
+      "elapsed_s": 4.5,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "medhan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Questions regarding relationship and partner compatibility fall under Medhan's domain of marriage, family, and relational dynamics.",
+        "supporting_rishis": [
+          "tattvan",
+          "agam"
+        ],
+        "search_query": "marriage relationship compatibility 7th house lord Venus Jupiter synastry Ashtakoota kuta matching Navamsha D9",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D9",
+        "relevant_vargas": [
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "marriage-04",
+      "category": "natal-marriage",
+      "question": "why is my relationship so difficult right now",
+      "status": "PASS",
+      "elapsed_s": 5.32,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "medhan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking about marital/relationship troubles in their current life period, which falls under medhan's domain of relationships and emotions.",
+        "supporting_rishis": [
+          "ritam",
+          "tejan"
+        ],
+        "search_query": "7th house affliction relationship conflict marital discord Venus transits dasha Navamsha D9",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "timing-01",
+      "category": "natal-timing",
+      "question": "what is my current mahadasha",
+      "status": "PASS",
+      "elapsed_s": 4.78,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "The seeker is asking to determine their currently active Vimshottari Mahadasha period from their birth chart.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "Vimshottari Mahadasha planetary period timing calculation effects",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "dasha",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "maha"
+      },
+      "notes": ""
+    },
+    {
+      "id": "timing-02",
+      "category": "natal-timing",
+      "question": "when does my antardasha change",
+      "status": "PASS",
+      "elapsed_s": 5.26,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "The query asks for the timing and transition of the user's Vimshottari antardasha sub-period, which requires birth chart calculations under Ritam's domain.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "Vimshottari antardasha bhukti change transition timing dasha calculation",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "dasha",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "antar"
+      },
+      "notes": ""
+    },
+    {
+      "id": "timing-03",
+      "category": "natal-timing",
+      "question": "explain my pratyantardasha",
+      "status": "PASS",
+      "elapsed_s": 5.66,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "The user is asking for an interpretation of their current pratyantardasha sub-period, which requires dasha timing analysis by Ritam.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "Vimshottari pratyantardasha sub-period results planetary lords timing",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "pratyantar"
+      },
+      "notes": ""
+    },
+    {
+      "id": "timing-04",
+      "category": "natal-timing",
+      "question": "what dasha am I running right now",
+      "status": "PASS",
+      "elapsed_s": 5.32,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "The user is inquiring about their currently active planetary dasha period, which pertains to astrological timing and falls under Rishi Ritam.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "current Vimshottari dasha mahadasha antardasha planetary period timing effects",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "dasha",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "all"
+      },
+      "notes": ""
+    },
+    {
+      "id": "timing-05",
+      "category": "natal-timing",
+      "question": "is next year a good year for me",
+      "status": "PASS",
+      "elapsed_s": 5.62,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Evaluating upcoming yearly prospects depends on timing of events, running dasha periods, and transits (gochara).",
+        "supporting_rishis": [
+          "dhruvan",
+          "medhan"
+        ],
+        "search_query": "yearly transit gochara effects Jupiter Saturn Rahu dasha bhukti results Varshaphala",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D9",
+          "D10"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "remedy-01",
+      "category": "natal-remedy",
+      "question": "what remedies should I do for Saturn",
+      "status": "PASS",
+      "elapsed_s": 5.98,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "tejan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for astrological remedies and propitiation methods specifically for Saturn (Shani), which falls under Tejan's domain.",
+        "supporting_rishis": [
+          "vyom",
+          "ritam"
+        ],
+        "search_query": "Shani Saturn remedies propitiation stotra mantra dana charity gemstone BPHS classical texts",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D30"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "remedy-02",
+      "category": "natal-remedy",
+      "question": "suggest a gemstone for me",
+      "status": "PASS",
+      "elapsed_s": 5.8,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "tejan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is requesting a personalized gemstone recommendation, which is an astrological remedy governed by Tejan and requires natal chart analysis.",
+        "supporting_rishis": [
+          "vyom",
+          "tattvan"
+        ],
+        "search_query": "gemstone ratna prescription lagna lord trikona lords yogakaraka planetary strength graha bala remedies",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "remedy-03",
+      "category": "natal-remedy",
+      "question": "what mantra should I chant daily",
+      "status": "PASS",
+      "elapsed_s": 3.89,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "tejan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Determining an individual's personal daily mantra involves astrological remedies based on the birth chart, 5th/9th house, Ishta Devata, and current planetary influences.",
+        "supporting_rishis": [
+          "pragnav",
+          "agam"
+        ],
+        "search_query": "daily mantra japa Ishta Devata remedies planetary afflictions 5th house 9th house navamsa D20",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D9",
+          "D20"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "health-01",
+      "category": "natal-health",
+      "question": "will I have children",
+      "status": "PASS",
+      "elapsed_s": 5.18,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "medhan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Questions regarding progeny, children, and family life fall under Medhan's domain, requiring analysis of the 5th house and Saptamsha chart.",
+        "supporting_rishis": [
+          "ritam",
+          "agam"
+        ],
+        "search_query": "5th house putra bhava Jupiter putrakaraka Saptamsha D7 santan yoga progeny children promise in kundli",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D7",
+        "relevant_vargas": [
+          "D7"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "health-02",
+      "category": "natal-health",
+      "question": "what does my chart say about my health",
+      "status": "PASS",
+      "elapsed_s": 4.23,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "medhan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Medhan specializes in health, physical vitality, and family/relationship matters, requiring natal chart analysis.",
+        "supporting_rishis": [
+          "tejan",
+          "tattvan"
+        ],
+        "search_query": "health roga disease 6th house 8th house 1st house lagna lord Trimshamsha D30 vitality planetary afflictions",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D30"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "shadow-01",
+      "category": "natal-shadow",
+      "question": "what are my hidden strengths",
+      "status": "PASS",
+      "elapsed_s": 4.82,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "tattvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "Inquiring about personal hidden strengths and innate capabilities falls under Tattvan's domain of personality analysis and intrinsic patterns.",
+        "supporting_rishis": [
+          "agam",
+          "vyom"
+        ],
+        "search_query": "hidden strengths latent potential lagna lagnesha third house sixth house D27 Bhamsha planetary dignities shadbala",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D27"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "shadow-02",
+      "category": "natal-shadow",
+      "question": "what are my biggest weaknesses",
+      "status": "PASS",
+      "elapsed_s": 4.1,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "tattvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Inquiries regarding personal weaknesses, blind spots, and personality analysis fall directly under Tattvan's domain.",
+        "supporting_rishis": [
+          "agam",
+          "tejan"
+        ],
+        "search_query": "weaknesses personality flaws afflicted planets trik houses 6th 8th 12th house D27 Bhamsha D30 Trimshamsha debility",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D27",
+          "D30"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "spirit-01",
+      "category": "natal-spiritual",
+      "question": "how can I grow spiritually",
+      "status": "PASS",
+      "elapsed_s": 5.16,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "pragnav",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "Pragnav oversees spiritual growth, meditation practices, moksha, and higher consciousness development.",
+        "supporting_rishis": [
+          "agam",
+          "tejan"
+        ],
+        "search_query": "spiritual growth moksha sadhana 9th house 12th house Jupiter Ketu Vimshamsha D20",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D20",
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "spirit-02",
+      "category": "natal-spiritual",
+      "question": "what is my life purpose",
+      "status": "PASS",
+      "elapsed_s": 6.16,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "agam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "Inquiring about soul purpose, core destiny, and birth blueprint falls directly under Agam's domain.",
+        "supporting_rishis": [
+          "pragnav",
+          "tattvan"
+        ],
+        "search_query": "soul purpose Atmakaraka dharma 1st house 9th house Rahu Ketu axis D9 Navamsa D60 Shashtiamsha",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D9",
+          "D60",
+          "D20"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "karma-01",
+      "category": "natal-karma",
+      "question": "what karma am I working through in this life",
+      "status": "PASS",
+      "elapsed_s": 5.16,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "agam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The seeker is asking about past-life karma and their soul's current life blueprint, which is the core domain of Agam.",
+        "supporting_rishis": [
+          "pragnav",
+          "tattvan"
+        ],
+        "search_query": "past life karma prarabdha sanchita 5th house 9th house 12th house Rahu Ketu Saturn Shashtiamsha D60",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D60"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "cosmic-01",
+      "category": "natal-cosmic",
+      "question": "what nakshatra is my moon in",
+      "status": "PASS",
+      "elapsed_s": 5.01,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for their natal Moon's nakshatra placement, which pertains to planetary positions and nakshatras under Vyom.",
+        "supporting_rishis": [],
+        "search_query": "natal Moon Chandra janma nakshatra placement lord",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "chart-01",
+      "category": "chart-display",
+      "question": "show me my D9 chart",
+      "status": "PASS",
+      "elapsed_s": 5.14,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "The seeker is asking to compute and display their D9 Navamsha divisional birth chart.",
+        "supporting_rishis": [
+          "medhan"
+        ],
+        "search_query": "D9 Navamsha chart divisional planetary positions lagna",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "varga",
+        "varga_code": "D9",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "chart-02",
+      "category": "chart-display",
+      "question": "compute my D10 chart",
+      "status": "PASS",
+      "elapsed_s": 3.67,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "The user is explicitly requesting computation and display of their D10 Dashamsha divisional chart for career and status.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "Dashamsha D10 divisional chart planetary positions career profession 10th house",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "varga",
+        "varga_code": "D10",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "chart-03",
+      "category": "chart-display",
+      "question": "what's my mulank number",
+      "status": "PASS",
+      "elapsed_s": 3.96,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "tattvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is requesting the raw computation of their Vedic numerology root number (Mulank) based on their birth date.",
+        "supporting_rishis": [
+          "agam"
+        ],
+        "search_query": "Vedic numerology Mulank root number calculation ruling planet significance",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "numerology",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "chart-04",
+      "category": "chart-display",
+      "question": "give me my ashtakavarga table",
+      "status": "PASS",
+      "elapsed_s": 5.15,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is explicitly requesting a deterministic calculation and display of their Ashtakavarga table.",
+        "supporting_rishis": [],
+        "search_query": "Ashtakavarga bindu points Sarvashtakavarga calculation natal chart",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "ashtakavarga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "chart-05",
+      "category": "chart-display",
+      "question": "show my vimshottari dasha timeline",
+      "status": "PASS",
+      "elapsed_s": 3.57,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.98,
+        "reasoning": "The user is explicitly requesting a raw display/table of their Vimshottari dasha timeline calculated from their birth chart.",
+        "supporting_rishis": [],
+        "search_query": "Vimshottari dasha periods timeline calculation planetary periods nakshatra lord",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "dasha",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "chart-06",
+      "category": "chart-display",
+      "question": "give me my kundli",
+      "status": "PASS",
+      "elapsed_s": 4.07,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "agam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for their raw birth chart (kundli) to be computed and displayed.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "birth chart lagna rashi kundli planetary positions houses",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "chart-07",
+      "category": "chart-display",
+      "question": "what does my navamsa look like",
+      "status": "PASS",
+      "elapsed_s": 3.73,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "medhan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is explicitly requesting to view their D9 Navamsa divisional chart.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "Navamsa D9 divisional chart planetary positions lagna analysis",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "varga",
+        "varga_code": "D9",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": "Named by classical term, not the D-code"
+    },
+    {
+      "id": "chart-08",
+      "category": "chart-display",
+      "question": "show my sarvashtakavarga bindus",
+      "status": "PASS",
+      "elapsed_s": 5.78,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "vyom",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking to view their Sarvashtakavarga bindu table computed from their birth chart.",
+        "supporting_rishis": [
+          "tattvan"
+        ],
+        "search_query": "Sarvashtakavarga bindus planetary points benefic scores Ashtakavarga",
+        "is_followup": false,
+        "intent": "chart",
+        "chart_type": "ashtakavarga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": "Must NOT be mapped to a varga code (regression case)"
+    },
+    {
+      "id": "muhurta-01",
+      "category": "muhurta",
+      "question": "is tomorrow good for travel",
+      "status": "PASS",
+      "elapsed_s": 6.66,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "muhurta",
+        "needs_birth_data": false,
+        "confidence": 0.98,
+        "reasoning": "The user is inquiring about the auspiciousness and electional timing (muhurta) for travel on a specific day.",
+        "supporting_rishis": [
+          "vyom"
+        ],
+        "search_query": "Yatra muhurta travel auspicious tithi vara nakshatra journey planetary considerations classical rules",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "muhurta-02",
+      "category": "muhurta",
+      "question": "is today a good day to start a new business",
+      "status": "PASS",
+      "elapsed_s": 5.28,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "muhurta",
+        "needs_birth_data": false,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for electional timing (muhurta) to initiate a new business venture today.",
+        "supporting_rishis": [
+          "dhruvan"
+        ],
+        "search_query": "muhurta starting new business commercial venture auspicious tithi nakshatra vara lagna",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "muhurta-03",
+      "category": "muhurta",
+      "question": "when is a good muhurta for marriage this month",
+      "status": "PASS",
+      "elapsed_s": 8.26,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "muhurta",
+        "needs_birth_data": false,
+        "confidence": 0.98,
+        "reasoning": "The user is asking for an auspicious timing (muhurta) for a wedding, which is governed by Ritam with support from Medhan.",
+        "supporting_rishis": [
+          "medhan"
+        ],
+        "search_query": "Vivaha Muhurta auspicious marriage timing panchang shuddhi nakshatra tithi yoga karana Jupiter Venus transit strength",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "prashna-01",
+      "category": "prashna",
+      "question": "should I buy this house",
+      "status": "PASS",
+      "elapsed_s": 4.82,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "prashna",
+        "needs_birth_data": false,
+        "confidence": 0.95,
+        "reasoning": "This is a horary decision-making query about property acquisition, falling under Dhruvan's governance of material and wealth decisions.",
+        "supporting_rishis": [
+          "ritam"
+        ],
+        "search_query": "prashna astrology buying property real estate 4th house Mars bhumi karaka",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D4",
+        "relevant_vargas": [
+          "D4"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "prashna-02",
+      "category": "prashna",
+      "question": "will this business deal work out",
+      "status": "FAIL",
+      "elapsed_s": 5.48,
+      "failures": [
+        "query_domain: expected 'prashna', got 'natal'"
+      ],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.9,
+        "reasoning": "The query concerns business transactions and financial success, which falls under Dhruvan's domain of wealth and material decisions.",
+        "supporting_rishis": [
+          "ritam"
+        ],
+        "search_query": "business deal outcome partnership profit 7th house 10th house 11th house Mercury Jupiter dasha",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D10",
+          "D2"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "hindi-01",
+      "category": "language",
+      "question": "meri shaadi kab hogi",
+      "status": "PASS",
+      "elapsed_s": 4.94,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for the timing of their marriage, which requires dasha and transit timing analysis.",
+        "supporting_rishis": [
+          "medhan"
+        ],
+        "search_query": "marriage timing 7th house lord Venus Jupiter D9 Navamsa vivaha yoga Vimshottari dasha transit",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": "Hinglish for 'when will I get married'"
+    },
+    {
+      "id": "hindi-02",
+      "category": "language",
+      "question": "mera career kaisa rahega",
+      "status": "PASS",
+      "elapsed_s": 4.75,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for career predictions and guidance, which directly falls under Dhruvan's domain of career and material success.",
+        "supporting_rishis": [
+          "ritam",
+          "vyom"
+        ],
+        "search_query": "10th house karma bhava profession career status Sun Saturn Mercury Dashamsha D10 dasha yogas",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D10"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "hindi-03",
+      "category": "language",
+      "question": "\u0915\u094d\u092f\u093e \u092e\u0948\u0902 \u0938\u092b\u0932 \u0939\u094b\u0909\u0902\u0917\u093e",
+      "status": "PASS",
+      "elapsed_s": 4.37,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is asking about personal success and achievement in life, which pertains to career, status, and material prosperity governed by Dhruvan.",
+        "supporting_rishis": [
+          "ritam",
+          "vyom",
+          "tattvan"
+        ],
+        "search_query": "success status wealth 10th house 11th house 9th house Raja yoga Dhana yoga Dashamsha D10",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D10",
+          "D2",
+          "D9"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": "Devanagari: 'will I be successful'"
+    },
+    {
+      "id": "panchang-01",
+      "category": "panchang",
+      "question": "what time is rahu kaal today",
+      "status": "PASS",
+      "elapsed_s": 3.66,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "muhurta",
+        "needs_birth_data": false,
+        "confidence": 0.98,
+        "reasoning": "The user is asking for the specific inauspicious time window of Rahu Kaal for the current day, which falls under daily timing and muhurta.",
+        "supporting_rishis": [],
+        "search_query": "Rahu Kaal daily calculation inauspicious period muhurta planetary hours",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "panchang-02",
+      "category": "panchang",
+      "question": "what is a good muhurta today for starting work",
+      "status": "PASS",
+      "elapsed_s": 5.37,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "muhurta",
+        "needs_birth_data": false,
+        "confidence": 0.95,
+        "reasoning": "The user is asking for an auspicious time (muhurta) today to begin work, which falls under electional astrology governed by Ritam.",
+        "supporting_rishis": [
+          "dhruvan"
+        ],
+        "search_query": "auspicious muhurta starting work business enterprise panchang tithi nakshatra lagna choghadiya",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "followup-01",
+      "category": "followup",
+      "question": "tell me more",
+      "status": "PASS",
+      "elapsed_s": 4.21,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "ritam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The seeker is following up on the previous discussion regarding marriage timing, maintaining the conversation with Ritam.",
+        "supporting_rishis": [
+          "medhan"
+        ],
+        "search_query": "marriage timing vivaha 7th house lord Jupiter Venus transit dasha antardasha Navamsa D9",
+        "is_followup": true,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D9",
+        "relevant_vargas": [
+          "D9"
+        ],
+        "dasha_level": "all"
+      },
+      "notes": "Should stay with the same Rishi rather than re-route"
+    },
+    {
+      "id": "followup-02",
+      "category": "followup",
+      "question": "yes",
+      "status": "PASS",
+      "elapsed_s": 5.68,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "medhan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.95,
+        "reasoning": "The user is continuing the ongoing consultation regarding children and progeny with Medhan.",
+        "supporting_rishis": [
+          "ritam",
+          "agam"
+        ],
+        "search_query": "children progeny 5th house putra bhava Jupiter Saptamsha D7 dasha timing",
+        "is_followup": true,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D7"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": ""
+    },
+    {
+      "id": "edge-01",
+      "category": "edge",
+      "question": "asdlkfj my career asdlkj",
+      "status": "PASS",
+      "elapsed_s": 5.34,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "dhruvan",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.85,
+        "reasoning": "The query asks for career guidance and analysis, which falls under Dhruvan's domain.",
+        "supporting_rishis": [
+          "vyom",
+          "ritam"
+        ],
+        "search_query": "10th house karma bhava profession career indicators dashamsha D10 Sun Saturn",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D10",
+        "relevant_vargas": [
+          "D10"
+        ],
+        "dasha_level": "none"
+      },
+      "notes": "Real content buried in noise \u2014 must NOT be dropped as gibberish"
+    },
+    {
+      "id": "edge-02",
+      "category": "edge",
+      "question": "?",
+      "status": "PASS",
+      "elapsed_s": 3.92,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": true,
+        "primary_rishi": "agam",
+        "query_domain": "general",
+        "needs_birth_data": false,
+        "confidence": 1.0,
+        "reasoning": "The query consists solely of a question mark without any astrological content or context.",
+        "supporting_rishis": [],
+        "search_query": "?",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [],
+        "dasha_level": "none"
+      },
+      "notes": "No expectation pinned \u2014 just must not crash"
+    },
+    {
+      "id": "edge-03",
+      "category": "edge",
+      "question": "so basically I've been thinking about my career and also my marriage and whether I should move cities and also what my dasha is doing and honestly I don't even know where to start",
+      "status": "PASS",
+      "elapsed_s": 6.09,
+      "failures": [],
+      "error": null,
+      "actual": {
+        "is_smalltalk_or_gibberish": false,
+        "primary_rishi": "agam",
+        "query_domain": "natal",
+        "needs_birth_data": true,
+        "confidence": 0.85,
+        "reasoning": "The seeker asks for a comprehensive life overview spanning career, marriage, relocation, and dasha timing, requiring an overarching birth blueprint analysis.",
+        "supporting_rishis": [
+          "dhruvan",
+          "medhan",
+          "ritam"
+        ],
+        "search_query": "Vimshottari dasha career 10th house lord marriage 7th house relocation 4th house 12th house transits",
+        "is_followup": false,
+        "intent": "fact",
+        "chart_type": "varga",
+        "varga_code": "D1",
+        "relevant_vargas": [
+          "D4",
+          "D9",
+          "D10"
+        ],
+        "dasha_level": "all"
+      },
+      "notes": "Rambling multi-topic question \u2014 must still classify as a real question"
+    }
+  ],
+  "tier2": [
+    {
+      "id": "pipe-smalltalk-01",
+      "category": "smalltalk",
+      "question": "hi there",
+      "status": "PASS",
+      "elapsed_s": 8.91,
+      "failures": [],
+      "error": null,
+      "is_warmth": true,
+      "domain": "general",
+      "rishi": "vyom",
+      "n_sources": 0,
+      "has_chart_table": false,
+      "has_secondary_voice": false,
+      "secondary_voice_rishi": null,
+      "answer_chars": 238,
+      "answer_preview": "Welcome to Rishivan, dear seeker. We greet you with warmth and peace as you step into our circle. Please share what brings you here today, whether you have a qu",
+      "notes": ""
+    },
+    {
+      "id": "pipe-gibberish-01",
+      "category": "gibberish",
+      "question": "asdkj alksjd qwop zzzz",
+      "status": "PASS",
+      "elapsed_s": 9.69,
+      "failures": [],
+      "error": null,
+      "is_warmth": true,
+      "domain": "general",
+      "rishi": "vyom",
+      "n_sources": 0,
+      "has_chart_table": false,
+      "has_secondary_voice": false,
+      "secondary_voice_rishi": null,
+      "answer_chars": 235,
+      "answer_preview": "Welcome to the sanctuary of Rishivan. It seems your words were carried away before reaching us, but whenever you are ready, please feel free to share what is tr",
+      "notes": ""
+    },
+    {
+      "id": "pipe-general-01",
+      "category": "general",
+      "question": "explain Gajakesari yoga",
+      "status": "PASS",
+      "elapsed_s": 29.19,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "general",
+      "rishi": "vyom",
+      "n_sources": 14,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "dhruvan",
+      "answer_chars": 1933,
+      "answer_preview": "Gajakesari yoga occurs when Jupiter sits in an angular house\u2014the first, fourth, seventh, or tenth position\u2014reckoned from the Moon. In the geometry of the sky, t",
+      "notes": ""
+    },
+    {
+      "id": "pipe-marriage-01",
+      "category": "natal-marriage",
+      "question": "when will I get married",
+      "status": "PASS",
+      "elapsed_s": 34.82,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "ritam",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "medhan",
+      "answer_chars": 1756,
+      "answer_preview": "Marriage will crystallize for you before your current Venus major cycle concludes in November 2028, with the primary window open and active across the next two ",
+      "notes": ""
+    },
+    {
+      "id": "pipe-career-01",
+      "category": "natal-career",
+      "question": "will I be successful in my career",
+      "status": "PASS",
+      "elapsed_s": 38.81,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "dhruvan",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "ritam",
+      "answer_chars": 2120,
+      "answer_preview": "Success in your career is certain, though it will not arrive through a conventional path or a standard local ladder. Your greatest professional authority awaken",
+      "notes": ""
+    },
+    {
+      "id": "pipe-remedy-01",
+      "category": "natal-remedy",
+      "question": "what remedies should I do for Saturn",
+      "status": "PASS",
+      "elapsed_s": 36.52,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "tejan",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "vyom",
+      "answer_chars": 1991,
+      "answer_preview": "Saturn sits retrograde in your fourth house in Sagittarius, holding stewardship over both your fifth house of discernment and your sixth house of daily effort a",
+      "notes": ""
+    },
+    {
+      "id": "pipe-chart-d9",
+      "category": "chart-display",
+      "question": "show me my D9 chart",
+      "status": "PASS",
+      "elapsed_s": 6.42,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "medhan",
+      "n_sources": 0,
+      "has_chart_table": true,
+      "has_secondary_voice": false,
+      "secondary_voice_rishi": null,
+      "answer_chars": 0,
+      "answer_preview": "",
+      "notes": ""
+    },
+    {
+      "id": "pipe-chart-numerology",
+      "category": "chart-display",
+      "question": "what's my mulank number",
+      "status": "PASS",
+      "elapsed_s": 4.16,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "tattvan",
+      "n_sources": 0,
+      "has_chart_table": true,
+      "has_secondary_voice": false,
+      "secondary_voice_rishi": null,
+      "answer_chars": 0,
+      "answer_preview": "",
+      "notes": ""
+    },
+    {
+      "id": "pipe-chart-dasha",
+      "category": "chart-display",
+      "question": "show my vimshottari dasha timeline",
+      "status": "PASS",
+      "elapsed_s": 4.13,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "ritam",
+      "n_sources": 0,
+      "has_chart_table": true,
+      "has_secondary_voice": false,
+      "secondary_voice_rishi": null,
+      "answer_chars": 0,
+      "answer_preview": "",
+      "notes": ""
+    },
+    {
+      "id": "pipe-muhurta-01",
+      "category": "muhurta",
+      "question": "is tomorrow good for travel",
+      "status": "PASS",
+      "elapsed_s": 25.51,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "muhurta",
+      "rishi": "ritam",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "vyom",
+      "answer_chars": 615,
+      "answer_preview": "Tomorrow is generally favorable for setting out, particularly for short journeys, business errands, or visits that involve trade and financial matters. \n\nThe Mo",
+      "notes": ""
+    },
+    {
+      "id": "pipe-prashna-01",
+      "category": "prashna",
+      "question": "should I buy this house",
+      "status": "PASS",
+      "elapsed_s": 28.21,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "prashna",
+      "rishi": "dhruvan",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "ritam",
+      "answer_chars": 1208,
+      "answer_preview": "The chart strongly supports moving forward with this purchase. Acquiring this home is positioned to build your long-term security and tangible wealth.\n\nThe four",
+      "notes": ""
+    },
+    {
+      "id": "pipe-hindi-01",
+      "category": "language",
+      "question": "meri shaadi kab hogi",
+      "status": "PASS",
+      "elapsed_s": 33.28,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "ritam",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "medhan",
+      "answer_chars": 1243,
+      "answer_preview": "\u0935\u093f\u0935\u093e\u0939 \u0915\u093e \u092f\u094b\u0917 \u092c\u0939\u0941\u0924 \u0928\u093f\u0915\u091f \u0939\u0948, \u0914\u0930 \u0906\u0928\u0947 \u0935\u093e\u0932\u0947 \u091a\u094c\u0926\u0939 \u0938\u0947 \u0938\u094b\u0932\u0939 \u092e\u0939\u0940\u0928\u0947 \u0907\u0938 \u0938\u0902\u092c\u0902\u0927 \u092e\u0947\u0902 \u0938\u092c\u0938\u0947 \u0928\u093f\u0930\u094d\u0923\u093e\u092f\u0915 \u0938\u092e\u092f \u0932\u0947\u0915\u0930 \u0906 \u0930\u0939\u0947 \u0939\u0948\u0902\u0964 \n\n\u0906\u092a\u0915\u0940 \u0915\u0928\u094d\u092f\u093e \u0932\u0917\u094d\u0928 \u0915\u0940 \u0915\u0941\u0902\u0921\u0932\u0940 \u092e\u0947\u0902 \u0935\u093f\u0935\u093e\u0939 \u092d\u093e\u0935 \u0915\u0947 \u0938\u094d\u0935\u093e\u092e\u0940 \u092c\u0943\u0939",
+      "notes": "Answer should come back in Hindi/Devanagari or Hinglish, not plain English"
+    },
+    {
+      "id": "pipe-followup-01",
+      "category": "followup",
+      "question": "tell me more",
+      "status": "PASS",
+      "elapsed_s": 53.6,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "ritam",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "medhan",
+      "answer_chars": 1777,
+      "answer_preview": "The strongest alignment for your marriage is active right now and extends across the next twenty months, well before your major cycle of Venus concludes in late",
+      "notes": ""
+    },
+    {
+      "id": "pipe-spiritual-01",
+      "category": "natal-spiritual",
+      "question": "what is my life purpose",
+      "status": "PASS",
+      "elapsed_s": 35.19,
+      "failures": [],
+      "error": null,
+      "is_warmth": false,
+      "domain": "natal",
+      "rishi": "agam",
+      "n_sources": 20,
+      "has_chart_table": false,
+      "has_secondary_voice": true,
+      "secondary_voice_rishi": "pragnav",
+      "answer_chars": 1818,
+      "answer_preview": "Your calling was never meant to be lived entirely in the visible, noisy world. The ruler of your self and your worldly action, Mercury, rests in the twelfth hou",
+      "notes": ""
+    }
+  ]
+}
