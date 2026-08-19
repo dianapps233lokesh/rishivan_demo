@@ -156,28 +156,26 @@ def test_the_loaded_rule_base_tokens_are_all_emittable():
 
     Skips when the rule base is empty so the suite still runs on a fresh checkout.
     """
-    import asyncio
-
     from sqlalchemy import text
 
-    from app.db.session import async_session_factory
+    from tests.conftest import run_db, skip_without_database
 
-    async def load() -> list[tuple[str, int]]:
-        async with async_session_factory() as session:
-            result = await session.execute(
-                text(
-                    "select ra.fact_token, count(*) from rule_atom ra "
-                    "join rule r on r.id = ra.rule_id "
-                    "where r.status = 'parsed' and r.deleted_at is null "
-                    "group by 1 order by 2 desc"
-                )
+    async def load(session):
+        result = await session.execute(
+            text(
+                "select ra.fact_token, count(*) from rule_atom ra "
+                "join rule r on r.id = ra.rule_id "
+                "where r.status = 'parsed' and r.deleted_at is null "
+                "group by 1 order by 2 desc"
             )
-            return list(result)
+        )
+        return list(result)
 
+    rows = []
     try:
-        rows = asyncio.run(load())
-    except Exception as exc:  # noqa: BLE001 - no database in CI is not a test failure
-        pytest.skip(f"rule base unavailable: {type(exc).__name__}")
+        rows = run_db(load)
+    except Exception as exc:  # noqa: BLE001
+        skip_without_database(exc)
     if not rows:
         pytest.skip("rule base is empty")
 

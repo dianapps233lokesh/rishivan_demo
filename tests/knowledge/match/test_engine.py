@@ -203,23 +203,14 @@ def test_match_chart_sql_actually_executes():
     Postgres rejected the whole query -- a failure no unit test over `satisfies` could
     have caught, because the defect was in the statement rather than the logic.
     """
-    import asyncio
-
-    import pytest
-
-    from app.db.session import async_session_factory
     from app.knowledge.match.engine import match_chart
+    from tests.conftest import run_db, skip_without_database
 
-    async def run():
-        async with async_session_factory() as session:
-            return await match_chart(session, tokens=CHART)
-
+    matched = None
     try:
-        matched = asyncio.run(run())
-    except Exception as exc:  # noqa: BLE001 - no database in CI is not a test failure
-        if "Connect" in type(exc).__name__ or "OperationalError" in type(exc).__name__:
-            pytest.skip(f"database unavailable: {type(exc).__name__}")
-        raise
+        matched = run_db(lambda session: match_chart(session, tokens=CHART))
+    except Exception as exc:  # noqa: BLE001
+        skip_without_database(exc)
     # Nothing is approved yet, so the only correct answer is an empty list. The point of
     # the test is that the statement runs at all.
     assert matched == []
