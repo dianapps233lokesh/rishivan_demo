@@ -211,6 +211,83 @@ them as certainty, not storing them.
 """
 
 
+import re
+
+_SUBJECT_HOUSE = re.compile(r"^The (\d{1,2})(?:st|nd|rd|th) house\b")
+"""The house a house-lord fact is ABOUT.
+
+Anchored at the start on purpose. A planet fact reads "Sun is in Sagittarius in the 6th
+house", where the 6th is where the planet SITS, not what the fact is about -- the same
+subject-versus-location distinction `knowledge/concepts.py` makes for rule atoms. An
+unanchored pattern would file the Sun under house 6.
+"""
+
+_FRAMEWORK = ("Ascendant (Lagna)", "Birth nakshatra")
+"""Facts every §4-11 protocol opens with -- step 1 is always "chart framework"."""
+
+
+def coverage_facts(chart_facts: list[str], domain: str | None) -> str:
+    """Chart facts ordered by the answering Rishi's own coverage.
+
+    The coverage gate drops rules whose subject house sits outside the routed domain,
+    then the prompt handed over all twelve house lords anyway -- so the model could
+    reason from placements no rule licensed, which defeats the gate. Nothing is
+    dropped here: every §4-11 protocol ends in whole-chart synthesis, so the wider chart
+    is demoted and labelled rather than withheld.
+    """
+    from rishivan.council.constitution import CONSTITUTIONS
+
+    constitution = CONSTITUTIONS.get((domain or "").lower())
+    if constitution is None:
+        return "\n".join(f"- {fact}" for fact in chart_facts)
+
+    houses = constitution.houses
+    planets = {p.lower() for p in constitution.planets}
+    inside, wider = [], []
+    for fact in chart_facts:
+        match = _SUBJECT_HOUSE.match(fact)
+        first_word = fact.split(" ", 1)[0].rstrip(".,").lower()
+        owned = (
+            fact.startswith(_FRAMEWORK)
+            or (match is not None and int(match.group(1)) in houses)
+            or first_word in planets
+        )
+        (inside if owned else wider).append(fact)
+
+    lines = [
+        f"CHART — WITHIN YOUR COVERAGE (houses "
+        f"{', '.join(str(h) for h in sorted(constitution.primary_houses))} primary):",
+        *(f"- {fact}" for fact in inside),
+        "",
+        "CHART — WIDER CONTEXT (real, but do not lead from these):",
+        *(f"- {fact}" for fact in wider),
+    ]
+    return "\n".join(lines)
+
+
+def contributor_context(reports) -> str:
+    """Each supporting Rishi's computed evidence, labelled with who established it.
+
+    Labelled rather than merged so the seeker (and §21's traceability requirement) can
+    see which Rishi is answerable for which value.
+    """
+    if not reports:
+        return ""
+    from rishivan.council.personas import get_persona
+
+    blocks = []
+    for report in reports:
+        persona = get_persona(report.rishi)
+        lines = [f"EVIDENCE FROM {report.rishi.upper()} ({persona.title}):"]
+        lines += [f"  - {label}: {value}" for label, value in report.computed.items()]
+        if report.rules:
+            lines.append(f"  - {len(report.rules)} matched rules under its coverage")
+        if report.note:
+            lines.append(f"  - {report.note}")
+        blocks.append("\n".join(lines))
+    return "\n\n".join(blocks)
+
+
 def rule_context(hits) -> str:
     """Render matched rules for the prompt: citation, source text, stated outcome.
 
@@ -228,7 +305,8 @@ def rule_context(hits) -> str:
             for effect in (getattr(hit, "effects", None) or [])
         )
         blocks.append(
-            f"RULE {index} — {getattr(hit, 'citation', '')}\n"
+            f"RULE {index} — {getattr(hit, 'citation', '')} "
+            f"[{getattr(hit, 'tier', 'S5')} · {getattr(hit, 'school', 'unknown')}]\n"
             f'  The text says: "{(source.get("translation") or "").strip()}"\n'
             f"  Stated outcome: {effects or 'none recorded'}"
         )
@@ -243,6 +321,8 @@ def build_rishi_prompt(
     chart_facts: list[str] | None = None,
     conversation=None,
     rules: str = "",
+    life_domain: str | None = None,
+    contributors: tuple = (),
 ) -> str:
     """Assemble the full Rishi-voiced prompt for natural conversational output.
 
@@ -253,10 +333,13 @@ def build_rishi_prompt(
     persona: RishiPersona = get_persona(rishi_name)
 
     facts_text = (
-        "\n".join(f"- {f}" for f in chart_facts)
+        coverage_facts(chart_facts, life_domain)
         if chart_facts
         else "No personal chart data was provided for this reading."
     )
+    contributor_block = contributor_context(contributors)
+    if contributor_block:
+        facts_text = f"{facts_text}\n\n{contributor_block}"
 
     system = _build_system(persona)
 
