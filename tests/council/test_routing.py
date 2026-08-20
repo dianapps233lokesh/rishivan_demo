@@ -179,3 +179,60 @@ def test_numerology_never_replaces_jyotisha():
     assert route_question("What does my name say about business?").universes >= (
         frozenset({"jyotisha"})
     )
+
+
+from rishivan.council.routing import MAX_DOMAINS, merge_supporting
+
+
+def test_a_single_keyword_question_gains_secondaries_from_the_classifier():
+    """The gap this exists to close: 'billionaire' matches one phrase, so the keyword
+    table alone returns no secondary at all, and ER §12 asks for three."""
+    base = route_question("Will I become a billionaire?")
+    assert base.primary == "artha"
+    assert base.secondary == ()
+
+    merged = merge_supporting(base, ["tattvan", "dhruvan"])
+    assert merged.primary == "artha"
+    assert "atma" in merged.secondary
+
+
+def test_merging_never_displaces_the_keyword_primary():
+    merged = merge_supporting(route_question("Will I marry?"), ["dhruvan"])
+    assert merged.primary == "prema"
+
+
+def test_a_supporting_persona_that_repeats_the_primary_is_dropped():
+    merged = merge_supporting(route_question("Will I be wealthy?"), ["dhruvan"])
+    assert "artha" not in merged.secondary
+
+
+def test_service_personas_contribute_no_life_domain():
+    """vyom and ritam rate all eight domains MEDIUM -- mapping them back would add
+    every domain as a secondary and make the cap meaningless."""
+    merged = merge_supporting(route_question("Will I marry?"), ["vyom", "ritam"])
+    assert merged.secondary == ()
+
+
+def test_the_minimum_set_cap_still_holds():
+    """ER §12: 'Do not invoke all eight by default.'"""
+    merged = merge_supporting(
+        route_question("Will I become a billionaire?"),
+        ["tattvan", "medhan", "agam", "pragnav", "dhruvan"],
+    )
+    assert len(merged.secondary) <= MAX_DOMAINS - 1
+
+
+def test_merging_preserves_application_and_universes():
+    base = route_question("When will I marry?")
+    merged = merge_supporting(base, ["dhruvan"])
+    assert merged.application == base.application == "timing"
+    assert merged.universes == base.universes
+
+
+def test_an_unrouted_question_stays_unrouted():
+    """ER §20: a question outside the eight domains must not be rescued into one by a
+    persona guess."""
+    base = route_question("What is the airspeed velocity of an unladen swallow?")
+    merged = merge_supporting(base, ["dhruvan", "tattvan"])
+    assert merged.primary is None
+    assert merged.unsupported is True

@@ -214,3 +214,49 @@ def route_question(question: str) -> Routing:
         scores=scores,
         matched=matched,
     )
+
+
+def merge_supporting(routing: Routing, supporting_rishis: list[str]) -> Routing:
+    """Add life domains implied by the classifier's supporting personas.
+
+    The keyword table alone cannot produce secondaries on a short question: "Will I
+    become a billionaire?" matches one phrase, so it routed to ARTHA with nothing
+    beside it, while §12 asks for KARMA, ATMA and YATRA as well. The classifier
+    already returns `supporting_rishis` on every call, so this is a second source at no
+    extra cost.
+
+    Those are PERSONAS, so they are mapped back through the weighted table. Only
+    domains a persona owns outright count -- a service persona rates all eight MEDIUM,
+    and admitting those would add every domain and make MAX_DOMAINS meaningless.
+
+    An unrouted question stays unrouted (§20): a persona guess is not evidence that
+    the question falls inside the supported boundary.
+    """
+    from rishivan.council.domains import DOMAIN_HIGH, RISHI_LIFE_DOMAINS
+
+    if routing.primary is None:
+        return routing
+
+    extra: list[str] = []
+    for rishi in supporting_rishis or []:
+        weights = RISHI_LIFE_DOMAINS.get(str(rishi).strip().lower(), {})
+        for domain, weight in weights.items():
+            if weight < DOMAIN_HIGH:
+                continue
+            if domain == routing.primary or domain in routing.secondary:
+                continue
+            if domain not in extra:
+                extra.append(domain)
+
+    if not extra:
+        return routing
+
+    secondary = (*routing.secondary, *extra)[: MAX_DOMAINS - 1]
+    return Routing(
+        primary=routing.primary,
+        secondary=secondary,
+        universes=routing.universes,
+        application=routing.application,
+        scores=routing.scores,
+        matched=routing.matched,
+    )
