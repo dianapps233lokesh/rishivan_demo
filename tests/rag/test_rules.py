@@ -14,6 +14,7 @@ measured chart. Match everything, then rank.
 
 import json
 
+from rishivan.council.routing import route_question
 from rishivan.rag.rules import (
     MIN_RELEVANCE,
     RuleHit,
@@ -131,32 +132,67 @@ def test_a_corrupt_payload_is_skipped_not_fatal():
     assert [hit.rule_key for hit in hits] == ["true"]
 
 
-# --- Relevance --------------------------------------------------------------
+# --- Relevance: §4-11 coverage is the gate ----------------------------------
+#
+# `CONDITION` is "the 7th lord in the 6th, 8th or 12th" -- subject house 7, so PREMA
+# claims it and KARMA does not. Relevance is decided by the ROUTED DOMAIN of the
+# question, not by which persona happens to be speaking: a persona like `medhan` spans
+# three client domains whose coverage sets together reach eleven of twelve houses, which
+# is why persona-scoped relevance could not discriminate.
+
+CAREER_CONDITION = {"atoms": [
+    {"type": "lord_of_house_in_house", "lord_of": 10, "house": 11}
+]}
+
+MARRIAGE_Q = route_question("Will my marriage be happy?")
+CAREER_Q = route_question("What career suits me?")
 
 
-def test_ranking_drops_rules_outside_the_rishis_domains():
-    wealth = _point("wealth", CONDITION, {"artha": 1.0}, verse="99")
-    hits = rules_for_question(Store([wealth, TRUE_RULE]), [0.0], tokens=CHART,
-                              rishi="medhan", limit=10)
+def test_a_career_rule_does_not_surface_for_a_marriage_question():
+    career = _point("career", CAREER_CONDITION, {"karma": 1.0}, verse="99")
+    hits = rules_for_question(
+        Store([career, TRUE_RULE]),
+        [0.0], tokens={**CHART, "house.10.lord.house": 11},
+        routing=MARRIAGE_Q, limit=10,
+    )
     assert [hit.rule_key for hit in hits] == ["true"]
 
 
-def test_the_fallback_rishi_still_gets_the_rule():
-    """`vyom` maps to every domain at medium weight, so a routing miss is not also a
-    retrieval miss."""
-    hits = rules_for_question(Store([TRUE_RULE]), [0.0], tokens=CHART, rishi="vyom",
-                              limit=5)
-    assert [hit.rule_key for hit in hits] == ["true"]
+def test_the_same_career_rule_surfaces_for_a_career_question():
+    career = _point("career", CAREER_CONDITION, {"karma": 1.0}, verse="99")
+    hits = rules_for_question(
+        Store([career, TRUE_RULE]),
+        [0.0], tokens={**CHART, "house.10.lord.house": 11},
+        routing=CAREER_Q, limit=10,
+    )
+    assert [hit.rule_key for hit in hits] == ["career"]
 
 
-def test_a_rule_with_no_affinity_reaches_nobody():
+def test_coverage_outranks_affinity_absolutely():
+    """A rule outside the routed coverage cannot be rescued by a perfect affinity tag.
+    That is the difference between a gate and a weight, and it is the fix: BPHS 22.6 had
+    a perfect `family` tag and a 9th-house subject."""
+    mistagged = _point("mistagged", CAREER_CONDITION, {"prema": 1.0}, verse="98")
+    hits = rules_for_question(
+        Store([mistagged]), [0.0],
+        tokens={**CHART, "house.10.lord.house": 11},
+        routing=MARRIAGE_Q, limit=10,
+    )
+    assert hits == []
+
+
+def test_a_rule_with_no_affinity_still_reaches_when_its_house_matches():
+    """A deliberate change from the affinity-gated model, which required a tag and so
+    lost every unenriched rule. Affinity is refinement now; the condition's own subject
+    house is the claim."""
     unrouted = _point("unrouted", CONDITION, {})
-    assert rules_for_question(Store([unrouted]), [0.0], tokens=CHART, rishi="vyom",
-                              limit=5) == []
+    hits = rules_for_question(Store([unrouted]), [0.0], tokens=CHART,
+                              routing=MARRIAGE_Q, limit=5)
+    assert [hit.rule_key for hit in hits] == ["unrouted"]
 
 
 def test_min_relevance_is_not_zero():
-    """At zero any Rishi can cite any rule, dissolving the specialisation."""
+    """The floor discards the marginal tail; coverage itself does the real gating."""
     assert MIN_RELEVANCE > 0
 
 
@@ -168,30 +204,29 @@ def test_ranking_respects_the_limit_without_affecting_recall():
     ]
     store = Store(points)
     assert len(true_rules(store, CHART)) == 15
-    assert len(rules_for_question(store, [0.0], tokens=CHART, rishi="medhan",
-                                  limit=4)) == 4
+    assert len(rules_for_question(store, [0.0], tokens=CHART,
+                                  routing=MARRIAGE_Q, limit=4)) == 4
 
 
 def test_ties_keep_the_incoming_order():
-    """Equally owned, equally topical rules must keep the store's ordering rather than
+    """Equally covered, equally topical rules must keep the store's ordering rather than
     having it silently thrown away by an unstable sort."""
     first = _point("first", CONDITION, {"prema": 1.0}, verse="1")
     second = _point("second", CONDITION, {"prema": 1.0}, verse="2")
     hits = rules_for_question(Store([first, second]), [0.0], tokens=CHART,
-                              rishi="medhan", limit=5)
+                              routing=MARRIAGE_Q, limit=5)
     assert [hit.rule_key for hit in hits] == ["first", "second"]
 
 
-# --- Ranking that discriminates ---------------------------------------------
-#
-# Before focus, every rule touching one of a persona's domains scored 1.0, so a
-# marriage question ranked "honoured by the King" level with "happiness through wife".
+# --- Ranking inside the gate ------------------------------------------------
 
 
 def test_a_focused_rule_outranks_a_scattered_one():
-    _, focused = rank_score("medhan", {"prema": 1.0}, [], [])
-    _, scattered = rank_score(
-        "medhan",
+    """Both are inside PREMA's coverage; the one whose outcome is squarely about
+    marriage should lead."""
+    _, focused, _ = rank_score(MARRIAGE_Q, CONDITION, {"prema": 1.0}, [], [])
+    _, scattered, _ = rank_score(
+        MARRIAGE_Q, CONDITION,
         {"prema": 1.0, "artha": 1.0, "karma": 1.0, "yatra": 1.0, "dharma": 1.0},
         [], [],
     )
@@ -199,17 +234,22 @@ def test_a_focused_rule_outranks_a_scattered_one():
 
 
 def test_both_still_clear_the_relevance_floor():
-    """Focus changes the ORDER, not whether a rule is this Rishi's evidence at all."""
+    """Affinity changes the ORDER; coverage decides admission."""
     for affinity in ({"prema": 1.0}, {"prema": 1.0, "artha": 1.0, "karma": 1.0}):
-        relevance, _ = rank_score("medhan", affinity, [], [])
+        relevance, _, _ = rank_score(MARRIAGE_Q, CONDITION, affinity, [], [])
         assert relevance >= MIN_RELEVANCE
 
 
-def test_topical_similarity_can_reorder_equally_owned_rules():
+def test_topical_similarity_can_reorder_equally_covered_rules():
     question = [1.0, 0.0]
-    _, near = rank_score("medhan", {"prema": 1.0}, question, [1.0, 0.0])
-    _, far = rank_score("medhan", {"prema": 1.0}, question, [0.0, 1.0])
+    _, near, _ = rank_score(MARRIAGE_Q, CONDITION, {"prema": 1.0}, question, [1.0, 0.0])
+    _, far, _ = rank_score(MARRIAGE_Q, CONDITION, {"prema": 1.0}, question, [0.0, 1.0])
     assert near > far
+
+
+def test_the_claiming_domain_is_reported():
+    _, _, domain = rank_score(MARRIAGE_Q, CONDITION, {"prema": 1.0}, [], [])
+    assert domain == "prema"
 
 
 def test_focus_is_the_share_of_the_rules_affinity_mass():
@@ -280,3 +320,72 @@ def test_the_rule_collection_is_separate_from_the_page_collection():
     and they are not comparable: a page is evidence to read, a rule a claim to test."""
     assert rule_collection_name("rishivan_docs") == "rishivan_docs_rules"
     assert rule_collection_name("rishivan_docs") != "rishivan_docs"
+
+
+# --- Coverage-gated relevance (Eight Rishis §4-11, §12) ----------------------
+#
+# Replaces the free-text `life_domains` score. BPHS 22.6 and 26.74 both scored 1.00 for a
+# marriage question because one is tagged `father` and one `Relationships`, and the
+# answering persona owns both family and relationships. Their subject houses are 9 and 7.
+
+FATHER_A_KING = _point(
+    "father",
+    {"atoms": [{"type": "lord_of_house_in_house", "lord_of": 9, "house": 10}]},
+    {"vansh": 1.0}, statement="the native's father will be a king",
+    chapter="22", verse="6",
+)
+MANY_WIVES = _point(
+    "wives",
+    {"atoms": [{"type": "lord_of_house_in_house", "lord_of": 7, "house": 2}]},
+    {"prema": 1.0}, statement="the native will have many wives",
+    chapter="26", verse="74",
+)
+BOTH_TRUE = {"house.9.lord.house": 10, "house.7.lord.house": 2}
+
+
+def test_a_marriage_question_does_not_surface_a_ninth_house_rule():
+    """The defect, end to end. Both rules are TRUE of the chart; only one is about
+    marriage, and no coverage set for relationships contains the 9th house."""
+    from rishivan.council.routing import route_question
+
+    hits = rules_for_question(
+        Store([FATHER_A_KING, MANY_WIVES]), [0.0],
+        tokens=BOTH_TRUE,
+        routing=route_question("Will my marriage be happy?"),
+        limit=10,
+    )
+    assert [hit.rule_key for hit in hits] == ["wives"]
+
+
+def test_the_same_ninth_house_rule_does_surface_for_a_family_question():
+    """The gate is per domain, not a blanket rejection -- §8 gives VANSH the 9th."""
+    from rishivan.council.routing import route_question
+
+    hits = rules_for_question(
+        Store([FATHER_A_KING, MANY_WIVES]), [0.0],
+        tokens=BOTH_TRUE,
+        routing=route_question("What does my chart say about my father?"),
+        limit=10,
+    )
+    assert "father" in [hit.rule_key for hit in hits]
+
+
+def test_each_hit_records_which_domain_claimed_it():
+    """§21 traceability at the routing level: a shown rule can say which Rishi owns it."""
+    from rishivan.council.routing import route_question
+
+    hits = rules_for_question(
+        Store([MANY_WIVES]), [0.0], tokens=BOTH_TRUE,
+        routing=route_question("Will my marriage be happy?"), limit=10,
+    )
+    assert hits[0].domain == "prema"
+
+
+def test_an_unsupported_question_returns_no_rules():
+    """§20: surfaced as unsupported rather than answered from whatever matched."""
+    from rishivan.council.routing import route_question
+
+    assert rules_for_question(
+        Store([MANY_WIVES]), [0.0], tokens=BOTH_TRUE,
+        routing=route_question("How do I rotate a PDF?"), limit=10,
+    ) == []

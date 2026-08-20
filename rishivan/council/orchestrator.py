@@ -92,6 +92,7 @@ def council_consult(
         "matched_rules": [],
         "chart_tokens": {},
         "rules_true_of_chart": 0,
+        "routing": {},
     }
 
     # ── Step 0/1: Intake — classify, and bypass everything else for small
@@ -356,6 +357,22 @@ def council_consult(
             )
             result["search_query"] = search_query
 
+    # ── Step 3b: which Rishis own this question ───────────────────────────────
+    # Eight Rishis §1 puts this between the classifier and retrieval, and §12 makes the
+    # QUESTION own the domain rather than the persona: a persona like `medhan` spans
+    # prema + vansh + aarogya, whose §4-11 coverage sets together reach eleven of twelve
+    # houses, so persona-scoped relevance cannot discriminate. Routing once here serves
+    # both page ranking (§15) and rule relevance (§4-11).
+    from rishivan.council.routing import route_question
+
+    routing = route_question(question)
+    result["routing"] = {
+        "primary": routing.primary,
+        "secondary": list(routing.secondary),
+        "matched": {k: list(v) for k, v in routing.matched.items()},
+        "unsupported": routing.unsupported,
+    }
+
     # ── Step 4: Domain-filtered RAG retrieval ────────────────────────────────
     from rishivan.rag.retrieve import collect_chart_context, expand_to_page_window
 
@@ -384,6 +401,7 @@ def council_consult(
                 domain_filter=domain_filter if domain_filter else None,
                 max_queries=MAX_FACT_QUERIES,
                 max_pages=MAX_PAGES,
+                domain=routing.primary,
             )
         except Exception:  # noqa: BLE001
             qe = embed_fn([search_query])[0]
@@ -436,7 +454,7 @@ def council_consult(
             matched_rules = rank_true_rules(
                 applicable,
                 embed_fn([search_query])[0],
-                rishi=rishi,
+                routing=routing,
                 limit=MAX_MATCHED_RULES,
                 # The question's own words gate what may be shown. Eight Rishis §9
                 # forbids predicting death as certainty, and gating on the answering

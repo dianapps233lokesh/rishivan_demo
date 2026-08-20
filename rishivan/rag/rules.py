@@ -17,19 +17,27 @@ be a second thing to drift.
 import json
 from dataclasses import dataclass, field
 
+from rishivan.knowledge.concepts import concepts_of
+from rishivan.rag.relevance import domain_relevance
 
 RULE_COLLECTION_SUFFIX = "_rules"
 """Rules live beside the pages, not among them: a page is evidence to read and a rule
 is a claim to test, so their similarity scores are not comparable."""
 
-MIN_RELEVANCE = 0.3
-"""Below this a rule is not this Rishi's evidence. Matches `DOMAIN_LOW`; at 0.0 any
-Rishi may cite any rule, which dissolves the specialisation."""
+MIN_RELEVANCE = 0.1
+"""Floor on coverage relevance. The real gate is coverage itself — a rule whose subject
+house lies outside every routed Rishi's §4-11 coverage scores exactly 0 — so this only
+discards the marginal tail."""
 
-TOPICAL_WEIGHT = 0.6
-"""Weight of question wording against the Rishi's domain ownership. Ownership leads,
-but cannot order anything on its own — every rule touching a persona's domain scores
-1.0, which once ranked "honoured by the King" level with "happiness through wife"."""
+AFFINITY_WEIGHT = 0.3
+"""Weight of the rule's own §15 affinity for the routed domain. Refinement, not a gate:
+affinity says what the rule's OUTCOME is about, coverage says what its CONDITION is
+about. BPHS 26.74 is a 7th-house rule whose effects span wives, wealth and character, and
+affinity is what prefers it for a marriage question over a 7th-house rule about money."""
+
+TOPICAL_WEIGHT = 0.3
+"""Weight of the question's wording. Refinement only — it cannot rescue a rule the
+coverage gate rejected, which is the point: similarity has no idea what a rule is about."""
 
 
 @dataclass
@@ -42,6 +50,8 @@ class RuleHit:
     life_domains: list[str] = field(default_factory=list)
     rishi_affinity: dict = field(default_factory=dict)
     vector: list[float] = field(default_factory=list)
+    domain: str | None = None
+    """Which routed client domain claimed this rule, for §21 traceability."""
     sensitivities: set = field(default_factory=set)
     """Claim categories — death, diagnosis, intimate — so the prompt can require a
     hedge even when the rule is admissible."""
@@ -97,43 +107,36 @@ def focus(affinity: dict, domain: str) -> float:
 
 
 def rank_score(
-    rishi: str,
+    routing,
+    condition: dict | None,
     affinity: dict,
     query_embedding: list[float],
     rule_vector: list[float],
-) -> tuple[float, float]:
-    """`(relevance, score)` for one true rule.
+) -> tuple[float, float, str | None]:
+    """`(relevance, score, domain)` for one true rule.
 
-    `relevance` is raw domain agreement, kept for display. `score` orders, and
-    multiplies agreement by focus before adding topical similarity.
+    `relevance` is §4-11 coverage agreement, and it is the gate: 0 means the rule's
+    subject house sits outside every routed Rishi's remit, and no amount of similarity
+    may resurrect it. `score` orders whatever survives.
     """
-    from rishivan.council.domains import RISHI_LIFE_DOMAINS
+    relevance, domain = domain_relevance(concepts_of(condition), routing)
+    if relevance <= 0.0 or domain is None:
+        return 0.0, 0.0, None
 
-    weights = RISHI_LIFE_DOMAINS.get(rishi.lower(), {})
-    if not weights or not affinity:
-        return 0.0, 0.0
-
-    best_agreement = 0.0
-    best_focus = 0.0
-    for domain, persona_weight in weights.items():
-        agreement = persona_weight * float(affinity.get(domain, 0.0) or 0.0)
-        if agreement > best_agreement:
-            best_agreement = agreement
-            best_focus = focus(affinity, domain)
-
+    outcome = float((affinity or {}).get(domain, 0.0) or 0.0) * focus(affinity, domain)
     topical = (
         _cosine(query_embedding, rule_vector)
         if query_embedding and rule_vector
         else 0.0
     )
-    return best_agreement, best_agreement * best_focus + TOPICAL_WEIGHT * topical
+    return relevance, relevance + AFFINITY_WEIGHT * outcome + TOPICAL_WEIGHT * topical, domain
 
 
 def rank_true_rules(
     rules,
     query_embedding: list[float],
     *,
-    rishi: str,
+    routing,
     limit: int = 10,
     question: str = "",
 ) -> list[RuleHit]:
@@ -142,14 +145,18 @@ def rank_true_rules(
     Ranking comes after matching, never before. Nominating by similarity first cost
     11 to 14 of 21 true rules on the measured chart: a similarity window has no way to
     prefer rules that happen to be true, so going first caps recall.
+
+    `routing` is a `council.routing.Routing` — the client domains this question belongs
+    to (§12). An unsupported question routes nowhere and returns nothing (§20).
     """
     from rishivan.knowledge.match.safety import sensitivities, withhold_reasons
 
     scored: list[tuple[float, RuleHit]] = []
     for rule in rules:
         affinity = getattr(rule, "rishi_affinity", None) or {}
-        relevance, score = rank_score(
-            rishi, affinity, query_embedding, getattr(rule, "vector", None) or []
+        relevance, score, domain = rank_score(
+            routing, getattr(rule, "condition", None) or {}, affinity,
+            query_embedding, getattr(rule, "vector", None) or [],
         )
         if relevance < MIN_RELEVANCE:
             continue
@@ -162,6 +169,7 @@ def rank_true_rules(
             relevance=relevance,
         )
         hit.relevance = relevance
+        hit.domain = domain
         # A rule predicting the manner of the querent's death is wrong on a question
         # about marriage before any question of tone arises. Eight Rishis §9.
         if withhold_reasons(hit, question):
@@ -265,7 +273,7 @@ def rules_for_question(
     query_embedding: list[float],
     *,
     tokens: dict,
-    rishi: str,
+    routing,
     limit: int = 10,
     question: str = "",
 ) -> list[RuleHit]:
@@ -273,7 +281,7 @@ def rules_for_question(
     return rank_true_rules(
         true_rules(store, tokens, with_vectors=True),
         query_embedding,
-        rishi=rishi,
+        routing=routing,
         limit=limit,
         question=question,
     )

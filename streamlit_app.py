@@ -539,20 +539,27 @@ if ask_btn and question.strip():
             f"📜 {len(matched_rules)} classical rules match this chart", expanded=False
         ):
             true_count = result.get("rules_true_of_chart") or len(matched_rules)
+            routing = result.get("routing") or {}
+            owners = [routing.get("primary"), *(routing.get("secondary") or [])]
+            owners = [o.upper() for o in owners if o]
             st.caption(
                 f"{true_count} approved rules apply to this chart; the "
-                f"{len(matched_rules)} most relevant to {persona.display_name}'s domains "
-                f"are shown. Matched by exact condition test against the computed "
-                f"placements — not by similarity."
+                f"{len(matched_rules)} owned by "
+                f"{' + '.join(owners) if owners else 'this question'} are shown. "
+                f"Matched by exact condition test against the computed placements — "
+                f"not by similarity. Relevance is the Rishi's stated astrological "
+                f"coverage (Eight Rishis §4-11), so a rule about a house outside that "
+                f"coverage is not shown however well it matches the chart."
             )
             from rishivan.rag.describe import describe_condition
 
             for hit in matched_rules:
                 condition = describe_condition(hit.condition)
+                owner = f" · {hit.domain.upper()}" if hit.domain else ""
                 st.markdown(
-                    f"**{hit.citation}** — because {condition}"
+                    f"**{hit.citation}**{owner} — because {condition}"
                     if condition
-                    else f"**{hit.citation}**"
+                    else f"**{hit.citation}**{owner}"
                 )
                 for effect in hit.effects or []:
                     st.markdown(

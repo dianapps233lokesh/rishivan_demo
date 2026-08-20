@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from itertools import groupby
 
+from rishivan.council.source_matrix import source_weight
 from rishivan.rag.authority import authority_for_slug
 from rishivan.rag.books import title_for_slug
 
@@ -101,6 +102,7 @@ def collect_chart_context(
     max_pages: int = FACT_MAX_PAGES,
     domain_filter: list[str] | None = None,
     max_queries: int | None = None,
+    domain: str | None = None,
 ):
     """Retrieve context by looking each chart fact up in the corpus.
 
@@ -111,6 +113,11 @@ def collect_chart_context(
 
     When ``domain_filter`` is provided (e.g. ``["core", "prediction"]``), only
     books tagged with those domains are searched.
+
+    ``domain`` is the client life domain the question routed to. It weights each page by
+    Eight Rishis §15's Book × Rishi matrix, which is the only signal available here: a
+    page carries no per-rule affinity, so without §15 a Muhurta text ranks the same for
+    a question about identity as for one about timing an event.
     """
     queries = _fact_queries(question, facts, max_queries)
     if not queries:
@@ -149,9 +156,12 @@ def collect_chart_context(
             if key in seen_this_query:
                 continue
             seen_this_query.add(key)
+            slug = m.get("book_slug")
+            # authority x §15 relevance: how authoritative this book is, and how
+            # relevant it is to what was actually asked.
             page_score[key] = page_score.get(key, 0.0) + authority_for_slug(
-                m.get("book_slug")
-            )
+                slug
+            ) * source_weight(slug, domain)
             if key not in first_seen:
                 first_seen[key] = order
                 order += 1
