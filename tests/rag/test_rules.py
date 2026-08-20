@@ -531,7 +531,7 @@ def test_remedies_survive_the_store_boundary():
     """Blueprint §6 lists REMEDIES as a Koonji field and the extractor populates it, but
     it was written to Postgres and dropped at the Qdrant boundary -- unreachable at query
     time, exactly as `exceptions` and `modifiers` were."""
-    remedy = [{"kind": "mantra", "detail": "hymns to Shiva"}]
+    remedy = ["recitation of hymns in praise of Lord Shiva", "charity of a white cow"]
     payload = {
         "rule_key": "r",
         "condition": json.dumps(CONDITION),
@@ -557,3 +557,35 @@ def test_the_embedder_writes_the_remedies_key():
 
     writer = Path("scripts/embed_rules.py").read_text()
     assert '"remedies"' in writer
+
+
+def test_a_remedy_is_a_plain_string_not_a_structured_object():
+    """The corpus shape, and the only one that round-trips.
+
+    `rishivan/knowledge/extract/prompt.py` declares REMEDIES as
+    `{"type": "array", "items": {"type": "string"}}`, and every approved rule agrees:
+    "recitation of Mrityunjaya Japa", not `{"kind": ..., "detail": ...}`. Typing the
+    field as a list of dicts invites the next consumer to write `remedy["detail"]`
+    against data that has never had keys.
+    """
+    remedy = ["recite Mrityunjaya Japa", "worship of the Sun for good health"]
+    hit = _payload_to_hit(
+        {
+            "rule_key": "r",
+            "condition": json.dumps(CONDITION),
+            "remedies": json.dumps(remedy),
+        },
+        relevance=1.0,
+    )
+    assert hit is not None
+    assert hit.remedies == remedy
+    assert all(isinstance(r, str) for r in hit.remedies)
+
+
+def test_the_extractor_still_declares_remedies_as_strings():
+    """Pins the schema this field's type is derived from, so a change there is a
+    deliberate migration rather than a silent shape drift."""
+    from pathlib import Path
+
+    schema = Path("rishivan/knowledge/extract/prompt.py").read_text()
+    assert '"remedies": {"type": "array", "items": {"type": "string"}}' in schema

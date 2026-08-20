@@ -77,10 +77,16 @@ class RuleHit:
     hedge even when the rule is admissible."""
     merged_from: list[str] = field(default_factory=list)
     """Rule keys folded in by `merge_siblings`."""
-    remedies: list[dict] = field(default_factory=list)
+    remedies: list[str] = field(default_factory=list)
     """Blueprint §6's REMEDIES field. Extracted and stored in Postgres from the start,
     but dropped at the Qdrant boundary until now, so the remedy contributor had nothing
-    to read."""
+    to read.
+
+    Plain sentences -- "recitation of Mrityunjaya Japa" -- because that is what the
+    extractor's schema declares and what all 1046 approved rules hold. Not `list[dict]`:
+    there is no `kind`/`detail` structure to index into, and typing it as though there
+    were would send the first consumer looking for keys that have never existed.
+    """
 
     @property
     def citation(self) -> str:

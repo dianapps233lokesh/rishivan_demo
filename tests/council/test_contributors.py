@@ -94,7 +94,7 @@ TIMING_RULE = RuleHit(
 )
 REMEDY_RULE = RuleHit(
     rule_key="rem", condition={"atoms": []}, effects=[], source={},
-    relevance=0.0, remedies=[{"kind": "mantra", "detail": "hymns to Shiva"}],
+    relevance=0.0, remedies=["recitation of hymns in praise of Lord Shiva"],
 )
 
 
