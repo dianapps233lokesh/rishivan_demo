@@ -1,20 +1,16 @@
-"""Dignity, conjunction and aspect tokens -- the Parashari model, named explicitly.
+"""Dignity, conjunction and aspect tokens — the Parashari model, named explicitly.
 
-Blueprint §7 requires this to be a stated choice rather than an assumption: "Drishti:
-School-specific aspect rules; never assume one universal aspect model." So each of the
-three is spelled out here rather than left implicit in the arithmetic:
+Blueprint §7 requires a stated choice, never an assumed universal aspect model, so all
+three are spelled out rather than left implicit in the arithmetic:
 
-* **Dignity** is the classical exaltation / debilitation / moolatrikona / own-sign table.
-  The spellings match `DIGNITY_SYNONYMS` in the extractor's validator, because those are
-  the words the rules were grounded against.
-* **Conjunction** is whole-sign: two planets in the same rashi. Not an orb. An orb model
-  gives materially different answers, and BPHS is a whole-sign text throughout.
-* **Aspect** is Parashari drishti: every planet aspects the 7th house from itself, plus
-  Mars the 4th and 8th, Jupiter the 5th and 9th, Saturn the 3rd and 10th.
+* **Dignity** — the classical exaltation / debilitation / moolatrikona / own-sign table.
+  Spellings match `DIGNITY_SYNONYMS` in the validator, the words rules were grounded on.
+* **Conjunction** — whole-sign: two planets in one rashi. Not an orb; BPHS is a
+  whole-sign text throughout and an orb model answers differently.
+* **Aspect** — Parashari drishti: every planet aspects the 7th from itself, plus Mars
+  the 4th and 8th, Jupiter the 5th and 9th, Saturn the 3rd and 10th.
 
-These three families block 9 of BPHS vol 1's 376 valid rules (16%). Before this module
-existed those rules were inert -- `satisfies` returns False for a token the chart does not
-carry, which is the correct degradation but is still 16% of the rule base unreachable.
+These three families carry 16% of BPHS vol 1's valid rules, inert until this existed.
 """
 
 from rishivan.chart.ephemeris import Chart
@@ -76,11 +72,10 @@ DEFAULT_ASPECTS: tuple[int, ...] = (7,)
 
 
 def dignity_of(planet: str, sign: str) -> str | None:
-    """The planet's dignity in this sign, or None if it is neutral.
+    """The planet's dignity in this sign, or None if neutral.
 
-    Ordered: exaltation, then debilitation, then moolatrikona, then own sign. A rule that
-    says "exalted" means exalted rather than merely well placed, and moolatrikona is a
-    stronger statement than plain ownership, so the more specific label wins.
+    Most specific label wins — exaltation, debilitation, moolatrikona, own sign — because
+    "exalted" means exalted, not merely well placed.
     """
     planet, sign = planet.lower(), sign.lower()
     if EXALTATION.get(planet) == sign:
@@ -97,10 +92,9 @@ def dignity_of(planet: str, sign: str) -> str | None:
 def relation_tokens(chart: Chart, *, scope: str = "") -> dict[str, int | str | bool]:
     """Dignity, conjunction and aspect tokens for this chart.
 
-    Aspect tokens are keyed by the house aspected (`planet.mars.aspects.8`), which is what
-    `aspected_by{planet: mars, target: 8}` compiles to. A rule naming a planet as the
-    target instead -- "Jupiter aspecting Venus" -- resolves through the aspected planet's
-    house, so both forms are emitted.
+    Aspects are keyed by the house aspected (`planet.mars.aspects.8`), matching what
+    `aspected_by{planet: mars, target: 8}` compiles to. A verse naming a planet as the
+    target resolves through that planet's house, so both forms are emitted.
     """
     positions = {
         PLANET_TOKEN_NAME[name]: position

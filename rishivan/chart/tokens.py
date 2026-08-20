@@ -1,20 +1,16 @@
 """Reduce a computed chart to the flat fact tokens the rule base is written against.
 
-This module is the contract between two halves of the system that were built separately
-and do not otherwise speak. The chart engine produces English sentences for page
-retrieval ("Ascendant (Lagna) is Aries."); rules are compiled to tokens
-(`planet.saturn.house` -> 7). Both are needed, and only the tokens can be matched.
+The contract between two halves built separately: the chart engine produces English
+sentences for page retrieval, rules are compiled to tokens (`planet.saturn.house` -> 7).
+Both are needed and only the tokens can be matched.
 
-The failure mode this module must not have is silence. `rishivan/astro/vocab.py` warns that a
-token spelled differently from the vocabulary means "every affected rule silently matches
-nothing" -- no exception, no empty-result signal, just a rule base that appears thin. So
-the scope is validated against the emitted list, and a contract test pins the spelling of
-every token family against real extracted rules.
+The failure mode to avoid is silence. A token spelled differently from the vocabulary
+means every affected rule matches nothing, with no exception raised — just a rule base
+that looks thin. So the scope is checked against the emitted list, and a contract test
+pins every token family against real extracted rules.
 
-Dignity, conjunction and aspect come from `relations.py`, which states the Parashari model
-it implements rather than leaving it implicit -- Blueprint §7 forbids assuming one
-universal aspect model. Those three families are 9 of BPHS vol 1's 376 valid rules (16%),
-and were inert until that module existed.
+Dignity, conjunction and aspect come from `relations.py`, which states the Parashari
+model it implements rather than assuming one universal aspect model (Blueprint §7).
 """
 
 from rishivan.astro.vocab import EMITTED_SCOPES
@@ -34,13 +30,9 @@ SIGN_TOKEN_NAME: dict[str, str] = {
     "Aquarius": "aquarius",
     "Pisces": "pisces",
 }
-"""Ephemeris rashi name -> the name rules use.
-
-The extractor emits `sign: "aries"` because the fact vocabulary is lowercase English, and
-`RASHIS` in the ephemeris is title-case. A token holding "Aries" would not match a rule
-holding "aries" under an exact comparison, so the normalisation happens here, once,
-rather than being left to whichever comparison runs later.
-"""
+"""Ephemeris rashi name -> the name rules use. The vocabulary is lowercase and the
+ephemeris title-case, so "Aries" would not match "aries" under an exact comparison.
+Normalised here, once, rather than in whichever comparison runs later."""
 
 PLANET_TOKEN_NAME: dict[str, str] = {
     "Sun": "sun",
@@ -53,41 +45,34 @@ PLANET_TOKEN_NAME: dict[str, str] = {
     "Rahu": "rahu",
     "Ketu": "ketu",
 }
-"""`Chart.planets` and `Chart.house_lords` are keyed by display name; tokens use the
-vocabulary's names. Named separately from `rishivan.astro.vocab.PLANET_TOKEN_NAME`, which maps
-the *books'* two-letter codes (`Sa`) rather than the ephemeris's display names."""
+"""Display name -> token name. Distinct from `astro.vocab.PLANET_TOKEN_NAME`, which
+maps the *books'* two-letter codes (`Sa`) rather than ephemeris display names."""
 
 
 REFERENCE_SCOPES: dict[str, str] = {
     "from_moon.": "Moon",
     "from_sun.": "Sun",
 }
-"""Scopes that re-count the houses from a planet instead of from the Ascendant.
+"""Scopes that re-count the houses from a planet rather than the Ascendant.
 
-Not optional decoration: 17 atoms across BPHS vol 1's *parsed* rules use these, because
-"the Moon in the 1st, 4th, 7th or 10th from the Sun" is an ordinary classical
-construction. `ARGUMENT_SEMANTICS` in the extraction prompt tells the model to express it
-as `planet_in_house` with `scope='from_sun.'` rather than as an aspect, so the chart has
-to be able to answer it.
+17 atoms in BPHS vol 1's parsed rules use these — "the Moon in the 1st, 4th, 7th or
+10th from the Sun" is an ordinary classical construction, and the extraction prompt
+expresses it as `planet_in_house` with `scope='from_sun.'` rather than as an aspect.
 """
 
 
 def _house_from(reference_rashi_index: int, rashi_index: int) -> int:
-    """Which house a placement occupies when counted from another sign.
-
-    Whole-sign: the reference sign is the 1st, the next the 2nd, and so on -- the same
-    arithmetic the ephemeris uses to place planets from the lagna.
-    """
+    """Which house a placement occupies counted from another sign. Whole-sign: the
+    reference sign is the 1st, the next the 2nd, as the ephemeris does from the lagna."""
     return ((rashi_index - reference_rashi_index) % 12) + 1
 
 
 def chart_tokens(chart: Chart, *, scope: str = "") -> dict[str, int | str]:
     """Every fact token this chart supports, as token -> value.
 
-    `scope` is a prefix from `EMITTED_SCOPES` -- "" for D1 counted from the Ascendant,
-    "from_moon." / "from_sun." for a relative frame, "d9." for Navamsa. Callers pass one
-    scope per call and merge the results, so a D1 rule can never accidentally read a D9
-    placement.
+    `scope` is a prefix from `EMITTED_SCOPES`: "" for D1 from the Ascendant,
+    "from_moon." / "from_sun." for a relative frame, "d9." for Navamsa. One scope per
+    call, so a D1 rule can never accidentally read a D9 placement.
     """
     if scope not in EMITTED_SCOPES:
         raise ValueError(
@@ -125,14 +110,11 @@ def chart_tokens(chart: Chart, *, scope: str = "") -> dict[str, int | str]:
 
     for house in range(1, 13):
         tokens[f"{scope}house.{house}.occupant_count"] = occupants[house]
-        # In a relative frame the HOUSES themselves move, so the lord of the Nth house
-        # is the lord of the Nth sign counted from the reference planet -- not the
-        # lagna's Nth lord re-counted. Getting this wrong was silent and wrong in the
-        # worst way: for a Sagittarius lagna with the Moon in Aquarius,
-        # `from_moon.house.1.lord` reported Jupiter (the lagna lord) where the answer
-        # is Saturn (lord of Aquarius, the 1st from the Moon). A rule about "the 1st
-        # lord from the Moon" would have been tested against a different planet
-        # entirely, and matched or missed for no visible reason.
+        # In a relative frame the HOUSES move too, so the Nth lord is the lord of the
+        # Nth sign from the reference planet -- not the lagna's Nth lord re-counted.
+        # Sagittarius lagna, Moon in Aquarius: `from_moon.house.1.lord` is Saturn (lord
+        # of Aquarius), not Jupiter. The wrong answer here tests a rule against a
+        # different planet entirely and matches or misses for no visible reason.
         if reference is None:
             lord_display = chart.house_lords.get(house)
         else:
@@ -158,23 +140,20 @@ def chart_tokens(chart: Chart, *, scope: str = "") -> dict[str, int | str]:
 
 
 SUPPORTED_SCOPES: tuple[str, ...] = ("", "from_moon.", "from_sun.")
-"""The scopes this module can currently produce, in the order they are merged.
+"""The scopes this module can produce, in merge order.
 
-`EMITTED_SCOPES` also lists d2/d7/d9/d10/d12/d30, which need divisional charts rather than
-a re-count of the same one. They are absent here because no rule needs them yet: of the
-688 atoms loaded from BPHS vol 1's parsed rules, 671 are D1-from-lagna, 15 are from_sun
-and 2 are from_moon, and not one is a varga. When a book does use them, wire
-`rishivan.chart.local_varga` in here rather than teaching callers to merge scopes
-themselves.
+`EMITTED_SCOPES` also lists d2/d7/d9/d10/d12/d30, which need divisional charts rather
+than a re-count of one. No rule needs them yet — of BPHS vol 1's 688 parsed atoms, 671
+are D1-from-lagna, 15 from_sun, 2 from_moon, none a varga. When a book does, wire
+`chart.local_varga` in here rather than teaching callers to merge scopes.
 """
 
 
 def all_chart_tokens(chart: Chart) -> dict[str, int | str]:
-    """Every token across every supported scope, merged -- what the matcher consumes.
+    """Every token across every supported scope, merged — what the matcher consumes.
 
-    Callers should prefer this to `chart_tokens`. A caller that merges scopes by hand is
-    a caller that can forget one, and a forgotten scope means the affected rules match
-    nothing while every other number looks healthy.
+    Prefer this to `chart_tokens`: a caller merging scopes by hand can forget one, and a
+    forgotten scope means those rules match nothing while every number looks healthy.
     """
     tokens: dict[str, int | str] = {}
     for scope in SUPPORTED_SCOPES:
