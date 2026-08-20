@@ -1,7 +1,13 @@
 # Client spec → implementation gap map
 
 Every section of both client documents, against what is actually built, as of 2026-08-20
-on branch `prod_pipeline` (`9170507`).
+on branch `prod_pipeline`.
+
+**Update — Tier 1 of §5 is implemented** (`2a765f1`). The concept layer now exists:
+`council/constitution.py` (§16 from §4-11), `council/routing.py` (§12),
+`knowledge/concepts.py` (§6's CONCEPTS), `rag/relevance.py` (coverage as a gate) and
+`council/source_matrix.py` (§15). Rows changed by that work are marked `DONE (Tier 1)`
+below; everything else is unchanged.
 
 - `docs/client/blueprint-master-implementation.pdf` — cited as **BP §n**
 - `docs/client/eight-rishis-domain-ownership.pdf` — cited as **ER §n**
@@ -108,9 +114,9 @@ Two facts to carry into the map:
 |---|---|---|---|
 | Question/intent classifier | `DONE` | — | `council/classifier.py`, one Flash call, returns rishi + domain + intent + vargas + dasha level |
 | Primary Rishi | `DONE` | — | |
-| Secondary Rishi(s) | `PARTIAL` | M | The classifier already returns `supporting_rishis`. It is consumed **only** by `lens.py` to generate one extra prose voice *after* the answer. It never contributes evidence or widens rule retrieval. |
+| Secondary Rishi(s) | `DONE (Tier 1)` | — | `routing.py` returns primary + secondaries per §12, capped at 3 ("invoke the minimum set"), and both gather evidence. Secondaries are weighted at half, since §12 invokes them for independent evidence, not as equals. |
 | Shared calculation engine | `DONE` | — | Swiss Ephemeris, local, no network |
-| Domain-specific Koonji retrieval | `PARTIAL` | M | Retrieval works, but "domain-specific" is a free-text `life_domains` tag, not ER §4–11's concept sets. See ER §4–11 below — this is the core defect. |
+| Domain-specific Koonji retrieval | `DONE (Tier 1)` | — | Now gated on §4-11 coverage. A rule whose subject house is outside the routed Rishi's coverage scores 0 and cannot be rescued by its affinity tag. |
 | Source retrieval | `DONE` | — | 52,958 page vectors, authority-weighted |
 | Rishi reasoning | `PARTIAL` | L | One prose generation. No ordered protocol, no evidence structure before prose. |
 | Cross-Rishi evidence comparison | `ABSENT` | L | Nothing compares two Rishis' evidence. Zero files mention convergence or conflict. |
@@ -145,10 +151,10 @@ domain has at least one persona rating it High (ER §20, no orphan domains).
 
 | Per-Rishi element | Status | Effort |
 |---|---|---|
-| **Questions it owns** (question taxonomy) | `ABSENT` | M |
-| **Astrological coverage** (the concept/fact set) | `ABSENT` | M |
-| **Protocol** (ordered analysis checklist) | `ABSENT` | L |
-| **Primary sources** (per-Rishi book set) | `PARTIAL` | S |
+| **Questions it owns** (question taxonomy) | `DONE (Tier 1)` | — |
+| **Astrological coverage** (the concept/fact set) | `DONE (Tier 1)` | — |
+| **Protocol** (ordered analysis checklist) | `PARTIAL` | L — transcribed into each constitution, but the answer is not yet assembled in protocol order |
+| **Primary sources** (per-Rishi book set) | `DONE (Tier 1)` | — |
 
 The concept sets, transcribed from the documents:
 
@@ -186,9 +192,12 @@ What is buildable from our corpus, per Rishi:
 
 ### ER §12 — questions that cross multiple Rishis
 
-`ABSENT` for retrieval, `PARTIAL` for prose. Effort `M`.
+`DONE (Tier 1)`. All thirteen worked examples are asserted verbatim in
+`tests/council/test_routing.py`, and both primary and secondary domains gather evidence.
+Two of the thirteen are ambiguous in the document itself ("Atma/appropriate event Rishi",
+"Artha/Karma") and are asserted loosely, which the tests say at each one.
 
-The document's 13 worked examples are a ready-made routing test set and are unused:
+The examples, for reference:
 
 ```
 "Will I become a billionaire?"            Artha    → Karma + Atma + Yatra
@@ -223,10 +232,10 @@ fragments, none of them per-Rishi:
 
 | Required | Where it lives now |
 |---|---|
-| Question taxonomy | nowhere (prose hints in the classifier prompt) |
+| Question taxonomy | `routing.QUESTION_KEYWORDS`, from §4-11 |
 | Input requirements | nowhere |
-| Analysis order | nowhere |
-| Required concepts | **nowhere** — the central gap |
+| Analysis order | `constitution.protocol` — declared, not yet applied to the answer |
+| Required concepts | `constitution.py` — **the Tier 1 fix** |
 | Rule library | `rule` table, not partitioned by Rishi |
 | Source mapping | `rule.source` — book/chapter/verse. `DONE` |
 | Modifiers | extraction schema captures them; `match/engine.py` honours `cancel`. `PARTIAL` |
@@ -238,17 +247,22 @@ fragments, none of them per-Rishi:
 
 ### ER §15 — Book × Rishi weighted matrix
 
-`PARTIAL`, effort `S`. The document gives real High/Medium/Low values for **16 source
-families × 8 Rishis**. We have a hand-written approximation over 10 invented book-domain
-tags (`RISHI_BOOK_DOMAINS`), which does not reproduce the document's values. The doc's own
+`DONE (Tier 1)`. Transcribed in `council/source_matrix.py` — 15 source families × 8
+Rishis at the document's own High / Medium / Low / Very High, with all 23 ingested book
+slugs mapped to a family, and applied as a multiplier on page authority at retrieval
+time. Four slugs the document does not name inherit Phaladeepika's row, which the module
+records as a judgement rather than hiding. The doc's own
 caveat is met in spirit — per-rule affinity is derived rather than inherited from the book
 (`knowledge/affinity/derive.py`) — but the book-level matrix itself is not transcribed.
 
 ### ER §16 — the Rishi Constitution template
 
-`ABSENT`, effort `M`. Twenty fields, no object. This is the missing spine: it is what
-would hold §4–11's concept sets, protocol and sources, §14's twelve sections, and the
-per-Rishi forbidden claims, in one comparable, testable place.
+`PARTIAL`, effort `S` for the rest. `council/constitution.py` holds the fields anything
+reads: coverage (primary/supporting houses, planets, vargas), protocol, source families,
+forbidden claims, plus two the document does not ask for and this corpus needs —
+`unavailable_sources` and `blocked_concepts`. Still absent from §16's twenty:
+`REQUIRED_INPUTS`, `EVIDENCE_POLICY`, `CONFIDENCE_POLICY`, `OUTPUT_SCHEMA`,
+`VALIDATION_DATASET`, `VERSION`, `CROSS_RISHI_TRIGGERS`.
 
 ### ER §17 — Artha's ten-step wealth decision tree
 
@@ -398,7 +412,7 @@ The flow you pasted. Stage by stage:
 |---|---|
 | User question | `DONE` |
 | Intent = Marriage + Timing | `PARTIAL` — topic yes; timing only as a dasha *level*, never as an intent that changes retrieval |
-| Relevant concepts (7th/7L/Venus/Jupiter/D9/Darakaraka/Upapada) | `ABSENT` — no concept layer |
+| Relevant concepts (7th/7L/Venus/Jupiter/D9/Darakaraka/Upapada) | `PARTIAL` — the Parashari half is now live (7th, 7th lord, Venus, Jupiter); D9 needs varga tokens and Darakaraka/Upapada are blocked |
 | Select schools (Parashari + Jaimini + KP + Nadi) | `BLOCKED` — one school exists |
 | Calculate chart facts | `DONE` |
 | Retrieve Koonji rules | `DONE` |
@@ -469,7 +483,7 @@ uncertainty* (no confidence to summarize) and *hide conflicts* (no conflicts det
  1 Question intent              DONE
  2 Chart/calculation facts      DONE
  3 Selected school(s)           PARTIAL   one school, never stated
- 4 Relevant concepts            ABSENT
+ 4 Relevant concepts            DONE      (Tier 1)
  5 Applied Koonji rules         DONE
  6 Conditions/modifiers         PARTIAL
  7 Exceptions                   DONE
@@ -482,7 +496,7 @@ uncertainty* (no confidence to summarize) and *hide conflicts* (no conflicts det
 14 Human-readable explanation   DONE
 ```
 
-6 of 14 present.
+7 of 14 present.
 
 ### BP §20 — implementation backlog
 
@@ -495,7 +509,7 @@ uncertainty* (no confidence to summarize) and *hide conflicts* (no conflicts det
 | Graph | queryable | `ABSENT` |
 | Calculator | reproducible, independently checked | `PARTIAL` (no independent check) |
 | School engines | isolated and testable | `PARTIAL` (one school) |
-| Router | questions → domains, concepts, source sets | `PARTIAL` — **concepts and source sets absent** |
+| Router | questions → domains, concepts, source sets | `DONE (Tier 1)` |
 | Evidence | source tier + validation state on rules | `ABSENT` |
 | Backtesting | unseen datasets, blind framework | `ABSENT` |
 | Synthesis | combines without merging doctrines | `ABSENT` |
@@ -547,16 +561,14 @@ Engineering cannot start on these. Listed by how much they unblock.
 
 Ordered by evidence-per-unit-effort, given the corpus we hold.
 
-**Tier 1 — cheap, and each fixes something measured**
+**Tier 1 — DONE except extraction (`2a765f1`)**
 
 1. **Extract BPHS vol 2.** 489 rule-destined units already triaged, zero extracted. ~34
-   min, ~$0.78, roughly doubles the rule base. Nothing to design. `S`
-2. **Rishi Constitutions as objects** (ER §16) carrying ER §4–11's concept sets, protocol
-   order, source set and forbidden claims. This is the spine every later item hangs on. `M`
-3. **Concept-overlap relevance** replacing the `life_domains` score. Derivable from atoms
-   we already store; directly fixes the wrong-rules-shown defect. `M`
-4. **Routing test from ER §12's 13 examples.** Makes routing accuracy a number. `S`
-5. **Transcribe ER §15's Book × Rishi matrix** in place of the hand-written approximation. `S`
+   min, ~$0.78, roughly doubles the rule base. Nothing to design. `S` — **outstanding**
+2. ~~Rishi Constitutions as objects~~ — `council/constitution.py`
+3. ~~Concept-overlap relevance~~ — `rag/relevance.py`, coverage as a gate
+4. ~~Routing test from ER §12's 13 examples~~ — `tests/council/test_routing.py`
+5. ~~Transcribe ER §15's Book × Rishi matrix~~ — `council/source_matrix.py`
 
 **Tier 2 — the doc's own priorities, moderate effort**
 
