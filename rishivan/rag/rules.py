@@ -1,61 +1,36 @@
-"""The runtime's view of the approved rule base, held in the vector store.
+"""The approved rule base as the runtime sees it, held in Qdrant.
 
-Two problems solved by one decision. The answering path has no database -- it is Qdrant
-plus Swiss Ephemeris, and a `grep` for SQLAlchemy across `rishivan/` returns nothing -- so
-rules had to reach it somehow. And rules need to be *found* before they can be tested,
-because a chart satisfies a few hundred rules across a whole corpus and only a handful are
-about what the user asked.
+Qdrant stores the rules and ranks them; it never decides whether one is true.
+Similarity cannot represent truth over discrete tokens — measured on
+`text-embedding-004` for the chart "the 7th lord is in the 6th house":
 
-So Qdrant holds the rules, and the two jobs are split:
+    0.8434  "the 7th lord is placed in the 5th house"               FALSE, ranked 1st
+    0.8396  "the 7th lord is placed in the 6th, 8th or 12th house"  TRUE,  ranked 2nd
+    0.8277  "the 7th lord is NOT placed in the 6th, 8th or 12th"    FALSE, the negation
 
-**Vector search decides relevance.** "Will I be wealthy" should surface wealth rules. That
-is a similarity question and embeddings answer it well.
-
-**Exact evaluation decides truth.** Whether a rule *applies to this chart* is a boolean
-over discrete tokens, and similarity cannot represent it. Measured on `text-embedding-004`
-against the real corpus:
-
-    chart: "the 7th lord is in the 6th house"
-      0.8434  "the 7th lord is placed in the 5th house"              <- FALSE, ranked 1st
-      0.8396  "the 7th lord is placed in the 6th, 8th or 12th house" <- TRUE,  ranked 2nd
-      0.8277  "the 7th lord is NOT placed in the 6th, 8th or 12th"   <- FALSE, and it is
-                                                                        the negation
-
-The wrong rule outranks the right one, and a rule's own negation scores within 0.02 of it.
-One house's difference is a rounding error in embedding space and a total flip in truth
-value -- and chapter 26 alone contributes 128 rules that differ only by two digits. This is
-the failure Blueprint §11 names: "A vector database alone cannot reliably represent a
-complex rule system."
-
-So `satisfies()` from the knowledge layer is imported rather than reimplemented, and it
-runs over the payload after retrieval. A second evaluator would be a second thing to
-drift, and a drifted evaluator produces confidently wrong readings.
+One house's difference is noise in embedding space and a flip in truth value, and
+chapter 26 alone holds 128 rules that differ only by two digits. So `applies()` from
+the knowledge layer is imported rather than reimplemented — a second evaluator would
+be a second thing to drift.
 """
 
 import json
 from dataclasses import dataclass, field
 
-from rishivan.knowledge.match.engine import satisfies
 from rishivan.council.domains import rule_relevance
 
 RULE_COLLECTION_SUFFIX = "_rules"
-"""The rule collection sits beside the page collection rather than inside it. Mixing them
-would let a page hit and a rule hit compete on the same similarity score, and they are not
-comparable: a page is evidence to read, a rule is a claim to test."""
+"""Rules live beside the pages, not among them: a page is evidence to read and a rule
+is a claim to test, so their similarity scores are not comparable."""
 
 MIN_RELEVANCE = 0.3
-"""Below this a rule is not this Rishi's evidence.
+"""Below this a rule is not this Rishi's evidence. Matches `DOMAIN_LOW`; at 0.0 any
+Rishi may cite any rule, which dissolves the specialisation."""
 
-Matches `DOMAIN_LOW`: a persona may reach adjacent material, but not material it has no
-stated relationship to. Set to 0.0 and any Rishi can cite any rule, which dissolves the
-specialisation the client's whole design rests on.
-"""
-
-CANDIDATE_MULTIPLIER = 6
-"""How many vector candidates to fetch per rule wanted, in the legacy nominate-first path.
-
-Kept only for `match_rules`, which is superseded. See `rank_true_rules` for why.
-"""
+TOPICAL_WEIGHT = 0.6
+"""Weight of question wording against the Rishi's domain ownership. Ownership leads,
+but cannot order anything on its own — every rule touching a persona's domain scores
+1.0, which once ranked "honoured by the King" level with "happiness through wife"."""
 
 
 @dataclass
@@ -69,16 +44,10 @@ class RuleHit:
     rishi_affinity: dict = field(default_factory=dict)
     vector: list[float] = field(default_factory=list)
     sensitivities: set = field(default_factory=set)
-    """Categories of claim this rule makes -- death, diagnosis, intimate. Carried so the
-    prompt can require a hedge even when the rule is admissible."""
+    """Claim categories — death, diagnosis, intimate — so the prompt can require a
+    hedge even when the rule is admissible."""
     merged_from: list[str] = field(default_factory=list)
-    """Rule keys folded into this one because they share a verse and a condition.
-
-    BPHS 26.60 was extracted as three separate rules -- "adopted son", "purchased son",
-    "bereft of his own sons" -- while 26.13 kept all six of its outcomes on one rule. The
-    extractor split inconsistently, and on a real chart 17 matching rules turned out to be
-    only 10 distinct verses, so 40% of the display budget was repetition.
-    """
+    """Rule keys folded in by `merge_siblings`."""
 
     @property
     def citation(self) -> str:
@@ -92,12 +61,11 @@ def rule_collection_name(page_collection: str) -> str:
 
 
 def _payload_to_hit(payload: dict, relevance: float) -> RuleHit | None:
-    """Rebuild a rule from its Qdrant payload.
+    """Rebuild a rule from its Qdrant payload, or None if it will not parse.
 
-    Qdrant payloads are flat-ish, and nested dicts survive round-tripping unevenly across
-    client versions, so `condition` / `effects` / `source` travel as JSON strings and are
-    parsed here. A payload that will not parse is skipped rather than raised: one corrupt
-    point must not take down an answer.
+    Nested dicts round-trip unevenly across client versions, so `condition`,
+    `effects` and `source` travel as JSON strings. One corrupt point must not take
+    down an answer, hence None rather than a raise.
     """
     try:
         return RuleHit(
@@ -112,73 +80,18 @@ def _payload_to_hit(payload: dict, relevance: float) -> RuleHit | None:
         return None
 
 
-def match_rules(
-    store,
-    query_embedding: list[float],
-    *,
-    tokens: dict,
-    rishi: str,
-    limit: int = 12,
-) -> list[RuleHit]:
-    """Rules that are about the question AND true of this chart, strongest first.
-
-    `store` is a `VectorStore` already pointed at the rule collection. Returns [] when the
-    collection is absent, so a runtime with no rule base degrades to page retrieval instead
-    of failing.
-    """
-    try:
-        if not store.exists():
-            return []
-        candidates = store.search(query_embedding, limit * CANDIDATE_MULTIPLIER)
-    except Exception:  # noqa: BLE001 - an unreachable rule store must not break an answer
-        return []
-
-    hits: list[RuleHit] = []
-    for candidate in candidates:
-        payload = candidate.get("metadata") or {}
-        relevance = rule_relevance(rishi, json.loads(payload.get("rishi_affinity") or "{}"))
-        if relevance < MIN_RELEVANCE:
-            continue
-        hit = _payload_to_hit(payload, relevance)
-        if hit is None or not satisfies(hit.condition, tokens):
-            continue
-        hits.append(hit)
-        if len(hits) >= limit:
-            break
-
-    hits.sort(key=lambda hit: -hit.relevance)
-    return hits
-
-
 def _cosine(left: list[float], right: list[float]) -> float:
-    """Similarity between two embeddings, for RANKING rules already known to be true.
-
-    Written here rather than pulled from a library because it is four lines and adding a
-    numpy dependency to the Streamlit request path for four lines is a bad trade.
-    """
+    """Similarity between two embeddings. Four lines, so no numpy on the request path."""
     dot = sum(a * b for a, b in zip(left, right))
     norm = (sum(a * a for a in left) ** 0.5) * (sum(b * b for b in right) ** 0.5)
     return dot / norm if norm else 0.0
 
 
-TOPICAL_WEIGHT = 0.6
-"""How much the question's wording counts, next to the Rishi's domain ownership.
-
-Domain ownership is a hard statement and comes first; topical similarity is a soft signal.
-But it needs real weight rather than a tiebreak, because ownership alone cannot order
-anything: every rule touching one of a persona's domains scores 1.0, so a marriage question
-returned "honoured by the King" and "lives in foreign lands" ranked equal to "happiness
-through wife".
-"""
-
-
 def focus(affinity: dict, domain: str) -> float:
-    """How much of this rule is about `domain`, from 0 to 1.
+    """Share of a rule's affinity mass sitting on `domain`, 0 to 1.
 
-    A rule tagged only "marriage" is more about marriage than one tagged "marriage,
-    wealth, career, travel, health" -- and under a plain maximum the two score identically.
-    This is the share of the rule's affinity mass sitting on the matched domain, which is
-    what separates a specialist rule from a scattered one.
+    Separates a specialist rule from a scattered one: tagged "marriage" alone beats
+    tagged "marriage, wealth, career, travel, health", which a plain maximum ties.
     """
     total = sum(affinity.values()) or 1.0
     return affinity.get(domain, 0.0) / total
@@ -190,12 +103,10 @@ def rank_score(
     query_embedding: list[float],
     rule_vector: list[float],
 ) -> tuple[float, float]:
-    """(relevance, score) for one true rule.
+    """`(relevance, score)` for one true rule.
 
-    `relevance` is the raw domain agreement, kept for display -- it answers "is this this
-    Rishi's evidence at all". `score` is what ordering uses, and it multiplies agreement by
-    focus before adding topical similarity, so a rule that is squarely about the asked
-    domain outranks one that merely mentions it.
+    `relevance` is raw domain agreement, kept for display. `score` orders, and
+    multiplies agreement by focus before adding topical similarity.
     """
     from rishivan.council.domains import RISHI_LIFE_DOMAINS
 
@@ -227,20 +138,11 @@ def rank_true_rules(
     limit: int = 10,
     question: str = "",
 ) -> list[RuleHit]:
-    """Rank rules already proven true of the chart, by relevance to the question.
+    """Order rules already proven true of the chart by relevance to the question.
 
-    This inverts the older nominate-then-filter order, and the inversion is the point.
-    Measured on a test chart against 204 approved rules of which 21 are true:
-
-        question                   true rules the vector nominated
-        "will my wife be healthy"   10 / 21   -- 11 lost
-        "will I be wealthy"          6 / 21   -- 14 lost
-        "what about my career"       6 / 21   -- 14 lost
-
-    Nominating by similarity spends its window on rules that *read* like the question while
-    true rules sit outside it -- it was drawing 72 of 204, over a third of the base, and
-    still losing half. Similarity cannot know what is true, so going first caps recall at
-    whatever it happens to surface. Exact-match everything, then rank here.
+    Ranking comes after matching, never before. Nominating by similarity first cost
+    11 to 14 of 21 true rules on the measured chart: a similarity window has no way to
+    prefer rules that happen to be true, so going first caps recall.
     """
     from rishivan.knowledge.match.safety import sensitivities, withhold_reasons
 
@@ -273,27 +175,20 @@ def rank_true_rules(
 
 
 def _condition_signature(condition: dict) -> str:
-    """A stable identity for a condition, so siblings can be recognised.
-
-    Sorted keys because two rules extracted from one verse can serialise the same atoms in
-    different orders -- the model does not preserve field order -- and an order-sensitive
-    signature would treat identical conditions as distinct.
-    """
+    """Stable identity for a condition. Sorted keys: the model does not preserve field
+    order, so an order-sensitive signature would split identical conditions."""
     return json.dumps(condition, sort_keys=True)
 
 
 def merge_siblings(hits: list[RuleHit]) -> list[RuleHit]:
-    """Fold rules that share a verse AND a condition into one, keeping every effect.
+    """Fold rules sharing a verse AND a condition into one, keeping every effect.
 
-    They are the same claim about the same chart, stated once per outcome. BPHS 26.60 was
-    extracted as three rules -- "adopted son", "purchased son", "bereft of his own sons" --
-    while 26.13 kept all six of its outcomes on one rule; the extractor split
-    inconsistently. On a real chart 17 matching rules proved to be only 10 distinct verses,
-    so 40% of the display budget was repetition, and to a reader it looks like the book
-    insisting rather than one verse being quoted once.
+    They are one claim stated once per outcome — the extractor split inconsistently,
+    giving BPHS 26.60 three rules and 26.13 one with six effects. On a real chart 17
+    matches were only 10 distinct verses.
 
-    Grouped on (verse, condition) rather than verse alone: one verse can legitimately hold
-    several *different* conditions, as BPHS 15.1-2 does, and those must stay separate.
+    Grouped on (verse, condition), not verse alone: one verse can hold several
+    genuinely different conditions, as BPHS 15.1-2 does.
     """
     merged: dict[tuple, RuleHit] = {}
     for hit in hits:
@@ -314,7 +209,7 @@ def merge_siblings(hits: list[RuleHit]) -> list[RuleHit]:
             if (effect.get("polarity"), effect.get("statement")) not in seen:
                 existing.effects.append(effect)
         existing.merged_from.append(hit.rule_key)
-        # The union of what the siblings were about: keeping only one sibling's affinity
+        # The union of what the siblings were about; keeping one sibling's affinity
         # would narrow the merged rule's reach for no reason.
         for domain, weight in (hit.rishi_affinity or {}).items():
             existing.rishi_affinity[domain] = max(
@@ -329,12 +224,11 @@ def merge_siblings(hits: list[RuleHit]) -> list[RuleHit]:
 def true_rules(store, tokens: dict, *, with_vectors: bool = False) -> list[RuleHit]:
     """Every approved rule that applies to this chart. No similarity involved.
 
-    `applies` rather than `satisfies`: a rule whose exception holds for this chart is one
-    the source itself cancels, and presenting it would assert what the book denies.
+    `applies` rather than `satisfies`: a rule whose exception holds is one the source
+    itself cancels, and presenting it would assert what the book denies.
 
-    Scrolls the whole collection. At 204 rules that is one request; at 50,000 the caller
-    should cache the scroll and re-run it per approval batch rather than per question,
-    because the payloads change only when a reviewer approves something.
+    Scrolls the whole collection — one request at 204 rules. At 50,000 the caller
+    should cache the scroll per approval batch rather than per question.
     """
     from rishivan.knowledge.match.engine import applies
 
@@ -342,9 +236,8 @@ def true_rules(store, tokens: dict, *, with_vectors: bool = False) -> list[RuleH
         try:
             points = store.all_points(with_vectors=with_vectors)
         except TypeError:
-            # A store predating the with_vectors argument. The retry has to sit INSIDE the
-            # outer guard: as a bare handler it let a ConnectionError escape and take down
-            # the whole answer, which is exactly what this function exists to prevent.
+            # A store predating `with_vectors`. The retry sits INSIDE the outer guard:
+            # as a bare handler it let ConnectionError escape and kill the answer.
             points = store.all_points()
     except Exception:  # noqa: BLE001 - an unreachable rule store must not break an answer
         return []
@@ -377,12 +270,7 @@ def rules_for_question(
     limit: int = 10,
     question: str = "",
 ) -> list[RuleHit]:
-    """The whole rule path: match everything, then rank what survived.
-
-    Replaces `match_rules`. The difference is recall: nominating by similarity first lost
-    11 to 14 of 21 true rules on the measured chart, because a similarity window has no way
-    to prefer rules that happen to be true.
-    """
+    """The whole rule path: match everything, then rank what survived."""
     return rank_true_rules(
         true_rules(store, tokens, with_vectors=True),
         query_embedding,
