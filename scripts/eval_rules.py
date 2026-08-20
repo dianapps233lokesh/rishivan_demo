@@ -22,6 +22,7 @@ import sys
 from rishivan.chart.ephemeris import BirthData, compute_chart
 from rishivan.chart.tokens import all_chart_tokens
 from rishivan.config import settings
+from rishivan.council.domains import primary_rishi_for
 from rishivan.council.routing import route_question
 from rishivan.knowledge.match.safety import withhold_reasons
 from rishivan.rag.rules import (
@@ -64,6 +65,9 @@ def main(argv: list[str] | None = None) -> int:
 
     for q in questions:
         routing = route_question(q.question)
+        # `merge_supporting` is deliberately NOT called: the eval has no classifier
+        # output, so this measures the keyword table alone -- the honest baseline.
+        voice = primary_rishi_for(routing.primary)
         hits = rank_true_rules(
             applicable, [0.0] * 768, routing=routing, limit=SHOWN, question=q.question
         )
@@ -85,6 +89,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"── {q.question}")
         print(f"   probes      : {q.probes}")
         print(f"   routing     : {verdict}  primary={routing.primary} "
+              f"voice={voice} "
               f"secondary={list(routing.secondary)} application={routing.application} "
               f"universes={sorted(routing.universes)}")
         print(f"   rules shown : {len(hits)} of {len(applicable)} true   "
@@ -103,6 +108,7 @@ def main(argv: list[str] | None = None) -> int:
             "probes": q.probes,
             "expect_domain": q.expect_domain or "",
             "routed_primary": routing.primary or "",
+            "voice": voice,
             "routing_ok": verdict.strip(),
             "application": routing.application,
             "rules_true": len(applicable),
