@@ -34,14 +34,44 @@ sequencing recommendation at the end.
 
 Everything below was measured, not recalled.
 
-### Corpus: 22 books ingested, 2 in the knowledge pipeline
+### Corpus: 23 books ingested, 18 now bridged
+
+Updated after `68afd40` (edition profiles). Readiness is units per page — BPHS runs at
+1.3-1.6, so anything under 0.3 means the adapter is not pairing that book's verses.
 
 ```
-book                                       pages  chap  units triaged  rules  appr
-bphs-gcsharma-vol1                           657    47   1008    1008    398   376
-bphs-gcsharma-vol2                           818    53   1055    1055      0     0
-  ...all 21 other books                        0     0      0       0      0     0
+                                       pages shloka  units  u/pg   state
+bphs-gcsharma-vol1                       657   1065   1041  1.58   READY
+bphs-gcsharma-vol2                       818   1183   1076  1.32   READY
+sarvartha-chintamani                     374   1684   1112  2.97   READY
+prashna-tantra                           123    368    339  2.76   READY
+saravali-santhanam-en                    351    664    567  1.62   READY
+muhurtachintamani                        322    523    423  1.31   READY
+hindupredictiveastrology-raman           456      0    304  0.67   partial
+jatakaparijata-sastri-vol2               684   1323    396  0.58   partial
+jatakaparijata-sastri-vol1               662   1720    292  0.44   partial
+phaladeepika-sastri-1950                 473    866    141  0.30   THIN
+cheiros-book-of-numbers                  194      0     39  0.20   THIN
+prasnamarga-raman-part1                  278      0     34  0.12   THIN
+bhavartha-ratnakara                      128      5      9  0.07   THIN
+numerology-and-the-divine-triangle       292      0     18  0.06   THIN
+brihatjataka-row-1919                    274      1     13  0.05   THIN
+numerology-key-to-your-inner-self        292      0     10  0.03   THIN
+prasnamarga-raman-part2                  242      0      3  0.01   THIN
+the-complete-book-of-numerology          205      0      1  0.00   THIN
+devakeralam vol 1 / vol 2, dharma-sindhu, laghu-parashari, vivaha-patalam
+                                                        0  0.00   no chapters
 ```
+
+**5,818 units, 2,932 rule-destined**, up from 2,063 and 975. Six books are ready, three
+partial, nine thin, five unbridgeable.
+
+**The thin books need a second profile dimension.** Chapters are solved; verse *pairing*
+is not. Phaladeepika has 866 shlokas and 1,401 prose blocks and yields 141 units, because
+`bridge/verse_ref.py` reads BPHS's danda conventions and `bridge/adapt.py` pairs a shloka
+with a *numbered* translation. Books that number verses differently, or print no
+Devanagari at all (Prasna Marga, Hindu Predictive, all four numerology titles have zero
+shloka elements), do not pair. That is an `EditionProfile` field that does not exist yet.
 
 Two separate stores, and the difference matters:
 
