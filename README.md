@@ -64,15 +64,9 @@ QDRANT_API_KEY = "..."
 VECTOR_COLLECTION = "rishivan_docs"
 ```
 
-Then **one** AI backend:
+Then Vertex AI (needs billing enabled):
 
 ```toml
-# Option A — simplest
-GEMINI_API_KEY = "AIza..."
-```
-
-```toml
-# Option B — Vertex AI (higher quotas, needs billing enabled)
 GCP_PROJECT_ID = "..."
 GCP_LOCATION = "global"
 GCP_SERVICE_ACCOUNT_EMAIL = "svc@project.iam.gserviceaccount.com"

@@ -26,7 +26,7 @@ from pathlib import Path
 
 from rishivan.config import settings
 from rishivan.council.classifier import classify_query
-from rishivan.council.client import get_gemini_api_client, get_vertex_client, model_name
+from rishivan.council.client import get_vertex_client, model_name
 from rishivan.council.conversation import Conversation
 from rishivan.council.lens import maybe_generate_secondary_voice
 from rishivan.council.orchestrator import council_consult
@@ -49,10 +49,6 @@ def _seed_conversation(seed: tuple[str, str, str] | None) -> Conversation | None
     convo = Conversation()
     convo.add(question, answer, rishi)
     return convo
-
-
-def _get_client(backend: str):
-    return get_gemini_api_client(settings.GEMINI_API_KEY) if backend == "gemini" else get_vertex_client()
 
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -115,9 +111,9 @@ def _check_classification(case, result: dict) -> list[str]:
     return failures
 
 
-def run_classification_tier(backend: str) -> list[dict]:
-    client = _get_client(backend)
-    model = model_name(backend, "flash")
+def run_classification_tier() -> list[dict]:
+    client = get_vertex_client()
+    model = model_name("flash")
     results = []
 
     for case in CLASSIFICATION_CASES:
@@ -212,9 +208,9 @@ def _check_pipeline(case, result: dict, answer_text: str) -> list[str]:
     return failures
 
 
-def run_pipeline_tier(backend: str, store) -> list[dict]:
-    client = _get_client(backend)
-    model = model_name(backend, "flash")
+def run_pipeline_tier(store) -> list[dict]:
+    client = get_vertex_client()
+    model = model_name("flash")
     results = []
 
     for case in PIPELINE_CASES:
@@ -224,7 +220,7 @@ def run_pipeline_tier(backend: str, store) -> list[dict]:
         try:
             result = council_consult(
                 client, store, case.question,
-                birth_data=birth_data, backend=backend, conversation=convo,
+                birth_data=birth_data, conversation=convo,
             )
             answer_text = _consume_answer(result)
             # The real app (streamlit_app.py) calls this AFTER the primary
@@ -312,15 +308,12 @@ def main() -> int:
         print(f"Cannot run: missing config {missing}")
         return 1
 
-    backend = settings.default_backend
-    print(f"Backend: {backend}")
-
     tier2_only = "--tier2-only" in sys.argv
     if tier2_only:
         tier1_results = []
     else:
         print("\n--- Tier 1: classification/routing ---")
-        tier1_results = run_classification_tier(backend)
+        tier1_results = run_classification_tier()
 
     print("\n--- Tier 2: full pipeline (real retrieval + generation) ---")
     store = get_vector_store()
@@ -331,7 +324,7 @@ def main() -> int:
         )
         tier2_results = []
     else:
-        tier2_results = run_pipeline_tier(backend, store)
+        tier2_results = run_pipeline_tier(store)
 
     if tier2_only and REPORT_PATH.exists():
         # Keep the previous (still-valid) Tier 1 results in the merged report

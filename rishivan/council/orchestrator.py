@@ -16,7 +16,7 @@ Flow:
   4. Retrieve from Qdrant filtered by Rishi's book domains, ranked by
      specificity x source authority (rishivan.rag.authority)
   5. Build Rishi-voiced prompt (natural flowing prose)
-  6. Stream answer via Gemini (Vertex or API key backend)
+  6. Stream answer via Vertex AI
   7. Earn a second Rishi's brief perspective when the classifier's own
      supporting_rishis call already named one with real confidence
      (rishivan.council.lens)
@@ -61,8 +61,7 @@ def council_consult(
     lon: float | None = None,
     tz_offset: float = 5.5,
     place: str = "",
-    backend: str = "vertex",   # "vertex" | "gemini"
-    conversation=None,         # poc.council.conversation.Conversation
+    conversation=None,         # rishivan.council.conversation.Conversation
 ) -> dict:
     """Full Council consultation pipeline.
 
@@ -71,8 +70,8 @@ def council_consult(
       chart_summary, chart_facts, sources, search_query, answer_stream
     """
     from rishivan.council.client import model_name
-    _model = model_name(backend, "flash")
-    _embed_model = model_name(backend, "embed")
+    _model = model_name("flash")
+    _embed_model = model_name("embed")
 
     result = {
         "primary_rishi": rishi_override or "vyom",
@@ -361,21 +360,7 @@ def council_consult(
     from rishivan.rag.retrieve import collect_chart_context, expand_to_page_window
 
     def embed_fn(texts):
-        if backend == "gemini":
-            # gemini-embedding-exp-03-07 supports output_dimensionality; it must
-            # match the Qdrant collection, which was built with text-embedding-004.
-            from google.genai import types as _gt
-
-            from rishivan.council.client import GEMINI_EMBED_DIM
-            r = client.models.embed_content(
-                model=_embed_model,
-                contents=texts,
-                config=_gt.EmbedContentConfig(
-                    output_dimensionality=GEMINI_EMBED_DIM
-                ),
-            )
-        else:
-            r = client.models.embed_content(model=_embed_model, contents=texts)
+        r = client.models.embed_content(model=_embed_model, contents=texts)
         return [e.values for e in r.embeddings]
 
     # Use this Rishi's book domain filter

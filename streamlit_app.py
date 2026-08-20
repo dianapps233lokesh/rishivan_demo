@@ -175,12 +175,6 @@ def _get_vertex_client():
     return get_vertex_client()
 
 
-def _get_gemini_client(api_key: str):
-    """Not cached — key may change. Fast to init."""
-    from rishivan.council.client import get_gemini_api_client
-    return get_gemini_api_client(api_key)
-
-
 @st.cache_resource(show_spinner=False)
 def _get_store():
     try:
@@ -209,8 +203,6 @@ if _missing:
 for k, v in [
     ("history", []),
     ("prefill", ""),
-    ("backend", settings.default_backend),
-    ("gemini_api_key", settings.GEMINI_API_KEY),
     ("conversation", Conversation()),
 ]:
     if k not in st.session_state:
@@ -330,14 +322,10 @@ if ask_btn and question.strip():
         )
         st.stop()
 
-    # Backend comes from .env now that the sidebar is gone: Vertex by default,
-    # Gemini API only if a key is present.
-    backend = st.session_state.backend
     try:
-        client = (_get_gemini_client(st.session_state.gemini_api_key)
-                  if backend == "gemini" else _get_vertex_client())
+        client = _get_vertex_client()
     except Exception as exc:  # noqa: BLE001
-        st.error(f"Could not reach the AI backend ({backend}): {exc}")
+        st.error(f"Could not reach Vertex AI: {exc}")
         st.stop()
 
     # No selector in the UI — the classifier always chooses the Rishi.
@@ -366,7 +354,6 @@ if ask_btn and question.strip():
         rishi_override=rishi_override,
         birth_data=birth_data,
         query_time=dt.datetime.now(),
-        backend=backend,
         conversation=st.session_state.conversation,
     )
 
@@ -664,7 +651,7 @@ if ask_btn and question.strip():
                 from rishivan.council.lens import maybe_generate_secondary_voice
 
                 secondary = maybe_generate_secondary_voice(
-                    result, client, model_name(backend, "flash"), question.strip()
+                    result, client, model_name("flash"), question.strip()
                 )
                 if secondary:
                     sp = get_persona(secondary["rishi"])

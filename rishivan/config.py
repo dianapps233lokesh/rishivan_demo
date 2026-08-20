@@ -66,10 +66,6 @@ class Settings:
 
     # ── Google AI ───────────────────────────────────────────────────────────
     @cached_property
-    def GEMINI_API_KEY(self) -> str:
-        return _secret("GEMINI_API_KEY")
-
-    @cached_property
     def GCP_PROJECT_ID(self) -> str:
         return _secret("GCP_PROJECT_ID")
 
@@ -114,25 +110,16 @@ class Settings:
         return bool(self.GCP_PROJECT_ID and self.GCP_PRIVATE_KEY)
 
     @cached_property
-    def has_gemini_key(self) -> bool:
-        return bool(self.GEMINI_API_KEY)
-
-    @cached_property
     def has_helicone(self) -> bool:
         return bool(self.HELICONE_API_KEY)
-
-    @cached_property
-    def default_backend(self) -> str:
-        """Prefer a Gemini API key when present — no service account needed."""
-        return "gemini" if self.has_gemini_key else "vertex"
 
     def missing(self) -> list[str]:
         """Config the app cannot start without, for a clear error on screen."""
         gaps: list[str] = []
         if not self.QDRANT_URL:
             gaps.append("QDRANT_URL")
-        if not (self.has_gemini_key or self.has_vertex):
-            gaps.append("GEMINI_API_KEY (or the five GCP_* Vertex values)")
+        if not self.has_vertex:
+            gaps.append("the five GCP_* Vertex values")
         return gaps
 
 
