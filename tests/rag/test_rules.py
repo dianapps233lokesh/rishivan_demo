@@ -18,6 +18,7 @@ from rishivan.council.routing import route_question
 from rishivan.rag.rules import (
     MIN_RELEVANCE,
     RuleHit,
+    _payload_to_hit,
     merge_siblings,
     rank_score,
     rule_collection_name,
@@ -521,3 +522,38 @@ def test_an_untiered_rule_is_treated_as_experimental_not_classical():
         routing=route_question("Will my marriage be happy?"), limit=5,
     )
     assert hits[0].tier == "S5"
+
+
+# --- BP §6's REMEDIES field across the store boundary -------------------------
+
+
+def test_remedies_survive_the_store_boundary():
+    """Blueprint §6 lists REMEDIES as a Koonji field and the extractor populates it, but
+    it was written to Postgres and dropped at the Qdrant boundary -- unreachable at query
+    time, exactly as `exceptions` and `modifiers` were."""
+    remedy = [{"kind": "mantra", "detail": "hymns to Shiva"}]
+    payload = {
+        "rule_key": "r",
+        "condition": json.dumps(CONDITION),
+        "remedies": json.dumps(remedy),
+    }
+    hit = _payload_to_hit(payload, relevance=1.0)
+    assert hit is not None
+    assert hit.remedies == remedy
+
+
+def test_a_rule_with_no_remedies_gets_an_empty_list_not_none():
+    hit = _payload_to_hit(
+        {"rule_key": "r", "condition": json.dumps(CONDITION)}, relevance=1.0
+    )
+    assert hit is not None
+    assert hit.remedies == []
+
+
+def test_the_embedder_writes_the_remedies_key():
+    """The generic contract test cannot catch this: it compares keys the READER reads,
+    so a field neither side handles passes silently."""
+    from pathlib import Path
+
+    writer = Path("scripts/embed_rules.py").read_text()
+    assert '"remedies"' in writer

@@ -77,6 +77,10 @@ class RuleHit:
     hedge even when the rule is admissible."""
     merged_from: list[str] = field(default_factory=list)
     """Rule keys folded in by `merge_siblings`."""
+    remedies: list[dict] = field(default_factory=list)
+    """Blueprint §6's REMEDIES field. Extracted and stored in Postgres from the start,
+    but dropped at the Qdrant boundary until now, so the remedy contributor had nothing
+    to read."""
 
     @property
     def citation(self) -> str:
@@ -107,6 +111,7 @@ def _payload_to_hit(payload: dict, relevance: float) -> RuleHit | None:
             school=payload.get("school") or "unknown",
             rule_category=payload.get("rule_category") or "formation",
             tier=payload.get("tier") or "S5",
+            remedies=json.loads(payload.get("remedies") or "[]"),
         )
     except (KeyError, TypeError, ValueError):
         return None

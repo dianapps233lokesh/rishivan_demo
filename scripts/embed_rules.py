@@ -167,6 +167,10 @@ async def main(argv: list[str] | None = None) -> int:
             # here, so `applies()` silently degenerated to `satisfies()` in production.
             "modifiers": json.dumps((rule.effect or {}).get("modifiers") or []),
             "exceptions": json.dumps((rule.effect or {}).get("exceptions") or []),
+            # BP §6 lists REMEDIES alongside MODIFIERS and EXCEPTIONS. Compiled onto the
+            # rule by `knowledge/compile/persist.py` and stored in Postgres, but never
+            # published here -- so no consumer could reach it.
+            "remedies": json.dumps((rule.effect or {}).get("remedies") or []),
             # BP §4 level 2 and §8 rule 5: "never mix schools silently -- label both".
             # Carried so an answer can group its evidence by school rather than pooling
             # Parashari and Prashna into one indistinguishable claim.
