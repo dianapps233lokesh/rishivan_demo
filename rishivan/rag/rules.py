@@ -29,6 +29,11 @@ MIN_RELEVANCE = 0.1
 house lies outside every routed Rishi's §4-11 coverage scores exactly 0 — so this only
 discards the marginal tail."""
 
+TIER_WEIGHT_FACTOR = 0.15
+"""How much Blueprint §12's tier moves a rule. §8 rule 4 asks for a hierarchy of
+evidence, not a veto: a practitioner's rule that is true of the chart is still evidence,
+it just yields to a classical one competing for the same slot."""
+
 AFFINITY_WEIGHT = 0.3
 """Weight of the rule's own §15 affinity for the routed domain. Refinement, not a gate:
 affinity says what the rule's OUTCOME is about, coverage says what its CONDITION is
@@ -64,6 +69,9 @@ class RuleHit:
     "cross-school confirmation" -- so the answer is to label, never to exclude."""
     rule_category: str = "formation"
     """Blueprint §4 level 5: `formation` (natal promise) or `timing` (activation)."""
+    tier: str = "S5"
+    """Blueprint §12 source tier. Defaults to experimental, never classical: an
+    untiered rule must not inherit authority nobody granted it."""
     sensitivities: set = field(default_factory=set)
     """Claim categories — death, diagnosis, intimate — so the prompt can require a
     hedge even when the rule is admissible."""
@@ -98,6 +106,7 @@ def _payload_to_hit(payload: dict, relevance: float) -> RuleHit | None:
             relevance=relevance,
             school=payload.get("school") or "unknown",
             rule_category=payload.get("rule_category") or "formation",
+            tier=payload.get("tier") or "S5",
         )
     except (KeyError, TypeError, ValueError):
         return None
@@ -127,6 +136,7 @@ def rank_score(
     query_embedding: list[float],
     rule_vector: list[float],
     rule_category: str = "formation",
+    tier: str = "S5",
 ) -> tuple[float, float, str | None]:
     """`(relevance, score, domain)` for one true rule.
 
@@ -151,11 +161,14 @@ def rank_score(
         getattr(routing, "application", "potential"), "formation"
     )
     application = APPLICATION_BONUS * (1.0 if rule_category == wanted else 0.0)
+    from rishivan.rag.authority import TIER_WEIGHT
+
     score = (
         relevance
         + AFFINITY_WEIGHT * outcome
         + TOPICAL_WEIGHT * topical
         + application
+        + TIER_WEIGHT_FACTOR * TIER_WEIGHT.get(tier, TIER_WEIGHT["S5"])
     )
     return relevance, score, domain
 
@@ -186,6 +199,7 @@ def rank_true_rules(
             routing, getattr(rule, "condition", None) or {}, affinity,
             query_embedding, getattr(rule, "vector", None) or [],
             getattr(rule, "rule_category", "formation"),
+            getattr(rule, "tier", "S5"),
         )
         if relevance < MIN_RELEVANCE:
             continue

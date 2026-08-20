@@ -484,3 +484,40 @@ def test_hits_can_be_grouped_by_school_without_merging():
     assert set(grouped) == {"parashari", "prashna"}
     assert len(grouped["parashari"]) == 2
     assert len(grouped["prashna"]) == 1
+
+
+# --- BP §8 rule 4: hierarchy of evidence -------------------------------------
+
+
+def test_a_classical_rule_outranks_a_modern_one_all_else_equal():
+    """§8 rule 4: "Primary classical source > established commentary > established
+    practitioner > experimental material." Inert while every rule is BPHS; it matters
+    the moment Hindu Predictive Astrology (S3) rules sit beside Prasna Marga (S0)."""
+    classical = _categorised("classical", "formation", verse="1")
+    classical["metadata"]["tier"] = "S0"
+    modern = _categorised("modern", "formation", verse="2")
+    modern["metadata"]["tier"] = "S3"
+
+    hits = rules_for_question(
+        Store([modern, classical]), [0.0], tokens=CHART,
+        routing=route_question("Will my marriage be happy?"), limit=5,
+    )
+    assert [h.rule_key for h in hits] == ["classical", "modern"]
+
+
+def test_a_hit_carries_its_tier():
+    point = _categorised("r", "formation")
+    point["metadata"]["tier"] = "S1"
+    hits = rules_for_question(
+        Store([point]), [0.0], tokens=CHART,
+        routing=route_question("Will my marriage be happy?"), limit=5,
+    )
+    assert hits[0].tier == "S1"
+
+
+def test_an_untiered_rule_is_treated_as_experimental_not_classical():
+    hits = rules_for_question(
+        Store([_categorised("untiered", "formation")]), [0.0], tokens=CHART,
+        routing=route_question("Will my marriage be happy?"), limit=5,
+    )
+    assert hits[0].tier == "S5"

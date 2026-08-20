@@ -146,3 +146,36 @@ def test_application_does_not_change_the_routed_domain():
     plain = route_question("Will I marry?")
     assert timed.primary == plain.primary == "prema"
     assert timed.application != plain.application
+
+
+# ── Blueprint §4 level 1: which universes this question invokes ──────────────
+#
+# ER §13: numerology, palmistry, face reading and Vastu are "shared specialist
+# modalities callable by the relevant Rishi(s)" and "must never silently override natal
+# astrology". So a natal question retrieves from Jyotisha only.
+
+
+def test_a_natal_question_invokes_jyotisha_only():
+    for question in ("Will I be wealthy?", "When will I marry?", "What career suits me?"):
+        assert route_question(question).universes == frozenset({"jyotisha"}), question
+
+
+def test_a_numerology_question_invokes_numerology_too():
+    """§13 routes name/number questions to Atma for identity and Artha for business --
+    the modality is added to natal astrology, never substituted for it."""
+    for question in (
+        "What does my name say about business?",
+        "What is my mulank?",
+        "What does numerology say about my career?",
+        "Is my lucky number good for money?",
+    ):
+        result = route_question(question)
+        assert "numerology" in result.universes, question
+        assert "jyotisha" in result.universes, question
+
+
+def test_numerology_never_replaces_jyotisha():
+    """The §13 constraint, as a test: the modality is additive."""
+    assert route_question("What does my name say about business?").universes >= (
+        frozenset({"jyotisha"})
+    )

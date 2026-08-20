@@ -14,6 +14,20 @@ from rishivan.config import settings
 Hit = dict  # {"document": str, "metadata": dict}
 
 
+def slug_filter(book_slugs):
+    """A Qdrant filter for `book_slug ∈ book_slugs`, or None for no restriction.
+
+    None rather than an empty filter: "no restriction" and "match nothing" are opposite
+    intentions and an empty `MatchAny` means the second.
+    """
+    slugs = list(book_slugs or [])
+    if not slugs:
+        return None
+    from qdrant_client.models import FieldCondition, Filter, MatchAny
+
+    return Filter(must=[FieldCondition(key="book_slug", match=MatchAny(any=slugs))])
+
+
 
 
 
@@ -127,12 +141,15 @@ class VectorStore:
         return {"document": document, "metadata": payload}
 
     def _domain_filter(self, domain_filter: list[str]):
-        """Build a Qdrant Filter for book_domain ∈ domain_filter."""
-        from qdrant_client.models import FieldCondition, Filter, MatchAny
+        """Build a Qdrant filter restricting results to these book slugs.
 
-        return Filter(
-            must=[FieldCondition(key="book_domain", match=MatchAny(any=domain_filter))]
-        )
+        Named `_domain_filter` for its callers' sake; it matches on `book_slug`. The
+        `book_domain` field it used to match is written inconsistently -- `'foundation'`
+        in some points and the stringified list `"['numerology']"` in others -- so
+        `MatchAny` silently missed about a quarter of the corpus, every numerology book
+        included. `book_slug` is written consistently and is already indexed.
+        """
+        return slug_filter(domain_filter)
 
     def search(self, embedding, n_results) -> list[Hit]:
         """Nearest-neighbour search; returns normalised hits."""

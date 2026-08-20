@@ -31,7 +31,7 @@ from rishivan.chart.local_numerology import numerology_table_markdown
 from rishivan.chart.local_varga import varga_table_markdown
 from rishivan.chart.panchang import mentions_panchang, relative_day_offset
 from rishivan.council.classifier import classify_query
-from rishivan.council.domains import RISHI_BOOK_DOMAINS, QueryDomain
+from rishivan.council.domains import QueryDomain
 from rishivan.council.prompts import build_rishi_prompt
 
 logger = logging.getLogger(__name__)
@@ -380,8 +380,22 @@ def council_consult(
         r = client.models.embed_content(model=_embed_model, contents=texts)
         return [e.values for e in r.embeddings]
 
-    # Use this Rishi's book domain filter
-    domain_filter = [d.value for d in RISHI_BOOK_DOMAINS.get(rishi, [])]
+    # Blueprint §4 level 1: retrieve within the universes this question invokes.
+    # Replaces a filter on ten hand-invented `book_domain` tags that appear in neither
+    # client document and flattened three of §4's levels into one list -- and which was
+    # also broken, since `book_domain` was written both as `'foundation'` and as the
+    # stringified list `"['numerology']"`, so `MatchAny` silently missed about a quarter
+    # of the corpus. `book_slug` is written consistently and already indexed.
+    #
+    # School is deliberately NOT filtered: §8 rule 5 asks for labelling, and every
+    # §4-11 protocol ends in "cross-school confirmation".
+    from rishivan.council.source_matrix import slugs_for_universe
+
+    domain_filter = sorted(
+        slug
+        for universe in routing.universes
+        for slug in slugs_for_universe(universe)
+    )
     # Fallback: remove filter if store has no tagged docs (POC compatibility)
     def _search_with_fallback(emb, n=10):
         if domain_filter:

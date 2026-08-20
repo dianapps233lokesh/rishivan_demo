@@ -1,38 +1,14 @@
-"""Book domain taxonomy and Rishi → book-domain mapping.
+"""Query-domain taxonomy and the persona -> client life-domain mapping.
 
-The 8 Rishis are personalities on top of one shared knowledge base.
-Domain filters control which books each Rishi draws from at query time.
+The ten-tag `BookDomain` taxonomy that used to live here is gone. It appeared in neither
+client document and flattened three of Blueprint §4's five levels into one list --
+`muhurta`/`prashna`/`nadi` are schools (level 2), `wealth`/`compatibility` are life
+domains (level 4), `numerology` is a universe (level 1). Retrieval now filters on §4's
+own levels; see `council.source_matrix`.
 """
 from __future__ import annotations
 
 from enum import Enum
-
-
-class BookDomain(str, Enum):
-    FOUNDATION   = "foundation"    # BPHS, Phaladeepika, Saravali, Jataka Parijata, Hindu Predictive Astrology
-    PREDICTION   = "prediction"    # Brihat Jataka, Laghu Parashari, Sarvartha Chintamani, Hindu Predictive Astrology
-    TIMING       = "timing"        # Laghu Parashari, BPHS timing chapters
-    MUHURTA      = "muhurta"       # Muhurta Chintamani, Dharma Sindhu, Vivaha Patalam
-    PRASHNA      = "prashna"       # Prashna Marga, Prashna Tantra
-    REMEDIAL     = "remedial"      # BPHS remedies chapters
-    NADI         = "nadi"          # Deva Keralam / Chandra Kala Nadi
-    WEALTH       = "wealth"        # Bhavartha Ratnakara, Sarvartha Chintamani
-    COMPATIBILITY = "compatibility" # Muhurta vivaha sections, Vivaha Patalam
-    NUMEROLOGY   = "numerology"    # Cheiro's Book of Numbers, Complete Book of Numerology, Numerology: Key to Your Inner Self
-
-
-# ── Rishi → book domains they draw from ─────────────────────────────────────
-
-RISHI_BOOK_DOMAINS: dict[str, list[str]] = {
-    "agam":    [BookDomain.FOUNDATION, BookDomain.NADI],
-    "vyom":    [BookDomain.FOUNDATION, BookDomain.PREDICTION, BookDomain.NADI],
-    "dhruvan": [BookDomain.WEALTH, BookDomain.PREDICTION, BookDomain.FOUNDATION, BookDomain.NUMEROLOGY],
-    "ritam":   [BookDomain.TIMING, BookDomain.MUHURTA, BookDomain.FOUNDATION],
-    "tejan":   [BookDomain.REMEDIAL, BookDomain.FOUNDATION],
-    "medhan":  [BookDomain.FOUNDATION, BookDomain.PREDICTION, BookDomain.PRASHNA, BookDomain.COMPATIBILITY, BookDomain.NUMEROLOGY],
-    "tattvan": [BookDomain.PREDICTION, BookDomain.NADI, BookDomain.FOUNDATION],
-    "pragnav": [BookDomain.FOUNDATION, BookDomain.NADI],
-}
 
 
 # ── Query-domain taxonomy (for chart routing) ────────────────────────────────

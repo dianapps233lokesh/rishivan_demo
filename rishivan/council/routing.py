@@ -110,6 +110,23 @@ strings directly matched only on "timing" -- by accident -- and silently gave a
 whether-question no preference at all.
 """
 
+NUMEROLOGY_MARKERS = re.compile(
+    r"\bnumerolog|\bmulank\b|\bbhagyaank\b|\bbhagyank\b|\blucky number|"
+    r"\bmy name\b|\bname number|\bdate of birth number|\bnumber say|"
+    r"\bnumbers say|\bchaldean\b|\bpythagorean\b",
+    re.IGNORECASE,
+)
+"""Language that invokes the numerology modality.
+
+Blueprint §4 level 1 separates Jyotisha from Numerology; ER §13 makes numerology "a
+shared specialist modality callable by the relevant Rishi(s)" which "must never silently
+override natal astrology". So it is ADDED to Jyotisha when asked for, never substituted:
+a natal question must not retrieve numerology pages as though they were natal evidence.
+"""
+
+JYOTISHA = "jyotisha"
+NUMEROLOGY = "numerology"
+
 MAX_DOMAINS = 3
 """§12: "Do not invoke all eight by default. Invoke the minimum set that provides
 independent, relevant evidence." A cap makes that structural rather than advisory."""
@@ -121,6 +138,10 @@ class Routing:
 
     primary: str | None
     secondary: tuple[str, ...] = ()
+    universes: frozenset[str] = frozenset({JYOTISHA})
+    """Blueprint §4 level 1 -- which universes this question may retrieve from.
+
+    Always includes Jyotisha; a modality is additive (ER §13), never a replacement."""
     application: str = APPLICATION_POTENTIAL
     """Blueprint §4 level 5. `timing` when the question asks WHEN, else `potential`.
 
@@ -165,6 +186,9 @@ def route_question(question: str) -> Routing:
     application = (
         APPLICATION_TIMING if TIMING_MARKERS.search(text) else APPLICATION_POTENTIAL
     )
+    universes = frozenset(
+        {JYOTISHA} | ({NUMEROLOGY} if NUMEROLOGY_MARKERS.search(text) else set())
+    )
     if not text.strip():
         return Routing(primary=None)
 
@@ -178,13 +202,14 @@ def route_question(question: str) -> Routing:
         matched[domain] = tuple(hits)
 
     if not scores:
-        return Routing(primary=None, application=application)
+        return Routing(primary=None, application=application, universes=universes)
 
     order = list(QUESTION_KEYWORDS)
     ranked = sorted(scores, key=lambda d: (-scores[d], order.index(d)))
     return Routing(
         primary=ranked[0],
         secondary=tuple(ranked[1:MAX_DOMAINS]),
+        universes=universes,
         application=application,
         scores=scores,
         matched=matched,

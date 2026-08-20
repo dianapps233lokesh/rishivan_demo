@@ -234,3 +234,33 @@ def universe_for(slug: str | None) -> str:
     if not slug:
         return UNKNOWN_SCHOOL
     return BOOK_UNIVERSE.get(slug.lower().strip(), UNKNOWN_SCHOOL)
+
+
+def slugs_for_universe(universe: str | None) -> frozenset[str]:
+    """Every book slug in a Blueprint §4 level-1 universe.
+
+    Retrieval filters by slug rather than by a stored `book_domain` tag: `book_slug` is
+    written consistently and already indexed, whereas `book_domain` holds two
+    incompatible shapes in the live collection (`'foundation'` alongside the stringified
+    list `"['numerology']"`), so a quarter of the corpus was unmatchable through it.
+
+    An unknown universe yields the empty set, never everything -- a typo must not
+    silently widen retrieval to the whole corpus.
+    """
+    wanted = (universe or "").lower().strip()
+    return frozenset(
+        slug for slug, value in BOOK_UNIVERSE.items() if value == wanted
+    )
+
+
+def slugs_for_school(school: str | None) -> frozenset[str]:
+    """Every book slug of one Blueprint §4 level-2 school.
+
+    Provided for grouping and reporting. Retrieval does NOT filter by school: §8 rule 5
+    asks for labelling, and every §4-11 protocol ends in "cross-school confirmation", so
+    excluding a school would remove the corroboration the documents ask for.
+    """
+    wanted = (school or "").lower().strip()
+    return frozenset(
+        slug for slug, value in BOOK_SCHOOL.items() if value == wanted
+    )

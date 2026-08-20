@@ -20,6 +20,7 @@ import uuid
 from sqlalchemy import select, text
 
 from rishivan.db.session import async_session_factory
+from rishivan.council.source_matrix import authority_tier
 from rishivan.models.knowledge.rule import MATCHABLE_PREDICATE, Rule
 from rishivan.config import settings
 from rishivan.rag.rules import rule_collection_name
@@ -133,6 +134,10 @@ async def main(argv: list[str] | None = None) -> int:
             # BP §4 level 5: potential vs timing. A "when" question and a "whether"
             # question are different reasoning problems (§8 rule 2).
             "rule_category": (rule.effect or {}).get("rule_category") or "formation",
+            # BP §12 tier, for §8 rule 4's hierarchy of evidence. Derived from the
+            # rule's own book rather than stored on `rule`, which has no tier column --
+            # this repo does not own that schema.
+            "tier": authority_tier((rule.source or {}).get("book_slug")),
         }
         for rule in rules
     ]
