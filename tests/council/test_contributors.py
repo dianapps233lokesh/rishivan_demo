@@ -140,3 +140,64 @@ def test_no_service_contributor_claims_a_domain_persona():
         remedy_contribution([REMEDY_RULE]),
     ]
     assert {r.rishi for r in reports if r} == {"ritam", "vyom", "tejan"}
+
+
+# --- selection ---------------------------------------------------------------
+
+from rishivan.council.contributors import gather
+from rishivan.council.routing import route_question
+
+
+def test_a_timing_question_invokes_ritam():
+    routing = route_question("When will I marry?")
+    reports = gather(CHART, [TIMING_RULE], routing=routing,
+                     question="When will I marry?", when=WHEN)
+    assert "ritam" in {r.rishi for r in reports}
+
+
+def test_a_potential_question_does_not_invoke_ritam():
+    """Blueprint §8 rule 2: potential and timing are different reasoning problems. A
+    'whether' question must not be handed a period it did not ask about."""
+    routing = route_question("Will I marry?")
+    reports = gather(CHART, [TIMING_RULE], routing=routing,
+                     question="Will I marry?", when=WHEN)
+    assert "ritam" not in {r.rishi for r in reports}
+
+
+def test_vyom_always_contributes():
+    for question in ("Will I marry?", "What career suits me?", "Will I be wealthy?"):
+        routing = route_question(question)
+        reports = gather(CHART, [], routing=routing, question=question, when=WHEN)
+        assert "vyom" in {r.rishi for r in reports}, question
+
+
+def test_a_secondary_domain_contributes_its_own_rules():
+    """The billionaire case: §12 asks for ATMA beside ARTHA, so tattvan or agam must
+    appear as a contributor."""
+    from rishivan.council.routing import merge_supporting
+
+    routing = merge_supporting(
+        route_question("Will I become a billionaire?"), ["tattvan"]
+    )
+    reports = gather(CHART, [LAGNA_RULE, CAREER_RULE], routing=routing,
+                     question="Will I become a billionaire?", when=WHEN)
+    assert {"tattvan", "agam"} & {r.rishi for r in reports}
+
+
+def test_the_primary_domain_is_never_also_a_contributor():
+    """Its rules are the primary's own evidence, not a contribution."""
+    routing = route_question("What career suits me?")
+    reports = gather(CHART, [CAREER_RULE], routing=routing,
+                     question="What career suits me?", when=WHEN)
+    assert "dhruvan" not in {r.rishi for r in reports}
+
+
+def test_no_empty_report_is_ever_returned():
+    routing = route_question("Will I marry?")
+    reports = gather(CHART, [], routing=routing, question="Will I marry?", when=WHEN)
+    assert all(not r.is_empty for r in reports)
+
+
+def test_a_remedy_question_routes_by_its_subject_not_by_the_word_remedy():
+    assert route_question("What remedies should I do for my health?").primary == "aarogya"
+    assert route_question("What remedies for Saturn?").primary is None

@@ -138,3 +138,30 @@ def remedy_contribution(applicable: list[RuleHit]) -> ContributorReport | None:
         rules=rules,
         note=f"{len(rules)} of the matched rules state their own remedy",
     )
+
+
+DASHA_WORDS = ("dasha", "mahadasha", "antardasha", "bhukti", "pratyantar")
+
+
+def gather(
+    chart, applicable: list[RuleHit], *, routing, question: str, when=None
+) -> tuple[ContributorReport, ...]:
+    """Every non-empty contribution for this question, primary's own rules excluded.
+
+    Triggers are deterministic so a reading is reproducible. `vyom` fires on every
+    question because every §4-11 protocol contains a combinations step and a Nakshatra
+    step -- pretending that is selective would be a lie about what it does.
+    """
+    text = (question or "").lower()
+    reports: list[ContributorReport | None] = []
+
+    if routing.application == "timing" or any(word in text for word in DASHA_WORDS):
+        reports.append(timing_contribution(chart, applicable, when=when))
+
+    reports.append(pattern_contribution(chart, applicable))
+    reports.append(remedy_contribution(applicable))
+
+    for domain in routing.secondary:
+        reports.append(domain_contribution(domain, applicable))
+
+    return tuple(r for r in reports if r is not None and not r.is_empty)
