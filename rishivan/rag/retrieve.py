@@ -13,7 +13,6 @@ from rishivan.rag.authority import authority_for_slug
 from rishivan.rag.books import title_for_slug
 
 PAGE_WINDOW = 1          # pages to include on either side of each hit
-DEFAULT_N_RESULTS = 5
 
 # Chart-grounded retrieval: look each placement up in BPHS rather than the
 # question wording. Tunable POC defaults.
@@ -176,32 +175,3 @@ def collect_chart_context(
 
     # window=0: these pages already give breadth; no neighbour expansion needed.
     return expand_to_page_window(store, hit_metadatas, window=0)
-
-
-def build_answer_prompt(query: str, context_text: str, chart_facts=None) -> str:
-    """Assemble the generation prompt (natural, cited, complete answers)."""
-    facts_block = ""
-    if chart_facts:
-        facts_lines = "\n".join(f"- {f}" for f in chart_facts)
-        facts_block = (
-            "\n\nQUERENT'S CHART FACTS (ground truth — do NOT recompute or invent "
-            f"placements; interpret these against the source text):\n{facts_lines}"
-        )
-
-    guidance = (
-        "You are a knowledgeable Vedic astrology scholar answering from classical "
-        "texts.\n\n"
-        "Answer the question directly and naturally, as an expert would, using ONLY "
-        "the information in the source excerpts below.\n"
-        "- Give a complete answer. If the answer is a list (e.g. names or values), "
-        "provide the full list, not a partial one.\n"
-        "- Cite the page number(s) you drew from, naturally in-line, "
-        'e.g. "(Page 24)".\n'
-        "- If the question was asked in Hindi or Hinglish, reply in the same language "
-        "and script.\n"
-        "- Only if the excerpts genuinely do not contain the answer, say so plainly in "
-        "one sentence and stop — never speculate or invent verse numbers.\n"
-    )
-    return (
-        f"{guidance}\nSources:\n{context_text}{facts_block}\n\nQuestion: {query}\n"
-    )

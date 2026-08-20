@@ -29,7 +29,6 @@ here are amortised across ~1,300 calls at the cached rate, so the right thing to
 spend them on is extraction quality: the worked examples below earn their place.
 """
 
-import json
 
 from rishivan.astro.vocab import (
     CONDITION_TOKEN_TEMPLATES,
@@ -346,20 +345,6 @@ _SCOPE = {
     "type": "string",
     "description": "scope prefix from the vocabulary, e.g. '' or 'd9.' or 'from_moon.'",
 }
-
-HOUSE_SET_ALIAS = {"house": "houses", "sign": "signs"}
-"""A single atom may name a SET instead of one value.
-
-This exists because the corpus demanded it and the first design refused. "The 7th lord
-in the 6th, 8th or 12th", "the 8th lord in a kendra", "the 10th lord exalted or in own
-sign" -- disjunction over one field is pervasive in classical Jyotish, not an edge
-case. With no way to express it, the model either flattened it into `all` (producing
-`mars in house 1 AND 4 AND 7`, which matches no chart that has ever existed) or gave up
-with `expressible: false`. Eight of eighteen rules in the first review sample failed
-for exactly this.
-
-A set on one field is one extra schema field, unlike the nested `any_groups` construct
-that was cut for exceeding the 160-leaf-field budget."""
 
 CONDITION_ARGUMENTS: dict[str, dict] = {
     "planet_in_house": {"planet": _PLANET, "house": {"type": "integer"}, "scope": _SCOPE},

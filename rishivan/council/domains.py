@@ -21,44 +21,6 @@ class BookDomain(str, Enum):
     NUMEROLOGY   = "numerology"    # Cheiro's Book of Numbers, Complete Book of Numerology, Numerology: Key to Your Inner Self
 
 
-# ── Book slug → domain tags (multi-tag per book) ────────────────────────────
-
-SLUG_DOMAINS: dict[str, list[str]] = {
-    "bphs-gcsharma-vol1":                   [BookDomain.FOUNDATION, BookDomain.TIMING, BookDomain.REMEDIAL],
-    "bphs-gcsharma-vol2":                   [BookDomain.FOUNDATION, BookDomain.TIMING, BookDomain.REMEDIAL],
-    "phaladeepika-sastri-1950":             [BookDomain.FOUNDATION],
-    "saravali-santhanam-en":                [BookDomain.FOUNDATION],
-    "jatakaparijata-sastri-vol1":           [BookDomain.FOUNDATION],
-    "jatakaparijata-sastri-vol2":           [BookDomain.FOUNDATION],
-    "brihatjataka-row-1919":                [BookDomain.PREDICTION],
-    "laghu-parashari":                      [BookDomain.PREDICTION, BookDomain.TIMING],
-    "sarvartha-chintamani":                 [BookDomain.PREDICTION, BookDomain.WEALTH],
-    "bhavartha-ratnakara-by-b-v-raman-text": [BookDomain.WEALTH],
-    "muhurtachintamani":                    [BookDomain.MUHURTA, BookDomain.COMPATIBILITY],
-    "prasnamarga-raman-part1":              [BookDomain.PRASHNA],
-    "prasnamarga-raman-part2":              [BookDomain.PRASHNA],
-    "prashna-tantra":                       [BookDomain.PRASHNA],
-    "devakeralam-chandrakalanadi-vol1":     [BookDomain.NADI],
-    "hindupredictiveastrology-raman":       [BookDomain.FOUNDATION, BookDomain.PREDICTION],
-    "dharma-sindhu":                        [BookDomain.MUHURTA],
-    "vivaha-patalam":                       [BookDomain.MUHURTA, BookDomain.COMPATIBILITY],
-    "cheiros-book-of-numbers":              [BookDomain.NUMEROLOGY],
-    "the-complete-book-of-numerology":      [BookDomain.NUMEROLOGY],
-    "numerology-key-to-your-inner-self":    [BookDomain.NUMEROLOGY],
-}
-
-
-def domains_for_slug(slug: str) -> list[str]:
-    """Return domain tags for a book slug; falls back to FOUNDATION."""
-    norm = slug.lower().strip()
-    if norm in SLUG_DOMAINS:
-        return [d.value for d in SLUG_DOMAINS[norm]]
-    for known, domains in SLUG_DOMAINS.items():
-        if norm.startswith(known):
-            return [d.value for d in domains]
-    return [BookDomain.FOUNDATION.value]
-
-
 # ── Rishi → book domains they draw from ─────────────────────────────────────
 
 RISHI_BOOK_DOMAINS: dict[str, list[str]] = {

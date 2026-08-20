@@ -123,25 +123,3 @@ class PageElement(BaseModel):
     to route for review — but *not* a confidence score: VLM self-confidence is
     poorly calibrated, which is why cross-engine agreement is computed
     separately in validate.py."""
-
-
-class PageExtraction(BaseModel):
-    page_no: int = Field(ge=0)
-    elements: list[PageElement] = Field(default_factory=list)
-    language_mix: list[str] = Field(default_factory=list)
-
-    @model_validator(mode="after")
-    def _reading_order_is_unique_and_sorted(self) -> Self:
-        orders = [element.reading_order for element in self.elements]
-        if len(set(orders)) != len(orders):
-            raise ValueError("reading_order must be unique within a page")
-        if orders != sorted(orders):
-            raise ValueError("elements must be listed in reading order")
-        return self
-
-    @property
-    def is_blank(self) -> bool:
-        """No content beyond page furniture — a running head over an empty page."""
-        return not any(
-            element.type is not ElementType.page_furniture for element in self.elements
-        )

@@ -362,13 +362,17 @@ def council_consult(
 
     def embed_fn(texts):
         if backend == "gemini":
-            # gemini-embedding-exp-03-07 supports output_dimensionality.
-            # Set to 768 to match Qdrant collection built from text-embedding-004.
+            # gemini-embedding-exp-03-07 supports output_dimensionality; it must
+            # match the Qdrant collection, which was built with text-embedding-004.
             from google.genai import types as _gt
+
+            from rishivan.council.client import GEMINI_EMBED_DIM
             r = client.models.embed_content(
                 model=_embed_model,
                 contents=texts,
-                config=_gt.EmbedContentConfig(output_dimensionality=768),
+                config=_gt.EmbedContentConfig(
+                    output_dimensionality=GEMINI_EMBED_DIM
+                ),
             )
         else:
             r = client.models.embed_content(model=_embed_model, contents=texts)

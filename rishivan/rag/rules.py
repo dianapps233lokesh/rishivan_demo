@@ -17,7 +17,6 @@ be a second thing to drift.
 import json
 from dataclasses import dataclass, field
 
-from rishivan.council.domains import rule_relevance
 
 RULE_COLLECTION_SUFFIX = "_rules"
 """Rules live beside the pages, not among them: a page is evidence to read and a rule

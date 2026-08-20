@@ -11,7 +11,6 @@ bad batch is visible instead of silently thin.
 Deliberately does not write to `rule`; persistence is `knowledge.compile.persist`.
 """
 
-import json
 import time
 from dataclasses import dataclass, field
 

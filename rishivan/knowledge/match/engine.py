@@ -14,10 +14,9 @@ from dataclasses import dataclass, field
 from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from rishivan.astro.vocab import SET_FORM
 from rishivan.knowledge.compile.atoms import OBJECT_FIELD, atom_to_fact_token
 from rishivan.models.knowledge.rule import MATCHABLE_PREDICATE, Rule, RuleAtom
-
-_SET_FORM = {"house": "houses", "sign": "signs"}
 
 
 @dataclass
@@ -33,7 +32,7 @@ class MatchedRule:
 
 
 def _asserted_values(atom: dict, object_field: str) -> list:
-    plural = _SET_FORM.get(object_field)
+    plural = SET_FORM.get(object_field)
     if plural and atom.get(plural):
         return list(atom[plural])
     value = atom.get(object_field)

@@ -23,7 +23,7 @@ described, and that is worse than a loud failure at load time.
 
 from dataclasses import dataclass
 
-from rishivan.astro.vocab import CONDITION_TOKEN_TEMPLATES, EMITTED_SCOPES
+from rishivan.astro.vocab import CONDITION_TOKEN_TEMPLATES, EMITTED_SCOPES, SET_FORM
 from rishivan.knowledge.extract.prompt import CONDITION_ARGUMENTS
 
 TIMING_TYPES = frozenset({"dasha_of", "transit_over"})
@@ -32,7 +32,6 @@ TIMING_TYPES = frozenset({"dasha_of", "transit_over"})
 
 OPTIONAL_ARGUMENTS = frozenset({"scope"})
 
-_SET_FORM = {"house": "houses", "sign": "signs"}
 
 SUBJECT_FIELD: dict[str, str] = {
     "planet_in_house": "planet",
@@ -122,7 +121,7 @@ def _required_fields(condition_type: str) -> frozenset[str]:
 
 def _values_for(atom: dict, object_field: str) -> list:
     """The asserted values, whether given as a scalar or as its set form."""
-    plural = _SET_FORM.get(object_field)
+    plural = SET_FORM.get(object_field)
     if plural and atom.get(plural):
         return list(atom[plural])
     value = atom.get(object_field)
@@ -145,7 +144,7 @@ def _compile_atom(atom: dict, *, negate: bool) -> list[CompiledAtom]:
         if key != "type" and value not in (None, "", [])
     }
     required = set(_required_fields(condition_type))
-    for scalar, plural in _SET_FORM.items():
+    for scalar, plural in SET_FORM.items():
         if plural in supplied:
             required.discard(scalar)
     if missing := sorted(required - supplied):

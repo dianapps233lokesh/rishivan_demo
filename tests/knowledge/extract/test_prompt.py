@@ -9,7 +9,7 @@ import json
 
 import pytest
 
-from rishivan.astro.vocab import CONDITION_TOKEN_TEMPLATES, EMITTED_SCOPES
+from rishivan.astro.vocab import CONDITION_TOKEN_TEMPLATES
 from rishivan.knowledge.extract.prompt import (
     CACHE_FLOOR_TOKENS,
     CONDITION_ARGUMENTS,

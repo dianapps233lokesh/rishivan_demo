@@ -21,6 +21,7 @@ from rishivan.astro.vocab import (
     CONDITION_TOKEN_TEMPLATES,
     EMITTED_SCOPES,
     PLANET_TOKEN_NAME,
+    SET_FORM,
 )
 from rishivan.knowledge.extract.prompt import CONDITION_ARGUMENTS
 
@@ -32,7 +33,6 @@ is the violation the client states as absolute: timing cannot manufacture a prom
 
 OPTIONAL_ARGUMENTS = frozenset({"scope"})
 
-_SET_FORM = {"house": "houses", "sign": "signs"}
 """A required scalar field may instead be supplied as its set form -- `houses: [6,8,12]`
 in place of `house: 6`. Both satisfy the requirement; supplying both is contradictory."""
 
@@ -90,7 +90,7 @@ def validate_atom(atom: dict, index: int = 0) -> list[AtomProblem]:
 
     # A set form satisfies its scalar requirement: `houses: [6,8,12]` says where the
     # lord may sit just as `house: 6` does, and it is how a disjunction is expressed.
-    for scalar, plural in _SET_FORM.items():
+    for scalar, plural in SET_FORM.items():
         if scalar in allowed:
             allowed.add(plural)
             if plural in supplied and scalar in supplied:
@@ -153,7 +153,7 @@ def impossible_conjunctions(condition: dict) -> list[AtomProblem]:
         subject, value = atom.get(subject_key), atom.get(value_key)
         if subject is None or value is None:
             continue
-        if atom.get(_SET_FORM.get(value_key, "")):
+        if atom.get(SET_FORM.get(value_key, "")):
             continue  # already a disjunction; nothing to contradict
         key = (atom_type, subject_key, str(subject))
         previous = seen.get(key)
@@ -184,7 +184,7 @@ def _supplied(atom: dict, atom_type: str) -> frozenset[str]:
     """Which required fields this atom actually provides, set forms included."""
     supplied = set()
     for name in _required_for(atom_type):
-        if atom.get(name) is not None or atom.get(_SET_FORM.get(name, "")):
+        if atom.get(name) is not None or atom.get(SET_FORM.get(name, "")):
             supplied.add(name)
     return frozenset(supplied)
 

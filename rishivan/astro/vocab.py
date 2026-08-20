@@ -29,11 +29,6 @@ BASE_PREFIXES = (
     "transit.",
 )
 
-FACT_PREFIXES = BASE_PREFIXES
-"""Historical name; scoped keys must go through `is_valid_fact_key`."""
-
-JYOTISH_PREFIXES = tuple(p for p in BASE_PREFIXES if not p.startswith("numerology"))
-
 EMITTED_VARGA_SCOPES = ("d2.", "d7.", "d9.", "d10.", "d12.", "d30.")
 """Wealth D2, children D7, marriage D9, career D10, parents D12, health D30. D1 is the
 default scope and is never prefixed."""
@@ -91,6 +86,18 @@ Navamsa becomes `d9.planet.saturn.house`.
 """
 
 SUPPORTED_CONDITION_TYPES = frozenset(CONDITION_TOKEN_TEMPLATES)
+
+SET_FORM = {"house": "houses", "sign": "signs"}
+"""Fields whose atom may name a SET instead of one value, singular -> plural.
+
+Disjunction over one field is pervasive in classical Jyotish, not an edge case: "the
+7th lord in the 6th, 8th or 12th", "the 8th lord in a kendra". With no way to say it
+the model either flattened it into `all` -- `mars in house 1 AND 4 AND 7`, matching no
+chart that has ever existed -- or gave up with `expressible: false`, which accounted
+for eight of eighteen rules in the first review sample.
+
+Lives here because the extractor, the validator, the compiler and the matcher must all
+agree on it, and four copies of a mapping is four things to drift."""
 
 OUT_OF_SCOPE_CONDITION_TYPES = frozenset({"strength_cmp"})
 """Cut from DSL v1 deliberately. `strength_cmp` needs Shadbala, which the engine does
