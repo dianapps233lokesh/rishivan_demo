@@ -23,7 +23,7 @@ FACT_MAX_PAGES = 10     # cap on distinct source pages fed to the model
 def expand_to_page_window(store, hit_metadatas: list[dict], window: int = PAGE_WINDOW):
     """Widen retrieval hits to full neighbouring pages.
 
-    `store` is a VectorStore (see app.rag.vector_store). Returns
+    `store` is a VectorStore (see rishivan.rag.vector_store). Returns
     (context_text, page_groups) where page_groups is an ordered list of
     {"page_number", "text", "n_elements"} for display.
     """

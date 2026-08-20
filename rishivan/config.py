@@ -49,10 +49,6 @@ def _secret(name: str, default: str = "") -> str:
 class Settings:
     """Only what this repo actually reads."""
 
-    # Qdrant only: Chroma needs local files, which a cloud container loses on
-    # every restart. CHROMA_PATH stays for the shared VectorStore interface.
-    VECTOR_BACKEND: str = "qdrant"
-    CHROMA_PATH: str = ".chroma"
     DEBUG: bool = False
 
     # ── Vector store ────────────────────────────────────────────────────────

@@ -12,9 +12,6 @@ __pycache__/
 venv/
 *.egg-info/
 
-# Local vector store (cloud uses Qdrant)
-.chroma/
-
 # OS / editor
 .DS_Store
 .idea/
