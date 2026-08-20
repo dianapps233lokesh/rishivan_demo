@@ -62,3 +62,79 @@ def domain_contribution(
         rules=inside,
         note=f"{len(inside)} rules on the houses {domain.upper()} owns",
     )
+
+
+def timing_contribution(
+    chart, applicable: list[RuleHit], *, when=None
+) -> ContributorReport | None:
+    """Ritam: which dasha periods are running, and the rules that activate a promise.
+
+    §13 calls Muhurta and timing a cross-domain service, which is exactly this shape:
+    every domain's §4-11 protocol ends in a Dasha step, so the timing values belong in
+    any reading that asks WHEN -- supplied to whoever owns the subject, not spoken by
+    Ritam directly.
+    """
+    from datetime import datetime
+
+    from rishivan.chart.dasha import current_periods
+
+    periods = current_periods(chart, when or datetime.now())
+    computed = {
+        label: f"{period.lord} until {period.end.date().isoformat()}"
+        for label, period in (
+            ("Mahadasha", periods.get("maha")),
+            ("Antardasha", periods.get("antar")),
+            ("Pratyantardasha", periods.get("pratyantar")),
+        )
+        if period is not None
+    }
+    rules = tuple(r for r in applicable if r.rule_category == "timing")
+    report = ContributorReport(
+        rishi="ritam",
+        computed=computed,
+        rules=rules,
+        note=f"{len(rules)} timing rules true of this chart" if rules else "",
+    )
+    return None if report.is_empty else report
+
+
+def pattern_contribution(chart, applicable: list[RuleHit]) -> ContributorReport | None:
+    """Vyom: the chart's pattern layer -- nakshatra and conjunctions.
+
+    Every §4-11 protocol has a "major combinations" step, and yoga recognition does not
+    exist in this repo. Reporting only what IS computed keeps the gap visible rather
+    than letting the primary infer combinations nobody verified.
+    """
+    moon = chart.planets["Moon"]
+    computed = {"Janma nakshatra": f"{moon.nakshatra}"}
+    rules = tuple(
+        r for r in applicable
+        if any(
+            atom.get("type") in {"conjunct", "planet_in_nakshatra"}
+            for atom in (r.condition.get("atoms") or [])
+        )
+    )
+    report = ContributorReport(
+        rishi="vyom",
+        computed=computed,
+        rules=rules,
+        note="yoga recognition is not implemented; combinations are unverified",
+    )
+    return None if report.is_empty else report
+
+
+def remedy_contribution(applicable: list[RuleHit]) -> ContributorReport | None:
+    """Tejan: rules that carry their own remedy.
+
+    Blueprint §17 keeps remedies in a separate corpus and out of the Rishi set, which is
+    why Tejan contributes rather than speaks. A remedy is only ever offered attached to
+    the rule that diagnosed the affliction -- detached, it is advice with no evidence.
+    """
+    rules = tuple(r for r in applicable if r.remedies)
+    if not rules:
+        return None
+    return ContributorReport(
+        rishi="tejan",
+        rules=rules,
+        note=f"{len(rules)} of the matched rules state their own remedy",
+    )

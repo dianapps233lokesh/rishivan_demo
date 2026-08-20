@@ -70,3 +70,73 @@ def test_a_report_is_frozen():
     report = ContributorReport(rishi="ritam", computed={}, rules=())
     with pytest.raises(dataclasses.FrozenInstanceError):
         report.rishi = "vyom"
+
+
+# --- the three service contributors ------------------------------------------
+
+from datetime import datetime
+
+from rishivan.chart.ephemeris import BirthData, compute_chart
+from rishivan.council.contributors import (
+    pattern_contribution,
+    remedy_contribution,
+    timing_contribution,
+)
+
+CHART = compute_chart(
+    BirthData(1990, 1, 1, 6, 29, 0, 5.5, 28.6139, 77.2090, "New Delhi")
+)
+WHEN = datetime(2026, 8, 20, 12, 0)
+
+TIMING_RULE = RuleHit(
+    rule_key="t", condition={"atoms": []}, effects=[], source={},
+    relevance=0.0, rule_category="timing",
+)
+REMEDY_RULE = RuleHit(
+    rule_key="rem", condition={"atoms": []}, effects=[], source={},
+    relevance=0.0, remedies=[{"kind": "mantra", "detail": "hymns to Shiva"}],
+)
+
+
+def test_the_timing_contributor_reports_the_running_periods():
+    report = timing_contribution(CHART, [], when=WHEN)
+    assert report is not None
+    assert report.rishi == "ritam"
+    assert "Mahadasha" in report.computed
+    # Read off chart/dasha.py for this chart and date: the Saturn mahadasha runs
+    # 2025-09-21 to 2044-09-21, Vimshottari's nineteen years.
+    assert report.computed["Mahadasha"].startswith("Saturn until 2044-09-21")
+
+
+def test_the_timing_contributor_carries_only_timing_rules():
+    report = timing_contribution(CHART, [TIMING_RULE, LAGNA_RULE], when=WHEN)
+    assert [r.rule_key for r in report.rules] == ["t"]
+
+
+def test_the_pattern_contributor_reports_the_janma_nakshatra():
+    report = pattern_contribution(CHART, [])
+    assert report is not None
+    assert report.rishi == "vyom"
+    assert report.computed["Janma nakshatra"] == "Dhanishta"
+
+
+def test_the_remedy_contributor_returns_none_when_no_rule_carries_one():
+    """Not a corpus gap -- remedies are extracted. Before the payload fix they were
+    never published, so this returned None on every chart."""
+    assert remedy_contribution([LAGNA_RULE, CAREER_RULE]) is None
+
+
+def test_the_remedy_contributor_reports_a_published_remedy():
+    report = remedy_contribution([LAGNA_RULE, REMEDY_RULE])
+    assert report is not None
+    assert report.rishi == "tejan"
+    assert [r.rule_key for r in report.rules] == ["rem"]
+
+
+def test_no_service_contributor_claims_a_domain_persona():
+    reports = [
+        timing_contribution(CHART, [], when=WHEN),
+        pattern_contribution(CHART, []),
+        remedy_contribution([REMEDY_RULE]),
+    ]
+    assert {r.rishi for r in reports if r} == {"ritam", "vyom", "tejan"}
