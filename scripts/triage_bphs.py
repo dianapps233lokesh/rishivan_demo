@@ -1,13 +1,11 @@
 """S4 Triage — route every BPHS verse to destination A (rule) or B (knowledge_item).
 
-Deterministic and free: no LLM call is made here at all. Units the pattern pass
-cannot settle are recorded as `ambiguous`, which is the queue a later paid pass
-reads. Nothing is discarded, so `--report` should show unaccounted trending to zero
-as extraction proceeds.
-
     uv run python -m scripts.triage_bphs --dry-run
-    uv run python -m scripts.triage_bphs
     uv run python -m scripts.triage_bphs --report
+
+Deterministic and free — no LLM call. Verses the patterns cannot settle are recorded
+`ambiguous`, the queue a later paid pass reads, so `--report` should show unaccounted
+trending to zero.
 """
 
 import argparse

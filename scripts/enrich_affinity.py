@@ -3,13 +3,9 @@
     uv run python -m scripts.enrich_affinity --dry-run
     uv run python -m scripts.enrich_affinity
 
-Separate from extraction on purpose. A rule's affinity follows from the rule, not from the
-verse, so re-tuning the weighting is a second-long re-run over the database rather than a
-34-minute re-read of the book -- and it leaves the extraction prompt untouched, which
-matters because that prompt swings 50 points of precision on a single wording change.
-
-Idempotent: it rewrites the vector every time from the current keyword table, so a change
-to the table propagates by re-running rather than by migration.
+Separate from extraction on purpose: affinity follows from the rule, not the verse, so
+re-tuning is a second-long pass over the database rather than a 34-minute re-read of the
+book. Idempotent — it rewrites every vector from the current keyword table.
 """
 
 import argparse

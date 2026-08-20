@@ -1,19 +1,15 @@
 """Re-derive `sutra_unit.chapter` from body chapter headings.
 
-Why a repair script and not just a re-run: the bridge is idempotent on
-`(chapter, verse_ref_local)`, so re-running it leaves existing rows exactly as they
-are -- including the 43.2% whose chapter was wrong. The rows have to be corrected in
-place.
-
-Collisions are expected and are not errors. Two units previously kept apart by
-*different wrong* chapter numbers can land on the same `(chapter, verse_ref_local)`
-once both are corrected, which the `uq_unit_book_chapter_verse` index forbids. That
-happens where the book genuinely reprints a verse. The resolution matches the bridge's
-own `_best_per_key` rule -- keep the richest row, soft-delete the rest -- so nothing is
-destroyed and the decision is reversible.
-
     uv run python -m scripts.repair_chapters --dry-run
     uv run python -m scripts.repair_chapters
+
+A repair rather than a re-run because the bridge is idempotent on
+`(chapter, verse_ref_local)` — re-running leaves existing rows alone, including the
+43.2% whose chapter was wrong, so they must be corrected in place.
+
+Collisions are expected, not errors: two units kept apart by *different wrong* chapters
+can collide once both are correct. Resolved as the bridge does it — keep the richest row,
+soft-delete the rest — so nothing is destroyed.
 """
 
 import argparse

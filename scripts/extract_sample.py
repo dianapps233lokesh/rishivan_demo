@@ -1,15 +1,11 @@
 """Extract a small sample of Koonji rules for human review, then stop.
 
-Writes nothing to the `rule` table. The point is to put real extractions in front of a
-person before spending on 1,144 units -- the two hard gates (verse pairing, generated
-tests) and the >=0.90 precision target all depend on a human confirming the output is
-what the book actually says.
-
     uv run python -m scripts.extract_sample --limit 12
     uv run python -m scripts.extract_sample --limit 12 --json output.json
 
-Writes `output.json` in the repo root by default: a review artefact belongs somewhere a
-person can open, not in a temp directory that the next reboot clears.
+Writes nothing to the `rule` table — the point is to put real extractions in front of a
+person before spending on 1,144 units. Defaults to `output.json` in the repo root: a
+review artefact belongs where a person can open it.
 """
 
 import argparse

@@ -1,22 +1,15 @@
 """Bridge BPHS from the POC ingestion layer into the knowledge pipeline.
 
-Deterministic and idempotent: no LLM call anywhere, and a second run inserts
-nothing.
-
-On orphaned verses: a handful are genuine. BPHS prints six chapter-final verses
-with no English rendering at all, several of them in the Shadbala chapters it sets
-as bare Sanskrit formulae. So this command does not refuse to persist when a verse
-lacks a translation — those units are flagged `needs_review` and left for a
-reviewer. What it does refuse is a *regression*: exceeding `--max-violations`
-means the bridge has started severing pairings that were previously intact, and
-that must fail loudly.
-
-The zero-tolerance gate lives where it belongs, on the hand-checked golden set:
-`make gate-adjacency`.
-
     uv run python -m scripts.bridge_bphs
-    uv run python -m scripts.bridge_bphs --volume bphs-gcsharma-vol1
-    uv run python -m scripts.bridge_bphs --dry-run
+    uv run python -m scripts.bridge_bphs --volume bphs-gcsharma-vol1 --dry-run
+
+Deterministic and idempotent: no LLM call, and a second run inserts nothing.
+
+Some orphaned verses are genuine — BPHS prints six chapter-final verses with no English
+rendering, several as bare Sanskrit formulae — so those units are flagged `needs_review`
+rather than refused. What is refused is a *regression*: exceeding `--max-violations`
+means the bridge has started severing pairings that were intact. The zero-tolerance gate
+lives on the hand-checked golden set, `make gate-adjacency`.
 """
 
 import argparse

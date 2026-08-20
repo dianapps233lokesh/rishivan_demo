@@ -3,12 +3,9 @@
     uv run python -m scripts.load_koonji koonji-bphs-vol1.json --dry-run
     uv run python -m scripts.load_koonji koonji-bphs-vol1.json --book bphs-gcsharma-vol1
 
-Accepts either the streaming JSONL checkpoint or the final JSON array, because a run that
-was interrupted only has the former.
-
-Nothing loaded here is approved. `MATCHABLE_PREDICATE` requires `approved_at IS NOT
-NULL`, and this script always leaves it null, so the rules are queryable by a reviewer
-and unreachable by a user until someone approves them deliberately.
+Takes the streaming JSONL checkpoint or the final JSON array, since an interrupted run
+only has the former. Nothing is approved here: `approved_at` stays null, so the rules
+are queryable by a reviewer and unreachable by a user.
 """
 
 import argparse

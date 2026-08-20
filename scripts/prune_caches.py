@@ -1,12 +1,11 @@
 """List and delete leftover Vertex context caches.
 
-Cache storage is billed per token-hour, so a cache the runner failed to delete keeps
-costing until its TTL expires. Routing `caches.delete` through the Helicone gateway
-returns `500 Body has already been used`, which is exactly how the first leak happened,
-so this uses a direct client.
-
     uv run python -m scripts.prune_caches
     uv run python -m scripts.prune_caches --delete
+
+Cache storage bills per token-hour, so one the runner failed to delete keeps costing
+until its TTL expires. Uses a direct client: `caches.delete` through the Helicone
+gateway returns `500 Body has already been used`, which is how the first leak happened.
 """
 
 import argparse

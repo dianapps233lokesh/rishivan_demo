@@ -33,14 +33,11 @@ def get_gemini_api_client(api_key: str | None = None) -> genai.Client:
 def _helicone_http_options(model: str, pipeline: str) -> dict | None:
     """Route Vertex traffic through the Helicone gateway when a key is configured.
 
-    Absent the key this returns None and the client talks to Vertex directly -- no
-    behaviour change, so leaving Helicone unconfigured is always safe.
+        Returns None without a key, so leaving Helicone unconfigured is always safe.
 
-    One gotcha carried over from the backend, because it costs an afternoon to
-    rediscover: with `vertexai=True` the genai SDK builds paths as
-    `/v1beta1/projects/{p}/locations/global/publishers/google/models/...`. A regional
-    endpoint (`us-central1-aiplatform...`) returns 404 for a `locations/global` path,
-    so the target must be the non-regional global endpoint.
+        One gotcha worth keeping: with `vertexai=True` the genai SDK builds paths as
+        `/v1beta1/projects/{p}/locations/global/...`, and a regional endpoint returns 404
+        for a `locations/global` path — so the target must be the global endpoint.
     """
     from rishivan.config import settings
 

@@ -3,16 +3,13 @@
     uv run python -m scripts.embed_rules --dry-run
     uv run python -m scripts.embed_rules
 
-Only rules satisfying `MATCHABLE_PREDICATE` are embedded -- the one definition of "may
-reach a user" -- so this script cannot publish anything a reviewer has not approved. Run it
-after every approval batch; a rule approved and not embedded is invisible, and a rule
-embedded and later revoked is stale, so `--reset` rebuilds the collection from scratch.
+Only rules satisfying `MATCHABLE_PREDICATE` are embedded, so this cannot publish
+anything unapproved. Run it after every approval batch; `--reset` rebuilds from scratch
+when a revoked rule would otherwise linger.
 
-**What gets embedded is the verse, not the condition.** The vector's job is to find rules
-that are *about* the question; the condition is tested exactly afterwards. Embedding the
-condition would optimise for the one thing embeddings are bad at here: on the real corpus,
-"the 7th lord in the 5th house" scores higher against a chart with the 7th lord in the 6th
-than the rule that actually matches it does.
+**The verse is embedded, not the condition.** The vector's job is to find rules *about*
+the question, and the condition is tested exactly afterwards — embedding the condition
+would optimise for the one thing embeddings are bad at here.
 """
 
 import argparse

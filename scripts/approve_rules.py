@@ -4,23 +4,13 @@
     uv run python -m scripts.approve_rules --chapter 26 --dry-run
     uv run python -m scripts.approve_rules --chapter 26 --reviewer 1
 
-`MATCHABLE_PREDICATE` is `status = 'parsed' AND approved_at IS NOT NULL AND deleted_at IS
-NULL`, so until a rule is approved here it is invisible to the matcher no matter how well
-the matcher works. That is the whole point: 376 rules passed a deterministic validator, and
-a validator is evidence rather than proof. This repo has already seen its validator be
-wrong -- it once relabelled every empty formation as `category: timing`, which let six
-definitional verses through as valid rules.
+Until a rule is approved here `MATCHABLE_PREDICATE` hides it from the matcher however
+well the matcher works. A validator is evidence, not proof — this one once relabelled
+every empty formation as `category: timing`, passing six definitional verses as rules.
 
-So approval is deliberately awkward in two ways:
-
-* **It is per chapter, never "all".** A reviewer approving 376 rules in one command has not
-  reviewed 376 rules. `--chapter` forces the work to be done in reviewable batches, and
-  `--report` shows which batches are outstanding.
-* **It records who.** `approved_by` takes a real user id. An approval with no owner is
-  indistinguishable from an auto-approval, which is the thing this gate exists to prevent.
-
-There is no bulk unapprove because there is no need to be quick about it; `--revoke`
-handles one chapter at a time by the same rule.
+So approval is deliberately awkward. It is **per chapter, never "all"**, because a
+reviewer approving 376 rules in one command has not reviewed 376 rules. And it **records
+who**: an approval with no owner is indistinguishable from an auto-approval.
 """
 
 import argparse

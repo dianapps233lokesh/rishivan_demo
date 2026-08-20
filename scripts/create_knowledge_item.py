@@ -1,17 +1,14 @@
 """Create the destination-B tables (`knowledge_item`, `unit_triage`) if absent.
 
-Why this is a script and not an Alembic revision: the backend repo owns the schema
-of `rishivan_dev_local`, and vendoring migrations into a second repo would mean two
-things claiming ownership of one database. This creates the table from the model's
-own metadata, so it cannot drift from `rishivan/models/knowledge/item.py`, and it is
-idempotent — running it twice is a no-op.
-
-**The backend must still add the matching Alembic revision** before this table
-reaches any environment the backend migrates. Until then it exists only where this
-script has been run. `--sql` prints the DDL so it can be pasted into that revision.
-
     uv run python -m scripts.create_knowledge_item
     uv run python -m scripts.create_knowledge_item --sql
+
+A script rather than an Alembic revision because the backend repo owns this database's
+schema, and vendoring migrations would mean two things claiming that ownership. Built
+from the model's own metadata so it cannot drift, and idempotent.
+
+**The backend must still add the matching revision** before this table reaches any
+environment it migrates; `--sql` prints the DDL to paste in.
 """
 
 import argparse

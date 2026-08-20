@@ -1,25 +1,19 @@
 """Destination B — everything a book states that is *not* a matchable rule.
 
-A Koonji rule needs a condition testable against chart facts. Much of the corpus
-states something else and states it importantly: BPHS 20.5 defines how to compute
-Shubha Rashmi, 24.8 classifies visible/invisible-half planets, 54.63 prescribes a
-remedy. None of those are predictions, and forcing them into `rule` would put rows
-in the matcher that can never match — corrupting the precision metric the pilot's
-go/no-go gate is measured on.
+A Koonji rule needs a condition testable against chart facts. Much of the corpus states
+something else and states it importantly: BPHS 20.5 defines how to compute Shubha
+Rashmi, 54.63 prescribes a remedy. Forcing those into `rule` would put rows in the
+matcher that can never match, corrupting the precision metric the go/no-go gate uses.
 
-So they land here instead, and the design rule is **account for everything, skip
-nothing**:
+The design rule is **account for everything, skip nothing**:
 
-* Every `sutra_unit` must produce at least one `rule` row or one `knowledge_item`
-  row. `unaccounted_units()` in `rishivan.knowledge.accounting` is the reconciliation,
-  and a test asserts it returns empty. "We dropped it" therefore cannot happen
-  quietly — it can only happen as a visible failure.
+* Every `sutra_unit` produces at least one `rule` or one `knowledge_item` row.
+  `unaccounted_units()` is the reconciliation and a test asserts it is empty, so "we
+  dropped it" can only happen as a visible failure.
 * A statement we cannot make machine-usable is still captured, with
-  `status='out_of_scope'` and a `status_reason`. Degrade, never drop.
-* `vocabulary_gap` records the exact fact tokens a statement needed but the fact
-  engine cannot yet emit. That converts "we skipped this" into a ranked backlog
-  instead of a silent loss — it is how the missing strength model gets specified
-  from the Shadbala chapters that describe it.
+  `status='out_of_scope'` and a reason. Degrade, never drop.
+* `vocabulary_gap` records the tokens a statement needed and the engine cannot emit —
+  a ranked backlog instead of a silent loss.
 """
 
 from enum import StrEnum

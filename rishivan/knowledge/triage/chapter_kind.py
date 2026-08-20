@@ -1,15 +1,13 @@
 """Classify a chapter from its printed title — free, and it settles whole chapters.
 
-BPHS does not scatter its non-rule content randomly: it devotes entire chapters to
-it. "PROPITIATION OF PLANETS FOR BIRTHS DURING JYESHTHA" is 77 verses of remedy,
-"ZODIACAL SIGNS DESCRIBED" is 17 of classification, "ASHTAKAVARGA" is computation.
-Deciding those once per chapter rather than once per verse removes hundreds of paid
-classifier calls at zero cost, and it is more consistent than per-verse guessing --
-a chapter cannot be half remedy.
+BPHS devotes entire chapters to non-rule content: "PROPITIATION OF PLANETS" is 77 verses
+of remedy, "ASHTAKAVARGA" is computation. Deciding once per chapter removes hundreds of
+paid classifier calls and is more consistent than per-verse guessing — a chapter cannot
+be half remedy.
 
-Titles come from the book's own OCR'd table of contents, so this is reading the
-author's structure rather than imposing one. Anything unmatched returns None and
-falls through to per-verse classification, which is the conservative default.
+Titles come from the book's own table of contents, so this reads the author's structure
+rather than imposing one. Unmatched returns None and falls through to per-verse
+classification.
 """
 
 import re
@@ -39,16 +37,13 @@ NOT_EXPRESSIBLE_SUBJECTS: tuple[tuple[str, str], ...] = (
 )
 """Chapters whose *subject* the fact vocabulary cannot express, with the gap named.
 
-These are the chapters that produced the worst extraction errors. Faced with Dhuma --
-an upagraha computed from the Sun's longitude and absent from the vocabulary -- the
-model did not decline; it emitted `planet_in_house{planet: rahu}`, a different body
-entirely, in a rule that was schema-valid and cited a real verse. The same happened for
-"is exalted" becoming `sign: aries`.
+These produced the worst extraction errors. Faced with Dhuma — an upagraha absent from
+the vocabulary — the model did not decline; it emitted `planet_in_house{planet: rahu}`,
+a different body entirely, in a rule that was schema-valid and cited a real verse.
 
-The model will always produce the nearest expressible thing rather than nothing, so the
-fix is to stop asking. These chapters route to destination B with the missing capability
-recorded in `vocabulary_gap`, which turns 361 units of unusable extraction into a ranked
-list of what the engine needs next.
+The model always produces the nearest expressible thing rather than nothing, so the fix
+is to stop asking. These route to destination B with the gap recorded in
+`vocabulary_gap`, turning 361 units of unusable extraction into a ranked backlog.
 
 Checked BEFORE the effects/results escape hatch below: "EFFECTS OF KARAKAMSA" is
 predictive in form and inexpressible in substance, and the substance decides.
