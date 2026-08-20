@@ -555,3 +555,25 @@ def test_a_grounded_timing_atom_still_passes():
         source_text="In the antardasa of Saturn the native suffers loss of wealth.",
     )
     assert result.ok, str(result)
+
+
+def test_the_backoff_ladder_survives_more_than_one_rate_limit_window():
+    """The quota is per-minute, and parallel runs share it.
+
+    A serial run at ~17 calls/min already hit a stall that outlasted a 64-second ladder.
+    Running several books at once multiplies the request rate, and when the ladder is
+    exhausted `call_with_backoff` raises -- the loop then records a failed call and moves
+    on, silently dropping that verse. Waiting longer is strictly better than losing work.
+    """
+    from rishivan.knowledge.extract.runner import RATE_LIMIT_BACKOFF
+
+    assert sum(RATE_LIMIT_BACKOFF) >= 240, "ladder cannot outlast a multi-window stall"
+
+
+def test_the_backoff_ladder_increases():
+    """Each wait must be longer than the last, so a brief blip costs seconds and a real
+    quota exhaustion costs minutes -- not the other way round."""
+    from rishivan.knowledge.extract.runner import RATE_LIMIT_BACKOFF
+
+    assert list(RATE_LIMIT_BACKOFF) == sorted(RATE_LIMIT_BACKOFF)
+    assert len(set(RATE_LIMIT_BACKOFF)) == len(RATE_LIMIT_BACKOFF)

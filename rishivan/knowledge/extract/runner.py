@@ -285,13 +285,18 @@ def create_prefix_cache(client):
     return cache.name, total
 
 
-RATE_LIMIT_BACKOFF = (4, 15, 45)
+RATE_LIMIT_BACKOFF = (4, 15, 45, 90, 180)
 """Waits after a 429, in seconds.
 
 Not a nicety: a 20-unit sample lost 3 calls to `429 RESOURCE_EXHAUSTED`, and the loop
-records a failure and moves on, so at scale that thins the rule base ~15% while every
-visible number looks healthy. Three waits totalling ~64s, because the limit is
-per-minute — the point is to outlast one window, not to retry forever.
+records a failure and moves on, so at scale that thins the rule base while every visible
+number looks healthy.
+
+Sized for CONCURRENT runs, not one. The quota is per-minute and shared, so extracting
+several books at once multiplies the request rate against it -- and a single serial run at
+~17 calls/min already produced a stall that outlasted the original 64-second ladder. Five
+waits totalling ~5.5 minutes, because exhausting the ladder means losing that verse, and
+waiting is always cheaper than losing work.
 """
 
 
