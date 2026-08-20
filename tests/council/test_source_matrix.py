@@ -221,3 +221,24 @@ def test_an_unknown_slug_has_an_explicit_unknown_school():
     from rishivan.council.source_matrix import school_for
 
     assert school_for("some-book-nobody-classified") == "unknown"
+
+
+def test_no_caller_passes_a_backend_to_model_name():
+    """`model_name(backend, tier)` became `model_name(tier)` when the Gemini API backend
+    was removed, and one caller in `scripts/embed_rules.py` was missed. Nothing caught
+    it: the module imports fine, `compileall` does not check arity, and no test exercised
+    the embed script -- so it surfaced only after `--reset` had already emptied the live
+    rule collection.
+    """
+    import re
+    from pathlib import Path
+
+    offenders = []
+    for path in list(Path("rishivan").rglob("*.py")) + list(Path("scripts").rglob("*.py")):
+        if "vendor" in str(path):
+            continue
+        for call in re.findall(r"model_name\(([^)]*)\)", path.read_text()):
+            args = [a for a in call.split(",") if a.strip()]
+            if len(args) > 1:
+                offenders.append(f"{path}: model_name({call})")
+    assert not offenders, offenders

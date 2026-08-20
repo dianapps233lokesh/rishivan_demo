@@ -40,6 +40,47 @@ def point_id(rule_key: str) -> str:
 
 
 BATCH = 64
+"""Documents per request, as an upper bound. The binding constraint is tokens."""
+
+TOKEN_BUDGET = 16000
+"""Estimated input tokens per embedding request.
+
+`text-embedding-004` accepts 20,000 tokens PER REQUEST, summed across the batch --
+not per document. Batching by count alone worked at 376 rules and failed at 1,046 with
+`input token count is 20191 but the model supports up to 20000`, after `--reset` had
+already emptied the collection.
+
+16,000 rather than 20,000 because the estimate below is chars/4 and real tokenisation
+varies; the headroom is what stops a marginal batch from failing the whole run.
+"""
+
+
+def estimated_tokens(text: str) -> int:
+    """Rough token count. Four characters per token is the usual English approximation,
+    and a deliberate over-estimate is the safe direction here."""
+    return max(1, len(text) // 4 + 1)
+
+
+def token_batches(texts: list[str], budget: int):
+    """Group `texts` into request-sized batches, in order.
+
+    Order is preserved because the caller zips the returned vectors back against the
+    rules by position -- a reordered batch would attach every embedding to the wrong
+    rule. A single text over budget is yielded alone rather than dropped or truncated:
+    the API may still reject it, which is a visible failure on one rule instead of a
+    silently lost batch.
+    """
+    batch: list[str] = []
+    total = 0
+    for text in texts:
+        cost = estimated_tokens(text)
+        if batch and (total + cost > budget or len(batch) >= BATCH):
+            yield batch
+            batch, total = [], 0
+        batch.append(text)
+        total += cost
+    if batch:
+        yield batch
 """Embedding requests per call. Vertex accepts batches; 64 keeps a single failure cheap to
 retry without making the run chatty."""
 
@@ -53,13 +94,12 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
     from rishivan.council.client import get_vertex_client, model_name
 
     client = get_vertex_client()
-    model = model_name("vertex", "embed")
+    model = model_name("embed")
     vectors: list[list[float]] = []
-    for start in range(0, len(texts), BATCH):
-        chunk = texts[start : start + BATCH]
-        response = client.models.embed_content(model=model, contents=chunk)
+    for batch in token_batches(texts, TOKEN_BUDGET):
+        response = client.models.embed_content(model=model, contents=batch)
         vectors.extend(embedding.values for embedding in response.embeddings)
-        print(f"  embedded {min(start + BATCH, len(texts))}/{len(texts)}", flush=True)
+        print(f"  embedded {len(vectors)}/{len(texts)}", flush=True)
     return vectors
 
 
