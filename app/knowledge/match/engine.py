@@ -31,6 +31,9 @@ class MatchedRule:
     source: dict
     life_domains: list[str] = field(default_factory=list)
     rishi_affinity: dict[str, float] = field(default_factory=dict)
+    withheld_because: list[str] = field(default_factory=list)
+    """Non-empty when the condition held but the source cancels it for this chart. Kept
+    rather than dropped so a reviewer can see the near-miss and a UI can explain it."""
 
 
 def _asserted_values(atom: dict, object_field: str) -> list:
@@ -80,8 +83,65 @@ def _atom_holds(atom: dict, tokens: dict) -> bool:
     return any(_same(actual, value) for value in values)
 
 
+CANCELLING_KINDS = frozenset({"cancel"})
+"""Modifier kinds that stop a rule applying rather than colouring it.
+
+`strengthen` and `weaken` change how strongly the effect is stated and belong in the
+answer, not in the match. `cancel` is how Neecha Bhanga is expressed -- a debilitation
+undone -- and a rule whose cancellation holds must not fire at all.
+"""
+
+
+def blockers(rule: dict, tokens: dict) -> list[str]:
+    """Reasons this rule must not apply to this chart, despite its condition holding.
+
+    Two sources, and neither was consulted until now:
+
+    **Exceptions.** BPHS 8.1's "if the 8th lord is in the Ascendant the native is bereft
+    of bodily pleasures" carries a commentary exception -- in Aries and Libra ascendants
+    it does not apply, because Mars and Venus become the 8th lord and their moolatrikona
+    is the Ascendant. Worked Example 1 of the extraction prompt exists to capture exactly
+    that, and the matcher ignored it. A rule that fires where the book cancels it is worse
+    than a rule that never fires: it asserts something the source explicitly denies.
+
+    **Cancelling modifiers.** Same logic, expressed as `kind: cancel`.
+
+    Returns the human-readable reasons rather than a bool, so the caller can say *why* a
+    rule was withheld instead of silently dropping it.
+    """
+    reasons: list[str] = []
+    for exception in rule.get("exceptions") or []:
+        if satisfies(exception.get("condition"), tokens):
+            reasons.append(
+                exception.get("statement")
+                or "an exception recorded for this rule holds for this chart"
+            )
+    for modifier in rule.get("modifiers") or []:
+        if modifier.get("kind") in CANCELLING_KINDS and satisfies(
+            modifier.get("condition"), tokens
+        ):
+            reasons.append(
+                modifier.get("statement") or "a cancelling modifier holds for this chart"
+            )
+    return reasons
+
+
+def applies(rule: dict, tokens: dict) -> bool:
+    """Whether the whole rule applies: condition holds AND nothing cancels it.
+
+    `satisfies` answers only the condition. Callers deciding whether to show a rule to a
+    user want this instead -- the difference is a rule the source cancels.
+    """
+    if not satisfies(rule.get("condition") or rule.get("formation"), tokens):
+        return False
+    return not blockers(rule, tokens)
+
+
 def satisfies(condition: dict | None, tokens: dict) -> bool:
-    """Whether this chart satisfies this condition, exactly."""
+    """Whether this chart satisfies this condition, exactly.
+
+    The condition ONLY. Exceptions and cancelling modifiers are separate -- see `applies`.
+    """
     if not condition:
         return False
     atoms = condition.get("atoms") or []
@@ -137,6 +197,17 @@ async def match_chart(
         if not satisfies(rule.condition, tokens):
             continue
         effect = rule.effect or {}
+        # An exception or a cancelling modifier that holds means the source itself denies
+        # this rule for this chart, so it must not be presented as applying.
+        withheld = blockers(
+            {
+                "exceptions": effect.get("exceptions") or [],
+                "modifiers": effect.get("modifiers") or [],
+            },
+            tokens,
+        )
+        if withheld:
+            continue
         matched.append(
             MatchedRule(
                 rule_key=rule.rule_key,

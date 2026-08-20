@@ -501,6 +501,45 @@ if ask_btn and question.strip():
             if result.get("chart_facts"):
                 st.caption(f"{len(result['chart_facts'])} ground-truth facts extracted via Swiss Ephemeris")
 
+    # ── The facts this reading actually stood on ──
+    # Blueprint §21: an important conclusion must be traceable from question -> calculation
+    # -> rule -> source -> explanation. Everything below is that trail, shown to the reader
+    # rather than only visible in a log.
+    #
+    # Two representations of the same chart, doing two different jobs, and it is worth
+    # showing both: the sentences are what the language model reads and what page retrieval
+    # searches on; the tokens are the only thing a rule can be tested against.
+    chart_facts = result.get("chart_facts") or []
+    chart_tokens = result.get("chart_tokens") or {}
+    if chart_facts or chart_tokens:
+        with st.expander(
+            f"🔍 Facts used for this reading — {len(chart_facts)} statements, "
+            f"{len(chart_tokens)} machine values",
+            expanded=False,
+        ):
+            if chart_facts:
+                st.markdown("**Chart facts** — ground truth given to the Rishi, and the "
+                            "queries page retrieval searched on")
+                st.caption(
+                    "Computed locally by Swiss Ephemeris. The reading may interpret "
+                    "these; it may not change them."
+                )
+                for fact in chart_facts:
+                    st.markdown(f"- {fact}")
+            if chart_tokens:
+                st.markdown("**Machine values** — what classical rules were tested against")
+                st.caption(
+                    "A rule matches only if its condition holds exactly here. "
+                    "`house.7.lord.house = 7` means the 7th lord sits in the 7th house."
+                )
+                st.code(
+                    "\n".join(
+                        f"{name} = {value}"
+                        for name, value in sorted(chart_tokens.items())
+                    ),
+                    language=None,
+                )
+
     # ── Matched Koonji rules ──
     # Blueprint §21's gold standard: "If Rishivan cannot show how an important
     # conclusion travels from user question -> calculation -> rule -> source ->
@@ -512,9 +551,12 @@ if ask_btn and question.strip():
         with st.expander(
             f"📜 {len(matched_rules)} classical rules match this chart", expanded=False
         ):
+            true_count = result.get("rules_true_of_chart") or len(matched_rules)
             st.caption(
-                "Matched deterministically against the computed placements — not "
-                "retrieved by similarity. Each condition was tested and holds."
+                f"{true_count} approved rules apply to this chart; the "
+                f"{len(matched_rules)} most relevant to {persona.display_name}'s domains "
+                f"are shown. Matched by exact condition test against the computed "
+                f"placements — not by similarity."
             )
             for hit in matched_rules:
                 st.markdown(f"**{hit.citation}**")

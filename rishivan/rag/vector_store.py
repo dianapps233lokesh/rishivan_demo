@@ -75,6 +75,17 @@ class VectorStore(ABC):
     def exists(self) -> bool:
         """Whether the collection has been created and is queryable."""
 
+    @abstractmethod
+    def all_points(self, batch: int = 512) -> list[Hit]:
+        """Every point in the collection, ignoring similarity entirely.
+
+        Needed by the rule base, where similarity is the wrong entry point. Measured on
+        the real corpus: nominating rules by similarity to the question surfaced 10 of the
+        21 rules actually true of a chart, losing the rest -- because similarity cannot
+        know what is true, so it spends its window on rules that merely read like the
+        question. Exact matching has to see everything.
+        """
+
 
 class ChromaVectorStore(VectorStore):
     """Embedded ChromaDB backed by a local folder."""
@@ -133,6 +144,13 @@ class ChromaVectorStore(VectorStore):
                 [{"document": d, "metadata": m} for d, m in zip(docs, metas)]
             )
         return out
+
+    def all_points(self, batch: int = 512) -> list[Hit]:
+        got = self._get().get()
+        return [
+            {"document": doc, "metadata": meta}
+            for doc, meta in zip(got.get("documents") or [], got.get("metadatas") or [])
+        ]
 
     def fetch_pages(self, pages_by_doc) -> list[Hit]:
         # Translate to Chroma's filter DSL: OR across docs, each doc AND page-in.
@@ -367,6 +385,32 @@ class QdrantVectorStore(VectorStore):
 
     def exists(self) -> bool:
         return self._client.collection_exists(self._name)
+
+    def all_points(self, batch: int = 512) -> list[Hit]:
+        """Scroll the whole collection. Vectors are not fetched -- only payloads."""
+        if not self.exists():
+            return []
+        hits: list[Hit] = []
+        offset = None
+        while True:
+            points, offset = self._client.scroll(
+                collection_name=self._name,
+                limit=batch,
+                offset=offset,
+                with_payload=True,
+                with_vectors=False,
+            )
+            for point in points:
+                payload = dict(point.payload or {})
+                hits.append(
+                    {
+                        "document": payload.pop(self._DOC_KEY, ""),
+                        "metadata": payload,
+                    }
+                )
+            if offset is None:
+                break
+        return hits
 
 
 def get_vector_store(collection_name: str | None = None) -> VectorStore:

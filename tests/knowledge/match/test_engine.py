@@ -251,3 +251,91 @@ def test_match_chart_returns_only_approved_rules():
     for key, status, approved_at in rows:
         assert status == "parsed", key
         assert approved_at is not None, f"{key} was matched without being approved"
+
+
+# --- Exceptions and cancelling modifiers -------------------------------------
+#
+# A rule that fires where the book cancels it is worse than a rule that never fires: it
+# asserts something the source explicitly denies. Worked Example 1 of the extraction
+# prompt exists to capture BPHS 8.1's commentary exception, and the matcher ignored it
+# until now.
+
+EIGHTH_LORD_IN_LAGNA = {
+    "condition": {"atoms": [{"type": "lord_of_house_in_house", "lord_of": 8,
+                             "house": 1}]},
+    "exceptions": [
+        {
+            "statement": "not in Aries or Libra ascendants, where Mars and Venus become "
+            "the 8th lord and their moolatrikona is the Ascendant",
+            "from_commentary": True,
+            "condition": {"atoms": [{"type": "lord_of_house_in_sign", "lord_of": 1,
+                                     "signs": ["aries", "libra"]}]},
+        }
+    ],
+}
+
+LAGNA_IN_ARIES = {"house.8.lord.house": 1, "house.1.lord.sign": "aries"}
+LAGNA_IN_CANCER = {"house.8.lord.house": 1, "house.1.lord.sign": "cancer"}
+
+
+def test_the_condition_holds_in_both_charts():
+    from app.knowledge.match.engine import satisfies as sat
+
+    assert sat(EIGHTH_LORD_IN_LAGNA["condition"], LAGNA_IN_ARIES)
+    assert sat(EIGHTH_LORD_IN_LAGNA["condition"], LAGNA_IN_CANCER)
+
+
+def test_an_exception_that_holds_blocks_the_rule():
+    from app.knowledge.match.engine import applies, blockers
+
+    reasons = blockers(EIGHTH_LORD_IN_LAGNA, LAGNA_IN_ARIES)
+    assert reasons and "Aries" in reasons[0]
+    assert applies(EIGHTH_LORD_IN_LAGNA, LAGNA_IN_ARIES) is False
+
+
+def test_an_exception_that_does_not_hold_leaves_the_rule_standing():
+    from app.knowledge.match.engine import applies, blockers
+
+    assert blockers(EIGHTH_LORD_IN_LAGNA, LAGNA_IN_CANCER) == []
+    assert applies(EIGHTH_LORD_IN_LAGNA, LAGNA_IN_CANCER) is True
+
+
+def test_a_cancelling_modifier_blocks_the_rule():
+    """`cancel` is how Neecha Bhanga is expressed -- a debilitation undone."""
+    from app.knowledge.match.engine import applies
+
+    rule = {
+        "condition": {"atoms": [{"type": "planet_in_house", "planet": "saturn",
+                                 "house": 7}]},
+        "modifiers": [
+            {"kind": "cancel", "statement": "cancelled when Jupiter aspects",
+             "condition": {"atoms": [{"type": "planet_in_house", "planet": "jupiter",
+                                      "house": 9}]}}
+        ],
+    }
+    assert applies(rule, CHART) is False
+
+
+def test_strengthen_and_weaken_do_not_block():
+    """They colour how strongly the effect is stated, and belong in the answer rather
+    than in the match."""
+    from app.knowledge.match.engine import applies
+
+    for kind in ("strengthen", "weaken"):
+        rule = {
+            "condition": {"atoms": [{"type": "planet_in_house", "planet": "saturn",
+                                     "house": 7}]},
+            "modifiers": [
+                {"kind": kind,
+                 "condition": {"atoms": [{"type": "planet_in_house",
+                                          "planet": "jupiter", "house": 9}]}}
+            ],
+        }
+        assert applies(rule, CHART) is True, kind
+
+
+def test_a_rule_with_no_exceptions_is_unaffected():
+    from app.knowledge.match.engine import blockers
+
+    assert blockers({"condition": {}, "exceptions": [], "modifiers": []}, CHART) == []
+    assert blockers({}, CHART) == []

@@ -52,12 +52,9 @@ specialisation the client's whole design rests on.
 """
 
 CANDIDATE_MULTIPLIER = 6
-"""How many vector candidates to fetch per rule wanted.
+"""How many vector candidates to fetch per rule wanted, in the legacy nominate-first path.
 
-Retrieval is by topical similarity and the filter is exact, so most candidates fail the
-condition. Fetching only `limit` would return almost nothing: on a real chart roughly 10%
-of the rule base is satisfied, so the multiplier buys the exact filter something to work
-with. Not unbounded, because each candidate is a payload to deserialise.
+Kept only for `match_rules`, which is superseded. See `rank_true_rules` for why.
 """
 
 
@@ -69,6 +66,7 @@ class RuleHit:
     source: dict
     relevance: float
     life_domains: list[str] = field(default_factory=list)
+    rishi_affinity: dict = field(default_factory=dict)
 
     @property
     def citation(self) -> str:
@@ -138,3 +136,126 @@ def match_rules(
 
     hits.sort(key=lambda hit: -hit.relevance)
     return hits
+
+
+def _cosine(left: list[float], right: list[float]) -> float:
+    """Similarity between two embeddings, for RANKING rules already known to be true.
+
+    Written here rather than pulled from a library because it is four lines and adding a
+    numpy dependency to the Streamlit request path for four lines is a bad trade.
+    """
+    dot = sum(a * b for a, b in zip(left, right))
+    norm = (sum(a * a for a in left) ** 0.5) * (sum(b * b for b in right) ** 0.5)
+    return dot / norm if norm else 0.0
+
+
+def rank_true_rules(
+    rules,
+    query_embedding: list[float],
+    *,
+    rishi: str,
+    limit: int = 10,
+    embeddings: dict[str, list[float]] | None = None,
+) -> list[RuleHit]:
+    """Rank rules already proven true of the chart, by relevance to the question.
+
+    This inverts `match_rules`, and the inversion is the whole point. Measured on the
+    Mumbai test chart against 204 approved rules, of which **21 are true**:
+
+        question                  true rules the vector nominated
+        "will my wife be healthy"  10 / 21   -- 11 lost
+        "will I be wealthy"         6 / 21   -- 14 lost
+        "what about my career"      6 / 21   -- 14 lost
+
+    Nominating by similarity first spends its window on rules that *read* like the question
+    while true rules sit outside it -- and it was nominating 72 of 204, over a third of the
+    base, and still losing half. Similarity cannot know what is true, so letting it go first
+    caps recall at whatever it happens to surface.
+
+    So: exact-match everything first (the caller does that -- it is one indexed query), then
+    rank the survivors here. Recall becomes total by construction, and ranking 21 known-true
+    rules by topic is a far easier problem than retrieving from 204 by similarity.
+
+    `embeddings` maps rule_key -> vector, for ordering by topical fit. Without it the order
+    falls back to Rishi relevance alone, which is coarse but never wrong -- many rules tie
+    at 1.0, and a stable sort keeps the caller's order within a tie.
+    """
+    scored: list[tuple[float, float, RuleHit]] = []
+    for rule in rules:
+        affinity = getattr(rule, "rishi_affinity", None) or {}
+        relevance = rule_relevance(rishi, affinity)
+        if relevance < MIN_RELEVANCE:
+            continue
+        hit = RuleHit(
+            rule_key=rule.rule_key,
+            condition=getattr(rule, "condition", None) or {},
+            effects=getattr(rule, "effects", None) or [],
+            source=getattr(rule, "source", None) or {},
+            life_domains=getattr(rule, "life_domains", None) or [],
+            relevance=relevance,
+        )
+        vector = (embeddings or {}).get(rule.rule_key)
+        topical = _cosine(query_embedding, vector) if vector else 0.0
+        scored.append((relevance, topical, hit))
+
+    # Rishi relevance first because it is a hard statement about ownership; topical
+    # similarity second because it is a soft signal and only meaningful within a tier.
+    scored.sort(key=lambda row: (-row[0], -row[1]))
+    return [hit for _, _, hit in scored[:limit]]
+
+
+def true_rules(store, tokens: dict) -> list[RuleHit]:
+    """Every approved rule that applies to this chart. No similarity involved.
+
+    `applies` rather than `satisfies`: a rule whose exception holds for this chart is one
+    the source itself cancels, and presenting it would assert what the book denies.
+
+    Scrolls the whole collection. At 204 rules that is one request; at 50,000 the caller
+    should cache the scroll and re-run it per approval batch rather than per question,
+    because the payloads change only when a reviewer approves something.
+    """
+    from app.knowledge.match.engine import applies
+
+    try:
+        points = store.all_points()
+    except Exception:  # noqa: BLE001 - an unreachable rule store must not break an answer
+        return []
+
+    hits: list[RuleHit] = []
+    for point in points:
+        payload = point.get("metadata") or {}
+        hit = _payload_to_hit(payload, relevance=0.0)
+        if hit is None:
+            continue
+        rule = {
+            "condition": hit.condition,
+            "exceptions": json.loads(payload.get("exceptions") or "[]"),
+            "modifiers": json.loads(payload.get("modifiers") or "[]"),
+        }
+        if not applies(rule, tokens):
+            continue
+        hit.rishi_affinity = json.loads(payload.get("rishi_affinity") or "{}")
+        hits.append(hit)
+    return hits
+
+
+def rules_for_question(
+    store,
+    query_embedding: list[float],
+    *,
+    tokens: dict,
+    rishi: str,
+    limit: int = 10,
+) -> list[RuleHit]:
+    """The whole rule path: match everything, then rank what survived.
+
+    Replaces `match_rules`. The difference is recall: nominating by similarity first lost
+    11 to 14 of 21 true rules on the measured chart, because a similarity window has no way
+    to prefer rules that happen to be true.
+    """
+    return rank_true_rules(
+        true_rules(store, tokens),
+        query_embedding,
+        rishi=rishi,
+        limit=limit,
+    )

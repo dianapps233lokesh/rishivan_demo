@@ -163,3 +163,89 @@ def test_min_relevance_is_not_zero():
     """At zero, any Rishi can cite any rule, which dissolves the specialisation the
     client's design rests on."""
     assert MIN_RELEVANCE > 0
+
+
+# --- Recall: match first, then rank ------------------------------------------
+#
+# The measurement that forced this inversion, on 204 approved rules of which 21 are true
+# of the test chart:
+#
+#     "will my wife be healthy?"  vector nominated 10/21 true  -- 11 lost
+#     "will I be wealthy?"                          6/21       -- 14 lost
+#     "what about my career?"                       6/21       -- 14 lost
+#
+# It was nominating 72 of 204 -- over a third of the base -- and still losing half.
+
+
+class ScrollStore(FakeStore):
+    """A store that can be scrolled, which is what exact matching needs."""
+
+    def all_points(self):
+        return self._points
+
+
+def test_true_rules_finds_every_true_rule_regardless_of_similarity():
+    """`FALSE_RULE` is first in similarity order and `TRUE_RULE` last; recall must not
+    depend on that ordering at all."""
+    from rishivan.rag.rules import true_rules
+
+    store = ScrollStore([FALSE_RULE, NEGATED_RULE, TRUE_RULE])
+    assert [hit.rule_key for hit in true_rules(store, CHART)] == ["true"]
+
+
+def test_true_rules_ignores_rishi_relevance():
+    """Truth is not a Rishi's opinion. Filtering by relevance happens in ranking, so a
+    rule outside the answering Rishi's domains is still found to be true."""
+    from rishivan.rag.rules import true_rules
+
+    wealth_rule = _point(
+        "wealth", json.loads(TRUE_RULE["metadata"]["condition"]), {"artha": 1.0})
+    assert len(true_rules(ScrollStore([wealth_rule]), CHART)) == 1
+
+
+def test_a_rule_whose_exception_holds_is_not_true_of_the_chart():
+    """`applies`, not `satisfies`. A rule the source cancels must not be presented as
+    applying -- that asserts what the book denies."""
+    from rishivan.rag.rules import true_rules
+
+    excepted = _point(
+        "excepted", json.loads(TRUE_RULE["metadata"]["condition"]), {"prema": 1.0})
+    excepted["metadata"]["exceptions"] = json.dumps(
+        [{"statement": "not when the 7th lord is in the 6th",
+          "condition": {"atoms": [{"type": "lord_of_house_in_house", "lord_of": 7,
+                                   "house": 6}]}}]
+    )
+    assert true_rules(ScrollStore([excepted]), CHART) == []
+
+
+def test_ranking_respects_the_limit_without_affecting_recall():
+    from rishivan.rag.rules import rules_for_question, true_rules
+
+    points = [
+        _point(f"r{i}", json.loads(TRUE_RULE["metadata"]["condition"]), {"prema": 1.0})
+        for i in range(15)
+    ]
+    store = ScrollStore(points)
+    assert len(true_rules(store, CHART)) == 15
+    assert len(rules_for_question(store, [0.0], tokens=CHART, rishi="medhan",
+                                  limit=4)) == 4
+
+
+def test_ranking_drops_rules_outside_the_rishis_domains():
+    from rishivan.rag.rules import rules_for_question
+
+    wealth = _point(
+        "wealth", json.loads(TRUE_RULE["metadata"]["condition"]), {"artha": 1.0})
+    hits = rules_for_question(ScrollStore([wealth, TRUE_RULE]), [0.0], tokens=CHART,
+                              rishi="medhan", limit=10)
+    assert [hit.rule_key for hit in hits] == ["true"]
+
+
+def test_an_unscrollable_store_degrades_to_nothing():
+    from rishivan.rag.rules import true_rules
+
+    class Broken:
+        def all_points(self):
+            raise ConnectionError("qdrant unreachable")
+
+    assert true_rules(Broken(), CHART) == []

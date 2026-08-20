@@ -91,6 +91,8 @@ def council_consult(
         "is_warmth": False,
         "secondary_voice": None,
         "matched_rules": [],
+        "chart_tokens": {},
+        "rules_true_of_chart": 0,
     }
 
     # ── Step 0/1: Intake — classify, and bypass everything else for small
@@ -415,26 +417,36 @@ def council_consult(
     # reading that silently returned less because the rule base is thin would be a
     # regression on the page search that already works.
     #
-    # The split of labour is deliberate: the vector store finds rules that are ABOUT
-    # the question, and `satisfies()` decides which are TRUE of this chart. Measured
-    # on this corpus, similarity alone ranks "the 7th lord in the 5th house" above
-    # the rule that actually matches a 7th lord in the 6th, and scores a rule's own
-    # negation within 0.02 of it -- so similarity may nominate, never decide.
+    # The order of operations is the load-bearing decision. Every approved rule is
+    # exact-matched against the chart FIRST, and only the survivors are ranked by
+    # relevance to the question. Nominating by similarity first was measured losing
+    # 11 to 14 of the 21 rules true of a test chart, because a similarity window
+    # cannot prefer what it has no way of knowing is true. Matching first makes
+    # recall total by construction; ranking 21 known-true rules is the easy half.
     matched_rules = []
     if chart is not None:
         try:
             from rishivan.chart.tokens import all_chart_tokens
             from rishivan.config import settings as _settings
-            from rishivan.rag.rules import match_rules, rule_collection_name
+            from rishivan.rag.rules import rule_collection_name, rules_for_question
             from rishivan.rag.vector_store import get_vector_store
 
             rule_store = get_vector_store(
                 rule_collection_name(_settings.VECTOR_COLLECTION)
             )
-            matched_rules = match_rules(
-                rule_store,
+            from rishivan.rag.rules import rank_true_rules, true_rules
+
+            tokens = all_chart_tokens(chart)
+            result["chart_tokens"] = tokens
+            # Split rather than calling `rules_for_question`, so the UI can report how
+            # many rules were TRUE of the chart alongside how many this Rishi was shown.
+            # The gap between the two numbers is the specialisation doing its job, and it
+            # should be visible rather than implied.
+            applicable = true_rules(rule_store, tokens)
+            result["rules_true_of_chart"] = len(applicable)
+            matched_rules = rank_true_rules(
+                applicable,
                 embed_fn([search_query])[0],
-                tokens=all_chart_tokens(chart),
                 rishi=rishi,
                 limit=MAX_MATCHED_RULES,
             )
