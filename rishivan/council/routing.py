@@ -81,6 +81,35 @@ carry more signal than single words and are the ones that disambiguate: "life pu
 must reach Dharma rather than Atma, and "most successful" must reach Atma at all.
 """
 
+TIMING_MARKERS = re.compile(
+    r"\bwhen\b|\bwhat time\b|\bwhich year|\bwhich period|\bwhat period|"
+    r"\bhow soon\b|\bat what age\b|\btiming\b|\bdasha\b|\bmahadasha\b|"
+    r"\bantardasha\b|\bbhukti\b|\btransit\b|\bmuhurta\b|\bperiods?\b|"
+    r"\bby (?:19|20)\d\d\b|\bnext year\b|\bthis year\b",
+    re.IGNORECASE,
+)
+"""Language that makes a question about WHEN rather than WHETHER.
+
+Blueprint §4's level 5, and §8's rule 2: "Separate potential from timing. Natal promise
+and event timing are different reasoning problems." Without the distinction, "will I
+marry" and "when will I marry" retrieve the same rules.
+"""
+
+APPLICATION_TIMING = "timing"
+APPLICATION_POTENTIAL = "potential"
+
+APPLICATION_RULE_CATEGORY: dict[str, str] = {
+    APPLICATION_POTENTIAL: "formation",
+    APPLICATION_TIMING: "timing",
+}
+"""Application type -> the `rule_category` that answers it.
+
+Two vocabularies for one distinction, and they do not coincide: the extractor calls a
+natal promise `formation` while §4 level 5 calls the question `potential`. Comparing the
+strings directly matched only on "timing" -- by accident -- and silently gave a
+whether-question no preference at all.
+"""
+
 MAX_DOMAINS = 3
 """§12: "Do not invoke all eight by default. Invoke the minimum set that provides
 independent, relevant evidence." A cap makes that structural rather than advisory."""
@@ -92,6 +121,14 @@ class Routing:
 
     primary: str | None
     secondary: tuple[str, ...] = ()
+    application: str = APPLICATION_POTENTIAL
+    """Blueprint §4 level 5. `timing` when the question asks WHEN, else `potential`.
+
+    Matches `rule_category` on extracted rules, so a timing question can lead with the
+    rules that activate a promise rather than the rules that establish it. A preference
+    rather than a filter: §4-11's protocols run "promise -> ... -> Dasha", so the
+    promise is still evidence for a timing question.
+    """
     scores: dict[str, float] = field(default_factory=dict)
     matched: dict[str, tuple[str, ...]] = field(default_factory=dict)
     """Domain -> the phrases that matched it, so a routing decision can be explained."""
@@ -125,6 +162,9 @@ def route_question(question: str) -> Routing:
     document's own domain order.
     """
     text = (question or "").lower()
+    application = (
+        APPLICATION_TIMING if TIMING_MARKERS.search(text) else APPLICATION_POTENTIAL
+    )
     if not text.strip():
         return Routing(primary=None)
 
@@ -138,13 +178,14 @@ def route_question(question: str) -> Routing:
         matched[domain] = tuple(hits)
 
     if not scores:
-        return Routing(primary=None)
+        return Routing(primary=None, application=application)
 
     order = list(QUESTION_KEYWORDS)
     ranked = sorted(scores, key=lambda d: (-scores[d], order.index(d)))
     return Routing(
         primary=ranked[0],
         secondary=tuple(ranked[1:MAX_DOMAINS]),
+        application=application,
         scores=scores,
         matched=matched,
     )

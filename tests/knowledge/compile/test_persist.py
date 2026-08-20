@@ -161,3 +161,46 @@ def test_siblings_from_one_verse_get_distinct_keys():
 def test_a_row_with_no_extractor_rule_key_falls_back_to_chapter_and_verse():
     row = {**VALID_ROW, "rule": {**VALID_ROW["rule"], "rule_key": None}}
     assert rule_key_for(row, book_slug="b") == "b:12.2"
+
+
+# --- Blueprint §4 levels 2 and 5 survive the load ---------------------------
+
+
+def test_the_effect_payload_keeps_the_rule_category():
+    """BP §4 level 5 and §8 rule 2: potential and timing are different reasoning
+    problems. The extractor emits `rule_category`, and the loader dropped it -- so a
+    "when will I marry" question retrieved the same rules as "will I marry"."""
+    from rishivan.knowledge.compile.persist import effect_for
+
+    effect = effect_for({"rule_category": "timing", "effects": [], "timing": {}})
+    assert effect["rule_category"] == "timing"
+
+
+def test_a_missing_rule_category_defaults_to_formation():
+    """A natal promise is the common case, and the extractor omits the field when the
+    rule is one."""
+    from rishivan.knowledge.compile.persist import effect_for
+
+    assert effect_for({})["rule_category"] == "formation"
+
+
+def test_the_effect_payload_keeps_modifiers_and_exceptions():
+    """They are Koonji fields (BP §6) and the matcher needs them to know when the
+    source itself cancels a rule."""
+    from rishivan.knowledge.compile.persist import effect_for
+
+    effect = effect_for({
+        "modifiers": [{"kind": "cancel", "condition": {}}],
+        "exceptions": [{"statement": "not for Aries", "condition": {}}],
+    })
+    assert effect["modifiers"] and effect["exceptions"]
+
+
+def test_the_school_comes_from_the_book_not_a_column_default():
+    """§8 rule 5 forbids mixing schools silently. All 398 loaded rules read
+    `parashari` because that is the column default, so a Prashna Marga rule would have
+    been stored as Parashari."""
+    from rishivan.council.source_matrix import school_for
+
+    assert school_for("prasnamarga-raman-part1") == "prashna"
+    assert school_for("bphs-gcsharma-vol1") == "parashari"

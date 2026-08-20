@@ -110,3 +110,39 @@ def test_secondary_never_repeats_the_primary():
     ):
         result = route_question(question)
         assert result.primary not in result.secondary
+
+
+# ── Blueprint §4 level 5: the question's application type ────────────────────
+#
+# §8 rule 2: "Separate potential from timing. Natal promise and event timing are
+# different reasoning problems." Without this, "will I marry" and "when will I marry"
+# retrieve identically.
+
+
+def test_a_when_question_is_a_timing_question():
+    for question in (
+        "When will I marry?",
+        "When can my finances improve?",
+        "What period of my life will be most successful?",
+        "Which years are good for a career change?",
+        "What is my current mahadasha?",
+    ):
+        assert route_question(question).application == "timing", question
+
+
+def test_a_whether_question_is_a_potential_question():
+    for question in (
+        "Will I be wealthy?",
+        "What kind of spouse will I have?",
+        "Will I have children?",
+        "What career suits me?",
+    ):
+        assert route_question(question).application == "potential", question
+
+
+def test_application_does_not_change_the_routed_domain():
+    """Level 5 is orthogonal to level 4: "when will I marry" is still PREMA."""
+    timed = route_question("When will I marry?")
+    plain = route_question("Will I marry?")
+    assert timed.primary == plain.primary == "prema"
+    assert timed.application != plain.application

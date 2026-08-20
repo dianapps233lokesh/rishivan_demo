@@ -167,3 +167,57 @@ def test_an_unknown_slug_gets_the_lowest_tier():
     from rishivan.council.source_matrix import authority_tier
 
     assert authority_tier("some-book-nobody-rated") == "S5"
+
+
+# ── Blueprint §4 levels 1 and 2: universe and school ─────────────────────────
+#
+# §5 gives the school per book family directly ("BPHS / Parashari", "Brihat Jataka /
+# Classical Hora", "Prashna Marga / Prashna"). §8 rule 5 is why it must be recorded:
+# "Never mix schools silently. If a Jaimini rule is used alongside Parashari, label
+# both." A rule stored with the column default is a rule that cannot be labelled.
+
+
+def test_every_ingested_book_declares_a_school_and_universe():
+    from rishivan.council.source_matrix import school_for, universe_for
+
+    for slug in INGESTED:
+        assert school_for(slug), slug
+        assert universe_for(slug), slug
+
+
+def test_the_schools_match_the_document():
+    from rishivan.council.source_matrix import school_for
+
+    assert school_for("bphs-gcsharma-vol1") == "parashari"
+    assert school_for("phaladeepika-sastri-1950") == "parashari"
+    assert school_for("brihatjataka-row-1919") == "classical_hora"
+    assert school_for("devakeralam-chandrakalanadi-vol1") == "nadi"
+    assert school_for("prasnamarga-raman-part1") == "prashna"
+    assert school_for("prashna-tantra") == "prashna"
+    assert school_for("muhurtachintamani") == "muhurta"
+
+
+def test_numerology_is_a_separate_universe_not_a_jyotisha_school():
+    """§4 level 1 separates Jyotisha from Numerology, and ER §13 makes numerology a
+    modality a Rishi may call -- never something that silently joins natal evidence."""
+    from rishivan.council.source_matrix import school_for, universe_for
+
+    assert universe_for("cheiros-book-of-numbers") == "numerology"
+    assert universe_for("bphs-gcsharma-vol1") == "jyotisha"
+    assert school_for("cheiros-book-of-numbers") == "numerology"
+
+
+def test_more_than_one_school_is_present_in_the_corpus():
+    """If every book were one school, §8 rule 5 would be untestable -- and it is about
+    to matter, because Prashna and Muhurta books are being bridged."""
+    from rishivan.council.source_matrix import school_for
+
+    assert len({school_for(slug) for slug in INGESTED}) >= 4
+
+
+def test_an_unknown_slug_has_an_explicit_unknown_school():
+    """Never defaulted to parashari: a mislabelled school is exactly the silent
+    doctrine-mixing §8 rule 5 forbids."""
+    from rishivan.council.source_matrix import school_for
+
+    assert school_for("some-book-nobody-classified") == "unknown"

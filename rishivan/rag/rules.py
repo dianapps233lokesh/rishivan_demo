@@ -35,6 +35,12 @@ affinity says what the rule's OUTCOME is about, coverage says what its CONDITION
 about. BPHS 26.74 is a 7th-house rule whose effects span wives, wealth and character, and
 affinity is what prefers it for a marriage question over a 7th-house rule about money."""
 
+APPLICATION_BONUS = 0.25
+"""Preference for a rule whose `rule_category` matches the question's application type
+(Blueprint §4 level 5). A bonus, not a gate: §4-11's protocols run
+"promise -> ... -> Dasha", so a timing question still needs the promise as evidence --
+it just should not lead with it."""
+
 TOPICAL_WEIGHT = 0.3
 """Weight of the question's wording. Refinement only — it cannot rescue a rule the
 coverage gate rejected, which is the point: similarity has no idea what a rule is about."""
@@ -52,6 +58,12 @@ class RuleHit:
     vector: list[float] = field(default_factory=list)
     domain: str | None = None
     """Which routed client domain claimed this rule, for §21 traceability."""
+    school: str = "unknown"
+    """Blueprint §4 level 2. Carried so evidence can be grouped and labelled by school:
+    §8 rule 5 forbids mixing them silently, and every §4-11 protocol ends in
+    "cross-school confirmation" -- so the answer is to label, never to exclude."""
+    rule_category: str = "formation"
+    """Blueprint §4 level 5: `formation` (natal promise) or `timing` (activation)."""
     sensitivities: set = field(default_factory=set)
     """Claim categories — death, diagnosis, intimate — so the prompt can require a
     hedge even when the rule is admissible."""
@@ -84,6 +96,8 @@ def _payload_to_hit(payload: dict, relevance: float) -> RuleHit | None:
             source=json.loads(payload.get("source") or "{}"),
             life_domains=json.loads(payload.get("life_domains") or "[]"),
             relevance=relevance,
+            school=payload.get("school") or "unknown",
+            rule_category=payload.get("rule_category") or "formation",
         )
     except (KeyError, TypeError, ValueError):
         return None
@@ -112,6 +126,7 @@ def rank_score(
     affinity: dict,
     query_embedding: list[float],
     rule_vector: list[float],
+    rule_category: str = "formation",
 ) -> tuple[float, float, str | None]:
     """`(relevance, score, domain)` for one true rule.
 
@@ -129,7 +144,20 @@ def rank_score(
         if query_embedding and rule_vector
         else 0.0
     )
-    return relevance, relevance + AFFINITY_WEIGHT * outcome + TOPICAL_WEIGHT * topical, domain
+    # Blueprint §4 level 5: prefer the category the question is asking for.
+    from rishivan.council.routing import APPLICATION_RULE_CATEGORY
+
+    wanted = APPLICATION_RULE_CATEGORY.get(
+        getattr(routing, "application", "potential"), "formation"
+    )
+    application = APPLICATION_BONUS * (1.0 if rule_category == wanted else 0.0)
+    score = (
+        relevance
+        + AFFINITY_WEIGHT * outcome
+        + TOPICAL_WEIGHT * topical
+        + application
+    )
+    return relevance, score, domain
 
 
 def rank_true_rules(
@@ -157,6 +185,7 @@ def rank_true_rules(
         relevance, score, domain = rank_score(
             routing, getattr(rule, "condition", None) or {}, affinity,
             query_embedding, getattr(rule, "vector", None) or [],
+            getattr(rule, "rule_category", "formation"),
         )
         if relevance < MIN_RELEVANCE:
             continue
@@ -285,3 +314,18 @@ def rules_for_question(
         limit=limit,
         question=question,
     )
+
+
+def group_by_school(hits: list[RuleHit]) -> dict[str, list[RuleHit]]:
+    """Evidence grouped by Blueprint §4 level 2, keeping the order it arrived in.
+
+    §8 rule 5: "Never mix schools silently. If a Jaimini rule is used alongside
+    Parashari, label both." Grouping rather than filtering is deliberate -- every §4-11
+    protocol ends in "cross-school confirmation", so excluding a school would remove the
+    corroboration the documents ask for. What must not happen is two schools merging into
+    one undifferentiated claim.
+    """
+    grouped: dict[str, list[RuleHit]] = {}
+    for hit in hits:
+        grouped.setdefault(hit.school or "unknown", []).append(hit)
+    return grouped

@@ -27,6 +27,7 @@ from datetime import datetime
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from rishivan.council.source_matrix import school_for
 from rishivan.knowledge.compile.atoms import CompiledAtom, compile_condition
 from rishivan.models.knowledge.book import Book
 from rishivan.models.knowledge.rule import Rule, RuleAtom
@@ -57,6 +58,27 @@ class LoadReport:
             f"unparsed={self.unparsed} declined={self.declined} "
             f"refused={self.refused}"
         )
+
+
+def effect_for(payload: dict) -> dict:
+    """The `rule.effect` JSONB for one extracted rule.
+
+    Pure, so the payload shape is testable without a database -- and it needed to be:
+    `rule_category` was silently dropped here, which is Blueprint §4's level 5. Without
+    it a "when will I marry" question retrieves the same rules as "will I marry",
+    though §8 rule 2 calls them different reasoning problems.
+    """
+    return {
+        "effects": payload.get("effects") or [],
+        "timing": payload.get("timing") or {},
+        "modifiers": payload.get("modifiers") or [],
+        "exceptions": payload.get("exceptions") or [],
+        "remedies": payload.get("remedies") or [],
+        "rishi_affinity": payload.get("rishi_affinity") or {},
+        "rule_family": payload.get("rule_family"),
+        # A natal promise is the common case and the extractor omits the field for it.
+        "rule_category": payload.get("rule_category") or "formation",
+    }
 
 
 def rule_key_for(row: dict, *, book_slug: str) -> str:
@@ -155,15 +177,11 @@ async def load_rules(
 
         rule.condition = payload.get("formation")
         rule.raw_condition_text = payload.get("raw_condition_text")
-        rule.effect = {
-            "effects": payload.get("effects") or [],
-            "timing": payload.get("timing") or {},
-            "modifiers": payload.get("modifiers") or [],
-            "exceptions": payload.get("exceptions") or [],
-            "remedies": payload.get("remedies") or [],
-            "rishi_affinity": payload.get("rishi_affinity") or {},
-            "rule_family": payload.get("rule_family"),
-        }
+        rule.effect = effect_for(payload)
+        # Blueprint §4 level 2. The column defaults to `parashari`, so leaving it unset
+        # stored every Prashna Marga and Deva Keralam rule as Parashari -- exactly the
+        # silent doctrine-mixing §8 rule 5 forbids, and invisible once written.
+        rule.school = school_for(book_slug)
         rule.life_domains = payload.get("life_domains") or []
         rule.source = {
             "book_slug": book_slug,

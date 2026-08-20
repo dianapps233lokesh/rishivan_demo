@@ -120,6 +120,19 @@ async def main(argv: list[str] | None = None) -> int:
             "rishi_affinity": json.dumps(
                 (rule.effect or {}).get("rishi_affinity") or {}
             ),
+            # Blueprint §6 lists MODIFIERS and EXCEPTIONS as Koonji fields, and
+            # `rag.rules.true_rules` reads both to decide whether the source itself
+            # cancels a rule for this chart. They were stored in Postgres and dropped
+            # here, so `applies()` silently degenerated to `satisfies()` in production.
+            "modifiers": json.dumps((rule.effect or {}).get("modifiers") or []),
+            "exceptions": json.dumps((rule.effect or {}).get("exceptions") or []),
+            # BP §4 level 2 and §8 rule 5: "never mix schools silently -- label both".
+            # Carried so an answer can group its evidence by school rather than pooling
+            # Parashari and Prashna into one indistinguishable claim.
+            "school": rule.school or "unknown",
+            # BP §4 level 5: potential vs timing. A "when" question and a "whether"
+            # question are different reasoning problems (§8 rule 2).
+            "rule_category": (rule.effect or {}).get("rule_category") or "formation",
         }
         for rule in rules
     ]

@@ -389,3 +389,98 @@ def test_an_unsupported_question_returns_no_rules():
         Store([MANY_WIVES]), [0.0], tokens=BOTH_TRUE,
         routing=route_question("How do I rotate a PDF?"), limit=10,
     ) == []
+
+
+# --- The payload contract ----------------------------------------------------
+
+
+def test_every_payload_key_retrieval_reads_is_a_key_the_embedder_writes():
+    """A reader/writer mismatch here is silent and total.
+
+    `true_rules` read `exceptions` and `modifiers` from the payload while
+    `scripts/embed_rules.py` wrote neither, so `applies()` degenerated to `satisfies()`
+    and every commentary exception was ignored in production -- while the unit tests
+    passed, because they build the payload by hand. Blueprint §6 lists MODIFIERS and
+    EXCEPTIONS as Koonji fields; dropping them at the store boundary loses them.
+    """
+    import re
+    from pathlib import Path
+
+    reader = Path("rishivan/rag/rules.py").read_text()
+    writer = Path("scripts/embed_rules.py").read_text()
+
+    read_keys = set(re.findall(r'payload\.get\("(\w+)"\)', reader))
+    read_keys |= set(re.findall(r'payload\["(\w+)"\]', reader))
+    written = set(re.findall(r'^\s+"(\w+)":', writer, re.MULTILINE))
+
+    missing = read_keys - written
+    assert not missing, f"retrieval reads keys the embedder never writes: {sorted(missing)}"
+
+
+# --- BP §4 level 5 and level 2 in ranking ------------------------------------
+
+
+def _categorised(key, category, school="parashari", verse="1"):
+    point = _point(key, CONDITION, {"prema": 1.0}, verse=verse)
+    point["metadata"]["rule_category"] = category
+    point["metadata"]["school"] = school
+    return point
+
+
+def test_a_timing_question_leads_with_the_timing_rule():
+    """§8 rule 2: promise and timing are different reasoning problems."""
+    hits = rules_for_question(
+        Store([_categorised("promise", "formation", verse="1"),
+               _categorised("activation", "timing", verse="2")]),
+        [0.0], tokens=CHART,
+        routing=route_question("When will I marry?"), limit=5,
+    )
+    assert [h.rule_key for h in hits][0] == "activation"
+
+
+def test_a_potential_question_leads_with_the_promise():
+    hits = rules_for_question(
+        Store([_categorised("activation", "timing", verse="2"),
+               _categorised("promise", "formation", verse="1")]),
+        [0.0], tokens=CHART,
+        routing=route_question("Will my marriage be happy?"), limit=5,
+    )
+    assert [h.rule_key for h in hits][0] == "promise"
+
+
+def test_the_other_category_is_still_returned():
+    """A preference, not a filter. §4-11's protocols run promise -> ... -> Dasha, so a
+    timing question still needs the promise as evidence."""
+    hits = rules_for_question(
+        Store([_categorised("promise", "formation", verse="1"),
+               _categorised("activation", "timing", verse="2")]),
+        [0.0], tokens=CHART,
+        routing=route_question("When will I marry?"), limit=5,
+    )
+    assert {h.rule_key for h in hits} == {"promise", "activation"}
+
+
+def test_each_hit_carries_its_school():
+    """§8 rule 5: never mix schools silently -- label both."""
+    hits = rules_for_question(
+        Store([_categorised("p", "formation", school="prashna")]),
+        [0.0], tokens=CHART,
+        routing=route_question("Will my marriage be happy?"), limit=5,
+    )
+    assert hits[0].school == "prashna"
+
+
+def test_hits_can_be_grouped_by_school_without_merging():
+    from rishivan.rag.rules import group_by_school
+
+    hits = rules_for_question(
+        Store([_categorised("a", "formation", school="parashari", verse="1"),
+               _categorised("b", "formation", school="prashna", verse="2"),
+               _categorised("c", "formation", school="parashari", verse="3")]),
+        [0.0], tokens=CHART,
+        routing=route_question("Will my marriage be happy?"), limit=9,
+    )
+    grouped = group_by_school(hits)
+    assert set(grouped) == {"parashari", "prashna"}
+    assert len(grouped["parashari"]) == 2
+    assert len(grouped["prashna"]) == 1

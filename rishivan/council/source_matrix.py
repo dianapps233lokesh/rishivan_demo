@@ -170,3 +170,67 @@ def authority_tier(slug: str | None) -> str:
     if not slug:
         return UNRATED_TIER
     return AUTHORITY_TIER.get(slug.lower().strip(), UNRATED_TIER)
+
+
+BOOK_SCHOOL: dict[str, str] = {
+    # Blueprint §5's own School column, per book family.
+    "bphs-gcsharma-vol1": "parashari",
+    "bphs-gcsharma-vol2": "parashari",
+    "phaladeepika-sastri-1950": "parashari",
+    "saravali-santhanam-en": "parashari",
+    "laghu-parashari": "parashari",
+    "hindupredictiveastrology-raman": "parashari",
+    "brihatjataka-row-1919": "classical_hora",
+    "jatakaparijata-sastri-vol1": "classical_hora",
+    "jatakaparijata-sastri-vol2": "classical_hora",
+    "sarvartha-chintamani": "classical_hora",
+    "bhavartha-ratnakara-by-b-v-raman-text": "classical_hora",
+    "devakeralam-chandrakalanadi-vol1": "nadi",
+    "devakeralam-chandrakalanadi-vol2": "nadi",
+    "prasnamarga-raman-part1": "prashna",
+    "prasnamarga-raman-part2": "prashna",
+    "prashna-tantra": "prashna",
+    "muhurtachintamani": "muhurta",
+    "dharma-sindhu": "muhurta",
+    "vivaha-patalam": "muhurta",
+    "cheiros-book-of-numbers": "numerology",
+    "the-complete-book-of-numerology": "numerology",
+    "numerology-key-to-your-inner-self": "numerology",
+    "numerology-and-the-divine-triangle": "numerology",
+}
+"""Blueprint §4 level 2, per ingested book, transcribed from §5's School column.
+
+Recorded so §8's rule 5 is enforceable: "Never mix schools silently. If a Jaimini rule
+is used alongside Parashari, label both." It is a LABEL, not a filter -- every §4-11
+protocol ends in "cross-school confirmation", so excluding other schools would remove
+the corroboration the documents ask for. Retrieval groups by school; it never excludes.
+"""
+
+UNKNOWN_SCHOOL = "unknown"
+"""Never defaulted to `parashari`. A mislabelled school is precisely the silent
+doctrine-mixing §8 rule 5 forbids, and it would be invisible."""
+
+BOOK_UNIVERSE: dict[str, str] = {
+    slug: ("numerology" if school == "numerology" else "jyotisha")
+    for slug, school in BOOK_SCHOOL.items()
+}
+"""Blueprint §4 level 1. Only two universes are represented in this corpus.
+
+The separation is load-bearing rather than tidy: ER §13 makes numerology a modality a
+Rishi may *call*, and "must never silently override natal astrology". Retrieving a
+numerology page as though it were natal evidence is that override.
+"""
+
+
+def school_for(slug: str | None) -> str:
+    """Blueprint §4 level 2 for a book slug; `UNKNOWN_SCHOOL` if unclassified."""
+    if not slug:
+        return UNKNOWN_SCHOOL
+    return BOOK_SCHOOL.get(slug.lower().strip(), UNKNOWN_SCHOOL)
+
+
+def universe_for(slug: str | None) -> str:
+    """Blueprint §4 level 1 for a book slug; `UNKNOWN_SCHOOL` if unclassified."""
+    if not slug:
+        return UNKNOWN_SCHOOL
+    return BOOK_UNIVERSE.get(slug.lower().strip(), UNKNOWN_SCHOOL)
