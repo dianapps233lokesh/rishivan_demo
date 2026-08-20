@@ -1,0 +1,290 @@
+[
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "rule_family": "enemy_invasion_2_a",
+      "rule_key": "24.2_a",
+      "life_domains": [
+        "enemies"
+      ],
+      "out_of_scope_reason": "fixed navamsa (d9 sign) required for ascendant is not expressible",
+      "expressible": false,
+      "formation": {
+        "atoms": [],
+        "none": []
+      },
+      "effects": [
+        {
+          "statement": "the enemy will not invade or will abandon the march",
+          "polarity": "positive",
+          "strength": "moderate"
+        }
+      ],
+      "rule_category": "formation",
+      "unit_ref": "24.2",
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  },
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "out_of_scope_reason": "fixed sign required for ascendant and common sign for Moon cannot be expressed as a combined single condition without unsupported subject assignments",
+      "effects": [
+        {
+          "polarity": "positive",
+          "strength": "moderate",
+          "statement": "the enemy will begin his march but give it up half-way"
+        }
+      ],
+      "rule_key": "24.2_b",
+      "rule_category": "formation",
+      "rule_family": "enemy_invasion_2_b",
+      "formation": {
+        "atoms": [],
+        "none": []
+      },
+      "life_domains": [
+        "enemies"
+      ],
+      "unit_ref": "24.2",
+      "expressible": false,
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  },
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "formation": {
+        "atoms": [],
+        "none": []
+      },
+      "rule_category": "formation",
+      "rule_key": "24.2_c",
+      "effects": [
+        {
+          "polarity": "positive",
+          "strength": "moderate",
+          "statement": "the enemy will start marching but retire without fighting"
+        }
+      ],
+      "rule_family": "enemy_invasion_2_c",
+      "out_of_scope_reason": "moveable sign for Moon and common sign for ascendant cannot be expressed simultaneously without unsupported planet subject assignments",
+      "life_domains": [
+        "enemies"
+      ],
+      "expressible": false,
+      "unit_ref": "24.2",
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  },
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "formation": {
+        "atoms": [],
+        "none": []
+      },
+      "rule_family": "enemy_invasion_2_d",
+      "unit_ref": "24.2",
+      "expressible": false,
+      "rule_category": "formation",
+      "out_of_scope_reason": "malefics as a class cannot be expressed",
+      "effects": [
+        {
+          "statement": "the enemy will retreat though he has marched a long way",
+          "polarity": "positive",
+          "strength": "moderate"
+        }
+      ],
+      "life_domains": [
+        "enemies"
+      ],
+      "rule_key": "24.2_d",
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  },
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "rule_key": "24.2_e",
+      "effects": [
+        {
+          "statement": "the enemy will not march at all",
+          "strength": "moderate",
+          "polarity": "positive"
+        }
+      ],
+      "out_of_scope_reason": "malefics as a class cannot be expressed",
+      "formation": {
+        "none": [],
+        "atoms": []
+      },
+      "expressible": false,
+      "life_domains": [
+        "enemies"
+      ],
+      "unit_ref": "24.2",
+      "rule_family": "enemy_invasion_2_e",
+      "rule_category": "formation",
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  },
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "rule_family": "enemy_invasion_2_f",
+      "rule_key": "24.2_f",
+      "rule_category": "formation",
+      "expressible": false,
+      "life_domains": [
+        "enemies"
+      ],
+      "formation": {
+        "none": [],
+        "atoms": []
+      },
+      "out_of_scope_reason": "luminaries (Sun and Moon together) in the 4th house cannot be expressed as a single condition atom",
+      "effects": [
+        {
+          "strength": "moderate",
+          "polarity": "positive",
+          "statement": "the enemy will not come to fight"
+        }
+      ],
+      "unit_ref": "24.2",
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  },
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "unit_ref": "24.2",
+      "rule_family": "enemy_invasion_2_g",
+      "out_of_scope_reason": "specific sign as Ascendant or 4th house with an occupant cannot be fully expressed without unsupported generic house occupancy atoms",
+      "formation": {
+        "none": [],
+        "atoms": []
+      },
+      "rule_key": "24.2_g",
+      "effects": [
+        {
+          "strength": "moderate",
+          "polarity": "positive",
+          "statement": "the enemy returns without fighting"
+        }
+      ],
+      "life_domains": [
+        "enemies"
+      ],
+      "expressible": false,
+      "rule_category": "formation",
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  },
+  {
+    "unit_id": 19538,
+    "chapter": "24",
+    "verse_ref": "2",
+    "verdict": "DECLINED",
+    "valid": true,
+    "translation": "2. Under the following circumstances, the enemy will not invade or even if the march has begun, will abandon it:\n(a) The Moon is in a moveable sign and the Ascendant is in a fixed sign and a fixed Navamsa — an invasion by the enemy need not be feared.\n(b) The Ascendant is a fixed sign and the Moon is in a common sign — the enemy will begin his march but give it up half-way.\n(c) The Moon is in a moveable sign and the Ascendant is in a common sign — the enemy will start marching but retire without fighting.\n(d) Malefics are in the 5th or the 6th — the enemy will retreat though he has marched a long way.\n(e) Malefics occupy the 4th, the enemy will not march at all.\n(f) The luminaries are in the 4th — the enemy will not come to fight.\n(g) Aries, Taurus, Leo or Sagittarius is the Ascendant or the 4th house and a planet occupies it — the enemy returns without fighting.\n(h) The Ascendant is a fixed sign and Jupiter or Saturn occupies it — the enemy will go back without fighting.",
+    "problems": [],
+    "rule": {
+      "effects": [
+        {
+          "polarity": "positive",
+          "strength": "moderate",
+          "statement": "the enemy will go back without fighting"
+        }
+      ],
+      "unit_ref": "24.2",
+      "out_of_scope_reason": "fixed sign ascendant occupied by Jupiter or Saturn cannot be expressed as a single rule without unsupported planet substitutions",
+      "rule_category": "formation",
+      "formation": {
+        "none": [],
+        "atoms": []
+      },
+      "rule_family": "enemy_invasion_2_h",
+      "rule_key": "24.2_h",
+      "expressible": false,
+      "life_domains": [
+        "enemies"
+      ],
+      "timing": {
+        "activation_factors": {
+          "atoms": []
+        }
+      }
+    }
+  }
+]

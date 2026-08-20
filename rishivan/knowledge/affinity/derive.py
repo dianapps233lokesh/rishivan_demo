@@ -27,19 +27,25 @@ LIFE_DOMAIN_KEYWORDS: dict[str, tuple[str, ...]] = {
         "knowledge", "learning", "education", "skill", "art", "valour", "courage",
         "initiative", "enterprise", "speech", "communication", "general", "desires",
         "morality", "ethics", "misery", "comforts", "pleasures", "well-being",
-        "happiness", "mental",
+        "happiness", "mental", "emotions", "habits", "behavior", "behaviour",
+        "wisdom", "virtue", "fear", "freedom",
     ),
     # §3 PREMA -- love, spouse, compatibility, separation, relationship timing.
-    "prema": ("marriage", "spouse", "relationship", "wife", "husband", "compatib"),
+    "prema": (
+        "marriage", "spouse", "relationship", "wife", "husband", "compatib",
+        "sexuality", "menses", "menstruation",
+    ),
     # §3 ARTHA -- money, assets, financial cycles, wealth Yogas.
     "artha": (
         "wealth", "money", "financ", "asset", "income", "gain", "possession",
         "sustenance", "expenditure", "prosper", "friendship", "servant",
+        "friends", "agriculture", "animals", "cattle", "food", "trade",
     ),
     # §3 KARMA -- profession, business, leadership, status, achievement.
     "karma": (
         "career", "profession", "business", "status", "reputation", "fame", "honour",
-        "authority", "leadership", "work", "legal", "social",
+        "authority", "leadership", "work", "legal", "social", "power", "success",
+        "achievement", "kingship", "government", "society", "rank",
     ),
     # §3 VANSH -- parents, siblings, children, lineage, family dynamics.
     "vansh": (
@@ -51,17 +57,18 @@ LIFE_DOMAIN_KEYWORDS: dict[str, tuple[str, ...]] = {
     "aarogya": (
         "health", "disease", "illness", "longevity", "death", "vitality", "strength",
         "body", "protection", "enem", "afterlife", "physical body", "danger",
-        "injur", "wound", "accident",
+        "injur", "wound", "accident", "safety", "imprisonment", "captivity",
     ),
     # §3 YATRA -- travel, migration, property, residence, life transitions.
     "yatra": (
         "travel", "propert", "convey", "foreign", "residence", "migrat", "reloc",
-        "journey", "vehicle",
+        "journey", "vehicle", "home", "place of birth", "land", "dwelling",
     ),
     # §3 DHARMA -- dharma, karma, moksha, spiritual purpose, sacred texts.
     "dharma": (
         "religion", "spiritual", "dharma", "karma", "moksha", "occult", "fortune",
         "devotion", "pilgrim", "penance", "yajna", "charity", "remed",
+        "auspiciousness", "inauspiciousness", "omen", "ritual",
     ),
 }
 """Client dimension -> its concepts, matched as substrings.

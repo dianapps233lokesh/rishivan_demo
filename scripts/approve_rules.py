@@ -100,14 +100,18 @@ async def main(argv: list[str] | None = None) -> int:
             print(f"no parsed rules in chapter {args.chapter}")
             return 1
         if args.approve_all and not args.revoke:
-            # Said plainly rather than buried. These rules passed a deterministic
-            # validator at 90% precision; a validator is evidence, not proof, and this
-            # repo has already seen its own validator be wrong. Approving in bulk means
-            # accepting that ~1 in 10 may be defective.
+            # Said plainly rather than buried. A validator is evidence, not proof, and
+            # this repo has already seen its own validator be wrong. Measured precision
+            # falls the further a book sits from BPHS vol 1, which the extractor was
+            # tuned on: vol 1 90%, vol 2 82%, Jataka Parijata vol 1 79%, vol 2 75%. So
+            # the honest range is 75-90%, not 90%.
+            low, high = len(rules) // 4, len(rules) // 10
             print(
-                f"BULK APPROVAL of {len(rules)} rules without per-chapter review. "
-                f"These passed the validator at ~90% measured precision, so expect "
-                f"roughly {len(rules) // 10} defective rules to become user-visible."
+                f"BULK APPROVAL of {len(rules)} rules without per-chapter review.\n"
+                f"  Measured precision across the loaded books is 75-90%, so expect "
+                f"roughly {high}-{low} defective rules to become user-visible.\n"
+                f"  Invalid rules are excluded already -- these are the ones the "
+                f"validator passed."
             )
 
         for rule in rules:

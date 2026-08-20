@@ -101,11 +101,25 @@ def test_weights_are_only_ever_client_keys():
         assert set(affinity_for([value])) <= set(RISHI_KEYS)
 
 
-def test_every_domain_in_the_loaded_rule_base_is_routable():
+UNROUTED_RULE_BUDGET = 0.02
+"""Share of loaded rules allowed to derive no affinity at all.
+
+Not zero, and the reason changed under this test. Affinity used to be the retrieval
+GATE, so an unrouted rule was invisible in every answer -- hence the original
+`== set()`. Since coverage became the gate (`rag.relevance`), a rule with no affinity
+still reaches a user when its subject house is in the routed Rishi's remit; affinity now
+only refines the ordering. So an unrouted value costs ranking quality, not visibility.
+
+A budget rather than a free pass: `life_domains` is uncontrolled free text, and each new
+book invents more of it, so the honest contract is that the tail stays a tail.
+"""
+
+
+def test_the_loaded_rule_base_is_almost_entirely_routable():
     """The real coverage contract, measured against the live corpus rather than a fixture.
 
-    An unrouted domain value is a rule no Rishi can cite -- present in the table, invisible
-    in every answer.
+    Prints what fell through, because that list is how the keyword table gets extended
+    against real data instead of guesses.
     """
     from sqlalchemy import select
 
@@ -124,8 +138,14 @@ def test_every_domain_in_the_loaded_rule_base_is_routable():
     if not domains:
         pytest.skip("rule base is empty")
 
-    assert unrouted_domains(domains) == set()
-    assert all(affinity_for(d) for d in domains), "some rules derive no affinity at all"
+    unrouted = sorted(unrouted_domains(domains))
+    without_affinity = [d for d in domains if not affinity_for(d)]
+    share = len(without_affinity) / len(domains)
+    assert share <= UNROUTED_RULE_BUDGET, (
+        f"{len(without_affinity)} of {len(domains)} rules ({share:.1%}) derive no "
+        f"affinity, over the {UNROUTED_RULE_BUDGET:.0%} budget. Unrouted values: "
+        f"{unrouted}"
+    )
 
 
 @pytest.mark.parametrize(
