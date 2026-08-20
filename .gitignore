@@ -23,3 +23,6 @@ koonji-*.jsonl
 output*.json
 logs/
 data/rules-*.json
+# Grading output from `python -m scripts.eval_rules --csv` — regenerated per run,
+# and a committed copy goes stale the moment routing changes.
+eval*.csv
