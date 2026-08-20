@@ -200,3 +200,35 @@ def rule_relevance(rishi: str, rishi_affinity: dict[str, float] | None) -> float
         ),
         default=0.0,
     )
+
+
+FALLBACK_RISHI = "tattvan"
+"""Who speaks when routing finds no life domain.
+
+`tattvan` because ATMA is the broadest domain -- "who is this person" is answerable from
+any chart. Deliberately NOT the previous default `vyom`, which rates all eight domains
+MEDIUM and so gates no rules at all.
+"""
+
+
+def primary_rishi_for(
+    domain: str | None, *, classifier_pick: str | None = None
+) -> str:
+    """The persona that answers a question routed to `domain`.
+
+    The domain is authoritative because it is what the coverage gate uses; the
+    classifier's own pick only breaks a tie between two personas that both own the
+    domain outright. Before this, routing chose the domain and the classifier chose the
+    voice independently, so the rules could be gated on ARTHA while `ritam` spoke.
+    """
+    pick = (classifier_pick or "").lower() or None
+    owners = [
+        rishi
+        for rishi in sorted(DOMAIN_RISHIS)
+        if RISHI_LIFE_DOMAINS[rishi].get((domain or "").lower(), 0.0) == DOMAIN_HIGH
+    ]
+    if not owners:
+        return pick if pick in DOMAIN_RISHIS else FALLBACK_RISHI
+    if pick in owners:
+        return pick
+    return owners[0]
