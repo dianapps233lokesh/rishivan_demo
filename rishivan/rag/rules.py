@@ -67,6 +67,15 @@ class RuleHit:
     relevance: float
     life_domains: list[str] = field(default_factory=list)
     rishi_affinity: dict = field(default_factory=dict)
+    vector: list[float] = field(default_factory=list)
+    merged_from: list[str] = field(default_factory=list)
+    """Rule keys folded into this one because they share a verse and a condition.
+
+    BPHS 26.60 was extracted as three separate rules -- "adopted son", "purchased son",
+    "bereft of his own sons" -- while 26.13 kept all six of its outcomes on one rule. The
+    extractor split inconsistently, and on a real chart 17 matching rules turned out to be
+    only 10 distinct verses, so 40% of the display budget was repetition.
+    """
 
     @property
     def citation(self) -> str:
@@ -149,44 +158,95 @@ def _cosine(left: list[float], right: list[float]) -> float:
     return dot / norm if norm else 0.0
 
 
+TOPICAL_WEIGHT = 0.6
+"""How much the question's wording counts, next to the Rishi's domain ownership.
+
+Domain ownership is a hard statement and comes first; topical similarity is a soft signal.
+But it needs real weight rather than a tiebreak, because ownership alone cannot order
+anything: every rule touching one of a persona's domains scores 1.0, so a marriage question
+returned "honoured by the King" and "lives in foreign lands" ranked equal to "happiness
+through wife".
+"""
+
+
+def focus(affinity: dict, domain: str) -> float:
+    """How much of this rule is about `domain`, from 0 to 1.
+
+    A rule tagged only "marriage" is more about marriage than one tagged "marriage,
+    wealth, career, travel, health" -- and under a plain maximum the two score identically.
+    This is the share of the rule's affinity mass sitting on the matched domain, which is
+    what separates a specialist rule from a scattered one.
+    """
+    total = sum(affinity.values()) or 1.0
+    return affinity.get(domain, 0.0) / total
+
+
+def rank_score(
+    rishi: str,
+    affinity: dict,
+    query_embedding: list[float],
+    rule_vector: list[float],
+) -> tuple[float, float]:
+    """(relevance, score) for one true rule.
+
+    `relevance` is the raw domain agreement, kept for display -- it answers "is this this
+    Rishi's evidence at all". `score` is what ordering uses, and it multiplies agreement by
+    focus before adding topical similarity, so a rule that is squarely about the asked
+    domain outranks one that merely mentions it.
+    """
+    from rishivan.council.domains import RISHI_LIFE_DOMAINS
+
+    weights = RISHI_LIFE_DOMAINS.get(rishi.lower(), {})
+    if not weights or not affinity:
+        return 0.0, 0.0
+
+    best_agreement = 0.0
+    best_focus = 0.0
+    for domain, persona_weight in weights.items():
+        agreement = persona_weight * float(affinity.get(domain, 0.0) or 0.0)
+        if agreement > best_agreement:
+            best_agreement = agreement
+            best_focus = focus(affinity, domain)
+
+    topical = (
+        _cosine(query_embedding, rule_vector)
+        if query_embedding and rule_vector
+        else 0.0
+    )
+    return best_agreement, best_agreement * best_focus + TOPICAL_WEIGHT * topical
+
+
 def rank_true_rules(
     rules,
     query_embedding: list[float],
     *,
     rishi: str,
     limit: int = 10,
-    embeddings: dict[str, list[float]] | None = None,
 ) -> list[RuleHit]:
     """Rank rules already proven true of the chart, by relevance to the question.
 
-    This inverts `match_rules`, and the inversion is the whole point. Measured on the
-    Mumbai test chart against 204 approved rules, of which **21 are true**:
+    This inverts the older nominate-then-filter order, and the inversion is the point.
+    Measured on a test chart against 204 approved rules of which 21 are true:
 
-        question                  true rules the vector nominated
-        "will my wife be healthy"  10 / 21   -- 11 lost
-        "will I be wealthy"         6 / 21   -- 14 lost
-        "what about my career"      6 / 21   -- 14 lost
+        question                   true rules the vector nominated
+        "will my wife be healthy"   10 / 21   -- 11 lost
+        "will I be wealthy"          6 / 21   -- 14 lost
+        "what about my career"       6 / 21   -- 14 lost
 
-    Nominating by similarity first spends its window on rules that *read* like the question
-    while true rules sit outside it -- and it was nominating 72 of 204, over a third of the
-    base, and still losing half. Similarity cannot know what is true, so letting it go first
-    caps recall at whatever it happens to surface.
-
-    So: exact-match everything first (the caller does that -- it is one indexed query), then
-    rank the survivors here. Recall becomes total by construction, and ranking 21 known-true
-    rules by topic is a far easier problem than retrieving from 204 by similarity.
-
-    `embeddings` maps rule_key -> vector, for ordering by topical fit. Without it the order
-    falls back to Rishi relevance alone, which is coarse but never wrong -- many rules tie
-    at 1.0, and a stable sort keeps the caller's order within a tie.
+    Nominating by similarity spends its window on rules that *read* like the question while
+    true rules sit outside it -- it was drawing 72 of 204, over a third of the base, and
+    still losing half. Similarity cannot know what is true, so going first caps recall at
+    whatever it happens to surface. Exact-match everything, then rank here.
     """
-    scored: list[tuple[float, float, RuleHit]] = []
+    scored: list[tuple[float, RuleHit]] = []
     for rule in rules:
         affinity = getattr(rule, "rishi_affinity", None) or {}
-        relevance = rule_relevance(rishi, affinity)
+        relevance, score = rank_score(
+            rishi, affinity, query_embedding, getattr(rule, "vector", None) or []
+        )
         if relevance < MIN_RELEVANCE:
             continue
-        hit = RuleHit(
+        hit = rule if isinstance(rule, RuleHit) else RuleHit(
             rule_key=rule.rule_key,
             condition=getattr(rule, "condition", None) or {},
             effects=getattr(rule, "effects", None) or [],
@@ -194,17 +254,68 @@ def rank_true_rules(
             life_domains=getattr(rule, "life_domains", None) or [],
             relevance=relevance,
         )
-        vector = (embeddings or {}).get(rule.rule_key)
-        topical = _cosine(query_embedding, vector) if vector else 0.0
-        scored.append((relevance, topical, hit))
+        hit.relevance = relevance
+        scored.append((score, hit))
 
-    # Rishi relevance first because it is a hard statement about ownership; topical
-    # similarity second because it is a soft signal and only meaningful within a tier.
-    scored.sort(key=lambda row: (-row[0], -row[1]))
-    return [hit for _, _, hit in scored[:limit]]
+    scored.sort(key=lambda row: -row[0])
+    return [hit for _, hit in scored[:limit]]
 
 
-def true_rules(store, tokens: dict) -> list[RuleHit]:
+def _condition_signature(condition: dict) -> str:
+    """A stable identity for a condition, so siblings can be recognised.
+
+    Sorted keys because two rules extracted from one verse can serialise the same atoms in
+    different orders -- the model does not preserve field order -- and an order-sensitive
+    signature would treat identical conditions as distinct.
+    """
+    return json.dumps(condition, sort_keys=True)
+
+
+def merge_siblings(hits: list[RuleHit]) -> list[RuleHit]:
+    """Fold rules that share a verse AND a condition into one, keeping every effect.
+
+    They are the same claim about the same chart, stated once per outcome. BPHS 26.60 was
+    extracted as three rules -- "adopted son", "purchased son", "bereft of his own sons" --
+    while 26.13 kept all six of its outcomes on one rule; the extractor split
+    inconsistently. On a real chart 17 matching rules proved to be only 10 distinct verses,
+    so 40% of the display budget was repetition, and to a reader it looks like the book
+    insisting rather than one verse being quoted once.
+
+    Grouped on (verse, condition) rather than verse alone: one verse can legitimately hold
+    several *different* conditions, as BPHS 15.1-2 does, and those must stay separate.
+    """
+    merged: dict[tuple, RuleHit] = {}
+    for hit in hits:
+        key = (
+            hit.source.get("chapter"),
+            hit.source.get("verse_ref"),
+            _condition_signature(hit.condition),
+        )
+        existing = merged.get(key)
+        if existing is None:
+            merged[key] = hit
+            continue
+        seen = {
+            (effect.get("polarity"), effect.get("statement"))
+            for effect in existing.effects
+        }
+        for effect in hit.effects:
+            if (effect.get("polarity"), effect.get("statement")) not in seen:
+                existing.effects.append(effect)
+        existing.merged_from.append(hit.rule_key)
+        # The union of what the siblings were about: keeping only one sibling's affinity
+        # would narrow the merged rule's reach for no reason.
+        for domain, weight in (hit.rishi_affinity or {}).items():
+            existing.rishi_affinity[domain] = max(
+                existing.rishi_affinity.get(domain, 0.0), weight
+            )
+        for domain in hit.life_domains:
+            if domain not in existing.life_domains:
+                existing.life_domains.append(domain)
+    return list(merged.values())
+
+
+def true_rules(store, tokens: dict, *, with_vectors: bool = False) -> list[RuleHit]:
     """Every approved rule that applies to this chart. No similarity involved.
 
     `applies` rather than `satisfies`: a rule whose exception holds for this chart is one
@@ -217,7 +328,13 @@ def true_rules(store, tokens: dict) -> list[RuleHit]:
     from app.knowledge.match.engine import applies
 
     try:
-        points = store.all_points()
+        try:
+            points = store.all_points(with_vectors=with_vectors)
+        except TypeError:
+            # A store predating the with_vectors argument. The retry has to sit INSIDE the
+            # outer guard: as a bare handler it let a ConnectionError escape and take down
+            # the whole answer, which is exactly what this function exists to prevent.
+            points = store.all_points()
     except Exception:  # noqa: BLE001 - an unreachable rule store must not break an answer
         return []
 
@@ -235,8 +352,9 @@ def true_rules(store, tokens: dict) -> list[RuleHit]:
         if not applies(rule, tokens):
             continue
         hit.rishi_affinity = json.loads(payload.get("rishi_affinity") or "{}")
+        hit.vector = point.get("vector") or []
         hits.append(hit)
-    return hits
+    return merge_siblings(hits)
 
 
 def rules_for_question(
@@ -254,7 +372,7 @@ def rules_for_question(
     to prefer rules that happen to be true.
     """
     return rank_true_rules(
-        true_rules(store, tokens),
+        true_rules(store, tokens, with_vectors=True),
         query_embedding,
         rishi=rishi,
         limit=limit,

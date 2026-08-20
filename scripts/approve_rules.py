@@ -72,6 +72,13 @@ async def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="approve extracted rules for use")
     parser.add_argument("--report", action="store_true", help="show approval state")
     parser.add_argument("--chapter", help="approve one chapter's rules")
+    parser.add_argument(
+        "--all",
+        dest="approve_all",
+        action="store_true",
+        help="approve EVERY parsed rule at once. This is a bulk enablement, not a "
+        "review, and the printed record says so",
+    )
     parser.add_argument("--revoke", action="store_true", help="unapprove instead")
     parser.add_argument(
         "--reviewer",
@@ -82,9 +89,9 @@ async def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     async with async_session_factory() as session:
-        if args.report or not args.chapter:
+        if args.report or not (args.chapter or args.approve_all):
             await report(session)
-            if not args.chapter:
+            if not (args.chapter or args.approve_all):
                 return 0
 
         if not args.revoke and args.reviewer is None and not args.dry_run:
@@ -93,27 +100,33 @@ async def main(argv: list[str] | None = None) -> int:
                 "indistinguishable from an auto-approval"
             )
 
+        conditions = [Rule.status == "parsed", Rule.deleted_at.is_(None)]
+        if not args.approve_all:
+            conditions.append(Rule.source["chapter"].astext == str(args.chapter))
         rules = list(
-            (
-                await session.execute(
-                    select(Rule).where(
-                        Rule.status == "parsed",
-                        Rule.deleted_at.is_(None),
-                        Rule.source["chapter"].astext == str(args.chapter),
-                    )
-                )
-            ).scalars()
+            (await session.execute(select(Rule).where(*conditions))).scalars()
         )
         if not rules:
             print(f"no parsed rules in chapter {args.chapter}")
             return 1
+        if args.approve_all and not args.revoke:
+            # Said plainly rather than buried. These rules passed a deterministic
+            # validator at 90% precision; a validator is evidence, not proof, and this
+            # repo has already seen its own validator be wrong. Approving in bulk means
+            # accepting that ~1 in 10 may be defective.
+            print(
+                f"BULK APPROVAL of {len(rules)} rules without per-chapter review. "
+                f"These passed the validator at ~90% measured precision, so expect "
+                f"roughly {len(rules) // 10} defective rules to become user-visible."
+            )
 
         for rule in rules:
             rule.approved_at = None if args.revoke else datetime.now(UTC)
             rule.approved_by = None if args.revoke else args.reviewer
 
         verb = "revoked" if args.revoke else "approved"
-        print(f"{verb} {len(rules)} rules in chapter {args.chapter}")
+        scope = "ALL chapters" if args.approve_all else f"chapter {args.chapter}"
+        print(f"{verb} {len(rules)} rules in {scope}")
         if args.dry_run:
             print("dry run: rolling back")
             await session.rollback()

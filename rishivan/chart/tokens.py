@@ -18,7 +18,7 @@ and were inert until that module existed.
 """
 
 from app.astro.vocab import EMITTED_SCOPES
-from rishivan.chart.ephemeris import Chart
+from rishivan.chart.ephemeris import RASHI_LORDS, Chart
 
 SIGN_TOKEN_NAME: dict[str, str] = {
     "Aries": "aries",
@@ -125,7 +125,19 @@ def chart_tokens(chart: Chart, *, scope: str = "") -> dict[str, int | str]:
 
     for house in range(1, 13):
         tokens[f"{scope}house.{house}.occupant_count"] = occupants[house]
-        lord_display = chart.house_lords.get(house)
+        # In a relative frame the HOUSES themselves move, so the lord of the Nth house
+        # is the lord of the Nth sign counted from the reference planet -- not the
+        # lagna's Nth lord re-counted. Getting this wrong was silent and wrong in the
+        # worst way: for a Sagittarius lagna with the Moon in Aquarius,
+        # `from_moon.house.1.lord` reported Jupiter (the lagna lord) where the answer
+        # is Saturn (lord of Aquarius, the 1st from the Moon). A rule about "the 1st
+        # lord from the Moon" would have been tested against a different planet
+        # entirely, and matched or missed for no visible reason.
+        if reference is None:
+            lord_display = chart.house_lords.get(house)
+        else:
+            sign_index = (reference.rashi_index + house - 1) % 12
+            lord_display = RASHI_LORDS[sign_index]
         lord_position = chart.planets.get(lord_display) if lord_display else None
         if lord_position is None:
             continue

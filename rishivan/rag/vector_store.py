@@ -76,7 +76,7 @@ class VectorStore(ABC):
         """Whether the collection has been created and is queryable."""
 
     @abstractmethod
-    def all_points(self, batch: int = 512) -> list[Hit]:
+    def all_points(self, batch: int = 512, with_vectors: bool = False) -> list[Hit]:
         """Every point in the collection, ignoring similarity entirely.
 
         Needed by the rule base, where similarity is the wrong entry point. Measured on
@@ -145,7 +145,7 @@ class ChromaVectorStore(VectorStore):
             )
         return out
 
-    def all_points(self, batch: int = 512) -> list[Hit]:
+    def all_points(self, batch: int = 512, with_vectors: bool = False) -> list[Hit]:
         got = self._get().get()
         return [
             {"document": doc, "metadata": meta}
@@ -386,8 +386,13 @@ class QdrantVectorStore(VectorStore):
     def exists(self) -> bool:
         return self._client.collection_exists(self._name)
 
-    def all_points(self, batch: int = 512) -> list[Hit]:
-        """Scroll the whole collection. Vectors are not fetched -- only payloads."""
+    def all_points(self, batch: int = 512, with_vectors: bool = False) -> list[Hit]:
+        """Scroll the whole collection.
+
+        `with_vectors` costs 768 floats per point and is only needed when the caller
+        ranks by topical similarity -- which the rule path does, because Rishi relevance
+        alone ties almost every rule at 1.0 and cannot order them.
+        """
         if not self.exists():
             return []
         hits: list[Hit] = []
@@ -398,16 +403,17 @@ class QdrantVectorStore(VectorStore):
                 limit=batch,
                 offset=offset,
                 with_payload=True,
-                with_vectors=False,
+                with_vectors=with_vectors,
             )
             for point in points:
                 payload = dict(point.payload or {})
-                hits.append(
-                    {
-                        "document": payload.pop(self._DOC_KEY, ""),
-                        "metadata": payload,
-                    }
-                )
+                hit: Hit = {
+                    "document": payload.pop(self._DOC_KEY, ""),
+                    "metadata": payload,
+                }
+                if with_vectors:
+                    hit["vector"] = point.vector
+                hits.append(hit)
             if offset is None:
                 break
         return hits

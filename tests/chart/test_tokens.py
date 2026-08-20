@@ -224,3 +224,45 @@ def test_all_chart_tokens_merges_every_supported_scope(chart):
     merged = all_chart_tokens(chart)
     for scope in SUPPORTED_SCOPES:
         assert f"{scope}planet.saturn.house" in merged, scope
+
+
+def test_a_relative_frame_moves_the_houses_not_just_the_counting(chart):
+    """The bug this pins was silent and wrong in the worst way.
+
+    In a relative frame the HOUSES move, so the lord of the Nth house is the lord of the
+    Nth sign counted from the reference planet. The first implementation took the lagna's
+    Nth lord and merely re-counted where it sat: for a Sagittarius lagna with the Moon in
+    Aquarius, `from_moon.house.1.lord` reported Jupiter (the lagna lord) where the answer
+    is Saturn (lord of Aquarius, the 1st from the Moon). A rule about "the 1st lord from
+    the Moon" would have been tested against a different planet entirely.
+    """
+    from rishivan.chart.ephemeris import RASHI_LORDS
+    from rishivan.chart.tokens import PLANET_TOKEN_NAME
+
+    for scope, reference_name in (("from_moon.", "Moon"), ("from_sun.", "Sun")):
+        tokens = chart_tokens(chart, scope=scope)
+        reference = chart.planets[reference_name]
+        for house in range(1, 13):
+            sign_index = (reference.rashi_index + house - 1) % 12
+            expected = PLANET_TOKEN_NAME[RASHI_LORDS[sign_index]]
+            assert tokens[f"{scope}house.{house}.lord.name"] == expected, (
+                f"{scope}house.{house}"
+            )
+
+
+def test_the_reference_planet_is_its_own_first_house_lord_sign(chart):
+    """A frame's 1st house is the reference planet's own sign, by definition."""
+    tokens = chart_tokens(chart, scope="from_moon.")
+    assert tokens["from_moon.planet.moon.house"] == 1
+
+
+def test_the_lagna_frame_is_untouched_by_the_fix(chart):
+    """`house_lords` is the ephemeris's own lagna-based mapping and must still be used
+    verbatim when no reference planet is in play."""
+    from rishivan.chart.tokens import PLANET_TOKEN_NAME
+
+    tokens = chart_tokens(chart)
+    for house in range(1, 13):
+        assert tokens[f"house.{house}.lord.name"] == PLANET_TOKEN_NAME[
+            chart.house_lords[house]
+        ]

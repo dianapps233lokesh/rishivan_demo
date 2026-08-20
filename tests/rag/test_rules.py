@@ -221,8 +221,11 @@ def test_a_rule_whose_exception_holds_is_not_true_of_the_chart():
 def test_ranking_respects_the_limit_without_affecting_recall():
     from rishivan.rag.rules import rules_for_question, true_rules
 
+    # Distinct verses, because rules sharing a verse and a condition now merge -- see
+    # merge_siblings. Using one verse 15 times would test the merge, not the limit.
     points = [
-        _point(f"r{i}", json.loads(TRUE_RULE["metadata"]["condition"]), {"prema": 1.0})
+        _point(f"r{i}", json.loads(TRUE_RULE["metadata"]["condition"]),
+               {"prema": 1.0}, verse=str(i))
         for i in range(15)
     ]
     store = ScrollStore(points)
@@ -235,7 +238,8 @@ def test_ranking_drops_rules_outside_the_rishis_domains():
     from rishivan.rag.rules import rules_for_question
 
     wealth = _point(
-        "wealth", json.loads(TRUE_RULE["metadata"]["condition"]), {"artha": 1.0})
+        "wealth", json.loads(TRUE_RULE["metadata"]["condition"]), {"artha": 1.0},
+        verse="99")
     hits = rules_for_question(ScrollStore([wealth, TRUE_RULE]), [0.0], tokens=CHART,
                               rishi="medhan", limit=10)
     assert [hit.rule_key for hit in hits] == ["true"]
@@ -249,3 +253,103 @@ def test_an_unscrollable_store_degrades_to_nothing():
             raise ConnectionError("qdrant unreachable")
 
     assert true_rules(Broken(), CHART) == []
+
+
+# --- Sibling merging --------------------------------------------------------
+#
+# BPHS 26.60 was extracted as three rules (adopted son / purchased son / bereft of his own
+# sons) while 26.13 kept all six of its outcomes on one. On a real chart, 17 matching rules
+# proved to be 10 distinct verses.
+
+
+def test_siblings_sharing_a_verse_and_condition_merge():
+    from rishivan.rag.rules import true_rules
+
+    cond = json.loads(TRUE_RULE["metadata"]["condition"])
+    siblings = [
+        _point("a", cond, {"prema": 1.0}, statement="adopted son", chapter="26",
+               verse="60"),
+        _point("b", cond, {"prema": 1.0}, statement="purchased son", chapter="26",
+               verse="60"),
+        _point("c", cond, {"prema": 1.0}, statement="bereft of his own sons",
+               chapter="26", verse="60"),
+    ]
+    hits = true_rules(ScrollStore(siblings), CHART)
+    assert len(hits) == 1
+    assert {effect["statement"] for effect in hits[0].effects} == {
+        "adopted son", "purchased son", "bereft of his own sons",
+    }
+    assert hits[0].merged_from == ["b", "c"]
+
+
+def test_the_same_verse_with_different_conditions_stays_separate():
+    """BPHS 15.1-2 holds several distinct conditions in one verse. Merging on the verse
+    alone would collapse claims the book keeps apart."""
+    from rishivan.rag.rules import true_rules
+
+    other = {"atoms": [{"type": "lord_of_house_in_house", "lord_of": 7, "house": 6}]}
+    points = [
+        _point("a", json.loads(TRUE_RULE["metadata"]["condition"]), {"prema": 1.0},
+               chapter="15", verse="1-2"),
+        _point("b", other, {"prema": 1.0}, chapter="15", verse="1-2"),
+    ]
+    assert len(true_rules(ScrollStore(points), CHART)) == 2
+
+
+def test_merging_takes_the_union_of_affinity():
+    """Keeping only one sibling's affinity would narrow the merged rule's reach."""
+    from rishivan.rag.rules import merge_siblings
+
+    cond = {"atoms": []}
+    left = RuleHit(rule_key="a", condition=cond, effects=[], source={"chapter": "1",
+                   "verse_ref": "1"}, relevance=0.0, rishi_affinity={"prema": 1.0})
+    right = RuleHit(rule_key="b", condition=cond, effects=[], source={"chapter": "1",
+                    "verse_ref": "1"}, relevance=0.0, rishi_affinity={"vansh": 0.6})
+    merged = merge_siblings([left, right])
+    assert len(merged) == 1
+    assert merged[0].rishi_affinity == {"prema": 1.0, "vansh": 0.6}
+
+
+# --- Ranking that actually discriminates ------------------------------------
+#
+# Before this, every rule touching one of a persona's domains scored 1.0, so a marriage
+# question ranked "honoured by the King" and "lives in foreign lands" equal to "happiness
+# through wife". Ownership cannot order anything on its own.
+
+
+def test_a_focused_rule_outranks_a_scattered_one():
+    from rishivan.rag.rules import rank_score
+
+    _, focused = rank_score("medhan", {"prema": 1.0}, [], [])
+    _, scattered = rank_score(
+        "medhan",
+        {"prema": 1.0, "artha": 1.0, "karma": 1.0, "yatra": 1.0, "dharma": 1.0},
+        [], [],
+    )
+    assert focused > scattered
+
+
+def test_both_still_clear_the_relevance_floor():
+    """Focus changes the ORDER, not whether a rule is this Rishi's evidence at all."""
+    from rishivan.rag.rules import MIN_RELEVANCE, rank_score
+
+    for affinity in ({"prema": 1.0}, {"prema": 1.0, "artha": 1.0, "karma": 1.0}):
+        relevance, _ = rank_score("medhan", affinity, [], [])
+        assert relevance >= MIN_RELEVANCE
+
+
+def test_topical_similarity_can_reorder_equally_owned_rules():
+    from rishivan.rag.rules import rank_score
+
+    question = [1.0, 0.0]
+    _, near = rank_score("medhan", {"prema": 1.0}, question, [1.0, 0.0])
+    _, far = rank_score("medhan", {"prema": 1.0}, question, [0.0, 1.0])
+    assert near > far
+
+
+def test_focus_is_the_share_of_the_rules_affinity_mass():
+    from rishivan.rag.rules import focus
+
+    assert focus({"prema": 1.0}, "prema") == 1.0
+    assert focus({"prema": 1.0, "artha": 1.0}, "prema") == 0.5
+    assert focus({}, "prema") == 0.0
