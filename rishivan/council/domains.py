@@ -130,6 +130,23 @@ persona rating it High, so no domain is orphaned (Eight Rishis doc §20: "No orp
 questions"). Enforced by test, not by convention."""
 
 
+SERVICE_RISHIS: frozenset[str] = frozenset({"vyom", "ritam", "tejan"})
+"""Personas that compute for another Rishi and never speak.
+
+Not a new distinction -- the table above already says it. These three rate every life
+domain uniformly (vyom and ritam MEDIUM, tejan LOW-MEDIUM) because they are technique
+lenses, not life domains: cosmic patterns, timing, remedies. The client agrees --
+§13 calls Muhurta a "cross-domain timing service" and Blueprint §17 puts remedies in a
+separate corpus.
+
+Letting one of them answer defeats the coverage gate: a persona rating all eight
+domains MEDIUM gates nothing, so `ritam` answering "when will I marry?" meant PREMA's
+houses filtered no rules at all.
+"""
+
+DOMAIN_RISHIS: frozenset[str] = frozenset(RISHI_LIFE_DOMAINS) - SERVICE_RISHIS
+"""Personas that own at least one life domain and may therefore answer."""
+
 def life_domains_for_rishi(
     rishi: str, *, min_weight: float = DOMAIN_MEDIUM
 ) -> list[str]:
