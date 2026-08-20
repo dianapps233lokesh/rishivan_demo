@@ -369,15 +369,22 @@ class QdrantVectorStore(VectorStore):
         return self._client.collection_exists(self._name)
 
 
-def get_vector_store() -> VectorStore:
-    """Construct the configured backend (``settings.VECTOR_BACKEND``)."""
+def get_vector_store(collection_name: str | None = None) -> VectorStore:
+    """Construct the configured backend (``settings.VECTOR_BACKEND``).
+
+    ``collection_name`` overrides the configured collection. The rule base lives in its
+    own collection beside the pages -- mixing them would let a page hit and a rule hit
+    compete on one similarity score, and they are not comparable: a page is evidence to
+    read, a rule is a claim to test.
+    """
+    name = collection_name or settings.VECTOR_COLLECTION
     if settings.VECTOR_BACKEND == "qdrant":
         return QdrantVectorStore(
             url=settings.QDRANT_URL,
             api_key=settings.QDRANT_API_KEY,
-            collection_name=settings.VECTOR_COLLECTION,
+            collection_name=name,
         )
     return ChromaVectorStore(
         path=settings.CHROMA_PATH,
-        collection_name=settings.VECTOR_COLLECTION,
+        collection_name=name,
     )

@@ -1,12 +1,25 @@
 """Council Orchestrator — the main pipeline for the Rishi Council POC.
 
+Structured as a small node graph (P4's council-graph shape, scaled to a
+single-process demo with no billing/persistence infra): intake decides
+whether this is even an astrology question before anything else runs.
+
 Flow:
+  0. Intake/guardrail bypass → smalltalk or gibberish gets a warm, LLM-only
+     reply (rishivan.council.warmth) with no chart computation and no
+     retrieval at all.
   1. Classify query → pick primary Rishi + query domain
-  2. Compute chart (natal/muhurta/prashna) if needed
+  2. Compute chart (natal/muhurta/prashna) if needed — always local
+     (Swiss Ephemeris + the vendored varga/dasha/numerology/ashtakavarga
+     engines), never a network call to another service.
   3. Translate & enrich search query
-  4. Retrieve from Qdrant filtered by Rishi's book domains
+  4. Retrieve from Qdrant filtered by Rishi's book domains, ranked by
+     specificity x source authority (rishivan.rag.authority)
   5. Build Rishi-voiced prompt (natural flowing prose)
   6. Stream answer via Gemini (Vertex or API key backend)
+  7. Earn a second Rishi's brief perspective when the classifier's own
+     supporting_rishis call already named one with real confidence
+     (rishivan.council.lens)
 """
 from __future__ import annotations
 
@@ -27,6 +40,12 @@ logger = logging.getLogger(__name__)
 # yields ~30) is used as a search query against the corpus.
 MAX_FACT_QUERIES = None
 MAX_PAGES = 20
+MAX_MATCHED_RULES = 10
+"""Matched rules to put in the prompt.
+
+Bounded because a rule block is prose the model must read before it answers, and because
+one verse can fan out into siblings that share a condition: BPHS 26.1 produced six rules
+for one placement, so an unbounded list would spend the prompt on near-duplicates."""
 
 
 def council_consult(
@@ -69,15 +88,44 @@ def council_consult(
         "sources": [],
         "search_query": question,
         "answer_stream": None,
+        "is_warmth": False,
+        "secondary_voice": None,
+        "matched_rules": [],
     }
 
-    # ── Step 1: Classify ──────────────────────────────────────────────────────
+    # ── Step 0/1: Intake — classify, and bypass everything else for small
+    # talk or gibberish ─────────────────────────────────────────────────────
     classification = classify_query(
         client, question, model=_model, conversation=conversation
     )
     if rishi_override:
         # Explicit Rishi chosen — still use the classified domain.
         classification["primary_rishi"] = rishi_override
+
+    result["classification"] = classification
+
+    if classification.get("is_smalltalk_or_gibberish"):
+        # A greeting, thanks, or gibberish never needs a chart, a Qdrant
+        # search, or a persona costume — just a warm human reply. Stay with
+        # whoever the seeker was already speaking to for continuity; default
+        # to Vyom (a neutral, collective-feeling voice) otherwise.
+        from rishivan.council.warmth import respond_warmly
+
+        warmth_rishi = (
+            conversation.current_rishi
+            if conversation is not None and not conversation.is_empty
+            else "vyom"
+        )
+        from rishivan.council.personas import get_persona
+
+        persona = get_persona(warmth_rishi)
+        result["primary_rishi"] = warmth_rishi
+        result["rishi_title"] = persona.title
+        result["is_warmth"] = True
+        result["answer_stream"] = respond_warmly(
+            client, question, model=_model, conversation=conversation
+        )
+        return result
 
     rishi = classification["primary_rishi"]
     domain = classification["query_domain"]
@@ -104,34 +152,24 @@ def council_consult(
     if domain == QueryDomain.NATAL and birth_data is not None:
         from rishivan.chart.ephemeris import compute_chart, summarize
         from rishivan.chart.facts import derive_facts
-        from rishivan.chart import p1_bridge
 
-        # Real P1 backend first — all 16 vargas, not just D1 — falling back
-        # to this demo's own D1-only Swiss Ephemeris calc when it's not
-        # configured or the request fails for any reason.
-        real_facts = p1_bridge.fetch_real_chart_facts()
+        # Pure local computation, always — Swiss Ephemeris + the vendored
+        # varga engine (rishivan.chart.vendor.varga), the same pure-arithmetic
+        # formulas the main backend uses, with zero network calls. This is
+        # also more correct than calling out to a shared backend would be:
+        # it computes for the birth details just typed into this demo's own
+        # form, not for some other fixed identity.
         chart = compute_chart(birth_data)
         result["chart_summary"] = summarize(chart)
-        if real_facts:
-            # p1_bridge only ever returns varga placements (D1/D9/D10) — it
-            # has no dasha endpoint — so without this, any reading grounded
-            # via the real backend lost all Vimshottari dasha facts, even
-            # though dasha is pure local arithmetic on the Moon's birth
-            # nakshatra and never depended on that backend being reachable.
-            from rishivan.chart.facts import derive_dasha_facts
-            chart_facts = real_facts + derive_dasha_facts(chart, query_time or datetime.now())
-            covered_vargas = set(p1_bridge.VARGAS_FOR_DEMO)  # D1, D9, D10
-        else:
-            chart_facts = derive_facts(chart)
-            covered_vargas = {"D1"}
+        chart_facts = derive_facts(chart)
+        covered_vargas = {"D1"}
 
         # Every divisional chart governs a specific life area, and only the
         # ones this SPECIFIC question actually touches should ground the
         # reading — the classifier (same LLM call as intent/domain routing)
         # already decided this as "relevant_vargas". Add whichever of those
         # aren't already covered above, computed locally via the same
-        # zero-IO engine as the chart-table feature, so this works even when
-        # the real P1 backend is unreachable.
+        # zero-IO engine as the chart-table feature.
         extra_codes = [
             c for c in classification.get("relevant_vargas", [])
             if c not in covered_vargas
@@ -370,11 +408,51 @@ def council_consult(
             return result
         context_text, page_groups = expand_to_page_window(store, [h["metadata"] for h in hits])
 
+    # ── Step 4b: Koonji rule matching ────────────────────────────────────────
+    #
+    # Rules run ALONGSIDE page retrieval rather than instead of it. Only chapter 26
+    # of one book is approved so far, so most questions still match nothing, and a
+    # reading that silently returned less because the rule base is thin would be a
+    # regression on the page search that already works.
+    #
+    # The split of labour is deliberate: the vector store finds rules that are ABOUT
+    # the question, and `satisfies()` decides which are TRUE of this chart. Measured
+    # on this corpus, similarity alone ranks "the 7th lord in the 5th house" above
+    # the rule that actually matches a 7th lord in the 6th, and scores a rule's own
+    # negation within 0.02 of it -- so similarity may nominate, never decide.
+    matched_rules = []
+    if chart is not None:
+        try:
+            from rishivan.chart.tokens import all_chart_tokens
+            from rishivan.config import settings as _settings
+            from rishivan.rag.rules import match_rules, rule_collection_name
+            from rishivan.rag.vector_store import get_vector_store
+
+            rule_store = get_vector_store(
+                rule_collection_name(_settings.VECTOR_COLLECTION)
+            )
+            matched_rules = match_rules(
+                rule_store,
+                embed_fn([search_query])[0],
+                tokens=all_chart_tokens(chart),
+                rishi=rishi,
+                limit=MAX_MATCHED_RULES,
+            )
+        except Exception:  # noqa: BLE001 - a missing rule base must not break an answer
+            matched_rules = []
+    result["matched_rules"] = matched_rules
+
     result["sources"] = page_groups
-    if not page_groups:
+    # Kept for Step 7 (the caller runs it only after the primary answer has
+    # finished streaming, so an extra generation call never delays the first
+    # token the seeker sees).
+    result["_context_text"] = context_text
+    if not page_groups and not matched_rules:
         return result
 
     # ── Step 5: Build Rishi-voiced prompt ────────────────────────────────────
+    from rishivan.council.prompts import rule_context
+
     prompt = build_rishi_prompt(
         rishi_name=rishi,
         domain=domain,
@@ -382,6 +460,7 @@ def council_consult(
         context=context_text,
         chart_facts=chart_facts,
         conversation=conversation,
+        rules=rule_context(matched_rules),
     )
 
     # ── Step 6: Stream answer ─────────────────────────────────────────────────
@@ -394,4 +473,11 @@ def council_consult(
                 yield chunk.text
 
     result["answer_stream"] = answer_stream()
+
+    # Step 7 (earning a second voice, see rishivan.council.lens) deliberately
+    # is NOT run here: it is one more blocking generation call, and running
+    # it before returning would delay the first token of the primary stream
+    # above. The caller (streamlit_app.py) runs it after the primary answer
+    # has finished streaming, using result["classification"]/["chart_facts"]/
+    # ["_context_text"] — see maybe_generate_secondary_voice().
     return result

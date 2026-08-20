@@ -1,0 +1,284 @@
+"""Chapter boundaries taken from the body, not from the table of contents.
+
+Chapter assignment was the pipeline's largest silent defect. `reflow.py` carried
+`chapter` as a sticky variable updated only when a heading yielded a number, so a
+single missed heading filed every following verse under the previous chapter, and a
+stray contents line could jump it by forty. Measured against the TOC's own page ranges,
+the two methods disagreed on **891 of 2,063 units (43.2%)**, and 15 of 100 chapters
+held no units at all.
+
+Neither source was trustworthy on its own:
+
+* **The sticky heading value** propagates one miss across a whole chapter.
+* **The printed TOC** is wrong in this edition. Its page numbers drift from the body by
+  0 to 3 pages (not a constant offset, so no correction factor exists), and for vol 1
+  chapters 26 and 27 it has the *titles transposed* -- it lists 26 as "Effects of
+  Non-Luminous Planets" while the body page reads `Chapter 26 | Effects of the Bhava
+  Lords`. Extracting BPHS 27.2 as a Dhuma rule under the wrong chapter title came from
+  exactly this.
+
+The body heading is authoritative, and it is also self-verifying: each one prints the
+chapter number twice, once in English (`Chapter - 54`) and once in Devanagari
+(`।। ५४ ।।`). Two independent readings in one place, the same technique M1 already used
+for verse numbers. Measured on this corpus: 47/47 chapters detected in vol 1, 52/53 in
+vol 2, and **zero** disagreements between the two readings.
+"""
+
+import re
+from bisect import bisect_right
+from dataclasses import dataclass, field
+
+DEVANAGARI_DIGITS = "०१२३४५६७८९"
+
+CHAPTER_EN = re.compile(
+    r"^\s*(?:Chapter|CHAPTER)\s*[-–—:.]?\s*(\d{1,3})\b", re.MULTILINE
+)
+"""A chapter heading, anchored to the start of a line.
+
+Two details are load-bearing:
+
+* **The separator class.** Vol 1 prints `Chapter 26`, vol 2 prints `Chapter - 54`. A
+  pattern requiring whitespace missed all 53 of vol 2's chapters and matched its
+  contents pages instead.
+* **The line anchor.** Unanchored, the pattern matches prose cross-references --
+  "More knowledge ... can be had from Chapter 3 Sloka 65" -- and files the verses that
+  follow under chapter 3. Real headings always begin the line; running heads
+  (`276 Effects of the Bhava Lords`) never contain the word at all.
+"""
+
+CHAPTER_DEV = re.compile(r"[।॥]{1,2}\s*([०-९]{1,3})\s*[।॥]{1,2}")
+"""The chapter number as printed in the Devanagari title line, between dandas."""
+
+
+def devanagari_to_int(text: str) -> int | None:
+    try:
+        return int("".join(str(DEVANAGARI_DIGITS.index(ch)) for ch in text))
+    except ValueError:
+        return None
+
+
+TITLE_AFTER_NUMBER = re.compile(
+    r"^\s*(?:Chapter|CHAPTER)\s*[-–—:.]?\s*\d{1,3}(?!\d)\s*[|:.\-–—]?\s*(\S.*)$",
+    re.MULTILINE,
+)
+r"""The chapter's own title, as the body page prints it.
+
+`(?!\d)` is load-bearing. Without it the digit group backtracks to satisfy the
+title group: `Chapter - 55` carries no title at all, but `\d{1,3}` gave up its last
+digit so `(.+)` could match, yielding the title `"5"`. That silently overwrote 72 real
+chapter titles with single digits.
+"""
+
+_HAS_LETTER = re.compile(r"[A-Za-z]")
+
+
+def title_from_heading(text: str) -> str | None:
+    """The title a body chapter heading declares, cleaned of separators.
+
+    Needed because the printed TOC is unreliable: for vol 1 it lists chapter 26 as
+    "EFFECTS OF NON-LUMINOUS PLANETS" while the body page reads `Chapter 26 | Effects of
+    the Bhava Lords` -- the two titles are transposed in the contents. Content follows
+    the body, so the title must too, or a correctly-assigned verse still cites the wrong
+    chapter name.
+    """
+    match = TITLE_AFTER_NUMBER.search(text or "")
+    if not match:
+        return None
+    title = match.group(1).replace("|", " ").strip(" :.-–—\t")
+    title = re.sub(r"\s{2,}", " ", title)
+    # Many body headings are bare (`Chapter - 55`). Returning something title-shaped for
+    # those would replace a good TOC title with noise, so require actual words.
+    if not title or not _HAS_LETTER.search(title):
+        return None
+    return title
+
+
+@dataclass(frozen=True)
+class ChapterStart:
+    """Where a chapter begins, in reading order."""
+
+    number: int
+    page_no: int
+    element_index: int
+    devanagari_number: int | None = None
+    title: str | None = None
+
+    @property
+    def position(self) -> tuple[int, int]:
+        return (self.page_no, self.element_index)
+
+    @property
+    def cross_checked(self) -> bool:
+        """Both readings present and in agreement."""
+        return self.devanagari_number == self.number
+
+
+@dataclass
+class SpanReport:
+    starts: list[ChapterStart]
+    conflicts: list[str]
+    """Headings whose English and Devanagari numbers disagree -- one is misread, and
+    picking a winner silently would overwrite the book."""
+
+    duplicates: list[str]
+    """A chapter number claimed by more than one heading; the first wins and the rest
+    are recorded rather than dropped."""
+
+    rejected: list[str] = field(default_factory=list)
+    """Candidates dropped for breaking chapter order -- see `_longest_increasing`."""
+
+    def numbers(self) -> list[int]:
+        return [start.number for start in self.starts]
+
+
+HEADING_LIKE = frozenset({"heading", "page_furniture"})
+"""Element types a chapter heading can end up as.
+
+`page_furniture` has to be included: the adapter classifies 12 of vol 1's
+chapter-opening headings as running heads, and excluding them dropped detection from
+47 chapters to 31. Prose types are excluded for the opposite reason -- a commentary that
+cites "Chapter 3" is not a chapter start.
+"""
+
+
+def detect_chapter_starts(
+    headings: list[tuple[int, int, str]], *, body_starts_at: int = 0
+) -> SpanReport:
+    """Find every chapter start from body headings.
+
+    `headings` is `(page_no, element_index, text)` in reading order, already filtered to
+    heading-like elements. `body_starts_at` excludes the front-matter contents pages,
+    whose lines look exactly like chapter headings -- without it, vol 2's TOC produced
+    21 phantom starts hundreds of pages before the real ones.
+    """
+    candidates: list[ChapterStart] = []
+    conflicts: list[str] = []
+    duplicates: list[str] = []
+
+    for page_no, element_index, text in headings:
+        if page_no < body_starts_at:
+            continue
+        match = CHAPTER_EN.search(text or "")
+        if not match:
+            continue
+        number = int(match.group(1))
+        devanagari = None
+        if found := CHAPTER_DEV.search(text or ""):
+            devanagari = devanagari_to_int(found.group(1))
+        if devanagari is not None and devanagari != number:
+            conflicts.append(
+                f"p{page_no}: heading reads Chapter {number} but Devanagari says "
+                f"{devanagari}"
+            )
+            continue
+        # Every candidate is kept, duplicates included. Deduplicating to the first
+        # occurrence here was wrong: vol 2 has a mid-book listing that produces a
+        # `Chapter 96` at page 473, and taking the first meant the bogus one won while
+        # the genuine chapters 90-96 were discarded as repeats. `_longest_increasing`
+        # settles it instead, and it cannot keep two candidates with the same number
+        # because it requires strictly increasing numbers.
+        candidates.append(
+            ChapterStart(
+                number,
+                page_no,
+                element_index,
+                devanagari,
+                title_from_heading(text),
+            )
+        )
+
+    seen: set[int] = set()
+    for candidate in candidates:
+        if candidate.number in seen:
+            duplicates.append(
+                f"chapter {candidate.number} also appears on p{candidate.page_no}"
+            )
+        seen.add(candidate.number)
+
+    ordered = sorted(candidates, key=lambda start: start.position)
+    kept, rejected = _longest_increasing(ordered)
+    return SpanReport(
+        starts=kept,
+        conflicts=conflicts,
+        duplicates=duplicates,
+        rejected=rejected,
+    )
+
+
+def _longest_increasing(
+    candidates: list[ChapterStart],
+) -> tuple[list[ChapterStart], list[str]]:
+    """Keep the largest subset whose numbers increase with position.
+
+    A book's chapters appear in order, so a candidate whose number goes backwards is a
+    false positive -- not evidence that the book is out of order. Vol 2 contains a
+    mid-book listing that yielded a `Chapter 96` heading at page 473, six hundred pages
+    before the real one; keeping it made the genuine chapters 81-95 look like
+    out-of-order duplicates and produced 23 ordering violations.
+
+    Filtering greedily would be wrong in exactly that case: the bogus 96 comes first, so
+    a greedy pass would reject every real chapter after it. The longest increasing
+    subsequence keeps whichever set is larger, which is always the real sequence -- one
+    stray heading can never outnumber fifty genuine ones.
+    """
+    if not candidates:
+        return [], []
+    # tails[i] = index into `candidates` of the smallest tail of an increasing
+    # subsequence of length i+1; predecessor[] reconstructs the chosen chain.
+    tails: list[int] = []
+    predecessor: list[int | None] = [None] * len(candidates)
+    for index, candidate in enumerate(candidates):
+        low, high = 0, len(tails)
+        while low < high:
+            middle = (low + high) // 2
+            if candidates[tails[middle]].number < candidate.number:
+                low = middle + 1
+            else:
+                high = middle
+        predecessor[index] = tails[low - 1] if low else None
+        if low == len(tails):
+            tails.append(index)
+        else:
+            tails[low] = index
+
+    chain: list[int] = []
+    cursor: int | None = tails[-1] if tails else None
+    while cursor is not None:
+        chain.append(cursor)
+        cursor = predecessor[cursor]
+    chain.reverse()
+
+    keep = set(chain)
+    kept = [candidates[i] for i in chain]
+    rejected = [
+        f"chapter {candidates[i].number} at p{candidates[i].page_no} breaks chapter "
+        f"order"
+        for i in range(len(candidates))
+        if i not in keep
+    ]
+    return kept, rejected
+
+
+class ChapterIndex:
+    """Maps a position in reading order to the chapter containing it."""
+
+    def __init__(self, starts: list[ChapterStart]) -> None:
+        self._starts = sorted(starts, key=lambda start: start.position)
+        self._positions = [start.position for start in self._starts]
+
+    def __len__(self) -> int:
+        return len(self._starts)
+
+    def chapter_at(self, page_no: int, element_index: int) -> int | None:
+        """The chapter containing this position, or None if it precedes chapter 1.
+
+        Positional rather than sticky: a missed heading now costs only the chapters
+        between two detected ones, instead of silently absorbing everything after it.
+        Content before the first detected heading returns None -- front matter has no
+        chapter, and inventing one is how the contents pages ended up cited as
+        scripture.
+        """
+        index = bisect_right(self._positions, (page_no, element_index)) - 1
+        if index < 0:
+            return None
+        return self._starts[index].number

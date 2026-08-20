@@ -384,27 +384,44 @@ if ask_btn and question.strip():
     _steps(classify="done", chart="done", retrieve="done", generate="active")
 
     # ── Rishi header ──
+    is_warmth = bool(result.get("is_warmth"))
     conf = classification.get("confidence", 0)
     reasoning = classification.get("reasoning", "")
     supporting = classification.get("supporting_rishis", [])
 
-    st.markdown(
-        f"""<div style="display:flex;align-items:center;gap:12px;margin:18px 0 6px;">
-        <span style="font-size:2rem">{persona.emoji}</span>
-        <div>
-          <div style="font-family:'Cinzel',serif;color:{persona.color};font-size:1.4rem;font-weight:600">
-            {persona.display_name} has entered the sanctum
-          </div>
-          <div style="color:#5a5a80;font-size:.78rem">
-            {persona.title} · {domain_str.upper()} · {conf:.0%} confidence
-          </div>
-        </div>
-        </div>""",
-        unsafe_allow_html=True,
-    )
+    if is_warmth:
+        # A greeting or gibberish never went through classification/routing —
+        # no domain, no confidence, no reasoning to show, just a friendly
+        # host at the door.
+        st.markdown(
+            f"""<div style="display:flex;align-items:center;gap:12px;margin:18px 0 6px;">
+            <span style="font-size:2rem">{persona.emoji}</span>
+            <div>
+              <div style="font-family:'Cinzel',serif;color:{persona.color};font-size:1.4rem;font-weight:600">
+                The Council welcomes you
+              </div>
+            </div>
+            </div>""",
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            f"""<div style="display:flex;align-items:center;gap:12px;margin:18px 0 6px;">
+            <span style="font-size:2rem">{persona.emoji}</span>
+            <div>
+              <div style="font-family:'Cinzel',serif;color:{persona.color};font-size:1.4rem;font-weight:600">
+                {persona.display_name} has entered the sanctum
+              </div>
+              <div style="color:#5a5a80;font-size:.78rem">
+                {persona.title} · {domain_str.upper()} · {conf:.0%} confidence
+              </div>
+            </div>
+            </div>""",
+            unsafe_allow_html=True,
+        )
 
-    if reasoning:
-        st.caption(f"*{reasoning}*")
+        if reasoning:
+            st.caption(f"*{reasoning}*")
 
     # ── Computed timings ──
     # Shown as data, not narration. These are Swiss Ephemeris values; the model
@@ -484,6 +501,38 @@ if ask_btn and question.strip():
             if result.get("chart_facts"):
                 st.caption(f"{len(result['chart_facts'])} ground-truth facts extracted via Swiss Ephemeris")
 
+    # ── Matched Koonji rules ──
+    # Blueprint §21's gold standard: "If Rishivan cannot show how an important
+    # conclusion travels from user question -> calculation -> rule -> source ->
+    # validation -> final explanation, the engine is not finished." This panel is the
+    # rule -> source link, made visible to the person reading the answer rather than
+    # only to whoever reads the logs.
+    matched_rules = result.get("matched_rules") or []
+    if matched_rules:
+        with st.expander(
+            f"📜 {len(matched_rules)} classical rules match this chart", expanded=False
+        ):
+            st.caption(
+                "Matched deterministically against the computed placements — not "
+                "retrieved by similarity. Each condition was tested and holds."
+            )
+            for hit in matched_rules:
+                st.markdown(f"**{hit.citation}**")
+                translation = (hit.source or {}).get("translation", "").strip()
+                if translation:
+                    st.caption(translation)
+                for effect in hit.effects or []:
+                    st.markdown(
+                        f"- _{effect.get('polarity')}_: {effect.get('statement')}"
+                    )
+    elif result.get("chart_facts"):
+        # Silence here would read as "the books say nothing", when the truth is that
+        # only part of one book has been approved into the rule base so far.
+        st.caption(
+            "No classical rule in the approved rule base matched this chart — this "
+            "reading comes from source passages only."
+        )
+
     # ── Relevant divisional charts ──
     # Beyond D1, only the vargas this specific question actually needed were
     # computed (see orchestrator.py — the classifier decides relevance per
@@ -523,6 +572,8 @@ if ask_btn and question.strip():
         else:
             answer_ph = st.empty()
             answer = ""
+            # A greeting doesn't need the Rishi's philosophical sign-off line.
+            sign_off_html = "" if is_warmth else f'<div class="sign-off">— {persona.sign_off}</div>'
 
             for chunk in answer_stream:
                 answer += chunk
@@ -536,12 +587,32 @@ if ask_btn and question.strip():
     </div>
   </div>
   <div class="answer-body">{_md(answer)}</div>
-  <div class="sign-off">— {persona.sign_off}</div>
+  {sign_off_html}
 </div>""",
                     unsafe_allow_html=True,
                 )
 
             _steps(classify="done", chart="done", retrieve="done", generate="done")
+
+            # ── Earned second voice ──
+            # A different Rishi's brief perspective, generated only now (after
+            # the primary answer has finished streaming, so it never delays
+            # the first token) — see rishivan.council.lens. Never runs for a
+            # warmth reply, since there was no chart/evidence to reason over.
+            secondary = None
+            if not is_warmth:
+                from rishivan.council.client import model_name
+                from rishivan.council.lens import maybe_generate_secondary_voice
+
+                secondary = maybe_generate_secondary_voice(
+                    result, client, model_name(backend, "flash"), question.strip()
+                )
+                if secondary:
+                    sp = get_persona(secondary["rishi"])
+                    with st.expander(
+                        f"{sp.emoji} A second voice: {sp.display_name}", expanded=False
+                    ):
+                        st.markdown(_md(secondary["body"]))
 
             page_groups = result.get("sources", [])
 
@@ -589,11 +660,12 @@ if ask_btn and question.strip():
                 "rishi": rishi_name, "domain": domain_str,
             })
 
-            st.caption(
-                "Rishivan shares traditional Vedic interpretation for reflection "
-                "and guidance. It is not medical, legal, or financial advice — "
-                "please consult a qualified professional for those decisions."
-            )
+            if not is_warmth:
+                st.caption(
+                    "Rishivan shares traditional Vedic interpretation for reflection "
+                    "and guidance. It is not medical, legal, or financial advice — "
+                    "please consult a qualified professional for those decisions."
+                )
 
 # ── History ───────────────────────────────────────────────────────────────────
 if st.session_state.history:

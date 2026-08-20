@@ -98,16 +98,11 @@ class Settings:
         # TOML and .env both escape newlines; the PEM parser needs them real.
         return _secret("GCP_PRIVATE_KEY").replace("\\n", "\n")
 
-    # ── Real P1 chart engine (optional) ──────────────────────────────────────
-    # Empty means "no real chart data" — falls back to this demo's own
-    # D1-only Swiss Ephemeris computation, unchanged.
+    # ── Observability ────────────────────────────────────────────────────────
     @cached_property
-    def BACKEND_URL(self) -> str:
-        return _secret("BACKEND_URL")
-
-    @cached_property
-    def BACKEND_DEMO_TOKEN(self) -> str:
-        return _secret("BACKEND_DEMO_TOKEN")
+    def HELICONE_API_KEY(self) -> str:
+        """Optional. When set, Vertex traffic routes through the Helicone gateway."""
+        return _secret("HELICONE_API_KEY")
 
     # ── Derived ──────────────────────────────────────────────────────────────
     @cached_property
@@ -117,6 +112,10 @@ class Settings:
     @cached_property
     def has_gemini_key(self) -> bool:
         return bool(self.GEMINI_API_KEY)
+
+    @cached_property
+    def has_helicone(self) -> bool:
+        return bool(self.HELICONE_API_KEY)
 
     @cached_property
     def default_backend(self) -> str:

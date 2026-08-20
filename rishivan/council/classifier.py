@@ -46,6 +46,19 @@ QUERY DOMAINS:
 - prashna  : Horary — answering from the moment of asking (no birth data needed)
 - general  : Conceptual knowledge about astrology, texts, rules, definitions
 
+SMALL TALK / GIBBERISH — is this even an astrology question at all?
+Before routing to a Rishi, decide "is_smalltalk_or_gibberish":
+- true  : greetings ("hi", "hello", "namaste"), thanks, farewells, casual
+  chit-chat with no astrology content ("how are you", "who are you", "what
+  can you do"), or text with no discernible meaning (keyboard mashing,
+  random characters, an empty or near-empty message).
+- false : ANY real astrology question, including broad conceptual ones
+  ("explain Gajakesari yoga", "what is a dasha", "how does astrology work").
+  When in doubt whether something is a genuine astrology question, say false
+  — only mark true when there is truly nothing astrological to answer.
+When true, the routing fields below (primary_rishi, query_domain, intent,
+etc.) are ignored by the caller — fill them with any valid placeholder.
+
 ROUTING RULES:
 - "When will I get married?" → ritam (timing), natal
 - "What remedies for Saturn?" → tejan (remedies), natal
@@ -136,6 +149,7 @@ planetary significators and timing indicators.
 
 Return ONLY a JSON object (no markdown, no explanation):
 {
+  "is_smalltalk_or_gibberish": <true|false>,
   "primary_rishi": "<one of: agam|vyom|dhruvan|ritam|tejan|medhan|tattvan|pragnav>",
   "query_domain": "<natal|muhurta|prashna|general>",
   "needs_birth_data": <true|false>,
@@ -194,6 +208,8 @@ def classify_query(
             raw = raw.split("\n", 1)[1].rsplit("```", 1)[0].strip()
         result = json.loads(raw)
 
+        is_smalltalk_or_gibberish = bool(result.get("is_smalltalk_or_gibberish", False))
+
         rishi = result.get("primary_rishi", "vyom").lower()
         if rishi not in ALL_RISHI_NAMES:
             rishi = "vyom"
@@ -235,6 +251,7 @@ def classify_query(
                 rishi = conversation.current_rishi or rishi
 
         return {
+            "is_smalltalk_or_gibberish": is_smalltalk_or_gibberish,
             "primary_rishi": rishi,
             "query_domain": domain,
             "needs_birth_data": bool(result.get("needs_birth_data", False)),
@@ -255,6 +272,10 @@ def classify_query(
         # Mid-conversation, dropping the seeker onto a different Rishi is more
         # jarring than a wrong domain, so hold the current one.
         return {
+            # Classification failed outright — never guess smalltalk on
+            # error; that would silently downgrade a real question someone
+            # is paying attention to into a throwaway warm reply.
+            "is_smalltalk_or_gibberish": False,
             "primary_rishi": (conversation.current_rishi
                               if conversation is not None
                               and not conversation.is_empty else "vyom"),

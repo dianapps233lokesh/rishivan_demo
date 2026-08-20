@@ -211,6 +211,43 @@ def test_match_chart_sql_actually_executes():
         matched = run_db(lambda session: match_chart(session, tokens=CHART))
     except Exception as exc:  # noqa: BLE001
         skip_without_database(exc)
-    # Nothing is approved yet, so the only correct answer is an empty list. The point of
-    # the test is that the statement runs at all.
-    assert matched == []
+
+    # The assertion is the invariant, not the count. An earlier version asserted `== []`
+    # because nothing was approved yet, and it broke the moment a chapter was approved --
+    # a test that encoded a temporary state rather than a rule.
+    assert isinstance(matched, list)
+    for rule in matched:
+        assert satisfies(rule.condition, CHART), rule.rule_key
+        assert rule.effects, f"{rule.rule_key} matched but predicts nothing"
+
+
+def test_match_chart_returns_only_approved_rules():
+    """`MATCHABLE_PREDICATE` is the one definition of "may reach a user", and the matcher
+    must not be the place it gets re-expressed loosely."""
+    from sqlalchemy import select
+
+    from app.knowledge.match.engine import match_chart
+    from app.models.knowledge.rule import Rule
+    from tests.conftest import run_db, skip_without_database
+
+    async def load(session):
+        matched = await match_chart(session, tokens=CHART)
+        keys = [rule.rule_key for rule in matched]
+        if not keys:
+            return []
+        rows = await session.execute(
+            select(Rule.rule_key, Rule.status, Rule.approved_at).where(
+                Rule.rule_key.in_(keys)
+            )
+        )
+        return list(rows)
+
+    rows = []
+    try:
+        rows = run_db(load)
+    except Exception as exc:  # noqa: BLE001
+        skip_without_database(exc)
+
+    for key, status, approved_at in rows:
+        assert status == "parsed", key
+        assert approved_at is not None, f"{key} was matched without being approved"

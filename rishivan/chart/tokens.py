@@ -11,13 +11,10 @@ nothing" -- no exception, no empty-result signal, just a rule base that appears 
 the scope is validated against the emitted list, and a contract test pins the spelling of
 every token family against real extracted rules.
 
-Deliberately does NOT emit `dignity_is`, `conjunct` or `aspected_by`. The ephemeris
-computes no dignity table, no aspect model and no conjunction orb, and Blueprint §7 is
-explicit that the aspect model is school-specific and must never be assumed silently.
-Measured on BPHS vol 1: those three types appear in 9 of 376 valid rules (16%), so the
-gap is real and bounded. Until it is closed by `relations.py`, those rules are inert --
-`satisfies` returns False for a token the chart does not carry, which is the correct
-degradation.
+Dignity, conjunction and aspect come from `relations.py`, which states the Parashari model
+it implements rather than leaving it implicit -- Blueprint §7 forbids assuming one
+universal aspect model. Those three families are 9 of BPHS vol 1's 376 valid rules (16%),
+and were inert until that module existed.
 """
 
 from app.astro.vocab import EMITTED_SCOPES
@@ -140,6 +137,11 @@ def chart_tokens(chart: Chart, *, scope: str = "") -> dict[str, int | str]:
             lord_display, lord_display.lower()
         )
 
+    # Imported here rather than at module scope: `relations` imports this module's name
+    # tables, so a top-level import would be circular.
+    from rishivan.chart.relations import relation_tokens
+
+    tokens.update(relation_tokens(chart, scope=scope))
     return tokens
 
 

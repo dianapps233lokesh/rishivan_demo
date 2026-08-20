@@ -30,8 +30,42 @@ def get_gemini_api_client(api_key: str | None = None) -> genai.Client:
     )
 
 
-def get_vertex_client() -> genai.Client:
-    """Build a Vertex AI client from service-account settings."""
+def _helicone_http_options(model: str, pipeline: str) -> dict | None:
+    """Route Vertex traffic through the Helicone gateway when a key is configured.
+
+    Absent the key this returns None and the client talks to Vertex directly -- no
+    behaviour change, so leaving Helicone unconfigured is always safe.
+
+    One gotcha carried over from the backend, because it costs an afternoon to
+    rediscover: with `vertexai=True` the genai SDK builds paths as
+    `/v1beta1/projects/{p}/locations/global/publishers/google/models/...`. A regional
+    endpoint (`us-central1-aiplatform...`) returns 404 for a `locations/global` path,
+    so the target must be the non-regional global endpoint.
+    """
+    from rishivan.config import settings
+
+    if not settings.has_helicone:
+        return None
+    return {
+        "base_url": "https://gateway.helicone.ai",
+        "headers": {
+            "helicone-auth": f"Bearer {settings.HELICONE_API_KEY}",
+            "helicone-target-url": "https://aiplatform.googleapis.com",
+            "helicone-property-model": model,
+            "helicone-property-pipeline": pipeline,
+        },
+    }
+
+
+def get_vertex_client(
+    *, helicone_model: str | None = None, helicone_pipeline: str | None = None
+) -> genai.Client:
+    """Build a Vertex AI client from service-account settings.
+
+    Pass `helicone_pipeline` to tag this client's traffic in the Helicone dashboard --
+    the Koonji extractor uses `koonji-extract`, so its spend is separable from the
+    demo's chat traffic.
+    """
     from google.oauth2 import service_account
     from rishivan.config import settings
 
@@ -46,11 +80,17 @@ def get_vertex_client() -> genai.Client:
         },
         scopes=["https://www.googleapis.com/auth/cloud-platform"],
     )
+    http_options = (
+        _helicone_http_options(helicone_model or "unspecified", helicone_pipeline)
+        if helicone_pipeline
+        else None
+    )
     return genai.Client(
         vertexai=True,
         project=settings.GCP_PROJECT_ID,
         location=settings.GCP_LOCATION,
         credentials=credentials,
+        http_options=http_options,
     )
 
 

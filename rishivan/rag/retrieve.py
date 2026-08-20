@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from itertools import groupby
 
+from rishivan.rag.authority import authority_for_slug
 from rishivan.rag.books import title_for_slug
 
 PAGE_WINDOW = 1          # pages to include on either side of each hit
@@ -124,7 +125,12 @@ def collect_chart_context(
     else:
         all_hits = store.search_batch(embeddings, per_query_k)
 
-    hits_per_page: dict[tuple[int, int], int] = {}
+    # Ranking score per page: specificity (how many distinct chart facts hit
+    # it) x source authority (see rishivan.rag.authority) — a demo-scaled
+    # echo of the main backend's P3 retrieval philosophy
+    # (score = specificity x source_authority x confidence), adapted here
+    # since this page-based POC has no per-hit confidence to multiply by.
+    page_score: dict[tuple[int, int], float] = {}
     first_seen: dict[tuple[int, int], int] = {}
     order = 0
 
@@ -135,7 +141,7 @@ def collect_chart_context(
             m = h["metadata"]
             question_pages.append((m["document_id"], m["page_number"]))
 
-    # Rank the rest of the pages by how many chart facts hit them
+    # Rank the rest of the pages by specificity x authority
     for hits in all_hits[1:]:
         seen_this_query: set[tuple[int, int]] = set()
         for h in hits:
@@ -144,7 +150,9 @@ def collect_chart_context(
             if key in seen_this_query:
                 continue
             seen_this_query.add(key)
-            hits_per_page[key] = hits_per_page.get(key, 0) + 1
+            page_score[key] = page_score.get(key, 0.0) + authority_for_slug(
+                m.get("book_slug")
+            )
             if key not in first_seen:
                 first_seen[key] = order
                 order += 1
@@ -154,8 +162,8 @@ def collect_chart_context(
     if question_pages:
         final_pages.append(question_pages[0])  # Force-include user's question match
 
-    # Add other high-density fact pages up to max_pages
-    for fp in sorted(hits_per_page, key=lambda k: (-hits_per_page[k], first_seen[k])):
+    # Add other high-scoring fact pages up to max_pages
+    for fp in sorted(page_score, key=lambda k: (-page_score[k], first_seen[k])):
         if len(final_pages) >= max_pages:
             break
         if fp not in final_pages:

@@ -185,6 +185,56 @@ The seeker asks: {question}
 
 # ── Public builder ────────────────────────────────────────────────────────────
 
+RULE_GUIDANCE = """MATCHED KOONJI RULES — CLASSICAL RULES THAT APPLY TO THIS EXACT CHART
+
+These were matched deterministically by the rule engine against the seeker's real
+placements. They were not retrieved by similarity, and they are not suggestions: the
+condition of each one has been tested and holds for this chart.
+
+- Ground your reading in these. Explain what they say and why they apply.
+- Cite each by chapter and verse, e.g. "(BPHS 26.21)".
+- Do NOT re-derive them, soften them, or add astrological reasoning of your own on top.
+- Do NOT invent a rule, a verse number, or a placement. If these rules do not answer the
+  question, say so plainly and rely on the passages instead.
+- Never state a health diagnosis, a treatment, or death as a certainty. These are
+  traditional interpretations; present them with their uncertainty intact.
+"""
+"""The LLM's job description where rules are concerned.
+
+Blueprint §18 sets the boundary: the model "may explain structured conclusions" and "must
+not invent planetary positions, invent citations, rewrite canonical rules silently, or
+override deterministic calculations."
+
+The last line is not boilerplate. BPHS states outcomes like "his death is quite certain",
+and those rules are legitimately in the rule base -- Eight Rishis §9 forbids presenting
+them as certainty, not storing them.
+"""
+
+
+def rule_context(hits) -> str:
+    """Render matched rules for the prompt: citation, source text, stated outcome.
+
+    The translation is included deliberately. A citation whose text the model cannot see is
+    one it has to take on trust, and taking a citation on trust is indistinguishable from
+    inventing it.
+    """
+    if not hits:
+        return ""
+    blocks = []
+    for index, hit in enumerate(hits, start=1):
+        source = getattr(hit, "source", None) or {}
+        effects = "; ".join(
+            f"[{effect.get('polarity')}] {effect.get('statement')}"
+            for effect in (getattr(hit, "effects", None) or [])
+        )
+        blocks.append(
+            f"RULE {index} — {getattr(hit, 'citation', '')}\n"
+            f'  The text says: "{(source.get("translation") or "").strip()}"\n'
+            f"  Stated outcome: {effects or 'none recorded'}"
+        )
+    return RULE_GUIDANCE + "\n" + "\n\n".join(blocks)
+
+
 def build_rishi_prompt(
     rishi_name: str,
     domain: QueryDomain,
@@ -192,8 +242,14 @@ def build_rishi_prompt(
     context: str,
     chart_facts: list[str] | None = None,
     conversation=None,
+    rules: str = "",
 ) -> str:
-    """Assemble the full Rishi-voiced prompt for natural conversational output."""
+    """Assemble the full Rishi-voiced prompt for natural conversational output.
+
+    `rules` is the rendered output of `rule_context()` -- classical rules the engine proved
+    apply to this chart. It goes ahead of the retrieved passages because it is a stronger
+    kind of evidence: a passage is topically similar, a rule has been tested.
+    """
     persona: RishiPersona = get_persona(rishi_name)
 
     facts_text = (
@@ -214,6 +270,10 @@ def build_rishi_prompt(
         context_block = _general_context(context, question)
 
     history_block = continuity_instruction(conversation)
+    rules_block = f"{rules}\n\n---\n\n" if rules else ""
     if history_block:
-        return f"{system}\n\n---\n\n{history_block}\n\n---\n\n{context_block}"
-    return f"{system}\n\n---\n\n{context_block}"
+        return (
+            f"{system}\n\n---\n\n{history_block}\n\n---\n\n"
+            f"{rules_block}{context_block}"
+        )
+    return f"{system}\n\n---\n\n{rules_block}{context_block}"

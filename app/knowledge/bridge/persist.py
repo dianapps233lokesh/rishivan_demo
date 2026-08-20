@@ -14,10 +14,15 @@ for free.
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.knowledge.bridge.adapt import SourceRow, adapt_rows
+from app.knowledge.bridge.chapter_spans import (
+    HEADING_LIKE,
+    ChapterIndex,
+    detect_chapter_starts,
+)
 from app.knowledge.bridge.toc import build_chapter_tree
 from app.knowledge.bridge.verse_ref import verse_ref_from_translation
 from app.knowledge.reflow import adjacency_violations, reflow_book
@@ -41,6 +46,9 @@ class BridgeReport:
     inserted: int = 0
     skipped: int = 0
     chapters: int = 0
+    chapter_starts_detected: int = 0
+    chapter_reassigned: int = 0
+    chapter_conflicts: list[str] = field(default_factory=list)
     inferred_verse_refs: int = 0
     ref_disagreements: int = 0
     """Units where the Devanagari verse marker and the translation's own English
@@ -262,6 +270,27 @@ async def bridge_book(
 
     ordered = adapt_rows(rows, book_title=book_title)
 
+    # Chapter boundaries come from the body, positionally. `chapter_spans` records why
+    # neither the sticky heading value nor the printed TOC could be trusted on its own:
+    # they disagreed on 891 of 2,063 units. The TOC is still used for one thing -- where
+    # the body begins -- because the front-matter contents lines are indistinguishable
+    # from chapter headings and produced 21 phantom starts in vol 2.
+    body_starts_at = (
+        await session.scalar(
+            select(func.min(Chapter.pdf_page_from)).where(
+                Chapter.book_id == book.id, Chapter.deleted_at.is_(None)
+            )
+        )
+    ) or 0
+    heading_rows = [
+        (item.page_no, item.element.reading_order, item.element.text)
+        for item in ordered
+        if item.element.type.value in HEADING_LIKE
+    ]
+    span_report = detect_chapter_starts(heading_rows, body_starts_at=body_starts_at)
+    chapter_index = ChapterIndex(span_report.starts)
+    reassigned_chapters: list[tuple[str | None, str]] = []
+
     pages: dict[int, Page] = {}
     inserted = skipped = 0
     for item in ordered:
@@ -286,6 +315,31 @@ async def bridge_book(
         inserted += 1
 
     units = reflow_book(ordered)
+
+    # Reflow's own chapter value is now only a hint. Overwrite it from position, and
+    # count how often the two differ -- that count is the size of the defect this
+    # replaces, and it belongs in the report rather than in a comment.
+    element_positions = {
+        item.element_id: (item.page_no, item.element.reading_order) for item in ordered
+    }
+    for draft in units:
+        first = next(
+            (
+                element_positions[element_id]
+                for element_id in draft.element_ids
+                if element_id in element_positions
+            ),
+            None,
+        )
+        if first is None:
+            continue
+        resolved = chapter_index.chapter_at(*first)
+        if resolved is None:
+            continue
+        if draft.chapter != str(resolved):
+            reassigned_chapters.append((draft.chapter, str(resolved)))
+        draft.chapter = str(resolved)
+
     violations = adjacency_violations(units)
 
     existing_units = set(
@@ -348,6 +402,9 @@ async def bridge_book(
         inserted=inserted,
         skipped=skipped,
         chapters=chapters,
+        chapter_starts_detected=len(chapter_index),
+        chapter_reassigned=len(reassigned_chapters),
+        chapter_conflicts=span_report.conflicts + span_report.duplicates,
         inferred_verse_refs=sum(unit.inferred_verse_no for unit in units),
         ref_disagreements=ref_disagreements,
         collapsed_duplicates=len(units) - len(deduped),
