@@ -28,7 +28,6 @@ from rishivan.config import settings
 from rishivan.council.classifier import classify_query
 from rishivan.council.client import get_vertex_client, model_name
 from rishivan.council.conversation import Conversation
-from rishivan.council.lens import maybe_generate_secondary_voice
 from rishivan.council.orchestrator import council_consult
 from rishivan.rag.vector_store import get_vector_store
 from tests.eval.prompts import (
@@ -223,16 +222,6 @@ def run_pipeline_tier(store) -> list[dict]:
                 birth_data=birth_data, conversation=convo,
             )
             answer_text = _consume_answer(result)
-            # The real app (streamlit_app.py) calls this AFTER the primary
-            # answer finishes streaming, which is exactly what we just did
-            # above — council_consult() itself never populates
-            # result["secondary_voice"] (see orchestrator.py Step 7's
-            # comment), so the eval must call this explicitly too, or the
-            # earned-voice feature never gets exercised at all.
-            if not result.get("is_warmth") and not result.get("chart_table"):
-                secondary = maybe_generate_secondary_voice(result, client, model, case.question)
-            else:
-                secondary = None
             elapsed = time.perf_counter() - start
             failures = _check_pipeline(case, result, answer_text)
             status = "PASS" if not failures else "FAIL"
@@ -244,7 +233,6 @@ def run_pipeline_tier(store) -> list[dict]:
             status = "ERROR"
             error = f"{type(exc).__name__}: {exc}"
             result = {}
-            secondary = None
 
         results.append({
             "id": case.id,
@@ -260,8 +248,7 @@ def run_pipeline_tier(store) -> list[dict]:
             "rishi": result.get("primary_rishi"),
             "n_sources": len(result.get("sources") or []),
             "has_chart_table": bool(result.get("chart_table")),
-            "has_secondary_voice": bool(secondary),
-            "secondary_voice_rishi": (secondary or {}).get("rishi"),
+            "contributors": [c["rishi"] for c in result.get("contributors") or []],
             "answer_chars": len(answer_text),
             "answer_preview": answer_text[:160],
             "notes": case.notes,

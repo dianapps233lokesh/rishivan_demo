@@ -647,25 +647,29 @@ if ask_btn and question.strip():
 
             _steps(classify="done", chart="done", retrieve="done", generate="done")
 
-            # ── Earned second voice ──
-            # A different Rishi's brief perspective, generated only now (after
-            # the primary answer has finished streaming, so it never delays
-            # the first token) — see rishivan.council.lens. Never runs for a
-            # warmth reply, since there was no chart/evidence to reason over.
-            secondary = None
-            if not is_warmth:
-                from rishivan.council.client import model_name
-                from rishivan.council.lens import maybe_generate_secondary_voice
-
-                secondary = maybe_generate_secondary_voice(
-                    result, client, model_name("flash"), question.strip()
-                )
-                if secondary:
-                    sp = get_persona(secondary["rishi"])
-                    with st.expander(
-                        f"{sp.emoji} A second voice: {sp.display_name}", expanded=False
-                    ):
-                        st.markdown(_md(secondary["body"]))
+            # ── Who contributed ──
+            # The supporting Rishis computed rather than spoke, so there is nothing
+            # to generate here and nothing to wait for — every value below was
+            # already established deterministically during the consultation.
+            contributors = result.get("contributors") or []
+            if contributors:
+                with st.expander(
+                    f"🔭 {len(contributors)} Rishis contributed to this reading",
+                    expanded=False,
+                ):
+                    st.caption(
+                        "Each contributor computes; only the primary Rishi speaks. "
+                        "Values here are deterministic, not generated."
+                    )
+                    for entry in contributors:
+                        persona = get_persona(entry["rishi"])
+                        st.markdown(f"**{persona.display_name}** — {persona.title}")
+                        for label, value in (entry.get("computed") or {}).items():
+                            st.markdown(f"- {label}: `{value}`")
+                        if entry.get("rules"):
+                            st.markdown(f"- {entry['rules']} matched rules supplied")
+                        if entry.get("note"):
+                            st.caption(entry["note"])
 
             page_groups = result.get("sources", [])
 

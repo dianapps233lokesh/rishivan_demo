@@ -17,9 +17,9 @@ Flow:
      specificity x source authority (rishivan.rag.authority)
   5. Build Rishi-voiced prompt (natural flowing prose)
   6. Stream answer via Vertex AI
-  7. Earn a second Rishi's brief perspective when the classifier's own
-     supporting_rishis call already named one with real confidence
-     (rishivan.council.lens)
+  7. Supporting Rishis contribute COMPUTED evidence, never a second voice
+     (rishivan.council.contributors) -- gathered in step 4b and labelled in
+     the primary's prompt.
 """
 from __future__ import annotations
 
@@ -88,8 +88,8 @@ def council_consult(
         "search_query": question,
         "answer_stream": None,
         "is_warmth": False,
-        "secondary_voice": None,
         "matched_rules": [],
+        "contributors": [],
         "chart_tokens": {},
         "rules_true_of_chart": 0,
         "routing": {},
@@ -363,9 +363,20 @@ def council_consult(
     # prema + vansh + aarogya, whose §4-11 coverage sets together reach eleven of twelve
     # houses, so persona-scoped relevance cannot discriminate. Routing once here serves
     # both page ranking (§15) and rule relevance (§4-11).
-    from rishivan.council.routing import route_question
+    from rishivan.council.domains import primary_rishi_for
+    from rishivan.council.routing import merge_supporting, route_question
 
-    routing = route_question(question)
+    routing = merge_supporting(
+        route_question(question), classification.get("supporting_rishis") or []
+    )
+    # The routed life domain, not the classifier, decides who speaks: the coverage gate
+    # keys off the domain, so letting the LLM pick the voice independently allowed a
+    # persona with no coverage of the subject to answer.
+    rishi = primary_rishi_for(routing.primary, classifier_pick=rishi)
+    persona = get_persona(rishi)
+    result["primary_rishi"] = rishi
+    result["rishi_title"] = persona.title
+    result["life_domain"] = routing.primary
     result["routing"] = {
         "primary": routing.primary,
         "secondary": list(routing.secondary),
@@ -445,6 +456,7 @@ def council_consult(
     # cannot prefer what it has no way of knowing is true. Matching first makes
     # recall total by construction; ranking 21 known-true rules is the easy half.
     matched_rules = []
+    contributors: tuple = ()
     if chart is not None:
         try:
             from rishivan.chart.tokens import all_chart_tokens
@@ -478,6 +490,18 @@ def council_consult(
                 # predicting the manner of the querent's death.
                 question=question,
             )
+
+            from rishivan.council.contributors import gather
+
+            contributors = gather(
+                chart, applicable, routing=routing,
+                question=question, when=query_time,
+            )
+            result["contributors"] = [
+                {"rishi": r.rishi, "computed": r.computed,
+                 "rules": len(r.rules), "note": r.note}
+                for r in contributors
+            ]
         except Exception:  # noqa: BLE001 - a missing rule base must not break an answer
             matched_rules = []
     result["matched_rules"] = matched_rules
@@ -501,6 +525,8 @@ def council_consult(
         chart_facts=chart_facts,
         conversation=conversation,
         rules=rule_context(matched_rules),
+        life_domain=routing.primary,
+        contributors=contributors,
     )
 
     # ── Step 6: Stream answer ─────────────────────────────────────────────────
@@ -514,10 +540,8 @@ def council_consult(
 
     result["answer_stream"] = answer_stream()
 
-    # Step 7 (earning a second voice, see rishivan.council.lens) deliberately
-    # is NOT run here: it is one more blocking generation call, and running
-    # it before returning would delay the first token of the primary stream
-    # above. The caller (streamlit_app.py) runs it after the primary answer
-    # has finished streaming, using result["classification"]/["chart_facts"]/
-    # ["_context_text"] — see maybe_generate_secondary_voice().
+    # Step 7 needs no deferral any more. The supporting Rishis contributed in step 4b
+    # (rishivan.council.contributors) and every one of them is deterministic, so their
+    # evidence is already inside the prompt above rather than arriving as a second
+    # generation call the caller had to run after the primary answer finished.
     return result

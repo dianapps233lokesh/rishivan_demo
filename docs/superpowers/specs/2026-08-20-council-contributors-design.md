@@ -44,6 +44,8 @@ DOMAIN_RISHIS  = frozenset({"agam", "dhruvan", "medhan", "tattvan", "pragnav"})
 SERVICE_RISHIS = frozenset({"vyom", "ritam", "tejan"})
 ```
 
+this domain and service rishis are not necessary to be like this. any rishi can be serviuce rishi if domain matches or chart or somehitng comes under him. refrence doc, mentioed there specifically
+
 The split is not new information. It is already latent in `RISHI_LIFE_DOMAINS`: vyom and
 ritam rate every domain exactly MEDIUM and tejan rates every domain LOW–MEDIUM, so none
 of the three owns anything. `domains.py`'s own comment states the reason — they are
