@@ -118,3 +118,55 @@ def source_weight(slug: str | None, domain: str | None) -> float:
     return SOURCE_RISHI_WEIGHTS[family].get(
         (domain or "").lower().strip(), SOURCE_NEUTRAL
     )
+
+
+AUTHORITY_TIER: dict[str, str] = {
+    # S0 — primary classical text
+    "bphs-gcsharma-vol1": "S0",
+    "bphs-gcsharma-vol2": "S0",
+    "brihatjataka-row-1919": "S0",
+    "phaladeepika-sastri-1950": "S0",
+    "saravali-santhanam-en": "S0",
+    "jatakaparijata-sastri-vol1": "S0",
+    "jatakaparijata-sastri-vol2": "S0",
+    "sarvartha-chintamani": "S0",
+    "muhurtachintamani": "S0",
+    "prasnamarga-raman-part1": "S0",
+    "prasnamarga-raman-part2": "S0",
+    "prashna-tantra": "S0",
+    "devakeralam-chandrakalanadi-vol1": "S0",
+    "devakeralam-chandrakalanadi-vol2": "S0",
+    "vivaha-patalam": "S0",
+    "dharma-sindhu": "S0",
+    # S1 — traditional commentary or abridgement of a classical text
+    "laghu-parashari": "S1",
+    "bhavartha-ratnakara-by-b-v-raman-text": "S1",
+    # S3 — established practitioner writing in the modern era
+    "hindupredictiveastrology-raman": "S3",
+    # S4 — modern interpretation outside the Jyotisha canon
+    "cheiros-book-of-numbers": "S4",
+    "the-complete-book-of-numerology": "S4",
+    "numerology-key-to-your-inner-self": "S4",
+    "numerology-and-the-divine-triangle": "S4",
+}
+"""Blueprint §12's source tiers, per ingested book.
+
+§12 is explicit that these are "engineering categories, not claims about spiritual
+authority": they exist so BP §8's rule 4 ("Primary classical source > established
+commentary > established practitioner > experimental material") is computable.
+
+The tier is about the WORK, not the translation. Saravali in Santhanam's English is
+still a primary classical text; Hindu Predictive Astrology is B. V. Raman's own 20th
+century synthesis, so it is S3 however respected.
+"""
+
+UNRATED_TIER = "S5"
+"""An unrated book gets the lowest tier, never a classical one. Defaulting upward would
+let a new upload inherit authority nobody granted it."""
+
+
+def authority_tier(slug: str | None) -> str:
+    """Blueprint §12 tier for a book slug; `UNRATED_TIER` if unknown."""
+    if not slug:
+        return UNRATED_TIER
+    return AUTHORITY_TIER.get(slug.lower().strip(), UNRATED_TIER)

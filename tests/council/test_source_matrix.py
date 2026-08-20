@@ -124,3 +124,46 @@ def test_an_unknown_slug_gets_a_neutral_weight_not_zero():
 
 def test_an_unknown_domain_gets_a_neutral_weight():
     assert source_weight("bphs-gcsharma-vol1", "not-a-domain") > 0
+
+
+# ── Blueprint §12 source tiers ───────────────────────────────────────────────
+#
+# "S0 primary classical text; S1 traditional commentary; S2 scholarly/critical edition;
+# S3 established practitioner; S4 modern interpretation; S5 experimental." BP §12 calls
+# these "engineering categories, not claims about spiritual authority".
+
+
+def test_every_ingested_book_has_a_tier():
+    from rishivan.council.source_matrix import authority_tier
+
+    for slug in INGESTED:
+        assert authority_tier(slug) in {"S0", "S1", "S2", "S3", "S4", "S5"}, slug
+
+
+def test_the_primary_classics_are_s0():
+    from rishivan.council.source_matrix import authority_tier
+
+    for slug in ("bphs-gcsharma-vol1", "bphs-gcsharma-vol2", "brihatjataka-row-1919",
+                 "saravali-santhanam-en", "phaladeepika-sastri-1950"):
+        assert authority_tier(slug) == "S0", slug
+
+
+def test_a_modern_practitioner_work_ranks_below_a_classic():
+    """Hindu Predictive Astrology is B. V. Raman writing in the 20th century, not a
+    classical source. BP §4's hierarchy of evidence depends on the difference."""
+    from rishivan.council.source_matrix import authority_tier
+
+    assert authority_tier("hindupredictiveastrology-raman") > "S0"
+
+
+def test_numerology_is_not_classical_jyotisha():
+    from rishivan.council.source_matrix import authority_tier
+
+    assert authority_tier("cheiros-book-of-numbers") >= "S3"
+
+
+def test_an_unknown_slug_gets_the_lowest_tier():
+    """An unrated book must not inherit classical authority by default."""
+    from rishivan.council.source_matrix import authority_tier
+
+    assert authority_tier("some-book-nobody-rated") == "S5"

@@ -18,17 +18,22 @@ import re
 from bisect import bisect_right
 from dataclasses import dataclass, field
 
+from rishivan.knowledge.bridge.editions import (
+    DEFAULT_PROFILE,
+    EditionProfile,
+    chapter_number_from,
+)
+
 DEVANAGARI_DIGITS = "०१२३४५६७८९"
 
 CHAPTER_EN = re.compile(
     r"^\s*(?:Chapter|CHAPTER)\s*[-–—:.]?\s*(\d{1,3})\b", re.MULTILINE
 )
-"""A chapter heading, anchored to the start of a line.
+"""BPHS's own heading form, kept for callers that predate edition profiles.
 
-Two load-bearing details. The separator class: vol 1 prints `Chapter 26`, vol 2
-`Chapter - 54`, and requiring whitespace missed all 53 of vol 2's chapters. The line
-anchor: unanchored, this matches prose cross-references ("can be had from Chapter 3
-Sloka 65") and files the verses that follow under chapter 3.
+New code should go through `editions.chapter_number_from`, which handles the other three
+conventions in the corpus -- `ADHYAYA 1.`, `CHAPTER VI.` and `Adhyaya 1.` -- and which
+this pattern silently missed in five books.
 """
 
 CHAPTER_DEV = re.compile(r"[।॥]{1,2}\s*([०-९]{1,3})\s*[।॥]{1,2}")
@@ -40,6 +45,26 @@ def devanagari_to_int(text: str) -> int | None:
         return int("".join(str(DEVANAGARI_DIGITS.index(ch)) for ch in text))
     except ValueError:
         return None
+
+
+def _title_pattern(profile: EditionProfile) -> re.Pattern | None:
+    """The title group for this edition, after its own chapter word and numeral."""
+    if not profile.chapter_words:
+        return None
+    words = "|".join(re.escape(word) for word in profile.chapter_words)
+    numerals = []
+    if "arabic" in profile.numerals:
+        numerals.append(r"\d{1,3}(?!\d)")
+    if "roman" in profile.numerals:
+        numerals.append(r"[IVXLCDM]+")
+    return re.compile(
+        # `[ \t]` up to the numeral keeps the heading anchored to one line; `\s` after
+        # it must cross newlines, because most editions print the title on the next
+        # line -- `Chapter 1\nThe Creation`.
+        rf"^[ \t]*(?:{words})S?[ \t]*[-–—:.]?[ \t]*(?:{'|'.join(numerals)})"
+        rf"\s*[|:.\-–—()]?\s*(\S.*)$",
+        re.MULTILINE | re.IGNORECASE,
+    )
 
 
 TITLE_AFTER_NUMBER = re.compile(
@@ -57,7 +82,9 @@ chapter titles with single digits.
 _HAS_LETTER = re.compile(r"[A-Za-z]")
 
 
-def title_from_heading(text: str) -> str | None:
+def title_from_heading(
+    text: str, profile: EditionProfile = DEFAULT_PROFILE
+) -> str | None:
     """The title a body chapter heading declares, cleaned of separators.
 
     Needed because the printed TOC is unreliable: for vol 1 it lists chapter 26 as
@@ -66,10 +93,13 @@ def title_from_heading(text: str) -> str | None:
     the body, so the title must too, or a correctly-assigned verse still cites the wrong
     chapter name.
     """
-    match = TITLE_AFTER_NUMBER.search(text or "")
+    pattern = _title_pattern(profile)
+    if pattern is None:
+        return None
+    match = pattern.search(text or "")
     if not match:
         return None
-    title = match.group(1).replace("|", " ").strip(" :.-–—\t")
+    title = match.group(1).replace("|", " ").strip(" :.-–—()\t")
     title = re.sub(r"\s{2,}", " ", title)
     # Many body headings are bare (`Chapter - 55`). Returning something title-shaped for
     # those would replace a good TOC title with noise, so require actual words.
@@ -127,7 +157,10 @@ cites "Chapter 3" is not a chapter start.
 
 
 def detect_chapter_starts(
-    headings: list[tuple[int, int, str]], *, body_starts_at: int = 0
+    headings: list[tuple[int, int, str]],
+    *,
+    body_starts_at: int = 0,
+    profile: EditionProfile = DEFAULT_PROFILE,
 ) -> SpanReport:
     """Find every chapter start from body headings.
 
@@ -135,6 +168,10 @@ def detect_chapter_starts(
     heading-like elements. `body_starts_at` excludes the front-matter contents pages,
     whose lines look exactly like chapter headings -- without it, vol 2's TOC produced
     21 phantom starts hundreds of pages before the real ones.
+
+    `profile` is the book's `EditionProfile`. A book whose profile declares no chapter
+    words yields no starts, which is the honest answer for Deva Keralam and Vivaha
+    Patalam: inventing a chapter 1 would fabricate every citation in the book.
     """
     candidates: list[ChapterStart] = []
     conflicts: list[str] = []
@@ -143,10 +180,9 @@ def detect_chapter_starts(
     for page_no, element_index, text in headings:
         if page_no < body_starts_at:
             continue
-        match = CHAPTER_EN.search(text or "")
-        if not match:
+        number = chapter_number_from(text or "", profile)
+        if number is None:
             continue
-        number = int(match.group(1))
         devanagari = None
         if found := CHAPTER_DEV.search(text or ""):
             devanagari = devanagari_to_int(found.group(1))
@@ -168,7 +204,7 @@ def detect_chapter_starts(
                 page_no,
                 element_index,
                 devanagari,
-                title_from_heading(text),
+                title_from_heading(text, profile),
             )
         )
 

@@ -23,6 +23,7 @@ from rishivan.knowledge.bridge.chapter_spans import (
     ChapterIndex,
     detect_chapter_starts,
 )
+from rishivan.knowledge.bridge.editions import profile_for
 from rishivan.knowledge.bridge.toc import build_chapter_tree
 from rishivan.knowledge.bridge.verse_ref import verse_ref_from_translation
 from rishivan.knowledge.reflow import adjacency_violations, reflow_book
@@ -287,7 +288,14 @@ async def bridge_book(
         for item in ordered
         if item.element.type.value in HEADING_LIKE
     ]
-    span_report = detect_chapter_starts(heading_rows, body_starts_at=body_starts_at)
+    # The edition profile is the only book-specific input to segmentation: which word
+    # introduces a chapter, and in which numeral system. Everything downstream --
+    # vocabulary, atoms, validator, prompt, accounting -- is book-agnostic.
+    span_report = detect_chapter_starts(
+        heading_rows,
+        body_starts_at=body_starts_at,
+        profile=profile_for(document.slug),
+    )
     chapter_index = ChapterIndex(span_report.starts)
     reassigned_chapters: list[tuple[str | None, str]] = []
 
