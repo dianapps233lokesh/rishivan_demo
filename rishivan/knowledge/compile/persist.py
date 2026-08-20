@@ -27,10 +27,16 @@ from datetime import datetime
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from hashlib import sha256
+
 from rishivan.council.source_matrix import school_for
 from rishivan.knowledge.compile.atoms import CompiledAtom, compile_condition
 from rishivan.models.knowledge.book import Book
 from rishivan.models.knowledge.rule import Rule, RuleAtom
+
+
+DESTINATION_RULE = "rule"
+DESTINATION_ITEM = "item"
 
 
 @dataclass
@@ -40,11 +46,23 @@ class Decision:
     approved_at: datetime | None = None
     reason: str = ""
     atoms: list[CompiledAtom] = field(default_factory=list)
+    destination: str = DESTINATION_RULE
+    """Where this row belongs. `item` means destination B -- a `knowledge_item` with its
+    reason, not a discard. `models/knowledge/item.py` states the invariant: every
+    `sutra_unit` must produce at least one `rule` row or one `knowledge_item` row."""
+    vocabulary_gap: list[str] = field(default_factory=list)
+    """What the engine would need to express this. Matches the column's list type.
+
+    This is the ranked backlog -- 195 benefic/malefic and 150 avastha declines in BPHS
+    vol 1 -- and it existed only in terminal output until the loader wrote it."""
 
 
 @dataclass
 class LoadReport:
     rules: int = 0
+    items: int = 0
+    """Declines written to destination B. Every decline must produce one, or the unit is
+    unaccounted -- `models/knowledge/item.py` asserts that cannot happen quietly."""
     updated: int = 0
     atoms: int = 0
     refused: int = 0
@@ -55,7 +73,7 @@ class LoadReport:
     def line(self) -> str:
         return (
             f"inserted={self.rules} updated={self.updated} atoms={self.atoms} "
-            f"unparsed={self.unparsed} declined={self.declined} "
+            f"unparsed={self.unparsed} declined={self.declined} items={self.items} "
             f"refused={self.refused}"
         )
 
@@ -98,12 +116,12 @@ def load_decision(row: dict) -> Decision:
     if rule.get("expressible") is False or str(row.get("verdict", "")).startswith(
         "DECLINED"
     ):
+        gap = rule.get("out_of_scope_reason") or ""
         return Decision(
             load=False,
-            reason=(
-                "declined by the extractor: "
-                f"{rule.get('out_of_scope_reason') or 'no reason given'}"
-            ),
+            destination=DESTINATION_ITEM,
+            reason=f"declined by the extractor: {gap or 'no reason given'}",
+            vocabulary_gap=[gap] if gap else [],
         )
 
     formation = rule.get("formation") or {}
@@ -111,18 +129,29 @@ def load_decision(row: dict) -> Decision:
     try:
         atoms = compile_condition(formation)
     except ValueError as exc:
-        return Decision(load=False, reason=f"will not compile: {exc}")
+        # Loaded, not discarded. These rows are already INVALID -- validation caught
+        # them -- and the only thing separating them from their `unparsed` siblings is
+        # whether their malformed atoms happened to compile. Of BPHS vol 2's 66 invalid
+        # rules, 36 loaded and 30 vanished on exactly that distinction. `unparsed` is
+        # invisible to the matcher, so keeping them costs nothing and gives a reviewer
+        # the fault.
+        return Decision(
+            load=True,
+            status="unparsed",
+            reason=f"atoms will not compile: {exc}",
+        )
 
     if not atoms:
         # A legitimate timing rule carries its condition in `timing`, not `formation`,
         # and BPHS 46.15-21 is one. It has no prefilterable natal atom, so it loads with
-        # no atoms rather than being refused -- the matcher reaches it by dasha, not by
-        # placement.
+        # no atoms -- the matcher reaches it by dasha, not by placement. A rule with
+        # neither is kept as `unparsed` for the same reason as above.
         if timing.get("atoms"):
             return Decision(load=True, status="parsed" if row.get("valid") else "unparsed")
         return Decision(
-            load=False,
-            reason="will not compile: no atoms, so the prefilter would be empty",
+            load=True,
+            status="unparsed",
+            reason="no atoms in formation or timing, so nothing to prefilter on",
         )
 
     return Decision(
@@ -131,6 +160,58 @@ def load_decision(row: dict) -> Decision:
         approved_at=None,
         atoms=atoms,
     )
+
+
+async def _upsert_declined_item(session, *, row: dict, book, decision: Decision) -> bool:
+    """Record a decline in destination B. Returns True when a row was inserted.
+
+    The extractor's refusal is knowledge: it names a concept the vocabulary cannot
+    express, and 195 benefic/malefic plus 150 avastha declines in BPHS vol 1 are a ranked
+    list of what the engine needs next. Until this existed the reason was printed to a
+    terminal and discarded, so `unaccounted_units()` counted the verse as lost.
+
+    Idempotent on `content_hash`, so re-loading the same artefact inserts nothing.
+    """
+    from rishivan.models.knowledge.item import ItemKind, ItemStatus, KnowledgeItem
+
+    rule = row.get("rule") or {}
+    statement = (
+        (rule.get("effects") or [{}])[0].get("statement")
+        or row.get("translation")
+        or ""
+    )
+    digest = sha256(
+        f"{book.id}|{row.get('unit_id')}|{rule.get('rule_key')}".encode()
+    ).hexdigest()
+
+    existing = await session.scalar(
+        select(KnowledgeItem).where(
+            KnowledgeItem.content_hash == digest,
+            KnowledgeItem.deleted_at.is_(None),
+        )
+    )
+    if existing is not None:
+        return False
+
+    session.add(
+        KnowledgeItem(
+            book_id=book.id,
+            unit_id=row["unit_id"],
+            chapter=row.get("chapter"),
+            verse_ref_local=row.get("verse_ref"),
+            # The verse IS a rule; what is missing is a way to express it. Every other
+            # kind would misdescribe it, and `unclassified` is documented as "a review
+            # lane rather than a wastebasket", which is exactly the intent here.
+            kind=ItemKind.unclassified,
+            status=ItemStatus.out_of_scope,
+            status_reason=decision.reason,
+            statement=statement,
+            vocabulary_gap=decision.vocabulary_gap,
+            source_authority_tier=book.source_authority_tier,
+            content_hash=digest,
+        )
+    )
+    return True
 
 
 async def load_rules(
@@ -148,8 +229,12 @@ async def load_rules(
         key = rule_key_for(row, book_slug=book_slug)
         if not decision.load:
             report.refused += 1
-            if decision.reason.startswith("declined"):
+            if decision.destination == DESTINATION_ITEM:
                 report.declined += 1
+                if await _upsert_declined_item(
+                    session, row=row, book=book, decision=decision
+                ):
+                    report.items += 1
             else:
                 report.failures.append(f"{key}: {decision.reason}")
             continue

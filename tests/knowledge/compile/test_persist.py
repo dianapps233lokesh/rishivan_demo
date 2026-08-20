@@ -91,10 +91,11 @@ def test_an_invalid_row_loads_unparsed_rather_than_being_discarded():
     assert decision.status == "unparsed"
 
 
-def test_a_rule_whose_atoms_will_not_compile_is_refused_loudly():
-    """A rule with an empty prefilter is invisible to the matcher while looking present
-    in the table. That silence is the failure mode the pipeline exists to prevent, so it
-    is a refusal with a named reason rather than a quiet load."""
+def test_a_rule_whose_atoms_will_not_compile_is_kept_as_unparsed():
+    """Changed deliberately from a refusal. `unparsed` is invisible to the matcher, so
+    keeping the row costs nothing and gives a reviewer the fault -- whereas refusing it
+    left the unit producing neither a rule nor a knowledge_item, which is the silent
+    drop `models/knowledge/item.py` says cannot happen."""
     row = {
         **VALID_ROW,
         "rule": {
@@ -103,15 +104,19 @@ def test_a_rule_whose_atoms_will_not_compile_is_refused_loudly():
         },
     }
     decision = load_decision(row)
-    assert decision.load is False
+    assert decision.load is True
+    assert decision.status == "unparsed"
     assert "compile" in decision.reason
 
 
-def test_a_conditionless_rule_is_refused():
+def test_a_conditionless_rule_is_kept_as_unparsed():
+    """Same reasoning: nothing to prefilter on is a defect to show a reviewer, not a
+    reason to lose the verse."""
     row = {**VALID_ROW, "rule": {**VALID_ROW["rule"], "formation": {"atoms": []}}}
     decision = load_decision(row)
-    assert decision.load is False
-    assert "prefilter would be empty" in decision.reason
+    assert decision.load is True
+    assert decision.status == "unparsed"
+    assert "nothing to prefilter" in decision.reason
 
 
 def test_a_timing_only_rule_loads_with_no_atoms():
@@ -204,3 +209,91 @@ def test_the_school_comes_from_the_book_not_a_column_default():
 
     assert school_for("prasnamarga-raman-part1") == "prashna"
     assert school_for("bphs-gcsharma-vol1") == "parashari"
+
+
+# --- Degrade, never drop ------------------------------------------------------
+#
+# `models/knowledge/item.py`: "Every `sutra_unit` must produce at least one `rule` row or
+# one `knowledge_item` row... 'We dropped it' therefore cannot happen quietly." It could,
+# and it did: the loader refused declines and non-compiling rules alike and wrote neither.
+
+DECLINED_ROW = {
+    "unit_id": 7, "chapter": "15", "verse_ref": "1",
+    "verdict": "DECLINED", "valid": True,
+    "translation": "A benefic in the 2nd House is the giver of wealth.",
+    "rule": {
+        "rule_key": "benefic_2nd_wealth",
+        "expressible": False,
+        "out_of_scope_reason": "benefic/malefic as a class -- no atom expresses "
+                               "planetary benevolence",
+        "formation": {"atoms": []},
+        "effects": [{"polarity": "positive", "strength": "moderate",
+                     "statement": "giver of wealth"}],
+    },
+}
+
+NON_COMPILING_ROW = {
+    "unit_id": 8, "chapter": "50", "verse_ref": "9-13",
+    "verdict": "INVALID", "valid": False,
+    "translation": "If the 10th lord is in a sign...",
+    "rule": {
+        "rule_key": "50_9_13_1",
+        "formation": {"atoms": [{"type": "lord_of_house_in_sign", "lord_of": 10}]},
+        "effects": [{"polarity": "positive", "strength": "moderate",
+                     "statement": "an outcome"}],
+    },
+}
+
+
+def test_a_decline_becomes_a_knowledge_item_not_a_discard():
+    from rishivan.knowledge.compile.persist import load_decision
+
+    decision = load_decision(DECLINED_ROW)
+    assert decision.load is False
+    assert decision.destination == "item"
+
+
+def test_a_decline_carries_its_reason_as_the_vocabulary_gap():
+    """This is what makes the backlog real: 195 benefic/malefic and 150 avastha
+    declines are a ranked list of what the engine needs next, and they existed only in
+    terminal output."""
+    from rishivan.knowledge.compile.persist import load_decision
+
+    decision = load_decision(DECLINED_ROW)
+    assert any("benefic" in gap for gap in decision.vocabulary_gap)
+
+
+def test_a_rule_whose_atoms_will_not_compile_loads_as_unparsed():
+    """Same treatment as its siblings. Of BPHS vol 2's 66 invalid rules, 36 loaded as
+    `unparsed` and 30 were dropped -- the only difference being whether their malformed
+    atoms happened to compile."""
+    from rishivan.knowledge.compile.persist import load_decision
+
+    decision = load_decision(NON_COMPILING_ROW)
+    assert decision.load is True
+    assert decision.status == "unparsed"
+    assert decision.atoms == []
+
+
+def test_an_unparsed_rule_keeps_the_fault_that_caused_it():
+    from rishivan.knowledge.compile.persist import load_decision
+
+    assert "sign" in load_decision(NON_COMPILING_ROW).reason
+
+
+def test_the_reason_does_not_blame_the_validator():
+    """The old message read "validation should have rejected it before compilation".
+    Validation DID reject it -- the verdict is INVALID. The message sent a reader
+    looking for a validator bug that was not there."""
+    from rishivan.knowledge.compile.persist import load_decision
+
+    assert "validation should have" not in load_decision(NON_COMPILING_ROW).reason
+
+
+def test_a_valid_rule_still_loads_as_parsed():
+    from rishivan.knowledge.compile.persist import load_decision
+
+    decision = load_decision(VALID_ROW)
+    assert decision.load is True
+    assert decision.status == "parsed"
+    assert decision.destination == "rule"

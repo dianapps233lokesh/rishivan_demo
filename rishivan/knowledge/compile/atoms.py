@@ -15,7 +15,7 @@ rule base to a handful of candidates, and `Rule.condition` JSONB is then evaluat
 exactly. The model's own docstring says as much -- "the SQL prefilter the matcher uses
 instead of loading every rule and evaluating it in Python".
 
-**Compilation refuses what validation should have caught.** An atom missing a required
+**Compilation refuses what validation already rejected.** An atom missing a required
 field, or a timing atom inside a formation, raises rather than compiling to something
 harmless-looking. A half-atom in the prefilter widens a rule to charts the verse never
 described, and that is worse than a loud failure at load time.
@@ -149,7 +149,7 @@ def _compile_atom(atom: dict, *, negate: bool) -> list[CompiledAtom]:
             required.discard(scalar)
     if missing := sorted(required - supplied):
         raise ValueError(
-            f"atom {atom!r} is missing {missing} -- validation should have rejected it "
+            f"atom {atom!r} is missing {missing} -- validation marked this rule "
             f"before compilation"
         )
 
