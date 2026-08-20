@@ -29,8 +29,8 @@ from datetime import UTC, datetime
 
 from sqlalchemy import select
 
-from app.db.session import async_session_factory
-from app.models.knowledge.rule import Rule
+from rishivan.db.session import async_session_factory
+from rishivan.models.knowledge.rule import Rule
 
 
 async def report(session) -> None:

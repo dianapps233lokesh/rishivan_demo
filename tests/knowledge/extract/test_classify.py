@@ -6,9 +6,9 @@ prose, so a passing test means the classifier handles what the book actually say
 
 import pytest
 
-from app.knowledge.triage.classify import Destination, Verdict, classify
-from app.knowledge.triage.signals import Signal, detect
-from app.models.knowledge.item import ItemKind
+from rishivan.knowledge.triage.classify import Destination, Verdict, classify
+from rishivan.knowledge.triage.signals import Signal, detect
+from rishivan.models.knowledge.item import ItemKind
 
 CONDITIONAL = (
     "If the 8th Lord happens to be placed in the Ascendant the native will be "
@@ -147,7 +147,7 @@ def test_avastha_chapters_are_gated_before_they_cost_anything():
     """Measured on the vol 1 whole-book run: chapter 47 "AVASTHAS OF PLANETS" spent 161
     AI calls to produce 161 declines -- 28% of the book's declines, and every one
     predictable from the chapter title alone."""
-    from app.knowledge.triage.chapter_kind import missing_capability
+    from rishivan.knowledge.triage.chapter_kind import missing_capability
 
     assert missing_capability("AVASTHAS OF PLANETS") == "avastha (planetary states)"
     assert missing_capability("Effects of the Bhava Lords") is None

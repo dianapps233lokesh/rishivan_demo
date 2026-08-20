@@ -11,7 +11,7 @@ so this uses a direct client.
 
 import argparse
 
-from app.knowledge.extract.runner import build_admin_client
+from rishivan.knowledge.extract.runner import build_admin_client
 
 
 def main() -> int:

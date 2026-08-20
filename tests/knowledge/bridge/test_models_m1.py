@@ -1,9 +1,9 @@
 """M1 schema: chapter tree, Rishi affinity, authority tier, geometry-free rows."""
 
-from app.models.knowledge.affinity import RISHI_KEYS, BookRishiAffinity
-from app.models.knowledge.book import Book
-from app.models.knowledge.chapter import Chapter
-from app.models.knowledge.page import PageElementRow
+from rishivan.models.knowledge.affinity import RISHI_KEYS, BookRishiAffinity
+from rishivan.models.knowledge.book import Book
+from rishivan.models.knowledge.chapter import Chapter
+from rishivan.models.knowledge.page import PageElementRow
 
 
 def test_chapter_table_and_columns():

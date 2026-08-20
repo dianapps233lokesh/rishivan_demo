@@ -6,7 +6,7 @@ the full suite. Two tests each called `asyncio.run()` against the module-level
 
     RuntimeError: got Future attached to a different loop
 
-`app/db/session.py` builds one engine at import time, and its asyncpg connection pool
+`rishivan/db/session.py` builds one engine at import time, and its asyncpg connection pool
 binds to whichever event loop first used it. `asyncio.run` creates a fresh loop per call
 and closes it on exit, so the pooled connections outlive their loop and the next test
 inherits corpses. Each test passed alone and the pair failed together, which is the worst
@@ -19,7 +19,7 @@ from typing import Any
 
 import pytest
 
-from app.db.session import async_session_factory, engine
+from rishivan.db.session import async_session_factory, engine
 
 
 def run_db(work: Callable[[Any], Awaitable[Any]]) -> Any:

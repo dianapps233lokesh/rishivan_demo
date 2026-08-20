@@ -1,7 +1,7 @@
 """The chapter tree, read from BPHS's own printed table of contents."""
 
-from app.knowledge.bridge.adapt import SourceRow
-from app.knowledge.bridge.toc import (
+from rishivan.knowledge.bridge.adapt import SourceRow
+from rishivan.knowledge.bridge.toc import (
     build_chapter_tree,
     derive_page_offset,
     gate_reason,

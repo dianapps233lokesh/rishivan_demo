@@ -4,7 +4,7 @@ Every case here corresponds to a defect measured on the real corpus, where chapt
 assignment was wrong for 891 of 2,063 units (43.2%).
 """
 
-from app.knowledge.bridge.chapter_spans import (
+from rishivan.knowledge.bridge.chapter_spans import (
     ChapterIndex,
     detect_chapter_starts,
     devanagari_to_int,

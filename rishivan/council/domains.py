@@ -118,7 +118,7 @@ LIFE_DOMAIN_KEYS: tuple[str, ...] = (
 )
 """The client's eight life-domain Rishis, in the client's order.
 
-Duplicated from `app.models.knowledge.affinity.RISHI_KEYS` rather than imported: the
+Duplicated from `rishivan.models.knowledge.affinity.RISHI_KEYS` rather than imported: the
 knowledge layer pulls in SQLAlchemy, and this module is on the Streamlit request path.
 A contract test asserts the two stay identical — `vocab.py` warns in its own docstring
 that "a second copy is a second thing to drift", so the copy is only safe with the test.

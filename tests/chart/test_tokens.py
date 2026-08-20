@@ -1,6 +1,6 @@
 """The join key between a chart and the rule base.
 
-Every assertion here is a contract with `app/astro/vocab.py` and with the 743 `rule_atom`
+Every assertion here is a contract with `rishivan/astro/vocab.py` and with the 743 `rule_atom`
 rows loaded from BPHS vol 1. A token this module spells differently from the compiler is
 not an error anyone sees -- the affected rules simply match no chart, ever.
 

@@ -5,7 +5,7 @@ so the rules about what may enter the rule base are checkable directly. Fixtures
 rows from the BPHS vol 1 whole-book run.
 """
 
-from app.knowledge.compile.persist import load_decision, rule_key_for
+from rishivan.knowledge.compile.persist import load_decision, rule_key_for
 
 VALID_ROW = {
     "unit_id": 9420,

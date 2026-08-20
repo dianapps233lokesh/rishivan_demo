@@ -7,12 +7,12 @@ two that look wrong at a glance and are not.
 
 import pytest
 
-from app.knowledge.affinity.derive import (
+from rishivan.knowledge.affinity.derive import (
     LIFE_DOMAIN_KEYWORDS,
     affinity_for,
     unrouted_domains,
 )
-from app.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH, WEIGHT_MEDIUM
+from rishivan.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH, WEIGHT_MEDIUM
 
 
 def test_the_table_covers_exactly_the_clients_eight():
@@ -109,7 +109,7 @@ def test_every_domain_in_the_loaded_rule_base_is_routable():
     """
     from sqlalchemy import select
 
-    from app.models.knowledge.rule import Rule
+    from rishivan.models.knowledge.rule import Rule
     from tests.conftest import run_db, skip_without_database
 
     async def load(session):

@@ -23,9 +23,9 @@ import argparse
 import asyncio
 import sys
 
-from app.db.session import async_session_factory
-from app.knowledge.bridge.persist import bridge_book
-from app.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH
+from rishivan.db.session import async_session_factory
+from rishivan.knowledge.bridge.persist import bridge_book
+from rishivan.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH
 
 BPHS_VOLUMES: tuple[tuple[str, str], ...] = (
     ("bphs-gcsharma-vol1", "Brihat Parasara Hora Shastra"),

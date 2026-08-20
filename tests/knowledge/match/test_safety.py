@@ -7,7 +7,7 @@ constraint is on presentation. Every case here comes from a real match on a real
 
 from types import SimpleNamespace
 
-from app.knowledge.match.safety import (
+from rishivan.knowledge.match.safety import (
     sensitivities,
     question_admits,
     withhold_reasons,

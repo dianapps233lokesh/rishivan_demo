@@ -1,6 +1,6 @@
 """Prose roles, and the running-head test that protects the adjacency gate."""
 
-from app.knowledge.bridge.roles import (
+from rishivan.knowledge.bridge.roles import (
     ProseRole,
     chapter_number,
     classify_prose,

@@ -35,7 +35,7 @@ drift, and a drifted evaluator produces confidently wrong readings.
 import json
 from dataclasses import dataclass, field
 
-from app.knowledge.match.engine import satisfies
+from rishivan.knowledge.match.engine import satisfies
 from rishivan.council.domains import rule_relevance
 
 RULE_COLLECTION_SUFFIX = "_rules"
@@ -242,7 +242,7 @@ def rank_true_rules(
     still losing half. Similarity cannot know what is true, so going first caps recall at
     whatever it happens to surface. Exact-match everything, then rank here.
     """
-    from app.knowledge.match.safety import sensitivities, withhold_reasons
+    from rishivan.knowledge.match.safety import sensitivities, withhold_reasons
 
     scored: list[tuple[float, RuleHit]] = []
     for rule in rules:
@@ -336,7 +336,7 @@ def true_rules(store, tokens: dict, *, with_vectors: bool = False) -> list[RuleH
     should cache the scroll and re-run it per approval batch rather than per question,
     because the payloads change only when a reviewer approves something.
     """
-    from app.knowledge.match.engine import applies
+    from rishivan.knowledge.match.engine import applies
 
     try:
         try:

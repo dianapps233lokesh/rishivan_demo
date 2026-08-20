@@ -5,7 +5,7 @@ Vol 1 closes a verse with `рее` (U+0965 DEVANAGARI DOUBLE DANDA); vol 2 uses `ре
 57% of vol 2's verse numbers to inferred, silently.
 """
 
-from app.knowledge.bridge.verse_ref import (
+from rishivan.knowledge.bridge.verse_ref import (
     deva_to_int,
     verse_numbers,
     verse_ref_from_translation,

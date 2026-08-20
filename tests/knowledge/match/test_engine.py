@@ -5,7 +5,7 @@ crash -- it is a rule that quietly matches the wrong chart, which no error surfa
 no count reveals.
 """
 
-from app.knowledge.match.engine import satisfies
+from rishivan.knowledge.match.engine import satisfies
 
 # Saturn in the 7th, the 7th lord in the 6th, the Moon in Cancer in the 4th, the 8th
 # house empty. A hand-written chart rather than a computed one, so each assertion below
@@ -203,7 +203,7 @@ def test_match_chart_sql_actually_executes():
     Postgres rejected the whole query -- a failure no unit test over `satisfies` could
     have caught, because the defect was in the statement rather than the logic.
     """
-    from app.knowledge.match.engine import match_chart
+    from rishivan.knowledge.match.engine import match_chart
     from tests.conftest import run_db, skip_without_database
 
     matched = None
@@ -226,8 +226,8 @@ def test_match_chart_returns_only_approved_rules():
     must not be the place it gets re-expressed loosely."""
     from sqlalchemy import select
 
-    from app.knowledge.match.engine import match_chart
-    from app.models.knowledge.rule import Rule
+    from rishivan.knowledge.match.engine import match_chart
+    from rishivan.models.knowledge.rule import Rule
     from tests.conftest import run_db, skip_without_database
 
     async def load(session):
@@ -279,14 +279,14 @@ LAGNA_IN_CANCER = {"house.8.lord.house": 1, "house.1.lord.sign": "cancer"}
 
 
 def test_the_condition_holds_in_both_charts():
-    from app.knowledge.match.engine import satisfies as sat
+    from rishivan.knowledge.match.engine import satisfies as sat
 
     assert sat(EIGHTH_LORD_IN_LAGNA["condition"], LAGNA_IN_ARIES)
     assert sat(EIGHTH_LORD_IN_LAGNA["condition"], LAGNA_IN_CANCER)
 
 
 def test_an_exception_that_holds_blocks_the_rule():
-    from app.knowledge.match.engine import applies, blockers
+    from rishivan.knowledge.match.engine import applies, blockers
 
     reasons = blockers(EIGHTH_LORD_IN_LAGNA, LAGNA_IN_ARIES)
     assert reasons and "Aries" in reasons[0]
@@ -294,7 +294,7 @@ def test_an_exception_that_holds_blocks_the_rule():
 
 
 def test_an_exception_that_does_not_hold_leaves_the_rule_standing():
-    from app.knowledge.match.engine import applies, blockers
+    from rishivan.knowledge.match.engine import applies, blockers
 
     assert blockers(EIGHTH_LORD_IN_LAGNA, LAGNA_IN_CANCER) == []
     assert applies(EIGHTH_LORD_IN_LAGNA, LAGNA_IN_CANCER) is True
@@ -302,7 +302,7 @@ def test_an_exception_that_does_not_hold_leaves_the_rule_standing():
 
 def test_a_cancelling_modifier_blocks_the_rule():
     """`cancel` is how Neecha Bhanga is expressed -- a debilitation undone."""
-    from app.knowledge.match.engine import applies
+    from rishivan.knowledge.match.engine import applies
 
     rule = {
         "condition": {"atoms": [{"type": "planet_in_house", "planet": "saturn",
@@ -319,7 +319,7 @@ def test_a_cancelling_modifier_blocks_the_rule():
 def test_strengthen_and_weaken_do_not_block():
     """They colour how strongly the effect is stated, and belong in the answer rather
     than in the match."""
-    from app.knowledge.match.engine import applies
+    from rishivan.knowledge.match.engine import applies
 
     for kind in ("strengthen", "weaken"):
         rule = {
@@ -335,7 +335,7 @@ def test_strengthen_and_weaken_do_not_block():
 
 
 def test_a_rule_with_no_exceptions_is_unaffected():
-    from app.knowledge.match.engine import blockers
+    from rishivan.knowledge.match.engine import blockers
 
     assert blockers({"condition": {}, "exceptions": [], "modifiers": []}, CHART) == []
     assert blockers({}, CHART) == []

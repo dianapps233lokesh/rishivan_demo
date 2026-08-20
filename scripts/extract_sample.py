@@ -17,8 +17,8 @@ import asyncio
 import json
 import time
 
-from app.db.session import async_session_factory
-from app.knowledge.extract.runner import run_extraction
+from rishivan.db.session import async_session_factory
+from rishivan.knowledge.extract.runner import run_extraction
 
 
 def verdict(extracted) -> str:

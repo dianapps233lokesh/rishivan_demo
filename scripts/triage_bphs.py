@@ -15,10 +15,10 @@ import asyncio
 
 from sqlalchemy import select
 
-from app.db.session import async_session_factory
-from app.knowledge.accounting import coverage_report, unaccounted_units
-from app.knowledge.triage.persist import triage_book
-from app.models.knowledge.book import Book
+from rishivan.db.session import async_session_factory
+from rishivan.knowledge.accounting import coverage_report, unaccounted_units
+from rishivan.knowledge.triage.persist import triage_book
+from rishivan.models.knowledge.book import Book
 
 BPHS_SLUGS = ("bphs-gcsharma-vol1", "bphs-gcsharma-vol2")
 

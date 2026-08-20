@@ -22,19 +22,19 @@ from collections import Counter
 
 from sqlalchemy import func, select
 
-from app.db.session import async_session_factory
-from app.knowledge.bridge.adapt import adapt_rows
-from app.knowledge.bridge.chapter_spans import (
+from rishivan.db.session import async_session_factory
+from rishivan.knowledge.bridge.adapt import adapt_rows
+from rishivan.knowledge.bridge.chapter_spans import (
     HEADING_LIKE,
     ChapterIndex,
     detect_chapter_starts,
 )
-from app.knowledge.bridge.persist import _load_source_rows
-from app.knowledge.bridge.toc import build_chapter_tree
-from app.models.document import Document
-from app.models.knowledge.book import Book
-from app.models.knowledge.chapter import Chapter
-from app.models.knowledge.unit import SutraUnit
+from rishivan.knowledge.bridge.persist import _load_source_rows
+from rishivan.knowledge.bridge.toc import build_chapter_tree
+from rishivan.models.document import Document
+from rishivan.models.knowledge.book import Book
+from rishivan.models.knowledge.chapter import Chapter
+from rishivan.models.knowledge.unit import SutraUnit
 
 BOOKS = ("bphs-gcsharma-vol1", "bphs-gcsharma-vol2")
 BOOK_TITLE = "Brihat Parasara Hora Shastra"

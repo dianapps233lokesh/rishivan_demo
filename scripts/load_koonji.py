@@ -16,8 +16,8 @@ import asyncio
 import json
 import sys
 
-from app.db.session import async_session_factory
-from app.knowledge.compile.persist import load_rules
+from rishivan.db.session import async_session_factory
+from rishivan.knowledge.compile.persist import load_rules
 
 MAX_FAILURES_SHOWN = 25
 

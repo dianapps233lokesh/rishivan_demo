@@ -15,8 +15,8 @@ from pathlib import Path
 
 import pytest
 
-from app.knowledge.reflow import adjacency_violations
-from app.knowledge.schemas.unit import SutraUnitDraft
+from rishivan.knowledge.reflow import adjacency_violations
+from rishivan.knowledge.schemas.unit import SutraUnitDraft
 
 GOLDEN = Path(__file__).parents[2] / "golden" / "bphs_adjacency.json"
 
@@ -120,7 +120,7 @@ def test_devanagari_and_english_refs_agree(golden_units):
     96.99% agreement, and the 29 disagreements are mostly the OCR confusing
     Devanagari १ with ९. The golden set is hand-checked, so here it must be 100%.
     """
-    from app.knowledge.bridge.verse_ref import verse_ref_from_translation
+    from rishivan.knowledge.bridge.verse_ref import verse_ref_from_translation
 
     mismatches = [
         (unit.verse_ref_local, verse_ref_from_translation(unit.translation))
@@ -134,7 +134,7 @@ def test_devanagari_and_english_refs_agree(golden_units):
 def test_enough_units_carry_an_independent_english_label(golden_units):
     """Vol 2 rarely labels its translations, so the cross-check can only run on a
     subset. Guard that the subset stays big enough to be meaningful."""
-    from app.knowledge.bridge.verse_ref import verse_ref_from_translation
+    from rishivan.knowledge.bridge.verse_ref import verse_ref_from_translation
 
     checkable = sum(
         1

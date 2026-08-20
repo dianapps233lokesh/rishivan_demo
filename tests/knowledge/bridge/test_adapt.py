@@ -1,8 +1,8 @@
 """The adapter: POC source rows into the vocabulary reflow_book() understands."""
 
-from app.knowledge.bridge.adapt import SourceRow, adapt_rows
-from app.knowledge.reflow import adjacency_violations, reflow_book
-from app.knowledge.schemas.page import ElementType
+from rishivan.knowledge.bridge.adapt import SourceRow, adapt_rows
+from rishivan.knowledge.reflow import adjacency_violations, reflow_book
+from rishivan.knowledge.schemas.page import ElementType
 
 BOOK = "Brihat Parasara Hora Shastra"
 

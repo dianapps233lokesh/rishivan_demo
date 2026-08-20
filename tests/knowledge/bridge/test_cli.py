@@ -1,6 +1,6 @@
 """The bridge CLI's constants — the pilot's scope, asserted rather than assumed."""
 
-from app.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH
+from rishivan.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH
 from scripts.bridge_bphs import BPHS_RISHI_WEIGHTS, BPHS_VOLUMES
 
 

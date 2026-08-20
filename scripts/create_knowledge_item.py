@@ -3,7 +3,7 @@
 Why this is a script and not an Alembic revision: the backend repo owns the schema
 of `rishivan_dev_local`, and vendoring migrations into a second repo would mean two
 things claiming ownership of one database. This creates the table from the model's
-own metadata, so it cannot drift from `app/models/knowledge/item.py`, and it is
+own metadata, so it cannot drift from `rishivan/models/knowledge/item.py`, and it is
 idempotent — running it twice is a no-op.
 
 **The backend must still add the matching Alembic revision** before this table
@@ -21,9 +21,9 @@ import sys
 from sqlalchemy import inspect, text
 from sqlalchemy.schema import CreateIndex, CreateTable
 
-from app.db.session import engine
-from app.models.knowledge.item import KnowledgeItem
-from app.models.knowledge.triage import UnitTriage
+from rishivan.db.session import engine
+from rishivan.models.knowledge.item import KnowledgeItem
+from rishivan.models.knowledge.triage import UnitTriage
 
 TABLES = (KnowledgeItem.__table__, UnitTriage.__table__)
 

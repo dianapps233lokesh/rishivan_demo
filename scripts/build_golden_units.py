@@ -21,10 +21,10 @@ from pathlib import Path
 
 from sqlalchemy import select, text
 
-from app.db.session import async_session_factory
-from app.knowledge.bridge.adapt import SourceRow, adapt_rows
-from app.knowledge.reflow import reflow_book
-from app.models.document import Document
+from rishivan.db.session import async_session_factory
+from rishivan.knowledge.bridge.adapt import SourceRow, adapt_rows
+from rishivan.knowledge.reflow import reflow_book
+from rishivan.models.document import Document
 
 OUT = Path("tests/golden/bphs_adjacency.json")
 VOLUMES = ("bphs-gcsharma-vol1", "bphs-gcsharma-vol2")

@@ -108,29 +108,25 @@ read Streamlit secrets first, then the environment.
 ```
 streamlit_app.py            # entry point: input, streaming answer, citations
 requirements.txt
+scripts/                    # the pipeline, one command per stage
 .streamlit/
   config.toml               # dark theme matching the app's styling
   secrets.toml.example      # template (the real file is gitignored)
 rishivan/
   config.py                 # secrets/env settings, with a startup check
-  chart/
-    ephemeris.py            # sidereal charts (Lahiri, whole-sign houses)
-    dasha.py                # Vimshottari periods
-    facts.py                # chart -> interpretable statements
-    panchang.py             # Rahu Kaal, Yamaganda, Gulika, hora
-    transit.py              # chart for an arbitrary moment
-  rag/
-    vector_store.py         # Qdrant search
-    retrieve.py             # page-window expansion, chart-grounded retrieval
-    books.py                # slug -> citable book title
-  council/
-    classifier.py           # routing + query rewriting (one model call)
-    orchestrator.py         # the pipeline
-    prompts.py              # the behavioural contract
-    personas.py             # the eight Rishis
-    conversation.py         # multi-turn memory
-    domains.py              # Rishi -> book mapping
-    client.py               # Gemini API / Vertex AI
+  astro/                    # the fact vocabulary — the join key, single source of truth
+  db/                       # SQLAlchemy engine and declarative base
+  models/                   # ORM tables: books, units, rules, atoms, triage
+  knowledge/                # offline: book -> rule base
+    bridge/                 # pages -> chapters -> verses
+    triage/                 # rule-bearing verse, or not
+    extract/                # verse -> structured rule (the one AI step) + validator
+    compile/                # condition -> indexed atoms, then load to Postgres
+    affinity/               # rule -> Rishi weights
+    match/                  # exact condition test, plus the safety gate
+  chart/                    # Swiss Ephemeris: placements, facts, tokens, dignity, dasha
+  rag/                      # Qdrant store, page retrieval, rule retrieval and ranking
+  council/                  # classifier, orchestrator, personas, prompts
 ```
 
 ---

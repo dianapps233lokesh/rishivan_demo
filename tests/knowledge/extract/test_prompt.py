@@ -9,8 +9,8 @@ import json
 
 import pytest
 
-from app.astro.vocab import CONDITION_TOKEN_TEMPLATES, EMITTED_SCOPES
-from app.knowledge.extract.prompt import (
+from rishivan.astro.vocab import CONDITION_TOKEN_TEMPLATES, EMITTED_SCOPES
+from rishivan.knowledge.extract.prompt import (
     CACHE_FLOOR_TOKENS,
     CONDITION_ARGUMENTS,
     INSTRUCTIONS,
@@ -21,7 +21,7 @@ from app.knowledge.extract.prompt import (
     invariant_prefix,
     verse_block,
 )
-from app.knowledge.extract.validate import validate_atom, validate_rule
+from rishivan.knowledge.extract.validate import validate_atom, validate_rule
 
 CHARS_PER_TOKEN = 3.26
 """Measured on this corpus's Devanagari + English mix by sampling the whole size
@@ -232,7 +232,7 @@ def test_validator_rejects_both_scalar_and_set_forms():
 def test_flattened_disjunction_is_still_caught():
     """The set form is the fix; the contradiction check is the backstop. Mars in houses
     1 AND 4 matches no chart that has ever existed."""
-    from app.knowledge.extract.validate import impossible_conjunctions
+    from rishivan.knowledge.extract.validate import impossible_conjunctions
 
     problems = impossible_conjunctions(
         {
@@ -409,7 +409,7 @@ def test_the_prompt_names_benefic_malefic_as_a_gap():
 
 
 def test_a_decline_does_not_earn_a_retry():
-    from app.knowledge.extract.runner import retryable
+    from rishivan.knowledge.extract.runner import retryable
 
     result = validate_rule(
         {
@@ -425,7 +425,7 @@ def test_a_decline_does_not_earn_a_retry():
 def test_a_grounding_fault_tells_the_retry_to_decline():
     """15 retries fixed 0 rules because the note said only "that was rejected", so the
     model substituted a different planet and failed the same check again."""
-    from app.knowledge.extract.runner import correction_note
+    from rishivan.knowledge.extract.runner import correction_note
 
     result = validate_rule(
         _rule([{"type": "planet_in_house", "planet": "jupiter", "house": 2}]),
@@ -440,7 +440,7 @@ def test_a_rate_limit_is_waited_out_not_recorded_as_a_failure():
     """3 of 20 calls in the graded sample died on `429 RESOURCE_EXHAUSTED` and the loop
     moved on. At 963 units that thins the rule base ~15% while every printed number
     still looks healthy."""
-    from app.knowledge.extract.runner import call_with_backoff
+    from rishivan.knowledge.extract.runner import call_with_backoff
 
     attempts = []
 
@@ -450,7 +450,7 @@ def test_a_rate_limit_is_waited_out_not_recorded_as_a_failure():
             raise RuntimeError("429 RESOURCE_EXHAUSTED. quota exceeded")
         return "ok"
 
-    import app.knowledge.extract.runner as runner
+    import rishivan.knowledge.extract.runner as runner
 
     original, runner.RATE_LIMIT_BACKOFF = runner.RATE_LIMIT_BACKOFF, (0, 0, 0)
     try:
@@ -462,7 +462,7 @@ def test_a_rate_limit_is_waited_out_not_recorded_as_a_failure():
 
 def test_a_malformed_request_is_not_retried():
     """400 means the request is wrong and will stay wrong; retrying it burns money."""
-    from app.knowledge.extract.runner import call_with_backoff
+    from rishivan.knowledge.extract.runner import call_with_backoff
 
     attempts = []
 

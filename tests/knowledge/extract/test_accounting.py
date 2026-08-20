@@ -8,8 +8,8 @@ in `scripts/`.
 
 import pytest
 
-from app.knowledge.accounting import CoverageReport, UnaccountedUnit
-from app.models.knowledge.item import (
+from rishivan.knowledge.accounting import CoverageReport, UnaccountedUnit
+from rishivan.models.knowledge.item import (
     NON_RULE_BEARING,
     ItemKind,
     ItemStatus,

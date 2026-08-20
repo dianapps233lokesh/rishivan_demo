@@ -1,4 +1,4 @@
-from app.knowledge.bridge.clean import strip_ingestion_prefixes
+from rishivan.knowledge.bridge.clean import strip_ingestion_prefixes
 
 
 def test_strips_heading_prefix():

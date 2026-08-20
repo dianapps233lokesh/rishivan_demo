@@ -7,7 +7,7 @@ count, so the mapping is weighted and many-to-many. If it breaks, rules stop rea
 Rishi that should cite them -- and nothing raises.
 """
 
-from app.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH
+from rishivan.models.knowledge.affinity import RISHI_KEYS, WEIGHT_HIGH
 from rishivan.council.domains import (
     DOMAIN_HIGH,
     LIFE_DOMAIN_KEYS,

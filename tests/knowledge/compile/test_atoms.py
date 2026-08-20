@@ -10,8 +10,8 @@ differently from what the chart emits, which raises nothing and matches nothing.
 
 import pytest
 
-from app.astro.vocab import CONDITION_TOKEN_TEMPLATES
-from app.knowledge.compile.atoms import atom_to_fact_token, compile_condition
+from rishivan.astro.vocab import CONDITION_TOKEN_TEMPLATES
+from rishivan.knowledge.compile.atoms import atom_to_fact_token, compile_condition
 
 
 def test_planet_in_house_token():

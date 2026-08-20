@@ -22,8 +22,8 @@ import uuid
 
 from sqlalchemy import select, text
 
-from app.db.session import async_session_factory
-from app.models.knowledge.rule import MATCHABLE_PREDICATE, Rule
+from rishivan.db.session import async_session_factory
+from rishivan.models.knowledge.rule import MATCHABLE_PREDICATE, Rule
 from rishivan.config import settings
 from rishivan.rag.rules import rule_collection_name
 

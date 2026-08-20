@@ -5,7 +5,7 @@ and do not otherwise speak. The chart engine produces English sentences for page
 retrieval ("Ascendant (Lagna) is Aries."); rules are compiled to tokens
 (`planet.saturn.house` -> 7). Both are needed, and only the tokens can be matched.
 
-The failure mode this module must not have is silence. `app/astro/vocab.py` warns that a
+The failure mode this module must not have is silence. `rishivan/astro/vocab.py` warns that a
 token spelled differently from the vocabulary means "every affected rule silently matches
 nothing" -- no exception, no empty-result signal, just a rule base that appears thin. So
 the scope is validated against the emitted list, and a contract test pins the spelling of
@@ -17,7 +17,7 @@ universal aspect model. Those three families are 9 of BPHS vol 1's 376 valid rul
 and were inert until that module existed.
 """
 
-from app.astro.vocab import EMITTED_SCOPES
+from rishivan.astro.vocab import EMITTED_SCOPES
 from rishivan.chart.ephemeris import RASHI_LORDS, Chart
 
 SIGN_TOKEN_NAME: dict[str, str] = {
@@ -54,7 +54,7 @@ PLANET_TOKEN_NAME: dict[str, str] = {
     "Ketu": "ketu",
 }
 """`Chart.planets` and `Chart.house_lords` are keyed by display name; tokens use the
-vocabulary's names. Named separately from `app.astro.vocab.PLANET_TOKEN_NAME`, which maps
+vocabulary's names. Named separately from `rishivan.astro.vocab.PLANET_TOKEN_NAME`, which maps
 the *books'* two-letter codes (`Sa`) rather than the ephemeris's display names."""
 
 

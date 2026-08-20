@@ -18,9 +18,9 @@ import collections
 
 from sqlalchemy import select
 
-from app.db.session import async_session_factory
-from app.knowledge.affinity.derive import affinity_for, unrouted_domains
-from app.models.knowledge.rule import Rule
+from rishivan.db.session import async_session_factory
+from rishivan.knowledge.affinity.derive import affinity_for, unrouted_domains
+from rishivan.models.knowledge.rule import Rule
 
 
 async def main(argv: list[str] | None = None) -> int:
