@@ -558,14 +558,31 @@ if ask_btn and question.strip():
                 f"are shown. Matched by exact condition test against the computed "
                 f"placements — not by similarity."
             )
+            from rishivan.rag.describe import describe_condition
+
             for hit in matched_rules:
-                st.markdown(f"**{hit.citation}**")
-                translation = (hit.source or {}).get("translation", "").strip()
-                if translation:
-                    st.caption(translation)
+                condition = describe_condition(hit.condition)
+                st.markdown(
+                    f"**{hit.citation}** — because {condition}"
+                    if condition
+                    else f"**{hit.citation}**"
+                )
                 for effect in hit.effects or []:
                     st.markdown(
                         f"- _{effect.get('polarity')}_: {effect.get('statement')}"
+                    )
+                # The verse behind a collapsed toggle rather than inline. An enumeration
+                # verse like BPHS 46.25-31 holds eight branches in one paragraph, and
+                # printing it whole -- once per matched branch -- buried the clause that
+                # actually fired under the six that did not.
+                translation = (hit.source or {}).get("translation", "").strip()
+                if translation:
+                    with st.popover("source verse"):
+                        st.caption(translation)
+                if hit.sensitivities:
+                    st.caption(
+                        "⚠ traditional indication, not a prediction — "
+                        + ", ".join(sorted(hit.sensitivities))
                     )
     elif result.get("chart_facts"):
         # Silence here would read as "the books say nothing", when the truth is that

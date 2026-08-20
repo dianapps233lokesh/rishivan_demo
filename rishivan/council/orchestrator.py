@@ -449,6 +449,13 @@ def council_consult(
                 embed_fn([search_query])[0],
                 rishi=rishi,
                 limit=MAX_MATCHED_RULES,
+                # The question's own words gate what may be shown. Eight Rishis §9
+                # forbids predicting death as certainty, and gating on the answering
+                # Rishi's domains instead was circular: Medhan owns health, so every
+                # Medhan question admitted every death rule. Measured -- "will my
+                # marriage be happy and will my wife be healthy?" returned four rules
+                # predicting the manner of the querent's death.
+                question=question,
             )
         except Exception:  # noqa: BLE001 - a missing rule base must not break an answer
             matched_rules = []

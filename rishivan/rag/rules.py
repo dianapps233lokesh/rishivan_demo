@@ -68,6 +68,9 @@ class RuleHit:
     life_domains: list[str] = field(default_factory=list)
     rishi_affinity: dict = field(default_factory=dict)
     vector: list[float] = field(default_factory=list)
+    sensitivities: set = field(default_factory=set)
+    """Categories of claim this rule makes -- death, diagnosis, intimate. Carried so the
+    prompt can require a hedge even when the rule is admissible."""
     merged_from: list[str] = field(default_factory=list)
     """Rule keys folded into this one because they share a verse and a condition.
 
@@ -222,6 +225,7 @@ def rank_true_rules(
     *,
     rishi: str,
     limit: int = 10,
+    question: str = "",
 ) -> list[RuleHit]:
     """Rank rules already proven true of the chart, by relevance to the question.
 
@@ -238,6 +242,8 @@ def rank_true_rules(
     still losing half. Similarity cannot know what is true, so going first caps recall at
     whatever it happens to surface. Exact-match everything, then rank here.
     """
+    from app.knowledge.match.safety import sensitivities, withhold_reasons
+
     scored: list[tuple[float, RuleHit]] = []
     for rule in rules:
         affinity = getattr(rule, "rishi_affinity", None) or {}
@@ -255,6 +261,11 @@ def rank_true_rules(
             relevance=relevance,
         )
         hit.relevance = relevance
+        # A rule predicting the manner of the querent's death is wrong on a question
+        # about marriage before any question of tone arises. Eight Rishis §9.
+        if withhold_reasons(hit, question):
+            continue
+        hit.sensitivities = sensitivities(hit)
         scored.append((score, hit))
 
     scored.sort(key=lambda row: -row[0])
@@ -364,6 +375,7 @@ def rules_for_question(
     tokens: dict,
     rishi: str,
     limit: int = 10,
+    question: str = "",
 ) -> list[RuleHit]:
     """The whole rule path: match everything, then rank what survived.
 
@@ -376,4 +388,5 @@ def rules_for_question(
         query_embedding,
         rishi=rishi,
         limit=limit,
+        question=question,
     )
