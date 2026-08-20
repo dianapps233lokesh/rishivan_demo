@@ -1,20 +1,18 @@
 """S6 — deterministic validation of extracted atoms. The LLM proposes; this decides.
 
-This is the stage the whole architecture leans on. `response_schema` cannot express
-"if type is lord_of_house_in_house then house is required" -- Gemini supports no
-`oneOf`/`if-then`, and a per-type schema would exceed the 160-leaf-field budget. So
-the atom schema is a flat union, and the model demonstrably leaks: on a real BPHS 26.85
-call it returned
+Where correctness actually lives, not a safety net bolted on. `response_schema` cannot
+express "if type is lord_of_house_in_house then house is required" — Gemini has no
+`oneOf`/`if-then` and a per-type schema would blow the 160-leaf-field budget — so the
+atom schema is a flat union and the model leaks through it:
 
     {"type": "lord_of_house_in_house", "lord_of": 8, "level": "maha", "scope": ""}
 
-which is schema-valid and useless -- `level` belongs to `dasha_of`, and the missing
-`house` means the atom never says where the 8th lord sits. Unvalidated, that compiles
-to a rule that matches nothing while looking perfectly well-formed.
+Schema-valid and useless: `level` belongs to `dasha_of`, and without `house` the atom
+never says where the 8th lord sits. Unvalidated it compiles to a rule that matches
+nothing while looking well-formed.
 
-So validation is not a safety net bolted on; it is where correctness actually lives.
-Every rejection carries a reason, and rejected rules are retried once with wider
-context before being filed `unparsed` -- degraded, never dropped.
+Every rejection carries a reason. Rejected rules retry once, then file as `unparsed` —
+degraded, never dropped.
 """
 
 from dataclasses import dataclass, field
@@ -56,10 +54,11 @@ class ValidationResult:
     atoms_merged: int = 0
     stripped_atoms: int = 0
     declined: bool = False
-    """The model said it cannot express this verse. Not a defect -- a routing decision:
-    the unit belongs in destination B with its reason, and must never be counted as a
-    failed rule. Scoring declines as invalid rules is what put the first graded sample
-    at 29%: 13 of its 22 "failures" were the extractor correctly refusing."""
+    """The model said it cannot express this verse — a routing decision, not a defect: the
+    unit belongs in destination B with its reason and must never count as a failed rule.
+    Scoring declines as invalid rules is what once reported 29% for a sample whose real
+    precision was more than twice that.
+    """
 
     @property
     def ok(self) -> bool:
@@ -136,15 +135,11 @@ _EXCLUSIVE_BY: dict[str, tuple[str, str]] = {
 def impossible_conjunctions(condition: dict) -> list[AtomProblem]:
     """Atoms that cannot all hold at once.
 
-    This check exists because the model produced them. Asked to express "Mars in any
-    of the kendras or the 8th", and given no disjunction (`any_groups` was cut to stay
-    inside the 160-leaf-field schema budget), it emitted Mars in houses 1, 4, 7, 8 and
-    10 joined by `all`. That is schema-valid, passes every per-atom check, and matches
-    no chart that has ever existed -- a rule guaranteed never to fire, which is exactly
-    the silent failure the whole pipeline is built to prevent.
-
-    Flattening a disjunction into a conjunction is the model's most damaging habit
-    here, so it is caught mechanically rather than trusted away.
+    The model produced these. Asked for "Mars in any of the kendras or the 8th" with no
+    disjunction available, it emitted Mars in houses 1, 4, 7, 8 and 10 joined by `all` —
+    schema-valid, passing every per-atom check, and matching no chart that has ever
+    existed. Flattening a disjunction into a conjunction is its most damaging habit here,
+    so it is caught mechanically.
     """
     if (condition.get("combinator") or "all") != "all":
         return []
@@ -197,19 +192,14 @@ def _supplied(atom: dict, atom_type: str) -> frozenset[str]:
 def merge_split_atoms(condition: dict | None, key: str = "atoms") -> int:
     """Rejoin one atom the model split in half. Returns how many merges were made.
 
-    The flat atom schema has no way to say "these fields belong together", and the model
-    exploits that: asked for "the 5th lord in the 6th house" it returned
-    `{lord_of: 5}` and `{house: 6}` as two `lord_of_house_in_house` atoms. Neither half
-    is a claim -- one says the 5th lord is somewhere, the other says some lord is in the
-    6th -- and under `all` the pair means something the verse never said. It happened on
-    3 of 18 rule-destined verses in the graded sample, always this same shape.
+    The flat schema cannot say "these fields belong together", so asked for "the 5th lord
+    in the 6th house" the model returned `{lord_of: 5}` and `{house: 6}` as two atoms.
+    Neither half is a claim, and under `all` the pair says something the verse never did.
 
-    So it is repaired rather than rejected, on the same reasoning as moving a misplaced
-    timing atom: the intent is unambiguous and the fix is mechanical. The merge is
-    deliberately conservative -- it fires only when a type has exactly two incomplete
-    atoms, they supply disjoint fields, and the union is complete -- because a wrong
-    merge would fabricate a condition, which is the one thing worse than rejecting one.
-    Anything less clear-cut still fails validation with its fields missing.
+    Repaired rather than rejected because the intent is unambiguous, but deliberately
+    conservative — exactly two incomplete atoms of one type, disjoint fields, complete
+    union — because a wrong merge fabricates a condition, which is worse than rejecting
+    one. Anything less clear-cut still fails validation with its fields missing.
     """
     if not condition:
         return 0
@@ -299,20 +289,16 @@ SIGN_CLASSES: dict[str, tuple[str, ...]] = {
 }
 """Sign classes whose membership is fixed, so naming the class grounds the members.
 
-The distinction this table draws is the whole point of it. "The Sun in a movable sign"
-(BPHS 10.8) determines four signs and nothing else -- Aries, Cancer, Libra, Capricorn,
-always, for every chart and every planet -- so expanding it invents nothing, and
-rejecting the expansion threw away three correct rules in the first graded sample.
-"Exalted" looks similar and is not: it is a *different* sign per planet, so expanding it
-to a sign list is the fabrication `ungrounded_values` exists to catch.
+The distinction is the point. "The Sun in a movable sign" fixes four signs — Aries,
+Cancer, Libra, Capricorn — for every chart and every planet, so expanding it invents
+nothing. "Exalted" looks similar and is not: it is a *different* sign per planet, so
+expanding that is the fabrication `ungrounded_values` exists to catch. The test is
+whether the class alone fixes the members.
 
-The test is whether the class alone fixes the members. Movable/fixed/dual and the
-elemental triplicities pass it; every dignity fails it.
-
-Only the adjectival element forms are listed. Matching is by substring, and BPHS 10.8 --
-the very verse this table was built for -- opens with "the situation of the earthen
-lamp", which would ground Capricorn on the bare word "earth". `odd`/`even` are omitted
-for the same reason: "even" hides inside seven, eleven and evening.
+Only adjectival element forms are listed, because matching is by substring and BPHS
+10.8 opens with "the situation of the earthen lamp" — which would ground Capricorn on
+the bare word "earth". `odd`/`even` are out for the same reason: "even" hides inside
+seven, eleven and evening.
 """
 
 DIGNITY_SYNONYMS: dict[str, tuple[str, ...]] = {
@@ -333,14 +319,10 @@ def members_of(class_word: str) -> frozenset[str]:
 def ungrounded_values(rule: dict, source_text: str) -> list[AtomProblem]:
     """Signs and dignities the rule names that the verse never names.
 
-    This exists because of BPHS 24.2. The verse says the 11th lord "is exalted"; the
-    extractor wrote `lord_of_house_in_sign{lord_of: 11, sign: "aries"}`. Exaltation is
-    Aries only for the Sun -- which sign it is depends entirely on which planet happens
-    to be the 11th lord -- so that atom is a specific, checkable, false claim. It passed
-    every structural check and the planet-grounding check, because no planet was named.
-
-    Grounding a *value* is the same idea as grounding a planet: if the text does not say
-    "Aries", the rule may not claim Aries.
+    BPHS 24.2 says the 11th lord "is exalted"; the extractor wrote
+    `lord_of_house_in_sign{lord_of: 11, sign: "aries"}`. Exaltation is Aries only for the
+    Sun, so that atom is a specific, checkable, false claim — and it passed every
+    structural check and the planet-grounding check, because no planet was named.
     """
     if not source_text:
         return []
@@ -410,14 +392,11 @@ def ungrounded_values(rule: dict, source_text: str) -> list[AtomProblem]:
 def ungrounded_planets(rule: dict, source_text: str) -> list[AtomProblem]:
     """Planets the rule names that the verse never mentions.
 
-    This catches the single most dangerous error the pipeline can make, and it caught a
-    real one: BPHS 27.2 is about **Dhuma**, an upagraha computed from the Sun's
-    longitude and absent from the fact vocabulary. Rather than declaring it
-    inexpressible, the model emitted `planet_in_house{planet: rahu, house: 1}` -- a
-    different body entirely. That rule is schema-valid, passes every per-atom check,
-    cites a real verse in a real chapter, and asserts something the text does not say.
-
-    Substitution is invisible to structural validation, so it needs its own check.
+    The most dangerous error available, and it caught a real one: BPHS 27.2 is about
+    Dhuma, an upagraha absent from the vocabulary, and the model emitted
+    `planet_in_house{planet: rahu, house: 1}` — a different body entirely. Schema-valid,
+    citing a real verse, asserting what the text does not say. Substitution is invisible
+    to structural validation, so it needs its own check.
     """
     if not source_text:
         return []
@@ -456,16 +435,14 @@ def ungrounded_planets(rule: dict, source_text: str) -> list[AtomProblem]:
 def validate_rule(rule: dict, *, source_text: str = "") -> ValidationResult:
     """Validate one extracted rule and enforce the promise/timing split.
 
-    Timing atoms found in `formation` are **moved** rather than rejected: the model
-    misplacing one is an expected, mechanically fixable error, and moving it makes
-    "timing cannot manufacture a natal promise" structural instead of advisory. If the
-    move empties `formation`, the rule is legitimately `timing`-category -- common in
-    BPHS's dasha-result chapters -- not a defective `formation` rule.
+    Timing atoms in `formation` are **moved**, not rejected — a mechanically fixable
+    misplacement, and moving it makes "timing cannot manufacture a natal promise"
+    structural rather than advisory. If the move empties `formation` the rule is
+    legitimately `timing`-category, common in the dasha-result chapters.
 
-    A rule with `expressible: false` is *declined*, not invalid. It carries no atoms out
-    of here -- whatever it asserted is stripped, because "I cannot express this" plus a
-    partial condition is the worst of both -- and it is valid exactly when it names the
-    concept it is missing. The caller routes it to destination B.
+    `expressible: false` means *declined*, not invalid: the atoms are stripped, because a
+    refusal plus a partial condition is the worst of both, and the rule is valid exactly
+    when it names the concept it is missing. The caller routes it to destination B.
     """
     result = ValidationResult()
     formation = rule.get("formation") or {}

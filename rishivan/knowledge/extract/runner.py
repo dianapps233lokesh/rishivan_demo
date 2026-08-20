@@ -1,19 +1,14 @@
 """S5 — run extraction over rule-bearing units, with a cached prefix.
 
-Two things make this cheap and safe rather than one:
+The prefix is cached once per run rather than sent per call: ~19.6k tokens of invariant
+instructions, vocabulary, examples and schema, which at 1,144 units is the difference
+between $12 and $3.
 
-* **The prefix is cached once per run**, not sent per call. It is ~19.6k tokens of
-  invariant instructions, vocabulary, examples and schema, and at 1,144 units that is
-  the difference between $12 and $3.
-* **Nothing the model returns is trusted.** `validate_rule` decides whether an
-  extraction is usable, and it demonstrably has to: the model returns schema-valid
-  atoms with fields belonging to other condition types and required fields missing.
-  Rules failing validation are recorded with their reasons rather than persisted, so a
-  bad batch is visible instead of silently thin.
+Nothing the model returns is trusted — `validate_rule` decides whether an extraction is
+usable, and rules failing it are recorded with their reasons rather than persisted, so a
+bad batch is visible instead of silently thin.
 
-Deliberately does not write to `rule` yet. This stage is for inspecting output on a
-small sample; persistence lands once a human has confirmed the extractions are worth
-keeping.
+Deliberately does not write to `rule`; persistence is `knowledge.compile.persist`.
 """
 
 import json
@@ -39,21 +34,19 @@ from rishivan.models.knowledge.unit import SutraUnit
 CACHE_TTL_SECONDS = 6 * 3600
 """Long enough to outlast a whole-book run.
 
-This was one hour, which is fine for a 20-unit sample and silently wrong for the real
-thing: 963 units at ~3s each plus retries runs past 60 minutes, and when the cache
-expires mid-run the remaining calls are billed at the full input rate instead of the
-cached one — roughly a 20x jump on input, with no error to notice. Storage is billed per
-token-hour and the prefix is ~5.2k tokens, so six hours of headroom costs a rounding
-error."""
+At one hour this was fine for a 20-unit sample and silently wrong for the real thing:
+963 units runs past 60 minutes, and a cache expiring mid-run bills the remaining calls
+at the full input rate — roughly 20x on input, with no error raised. Storage is billed
+per token-hour on a ~5.2k-token prefix, so the headroom costs a rounding error.
+"""
 MAX_RETRIES = 1
 """One bounded second look, never a loop.
 
-The validator emits precise, mechanical faults -- "field 'houses' does not belong to
-this condition type", "required field 'planet' is missing" -- and handing those back is
-far more effective than another round of prompt tuning, which is where three successive
-failure modes had led. Bounded at one because an unbounded correction loop makes cost
-unpredictable and lets the model argue itself into a worse answer; a rule that fails
-twice is filed with its faults rather than retried again."""
+The validator emits mechanical faults — "field 'houses' does not belong to this
+condition type" — and handing those back beats another round of prompt tuning. Bounded
+at one because an unbounded loop makes cost unpredictable and lets the model argue
+itself into a worse answer; a rule failing twice is filed with its faults.
+"""
 
 
 GROUNDING_MARKERS = (
@@ -63,21 +56,20 @@ GROUNDING_MARKERS = (
 )
 """Faults where the only correct second answer is a decline, not another atom.
 
-A grounding fault means the verse needs a concept the vocabulary does not have -- "a
-benefic", "the strong 9th lord" -- and the model reached for the nearest planet. Told
-only "that was rejected", it substitutes a different planet and fails again: the first
-graded sample spent 15 retries and fixed 0 rules. So the note names the remedy
-explicitly instead of leaving the model to infer it."""
+A grounding fault means the verse needs a concept the vocabulary lacks — "a benefic",
+"the strong 9th lord" — and the model reached for the nearest planet. Told only "that
+was rejected" it substitutes a different planet and fails again: 15 retries once fixed
+0 rules. So the note names the remedy instead of leaving the model to infer it.
+"""
 
 
 def retryable(problems) -> bool:
     """Whether a second call could plausibly change the answer.
 
-    Every fault the validator emits is actionable -- structural ones by supplying the
-    missing field, grounding ones by declining -- so this is true whenever there is a
-    fault at all. It exists as a named gate because that was not obvious: the earlier
-    loop retried on declines too, spending a call to re-refuse a verse the model had
-    already correctly refused.
+    True whenever there is a fault at all, since every fault the validator emits is
+    actionable — structural ones by supplying the field, grounding ones by declining. A
+    named gate because that was not obvious: the earlier loop retried on declines too,
+    spending a call to re-refuse a verse the model had already correctly refused.
     """
     return bool(problems)
 
@@ -158,10 +150,10 @@ class ExtractionReport:
 
     @property
     def attempted(self) -> int:
-        """Rules the extractor actually tried to express -- the denominator precision is
-        measured over. Declines are excluded because a decline is an outcome, not an
-        attempt: counting them as failed rules is what reported 29% for a sample whose
-        real rule precision was more than twice that."""
+        """Rules the extractor actually tried to express — the denominator precision is measured
+        over. A decline is an outcome, not a failed attempt; counting them as failures is what
+        once reported 29% for a sample whose real precision was more than twice that.
+        """
         return self.rules - self.declined
 
     @property
@@ -193,29 +185,17 @@ async def rule_bearing_units(
 ) -> list[SutraUnit]:
     """Units triage routed to destination A, in chapter then verse order.
 
-    `nth=None` takes EVERY rule-destined unit -- the whole-book mode. An integer takes
-    one unit per chapter, the `nth` within each, which is the review sampler.
+    `nth=None` takes EVERY rule-destined unit — whole-book mode. An integer takes one unit
+    per chapter, the `nth` within each, which is the review sampler. That distinction is
+    load-bearing and was once missing: with only the sampler, `--limit 2000` returned one
+    verse per chapter, so a run meant to cover 485 units processed 30 and exited looking
+    like success.
 
-    That distinction is load-bearing and was originally missing: with only the sampler,
-    `--limit 2000` still returned one verse per chapter, so a run intended to cover 485
-    units processed 30 and exited cleanly, looking like success.
-
-    Three things this query has to get right for a review sample to be worth reviewing:
-
-    `chapter` is a varchar, so a plain `ORDER BY chapter` sorts '10' before '2'. The
-    first sample drawn that way was twelve consecutive verses from chapter 10 -- all
-    longevity and death rules, from one chapter, which tells a reviewer almost nothing
-    about the extractor's behaviour on the rest of the book.
-
-    So: cast to integer for ordering, and take one unit per chapter, giving `limit`
-    distinct chapters instead of `limit` neighbours.
-
-    And `nth`, because one-per-chapter is not enough on its own. Taking the FIRST unit
-    of each chapter samples exactly where BPHS puts "O Brahmin, now I explain to you the
-    effects of the Nth house" -- preamble, not rules. A 20-chapter sample drawn that way
-    declined 17 of 30 extractions, which reads as a vocabulary crisis and is partly an
-    artefact of asking the extractor to parse tables of contents. `nth` moves the probe
-    into the body of the chapter, where the if-then verses are.
+    Two details the sampler needs to be worth reviewing. `chapter` is a varchar, so a plain
+    `ORDER BY` puts '10' before '2' — the first sample drawn that way was twelve
+    consecutive death verses from one chapter. Hence the integer cast and one unit per
+    chapter. And `nth`, because the FIRST unit of a chapter is where BPHS puts "now I
+    explain to you the effects of the Nth house" — preamble, not rules.
     """
     chapter_no = cast(SutraUnit.chapter, Integer)
     ranked = (
@@ -264,14 +244,11 @@ def build_client():
 
 
 def build_admin_client():
-    """Direct Vertex client for cache management -- deliberately NOT via Helicone.
+    """Direct Vertex client for cache management — deliberately NOT via Helicone.
 
-    Creating and deleting a cache is control plane, not inference: there is nothing to
-    observe and no tokens to attribute. Routing it through the gateway also breaks --
-    `caches.delete` is a body-less DELETE and Helicone returns
-    `500 Body has already been used`, which silently leaks the cache. Cache storage is
-    billed per token-hour, so a leaked 19.6k-token cache keeps costing until its TTL
-    expires.
+    Cache create/delete is control plane: nothing to observe, no tokens to attribute. It
+    also breaks, since `caches.delete` is a body-less DELETE and Helicone answers
+    `500 Body has already been used`, silently leaking a cache that bills per token-hour.
     """
     from rishivan.council.client import get_vertex_client
 
@@ -279,11 +256,10 @@ def build_admin_client():
 
 
 def create_prefix_cache(client):
-    """Cache everything invariant: instructions, vocabulary, examples, and the output
-    contract as a forced tool. Returns (cache_name, cached_token_count).
+    """Cache everything invariant: instructions, vocabulary, examples and the output
+    contract as a forced tool. Returns `(cache_name, cached_token_count)`.
 
-    `tool_config` goes here rather than on the request -- the API rejects it in both
-    places at once.
+    `tool_config` goes here rather than on the request — the API rejects both at once.
     """
     from google.genai import types
 
@@ -313,13 +289,10 @@ def create_prefix_cache(client):
 RATE_LIMIT_BACKOFF = (4, 15, 45)
 """Waits after a 429, in seconds.
 
-Not a nicety. A 20-unit sample lost 3 calls to `429 RESOURCE_EXHAUSTED`, and the loop
-records a failure and moves on -- so at 963 units that silently thins the rule base by
-roughly 15% while every visible number still looks healthy. The gap would only show up
-later as chapters that mysteriously produced nothing.
-
-Three waits totalling ~64s, because the limit is per-minute: the point is to outlast one
-window, not to retry forever.
+Not a nicety: a 20-unit sample lost 3 calls to `429 RESOURCE_EXHAUSTED`, and the loop
+records a failure and moves on, so at scale that thins the rule base ~15% while every
+visible number looks healthy. Three waits totalling ~64s, because the limit is
+per-minute — the point is to outlast one window, not to retry forever.
 """
 
 
@@ -386,10 +359,10 @@ async def run_extraction(
     on_result=None,
     on_start=None,
 ) -> ExtractionReport:
-    """`on_result(ExtractedRule, ExtractionReport)` is called as each rule is validated,
-    so a long run can checkpoint and report progress instead of buffering 485 units of
-    output and losing all of it if the process dies at unit 484. `on_start(total)` fires
-    once the work is counted, so a monitor can show progress against a denominator."""
+    """`on_result(ExtractedRule, ExtractionReport)` fires as each rule is validated, so a
+    long run checkpoints instead of buffering 485 units and losing all of it at unit 484.
+    `on_start(total)` fires once the work is counted, giving a monitor its denominator.
+    """
     report = ExtractionReport()
     units = await rule_bearing_units(
         session, book_slug=book_slug, limit=limit, offset=offset, nth=nth

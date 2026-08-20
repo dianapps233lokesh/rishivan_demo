@@ -1,16 +1,13 @@
 """What role a prose block plays, and which headings are merely page furniture.
 
-The running-head test carries more weight than anything else in this package.
-`reflow_book()` calls `close()` on every `ElementType.heading`, and BPHS prints a
-running head on every single page. Classify those as headings and the open Sutra
-Unit dies at each page boundary, orphaning every verse whose translation sits
-overleaf — which manufactures precisely the failure the adjacency gate exists to
-catch, at scale, while looking like a data problem rather than a code one.
+The running-head test carries the most weight here. `reflow_book()` calls `close()` on
+every `ElementType.heading`, and BPHS prints a running head on every page — classify
+those as headings and the open Sutra Unit dies at each page boundary, orphaning every
+verse whose translation sits overleaf.
 
-Measured distribution over BPHS's 4,888 `english_prose` elements:
-947 numbered (translation), 586 `Notes:` (commentary), 39 parenthetical,
-3,316 unmarked (continuation). The continuation case is the majority, which is
-why the adapter resolves it by inheritance rather than guessing per block.
+Measured over BPHS's 4,888 `english_prose` elements: 947 numbered (translation), 586
+`Notes:` (commentary), 39 parenthetical, 3,316 unmarked (continuation). Continuation
+being the majority is why the adapter resolves it by inheritance rather than guessing.
 """
 
 import re
@@ -27,10 +24,9 @@ _TRAILING_FOLIO_RE = re.compile(r"\s(\d+)\s*$")
 _CHAPTER_RE = re.compile(r"(?im)^\s*(?:chapter|adhyaya)\b[-\s]*(\d+)")
 """An in-body chapter marker: `Chapter 1`, `CHAPTER-48`, `Adhyaya 3`.
 
-Only these may close an open Sutra Unit. Measured on BPHS, treating *every*
-non-furniture heading as a chapter boundary produced 148 orphaned verses in vol 1
-and 1,180 in vol 2, because section titles like `Types of Dasas :` are printed
-between a verse and its translation.
+Only these may close an open Sutra Unit. Treating every non-furniture heading as a
+boundary orphaned 148 verses in vol 1 and 1,180 in vol 2, because section titles like
+`Types of Dasas :` are printed between a verse and its translation.
 """
 
 _MAX_RUNNING_HEAD_WORDS = 8

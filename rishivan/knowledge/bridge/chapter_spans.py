@@ -1,27 +1,17 @@
 """Chapter boundaries taken from the body, not from the table of contents.
 
 Chapter assignment was the pipeline's largest silent defect. `reflow.py` carried
-`chapter` as a sticky variable updated only when a heading yielded a number, so a
-single missed heading filed every following verse under the previous chapter, and a
-stray contents line could jump it by forty. Measured against the TOC's own page ranges,
-the two methods disagreed on **891 of 2,063 units (43.2%)**, and 15 of 100 chapters
-held no units at all.
+`chapter` as a sticky variable updated only when a heading yielded a number, so one
+missed heading filed every following verse under the previous chapter. Against the TOC's
+own page ranges the two methods disagreed on 891 of 2,063 units (43.2%).
 
-Neither source was trustworthy on its own:
+Neither source is trustworthy alone. The sticky value propagates one miss across a whole
+chapter. The printed TOC is simply wrong in this edition: its page numbers drift 0 to 3
+pages, and for vol 1 it has chapters 26 and 27 *transposed* against the body headings.
 
-* **The sticky heading value** propagates one miss across a whole chapter.
-* **The printed TOC** is wrong in this edition. Its page numbers drift from the body by
-  0 to 3 pages (not a constant offset, so no correction factor exists), and for vol 1
-  chapters 26 and 27 it has the *titles transposed* -- it lists 26 as "Effects of
-  Non-Luminous Planets" while the body page reads `Chapter 26 | Effects of the Bhava
-  Lords`. Extracting BPHS 27.2 as a Dhuma rule under the wrong chapter title came from
-  exactly this.
-
-The body heading is authoritative, and it is also self-verifying: each one prints the
-chapter number twice, once in English (`Chapter - 54`) and once in Devanagari
-(`।। ५४ ।।`). Two independent readings in one place, the same technique M1 already used
-for verse numbers. Measured on this corpus: 47/47 chapters detected in vol 1, 52/53 in
-vol 2, and **zero** disagreements between the two readings.
+The body heading is authoritative and self-verifying — each prints its number twice,
+`Chapter - 54` and `।। ५४ ।।`, the same two-readings technique used for verse numbers.
+Measured: 47/47 chapters in vol 1, 52/53 in vol 2, zero disagreements between readings.
 """
 
 import re
@@ -35,15 +25,10 @@ CHAPTER_EN = re.compile(
 )
 """A chapter heading, anchored to the start of a line.
 
-Two details are load-bearing:
-
-* **The separator class.** Vol 1 prints `Chapter 26`, vol 2 prints `Chapter - 54`. A
-  pattern requiring whitespace missed all 53 of vol 2's chapters and matched its
-  contents pages instead.
-* **The line anchor.** Unanchored, the pattern matches prose cross-references --
-  "More knowledge ... can be had from Chapter 3 Sloka 65" -- and files the verses that
-  follow under chapter 3. Real headings always begin the line; running heads
-  (`276 Effects of the Bhava Lords`) never contain the word at all.
+Two load-bearing details. The separator class: vol 1 prints `Chapter 26`, vol 2
+`Chapter - 54`, and requiring whitespace missed all 53 of vol 2's chapters. The line
+anchor: unanchored, this matches prose cross-references ("can be had from Chapter 3
+Sloka 65") and files the verses that follow under chapter 3.
 """
 
 CHAPTER_DEV = re.compile(r"[।॥]{1,2}\s*([०-९]{1,3})\s*[।॥]{1,2}")
@@ -210,16 +195,14 @@ def _longest_increasing(
 ) -> tuple[list[ChapterStart], list[str]]:
     """Keep the largest subset whose numbers increase with position.
 
-    A book's chapters appear in order, so a candidate whose number goes backwards is a
-    false positive -- not evidence that the book is out of order. Vol 2 contains a
-    mid-book listing that yielded a `Chapter 96` heading at page 473, six hundred pages
-    before the real one; keeping it made the genuine chapters 81-95 look like
-    out-of-order duplicates and produced 23 ordering violations.
+    Chapters appear in order, so a number going backwards is a false positive rather than
+    evidence the book is out of order. Vol 2 has a mid-book listing yielding a `Chapter 96`
+    heading six hundred pages early, which made the genuine chapters 81-95 look like
+    out-of-order duplicates.
 
-    Filtering greedily would be wrong in exactly that case: the bogus 96 comes first, so
-    a greedy pass would reject every real chapter after it. The longest increasing
-    subsequence keeps whichever set is larger, which is always the real sequence -- one
-    stray heading can never outnumber fifty genuine ones.
+    Greedy filtering would be wrong in exactly that case — the bogus 96 comes first, so it
+    would reject every real chapter after it. The longest increasing subsequence keeps the
+    larger set, which is always the real one: a stray heading cannot outnumber fifty.
     """
     if not candidates:
         return [], []

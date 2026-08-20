@@ -211,19 +211,14 @@ class QdrantVectorStore(VectorStore):
     def _with_retry(self, fn_factory):
         """Retry a transient Qdrant Cloud/network error on a FRESH client.
 
-        ``fn_factory`` is called with no arguments and must read ``self._client``
-        itself at call time (not close over a stale reference), since a retry
-        may swap it out.
+        ``fn_factory`` takes no arguments and must read ``self._client`` at call time rather
+        than closing over a stale reference, since a retry may swap it out.
 
-        The client is built once and cached for the app's whole lifetime (see
-        streamlit_app.py's ``@st.cache_resource``), so its connection pool can
-        go stale after long idle stretches — Qdrant Cloud's edge then answers
-        a live query with ``421 Misdirected Request``. Critically, a 421 is a
-        complete, valid HTTP response, not a connection-level error, so httpx
-        has no reason to evict that connection from its pool — simply retrying
-        on the SAME client reuses the SAME stale connection and fails again
-        every time (verified empirically). Retrying only helps once the
-        client itself — and so its whole connection pool — is rebuilt.
+        The client is cached for the app's lifetime, so its connection pool goes stale after
+        long idle stretches and Qdrant Cloud's edge answers with ``421 Misdirected Request``.
+        A 421 is a complete valid response, not a connection error, so httpx keeps that
+        connection pooled — retrying on the same client reuses the same stale connection and
+        fails again every time. Only rebuilding the client, and so the pool, helps.
         """
         last_exc = None
         for attempt in range(self._MAX_RETRIES):

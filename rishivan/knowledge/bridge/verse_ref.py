@@ -1,19 +1,10 @@
 """Read verse numbers as the book prints them.
 
-Two delimiter conventions coexist inside BPHS and both appear in production data:
-vol 1 closes a verse with `॥` (U+0965 DOUBLE DANDA), vol 2 with `।।` (U+0964
-DANDA, twice, usually but not always spaced). Measured coverage with both handled
-is 97.6% of vol 1's 1,065 shloka elements and 96.6% of vol 2's 1,183; handling
-only the double danda leaves 671 of vol 2's elements (57%) with no readable
-number, and nothing would error — the numbers would simply be counted instead of
-read, and only `inferred_verse_no` would hint that anything was lost.
-
-A single element frequently holds several verses — 2,248 shloka elements carry
-3,998 verse numbers — so the reference returned here is often a range. It must be
-formatted `"12-14"`, because `rishivan.knowledge.reflow.RANGE_RE` parses that form and
-the printed translation block covering those verses is labelled `12-14.`. The two
-references have to compare equal or reflow opens a second unit and orphans the
-verse.
+Two delimiter conventions coexist in BPHS and both appear in production data: vol 1
+closes a verse with `॥` (U+0965 DOUBLE DANDA), vol 2 with `।।` (U+0964 DANDA twice,
+usually spaced). Handling both covers 97.6% of vol 1's 1,065 shloka elements and 96.6%
+of vol 2's 1,183; handling only the double danda leaves 57% of vol 2 unreadable — and
+nothing would error, the numbers would just be counted instead of read.
 """
 
 import re
