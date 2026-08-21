@@ -151,3 +151,41 @@ def test_the_guidance_tells_the_model_what_the_label_means():
 
     assert "RUNNING NOW" in RULE_GUIDANCE
     assert "promise" in RULE_GUIDANCE.lower()
+
+
+# ── Plain speech (readability without losing facts) ───────────────────────────
+
+
+def test_the_voice_is_told_to_simplify_words_and_not_content():
+    """The readability instruction has to be explicit about the boundary. "Write more
+    simply" alone invites the model to drop the placement, the period or the nakshatra
+    to make a shorter sentence -- which would quietly undo the grounding the whole
+    engine exists to provide."""
+    from rishivan.council.prompts import _CORE_RULES
+
+    assert "PLAIN SPEECH" in _CORE_RULES
+    assert "never the content" in _CORE_RULES.lower()
+
+
+def test_the_voice_is_told_to_gloss_a_technical_term_on_first_use():
+    """A reading may say "Venus antardasha" -- the client's own documents use the
+    vocabulary and dropping it would cost credibility. What it may not do is leave a
+    seeker who has never heard the word unable to follow the sentence."""
+    from rishivan.council.prompts import _CORE_RULES
+
+    assert "antardasha" in _CORE_RULES.lower()
+    assert "first time" in _CORE_RULES.lower()
+
+
+def test_the_plain_speech_example_does_not_break_the_banned_openings():
+    """Rule 6(a) bans "You are in a period where...". A worked example that opened
+    that way would teach the model to do exactly what another rule forbids -- and the
+    model follows examples more readily than prohibitions."""
+    from rishivan.council.prompts import _CORE_RULES
+
+    banned = ("You are in a period", "You are in a season", "You have entered",
+              "You are standing at", "You find yourself")
+    plain = _CORE_RULES[_CORE_RULES.index("PLAIN SPEECH"):]
+    example = plain[:plain.index("\n3.")] if "\n3." in plain else plain
+    for phrase in banned:
+        assert phrase not in example, phrase
