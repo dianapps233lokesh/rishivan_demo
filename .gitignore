@@ -12,10 +12,17 @@ __pycache__/
 venv/
 *.egg-info/
 
-# Local vector store (cloud uses Qdrant)
-.chroma/
-
 # OS / editor
 .DS_Store
 .idea/
 .vscode/
+
+# Extraction artefacts — regenerable, and large
+koonji-*.json
+koonji-*.jsonl
+output*.json
+logs/
+data/rules-*.json
+# Grading output from `python -m scripts.eval_rules --csv` — regenerated per run,
+# and a committed copy goes stale the moment routing changes.
+eval*.csv

@@ -1,33 +1,30 @@
-"""Settings for the standalone demo.
+"""Settings, resolved from Streamlit secrets, then the environment.
 
-Replaces the main application's pydantic-settings config, which pulls in the
-database, Redis, Celery and S3 configuration this demo does not need.
-
-Values are read from Streamlit secrets first (that is how Streamlit Community
-Cloud injects them), then from the environment, so the same code runs locally
-with a .env file and unchanged in the cloud.
+Streamlit Community Cloud injects secrets; local runs and scripts use `.env`.
+The same code path serves both.
 """
 
 from __future__ import annotations
 
 import os
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from functools import cache, cached_property
 from pathlib import Path
 
-_MAIN_REPO_ENV = Path(__file__).resolve().parents[2] / ".env"
-"""The main backend's own .env, one directory up from this demo — same
-Google Cloud project and Qdrant instance, so its Vertex/Qdrant credentials
-are valid here too. Read-only, in-process; never written or echoed."""
+from sqlalchemy import URL
+
+_PARENT_ENV = Path(__file__).resolve().parents[2] / ".env"
+"""The sibling backend's `.env` — same GCP project and Qdrant instance, so its
+credentials are valid here. Read-only, never written or echoed."""
 
 
 @cache
-def _main_repo_env_values() -> dict[str, str]:
-    if not _MAIN_REPO_ENV.is_file():
+def _parent_env_values() -> dict[str, str]:
+    if not _PARENT_ENV.is_file():
         return {}
     values: dict[str, str] = {}
-    for line in _MAIN_REPO_ENV.read_text(encoding="utf-8").splitlines():
+    for line in _PARENT_ENV.read_text(encoding="utf-8").splitlines():
         match = re.match(r"^([A-Z_][A-Z0-9_]*)=(.*)$", line)
         if match:
             values[match.group(1)] = match.group(2)
@@ -35,8 +32,7 @@ def _main_repo_env_values() -> dict[str, str]:
 
 
 def _secret(name: str, default: str = "") -> str:
-    """Streamlit secret, else environment variable, else the main repo's own
-    .env (demo-local convenience only), else default."""
+    """Streamlit secret, else environment, else the sibling `.env`, else default."""
     try:  # Streamlit is absent in scripts and tests; fall back quietly.
         import streamlit as st
 
@@ -46,20 +42,16 @@ def _secret(name: str, default: str = "") -> str:
         pass
     if name in os.environ:
         return os.environ[name]
-    return _main_repo_env_values().get(name, default)
+    return _parent_env_values().get(name, default)
 
 
 @dataclass
 class Settings:
-    """Only what the Council pipeline actually touches."""
+    """Only what this repo actually reads."""
 
-    # ── Vector store ─────────────────────────────────────────────────────────
-    # Qdrant only: Chroma needs local files, which a cloud container loses on
-    # every restart.
-    VECTOR_BACKEND: str = "qdrant"
-    CHROMA_PATH: str = ".chroma"          # unused in the cloud, kept for the
-    #                                       shared VectorStore interface
+    DEBUG: bool = False
 
+    # ── Vector store ────────────────────────────────────────────────────────
     @cached_property
     def QDRANT_URL(self) -> str:
         return _secret("QDRANT_URL")
@@ -72,11 +64,7 @@ class Settings:
     def VECTOR_COLLECTION(self) -> str:
         return _secret("VECTOR_COLLECTION", "rishivan_docs")
 
-    # ── Google AI ────────────────────────────────────────────────────────────
-    @cached_property
-    def GEMINI_API_KEY(self) -> str:
-        return _secret("GEMINI_API_KEY")
-
+    # ── Google AI ───────────────────────────────────────────────────────────
     @cached_property
     def GCP_PROJECT_ID(self) -> str:
         return _secret("GCP_PROJECT_ID")
@@ -98,38 +86,40 @@ class Settings:
         # TOML and .env both escape newlines; the PEM parser needs them real.
         return _secret("GCP_PRIVATE_KEY").replace("\\n", "\n")
 
-    # ── Real P1 chart engine (optional) ──────────────────────────────────────
-    # Empty means "no real chart data" — falls back to this demo's own
-    # D1-only Swiss Ephemeris computation, unchanged.
     @cached_property
-    def BACKEND_URL(self) -> str:
-        return _secret("BACKEND_URL")
+    def HELICONE_API_KEY(self) -> str:
+        """Optional. When set, Vertex traffic routes via the Helicone gateway."""
+        return _secret("HELICONE_API_KEY")
 
+    # ── Postgres (the rule base; the answering path does not use it) ─────────
     @cached_property
-    def BACKEND_DEMO_TOKEN(self) -> str:
-        return _secret("BACKEND_DEMO_TOKEN")
+    def database_url(self) -> str:
+        """Async SQLAlchemy URL. `URL.create` percent-encodes the password."""
+        return URL.create(
+            "postgresql+asyncpg",
+            username=_secret("DATABASE_USER", "postgres"),
+            password=_secret("DATABASE_PASSWORD", "abc@123"),
+            host=_secret("DATABASE_HOST", "localhost"),
+            port=int(_secret("DATABASE_PORT", "5432")),
+            database=_secret("DATABASE_NAME", "rishivan_dev_local"),
+        ).render_as_string(hide_password=False)
 
-    # ── Derived ──────────────────────────────────────────────────────────────
+    # ── Derived ─────────────────────────────────────────────────────────────
     @cached_property
     def has_vertex(self) -> bool:
         return bool(self.GCP_PROJECT_ID and self.GCP_PRIVATE_KEY)
 
     @cached_property
-    def has_gemini_key(self) -> bool:
-        return bool(self.GEMINI_API_KEY)
-
-    @cached_property
-    def default_backend(self) -> str:
-        """Prefer a Gemini API key when present — no service account needed."""
-        return "gemini" if self.has_gemini_key else "vertex"
+    def has_helicone(self) -> bool:
+        return bool(self.HELICONE_API_KEY)
 
     def missing(self) -> list[str]:
         """Config the app cannot start without, for a clear error on screen."""
         gaps: list[str] = []
         if not self.QDRANT_URL:
             gaps.append("QDRANT_URL")
-        if not (self.has_gemini_key or self.has_vertex):
-            gaps.append("GEMINI_API_KEY (or the five GCP_* Vertex values)")
+        if not self.has_vertex:
+            gaps.append("the five GCP_* Vertex values")
         return gaps
 
 

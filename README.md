@@ -64,15 +64,9 @@ QDRANT_API_KEY = "..."
 VECTOR_COLLECTION = "rishivan_docs"
 ```
 
-Then **one** AI backend:
+Then Vertex AI (needs billing enabled):
 
 ```toml
-# Option A — simplest
-GEMINI_API_KEY = "AIza..."
-```
-
-```toml
-# Option B — Vertex AI (higher quotas, needs billing enabled)
 GCP_PROJECT_ID = "..."
 GCP_LOCATION = "global"
 GCP_SERVICE_ACCOUNT_EMAIL = "svc@project.iam.gserviceaccount.com"
@@ -108,29 +102,25 @@ read Streamlit secrets first, then the environment.
 ```
 streamlit_app.py            # entry point: input, streaming answer, citations
 requirements.txt
+scripts/                    # the pipeline, one command per stage
 .streamlit/
   config.toml               # dark theme matching the app's styling
   secrets.toml.example      # template (the real file is gitignored)
 rishivan/
   config.py                 # secrets/env settings, with a startup check
-  chart/
-    ephemeris.py            # sidereal charts (Lahiri, whole-sign houses)
-    dasha.py                # Vimshottari periods
-    facts.py                # chart -> interpretable statements
-    panchang.py             # Rahu Kaal, Yamaganda, Gulika, hora
-    transit.py              # chart for an arbitrary moment
-  rag/
-    vector_store.py         # Qdrant search
-    retrieve.py             # page-window expansion, chart-grounded retrieval
-    books.py                # slug -> citable book title
-  council/
-    classifier.py           # routing + query rewriting (one model call)
-    orchestrator.py         # the pipeline
-    prompts.py              # the behavioural contract
-    personas.py             # the eight Rishis
-    conversation.py         # multi-turn memory
-    domains.py              # Rishi -> book mapping
-    client.py               # Gemini API / Vertex AI
+  astro/                    # the fact vocabulary — the join key, single source of truth
+  db/                       # SQLAlchemy engine and declarative base
+  models/                   # ORM tables: books, units, rules, atoms, triage
+  knowledge/                # offline: book -> rule base
+    bridge/                 # pages -> chapters -> verses
+    triage/                 # rule-bearing verse, or not
+    extract/                # verse -> structured rule (the one AI step) + validator
+    compile/                # condition -> indexed atoms, then load to Postgres
+    affinity/               # rule -> Rishi weights
+    match/                  # exact condition test, plus the safety gate
+  chart/                    # Swiss Ephemeris: placements, facts, tokens, dignity, dasha
+  rag/                      # Qdrant store, page retrieval, rule retrieval and ranking
+  council/                  # classifier, orchestrator, personas, prompts
 ```
 
 ---
@@ -153,7 +143,32 @@ rishivan/
 
 ## Data it expects
 
-A Qdrant collection (default `rishivan_docs`) of 768-dimension vectors, with
-each point carrying `document_id`, `page_number`, `element_index`, `book_slug`
-and `book_domain` in its payload. Ingestion lives in the main Rishivan backend;
-this app only reads.
+**Two** Qdrant collections, both 768-dimension. The app only reads; ingestion
+lives in the main Rishivan backend and in `scripts/`.
+
+| Collection | Holds | Payload keys |
+|---|---|---|
+| `rishivan_docs` | book pages, for passage retrieval | `document_id`, `page_number`, `element_index`, `book_slug`, `book_domain` |
+| `rishivan_docs_rules` | compiled Koonji rules, for exact matching | `rule_key`, `condition`, `effects`, `source`, `life_domains`, `rishi_affinity`, `modifiers`, `exceptions`, `remedies`, `activation`, `school`, `rule_category`, `tier` |
+
+The rules collection name is derived, not configured: `VECTOR_COLLECTION` plus
+`_rules`. Setting `VECTOR_COLLECTION` alone points both lanes at the right place.
+
+### The rules collection must be current
+
+`activation` — the atoms that say WHEN a rule fires — was added after some
+collections were built. A collection missing it still answers, and every rule
+silently reports "no activating period", so no reading can distinguish a natal
+promise from a period running today.
+
+Re-publish it from a machine that can reach **both** Postgres and Qdrant (the
+embedder reads approved rules from Postgres; Streamlit Cloud never touches it):
+
+```bash
+python -m scripts.embed_rules --dry-run   # check the count first
+python -m scripts.embed_rules
+```
+
+Verify in the deployed app: ask a "when" question and open the rules panel. It
+must read *"N of them record an activating period"*. If it says *"No rule in
+this collection records an activating period"*, the collection is stale.

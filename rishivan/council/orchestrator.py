@@ -1,12 +1,25 @@
 """Council Orchestrator — the main pipeline for the Rishi Council POC.
 
+Structured as a small node graph (P4's council-graph shape, scaled to a
+single-process demo with no billing/persistence infra): intake decides
+whether this is even an astrology question before anything else runs.
+
 Flow:
+  0. Intake/guardrail bypass → smalltalk or gibberish gets a warm, LLM-only
+     reply (rishivan.council.warmth) with no chart computation and no
+     retrieval at all.
   1. Classify query → pick primary Rishi + query domain
-  2. Compute chart (natal/muhurta/prashna) if needed
+  2. Compute chart (natal/muhurta/prashna) if needed — always local
+     (Swiss Ephemeris + the vendored varga/dasha/numerology/ashtakavarga
+     engines), never a network call to another service.
   3. Translate & enrich search query
-  4. Retrieve from Qdrant filtered by Rishi's book domains
+  4. Retrieve from Qdrant filtered by Rishi's book domains, ranked by
+     specificity x source authority (rishivan.rag.authority)
   5. Build Rishi-voiced prompt (natural flowing prose)
-  6. Stream answer via Gemini (Vertex or API key backend)
+  6. Stream answer via Vertex AI
+  7. Supporting Rishis contribute COMPUTED evidence, never a second voice
+     (rishivan.council.contributors) -- gathered in step 4b and labelled in
+     the primary's prompt.
 """
 from __future__ import annotations
 
@@ -18,7 +31,7 @@ from rishivan.chart.local_numerology import numerology_table_markdown
 from rishivan.chart.local_varga import varga_table_markdown
 from rishivan.chart.panchang import mentions_panchang, relative_day_offset
 from rishivan.council.classifier import classify_query
-from rishivan.council.domains import RISHI_BOOK_DOMAINS, QueryDomain
+from rishivan.council.domains import QueryDomain
 from rishivan.council.prompts import build_rishi_prompt
 
 logger = logging.getLogger(__name__)
@@ -27,6 +40,12 @@ logger = logging.getLogger(__name__)
 # yields ~30) is used as a search query against the corpus.
 MAX_FACT_QUERIES = None
 MAX_PAGES = 20
+MAX_MATCHED_RULES = 10
+"""Matched rules to put in the prompt.
+
+Bounded because a rule block is prose the model must read before it answers, and because
+one verse can fan out into siblings that share a condition: BPHS 26.1 produced six rules
+for one placement, so an unbounded list would spend the prompt on near-duplicates."""
 
 
 def council_consult(
@@ -42,8 +61,7 @@ def council_consult(
     lon: float | None = None,
     tz_offset: float = 5.5,
     place: str = "",
-    backend: str = "vertex",   # "vertex" | "gemini"
-    conversation=None,         # poc.council.conversation.Conversation
+    conversation=None,         # rishivan.council.conversation.Conversation
 ) -> dict:
     """Full Council consultation pipeline.
 
@@ -52,8 +70,8 @@ def council_consult(
       chart_summary, chart_facts, sources, search_query, answer_stream
     """
     from rishivan.council.client import model_name
-    _model = model_name(backend, "flash")
-    _embed_model = model_name(backend, "embed")
+    _model = model_name("flash")
+    _embed_model = model_name("embed")
 
     result = {
         "primary_rishi": rishi_override or "vyom",
@@ -69,15 +87,49 @@ def council_consult(
         "sources": [],
         "search_query": question,
         "answer_stream": None,
+        "is_warmth": False,
+        "matched_rules": [],
+        "contributors": [],
+        "chart_tokens": {},
+        "rules_true_of_chart": 0,
+        "rules_with_timing": 0,
+        "rules_running_now": 0,
+        "routing": {},
     }
 
-    # ── Step 1: Classify ──────────────────────────────────────────────────────
+    # ── Step 0/1: Intake — classify, and bypass everything else for small
+    # talk or gibberish ─────────────────────────────────────────────────────
     classification = classify_query(
         client, question, model=_model, conversation=conversation
     )
     if rishi_override:
         # Explicit Rishi chosen — still use the classified domain.
         classification["primary_rishi"] = rishi_override
+
+    result["classification"] = classification
+
+    if classification.get("is_smalltalk_or_gibberish"):
+        # A greeting, thanks, or gibberish never needs a chart, a Qdrant
+        # search, or a persona costume — just a warm human reply. Stay with
+        # whoever the seeker was already speaking to for continuity; default
+        # to Vyom (a neutral, collective-feeling voice) otherwise.
+        from rishivan.council.warmth import respond_warmly
+
+        warmth_rishi = (
+            conversation.current_rishi
+            if conversation is not None and not conversation.is_empty
+            else "vyom"
+        )
+        from rishivan.council.personas import get_persona
+
+        persona = get_persona(warmth_rishi)
+        result["primary_rishi"] = warmth_rishi
+        result["rishi_title"] = persona.title
+        result["is_warmth"] = True
+        result["answer_stream"] = respond_warmly(
+            client, question, model=_model, conversation=conversation
+        )
+        return result
 
     rishi = classification["primary_rishi"]
     domain = classification["query_domain"]
@@ -104,34 +156,24 @@ def council_consult(
     if domain == QueryDomain.NATAL and birth_data is not None:
         from rishivan.chart.ephemeris import compute_chart, summarize
         from rishivan.chart.facts import derive_facts
-        from rishivan.chart import p1_bridge
 
-        # Real P1 backend first — all 16 vargas, not just D1 — falling back
-        # to this demo's own D1-only Swiss Ephemeris calc when it's not
-        # configured or the request fails for any reason.
-        real_facts = p1_bridge.fetch_real_chart_facts()
+        # Pure local computation, always — Swiss Ephemeris + the vendored
+        # varga engine (rishivan.chart.vendor.varga), the same pure-arithmetic
+        # formulas the main backend uses, with zero network calls. This is
+        # also more correct than calling out to a shared backend would be:
+        # it computes for the birth details just typed into this demo's own
+        # form, not for some other fixed identity.
         chart = compute_chart(birth_data)
         result["chart_summary"] = summarize(chart)
-        if real_facts:
-            # p1_bridge only ever returns varga placements (D1/D9/D10) — it
-            # has no dasha endpoint — so without this, any reading grounded
-            # via the real backend lost all Vimshottari dasha facts, even
-            # though dasha is pure local arithmetic on the Moon's birth
-            # nakshatra and never depended on that backend being reachable.
-            from rishivan.chart.facts import derive_dasha_facts
-            chart_facts = real_facts + derive_dasha_facts(chart, query_time or datetime.now())
-            covered_vargas = set(p1_bridge.VARGAS_FOR_DEMO)  # D1, D9, D10
-        else:
-            chart_facts = derive_facts(chart)
-            covered_vargas = {"D1"}
+        chart_facts = derive_facts(chart)
+        covered_vargas = {"D1"}
 
         # Every divisional chart governs a specific life area, and only the
         # ones this SPECIFIC question actually touches should ground the
         # reading — the classifier (same LLM call as intent/domain routing)
         # already decided this as "relevant_vargas". Add whichever of those
         # aren't already covered above, computed locally via the same
-        # zero-IO engine as the chart-table feature, so this works even when
-        # the real P1 backend is unreachable.
+        # zero-IO engine as the chart-table feature.
         extra_codes = [
             c for c in classification.get("relevant_vargas", [])
             if c not in covered_vargas
@@ -317,25 +359,56 @@ def council_consult(
             )
             result["search_query"] = search_query
 
+    # ── Step 3b: which Rishis own this question ───────────────────────────────
+    # Eight Rishis §1 puts this between the classifier and retrieval, and §12 makes the
+    # QUESTION own the domain rather than the persona: a persona like `medhan` spans
+    # prema + vansh + aarogya, whose §4-11 coverage sets together reach eleven of twelve
+    # houses, so persona-scoped relevance cannot discriminate. Routing once here serves
+    # both page ranking (§15) and rule relevance (§4-11).
+    from rishivan.council.domains import primary_rishi_for
+    from rishivan.council.routing import merge_supporting, route_question
+
+    routing = merge_supporting(
+        route_question(question), classification.get("supporting_rishis") or []
+    )
+    # The routed life domain, not the classifier, decides who speaks: the coverage gate
+    # keys off the domain, so letting the LLM pick the voice independently allowed a
+    # persona with no coverage of the subject to answer.
+    rishi = primary_rishi_for(routing.primary, classifier_pick=rishi)
+    persona = get_persona(rishi)
+    result["primary_rishi"] = rishi
+    result["rishi_title"] = persona.title
+    result["life_domain"] = routing.primary
+    result["routing"] = {
+        "primary": routing.primary,
+        "secondary": list(routing.secondary),
+        "matched": {k: list(v) for k, v in routing.matched.items()},
+        "unsupported": routing.unsupported,
+    }
+
     # ── Step 4: Domain-filtered RAG retrieval ────────────────────────────────
     from rishivan.rag.retrieve import collect_chart_context, expand_to_page_window
 
     def embed_fn(texts):
-        if backend == "gemini":
-            # gemini-embedding-exp-03-07 supports output_dimensionality.
-            # Set to 768 to match Qdrant collection built from text-embedding-004.
-            from google.genai import types as _gt
-            r = client.models.embed_content(
-                model=_embed_model,
-                contents=texts,
-                config=_gt.EmbedContentConfig(output_dimensionality=768),
-            )
-        else:
-            r = client.models.embed_content(model=_embed_model, contents=texts)
+        r = client.models.embed_content(model=_embed_model, contents=texts)
         return [e.values for e in r.embeddings]
 
-    # Use this Rishi's book domain filter
-    domain_filter = [d.value for d in RISHI_BOOK_DOMAINS.get(rishi, [])]
+    # Blueprint §4 level 1: retrieve within the universes this question invokes.
+    # Replaces a filter on ten hand-invented `book_domain` tags that appear in neither
+    # client document and flattened three of §4's levels into one list -- and which was
+    # also broken, since `book_domain` was written both as `'foundation'` and as the
+    # stringified list `"['numerology']"`, so `MatchAny` silently missed about a quarter
+    # of the corpus. `book_slug` is written consistently and already indexed.
+    #
+    # School is deliberately NOT filtered: §8 rule 5 asks for labelling, and every
+    # §4-11 protocol ends in "cross-school confirmation".
+    from rishivan.council.source_matrix import slugs_for_universe
+
+    domain_filter = sorted(
+        slug
+        for universe in routing.universes
+        for slug in slugs_for_universe(universe)
+    )
     # Fallback: remove filter if store has no tagged docs (POC compatibility)
     def _search_with_fallback(emb, n=10):
         if domain_filter:
@@ -355,6 +428,7 @@ def council_consult(
                 domain_filter=domain_filter if domain_filter else None,
                 max_queries=MAX_FACT_QUERIES,
                 max_pages=MAX_PAGES,
+                domain=routing.primary,
             )
         except Exception:  # noqa: BLE001
             qe = embed_fn([search_query])[0]
@@ -370,11 +444,96 @@ def council_consult(
             return result
         context_text, page_groups = expand_to_page_window(store, [h["metadata"] for h in hits])
 
+    # ── Step 4b: Koonji rule matching ────────────────────────────────────────
+    #
+    # Rules run ALONGSIDE page retrieval rather than instead of it. Only chapter 26
+    # of one book is approved so far, so most questions still match nothing, and a
+    # reading that silently returned less because the rule base is thin would be a
+    # regression on the page search that already works.
+    #
+    # The order of operations is the load-bearing decision. Every approved rule is
+    # exact-matched against the chart FIRST, and only the survivors are ranked by
+    # relevance to the question. Nominating by similarity first was measured losing
+    # 11 to 14 of the 21 rules true of a test chart, because a similarity window
+    # cannot prefer what it has no way of knowing is true. Matching first makes
+    # recall total by construction; ranking 21 known-true rules is the easy half.
+    matched_rules = []
+    contributors: tuple = ()
+    if chart is not None:
+        try:
+            from rishivan.chart.tokens import all_chart_tokens
+            from rishivan.config import settings as _settings
+            from rishivan.rag.rules import rule_collection_name, rules_for_question
+            from rishivan.rag.vector_store import get_vector_store
+
+            rule_store = get_vector_store(
+                rule_collection_name(_settings.VECTOR_COLLECTION)
+            )
+            from rishivan.rag.rules import rank_true_rules, true_rules
+
+            # Dated by the reading, not the wall clock. The dasha tokens are the only
+            # ones that move, and matching them against `now` while every other token
+            # came from `query_time` would evaluate a Prashna cast for a stated moment
+            # against today's periods.
+            tokens = all_chart_tokens(chart, when=query_time or datetime.now())
+            result["chart_tokens"] = tokens
+            # Split rather than calling `rules_for_question`, so the UI can report how
+            # many rules were TRUE of the chart alongside how many this Rishi was shown.
+            # The gap between the two numbers is the specialisation doing its job, and it
+            # should be visible rather than implied.
+            applicable = true_rules(rule_store, tokens)
+            result["rules_true_of_chart"] = len(applicable)
+            # `activation` only reaches the payload when the embedder is re-run, and a
+            # collection that predates it parses every rule to `active=None` -- correct
+            # code, no labels, no error. Counting the rules that carried a period makes
+            # a stale index visible: zero on a "when" question is a deployment fact, not
+            # an astrological one.
+            result["rules_with_timing"] = sum(
+                1 for rule in applicable if rule.active is not None
+            )
+            result["rules_running_now"] = sum(
+                1 for rule in applicable if rule.active is True
+            )
+            matched_rules = rank_true_rules(
+                applicable,
+                embed_fn([search_query])[0],
+                routing=routing,
+                limit=MAX_MATCHED_RULES,
+                # The question's own words gate what may be shown. Eight Rishis §9
+                # forbids predicting death as certainty, and gating on the answering
+                # Rishi's domains instead was circular: Medhan owns health, so every
+                # Medhan question admitted every death rule. Measured -- "will my
+                # marriage be happy and will my wife be healthy?" returned four rules
+                # predicting the manner of the querent's death.
+                question=question,
+            )
+
+            from rishivan.council.contributors import gather
+
+            contributors = gather(
+                chart, applicable, routing=routing,
+                question=question, when=query_time,
+            )
+            result["contributors"] = [
+                {"rishi": r.rishi, "computed": r.computed,
+                 "rules": len(r.rules), "note": r.note}
+                for r in contributors
+            ]
+        except Exception:  # noqa: BLE001 - a missing rule base must not break an answer
+            matched_rules = []
+    result["matched_rules"] = matched_rules
+
     result["sources"] = page_groups
-    if not page_groups:
+    # Kept for Step 7 (the caller runs it only after the primary answer has
+    # finished streaming, so an extra generation call never delays the first
+    # token the seeker sees).
+    result["_context_text"] = context_text
+    if not page_groups and not matched_rules:
         return result
 
     # ── Step 5: Build Rishi-voiced prompt ────────────────────────────────────
+    from rishivan.council.prompts import rule_context
+
     prompt = build_rishi_prompt(
         rishi_name=rishi,
         domain=domain,
@@ -382,6 +541,9 @@ def council_consult(
         context=context_text,
         chart_facts=chart_facts,
         conversation=conversation,
+        rules=rule_context(matched_rules),
+        life_domain=routing.primary,
+        contributors=contributors,
     )
 
     # ── Step 6: Stream answer ─────────────────────────────────────────────────
@@ -394,4 +556,9 @@ def council_consult(
                 yield chunk.text
 
     result["answer_stream"] = answer_stream()
+
+    # Step 7 needs no deferral any more. The supporting Rishis contributed in step 4b
+    # (rishivan.council.contributors) and every one of them is deterministic, so their
+    # evidence is already inside the prompt above rather than arriving as a second
+    # generation call the caller had to run after the primary answer finished.
     return result

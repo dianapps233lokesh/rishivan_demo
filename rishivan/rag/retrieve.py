@@ -9,10 +9,11 @@ from __future__ import annotations
 
 from itertools import groupby
 
+from rishivan.council.source_matrix import source_weight
+from rishivan.rag.authority import authority_for_slug
 from rishivan.rag.books import title_for_slug
 
 PAGE_WINDOW = 1          # pages to include on either side of each hit
-DEFAULT_N_RESULTS = 5
 
 # Chart-grounded retrieval: look each placement up in BPHS rather than the
 # question wording. Tunable POC defaults.
@@ -23,7 +24,7 @@ FACT_MAX_PAGES = 10     # cap on distinct source pages fed to the model
 def expand_to_page_window(store, hit_metadatas: list[dict], window: int = PAGE_WINDOW):
     """Widen retrieval hits to full neighbouring pages.
 
-    `store` is a VectorStore (see app.rag.vector_store). Returns
+    `store` is a VectorStore (see rishivan.rag.vector_store). Returns
     (context_text, page_groups) where page_groups is an ordered list of
     {"page_number", "text", "n_elements"} for display.
     """
@@ -101,6 +102,7 @@ def collect_chart_context(
     max_pages: int = FACT_MAX_PAGES,
     domain_filter: list[str] | None = None,
     max_queries: int | None = None,
+    domain: str | None = None,
 ):
     """Retrieve context by looking each chart fact up in the corpus.
 
@@ -111,6 +113,11 @@ def collect_chart_context(
 
     When ``domain_filter`` is provided (e.g. ``["core", "prediction"]``), only
     books tagged with those domains are searched.
+
+    ``domain`` is the client life domain the question routed to. It weights each page by
+    Eight Rishis §15's Book × Rishi matrix, which is the only signal available here: a
+    page carries no per-rule affinity, so without §15 a Muhurta text ranks the same for
+    a question about identity as for one about timing an event.
     """
     queries = _fact_queries(question, facts, max_queries)
     if not queries:
@@ -124,7 +131,12 @@ def collect_chart_context(
     else:
         all_hits = store.search_batch(embeddings, per_query_k)
 
-    hits_per_page: dict[tuple[int, int], int] = {}
+    # Ranking score per page: specificity (how many distinct chart facts hit
+    # it) x source authority (see rishivan.rag.authority) — a demo-scaled
+    # echo of the main backend's P3 retrieval philosophy
+    # (score = specificity x source_authority x confidence), adapted here
+    # since this page-based POC has no per-hit confidence to multiply by.
+    page_score: dict[tuple[int, int], float] = {}
     first_seen: dict[tuple[int, int], int] = {}
     order = 0
 
@@ -135,7 +147,7 @@ def collect_chart_context(
             m = h["metadata"]
             question_pages.append((m["document_id"], m["page_number"]))
 
-    # Rank the rest of the pages by how many chart facts hit them
+    # Rank the rest of the pages by specificity x authority
     for hits in all_hits[1:]:
         seen_this_query: set[tuple[int, int]] = set()
         for h in hits:
@@ -144,7 +156,12 @@ def collect_chart_context(
             if key in seen_this_query:
                 continue
             seen_this_query.add(key)
-            hits_per_page[key] = hits_per_page.get(key, 0) + 1
+            slug = m.get("book_slug")
+            # authority x §15 relevance: how authoritative this book is, and how
+            # relevant it is to what was actually asked.
+            page_score[key] = page_score.get(key, 0.0) + authority_for_slug(
+                slug
+            ) * source_weight(slug, domain)
             if key not in first_seen:
                 first_seen[key] = order
                 order += 1
@@ -154,8 +171,8 @@ def collect_chart_context(
     if question_pages:
         final_pages.append(question_pages[0])  # Force-include user's question match
 
-    # Add other high-density fact pages up to max_pages
-    for fp in sorted(hits_per_page, key=lambda k: (-hits_per_page[k], first_seen[k])):
+    # Add other high-scoring fact pages up to max_pages
+    for fp in sorted(page_score, key=lambda k: (-page_score[k], first_seen[k])):
         if len(final_pages) >= max_pages:
             break
         if fp not in final_pages:
@@ -168,32 +185,3 @@ def collect_chart_context(
 
     # window=0: these pages already give breadth; no neighbour expansion needed.
     return expand_to_page_window(store, hit_metadatas, window=0)
-
-
-def build_answer_prompt(query: str, context_text: str, chart_facts=None) -> str:
-    """Assemble the generation prompt (natural, cited, complete answers)."""
-    facts_block = ""
-    if chart_facts:
-        facts_lines = "\n".join(f"- {f}" for f in chart_facts)
-        facts_block = (
-            "\n\nQUERENT'S CHART FACTS (ground truth — do NOT recompute or invent "
-            f"placements; interpret these against the source text):\n{facts_lines}"
-        )
-
-    guidance = (
-        "You are a knowledgeable Vedic astrology scholar answering from classical "
-        "texts.\n\n"
-        "Answer the question directly and naturally, as an expert would, using ONLY "
-        "the information in the source excerpts below.\n"
-        "- Give a complete answer. If the answer is a list (e.g. names or values), "
-        "provide the full list, not a partial one.\n"
-        "- Cite the page number(s) you drew from, naturally in-line, "
-        'e.g. "(Page 24)".\n'
-        "- If the question was asked in Hindi or Hinglish, reply in the same language "
-        "and script.\n"
-        "- Only if the excerpts genuinely do not contain the answer, say so plainly in "
-        "one sentence and stop — never speculate or invent verse numbers.\n"
-    )
-    return (
-        f"{guidance}\nSources:\n{context_text}{facts_block}\n\nQuestion: {query}\n"
-    )

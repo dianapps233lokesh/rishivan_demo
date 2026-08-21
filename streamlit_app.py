@@ -175,12 +175,6 @@ def _get_vertex_client():
     return get_vertex_client()
 
 
-def _get_gemini_client(api_key: str):
-    """Not cached — key may change. Fast to init."""
-    from rishivan.council.client import get_gemini_api_client
-    return get_gemini_api_client(api_key)
-
-
 @st.cache_resource(show_spinner=False)
 def _get_store():
     try:
@@ -209,8 +203,6 @@ if _missing:
 for k, v in [
     ("history", []),
     ("prefill", ""),
-    ("backend", settings.default_backend),
-    ("gemini_api_key", settings.GEMINI_API_KEY),
     ("conversation", Conversation()),
 ]:
     if k not in st.session_state:
@@ -330,14 +322,10 @@ if ask_btn and question.strip():
         )
         st.stop()
 
-    # Backend comes from .env now that the sidebar is gone: Vertex by default,
-    # Gemini API only if a key is present.
-    backend = st.session_state.backend
     try:
-        client = (_get_gemini_client(st.session_state.gemini_api_key)
-                  if backend == "gemini" else _get_vertex_client())
+        client = _get_vertex_client()
     except Exception as exc:  # noqa: BLE001
-        st.error(f"Could not reach the AI backend ({backend}): {exc}")
+        st.error(f"Could not reach Vertex AI: {exc}")
         st.stop()
 
     # No selector in the UI — the classifier always chooses the Rishi.
@@ -366,7 +354,6 @@ if ask_btn and question.strip():
         rishi_override=rishi_override,
         birth_data=birth_data,
         query_time=dt.datetime.now(),
-        backend=backend,
         conversation=st.session_state.conversation,
     )
 
@@ -384,27 +371,44 @@ if ask_btn and question.strip():
     _steps(classify="done", chart="done", retrieve="done", generate="active")
 
     # ── Rishi header ──
+    is_warmth = bool(result.get("is_warmth"))
     conf = classification.get("confidence", 0)
     reasoning = classification.get("reasoning", "")
     supporting = classification.get("supporting_rishis", [])
 
-    st.markdown(
-        f"""<div style="display:flex;align-items:center;gap:12px;margin:18px 0 6px;">
-        <span style="font-size:2rem">{persona.emoji}</span>
-        <div>
-          <div style="font-family:'Cinzel',serif;color:{persona.color};font-size:1.4rem;font-weight:600">
-            {persona.display_name} has entered the sanctum
-          </div>
-          <div style="color:#5a5a80;font-size:.78rem">
-            {persona.title} · {domain_str.upper()} · {conf:.0%} confidence
-          </div>
-        </div>
-        </div>""",
-        unsafe_allow_html=True,
-    )
+    if is_warmth:
+        # A greeting or gibberish never went through classification/routing —
+        # no domain, no confidence, no reasoning to show, just a friendly
+        # host at the door.
+        st.markdown(
+            f"""<div style="display:flex;align-items:center;gap:12px;margin:18px 0 6px;">
+            <span style="font-size:2rem">{persona.emoji}</span>
+            <div>
+              <div style="font-family:'Cinzel',serif;color:{persona.color};font-size:1.4rem;font-weight:600">
+                The Council welcomes you
+              </div>
+            </div>
+            </div>""",
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            f"""<div style="display:flex;align-items:center;gap:12px;margin:18px 0 6px;">
+            <span style="font-size:2rem">{persona.emoji}</span>
+            <div>
+              <div style="font-family:'Cinzel',serif;color:{persona.color};font-size:1.4rem;font-weight:600">
+                {persona.display_name} has entered the sanctum
+              </div>
+              <div style="color:#5a5a80;font-size:.78rem">
+                {persona.title} · {domain_str.upper()} · {conf:.0%} confidence
+              </div>
+            </div>
+            </div>""",
+            unsafe_allow_html=True,
+        )
 
-    if reasoning:
-        st.caption(f"*{reasoning}*")
+        if reasoning:
+            st.caption(f"*{reasoning}*")
 
     # ── Computed timings ──
     # Shown as data, not narration. These are Swiss Ephemeris values; the model
@@ -484,6 +488,127 @@ if ask_btn and question.strip():
             if result.get("chart_facts"):
                 st.caption(f"{len(result['chart_facts'])} ground-truth facts extracted via Swiss Ephemeris")
 
+    # ── The facts this reading actually stood on ──
+    # Blueprint §21: an important conclusion must be traceable from question -> calculation
+    # -> rule -> source -> explanation. Everything below is that trail, shown to the reader
+    # rather than only visible in a log.
+    #
+    # Two representations of the same chart, doing two different jobs, and it is worth
+    # showing both: the sentences are what the language model reads and what page retrieval
+    # searches on; the tokens are the only thing a rule can be tested against.
+    chart_facts = result.get("chart_facts") or []
+    chart_tokens = result.get("chart_tokens") or {}
+    if chart_facts or chart_tokens:
+        with st.expander(
+            f"🔍 Facts used for this reading — {len(chart_facts)} statements, "
+            f"{len(chart_tokens)} machine values",
+            expanded=False,
+        ):
+            if chart_facts:
+                st.markdown("**Chart facts** — ground truth given to the Rishi, and the "
+                            "queries page retrieval searched on")
+                st.caption(
+                    "Computed locally by Swiss Ephemeris. The reading may interpret "
+                    "these; it may not change them."
+                )
+                for fact in chart_facts:
+                    st.markdown(f"- {fact}")
+            if chart_tokens:
+                st.markdown("**Machine values** — what classical rules were tested against")
+                st.caption(
+                    "A rule matches only if its condition holds exactly here. "
+                    "`house.7.lord.house = 7` means the 7th lord sits in the 7th house."
+                )
+                st.code(
+                    "\n".join(
+                        f"{name} = {value}"
+                        for name, value in sorted(chart_tokens.items())
+                    ),
+                    language=None,
+                )
+
+    # ── Matched Koonji rules ──
+    # Blueprint §21's gold standard: "If Rishivan cannot show how an important
+    # conclusion travels from user question -> calculation -> rule -> source ->
+    # validation -> final explanation, the engine is not finished." This panel is the
+    # rule -> source link, made visible to the person reading the answer rather than
+    # only to whoever reads the logs.
+    matched_rules = result.get("matched_rules") or []
+    if matched_rules:
+        with st.expander(
+            f"📜 {len(matched_rules)} classical rules match this chart", expanded=False
+        ):
+            true_count = result.get("rules_true_of_chart") or len(matched_rules)
+            routing = result.get("routing") or {}
+            owners = [routing.get("primary"), *(routing.get("secondary") or [])]
+            owners = [o.upper() for o in owners if o]
+            st.caption(
+                f"{true_count} approved rules apply to this chart; the "
+                f"{len(matched_rules)} owned by "
+                f"{' + '.join(owners) if owners else 'this question'} are shown. "
+                f"Matched by exact condition test against the computed placements — "
+                f"not by similarity. Relevance is the Rishi's stated astrological "
+                f"coverage (Eight Rishis §4-11), so a rule about a house outside that "
+                f"coverage is not shown however well it matches the chart."
+            )
+            # Zero timing across a whole chart means the collection predates the
+            # `activation` payload field, not that the chart has no periods. Saying so
+            # here is the difference between a visible deployment gap and a silent one.
+            with_timing = result.get("rules_with_timing") or 0
+            if with_timing:
+                st.caption(
+                    f"{with_timing} of them record an activating period; "
+                    f"{result.get('rules_running_now') or 0} are running now."
+                )
+            else:
+                st.caption(
+                    "No rule in this collection records an activating period — "
+                    "re-run scripts/embed_rules.py to publish `activation`."
+                )
+            from rishivan.rag.describe import describe_condition
+
+            for hit in matched_rules:
+                condition = describe_condition(hit.condition)
+                owner = f" · {hit.domain.upper()}" if hit.domain else ""
+                st.markdown(
+                    f"**{hit.citation}**{owner} — because {condition}"
+                    if condition
+                    else f"**{hit.citation}**{owner}"
+                )
+                for effect in hit.effects or []:
+                    st.markdown(
+                        f"- _{effect.get('polarity')}_: {effect.get('statement')}"
+                    )
+                # Blueprint §8 rule 2, made visible: the promise and the period that
+                # activates it are separate findings, and the panel should not let a
+                # dormant rule read like a current one.
+                if hit.active is True:
+                    st.caption("⏳ activating period is RUNNING NOW")
+                elif hit.active is False:
+                    st.caption(
+                        "⏳ promise holds; its activating period is not running now"
+                    )
+                # The verse behind a collapsed toggle rather than inline. An enumeration
+                # verse like BPHS 46.25-31 holds eight branches in one paragraph, and
+                # printing it whole -- once per matched branch -- buried the clause that
+                # actually fired under the six that did not.
+                translation = (hit.source or {}).get("translation", "").strip()
+                if translation:
+                    with st.popover("source verse"):
+                        st.caption(translation)
+                if hit.sensitivities:
+                    st.caption(
+                        "⚠ traditional indication, not a prediction — "
+                        + ", ".join(sorted(hit.sensitivities))
+                    )
+    elif result.get("chart_facts"):
+        # Silence here would read as "the books say nothing", when the truth is that
+        # only part of one book has been approved into the rule base so far.
+        st.caption(
+            "No classical rule in the approved rule base matched this chart — this "
+            "reading comes from source passages only."
+        )
+
     # ── Relevant divisional charts ──
     # Beyond D1, only the vargas this specific question actually needed were
     # computed (see orchestrator.py — the classifier decides relevance per
@@ -523,6 +648,8 @@ if ask_btn and question.strip():
         else:
             answer_ph = st.empty()
             answer = ""
+            # A greeting doesn't need the Rishi's philosophical sign-off line.
+            sign_off_html = "" if is_warmth else f'<div class="sign-off">— {persona.sign_off}</div>'
 
             for chunk in answer_stream:
                 answer += chunk
@@ -536,12 +663,36 @@ if ask_btn and question.strip():
     </div>
   </div>
   <div class="answer-body">{_md(answer)}</div>
-  <div class="sign-off">— {persona.sign_off}</div>
+  {sign_off_html}
 </div>""",
                     unsafe_allow_html=True,
                 )
 
             _steps(classify="done", chart="done", retrieve="done", generate="done")
+
+            # ── Who contributed ──
+            # The supporting Rishis computed rather than spoke, so there is nothing
+            # to generate here and nothing to wait for — every value below was
+            # already established deterministically during the consultation.
+            contributors = result.get("contributors") or []
+            if contributors:
+                with st.expander(
+                    f"🔭 {len(contributors)} Rishis contributed to this reading",
+                    expanded=False,
+                ):
+                    st.caption(
+                        "Each contributor computes; only the primary Rishi speaks. "
+                        "Values here are deterministic, not generated."
+                    )
+                    for entry in contributors:
+                        persona = get_persona(entry["rishi"])
+                        st.markdown(f"**{persona.display_name}** — {persona.title}")
+                        for label, value in (entry.get("computed") or {}).items():
+                            st.markdown(f"- {label}: `{value}`")
+                        if entry.get("rules"):
+                            st.markdown(f"- {entry['rules']} matched rules supplied")
+                        if entry.get("note"):
+                            st.caption(entry["note"])
 
             page_groups = result.get("sources", [])
 
@@ -589,11 +740,12 @@ if ask_btn and question.strip():
                 "rishi": rishi_name, "domain": domain_str,
             })
 
-            st.caption(
-                "Rishivan shares traditional Vedic interpretation for reflection "
-                "and guidance. It is not medical, legal, or financial advice — "
-                "please consult a qualified professional for those decisions."
-            )
+            if not is_warmth:
+                st.caption(
+                    "Rishivan shares traditional Vedic interpretation for reflection "
+                    "and guidance. It is not medical, legal, or financial advice — "
+                    "please consult a qualified professional for those decisions."
+                )
 
 # ── History ───────────────────────────────────────────────────────────────────
 if st.session_state.history:
