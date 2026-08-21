@@ -2,7 +2,7 @@
 
 Derived deterministically from the Moon's nakshatra at birth. Pure arithmetic;
 no LLM. Produces the mahadasha timeline and the currently-running
-maha/antar/pratyantar periods for a given moment.
+periods running at a given moment, from mahadasha down to prana.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ class Period:
     lord: str
     start: datetime
     end: datetime
-    level: str              # "maha" | "antar" | "pratyantar"
+    level: str              # one of DASHA_LEVELS
 
     def contains(self, when: datetime) -> bool:
         return self.start <= when < self.end
@@ -74,23 +74,46 @@ def _sub_periods(parent: Period, level: str) -> list[Period]:
     return subs
 
 
+SUB_LEVELS: tuple[str, ...] = ("antar", "pratyantar", "sookshma", "prana")
+DASHA_LEVELS: tuple[str, ...] = ("maha", *SUB_LEVELS)
+"""Every level the rule corpus cites, coarsest first.
+
+Not an arbitrary depth. Across the extracted corpus the activation atoms name maha 217
+times, antar 277, pratyantar 51, sookshma 56 and prana 36 -- so stopping at pratyantar,
+as this function used to, left 92 atoms addressing a period nothing computed.
+"""
+
+
 def current_periods(
     chart: Chart, when: datetime | None = None
 ) -> dict[str, Period | None]:
-    """The maha/antar/pratyantar running at `when` (default: now, naive local)."""
+    """The periods running at `when` (default: now, naive local), by level.
+
+    Every key in `DASHA_LEVELS` is always present; a level is None when no period at
+    that depth contains `when`. Callers may therefore index a level without knowing how
+    deep the subdivision went.
+
+    Each level subdivides the one above in Vimshottari proportion, so this walks down
+    rather than recomputing from birth. It stops at the first level that contains no
+    period: at prana depth the spans are hours and the float arithmetic can land `when`
+    on a boundary, and reporting nothing is honest where guessing a neighbour is not.
+    """
     if when is None:
         when = datetime.now()
 
+    running: dict[str, Period | None] = dict.fromkeys(DASHA_LEVELS, None)
+
     maha = next((p for p in mahadasha_timeline(chart) if p.contains(when)), None)
     if maha is None:
-        return {"maha": None, "antar": None, "pratyantar": None}
+        return running
 
-    antars = _sub_periods(maha, "antar")
-    antar = next((p for p in antars if p.contains(when)), None)
+    running["maha"] = maha
+    parent = maha
+    for level in SUB_LEVELS:
+        child = next((p for p in _sub_periods(parent, level) if p.contains(when)), None)
+        if child is None:
+            break
+        running[level] = child
+        parent = child
 
-    pratyantar = None
-    if antar is not None:
-        prats = _sub_periods(antar, "pratyantar")
-        pratyantar = next((p for p in prats if p.contains(when)), None)
-
-    return {"maha": maha, "antar": antar, "pratyantar": pratyantar}
+    return running

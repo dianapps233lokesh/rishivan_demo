@@ -13,7 +13,10 @@ Dignity, conjunction and aspect come from `relations.py`, which states the Paras
 model it implements rather than assuming one universal aspect model (Blueprint §7).
 """
 
+from datetime import datetime
+
 from rishivan.astro.vocab import EMITTED_SCOPES
+from rishivan.chart.dasha import current_periods
 from rishivan.chart.ephemeris import RASHI_LORDS, Chart
 
 SIGN_TOKEN_NAME: dict[str, str] = {
@@ -149,13 +152,53 @@ are D1-from-lagna, 15 from_sun, 2 from_moon, none a varga. When a book does, wir
 """
 
 
-def all_chart_tokens(chart: Chart) -> dict[str, int | str]:
+def dasha_tokens(
+    chart: Chart, when: datetime | None = None
+) -> dict[str, int | str]:
+    """The running Vimshottari periods as fact tokens: `dasha.{level}.lord` -> planet.
+
+    The one token family that is a function of a MOMENT as well as a chart, which is why
+    it is not part of `chart_tokens` and why `all_chart_tokens` takes `when`. Everything
+    else here is fixed at birth.
+
+    `astro/vocab.py` has declared `dasha_of -> dasha.{level}.lord` since the vocabulary
+    was frozen, but nothing emitted it, so 636 activation atoms across the corpus
+    addressed a token the chart never produced -- and a rule whose activation cannot be
+    evaluated is indistinguishable from a rule with no timing at all. Blueprint §8
+    rule 2 is exactly that distinction.
+
+    A level absent from the result is a level with no period running (before birth, or
+    past the end of the cycle). Absence is deliberate: `match.engine` treats an unknown
+    token as unmatched, so a rule degrades to "cannot say" rather than to a false
+    activation.
+    """
+    tokens: dict[str, int | str] = {}
+    for level, period in current_periods(chart, when).items():
+        if period is None:
+            continue
+        # `Period.lord` is the ephemeris display name ("Saturn"); the rule vocabulary is
+        # lowercase. An exact comparison across that difference matches nothing.
+        tokens[f"dasha.{level}.lord"] = PLANET_TOKEN_NAME.get(
+            period.lord, period.lord.lower()
+        )
+    return tokens
+
+
+def all_chart_tokens(
+    chart: Chart, when: datetime | None = None
+) -> dict[str, int | str]:
     """Every token across every supported scope, merged — what the matcher consumes.
 
     Prefer this to `chart_tokens`: a caller merging scopes by hand can forget one, and a
     forgotten scope means those rules match nothing while every number looks healthy.
+
+    `when` dates the timing tokens and defaults to now. It is optional so that existing
+    natal callers keep working, but note that a caller who wants the periods running at
+    a moment other than now must say so -- silently defaulting is right for a reading
+    cast today and wrong for a backtest.
     """
     tokens: dict[str, int | str] = {}
     for scope in SUPPORTED_SCOPES:
         tokens.update(chart_tokens(chart, scope=scope))
+    tokens.update(dasha_tokens(chart, when))
     return tokens
