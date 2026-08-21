@@ -143,7 +143,32 @@ rishivan/
 
 ## Data it expects
 
-A Qdrant collection (default `rishivan_docs`) of 768-dimension vectors, with
-each point carrying `document_id`, `page_number`, `element_index`, `book_slug`
-and `book_domain` in its payload. Ingestion lives in the main Rishivan backend;
-this app only reads.
+**Two** Qdrant collections, both 768-dimension. The app only reads; ingestion
+lives in the main Rishivan backend and in `scripts/`.
+
+| Collection | Holds | Payload keys |
+|---|---|---|
+| `rishivan_docs` | book pages, for passage retrieval | `document_id`, `page_number`, `element_index`, `book_slug`, `book_domain` |
+| `rishivan_docs_rules` | compiled Koonji rules, for exact matching | `rule_key`, `condition`, `effects`, `source`, `life_domains`, `rishi_affinity`, `modifiers`, `exceptions`, `remedies`, `activation`, `school`, `rule_category`, `tier` |
+
+The rules collection name is derived, not configured: `VECTOR_COLLECTION` plus
+`_rules`. Setting `VECTOR_COLLECTION` alone points both lanes at the right place.
+
+### The rules collection must be current
+
+`activation` — the atoms that say WHEN a rule fires — was added after some
+collections were built. A collection missing it still answers, and every rule
+silently reports "no activating period", so no reading can distinguish a natal
+promise from a period running today.
+
+Re-publish it from a machine that can reach **both** Postgres and Qdrant (the
+embedder reads approved rules from Postgres; Streamlit Cloud never touches it):
+
+```bash
+python -m scripts.embed_rules --dry-run   # check the count first
+python -m scripts.embed_rules
+```
+
+Verify in the deployed app: ask a "when" question and open the rules panel. It
+must read *"N of them record an activating period"*. If it says *"No rule in
+this collection records an activating period"*, the collection is stale.
