@@ -269,7 +269,7 @@ fragments, none of them per-Rishi:
 | Rule library | `rule` table, not partitioned by Rishi |
 | Source mapping | `rule.source` — book/chapter/verse. `DONE` |
 | Modifiers | extraction schema captures them; `match/engine.py` honours `cancel`. `PARTIAL` |
-| Timing layer | `timing.activation_factors` extracted; **never evaluated** |
+| Timing layer | `timing.activation_factors` extracted, published and **evaluated** against `dasha.*` tokens; a matched rule is labelled running / not running / no period recorded |
 | Cross-Rishi triggers | nowhere |
 | Output schema | nowhere (prose only) |
 | Confidence | column exists, uniformly 0.5 |
@@ -387,7 +387,7 @@ what would let a "when" question be answered differently from a "whether" questi
 | `CONCEPTS` | `ABSENT` — **never extracted**; derivable from atoms |
 | `CONDITIONS` | `DONE` — machine-readable, compiled to `rule_atom` |
 | `MODIFIERS` | `PARTIAL` — extracted; only `cancel` is honoured at match time |
-| `TIMING` | `PARTIAL` — extracted as `activation_factors`; never evaluated |
+| `TIMING` | `DONE` — `activation_factors` evaluated by `satisfies` against the running Vimshottari periods, all five levels |
 | `EXCEPTIONS` | `DONE` — extracted and honoured by `applies()` |
 | `RESULT` | `DONE` — `effects[]` with polarity/strength/statement |
 | `SOURCE` | `DONE` — book, chapter, verse, page span |
@@ -422,7 +422,7 @@ what would let a "when" question be answered differently from a "whether" questi
 | # | Rule | Status | Note |
 |---|---|---|---|
 | 1 | Never interpret one factor in isolation | `PARTIAL` | multi-atom conditions yes; no corroboration requirement |
-| 2 | **Separate potential from timing** | `PARTIAL` | enforced at extraction — timing atoms are *moved* out of `formation` — but timing is never evaluated, so "when" is unanswerable |
+| 2 | **Separate potential from timing** | `DONE` | timing atoms are moved out of `formation` at extraction AND evaluated at query time; the answer distinguishes a promise from a running period, and `active=None` keeps "no period recorded" distinct from "not running" |
 | 3 | Separate calculation from interpretation | `DONE` | the strongest part of the build |
 | 4 | Hierarchy of evidence | `PARTIAL` | page authority weights; no rule-level tier |
 | 5 | Never mix schools silently | `PARTIAL` | `school` column exists; only one school present, so untested |
@@ -441,7 +441,7 @@ The flow you pasted. Stage by stage:
 | Stage | Status |
 |---|---|
 | User question | `DONE` |
-| Intent = Marriage + Timing | `PARTIAL` — topic yes; timing only as a dasha *level*, never as an intent that changes retrieval |
+| Intent = Marriage + Timing | `PARTIAL` — topic yes; a timing intent now reorders retrieval toward rules whose period is running, but does not yet compute the *window* (start/end dates) |
 | Relevant concepts (7th/7L/Venus/Jupiter/D9/Darakaraka/Upapada) | `PARTIAL` — the Parashari half is now live (7th, 7th lord, Venus, Jupiter); D9 needs varga tokens and Darakaraka/Upapada are blocked |
 | Select schools (Parashari + Jaimini + KP + Nadi) | `BLOCKED` — one school exists |
 | Calculate chart facts | `DONE` |
@@ -605,8 +605,10 @@ Ordered by evidence-per-unit-effort, given the corpus we hold.
 6. **Secondary Rishis contribute evidence** (ER §1, §12), not just a prose voice. `M`
 7. **Tokenise divisional charts** — unblocks six Rishis' stated coverage; the charts
    already compute. `M`
-8. **Timing: join dasha to `timing.activation_factors`** (BP §8 rule 2). Makes "when"
-   answerable at all. `M`
+8. ~~**Timing: join dasha to `timing.activation_factors`**~~ — `DONE`. The chart emits
+   `dasha.{maha,antar,pratyantar,sookshma,prana}.lord`, the embedder publishes
+   `activation`, and `satisfies` evaluates it. What remains is the *window*: a rule can
+   now say its period is running, not when the period starts and ends.
 9. **`CONCEPTS` and `AUTHORITY` on rules** (BP §6). `S`
 10. **Answer contract** (BP §19): concepts, school, timing, uncertainty into the structure. `L`
 
