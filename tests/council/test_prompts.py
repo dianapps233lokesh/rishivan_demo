@@ -99,3 +99,55 @@ def test_a_rule_carries_its_tier_and_school():
     text = rule_context([hit])
     assert "S3" in text
     assert "prashna" in text
+
+
+# ── Activation labelling (Blueprint §8 rule 2) ────────────────────────────────
+
+
+class _Hit:
+    """A rule as `rule_context` sees it."""
+
+    def __init__(self, active=None, citation="BPHS 7.1"):
+        self.active = active
+        self.citation = citation
+        self.tier = "S0"
+        self.school = "parashari"
+        self.source = {"translation": "the 7th lord in the 7th gives a happy marriage"}
+        self.effects = [{"polarity": "favourable", "statement": "a happy marriage"}]
+
+
+def test_a_running_rule_is_labelled_as_running():
+    from rishivan.council.prompts import rule_context
+
+    rendered = rule_context([_Hit(active=True)])
+    assert "RUNNING NOW" in rendered
+
+
+def test_a_dormant_rule_is_labelled_as_not_running():
+    """The defect this closes: a rule whose activation period is years away read
+    identically to one running today, so the model could only imply timing it had no
+    basis for."""
+    from rishivan.council.prompts import rule_context
+
+    rendered = rule_context([_Hit(active=False)])
+    assert "NOT RUNNING" in rendered
+
+
+def test_a_rule_with_no_recorded_timing_is_not_labelled_either_way():
+    """A pure natal promise. Labelling it "not running" would assert something the
+    corpus never recorded."""
+    from rishivan.council.prompts import rule_context
+
+    rendered = rule_context([_Hit(active=None)])
+    # The guidance explains the labels, so match the per-rule marker rather than the
+    # word.
+    assert "TIMING:" not in rendered
+
+
+def test_the_guidance_tells_the_model_what_the_label_means():
+    """A label the prompt does not explain is a label the model will interpret for
+    itself, which is how "not running" becomes "will not happen"."""
+    from rishivan.council.prompts import RULE_GUIDANCE
+
+    assert "RUNNING NOW" in RULE_GUIDANCE
+    assert "promise" in RULE_GUIDANCE.lower()

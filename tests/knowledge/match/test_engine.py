@@ -5,7 +5,7 @@ crash -- it is a rule that quietly matches the wrong chart, which no error surfa
 no count reveals.
 """
 
-from rishivan.knowledge.match.engine import satisfies
+from rishivan.knowledge.match.engine import _atom_holds, satisfies
 
 # Saturn in the 7th, the 7th lord in the 6th, the Moon in Cancer in the 4th, the 8th
 # house empty. A hand-written chart rather than a computed one, so each assertion below
@@ -339,3 +339,81 @@ def test_a_rule_with_no_exceptions_is_unaffected():
 
     assert blockers({"condition": {}, "exceptions": [], "modifiers": []}, CHART) == []
     assert blockers({}, CHART) == []
+
+
+# ── Timing atoms (Blueprint §8 rule 2) ───────────────────────────────────────
+
+
+def test_a_dasha_atom_holds_when_that_lord_is_running():
+    """`OBJECT_FIELD` mapped `dasha_of` to `level`, so `_atom_holds` fetched
+    `dasha.maha.lord` -- a planet name -- and compared it against the string "maha".
+    Every dasha atom in the corpus was therefore false, and once the tokens existed it
+    would have stayed false with nothing to show why."""
+    tokens = {"dasha.maha.lord": "saturn"}
+    atom = {"type": "dasha_of", "planet": "saturn", "level": "maha"}
+    assert _atom_holds(atom, tokens) is True
+
+
+def test_a_dasha_atom_fails_when_a_different_lord_is_running():
+    tokens = {"dasha.maha.lord": "jupiter"}
+    atom = {"type": "dasha_of", "planet": "saturn", "level": "maha"}
+    assert _atom_holds(atom, tokens) is False
+
+
+def test_a_dasha_atom_reads_the_level_it_names():
+    """The level addresses the token. Saturn's ANTAR dasha running is not Saturn's
+    MAHA dasha running, and conflating them activates a rule years early."""
+    tokens = {"dasha.maha.lord": "jupiter", "dasha.antar.lord": "saturn"}
+    assert _atom_holds(
+        {"type": "dasha_of", "planet": "saturn", "level": "antar"}, tokens
+    ) is True
+    assert _atom_holds(
+        {"type": "dasha_of", "planet": "saturn", "level": "maha"}, tokens
+    ) is False
+
+
+def test_a_dasha_atom_with_no_planet_never_holds():
+    """11 corpus atoms name a level and no planet -- "in the mahadasha" with the lord
+    left to the verse's own subject. Unresolvable here, and an unknown token must never
+    read as agreement."""
+    tokens = {"dasha.maha.lord": "saturn"}
+    assert _atom_holds({"type": "dasha_of", "level": "maha"}, tokens) is False
+
+
+def test_a_dasha_atom_never_holds_on_a_chart_with_no_dasha_tokens():
+    """A natal-only token set. Before the tokens existed this was every call."""
+    assert _atom_holds(
+        {"type": "dasha_of", "planet": "saturn", "level": "maha"},
+        {"planet.saturn.house": 7},
+    ) is False
+
+
+def test_activation_factors_are_evaluated_by_satisfies_unchanged():
+    """`timing.activation_factors` carries the same {atoms, combinator} shape as a
+    condition, so the exact evaluator already covers it -- no second matcher, and no
+    second place for the semantics to drift."""
+    tokens = {"dasha.maha.lord": "saturn", "dasha.antar.lord": "mercury"}
+    activation = {
+        "combinator": "all",
+        "atoms": [
+            {"type": "dasha_of", "planet": "saturn", "level": "maha"},
+            {"type": "dasha_of", "planet": "mercury", "level": "antar"},
+        ],
+    }
+    assert satisfies(activation, tokens) is True
+
+    activation["atoms"][1]["planet"] = "venus"
+    assert satisfies(activation, tokens) is False
+
+
+def test_an_any_combinator_activation_needs_only_one_period():
+    """11 corpus activations use `any` -- "in the dasha of the 7th lord or the 2nd"."""
+    tokens = {"dasha.maha.lord": "saturn"}
+    activation = {
+        "combinator": "any",
+        "atoms": [
+            {"type": "dasha_of", "planet": "saturn", "level": "maha"},
+            {"type": "dasha_of", "planet": "venus", "level": "maha"},
+        ],
+    }
+    assert satisfies(activation, tokens) is True

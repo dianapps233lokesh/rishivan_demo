@@ -43,3 +43,22 @@ def test_lens_is_gone():
 
     with pytest.raises(ModuleNotFoundError):
         importlib.import_module("rishivan.council.lens")
+
+
+# ── The timing tokens must be dated by the reading, not by the clock ──────────
+
+
+def test_the_orchestrator_dates_its_tokens_with_the_query_time():
+    """`all_chart_tokens(chart)` silently defaults to now. Right for a reading cast
+    today and wrong for every other caller -- a Prashna cast for a stated moment, or a
+    backtest, would have been matched against today's dasha while every other token
+    came from the stated one. Asserted on the source because the call sits inside a
+    vector-store branch no unit test reaches."""
+    from pathlib import Path
+
+    source = Path("rishivan/council/orchestrator.py").read_text()
+    assert "all_chart_tokens(chart)" not in source, (
+        "the rule-matching tokens are undated, so timing rules are evaluated "
+        "against the wall clock rather than the reading's moment"
+    )
+    assert "all_chart_tokens(chart, when=" in source

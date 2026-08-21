@@ -198,6 +198,17 @@ condition of each one has been tested and holds for this chart.
   question, say so plainly and rely on the passages instead.
 - Never state a health diagnosis, a treatment, or death as a certainty. These are
   traditional interpretations; present them with their uncertainty intact.
+
+Some rules carry a TIMING label, which is about the period, never about the promise:
+- "RUNNING NOW" — the dasha period this rule needs is running at this moment. This is
+  the strongest thing you can say about timing, and the only case in which you may speak
+  of the effect as current.
+- "NOT RUNNING" — the rule holds for this chart but the period that activates it is not
+  running now. The promise stands; only its timing does not. Say so in those terms. Do
+  NOT read it as the effect being cancelled, denied, or impossible.
+- No timing label — the rule records no activating period at all. Say nothing about when.
+
+Never infer a date, an age or a year that the labels above do not state.
 """
 """The LLM's job description where rules are concerned.
 
@@ -289,7 +300,7 @@ def contributor_context(reports) -> str:
 
 
 def rule_context(hits) -> str:
-    """Render matched rules for the prompt: citation, source text, stated outcome.
+    """Render matched rules for the prompt: citation, source text, outcome, timing.
 
     The translation is included deliberately. A citation whose text the model cannot see is
     one it has to take on trust, and taking a citation on trust is indistinguishable from
@@ -304,11 +315,22 @@ def rule_context(hits) -> str:
             f"[{effect.get('polarity')}] {effect.get('statement')}"
             for effect in (getattr(hit, "effects", None) or [])
         )
+        # Three states, not two. `None` is a rule that records no activating period, and
+        # labelling that "not running" would assert what the corpus never said.
+        active = getattr(hit, "active", None)
+        timing = ""
+        if active is True:
+            timing = "\n  TIMING: RUNNING NOW — the period this rule needs is current."
+        elif active is False:
+            timing = (
+                "\n  TIMING: NOT RUNNING — the promise holds for this chart, the "
+                "activating period does not."
+            )
         blocks.append(
             f"RULE {index} — {getattr(hit, 'citation', '')} "
             f"[{getattr(hit, 'tier', 'S5')} · {getattr(hit, 'school', 'unknown')}]\n"
             f'  The text says: "{(source.get("translation") or "").strip()}"\n'
-            f"  Stated outcome: {effects or 'none recorded'}"
+            f"  Stated outcome: {effects or 'none recorded'}{timing}"
         )
     return RULE_GUIDANCE + "\n" + "\n\n".join(blocks)
 

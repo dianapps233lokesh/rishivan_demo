@@ -43,7 +43,9 @@ SUBJECT_FIELD: dict[str, str] = {
     "aspected_by": "planet",
     "dignity_is": "planet",
     "house_is_empty": "house",
-    "dasha_of": "planet",
+    # The LEVEL addresses the token (`dasha.{level}.lord`) and the planet is the value
+    # asserted against it, exactly as `lord_of` addresses `house.{lord_of}.lord.house`.
+    "dasha_of": "level",
     "transit_over": "planet",
 }
 
@@ -57,7 +59,7 @@ OBJECT_FIELD: dict[str, str] = {
     "aspected_by": "target",
     "dignity_is": "dignity",
     "house_is_empty": "house",
-    "dasha_of": "level",
+    "dasha_of": "planet",
     "transit_over": "house",
 }
 """Which field carries the asserted VALUE rather than the subject.
@@ -65,6 +67,12 @@ OBJECT_FIELD: dict[str, str] = {
 `aspected_by` is the one that reads backwards: `planet` casts the aspect and `target`
 receives it, so the target is the object. `ARGUMENT_SEMANTICS` in the extraction prompt
 spells this out because the model inverted it in a real run.
+
+`dasha_of` read backwards too, and far more quietly. Its token is `dasha.{level}.lord`,
+whose value is a PLANET, so mapping the object to `level` made `_atom_holds` compare a
+planet name against the string "maha" -- false for every dasha atom in the corpus, with
+no error to show why. The level is the subject because it addresses the token, the same
+way `lord_of` does for `house.{lord_of}.lord.house`.
 """
 
 _HOUSE_SUBJECT_TYPES = frozenset({"house_is_empty"})

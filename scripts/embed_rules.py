@@ -178,6 +178,16 @@ async def main(argv: list[str] | None = None) -> int:
             # BP §4 level 5: potential vs timing. A "when" question and a "whether"
             # question are different reasoning problems (§8 rule 2).
             "rule_category": (rule.effect or {}).get("rule_category") or "formation",
+            # The atoms that say WHEN the promise fires -- 393 rules carry them, 343 of
+            # category `timing`. Compiled and stored in Postgres from the first
+            # extraction and never published here, so no consumer could tell a running
+            # period from a dormant one and every "when" question was answered from the
+            # promise alone. Fourth field lost at this boundary after `modifiers`,
+            # `exceptions` and `remedies`.
+            "activation": json.dumps(
+                ((rule.effect or {}).get("timing") or {}).get("activation_factors")
+                or {}
+            ),
             # BP §12 tier, for §8 rule 4's hierarchy of evidence. Derived from the
             # rule's own book rather than stored on `rule`, which has no tier column --
             # this repo does not own that schema.

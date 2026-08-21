@@ -17,6 +17,7 @@ be a second thing to drift.
 import json
 from dataclasses import dataclass, field
 
+from rishivan.council.routing import APPLICATION_TIMING
 from rishivan.knowledge.concepts import concepts_of
 from rishivan.rag.relevance import domain_relevance
 
@@ -39,6 +40,15 @@ AFFINITY_WEIGHT = 0.3
 affinity says what the rule's OUTCOME is about, coverage says what its CONDITION is
 about. BPHS 26.74 is a 7th-house rule whose effects span wives, wealth and character, and
 affinity is what prefers it for a marriage question over a 7th-house rule about money."""
+
+ACTIVATION_BONUS = 0.35
+"""Weight of a currently-running activation period, on a timing question only.
+
+Above `APPLICATION_BONUS`: being the right CATEGORY of rule is weaker evidence than
+having the period actually running. Never applied to a whether-question, and never
+subtracted from a dormant rule -- §8 rule 2 makes promise and timing different problems,
+not a hierarchy, and the promise is still the evidence that there is anything to time.
+"""
 
 APPLICATION_BONUS = 0.25
 """Preference for a rule whose `rule_category` matches the question's application type
@@ -77,6 +87,19 @@ class RuleHit:
     hedge even when the rule is admissible."""
     merged_from: list[str] = field(default_factory=list)
     """Rule keys folded in by `merge_siblings`."""
+    activation: dict = field(default_factory=dict)
+    """Blueprint §6's `timing.activation_factors` — the atoms that say WHEN this rule
+    fires. Same `{atoms, combinator}` shape as `condition`, so `satisfies` evaluates it
+    with no second matcher to drift."""
+    active: bool | None = None
+    """Whether the activation holds at the moment the reading was cast.
+
+    Three states, and the third is the point. `None` means no activation was recorded —
+    a pure natal promise, where "not running" is not a claim anyone can make. `False`
+    means the rule records a period and that period is not running. Collapsing the two
+    would report every promise as dormant, which is Blueprint §8 rule 2 inverted rather
+    than observed.
+    """
     remedies: list[str] = field(default_factory=list)
     """Blueprint §6's REMEDIES field. Extracted and stored in Postgres from the start,
     but dropped at the Qdrant boundary until now, so the remedy contributor had nothing
@@ -118,6 +141,7 @@ def _payload_to_hit(payload: dict, relevance: float) -> RuleHit | None:
             rule_category=payload.get("rule_category") or "formation",
             tier=payload.get("tier") or "S5",
             remedies=json.loads(payload.get("remedies") or "[]"),
+            activation=json.loads(payload.get("activation") or "{}"),
         )
     except (KeyError, TypeError, ValueError):
         return None
@@ -148,6 +172,7 @@ def rank_score(
     rule_vector: list[float],
     rule_category: str = "formation",
     tier: str = "S5",
+    active: bool | None = None,
 ) -> tuple[float, float, str | None]:
     """`(relevance, score, domain)` for one true rule.
 
@@ -172,6 +197,11 @@ def rank_score(
         getattr(routing, "application", "potential"), "formation"
     )
     application = APPLICATION_BONUS * (1.0 if rule_category == wanted else 0.0)
+    # A running period only matters to a question that asked WHEN. "Will I marry?" asks
+    # about the promise, and letting activation reorder it would answer a different
+    # question than the one put.
+    asked_when = getattr(routing, "application", "potential") == APPLICATION_TIMING
+    activation = ACTIVATION_BONUS if (asked_when and active) else 0.0
     from rishivan.rag.authority import TIER_WEIGHT
 
     score = (
@@ -179,6 +209,7 @@ def rank_score(
         + AFFINITY_WEIGHT * outcome
         + TOPICAL_WEIGHT * topical
         + application
+        + activation
         + TIER_WEIGHT_FACTOR * TIER_WEIGHT.get(tier, TIER_WEIGHT["S5"])
     )
     return relevance, score, domain
@@ -211,6 +242,7 @@ def rank_true_rules(
             query_embedding, getattr(rule, "vector", None) or [],
             getattr(rule, "rule_category", "formation"),
             getattr(rule, "tier", "S5"),
+            active=getattr(rule, "active", None),
         )
         if relevance < MIN_RELEVANCE:
             continue
@@ -270,6 +302,12 @@ def merge_siblings(hits: list[RuleHit]) -> list[RuleHit]:
             if (effect.get("polarity"), effect.get("statement")) not in seen:
                 existing.effects.append(effect)
         existing.merged_from.append(hit.rule_key)
+        # Siblings share a verse and a condition but may record different periods. If
+        # any of them is running, the merged claim is running.
+        if hit.active:
+            existing.active = True
+        elif existing.active is None and hit.active is False:
+            existing.active = False
         # The union of what the siblings were about; keeping one sibling's affinity
         # would narrow the merged rule's reach for no reason.
         for domain, weight in (hit.rishi_affinity or {}).items():
@@ -291,7 +329,7 @@ def true_rules(store, tokens: dict, *, with_vectors: bool = False) -> list[RuleH
     Scrolls the whole collection — one request at 204 rules. At 50,000 the caller
     should cache the scroll per approval batch rather than per question.
     """
-    from rishivan.knowledge.match.engine import applies
+    from rishivan.knowledge.match.engine import applies, satisfies
 
     try:
         try:
@@ -318,6 +356,11 @@ def true_rules(store, tokens: dict, *, with_vectors: bool = False) -> list[RuleH
             continue
         hit.rishi_affinity = json.loads(payload.get("rishi_affinity") or "{}")
         hit.vector = point.get("vector") or []
+        # The same exact evaluator, against the same tokens. A rule with no recorded
+        # activation stays None: absence of a period is not a dormant period.
+        hit.active = (
+            satisfies(hit.activation, tokens) if hit.activation.get("atoms") else None
+        )
         hits.append(hit)
     return merge_siblings(hits)
 

@@ -469,7 +469,11 @@ def council_consult(
             )
             from rishivan.rag.rules import rank_true_rules, true_rules
 
-            tokens = all_chart_tokens(chart)
+            # Dated by the reading, not the wall clock. The dasha tokens are the only
+            # ones that move, and matching them against `now` while every other token
+            # came from `query_time` would evaluate a Prashna cast for a stated moment
+            # against today's periods.
+            tokens = all_chart_tokens(chart, when=query_time or datetime.now())
             result["chart_tokens"] = tokens
             # Split rather than calling `rules_for_question`, so the UI can report how
             # many rules were TRUE of the chart alongside how many this Rishi was shown.
