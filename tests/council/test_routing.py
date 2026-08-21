@@ -236,3 +236,39 @@ def test_an_unrouted_question_stays_unrouted():
     merged = merge_supporting(base, ["dhruvan", "tattvan"])
     assert merged.primary is None
     assert merged.unsupported is True
+
+
+# ── Specificity: a generic phrase must not outrank a specific one ─────────────
+
+
+def test_natural_strengths_reaches_atma():
+    """ER §4 owns "What are my strengths and weaknesses?". The table carried
+    "my strengths" but not the bare plural, so the commonest phrasing of §4's own
+    question routed nowhere at all -- §20 would report it unsupported."""
+    routing = route_question("What are my natural strengths?")
+    assert routing.primary == "atma"
+    assert routing.unsupported is False
+
+
+def test_a_named_family_member_outranks_the_generic_word_relationship():
+    """"relationship" spans every domain -- career relationships, family
+    relationships, business partners. "father" names exactly one (§8). Scoring both
+    at 1.0 left a tie that document order broke toward PREMA, so a question about a
+    parent retrieved marriage rules."""
+    routing = route_question("What is my relationship with my father?")
+    assert routing.primary == "vansh"
+    assert "prema" in routing.secondary
+
+
+def test_a_generic_phrase_still_reinforces_its_own_domain():
+    """Demoting "relationship" must not strip it of meaning: with a specific PREMA
+    term beside it the two should add up and still land on PREMA."""
+    routing = route_question("What is my relationship with my spouse?")
+    assert routing.primary == "prema"
+
+
+def test_a_generic_phrase_alone_still_routes():
+    """A demoted phrase is worth less than a specific one, not nothing -- otherwise
+    "will my relationship last?" would become an unsupported question."""
+    routing = route_question("Will my relationship last?")
+    assert routing.primary == "prema"

@@ -22,7 +22,8 @@ from dataclasses import dataclass, field
 QUESTION_KEYWORDS: dict[str, tuple[str, ...]] = {
     # §4 -- "Who am I? What is my personality? ... What are my major life themes?"
     "atma": (
-        "who am i", "personality", "my strength", "my strengths", "weakness",
+        "who am i", "personality", "my strength", "my strengths", "strengths",
+        "weakness",
         "motivates me", "my talent", "talents", "tendencies", "life direction",
         "life theme", "life themes", "self-development", "inclination",
         "what kind of person", "my nature", "temperament", "successful period",
@@ -80,6 +81,39 @@ Matched as whole-word substrings against the lowercased question. Multi-word ent
 carry more signal than single words and are the ones that disambiguate: "life purpose"
 must reach Dharma rather than Atma, and "most successful" must reach Atma at all.
 """
+
+GENERIC_PHRASES: frozenset[str] = frozenset({
+    # PREMA's, but a relationship is equally a family, business or workplace one.
+    "relationship",
+    "relationships",
+    "partner",
+    # KARMA's, but "how will this work out" is not a career question.
+    "work",
+    # YATRA's, but "move up", "move on" and "a difficult transition" are not journeys.
+    "move",
+    "moving",
+    "transition",
+})
+"""Phrases a domain lists but does not own -- they occur in every domain's questions.
+
+Scored below a one-word specific match so a named subject wins. "What is my relationship
+with my father?" tied at 1.0 between PREMA's "relationship" and VANSH's "father", and
+document order broke the tie toward PREMA -- so a question about a parent was answered
+with marriage rules. Demoting rather than deleting keeps "will my relationship last?"
+routable: worth less than a specific term, not worth nothing.
+"""
+
+GENERIC_WEIGHT = 0.5
+"""Below any specific single-word match (1.0), above nothing."""
+
+
+def _specificity(phrase: str) -> float:
+    """A phrase's score. Multi-word entries are the disambiguating ones and count per
+    word; a phrase its domain does not own counts a fraction."""
+    if phrase in GENERIC_PHRASES:
+        return GENERIC_WEIGHT
+    return 1.0 + phrase.count(" ")
+
 
 TIMING_MARKERS = re.compile(
     r"\bwhen\b|\bwhat time\b|\bwhich year|\bwhich period|\bwhat period|"
@@ -179,8 +213,9 @@ def route_question(question: str) -> Routing:
     """The client domains this question belongs to, strongest first.
 
     A phrase's specificity is its score: a two-word match counts double a one-word
-    match, because the multi-word entries are the disambiguating ones. Ties keep the
-    document's own domain order.
+    match, because the multi-word entries are the disambiguating ones, and a phrase in
+    `GENERIC_PHRASES` counts a fraction because its domain does not own it. Ties keep
+    the document's own domain order.
     """
     text = (question or "").lower()
     application = (
@@ -198,7 +233,7 @@ def route_question(question: str) -> Routing:
         hits = _hits(text, keywords)
         if not hits:
             continue
-        scores[domain] = sum(1.0 + phrase.count(" ") for phrase in hits)
+        scores[domain] = sum(_specificity(phrase) for phrase in hits)
         matched[domain] = tuple(hits)
 
     if not scores:
