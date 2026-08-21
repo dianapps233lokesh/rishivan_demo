@@ -557,13 +557,17 @@ if ask_btn and question.strip():
             with_timing = result.get("rules_with_timing") or 0
             if with_timing:
                 st.caption(
-                    f"{with_timing} of them record an activating period; "
-                    f"{result.get('rules_running_now') or 0} are running now."
+                    f"{with_timing} of these depend on a time period as well as a "
+                    f"placement, and {result.get('rules_running_now') or 0} of those "
+                    f"periods are running right now."
                 )
-            else:
+            elif settings.DEBUG:
+                # A deployment fact, not an astrological one, and no use to a seeker.
+                # Shown only in debug so a stale collection is still catchable without
+                # putting "re-run the embedder" on a client's screen.
                 st.caption(
-                    "No rule in this collection records an activating period — "
-                    "re-run scripts/embed_rules.py to publish `activation`."
+                    "No rule here records an activating period — the rules collection "
+                    "predates `activation`; re-run scripts/embed_rules.py."
                 )
             from rishivan.rag.describe import describe_condition
 
@@ -583,10 +587,11 @@ if ask_btn and question.strip():
                 # activates it are separate findings, and the panel should not let a
                 # dormant rule read like a current one.
                 if hit.active is True:
-                    st.caption("⏳ activating period is RUNNING NOW")
+                    st.caption("⏳ the period that switches this on is running now")
                 elif hit.active is False:
                     st.caption(
-                        "⏳ promise holds; its activating period is not running now"
+                        "⏳ this holds in the chart, but the period that switches it "
+                        "on is not running yet"
                     )
                 # The verse behind a collapsed toggle rather than inline. An enumeration
                 # verse like BPHS 46.25-31 holds eight branches in one paragraph, and

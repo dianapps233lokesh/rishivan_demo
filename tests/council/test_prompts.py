@@ -151,3 +151,27 @@ def test_the_guidance_tells_the_model_what_the_label_means():
 
     assert "RUNNING NOW" in RULE_GUIDANCE
     assert "promise" in RULE_GUIDANCE.lower()
+
+
+# ── Plain speech (readability without losing facts) ───────────────────────────
+
+
+def test_the_voice_is_told_to_simplify_words_and_not_content():
+    """The readability instruction has to be explicit about the boundary. "Write more
+    simply" alone invites the model to drop the placement, the period or the nakshatra
+    to make a shorter sentence -- which would quietly undo the grounding the whole
+    engine exists to provide."""
+    from rishivan.council.prompts import _CORE_RULES
+
+    assert "never drop the fact" in _CORE_RULES.lower()
+
+
+def test_the_voice_is_told_to_gloss_a_technical_term_on_first_use():
+    """A reading may say "Venus antardasha" -- the client's own documents use the
+    vocabulary and dropping it would cost credibility. What it may not do is leave a
+    seeker who has never heard the word unable to follow the sentence."""
+    from rishivan.council.prompts import _CORE_RULES
+
+    assert "antardasha" in _CORE_RULES.lower()
+    assert "first use" in _CORE_RULES.lower()
+
