@@ -551,6 +551,20 @@ if ask_btn and question.strip():
                 f"coverage (Eight Rishis §4-11), so a rule about a house outside that "
                 f"coverage is not shown however well it matches the chart."
             )
+            # Zero timing across a whole chart means the collection predates the
+            # `activation` payload field, not that the chart has no periods. Saying so
+            # here is the difference between a visible deployment gap and a silent one.
+            with_timing = result.get("rules_with_timing") or 0
+            if with_timing:
+                st.caption(
+                    f"{with_timing} of them record an activating period; "
+                    f"{result.get('rules_running_now') or 0} are running now."
+                )
+            else:
+                st.caption(
+                    "No rule in this collection records an activating period — "
+                    "re-run scripts/embed_rules.py to publish `activation`."
+                )
             from rishivan.rag.describe import describe_condition
 
             for hit in matched_rules:
@@ -564,6 +578,15 @@ if ask_btn and question.strip():
                 for effect in hit.effects or []:
                     st.markdown(
                         f"- _{effect.get('polarity')}_: {effect.get('statement')}"
+                    )
+                # Blueprint §8 rule 2, made visible: the promise and the period that
+                # activates it are separate findings, and the panel should not let a
+                # dormant rule read like a current one.
+                if hit.active is True:
+                    st.caption("⏳ activating period is RUNNING NOW")
+                elif hit.active is False:
+                    st.caption(
+                        "⏳ promise holds; its activating period is not running now"
                     )
                 # The verse behind a collapsed toggle rather than inline. An enumeration
                 # verse like BPHS 46.25-31 holds eight branches in one paragraph, and

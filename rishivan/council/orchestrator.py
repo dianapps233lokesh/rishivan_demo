@@ -92,6 +92,8 @@ def council_consult(
         "contributors": [],
         "chart_tokens": {},
         "rules_true_of_chart": 0,
+        "rules_with_timing": 0,
+        "rules_running_now": 0,
         "routing": {},
     }
 
@@ -481,6 +483,17 @@ def council_consult(
             # should be visible rather than implied.
             applicable = true_rules(rule_store, tokens)
             result["rules_true_of_chart"] = len(applicable)
+            # `activation` only reaches the payload when the embedder is re-run, and a
+            # collection that predates it parses every rule to `active=None` -- correct
+            # code, no labels, no error. Counting the rules that carried a period makes
+            # a stale index visible: zero on a "when" question is a deployment fact, not
+            # an astrological one.
+            result["rules_with_timing"] = sum(
+                1 for rule in applicable if rule.active is not None
+            )
+            result["rules_running_now"] = sum(
+                1 for rule in applicable if rule.active is True
+            )
             matched_rules = rank_true_rules(
                 applicable,
                 embed_fn([search_query])[0],

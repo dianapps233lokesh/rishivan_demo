@@ -62,3 +62,15 @@ def test_the_orchestrator_dates_its_tokens_with_the_query_time():
         "against the wall clock rather than the reading's moment"
     )
     assert "all_chart_tokens(chart, when=" in source
+
+
+def test_the_orchestrator_reports_how_many_rules_carried_timing():
+    """A stale index is the failure mode this codebase keeps hitting: `activation` only
+    reaches the payload when `scripts/embed_rules.py` is re-run, and until then every
+    rule parses to `active=None` and the timing labels silently never appear. Counting
+    them makes that visible instead of quiet -- zero timing on a "when" question means
+    the index predates the field, not that the chart has no periods."""
+    from pathlib import Path
+
+    source = Path("rishivan/council/orchestrator.py").read_text()
+    assert "rules_with_timing" in source
