@@ -53,10 +53,14 @@ def test_the_orchestrator_dates_its_tokens_with_the_query_time():
     today and wrong for every other caller -- a Prashna cast for a stated moment, or a
     backtest, would have been matched against today's dasha while every other token
     came from the stated one. Asserted on the source because the call sits inside a
-    vector-store branch no unit test reaches."""
+    vector-store branch no unit test reaches.
+
+    Reads `graph/nodes/retrieve.py`, which is where rule matching lives since the
+    orchestrator became an adapter over the graph. The guarded behaviour did not
+    move - only the file it lives in."""
     from pathlib import Path
 
-    source = Path("rishivan/council/orchestrator.py").read_text()
+    source = Path("rishivan/graph/nodes/retrieve.py").read_text()
     assert "all_chart_tokens(chart)" not in source, (
         "the rule-matching tokens are undated, so timing rules are evaluated "
         "against the wall clock rather than the reading's moment"
@@ -69,8 +73,10 @@ def test_the_orchestrator_reports_how_many_rules_carried_timing():
     reaches the payload when `scripts/embed_rules.py` is re-run, and until then every
     rule parses to `active=None` and the timing labels silently never appear. Counting
     them makes that visible instead of quiet -- zero timing on a "when" question means
-    the index predates the field, not that the chart has no periods."""
+    the index predates the field, not that the chart has no periods.
+
+    Reads `graph/nodes/retrieve.py`; see the note on the test above."""
     from pathlib import Path
 
-    source = Path("rishivan/council/orchestrator.py").read_text()
+    source = Path("rishivan/graph/nodes/retrieve.py").read_text()
     assert "rules_with_timing" in source

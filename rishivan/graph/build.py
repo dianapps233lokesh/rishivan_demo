@@ -127,6 +127,14 @@ def checkpointer_for(env: str = "demo"):
 
     In-memory for the demo: Streamlit Cloud has no Postgres, and the demo's own
     requirements deliberately exclude it.
+
+    **Not wired into `council_consult` yet, and that is deliberate.** State
+    carries `answer_stream`, a live generator, and no checkpointer can serialise
+    one - `graph.invoke` with a checkpointer raises on it, which
+    `tests/graph/test_parity.py` pins. Phase 5 resolves it properly by putting a
+    serialisable `AnswerPlan` in state and moving narration outside the graph.
+    What a resumed conversation actually needs is the earlier turn's evidence,
+    not a half-consumed stream of its prose.
     """
     from langgraph.checkpoint.memory import MemorySaver
 
