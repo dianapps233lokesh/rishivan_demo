@@ -18,19 +18,23 @@ _CHARTED_WITHOUT_BIRTH = (QueryDomain.MUHURTA, QueryDomain.PRASHNA)
 
 
 def route_after_intake(state: RishivanState) -> str:
-    """warmth · need_birth_data · chart · retrieve
+    """warmth · chart · retrieve
 
     Small talk is checked first and deliberately: "hi" from a user who has not
     entered birth details is a greeting, and asking them for a birth time is a
     worse answer than saying hello back.
+
+    There is no "ask for birth data" destination, and that is not an oversight.
+    `intake_node` rewrites a natal question with no chart into PRASHNA - the
+    moment of asking becomes the chart - so by the time this runs the domain is
+    already one that can be charted. Adding a prompt-for-input branch here would
+    be new behaviour, and Phase 1 changes control flow only.
     """
     if state["classification"].get("is_smalltalk_or_gibberish"):
         return "warmth"
 
     domain = state["query_domain"]
-    if domain == QueryDomain.NATAL:
-        return "chart" if state.get("birth_data") is not None else "need_birth_data"
-    if domain in _CHARTED_WITHOUT_BIRTH:
+    if domain == QueryDomain.NATAL or domain in _CHARTED_WITHOUT_BIRTH:
         return "chart"
     return "retrieve"
 
@@ -49,19 +53,16 @@ def route_after_chart(state: RishivanState) -> str:
 
 
 def route_chart_kind(state: RishivanState) -> str:
-    """render_numerology · render_ashtakavarga · render_dasha · render_varga ·
-    need_birth_data
+    """render_numerology · render_ashtakavarga · render_dasha · render_varga
 
-    Numerology is the one kind that needs a date rather than a moment, so it is
-    the one kind that can bounce back to asking for input.
+    Four destinations, one per kind. Numerology's missing-birth-date case is
+    handled inside its renderer rather than as a fifth destination, because the
+    orchestrator treats it as a table it could not compute - a
+    `chart_table_error` - and not as a request for more input.
     """
     kind = state["classification"].get("chart_type", "")
     if kind == "numerology":
-        return (
-            "render_numerology"
-            if state.get("birth_data") is not None
-            else "need_birth_data"
-        )
+        return "render_numerology"
     if kind == "ashtakavarga":
         return "render_ashtakavarga"
     if kind == "dasha":

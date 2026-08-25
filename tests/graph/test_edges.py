@@ -31,11 +31,13 @@ class TestAfterIntake:
         s = state(classification={"is_smalltalk_or_gibberish": True})
         assert route_after_intake(s) == "warmth"
 
-    def test_a_natal_question_without_birth_data_asks_for_it(self):
-        """Today: `if domain == NATAL and birth_data is None`. Answering a natal
-        question with no chart is answering a different question."""
+    def test_a_natal_question_without_birth_data_still_charts(self):
+        """`council_consult:138` rewrites the domain to PRASHNA rather than
+        asking for a birth time - the moment of asking becomes the chart. The
+        rewrite is a state write, so it lives in `intake_node`; by the time this
+        router runs the domain is already chartable."""
         s = state(query_domain=QueryDomain.NATAL, birth_data=None)
-        assert route_after_intake(s) == "need_birth_data"
+        assert route_after_intake(s) == "chart"
 
     def test_a_natal_question_with_birth_data_proceeds(self):
         s = state(query_domain=QueryDomain.NATAL, birth_data=object())
@@ -54,9 +56,9 @@ class TestAfterIntake:
         s = state(query_domain=QueryDomain.GENERAL, birth_data=None)
         assert route_after_intake(s) == "retrieve"
 
-    def test_smalltalk_wins_over_a_missing_chart(self):
-        """Order matters: "hi" from a user with no birth data is a greeting, not
-        a request for birth details."""
+    def test_smalltalk_wins_over_everything_else(self):
+        """Order matters: "hi" from a user with no birth data is a greeting, and
+        casting a prashna chart for it would be absurd."""
         s = state(
             classification={"is_smalltalk_or_gibberish": True},
             query_domain=QueryDomain.NATAL, birth_data=None,
@@ -96,11 +98,12 @@ class TestChartKind:
         s = state(classification={"chart_type": kind}, birth_data=object())
         assert route_chart_kind(s) == expected
 
-    def test_numerology_without_a_birth_date_is_refused(self):
-        """Today this sets a `chart_table_error` string. It is a refusal, and a
-        refusal is a destination, not a string in a dict."""
+    def test_numerology_without_a_birth_date_still_routes_to_its_renderer(self):
+        """The orchestrator reports this as a table it could not compute, not as
+        a request for input. The renderer owns that message; the router does not
+        grow a fifth destination for it."""
         s = state(classification={"chart_type": "numerology"}, birth_data=None)
-        assert route_chart_kind(s) == "need_birth_data"
+        assert route_chart_kind(s) == "render_numerology"
 
 
 class TestAfterRetrieval:
