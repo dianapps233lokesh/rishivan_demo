@@ -576,13 +576,14 @@ Five phases; phase 1 is done.
 | Blueprint § | Item | Status | Where |
 |---|---|---|---|
 | — | Council pipeline as a graph, every branch a tested edge | `DONE (Phase 1)` | `rishivan/graph/` — 133 tests, `council_consult` 564 → 81 lines |
-| §6 | Chart-understanding engine — planet/house diagnosis before prose | `ABSENT` (Phase 2) | `FactSet` is flat atoms, correct for retrieval and useless as a diagnosis |
-| §6 | Functional benefic/malefic | `ABSENT` (Phase 2) | `functional_nature` is declared `derived` and nothing derives it — `derivation_count: 0`, so every rule resting on it evaluates INDETERMINATE |
-| §6 | Shadbala / selected strength system | `ABSENT` (Phase 2) | `strength` and `strength_band` are declared predicates that nothing emits |
+| §6 | Chart-understanding engine — planet/house diagnosis before prose | `DONE (Phase 2)` | `rishivan/chartstate/` — 98 tests, `chart_state` node in the graph |
+| §6 | Functional benefic/malefic — as diagnosis | `DONE (Phase 2)` | `chartstate/functional.py`, Parashari framework, namespaced |
+| §6 | Functional benefic/malefic — as a Koonji predicate | `BLOCKED` | Needs a general kendra/trikona doctrine verse. The corpus holds only lagna-specific commentary (Bhavartha Ratnakara ch1); generalising it is the scope inflation the extractor's validator exists to catch. So `functional_nature` stays `derived` and unsatisfied, and rules resting on it still evaluate INDETERMINATE. **Corpus acquisition, not engineering.** |
+| §6 | Shadbala / selected strength system | `PARTIAL` | `chartstate/strength.py` ships Sthana + Dig + affliction, `is_estimated=True`, scalar withheld from claims. Chesta and Kaala need ephemeris work not done here. The Koonji `strength`/`strength_band` predicates are still unemitted. |
 | §7 | Varga engine — purpose, method, evidence tier per varga | `PARTIAL` (Phase 3) | D1–D60 computable; only `D2 D7 D9 D10 D12 D30` reach the fact set, with no policy registry |
 | §7 | Birth-time confidence gate on D60 and other high-sensitivity vargas | `ABSENT` (Phase 3) | The blueprint's "must not present false precision" has no mechanism |
 | §8 | Promise → activation → trigger → peak → fading windows | `ABSENT` (Phase 3) | Vimshottari periods exist with exact start/end; the window model does not |
-| §8 | Period → activated houses / yogas / significators | `ABSENT` (Phase 3) | |
+| §8 | Period → activated houses / yogas / significators | `ABSENT` (Phase 3) | `HouseDiagnosis.dasha_active` is a first step: true when a running period lord owns or occupies the house |
 | §11 | Eight Rishis as reasoning roles returning structured evidence | `ABSENT` (Phase 4) | The eight personas are a different taxonomy and write prose |
 | §12 | Per-domain evidence hierarchies | `ABSENT` (Phase 4) | One retrieval path serves every question — the "generic scoring formula" §12 rejects |
 | §19 | AnswerPlan / AllowedClaims gate, prediction ledger | `ABSENT` (Phase 5) | Also unblocks checkpointing: a generator in state cannot be serialised |
