@@ -17,6 +17,13 @@ INSUFFICIENT = (
     "enough to answer. Saying so is the answer — I'd rather not compose "
     "something that reads like a reading and isn't one."
 )
+"""Carried in `state["message"]`, NOT streamed.
+
+`council_consult` returned `answer_stream=None` here, and `streamlit_app`
+renders its own warning for that case. Streaming this instead would put a canned
+refusal inside a Rishi answer card, avatar and sign-off included - a better
+product decision, quite possibly, but a product decision, and Phase 1 changes
+control flow only. Phase 5 owns the surface."""
 
 
 def answer_node(state: RishivanState, *, client) -> dict:
@@ -33,7 +40,7 @@ def answer_node(state: RishivanState, *, client) -> dict:
         conversation=state.get("conversation"),
         rules=rule_context(state.get("matched_rules") or []),
         life_domain=(state.get("routing") or {}).get("primary"),
-        contributors=state.get("contributors") or (),
+        contributors=state.get("contributor_reports") or (),
     )
 
     def stream() -> Generator[str, None, None]:
@@ -47,10 +54,9 @@ def answer_node(state: RishivanState, *, client) -> dict:
 
 
 def insufficient_node(state: RishivanState) -> dict:
-    """Still fills `answer_stream`, because every caller reads the answer the
-    same way and a special case here would spread to all of them."""
     return {
         "outcome": "insufficient",
         "message": INSUFFICIENT,
-        "answer_stream": iter([INSUFFICIENT]),
+        # None, deliberately - see INSUFFICIENT above.
+        "answer_stream": None,
     }

@@ -154,7 +154,7 @@ class TestCouncilRouting:
 class TestRetrieval:
     def test_it_returns_sources(self):
         s = state(routing={"universes": ["jyotisha"], "primary": "artha"})
-        out = retrieve_node(s, store=FakeStore(hits_when_filtered=True),
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
                             client=FakeClient())
         assert out["sources"]
 
@@ -163,7 +163,7 @@ class TestRetrieval:
         The fallback exists today inside the orchestrator; here it is visible."""
         store = FakeStore(hits_when_filtered=False)
         s = state(routing={"universes": ["jyotisha"], "primary": "artha"})
-        out = retrieve_node(s, store=store, client=FakeClient())
+        out = retrieve_node(s, vector_store=store, client=FakeClient())
         assert store.filtered_calls >= 1
         assert store.plain_calls >= 1
         assert out["sources"]
@@ -174,7 +174,7 @@ class TestRetrieval:
         it is reported rather than implied."""
         s = state(chart=chart, query_time=WHEN,
                   routing={"universes": ["jyotisha"], "primary": "artha"})
-        out = retrieve_node(s, store=FakeStore(hits_when_filtered=True),
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
                             client=FakeClient())
         assert out["sources"]
         assert out["rules_true_of_chart"] >= len(out["matched_rules"])
@@ -191,31 +191,60 @@ class TestRetrieval:
         monkeypatch.setattr(vs, "get_vector_store", boom)
         s = state(chart=chart, query_time=WHEN,
                   routing={"universes": ["jyotisha"], "primary": "artha"})
-        out = retrieve_node(s, store=FakeStore(hits_when_filtered=True),
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
                             client=FakeClient())
         assert out["sources"], "the pages must still come back"
         assert out["matched_rules"] == []
 
+    def test_contributors_and_their_reports_are_kept_apart(self, chart):
+        """`prompts.contributor_context` reads attributes off the reports;
+        `streamlit_app` and `run_eval` read a list of plain dicts. One key
+        cannot be both - collapsing them raised `AttributeError: 'dict' object
+        has no attribute 'rishi'` on every chart reading with a live rule
+        store."""
+        s = state(chart=chart, query_time=WHEN,
+                  routing={"universes": ["jyotisha"], "primary": "artha"})
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
+                            client=FakeClient())
+        assert all(isinstance(c, dict) for c in out["contributors"])
+        assert all(hasattr(r, "rishi") for r in out["contributor_reports"])
+
+    def test_counters_survive_a_failure_after_matching(self, chart, monkeypatch):
+        """The counters exist to make a stale index visible. Zeroing them on a
+        partial failure is the silent degradation they were built to prevent."""
+        import rishivan.rag.rules as rules_mod
+
+        monkeypatch.setattr(
+            rules_mod, "rank_true_rules",
+            lambda *a, **kw: (_ for _ in ()).throw(RuntimeError("ranker down")),
+        )
+        s = state(chart=chart, query_time=WHEN,
+                  routing={"universes": ["jyotisha"], "primary": "artha"})
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
+                            client=FakeClient())
+        assert out["matched_rules"] == []
+        assert out["rules_true_of_chart"] > 0, "the count survived the ranker"
+
     def test_it_returns_only_the_keys_it_owns(self):
         s = state(routing={"universes": ["jyotisha"], "primary": "artha"})
-        out = retrieve_node(s, store=FakeStore(hits_when_filtered=True),
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
                             client=FakeClient())
         assert set(out) <= {
-            "sources", "matched_rules", "contributors", "chart_tokens",
-            "rules_true_of_chart", "rules_with_timing", "rules_running_now",
-            "context_text",
+            "sources", "context_text", "matched_rules", "contributors",
+            "contributor_reports", "chart_tokens", "rules_true_of_chart",
+            "rules_with_timing", "rules_running_now",
         }
 
 
 class TestInsufficient:
-    def test_it_says_so_rather_than_generating(self):
+    def test_it_declines_rather_than_generating(self):
         out = insufficient_node(state())
         assert out["outcome"] == "insufficient"
-        text = "".join(out["answer_stream"])
-        assert text.strip()
+        assert out["message"].strip()
 
-    def test_it_does_not_invent_an_answer_stream_from_nothing(self):
-        """The stream exists so every caller reads the answer the same way, but
-        what it says is a refusal, not a reading."""
-        text = "".join(insufficient_node(state())["answer_stream"]).lower()
-        assert "don't" in text or "not" in text
+    def test_it_returns_no_stream(self):
+        """`council_consult` returned `answer_stream=None` here and
+        `streamlit_app` renders its own warning for that. Streaming a canned
+        refusal instead would put it inside a Rishi answer card - a product
+        decision, and Phase 1 changes control flow only."""
+        assert insufficient_node(state())["answer_stream"] is None

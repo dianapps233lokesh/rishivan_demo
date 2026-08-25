@@ -51,7 +51,7 @@ class RishivanState(TypedDict, total=False):
     chart_table_error: str | None
     relevant_chart_tables: dict
     panchang: str | None
-    nakshatra_now: str | None
+    nakshatra_now: dict | None
 
     # -- Phase 2-5 placeholders. Nodes are added later; state is not. --------
     chart_state: Any
@@ -63,6 +63,24 @@ class RishivanState(TypedDict, total=False):
     # -- retrieval ------------------------------------------------------------
     search_query: str
     sources: list
+    context_text: str
+    """The retrieved passage text handed to the prompt.
+
+    Declared here because LangGraph DISCARDS writes to undeclared channels
+    silently - no error, no warning. Omitting this key meant `retrieve_node`
+    returned the corpus text and the graph threw it away, so every answer was
+    generated with an empty context block while the sources panel still
+    rendered normally. A silent ungrounding of the whole RAG path, invisible in
+    the output. `test_state.py` now walks every node's returns against these
+    annotations for exactly this reason."""
+
+    life_domain: str | None
+    contributor_reports: tuple
+    """The `ContributorReport` objects, kept apart from the `contributors` dict
+    list. `prompts.contributor_context` does attribute access
+    (`report.computed.items()`); the dict list is the result contract that
+    `streamlit_app` and `run_eval` read. One key cannot be both."""
+
     matched_rules: list
     contributors: list
     rules_true_of_chart: int

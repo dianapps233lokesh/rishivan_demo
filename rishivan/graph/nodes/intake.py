@@ -59,7 +59,6 @@ def intake_node(
         model = model_name("flash")
 
     from rishivan.council.personas import get_persona
-    from rishivan.council.routing import route_question
 
     classification = classify(
         client, state["question"], model=model,
@@ -81,18 +80,12 @@ def intake_node(
     # read `natal` here would describe a birth chart that was never cast.
     classification["query_domain"] = domain
 
-    routing = route_question(state["question"])
-
+    # `routing` is deliberately NOT written here. `council_routing_node` owns
+    # that key and writes a different shape (with `unsupported`, without
+    # `scores`); nothing reads it in between. Two writers with two shapes under
+    # one key is the ownership violation that makes the Phase 4 fan-out unsafe.
     return {
         "classification": classification,
-        "routing": {
-            "primary": routing.primary,
-            "secondary": list(routing.secondary),
-            "application": routing.application,
-            "universes": sorted(routing.universes),
-            "scores": dict(routing.scores),
-            "matched": {k: list(v) for k, v in routing.matched.items()},
-        },
         "primary_rishi": rishi,
         "rishi_title": get_persona(rishi).title,
         "query_domain": domain,
@@ -129,11 +122,18 @@ def warmth_node(
         else DEFAULT_WARMTH_RISHI
     )
 
+    from rishivan.council.domains import QueryDomain as _QD
+
     return {
         "primary_rishi": rishi,
         "rishi_title": get_persona(rishi).title,
         "is_warmth": True,
         "outcome": "non_analytic",
+        # The original returned at line 132, before the domain and routing were
+        # recorded, so a greeting reported GENERAL and an empty routing dict.
+        # Restored explicitly because intake now runs to completion first.
+        "query_domain": _QD.GENERAL,
+        "routing": {},
         "answer_stream": respond(
             client, state["question"], model=model, conversation=conversation
         ),

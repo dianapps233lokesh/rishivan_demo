@@ -77,14 +77,27 @@ print(build_graph(store=None, client=None).get_graph().draw_mermaid())"
 
 ## Nodes and the state they own
 
-Exactly one node writes each key. A test asserts each node returns only keys
-from its own set — a node that returns the whole state defeats LangGraph's merge
-and makes every write look like it came from everywhere.
+One writer per key **per path**, and two deliberate sequential overwrites:
+`panchang` prepends to `chart_facts` after a chart node sets it, and
+`council_routing` overrides the `primary_rishi` that `intake` provisionally
+picked. Both are last-write-wins on a single path and both match the original.
+Nothing else is written twice — `intake` deliberately does not write `routing`,
+which `council_routing` owns.
+
+That distinction matters for Phase 4: a sequential overwrite is fine, a
+concurrent one is not, so any key the Rishi fan-out writes needs a reducer.
+
+**Every key a node returns must be declared in `RishivanState`.** LangGraph
+discards writes to undeclared channels *silently* — no error, no warning. That
+shipped once: `retrieve_node` returned `context_text`, the state did not declare
+it, and every answer was generated with an empty context block while the sources
+panel rendered normally. `test_integration.py` now walks the node modules and
+checks every literal key they write against the schema.
 
 | Node | Owns | Ported from |
 |---|---|---|
-| `intake` | `classification` `routing` `primary_rishi` `rishi_title` `query_domain` `search_query` | `council_consult:100-152` |
-| `warmth` | `is_warmth` `outcome` `answer_stream` `primary_rishi` `rishi_title` | `:111-132` |
+| `intake` | `classification` `primary_rishi` `rishi_title` `query_domain` `search_query` | `council_consult:100-152` |
+| `warmth` | `is_warmth` `outcome` `answer_stream` `primary_rishi` `rishi_title` `query_domain` `routing` | `:111-132` |
 | `chart_natal` | `chart` `chart_summary` `chart_facts` `relevant_chart_tables` | `:156-194` |
 | `chart_moment` | `chart` `chart_summary` `chart_facts` | `:214-236` |
 | `panchang` | `panchang` `chart_facts` | `:199-212`, `:239-241` |
@@ -92,9 +105,9 @@ and makes every write look like it came from everywhere.
 | `render_*` ×4 | `chart_table` `chart_table_error` | `:258-288` |
 | `ground` | `nakshatra_now` `search_query` | `:296-360` |
 | `council_routing` | `primary_rishi` `rishi_title` `life_domain` `routing` | `:363-390` |
-| `retrieve` | `sources` `context_text` `matched_rules` `contributors` `chart_tokens` `rules_*` | `:392-535` |
+| `retrieve` | `sources` `context_text` `matched_rules` `contributors` `contributor_reports` `chart_tokens` `rules_*` | `:392-535` |
 | `answer` | `outcome` `answer_stream` | `:536-560` |
-| `insufficient` | `outcome` `message` `answer_stream` | `:534` early return |
+| `insufficient` | `outcome` `message` (`answer_stream=None`) | `:531` early return |
 
 ## Routers
 
@@ -105,9 +118,9 @@ and makes every write look like it came from everywhere.
 | `route_chart_kind` | `render_varga` · `render_dasha` · `render_ashtakavarga` · `render_numerology` | One per kind. |
 | `route_after_retrieval` | `answer` · `insufficient` | Pages **or** rules is enough. Neither means the corpus is silent, and saying so is the answer. |
 
-## Two behaviours the plan got wrong, and the code settled
+## Behaviours the plan got wrong, and the code settled
 
-Both were caught by reading `council_consult` rather than trusting the plan:
+All caught by reading `council_consult` rather than trusting the plan:
 
 - **There is no "ask for birth data" branch.** A natal question with no chart is
   rewritten to PRASHNA — the moment of asking becomes the chart. The rewrite is
@@ -116,6 +129,14 @@ Both were caught by reading `council_consult` rather than trusting the plan:
 - **The retrieval budget is `MAX_FACT_QUERIES=None, MAX_PAGES=20,
   MAX_MATCHED_RULES=10`.** The plan had invented 6/8/12, which would have
   quietly changed every answer.
+- **`insufficient` returns no stream.** The plan had it stream a canned refusal;
+  the original returns `answer_stream=None` and `streamlit_app` renders its own
+  warning. Streaming the refusal would wrap it in a Rishi answer card, avatar and
+  sign-off included — a plausible product change, and not a Phase 1 one.
+- **`contributors` is two shapes, not one.** `prompts.contributor_context` reads
+  attributes off `ContributorReport` objects; the result contract is a list of
+  plain dicts. Collapsing them raised `AttributeError` on every chart reading
+  that reached a live rule store.
 
 ## Known constraints
 
@@ -128,8 +149,15 @@ a half-consumed stream of its prose.
 
 **`intent == "chart"` plus a panchang mention.** The orchestrator computes
 panchang and then returns the table; the graph returns the table without
-computing panchang. The visible answer is identical — only the unused `panchang`
-result key differs on that path.
+computing panchang. The table is identical, but `streamlit_app.py:417` renders a
+panchang chip strip above the chart-table branch, so those chips do not appear
+on that path. Rare combination, and worth fixing by routing `chart_render` after
+`panchang` if it ever matters.
+
+**`store` is a reserved parameter name.** LangGraph injects `config`, `store`,
+`writer` and `runtime` into node callables *by name*, so a node with a `store`
+parameter receives the framework's long-term-memory store rather than whatever
+`functools.partial` bound. `retrieve_node` takes `vector_store` for that reason.
 
 ## What comes next
 

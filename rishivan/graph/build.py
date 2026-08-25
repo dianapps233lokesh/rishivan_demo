@@ -99,7 +99,8 @@ def build_graph(*, store, client, checkpointer=None):
     g.add_node("ground", ground.ground_node)
     g.add_node("council_routing", ground.council_routing_node)
     g.add_node(
-        "retrieve", partial(retrieval.retrieve_node, store=store, client=client)
+        "retrieve",
+        partial(retrieval.retrieve_node, vector_store=store, client=client),
     )
     g.add_node("answer", partial(answer.answer_node, client=client))
     g.add_node("insufficient", answer.insufficient_node)

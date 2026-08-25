@@ -41,7 +41,7 @@ class TestIntake:
         makes every write look like it came from everywhere."""
         out = intake_node(initial_state("q"), classify=FakeClassifier(spec()))
         assert set(out) <= {
-            "classification", "routing", "primary_rishi", "rishi_title",
+            "classification", "primary_rishi", "rishi_title",
             "query_domain", "search_query",
         }
 
@@ -70,11 +70,14 @@ class TestIntake:
         intake_node(initial_state("q", conversation=convo), classify=fake)
         assert fake.seen[2]["conversation"] is convo
 
-    def test_routing_is_recorded_for_the_result(self):
+    def test_it_does_not_write_routing(self):
+        """`council_routing_node` owns that key and writes a different shape.
+        Two writers with two shapes under one key is the ownership violation
+        that makes the Phase 4 parallel fan-out unsafe, and nothing reads
+        routing between the two nodes anyway."""
         out = intake_node(initial_state("will I be wealthy?"),
                           classify=FakeClassifier(spec()))
-        assert "primary" in out["routing"]
-        assert "matched" in out["routing"]
+        assert "routing" not in out
 
 
 class TestNatalFallback:
@@ -147,3 +150,13 @@ class TestWarmth:
     def test_it_carries_the_persona_title(self):
         out = warmth_node(initial_state("hi"), respond=lambda *a, **k: iter([""]))
         assert out["rishi_title"]
+
+    def test_it_reports_a_general_domain_and_no_routing(self):
+        """The original returned before either was recorded, so a greeting
+        reported GENERAL and `{}`. Intake now runs to completion first, so the
+        warmth node restores both explicitly."""
+        from rishivan.council.domains import QueryDomain
+
+        out = warmth_node(initial_state("hi"), respond=lambda *a, **k: iter([""]))
+        assert out["query_domain"] == QueryDomain.GENERAL
+        assert out["routing"] == {}

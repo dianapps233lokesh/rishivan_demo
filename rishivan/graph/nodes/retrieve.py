@@ -35,7 +35,15 @@ produced six rules for one placement, so an unbounded list would spend the
 prompt on near-duplicates."""
 
 
-def retrieve_node(state: RishivanState, *, store, client) -> dict:
+def retrieve_node(state: RishivanState, *, vector_store, client) -> dict:
+    """Note the parameter name.
+
+    It cannot be `store`: LangGraph injects several parameters *by name* -
+    `config`, `store`, `writer`, `runtime` - and a node whose signature has
+    `store` gets the framework's long-term-memory store, silently overriding
+    whatever the partial bound. That produced `None` here, and the only symptom
+    was an AttributeError deep in retrieval.
+    """
     from rishivan.council.client import model_name
     from rishivan.council.source_matrix import slugs_for_universe
     from rishivan.rag.retrieve import collect_chart_context, expand_to_page_window
@@ -59,10 +67,10 @@ def retrieve_node(state: RishivanState, *, store, client) -> dict:
     def search_with_fallback(emb, n=10):
         """A store with no tagged documents must not read as an empty corpus."""
         if domain_filter:
-            hits = store.search_filtered(emb, n_results=n, domain_filter=domain_filter)
+            hits = vector_store.search_filtered(emb, n_results=n, domain_filter=domain_filter)
             if hits:
                 return hits
-        return store.search(emb, n_results=n)
+        return vector_store.search(emb, n_results=n)
 
     search_query = state.get("search_query") or state["question"]
     chart_facts = state.get("chart_facts")
@@ -70,7 +78,7 @@ def retrieve_node(state: RishivanState, *, store, client) -> dict:
     if chart_facts:
         try:
             context_text, page_groups = collect_chart_context(
-                store, embed_fn, search_query, chart_facts,
+                vector_store, embed_fn, search_query, chart_facts,
                 domain_filter=domain_filter or None,
                 max_queries=MAX_FACT_QUERIES,
                 max_pages=MAX_PAGES,
@@ -79,13 +87,13 @@ def retrieve_node(state: RishivanState, *, store, client) -> dict:
         except Exception:  # noqa: BLE001 - fall back to a plain search, not to nothing
             hits = search_with_fallback(embed_fn([search_query])[0])
             context_text, page_groups = (
-                expand_to_page_window(store, [h["metadata"] for h in hits])
+                expand_to_page_window(vector_store, [h["metadata"] for h in hits])
                 if hits else ("", [])
             )
     else:
         hits = search_with_fallback(embed_fn([search_query])[0])
         context_text, page_groups = (
-            expand_to_page_window(store, [h["metadata"] for h in hits])
+            expand_to_page_window(vector_store, [h["metadata"] for h in hits])
             if hits else ("", [])
         )
 
@@ -99,8 +107,9 @@ def _match_rules(state: RishivanState, embed_fn, search_query: str, routing: dic
     stale rule base must degrade to page retrieval, never to no answer."""
     chart = state.get("chart")
     if chart is None:
-        return {"matched_rules": [], "contributors": []}
+        return {"matched_rules": [], "contributors": [], "contributor_reports": ()}
 
+    out: dict = {}
     try:
         from rishivan.chart.tokens import all_chart_tokens
         from rishivan.config import settings
@@ -124,6 +133,17 @@ def _match_rules(state: RishivanState, embed_fn, search_query: str, routing: dic
         tokens = all_chart_tokens(chart, when=when)
 
         applicable = true_rules(rule_store, tokens)
+        out["chart_tokens"] = tokens
+        # The gap between rules true of the chart and rules this Rishi was
+        # shown is the specialisation doing its job, and it should be visible
+        # rather than implied.
+        out["rules_true_of_chart"] = len(applicable)
+        # Zero timing labels on a "when" question is a deployment fact, not an
+        # astrological one - a collection predating the activation field parses
+        # every rule to `active=None`, correctly and silently.
+        out["rules_with_timing"] = sum(1 for r in applicable if r.active is not None)
+        out["rules_running_now"] = sum(1 for r in applicable if r.active is True)
+
         routing_obj = merge_supporting(
             route_question(state["question"]),
             state["classification"].get("supporting_rishis") or [],
@@ -142,23 +162,23 @@ def _match_rules(state: RishivanState, embed_fn, search_query: str, routing: dic
             chart, applicable, routing=routing_obj,
             question=state["question"], when=state.get("query_time"),
         )
-        return {
-            "chart_tokens": tokens,
-            # The gap between rules true of the chart and rules this Rishi was
-            # shown is the specialisation doing its job, and it should be
-            # visible rather than implied.
-            "rules_true_of_chart": len(applicable),
-            # Zero timing labels on a "when" question is a deployment fact, not
-            # an astrological one - a collection that predates the activation
-            # field parses every rule to `active=None`, correctly and silently.
-            "rules_with_timing": sum(1 for r in applicable if r.active is not None),
-            "rules_running_now": sum(1 for r in applicable if r.active is True),
-            "matched_rules": matched,
-            "contributors": [
-                {"rishi": c.rishi, "computed": c.computed,
-                 "rules": len(c.rules), "note": c.note}
-                for c in contributors
-            ],
-        }
+        out["matched_rules"] = matched
+        # Two shapes, deliberately. `contributor_context` reads attributes off
+        # the reports; the result contract is a list of plain dicts. Collapsing
+        # them raised `AttributeError: 'dict' object has no attribute 'rishi'`
+        # on every chart reading that reached a live rule store.
+        out["contributor_reports"] = tuple(contributors)
+        out["contributors"] = [
+            {"rishi": c.rishi, "computed": c.computed,
+             "rules": len(c.rules), "note": c.note}
+            for c in contributors
+        ]
+        return out
     except Exception:  # noqa: BLE001
-        return {"matched_rules": [], "contributors": []}
+        # Whatever was computed before the failure is kept. The counters exist
+        # to make a stale index visible, and zeroing them on a partial failure
+        # is the silent degradation they were built to prevent.
+        out.setdefault("matched_rules", [])
+        out.setdefault("contributors", [])
+        out.setdefault("contributor_reports", ())
+        return out
