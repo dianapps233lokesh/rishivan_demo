@@ -18,7 +18,7 @@ _CHARTED_WITHOUT_BIRTH = (QueryDomain.MUHURTA, QueryDomain.PRASHNA)
 
 
 def route_after_intake(state: RishivanState) -> str:
-    """warmth · chart · retrieve
+    """warmth · chart_natal · chart_moment · panchang · retrieve
 
     Small talk is checked first and deliberately: "hi" from a user who has not
     entered birth details is a greeting, and asking them for a birth time is a
@@ -30,26 +30,35 @@ def route_after_intake(state: RishivanState) -> str:
     already one that can be charted. Adding a prompt-for-input branch here would
     be new behaviour, and Phase 1 changes control flow only.
     """
+    from rishivan.chart.panchang import mentions_panchang
+
     if state["classification"].get("is_smalltalk_or_gibberish"):
         return "warmth"
 
     domain = state["query_domain"]
-    if domain == QueryDomain.NATAL or domain in _CHARTED_WITHOUT_BIRTH:
-        return "chart"
-    return "retrieve"
+    if domain == QueryDomain.NATAL:
+        # A birth chart and a moment chart are built from different inputs by
+        # different functions. That is a branch, and a branch belongs here
+        # rather than as an `if` inside one overloaded node.
+        return "chart_natal"
+    if domain in _CHARTED_WITHOUT_BIRTH:
+        return "chart_moment"
+    # A general question can still ask about today's panchang, and the
+    # orchestrator computes it whether or not a chart was cast.
+    return "panchang" if mentions_panchang(state["question"]) else "retrieve"
 
 
 def route_after_chart(state: RishivanState) -> str:
-    """chart_render · panchang · retrieve"""
+    """chart_render · panchang · retrieve
+
+    A display request ("show me my D9") short-circuits to a deterministic table
+    and never reaches retrieval or a model.
+    """
     from rishivan.chart.panchang import mentions_panchang
 
-    if state.get("chart") is None:
-        return "retrieve"
-    if state["classification"].get("intent") == "chart":
+    if state.get("chart") is not None and state["classification"].get("intent") == "chart":
         return "chart_render"
-    if mentions_panchang(state["question"]):
-        return "panchang"
-    return "retrieve"
+    return "panchang" if mentions_panchang(state["question"]) else "retrieve"
 
 
 def route_chart_kind(state: RishivanState) -> str:

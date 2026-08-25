@@ -37,24 +37,31 @@ class TestAfterIntake:
         rewrite is a state write, so it lives in `intake_node`; by the time this
         router runs the domain is already chartable."""
         s = state(query_domain=QueryDomain.NATAL, birth_data=None)
-        assert route_after_intake(s) == "chart"
+        assert route_after_intake(s) == "chart_natal"
 
     def test_a_natal_question_with_birth_data_proceeds(self):
         s = state(query_domain=QueryDomain.NATAL, birth_data=object())
-        assert route_after_intake(s) == "chart"
+        assert route_after_intake(s) == "chart_natal"
 
     def test_muhurta_proceeds_to_chart_without_birth_data(self):
         """Muhurta is cast from a target moment, not from a birth."""
         s = state(query_domain=QueryDomain.MUHURTA, birth_data=None)
-        assert route_after_intake(s) == "chart"
+        assert route_after_intake(s) == "chart_moment"
 
     def test_prashna_proceeds_without_birth_data(self):
         s = state(query_domain=QueryDomain.PRASHNA, birth_data=None)
-        assert route_after_intake(s) == "chart"
+        assert route_after_intake(s) == "chart_moment"
 
     def test_a_general_question_skips_the_chart(self):
         s = state(query_domain=QueryDomain.GENERAL, birth_data=None)
         assert route_after_intake(s) == "retrieve"
+
+    def test_a_general_question_about_panchang_still_computes_it(self):
+        """`council_consult:200` guards panchang on the question alone, not on
+        a chart existing."""
+        s = state(query_domain=QueryDomain.GENERAL,
+                  question="what is the panchang tomorrow?")
+        assert route_after_intake(s) == "panchang"
 
     def test_smalltalk_wins_over_everything_else(self):
         """Order matters: "hi" from a user with no birth data is a greeting, and
@@ -84,6 +91,14 @@ class TestAfterChart:
         """`if chart is not None and intent == 'chart'` - both halves."""
         s = state(chart=None, classification={"intent": "chart"})
         assert route_after_chart(s) == "retrieve"
+
+    def test_a_display_request_beats_a_panchang_mention(self):
+        """"show me my chart" returns the table and stops. The orchestrator
+        computes panchang first but returns the table either way, so the visible
+        answer is identical."""
+        s = state(chart=object(), classification={"intent": "chart"},
+                  question="show me my chart for the panchang today")
+        assert route_after_chart(s) == "chart_render"
 
 
 class TestChartKind:
