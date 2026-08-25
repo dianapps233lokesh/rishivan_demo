@@ -82,8 +82,14 @@ def route_chart_kind(state: RishivanState) -> str:
 def route_after_retrieval(state: RishivanState) -> str:
     """answer · insufficient
 
-    An empty source list is not an empty answer - it is the answer. Generating
-    prose over no retrieved material is the exact failure the grounding
-    discipline exists to prevent, and it is invisible in the output.
+    Both halves, matching `council_consult:534`: pages OR rules is enough to
+    answer from. Gating on pages alone would discard a reading the rule base
+    grounded on its own, which is the half most likely to be right.
+
+    Nothing at all is not an empty answer - it is the answer. Generating prose
+    over no retrieved material is the exact failure the grounding discipline
+    exists to prevent, and it is invisible in the output.
     """
-    return "answer" if state.get("sources") else "insufficient"
+    if state.get("sources") or state.get("matched_rules"):
+        return "answer"
+    return "insufficient"

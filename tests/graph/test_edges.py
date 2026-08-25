@@ -125,10 +125,17 @@ class TestAfterRetrieval:
     def test_sources_lead_to_an_answer(self):
         assert route_after_retrieval(state(sources=[{"text": "x"}])) == "answer"
 
-    def test_no_sources_is_insufficient_evidence(self):
+    def test_rules_alone_are_enough_to_answer_from(self):
+        """`council_consult:534` gates on pages OR rules. Requiring pages would
+        discard a reading the rule base grounded by itself - the half most
+        likely to be right."""
+        s = state(sources=[], matched_rules=[{"rule_id": "BPHS.X"}])
+        assert route_after_retrieval(s) == "answer"
+
+    def test_neither_is_insufficient_evidence(self):
         """Saying the corpus is silent is an answer. Generating around it is the
         failure this whole architecture exists to prevent."""
-        assert route_after_retrieval(state(sources=[])) == "insufficient"
+        assert route_after_retrieval(state(sources=[], matched_rules=[])) == "insufficient"
 
 
 class TestPurity:
