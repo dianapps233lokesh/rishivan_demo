@@ -20,12 +20,19 @@ from datetime import datetime
 
 from rishivan.graph.state import RishivanState
 
-MAX_FACT_QUERIES = 6
-MAX_PAGES = 8
-MAX_MATCHED_RULES = 12
-"""Tuned for demo latency: embedding and vector search scale with the query
-count, and every extra page inflates the prompt - and so time-to-first-token -
-for a roughly fifty-word answer."""
+MAX_FACT_QUERIES = None
+"""No cap: every chart fact (a full natal chart yields ~30) is used as a search
+query against the corpus."""
+
+MAX_PAGES = 20
+
+MAX_MATCHED_RULES = 10
+"""Matched rules to put in the prompt.
+
+Bounded because a rule block is prose the model must read before it answers, and
+because one verse can fan out into siblings that share a condition: BPHS 26.1
+produced six rules for one placement, so an unbounded list would spend the
+prompt on near-duplicates."""
 
 
 def retrieve_node(state: RishivanState, *, store, client) -> dict:
