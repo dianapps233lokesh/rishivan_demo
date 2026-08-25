@@ -23,3 +23,8 @@ geopy>=2.4                 # place name -> latitude/longitude (Nominatim)
 sqlalchemy[asyncio]>=2.0        # the knowledge models and the bridge's session
 asyncpg>=0.29                   # async Postgres driver for that session
 pydantic-settings>=2.0          # app.core.config reads DATABASE_* from the env
+
+# LangGraph — the council pipeline's control flow. Pinned like everything else
+# here: a floating graph library is exactly the dependency whose breaking change
+# surfaces at import on the deploy rather than in CI.
+langgraph==1.2.11
