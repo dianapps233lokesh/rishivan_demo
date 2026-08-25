@@ -53,8 +53,14 @@ class RishivanState(TypedDict, total=False):
     panchang: str | None
     nakshatra_now: dict | None
 
-    # -- Phase 2-5 placeholders. Nodes are added later; state is not. --------
+    # -- §6 diagnosis (Phase 2) ----------------------------------------------
     chart_state: Any
+    chart_digest: str
+    """A mismatch on recomputation means the calculation stack drifted under
+    stored answers. The highest-severity alarm in the system, and the one
+    nobody would otherwise notice."""
+
+    # -- Phase 3-5 placeholders. Nodes are added later; state is not. --------
     vargas: Any
     timing: Any
     hierarchy: Any
@@ -153,6 +159,7 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         panchang=None,
         nakshatra_now=None,
         chart_state=None,
+        chart_digest="",
         vargas=None,
         timing=None,
         hierarchy=None,

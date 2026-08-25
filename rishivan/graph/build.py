@@ -13,13 +13,13 @@ from functools import partial
 from langgraph.graph import END, START, StateGraph
 
 from rishivan.graph import edges as R
-from rishivan.graph.nodes import answer, chart, ground, intake
+from rishivan.graph.nodes import answer, chart, diagnosis, ground, intake
 from rishivan.graph.nodes import retrieve as retrieval
 from rishivan.graph.state import RishivanState
 
 NODE_NAMES = (
     "intake", "warmth",
-    "chart_natal", "chart_moment", "panchang",
+    "chart_natal", "chart_moment", "panchang", "chart_state",
     "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
     "render_numerology",
     "ground", "council_routing", "retrieve", "answer", "insufficient",
@@ -33,15 +33,18 @@ EDGE_MAPS: dict[str, dict[str, str]] = {
         "panchang": "panchang",
         "retrieve": "ground",
     },
+    # Both chart nodes route "retrieve" through the §6 diagnosis. The router's
+    # vocabulary stays "go and retrieve"; what sits between the chart and the
+    # search is the graph's business, so adding a stage never edits a router.
     "chart_natal": {
         "chart_render": "chart_render",
         "panchang": "panchang",
-        "retrieve": "ground",
+        "retrieve": "chart_state",
     },
     "chart_moment": {
         "chart_render": "chart_render",
         "panchang": "panchang",
-        "retrieve": "ground",
+        "retrieve": "chart_state",
     },
     "chart_render": {
         "render_varga": "render_varga",
@@ -61,7 +64,13 @@ work means adding a step to the retrieval pipeline never edits a router.
 
 STATIC_EDGES: dict[str, str] = {
     "warmth": END,
-    "panchang": "ground",
+    # Panchang goes through the diagnosis too, not straight to grounding: a
+    # chart question that also mentions panchang took this edge and reached the
+    # Rishis with no §6 diagnosis at all. `chart_state_node` returns an empty
+    # diagnosis when there is no chart, so the chartless panchang path is
+    # unaffected.
+    "panchang": "chart_state",
+    "chart_state": "ground",
     "ground": "council_routing",
     "council_routing": "retrieve",
     "render_varga": END,
@@ -91,6 +100,7 @@ def build_graph(*, store, client, checkpointer=None):
     g.add_node("chart_natal", chart.chart_natal_node)
     g.add_node("chart_moment", chart.chart_moment_node)
     g.add_node("panchang", chart.panchang_node)
+    g.add_node("chart_state", diagnosis.chart_state_node)
     g.add_node("chart_render", _chart_render_passthrough)
     g.add_node("render_varga", chart.render_varga_node)
     g.add_node("render_dasha", chart.render_dasha_node)
