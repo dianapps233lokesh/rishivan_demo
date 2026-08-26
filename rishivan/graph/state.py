@@ -116,6 +116,19 @@ class RishivanState(TypedDict, total=False):
 
     # -- council · the only reduced key ---------------------------------------
     reports: Annotated[list, operator.add]
+    """The single reduced channel. Eight Rishi nodes write it concurrently, so
+    any OTHER key written from a fanned-out node is an InvalidUpdateError at
+    runtime, on a branch no node-level test can reach."""
+
+    rishi: str
+    """Which persona this fanned-out node is. Arrives in the `Send` payload,
+    which REPLACES the node's state rather than merging into it - see
+    `rishis/roster.RishiRole.reads`."""
+
+    findings_for: dict
+    """rishi -> the auditor's findings it must address. Populated only on a
+    re-examination pass, and empty on the first."""
+
     audit: Any
     revisions: int
 
@@ -198,6 +211,8 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         rules_with_timing=0,
         rules_running_now=0,
         reports=[],
+        rishi="",
+        findings_for={},
         audit=None,
         revisions=0,
         is_warmth=False,

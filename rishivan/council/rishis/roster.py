@@ -60,9 +60,19 @@ class RishiRole:
     cannot read is a role nobody can tell is being played wrong."""
 
     reads: tuple[str, ...]
-    """The state keys this role is handed. Not a permission system - a
-    statement of what its remit needs, so a prompt builder can assemble the
-    smallest context that supports it."""
+    """The state keys this role is handed, and this is load-bearing rather than
+    documentation.
+
+    **`Send(node, arg)` REPLACES the node's state with `arg`.** It does not
+    merge. A `Send("rishi", {"rishi": "medhan"})` gives that node a state
+    containing one key, and every `state.get("reading")` in it returns None -
+    silently, producing a report about a chart the Rishi never saw. Measured,
+    not assumed: a two-node scratch graph confirms the outer state does not
+    reach a fanned-out node.
+
+    So `route_rishis` copies these keys into the payload, and
+    `test_the_payload_carries_what_the_role_reads` pins it.
+    """
 
     always: bool = False
     timing_only: bool = False
@@ -182,7 +192,23 @@ def route_rishis(state) -> list[Send]:
             continue
         invited.append(name)
 
-    return [
-        Send(RISHI_NODE, {"rishi": name})
-        for name in invited[:MAX_RISHIS]
-    ]
+    return [_send(state, name) for name in invited[:MAX_RISHIS]]
+
+
+#: Carried into every payload whatever the role, because every prompt needs
+#: them: what was asked, who is answering, and about which domain.
+_UNIVERSAL = ("question", "koonji_domain", "reading_is_unreviewed", "findings_for")
+
+
+def _send(state, rishi: str) -> Send:
+    """One Rishi's whole input state.
+
+    Built by copying rather than by reference to the outer state, because the
+    outer state is not available inside a fanned-out node - see `RishiRole.reads`.
+    """
+    role = ROLES[rishi]
+    payload: dict = {"rishi": rishi}
+    for key in _UNIVERSAL + role.reads:
+        if key in state:
+            payload[key] = state[key]
+    return Send(RISHI_NODE, payload)

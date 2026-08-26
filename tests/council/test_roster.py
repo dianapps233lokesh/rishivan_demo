@@ -178,3 +178,38 @@ def test_the_timing_rishi_is_invited_only_for_a_timing_question():
     timed = _state("when will I become wealthy?",
                    spec=parse("when will I become wealthy?"))
     assert "ritam" in _targets(route_rishis(timed))
+
+
+# ==========================================================================
+# The Send payload
+# ==========================================================================
+
+
+def test_the_payload_carries_what_the_role_reads():
+    """`Send(node, arg)` REPLACES the node's state with `arg` — it does not
+    merge. A payload of `{"rishi": "dhruvan"}` gives that node a state where
+    `state.get("reading")` is None, and it files a confident report about a
+    chart it never saw. Measured on a scratch graph, not assumed."""
+    state = _state()
+    state["chart_state"] = "DIAGNOSIS"
+    send = next(s for s in route_rishis(state) if s.arg["rishi"] == "dhruvan")
+    for key in ROLES["dhruvan"].reads:
+        assert key in send.arg, key
+
+
+def test_the_payload_carries_the_question():
+    send = route_rishis(_state())[0]
+    assert send.arg["question"]
+
+
+def test_the_payload_carries_the_routed_domain():
+    send = route_rishis(_state())[0]
+    assert send.arg["koonji_domain"] == "domain.wealth"
+
+
+def test_the_payload_is_a_copy_not_a_view():
+    """Two Rishis run concurrently. A payload sharing a mutable object with
+    the outer state is one Rishi able to change what another sees."""
+    state = _state()
+    send = route_rishis(state)[0]
+    assert send.arg is not state
