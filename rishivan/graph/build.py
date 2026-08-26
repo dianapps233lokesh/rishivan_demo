@@ -144,7 +144,7 @@ def build_graph(*, store, client, checkpointer=None):
     g = StateGraph(RishivanState)
 
     g.add_node("intake", partial(intake.intake_node, client=client))
-    g.add_node("warmth", partial(intake.warmth_node, client=client))
+    g.add_node("warmth", intake.warmth_node)
     g.add_node("chart_natal", chart.chart_natal_node)
     g.add_node("chart_moment", chart.chart_moment_node)
     g.add_node("panchang", chart.panchang_node)
@@ -203,6 +203,22 @@ def build_graph(*, store, client, checkpointer=None):
     return g.compile(checkpointer=checkpointer)
 
 
+def runtime_for(thread_id: str | None, env: str = "demo"):
+    """`(checkpointer, config)` for a run, given an optional conversation id.
+
+    Persistence is opt-in: no thread id, no checkpointer, and the behaviour is
+    exactly what every caller had before Phase 5. A checkpointer nobody asked
+    for is a database nobody provisioned.
+
+    Lives here rather than as two ternaries in `council_consult`, because that
+    adapter is meant to stay branch-free and a test asserts it. The decision is
+    about how the graph runs, which is this module's business.
+    """
+    if not thread_id:
+        return None, None
+    return checkpointer_for(env), {"configurable": {"thread_id": thread_id}}
+
+
 def checkpointer_for(env: str = "demo"):
     """Thread id is the conversation id, so a follow-up resumes rather than
     recomputes - which is also what stops turn 14 disagreeing with turn 13 about
@@ -211,13 +227,15 @@ def checkpointer_for(env: str = "demo"):
     In-memory for the demo: Streamlit Cloud has no Postgres, and the demo's own
     requirements deliberately exclude it.
 
-    **Not wired into `council_consult` yet, and that is deliberate.** State
-    carries `answer_stream`, a live generator, and no checkpointer can serialise
-    one - `graph.invoke` with a checkpointer raises on it, which
-    `tests/graph/test_parity.py` pins. Phase 5 resolves it properly by putting a
-    serialisable `AnswerPlan` in state and moving narration outside the graph.
+    **Wired in as of Phase 5**, via `runtime_for`. It took two changes and only
+    the first was foreseen: `answer_stream` left state (narration happens in
+    `council_consult` now, from the `AnswerPlan`), and `AtomTable` became a
+    dataclass, because LangGraph serialises dataclasses and refuses plain
+    classes - `FactSet` holds one and `Reading` holds a `FactSet`, so a single
+    plain class made the whole state unpersistable.
+
     What a resumed conversation actually needs is the earlier turn's evidence,
-    not a half-consumed stream of its prose.
+    not a half-consumed stream of its prose, and that is now what it gets.
     """
     from langgraph.checkpoint.memory import MemorySaver
 

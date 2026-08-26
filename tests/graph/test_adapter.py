@@ -114,3 +114,29 @@ class TestNarrationLeftTheGraph:
 
         body = inspect.getsource(council_consult).split('"""', 2)[-1]
         assert body.count("if ") <= 2
+
+
+class TestPersistenceIsOptIn:
+    """`thread_id` turns checkpointing on. Nothing else changes.
+
+    Opt-in rather than default because a checkpointer nobody asked for is a
+    database nobody provisioned — and because every existing caller must keep
+    the behaviour it has.
+    """
+
+    def test_no_thread_id_means_no_persistence(self, stub_models):
+        assert consult()["is_warmth"] is True
+
+    def test_a_thread_id_persists_and_still_answers(self, stub_models):
+        result = consult(thread_id="conversation-7")
+        assert result["is_warmth"] is True
+        assert "".join(result["answer_stream"]).strip()
+
+    def test_the_signature_still_matches_what_callers_pass(self):
+        """`streamlit_app` and `run_eval` call this positionally for the first
+        three and by keyword after. A new parameter must not move any of them."""
+        from rishivan.council.orchestrator import council_consult
+
+        params = list(inspect.signature(council_consult).parameters)
+        assert params[:3] == ["client", "store", "question"]
+        assert params[-1] == "thread_id"

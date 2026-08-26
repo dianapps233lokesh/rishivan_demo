@@ -135,17 +135,20 @@ class TestCheckpointing:
 
         assert checkpointer_for("demo") is not None
 
-    def test_a_generator_in_state_cannot_be_checkpointed(self, monkeypatch):
-        """The constraint, recorded so it is not rediscovered in Phase 5.
+    def test_the_state_is_now_checkpointable(self, monkeypatch):
+        """Inverted from `test_a_generator_in_state_cannot_be_checkpointed`.
 
-        `answer_stream` is a live generator, and no checkpointer can serialise
-        one. So the graph runs unpersisted today, which is correct rather than
-        merely convenient: what a resumed conversation needs is the *evidence*
-        of the earlier turn, not a half-consumed stream of its prose.
+        That test existed to record a constraint so it would not be
+        rediscovered, and discharging it is Phase 5's structural deliverable.
+        Two things had to change, and the second was not in the plan:
 
-        Phase 5 makes this work by putting an `AnswerPlan` in state and moving
-        narration outside the graph. Until then, checkpointing is available and
-        deliberately not wired into `council_consult`.
+          * `answer_stream` — a live generator — left state. Narration happens
+            in `council_consult` now, from the `AnswerPlan`.
+          * `AtomTable` became a dataclass. LangGraph serialises dataclasses
+            and refuses plain classes outright; `FactSet` holds one and
+            `Reading` holds a `FactSet`, so a single plain class made the whole
+            state unpersistable. Removing the generator was necessary and not
+            sufficient, which only measurement showed.
         """
         from rishivan.council import classifier, warmth
         from rishivan.graph.build import build_graph, checkpointer_for
@@ -162,14 +165,64 @@ class TestCheckpointing:
         )
         graph = build_graph(store=None, client=None,
                             checkpointer=checkpointer_for("demo"))
-        with pytest.raises(TypeError, match="not msgpack serializable"):
-            graph.invoke(
-                initial_state("hello"),
-                config={"configurable": {"thread_id": "conversation-1"}},
-            )
+        final = graph.invoke(
+            initial_state("hello"),
+            config={"configurable": {"thread_id": "conversation-1"}},
+        )
+        assert final["is_warmth"]
 
-    def test_the_unpersisted_graph_is_what_ships(self, monkeypatch):
-        """No checkpointer, and the same turn runs clean."""
+    def test_a_second_turn_on_the_same_thread_resumes(self, monkeypatch):
+        """The point of persisting at all: turn 14 must not disagree with turn
+        13 about a fact, and the cheapest way to guarantee that is not to
+        recompute the fact."""
+        from rishivan.council import classifier, warmth
+        from rishivan.graph.build import build_graph, checkpointer_for
+
+        monkeypatch.setattr(
+            classifier, "classify_query",
+            lambda client, question, **kw: {
+                "is_smalltalk_or_gibberish": True, "primary_rishi": "vyom",
+                "query_domain": QueryDomain.GENERAL,
+            },
+        )
+        monkeypatch.setattr(
+            warmth, "respond_warmly", lambda client, question, **kw: iter(["hi"])
+        )
+        graph = build_graph(store=None, client=None,
+                            checkpointer=checkpointer_for("demo"))
+        config = {"configurable": {"thread_id": "conversation-2"}}
+        graph.invoke(initial_state("hello"), config=config)
+        state = graph.get_state(config)
+        assert state.values["question"] == "hello"
+
+    def test_two_threads_do_not_see_each_others_state(self, monkeypatch):
+        """Thread id is the conversation id. If it leaks, one seeker reads
+        another's chart."""
+        from rishivan.council import classifier, warmth
+        from rishivan.graph.build import build_graph, checkpointer_for
+
+        monkeypatch.setattr(
+            classifier, "classify_query",
+            lambda client, question, **kw: {
+                "is_smalltalk_or_gibberish": True, "primary_rishi": "vyom",
+                "query_domain": QueryDomain.GENERAL,
+            },
+        )
+        monkeypatch.setattr(
+            warmth, "respond_warmly", lambda client, question, **kw: iter(["hi"])
+        )
+        graph = build_graph(store=None, client=None,
+                            checkpointer=checkpointer_for("demo"))
+        graph.invoke(initial_state("first"),
+                     config={"configurable": {"thread_id": "a"}})
+        graph.invoke(initial_state("second"),
+                     config={"configurable": {"thread_id": "b"}})
+        a = graph.get_state({"configurable": {"thread_id": "a"}})
+        assert a.values["question"] == "first"
+
+    def test_the_unpersisted_graph_still_works(self, monkeypatch):
+        """A caller that passes no thread id gets today's behaviour exactly.
+        Persistence is opt-in, so nothing that worked before needs to change."""
         from rishivan.council import classifier, warmth
         from rishivan.graph.build import build_graph
 

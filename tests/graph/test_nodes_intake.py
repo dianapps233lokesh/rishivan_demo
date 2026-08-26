@@ -126,12 +126,39 @@ class TestDomainCoercion:
 
 
 class TestWarmth:
-    def test_it_marks_the_turn_and_supplies_a_stream(self):
-        out = warmth_node(
-            initial_state("hi"), respond=lambda *a, **k: iter(["hello"])
-        )
+    def test_it_marks_the_turn_without_speaking(self):
+        """It settles who is speaking; `narrate.stream_for` does the speaking.
+
+        Phase 5 moved the generator out: a live one in state cannot be
+        checkpointed, and leaving it on the greeting path would have meant
+        persistence that works until somebody says hello."""
+        out = warmth_node(initial_state("hi"))
         assert out["is_warmth"] is True
-        assert list(out["answer_stream"]) == ["hello"]
+        assert "answer_stream" not in out
+
+    def test_it_makes_no_model_call(self):
+        """The signature is the strongest way to say so — there is no client
+        to call one with."""
+        import inspect
+
+        assert set(inspect.signature(warmth_node).parameters) == {"state"}
+
+    def test_the_greeting_path_is_recognised_outside_the_graph(self):
+        """`stream_for` is what decides a warmth turn gets a greeting rather
+        than a reading, and it keys off `is_warmth`."""
+        from rishivan.council import narrate
+
+        calls = []
+
+        class _Client:
+            class models:
+                @staticmethod
+                def generate_content_stream(**kw):
+                    calls.append(kw)
+                    return iter([type("C", (), {"text": "hello"})()])
+
+        final = dict(initial_state("hi"), is_warmth=True, outcome="non_analytic")
+        assert "".join(narrate.stream_for(final, client=_Client())) == "hello"
 
     def test_it_stays_with_the_rishi_already_speaking(self):
         """Continuity: a greeting mid-conversation should not switch voices."""
@@ -140,15 +167,15 @@ class TestWarmth:
             current_rishi = "medhan"
 
         s = initial_state("thanks!", conversation=Convo())
-        out = warmth_node(s, respond=lambda *a, **k: iter([""]))
+        out = warmth_node(s)
         assert out["primary_rishi"] == "medhan"
 
     def test_it_defaults_to_vyom_with_no_conversation(self):
-        out = warmth_node(initial_state("hi"), respond=lambda *a, **k: iter([""]))
+        out = warmth_node(initial_state("hi"))
         assert out["primary_rishi"] == "vyom"
 
     def test_it_carries_the_persona_title(self):
-        out = warmth_node(initial_state("hi"), respond=lambda *a, **k: iter([""]))
+        out = warmth_node(initial_state("hi"))
         assert out["rishi_title"]
 
     def test_it_reports_a_general_domain_and_no_routing(self):
@@ -157,6 +184,6 @@ class TestWarmth:
         warmth node restores both explicitly."""
         from rishivan.council.domains import QueryDomain
 
-        out = warmth_node(initial_state("hi"), respond=lambda *a, **k: iter([""]))
+        out = warmth_node(initial_state("hi"))
         assert out["query_domain"] == QueryDomain.GENERAL
         assert out["routing"] == {}

@@ -37,6 +37,7 @@ def council_consult(
     tz_offset: float = 5.5,
     place: str = "",
     conversation=None,         # rishivan.council.conversation.Conversation
+    thread_id: str | None = None,
 ) -> dict:
     """Full Council consultation, run as a graph.
 
@@ -49,15 +50,23 @@ def council_consult(
     the topology. This body should stay an adapter; if it grows branches again,
     the graph is being worked around rather than extended.
 
+    `thread_id` opts into persistence. Pass a conversation id and the run is
+    checkpointed under it, so a follow-up resumes rather than recomputes -
+    which is also what stops turn 14 disagreeing with turn 13 about a fact.
+    Omit it and nothing is persisted, which is exactly the behaviour every
+    caller had before Phase 5. Opt-in rather than default because a checkpointer
+    that nobody asked for is a database nobody provisioned.
+
     Returns a dict with keys:
       primary_rishi, rishi_title, query_domain, classification,
       chart_summary, chart_facts, sources, search_query, answer_stream
     """
     from rishivan.council import narrate
-    from rishivan.graph.build import build_graph
+    from rishivan.graph.build import build_graph, runtime_for
     from rishivan.graph.state import RESULT_KEYS, initial_state
 
-    graph = build_graph(store=store, client=client)
+    checkpointer, config = runtime_for(thread_id)
+    graph = build_graph(store=store, client=client, checkpointer=checkpointer)
     final = graph.invoke(initial_state(
         question,
         rishi_override=rishi_override,
@@ -69,7 +78,7 @@ def council_consult(
         tz_offset=tz_offset,
         place=place,
         conversation=conversation,
-    ))
+    ), config=config)
 
     # Narration happens HERE, not in the graph. The graph's final state has to
     # be plain data for a checkpointer to persist it, and a live generator is

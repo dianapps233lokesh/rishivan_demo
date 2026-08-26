@@ -218,4 +218,22 @@ def stream_for(final, *, client):
     """
     if final.get("outcome") == "insufficient":
         return None
+    if final.get("is_warmth"):
+        return stream_warmth(final, client=client)
     return stream_answer(final.get("answer_plan"), client=client, state=final)
+
+
+def stream_warmth(final, *, client):
+    """A greeting, streamed from outside the graph.
+
+    Same reason as the reading: `warmth_node` used to build this generator into
+    state, and a graph that puts one there cannot be checkpointed on any turn
+    where somebody says hello.
+    """
+    from rishivan.council.client import model_name
+    from rishivan.council.warmth import respond_warmly
+
+    return respond_warmly(
+        client, final["question"], model=model_name("flash"),
+        conversation=final.get("conversation"),
+    )

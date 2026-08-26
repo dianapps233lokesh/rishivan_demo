@@ -93,26 +93,20 @@ def intake_node(
     }
 
 
-def warmth_node(
-    state: RishivanState,
-    *,
-    respond: Callable | None = None,
-    client=None,
-    model: str = "",
-) -> dict:
+def warmth_node(state: RishivanState) -> dict:
     """Small talk. No chart, no retrieval, no rules - and no apology for it.
 
     Port of `council_consult` lines 111-132. Stays with whoever the seeker was
     already speaking to, because a greeting mid-conversation should not switch
     voices.
+
+    **It settles who is speaking; it does not speak.** The greeting itself is
+    streamed by `narrate.stream_for`, outside the graph, for the same reason
+    the reading is: a live generator in state cannot be checkpointed, and this
+    node put one there on every small-talk turn. Keeping the analytic path
+    serialisable and leaving a generator on the greeting path would have been
+    the worse of both - persistence that works until someone says hello.
     """
-    if respond is None:
-        from rishivan.council.warmth import respond_warmly as respond
-    if not model:
-        from rishivan.council.client import model_name
-
-        model = model_name("flash")
-
     from rishivan.council.personas import get_persona
 
     conversation = state.get("conversation")
@@ -134,7 +128,4 @@ def warmth_node(
         # Restored explicitly because intake now runs to completion first.
         "query_domain": _QD.GENERAL,
         "routing": {},
-        "answer_stream": respond(
-            client, state["question"], model=model, conversation=conversation
-        ),
     }
