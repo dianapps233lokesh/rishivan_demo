@@ -447,13 +447,13 @@ The flow you pasted. Stage by stage:
 | Calculate chart facts | `DONE` |
 | Retrieve Koonji rules | `DONE` |
 | Apply conditions / modifiers / exceptions | `PARTIAL` — conditions and exceptions yes; non-cancelling modifiers ignored |
-| Run timing engines | `ABSENT` |
-| Compare signals (convergence / conflict) | `ABSENT` |
+| Run timing engines | `DONE (Phase 3-4)` — five-stage windows, gated on a promise the reading establishes |
+| Compare signals (convergence / conflict) | `DONE (Phase 4)` — `synthesis_node` + `sakshi`'s contradiction finding |
 | Backtest-informed confidence | `ABSENT` |
-| Master synthesis | `ABSENT` |
+| Master synthesis | `DONE (Phase 4)` — `graph/nodes/synthesis.py`, deterministic |
 | LLM explains with traceability | `PARTIAL` — the UI panel cites; measured 0 of 6 rules cited in prose |
 
-Roughly 4 of 12 stages.
+Roughly 8 of 12 stages, up from 4.
 
 ### BP §10–11 — knowledge graph and three retrieval systems
 
@@ -583,7 +583,7 @@ Five phases; phase 1 is done.
 | §7 | Varga engine — purpose, method, evidence tier per varga | `DONE (Phase 3)` | `rishivan/varga/policy.py` — all 16, method cited, tier assigned |
 | §7 | Birth-time confidence gate on high-sensitivity vargas | `DONE (Phase 3)` | Floors derived from arc, not asserted. Per-chart boundary rescue keeps D9/D10 usable at quarter precision when the chart is safely mid-division. Withheld vargas carry a user-facing reason. |
 | §8 | Promise → activation → trigger → peak → fading windows | `DONE (Phase 3)` | `rishivan/timing/windows.py`. `promise=False` returns every stage as None — a hard gate, not a low score. |
-| §8 | Period → activated houses / karakas / significators | `DONE (Phase 3)` | `timing/activation.py` — owns > occupies > aspects, plus karaka houses and nakshatra dispositorship. Yogas still await Phase 4. |
+| §8 | Period → activated houses / karakas / significators | `DONE (Phase 3)` | `timing/activation.py` — owns > occupies > aspects, plus karaka houses and nakshatra dispositorship. |
 | §11 | Eight Rishis as reasoning roles returning structured evidence | `ABSENT` (Phase 4) | The eight personas are a different taxonomy and write prose |
 | §12 | Per-domain evidence hierarchies | `ABSENT` (Phase 4) | One retrieval path serves every question — the "generic scoring formula" §12 rejects |
 | §19 | AnswerPlan / AllowedClaims gate, prediction ledger | `ABSENT` (Phase 5) | Also unblocks checkpointing: a generator in state cannot be serialised |
