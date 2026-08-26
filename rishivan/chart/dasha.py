@@ -61,8 +61,14 @@ def mahadasha_timeline(chart: Chart) -> list[Period]:
     return periods
 
 
-def _sub_periods(parent: Period, level: str) -> list[Period]:
-    """Antar/pratyantar within a parent period, proportional to Vimshottari years."""
+def sub_periods(parent: Period, level: str) -> list[Period]:
+    """Antar/pratyantar within a parent period, proportional to Vimshottari years.
+
+    Public because `rishivan.timing` needs the full subdivision, not just the
+    one period containing a given moment: the five-stage window model asks
+    "which antardasha inside this mahadasha activates career", which is a
+    question about all of them.
+    """
     span = parent.end - parent.start
     subs: list[Period] = []
     cursor = parent.start
@@ -110,7 +116,7 @@ def current_periods(
     running["maha"] = maha
     parent = maha
     for level in SUB_LEVELS:
-        child = next((p for p in _sub_periods(parent, level) if p.contains(when)), None)
+        child = next((p for p in sub_periods(parent, level) if p.contains(when)), None)
         if child is None:
             break
         running[level] = child
