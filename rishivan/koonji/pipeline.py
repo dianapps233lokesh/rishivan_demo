@@ -257,6 +257,44 @@ class ExtractRun:
         return "\n".join(lines)
 
 
+def _processed(extractor, passages, workers: int, single_call: bool = False):
+    """`(index, passage, result, error)` per passage, one thread or several.
+
+    A passage that raises does not stop the run - it is yielded with an error
+    and the next one continues. Losing four hundred passages to one malformed
+    response is the failure mode that makes people stop trusting the pipeline.
+
+    Concurrency is threads rather than processes because every one of the six
+    calls is a network wait; the work between them is JSON parsing. Results
+    arrive in completion order, so `on_passage` reports progress rather than
+    position - the alternative is holding finished results in memory to print
+    them in order, which buys tidier output and nothing else.
+    """
+    run_one = extractor.process_once if single_call else extractor.process
+
+    if workers <= 1:
+        for i, passage in enumerate(passages, start=1):
+            try:
+                yield i, passage, run_one(passage), None
+            except Exception as exc:  # noqa: BLE001 - the reason is the payload
+                yield i, passage, None, f"{type(exc).__name__}: {exc}"
+        return
+
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {
+            pool.submit(run_one, passage): (i, passage)
+            for i, passage in enumerate(passages, start=1)
+        }
+        for future in as_completed(futures):
+            i, passage = futures[future]
+            try:
+                yield i, passage, future.result(), None
+            except Exception as exc:  # noqa: BLE001
+                yield i, passage, None, f"{type(exc).__name__}: {exc}"
+
+
 def extract_books(
     client,
     *,
@@ -268,17 +306,20 @@ def extract_books(
     fast_model: str = "gemini-2.5-flash",
     deep_model: str = "gemini-2.5-pro",
     on_passage: Optional[Callable[[int, int, Any], None]] = None,
+    workers: int = 1,
+    single_call: bool = False,
 ) -> ExtractRun:
     """Re-read the verses with a model, six calls at a time.
 
-    Sequential on purpose. The bottleneck is the provider's rate limit, not this
-    process, and a sequential loop that can be stopped with ctrl-c after
-    forty passages is worth more during a proving run than a pool that has to be
-    drained. Parallelise when the proving run is clean and the volume is real.
+    Defaults to sequential, which is what a proving run wants: it can be stopped
+    with ctrl-c after forty passages and the spend is legible as it happens.
 
-    A passage that raises does not stop the run - it is recorded in `failures`
-    and the next one starts. Losing four hundred passages to one malformed
-    response is the failure mode that makes people stop trusting the pipeline.
+    `workers > 1` is for the real volume. Measured on Sarvartha Chintamani, one
+    call takes about sixteen seconds against Vertex, and the twelve non-BPHS
+    books need roughly thirteen thousand calls - fifty-seven hours in a single
+    thread. The bottleneck is the provider's latency and not this process, so
+    threads convert almost linearly until the rate limit answers back; the
+    client already backs off on a 429, so the ceiling finds itself.
     """
     from rishivan.koonji.extract import Extractor
 
@@ -298,22 +339,17 @@ def extract_books(
 
     budget = getattr(client, "budget", None)
 
-    for i, passage in enumerate(passages, start=1):
-        before = budget.calls if budget is not None else 0
-        try:
-            result = extractor.process(passage)
-        except Exception as exc:  # noqa: BLE001 - one passage must not end the run
-            run.failures[passage.passage_id] = f"{type(exc).__name__}: {exc}"
-            # A passage that raised still spent whatever it spent before it
-            # raised. Counting only successful passages under-reports the bill
-            # in exactly the situation where it is climbing.
-            if budget is not None:
-                run.calls += budget.calls - before
+    for i, passage, result, error in _processed(
+        extractor, passages, workers, single_call
+    ):
+        if error is not None:
+            run.failures[passage.passage_id] = error
             continue
 
-        run.calls += (
-            budget.calls - before if budget is not None else result.usage.calls
-        )
+        # Only used when the client carries no budget - a scripted one in
+        # tests. A real run overwrites this from the budget below, which also
+        # counts what a failed passage spent before it raised.
+        run.calls += result.usage.calls
         run.unbuildable.extend(result.unbuildable)
         run.disagreements += len(result.disagreements)
         blocked = set(result.blocked)
@@ -331,6 +367,14 @@ def extract_books(
 
         if on_passage is not None:
             on_passage(i, len(passages), result)
+
+    # The budget is the authority on the bill, not the sum of per-passage
+    # attributions. A passage that raised still spent whatever it spent before
+    # it raised, and under concurrency there is no window to attribute it to
+    # anyway -- reading the counter once at the end is both simpler and the only
+    # number that stays right when passages overlap.
+    if budget is not None:
+        run.calls = budget.calls
 
     run.queue.sort(key=lambda row: -row[0])
 

@@ -242,6 +242,7 @@ def cmd_extract(args) -> int:
         client, out_dir=args.rules, books=args.book or None, limit=args.limit,
         write=not args.dry_run, fast_model=args.fast_model,
         deep_model=args.deep_model, on_passage=tick if args.verbose else None,
+        workers=args.workers, single_call=args.single_call,
     )
     print()
     print(run)
@@ -345,6 +346,10 @@ def main(argv: list[str] | None = None) -> int:
                      help="hard ceiling on model calls. 0 disables it.")
     ext.add_argument("--fast-model", default="gemini-2.5-flash")
     ext.add_argument("--deep-model", default="gemini-2.5-pro")
+    ext.add_argument("--single-call", action="store_true",
+                     help="one call per passage: no classify, no dual extraction, no verifier. For when review is manual.")
+    ext.add_argument("--workers", type=int, default=1,
+                     help="concurrent passages. 1 (default) for a proving run")
     ext.add_argument("--record", help="write every exchange to this JSONL file")
     ext.add_argument("--dry-run", action="store_true")
     ext.add_argument("-v", "--verbose", action="store_true")

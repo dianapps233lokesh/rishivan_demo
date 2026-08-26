@@ -224,6 +224,25 @@ meant, reported against a rule the extractor had otherwise built correctly.
 """
 
 
+REQUIRED_FIELDS: dict[AssertionKind, tuple[str, ...]] = {
+    AssertionKind.ASSERT_CLAIM: ("claim",),
+    AssertionKind.DERIVE_FACT: ("fact", "subject", "value"),
+    AssertionKind.DEFINE_ATTRIBUTE: ("entity", "attribute", "values"),
+    AssertionKind.DIRECT_SUBJECT: ("action",),
+    AssertionKind.COMPUTE_VALUE: ("name",),
+    AssertionKind.DIRECT_INTERPRETER: ("text",),
+    AssertionKind.RECORD_APPLICATION: ("reading",),
+}
+"""What each consequent block must carry, checked before it is read.
+
+Same failure as the missing block itself, one level down: the model emitted a
+`defines` block without an `entity` and the compiler raised
+`KeyError: 'entity'`, which names a dict key and not the rule, the kind, or what
+the block should have contained. Five Phaladeepika rules were lost to that
+message in a sixteen-passage run.
+"""
+
+
 def _block(doc: dict[str, Any], assertion: AssertionKind, rule_id: str) -> dict:
     """The consequent block for this assertion kind, or a usable complaint.
 
@@ -238,6 +257,12 @@ def _block(doc: dict[str, Any], assertion: AssertionKind, rule_id: str) -> dict:
         raise ValueError(
             f"{rule_id}: assertion `{assertion.value}` needs a `{name}` block "
             f"and the document has {sorted(doc) or 'no keys'}"
+        )
+    missing = [f for f in REQUIRED_FIELDS.get(assertion, ()) if block.get(f) is None]
+    if missing:
+        raise ValueError(
+            f"{rule_id}: `{name}` block is missing {', '.join(missing)} "
+            f"(it has {sorted(block) or 'no keys'})"
         )
     return block
 

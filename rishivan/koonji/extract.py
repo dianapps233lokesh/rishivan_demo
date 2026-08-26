@@ -110,6 +110,14 @@ class PassageResult:
     usage: Usage = field(default_factory=Usage)
     skipped: str = ""
 
+    verification_skipped: str = ""
+    """Why no adversarial verifier ran, empty when one did.
+
+    Recorded rather than left to be inferred from an empty `findings` dict. A
+    rule that no verifier examined and a rule a verifier passed are different
+    things, and they are indistinguishable downstream unless one of them says
+    so. Single-call extraction sets this."""
+
     @property
     def blocked(self) -> list[str]:
         return [rid for rid, fs in self.findings.items() if is_blocked(fs)]
@@ -122,6 +130,34 @@ class PassageResult:
             ),
             key=lambda row: -row[0],
         )
+
+
+def _as_document(payload: Any) -> dict:
+    """`{"rules": [...]}` however the model chose to wrap it.
+
+    The output contract says "Not a bare array" in those words, and models
+    return one anyway. The six-call path never noticed because `reconcile`
+    normalised the shape on its way through; single-call has no such stage, so
+    a bare array reached `.get("rules")` and lost the passage to
+    `AttributeError: 'list' object has no attribute 'get'` -- a whole extraction
+    discarded over a container type.
+
+    Tolerated here rather than fixed in the prompt because the prompt already
+    says it. A parser that accepts both costs four lines; a prompt that asks
+    more firmly costs a retry every time it does not work.
+    """
+    if isinstance(payload, list):
+        return {"rules": payload}
+    if not isinstance(payload, dict):
+        return {}
+    if "rules" not in payload:
+        # `reconciled_rules` is the other shape the contract names, and the
+        # reconciler's own output key - a model shown the six-stage vocabulary
+        # sometimes reaches for it here.
+        for alias in ("reconciled_rules", "extracted_rules", "extracted"):
+            if isinstance(payload.get(alias), list):
+                return {**payload, "rules": payload[alias]}
+    return payload
 
 
 def _parse_json(raw: str) -> Any:
@@ -221,6 +257,86 @@ class Extractor:
 
     # -- the whole path ----------------------------------------------------
 
+    def process_once(self, passage: Passage) -> PassageResult:
+        """One model call. Extract, or come back empty.
+
+        The six-call pipeline buys three things this does not: a cheap classify
+        that keeps the deep model away from invocations and praise, a second
+        extraction to disagree with the first, and an adversarial verifier. All
+        three exist to raise the quality of what reaches a reviewer, and they
+        are the right trade when the reviewer is a bottleneck.
+
+        They are the wrong trade when review is manual and external, which is
+        the decision here: the client reads every rule before it is approved, so
+        a verifier verdict the client will overrule is six seconds and five
+        calls spent to pre-empt a judgement that is not the pipeline's to make.
+
+        What is kept is everything free and deterministic. `validate_candidate`
+        still runs, quotes are still checked verbatim against the passage, the
+        compiler still refuses what it cannot build, and the review queue is
+        still ordered. What is lost is recorded rather than implied:
+        `result.disagreements` and `result.back_translations` stay empty and
+        `verification_skipped` says why, so nothing downstream can mistake an
+        unverified rule for one that passed.
+
+        No classify call either. An empty `rules` array IS the classification -
+        the extractor prompt already tells the model that most verses are not
+        rules and to return nothing for them.
+        """
+        result = PassageResult(passage=passage)
+        result.verification_skipped = "single-call mode - review is manual"
+        merged = self.extract_once(passage, EXTRACTION_TEMPERATURES[0], result.usage)
+        self._build_candidates(result, passage, merged, verdicts={})
+        return result
+
+    def _build_candidates(
+        self,
+        result: PassageResult,
+        passage: Passage,
+        merged: dict,
+        *,
+        verdicts: dict,
+        back_translate: bool = False,
+    ) -> None:
+        """Raw model output to validated candidates, shared by both paths.
+
+        Extracted so the single-call path cannot drift from the six-call one on
+        the parts they agree about - flag handling, quote checking, the review
+        queue. Those are the parts that must stay identical whatever the client
+        paid for above them.
+        """
+        merged = _as_document(merged)
+        raw_rules = list(merged.get("rules", []))
+        result.proposals = [
+            ExtensionProposal.model_validate(p) for p in merged.get("proposals", [])
+        ]
+        if not raw_rules:
+            result.skipped = result.skipped or "no rules extracted"
+            return
+
+        for raw in raw_rules:
+            candidate, why = self._to_candidate(passage, raw, result.proposals)
+            if candidate is None:
+                result.unbuildable.append(why)
+                continue
+            result.candidates.append(candidate)
+
+            findings = validate_candidate(candidate)
+            verdict = verdicts.get(candidate.rule.rule_id, {})
+            for problem in verdict.get("findings", []):
+                findings.append(Finding(
+                    code=problem.get("category", "verifier"),
+                    severity=problem.get("severity", "warning"),
+                    message=problem.get("message", ""),
+                    blocking=verdict.get("verdict") == "REJECT",
+                ))
+            result.findings[candidate.rule.rule_id] = findings
+
+            if back_translate:
+                result.back_translations[candidate.rule.rule_id] = (
+                    self.back_translate(raw, result.usage)
+                )
+
     def process(self, passage: Passage, *, skip_dual: bool = False) -> PassageResult:
         result = PassageResult(passage=passage)
         usage = result.usage
@@ -246,39 +362,19 @@ class Extractor:
             ]
 
         raw_rules = list(merged.get("rules", []))
-        result.proposals = [
-            ExtensionProposal.model_validate(p) for p in merged.get("proposals", [])
-        ]
-
         if not raw_rules:
+            result.proposals = [
+                ExtensionProposal.model_validate(p)
+                for p in merged.get("proposals", [])
+            ]
             result.skipped = result.skipped or "no rules extracted"
             return result
 
         verification = self.verify(passage, raw_rules, usage)
         verdicts = {v.get("rule_id"): v for v in verification.get("verdicts", [])}
-
-        for raw in raw_rules:
-            candidate, why = self._to_candidate(passage, raw, result.proposals)
-            if candidate is None:
-                result.unbuildable.append(why)
-                continue
-            result.candidates.append(candidate)
-
-            findings = validate_candidate(candidate)
-            verdict = verdicts.get(candidate.rule.rule_id, {})
-            for problem in verdict.get("findings", []):
-                findings.append(Finding(
-                    code=problem.get("category", "verifier"),
-                    severity=problem.get("severity", "warning"),
-                    message=problem.get("message", ""),
-                    blocking=verdict.get("verdict") == "REJECT",
-                ))
-            result.findings[candidate.rule.rule_id] = findings
-
-            result.back_translations[candidate.rule.rule_id] = self.back_translate(
-                raw, usage
-            )
-
+        self._build_candidates(
+            result, passage, merged, verdicts=verdicts, back_translate=True
+        )
         return result
 
     def _to_candidate(

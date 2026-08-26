@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import random
+import threading
 import time
 from dataclasses import dataclass, field
 from typing import Any, Optional
@@ -75,13 +76,22 @@ class Budget:
     prompt_chars: int = 0
     response_chars: int = 0
 
+    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
+    """`calls += 1` is a read-modify-write, and the whole point of this class is
+    to be a hard ceiling. Under concurrent extraction an unlocked counter
+    undercounts, which means the one guarantee it offers - that a forgotten
+    `--limit` cannot turn into a full corpus run - quietly stops holding."""
+
     def spend(self, prompt: str, response: str) -> None:
-        self.calls += 1
-        self.prompt_chars += len(prompt)
-        self.response_chars += len(response)
+        with self._lock:
+            self.calls += 1
+            self.prompt_chars += len(prompt)
+            self.response_chars += len(response)
 
     def check(self) -> None:
-        if self.max_calls and self.calls >= self.max_calls:
+        with self._lock:
+            reached = bool(self.max_calls) and self.calls >= self.max_calls
+        if reached:
             raise ExtractionUnavailable(
                 f"call budget of {self.max_calls} reached - raise `max_calls` or "
                 f"narrow the run"
@@ -115,14 +125,28 @@ class VertexClient:
     """
 
     _client: Any = field(default=None, repr=False)
+    _client_lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
 
     def _vertex(self):
-        if self._client is None:
-            from rishivan.council.client import get_vertex_client
+        """Built once, under a lock, because the unlocked version breaks under
+        concurrency in a way that reads like a provider outage.
 
-            self._client = get_vertex_client(
-                helicone_model=self.default_model, helicone_pipeline=PIPELINE_TAG
-            )
+        Two threads both find `_client is None`, both build one, and the second
+        assignment wins. The first client now has no reference from `self`, is
+        garbage-collected, and closes its transport -- while the thread that
+        received it is still mid-request. The symptom is
+        `Cannot send a request, as the client has been closed`, raised against
+        a perfectly good passage, four retries deep, seven times in sixteen.
+        """
+        if self._client is None:
+            with self._client_lock:
+                if self._client is None:
+                    from rishivan.council.client import get_vertex_client
+
+                    self._client = get_vertex_client(
+                        helicone_model=self.default_model,
+                        helicone_pipeline=PIPELINE_TAG,
+                    )
         return self._client
 
     def complete(
