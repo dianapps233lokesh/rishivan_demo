@@ -26,6 +26,7 @@ class Turn:
     question: str
     answer: str
     rishi: str
+    domain: str = ""
     claims: tuple[tuple[str, str], ...] = ()
     """(claim_id, band) for everything this turn was licensed to assert.
 
@@ -44,12 +45,50 @@ class Conversation:
 
     def add(
         self, question: str, answer: str, rishi: str,
+        domain: str = "",
         claims: tuple[tuple[str, str], ...] = (),
     ) -> None:
-        """`claims` is optional so every existing caller is unchanged."""
+        """`domain` and `claims` are optional so every caller is unchanged."""
         self.turns.append(
-            Turn(question.strip(), answer.strip(), rishi, tuple(claims))
+            Turn(question.strip(), answer.strip(), rishi, domain, tuple(claims))
         )
+
+    # -- plain-data round trip ---------------------------------------------
+
+    def to_state(self) -> list[dict]:
+        """The transcript as plain dicts.
+
+        **Callers should hold this, not the `Conversation` object.** A live
+        instance kept across a module reload keeps its OLD class: Streamlit
+        hot-reloads the module, `st.session_state` hands back the object it
+        already had, and the next call hits a method signature that no longer
+        exists. That failed in production as
+        `Conversation.add() got an unexpected keyword argument 'claims'` — the
+        code was right and the object was from the previous definition.
+
+        Lists and dicts have no such problem, so the transcript is stored as
+        data and rehydrated per request.
+        """
+        return [
+            {"question": t.question, "answer": t.answer, "rishi": t.rishi,
+             "domain": t.domain, "claims": [list(c) for c in t.claims]}
+            for t in self.turns
+        ]
+
+    @classmethod
+    def from_state(cls, rows) -> "Conversation":
+        """Rebuild from `to_state()`. Tolerant of rows written by an older
+        shape, because a stored transcript outlives the code that wrote it."""
+        convo = cls()
+        for row in rows or []:
+            convo.turns.append(Turn(
+                question=row.get("question", ""),
+                answer=row.get("answer", ""),
+                rishi=row.get("rishi", ""),
+                domain=row.get("domain", ""),
+                claims=tuple(tuple(c) for c in row.get("claims", ())),
+            ))
+        return convo
 
     @property
     def is_empty(self) -> bool:

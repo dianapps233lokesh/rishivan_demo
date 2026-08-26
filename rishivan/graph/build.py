@@ -207,6 +207,10 @@ def build_graph(*, store, client, checkpointer=None, trace_sink=None):
     return g.compile(checkpointer=checkpointer)
 
 
+_DEMO_SAVER = None
+"""The in-process checkpoint store. See `checkpointer_for`."""
+
+
 def runtime_for(thread_id: str | None, env: str = "demo"):
     """`(checkpointer, config)` for a run, given an optional conversation id.
 
@@ -244,7 +248,15 @@ def checkpointer_for(env: str = "demo"):
     from langgraph.checkpoint.memory import MemorySaver
 
     if env == "demo":
-        return MemorySaver()
+        # A module-level singleton, and that is the entire point of it.
+        # `MemorySaver` keeps its checkpoints in the instance, so building a
+        # fresh one per request gives every turn an empty store - the
+        # checkpointer would be wired, configured, and persisting nothing,
+        # which looks exactly like working.
+        global _DEMO_SAVER
+        if _DEMO_SAVER is None:
+            _DEMO_SAVER = MemorySaver()
+        return _DEMO_SAVER
 
     from langgraph.checkpoint.postgres import PostgresSaver
 

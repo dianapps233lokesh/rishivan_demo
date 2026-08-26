@@ -238,3 +238,57 @@ class TestCheckpointing:
         )
         out = build_graph(store=None, client=None).invoke(initial_state("hello"))
         assert out["is_warmth"] is True
+
+
+class TestTheDemoSaverPersists:
+    """A checkpointer rebuilt per request persists nothing.
+
+    `MemorySaver` keeps its checkpoints in the instance. Returning a fresh one
+    from `checkpointer_for` gave every turn an empty store — wired, configured,
+    and remembering nothing, which looks exactly like working.
+    """
+
+    def test_the_demo_saver_is_the_same_object_each_time(self):
+        from rishivan.graph.build import checkpointer_for
+
+        assert checkpointer_for("demo") is checkpointer_for("demo")
+
+    def test_runtime_for_returns_that_same_saver(self):
+        from rishivan.graph.build import checkpointer_for, runtime_for
+
+        saver, _ = runtime_for("t1")
+        assert saver is checkpointer_for("demo")
+
+    def test_no_thread_id_means_no_saver_and_no_config(self):
+        from rishivan.graph.build import runtime_for
+
+        assert runtime_for(None) == (None, None)
+
+    def test_the_config_carries_the_thread_id(self):
+        from rishivan.graph.build import runtime_for
+
+        _, config = runtime_for("conversation-9")
+        assert config["configurable"]["thread_id"] == "conversation-9"
+
+    def test_a_turn_is_still_there_on_the_next_call(self, monkeypatch):
+        """Two separate `build_graph` calls, as two requests would be."""
+        from rishivan.council import classifier, warmth
+        from rishivan.graph.build import build_graph, runtime_for
+
+        monkeypatch.setattr(
+            classifier, "classify_query",
+            lambda client, question, **kw: {
+                "is_smalltalk_or_gibberish": True, "primary_rishi": "vyom",
+                "query_domain": QueryDomain.GENERAL,
+            },
+        )
+        monkeypatch.setattr(
+            warmth, "respond_warmly", lambda client, question, **kw: iter(["hi"])
+        )
+        saver, config = runtime_for("persisting-thread")
+        build_graph(store=None, client=None, checkpointer=saver).invoke(
+            initial_state("first turn"), config=config
+        )
+        # A second request: new graph object, same saver.
+        second = build_graph(store=None, client=None, checkpointer=saver)
+        assert second.get_state(config).values["question"] == "first turn"

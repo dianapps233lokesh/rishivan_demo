@@ -154,3 +154,67 @@ def test_older_turns_are_not_carried_forever():
 def test_it_is_deterministic():
     assert (consistency_instruction(_convo(), _plan([STRONG]))
             == consistency_instruction(_convo(), _plan([STRONG])))
+
+
+# ==========================================================================
+# The plain-data round trip
+# ==========================================================================
+
+
+def test_a_transcript_survives_a_round_trip():
+    convo = Conversation()
+    convo.add("will I be wealthy?", "yes", "dhruvan", domain="artha",
+              claims=(("wealth.accumulation", "strongly_indicated"),))
+    back = Conversation.from_state(convo.to_state())
+    assert back.last.question == "will I be wealthy?"
+    assert back.last.rishi == "dhruvan"
+    assert back.last.domain == "artha"
+    assert back.last.claims == (("wealth.accumulation", "strongly_indicated"),)
+
+
+def test_the_stored_form_is_plain_data():
+    """A live `Conversation` held across a Streamlit module reload keeps its
+    OLD class — `st.session_state` hands back the instance it already had, and
+    the next call hits a signature that no longer exists. That shipped, as
+    `Conversation.add() got an unexpected keyword argument 'claims'`.
+
+    Lists and dicts have no such problem, which is why callers store this."""
+    import json
+
+    convo = Conversation()
+    convo.add("q", "a", "vyom", domain="atma",
+              claims=(("x.y", "some_indications"),))
+    rows = convo.to_state()
+    assert isinstance(rows, list) and all(isinstance(r, dict) for r in rows)
+    json.dumps(rows)
+
+
+def test_an_empty_transcript_round_trips():
+    assert Conversation.from_state([]).is_empty
+    assert Conversation.from_state(None).is_empty
+
+
+def test_a_row_from_an_older_shape_still_loads():
+    """A stored transcript outlives the code that wrote it. A missing field
+    must not take down the whole session."""
+    convo = Conversation.from_state([{"question": "q", "answer": "a",
+                                      "rishi": "vyom"}])
+    assert convo.last.domain == ""
+    assert convo.last.claims == ()
+
+
+def test_the_round_trip_preserves_order():
+    convo = Conversation()
+    for i in range(3):
+        convo.add(f"q{i}", f"a{i}", "vyom")
+    back = Conversation.from_state(convo.to_state())
+    assert [t.question for t in back.turns] == ["q0", "q1", "q2"]
+
+
+def test_the_directive_still_works_after_a_round_trip():
+    """The whole point of carrying claims: they have to survive storage."""
+    convo = Conversation()
+    convo.add("q", "a", "dhruvan",
+              claims=(("wealth.accumulation", "some_indications"),))
+    back = Conversation.from_state(convo.to_state())
+    assert "wealth.accumulation" in consistency_instruction(back, _plan([STRONG]))

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import uuid
 
 import streamlit as st
 from markdown_it import MarkdownIt
@@ -201,9 +202,17 @@ if _missing:
 
 # ── Session state defaults ───────────────────────────────────────────────────
 for k, v in [
-    ("history", []),
+    # The transcript, as PLAIN DATA. Never a `Conversation` object: Streamlit
+    # hot-reloads the module but `st.session_state` hands back the instance it
+    # already had, so a live object keeps its OLD class and the next call hits
+    # a signature that no longer exists. That shipped, as
+    # `Conversation.add() got an unexpected keyword argument 'claims'`.
+    #
+    # It also replaces the separate `history` list, which held the same three
+    # fields under different names and had to be kept in step by hand.
+    ("turns", []),
     ("prefill", ""),
-    ("conversation", Conversation()),
+    ("thread_id", f"ui-{uuid.uuid4().hex[:12]}"),
 ]:
     if k not in st.session_state:
         st.session_state[k] = v
@@ -292,15 +301,15 @@ question = st.text_area(
 if prefill_val and question == prefill_val:
     st.session_state.prefill = ""
 
-_convo = st.session_state.conversation
+_convo = Conversation.from_state(st.session_state.turns)
 _c1, _c2 = st.columns([3, 1])
 with _c1:
     ask_btn = st.button("Invoke the Council", key="ask_btn")
 with _c2:
     if not _convo.is_empty and st.button("Start fresh", key="reset_convo",
                                          use_container_width=True):
-        st.session_state.conversation = Conversation()
-        st.session_state.history = []
+        st.session_state.turns = []
+        st.session_state.thread_id = f"ui-{uuid.uuid4().hex[:12]}"
         st.rerun()
 
 if not _convo.is_empty:
@@ -354,7 +363,8 @@ if ask_btn and question.strip():
         rishi_override=rishi_override,
         birth_data=birth_data,
         query_time=dt.datetime.now(),
-        conversation=st.session_state.conversation,
+        conversation=_convo,
+        thread_id=st.session_state.thread_id,
     )
 
     if result is None:
@@ -738,19 +748,18 @@ if ask_btn and question.strip():
                             unsafe_allow_html=True,
                         )
 
-            # Remember the exchange so the Rishi's closing hook leads somewhere,
-            # and what it was licensed to claim so the next turn cannot quietly
-            # contradict it.
+            # Remember the exchange so the Rishi's closing hook leads
+            # somewhere, and what it was licensed to claim so the next turn
+            # cannot quietly contradict it. Written straight back as plain
+            # data — one store, no second list to keep in step.
             from rishivan.council.conversation import claims_of
 
-            st.session_state.conversation.add(
+            _convo.add(
                 question.strip(), answer, rishi_name,
+                domain=domain_str,
                 claims=claims_of(result.get("answer_plan")),
             )
-            st.session_state.history.insert(0, {
-                "q": question.strip(), "a": answer,
-                "rishi": rishi_name, "domain": domain_str,
-            })
+            st.session_state.turns = _convo.to_state()
 
             if not is_warmth:
                 st.caption(
@@ -760,15 +769,16 @@ if ask_btn and question.strip():
                 )
 
 # ── History ───────────────────────────────────────────────────────────────────
-if st.session_state.history:
+_past = list(reversed(st.session_state.turns[:-1]))[:4]
+if _past:
     st.markdown("---")
     st.markdown("### 🕑 Previous Consultations")
-    for item in st.session_state.history[1:5]:
+    for item in _past:
         p = get_persona(item["rishi"])
-        with st.expander(f"{p.emoji} {item['q'][:80]}", expanded=False):
+        with st.expander(f"{p.emoji} {item['question'][:80]}", expanded=False):
             st.markdown(
                 f"""<div class="answer-card" style="--ac:{p.color};">
-<div class="answer-body">{_md(item['a'])}</div>
+<div class="answer-body">{_md(item['answer'])}</div>
 <div class="sign-off">— {p.sign_off}</div>
 </div>""",
                 unsafe_allow_html=True,
