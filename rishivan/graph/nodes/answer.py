@@ -41,6 +41,7 @@ def answer_node(state: RishivanState, *, client) -> dict:
         rules=rule_context(state.get("matched_rules") or []),
         life_domain=(state.get("routing") or {}).get("primary"),
         contributors=state.get("contributor_reports") or (),
+        council=state.get("council_summary", ""),
     )
 
     def stream() -> Generator[str, None, None]:

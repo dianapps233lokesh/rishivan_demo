@@ -348,12 +348,20 @@ def build_rishi_prompt(
     rules: str = "",
     life_domain: str | None = None,
     contributors: tuple = (),
+    council: str = "",
 ) -> str:
     """Assemble the full Rishi-voiced prompt for natural conversational output.
 
     `rules` is the rendered output of `rule_context()` -- classical rules the engine proved
     apply to this chart. It goes ahead of the retrieved passages because it is a stronger
     kind of evidence: a passage is topically similar, a rule has been tested.
+
+    `council` is the §11 synthesis -- what each Rishi argued, what argued
+    against it, and what the auditor objected to. It goes FIRST, ahead of both
+    the rules and the passages, because it is the only block whose contents
+    were reasoned about rather than retrieved. Anything the council marked as
+    disagreement or as unmet corroboration must survive into the prose; that is
+    what the whole architecture is for.
     """
     persona: RishiPersona = get_persona(rishi_name)
 
@@ -379,9 +387,10 @@ def build_rishi_prompt(
 
     history_block = continuity_instruction(conversation)
     rules_block = f"{rules}\n\n---\n\n" if rules else ""
+    council_block = f"{council}\n\n---\n\n" if council else ""
     if history_block:
         return (
             f"{system}\n\n---\n\n{history_block}\n\n---\n\n"
-            f"{rules_block}{context_block}"
+            f"{council_block}{rules_block}{context_block}"
         )
-    return f"{system}\n\n---\n\n{rules_block}{context_block}"
+    return f"{system}\n\n---\n\n{council_block}{rules_block}{context_block}"

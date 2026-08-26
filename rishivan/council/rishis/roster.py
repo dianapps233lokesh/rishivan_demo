@@ -212,3 +212,20 @@ def _send(state, rishi: str) -> Send:
         if key in state:
             payload[key] = state[key]
     return Send(RISHI_NODE, payload)
+
+
+def route_re_examination(state) -> list[Send]:
+    """The second pass, and only to the Rishis a finding names.
+
+    Re-running the whole council would spend seven calls to address two
+    objections, and the five Rishis with nothing to answer for would file the
+    same report again - which the evidence graph would then see as
+    corroboration. Sending only the named ones keeps the correction a
+    correction.
+    """
+    findings = state.get("findings_for") or {}
+    return [
+        _send(state, rishi)
+        for rishi in findings
+        if rishi in ROLES and rishi != AUDITOR
+    ]

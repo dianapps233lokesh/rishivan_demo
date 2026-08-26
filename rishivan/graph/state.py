@@ -131,6 +131,15 @@ class RishivanState(TypedDict, total=False):
 
     audit: Any
     revisions: int
+    council_summary: str
+    """The §11 synthesis, rendered for the narrative prompt.
+
+    Declared rather than assumed. LangGraph discards writes to undeclared
+    channels silently, and the last time that happened every answer was
+    generated with an empty context block while the sources panel rendered
+    normally."""
+
+    convergence: dict
 
     # -- output ----------------------------------------------------------------
     is_warmth: bool
@@ -215,6 +224,8 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         findings_for={},
         audit=None,
         revisions=0,
+        council_summary="",
+        convergence={},
         is_warmth=False,
         answer_stream=None,
         trace={},

@@ -58,8 +58,20 @@ class FakeStore:
 class RecordingClient:
     """Captures the prompt instead of calling a model."""
 
+    REPORT = (
+        '{"supporting": [{"statement": "the 2nd lord is exalted in the 11th", '
+        '"rule_ids": ["r1"], "chart_basis": ["x"], "weight": 0.5, '
+        '"tier": "house"}], "weakening": [{"statement": "Saturn aspects it", '
+        '"rule_ids": ["r2"], "chart_basis": ["y"], "weight": 0.3, '
+        '"tier": "house"}], "score": 0.4, "confidence": 0.6, '
+        '"assumptions": [], "would_change_my_mind": [], '
+        '"confidence_reasons": ["two independent sources"]}'
+    )
+
     def __init__(self):
         self.prompts: list[str] = []
+        self.council_prompts: list[str] = []
+        self.report_json = self.REPORT
         outer = self
 
         class _Models:
@@ -76,6 +88,18 @@ class RecordingClient:
             def generate_content_stream(model=None, contents=None):
                 outer.prompts.append(contents)
                 return iter([type("C", (), {"text": "a reading."})()])
+
+            @staticmethod
+            def generate_content(model=None, contents=None, config=None):
+                """The Rishi and auditor calls.
+
+                Present deliberately. Without it every Rishi hit an
+                AttributeError, degraded to an abstention, and the council
+                tests below passed while exercising nothing - which is the
+                exact shape of the bug this file exists to catch.
+                """
+                outer.council_prompts.append(contents)
+                return type("C", (), {"text": outer.report_json})()
 
         self.models = _Models()
 
@@ -199,3 +223,71 @@ class TestNodesOnlyWriteDeclaredKeys:
             "these keys are written by a node and not declared in "
             f"RishivanState, so LangGraph discards them silently: {offenders}"
         )
+
+
+class TestTheCouncilReachesTheAnswer:
+    """The Phase 1 lesson applied to Phase 4.
+
+    Node-level tests cannot see the node-to-graph seam, and both bugs that
+    shipped lived there. So these assert on the string that reaches
+    `generate_content_stream`.
+    """
+
+    def test_the_council_was_convened(self, served):
+        _, client = served
+        assert client.council_prompts, "no Rishi was ever called"
+
+    def test_reports_came_back(self, served):
+        final, _ = served
+        assert final["reports"], "the fan-out produced no reports"
+
+    def test_no_rishi_abstained_on_a_valid_generation(self, served):
+        """An abstention here means the report never met the contract, and a
+        council of abstentions is indistinguishable from a council that
+        agreed."""
+        final, _ = served
+        assert not [r for r in final["reports"] if r.abstained], [
+            r.abstained for r in final["reports"] if r.abstained
+        ]
+
+    def test_the_council_summary_survives_the_graph(self, served):
+        final, _ = served
+        assert final.get("council_summary")
+
+    def test_the_council_summary_reaches_the_prompt(self, served):
+        """The whole point of Phase 4. A council that reasons and whose
+        reasoning never reaches the narrative model has cost eight calls to
+        produce nothing."""
+        _, client = served
+        assert "COUNCIL" in client.prompts[0]
+
+    def test_the_weakening_evidence_reaches_the_prompt(self, served):
+        """The half every product drops. If it survives everywhere except the
+        prompt, it has been dropped."""
+        _, client = served
+        assert "Saturn aspects it" in client.prompts[0]
+
+    def test_the_rishi_prompt_carried_the_fired_rules(self, served):
+        _, client = served
+        assert any("RULES THAT FIRED" in p for p in client.council_prompts)
+
+    def test_the_rishi_prompt_carried_the_hierarchy(self, served):
+        _, client = served
+        assert any("EVIDENCE HIERARCHY" in p for p in client.council_prompts)
+
+    def test_the_auditor_ran(self, served):
+        final, _ = served
+        assert final.get("audit") is not None
+
+    def test_the_reading_reached_the_state(self, served):
+        """Everything above is downstream of the rule engine actually running.
+        Before Phase 4 it was unreachable from the graph entirely."""
+        final, _ = served
+        assert final.get("reading") is not None
+        assert final["reading"].considered > 0
+
+    def test_the_run_terminated(self, served):
+        """A bounded critic loop. If `route_after_sakshi` ever stops bounding,
+        this test does not fail - it hangs, which is the point."""
+        final, _ = served
+        assert final["revisions"] <= 1

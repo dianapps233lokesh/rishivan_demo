@@ -93,3 +93,44 @@ def route_after_retrieval(state: RishivanState) -> str:
     if state.get("sources") or state.get("matched_rules"):
         return "answer"
     return "insufficient"
+
+
+def route_rishis(state: RishivanState):
+    """The council fan-out, or straight past it.
+
+    Delegates to `council/rishis/roster.py`, which owns the evidence gate. This
+    router exists so the graph's edge table has one place to look for every
+    branch, and so `route_rishis` is testable from the same table as the other
+    four.
+
+    Returns `"synthesis"` rather than an empty list when nobody qualifies: a
+    conditional edge that returns no destinations strands the run, and a
+    council of nobody is still a fact the synthesis has to report.
+    """
+    from rishivan.council.rishis.roster import route_rishis as _route
+
+    sends = _route(state)
+    return sends or "synthesis"
+
+
+def route_after_sakshi(state: RishivanState) -> str:
+    """re_examine · synthesis — bounded at one revision.
+
+    Delegates to `council/rishis/sakshi.py`, where the bound lives beside the
+    audit that triggers it.
+    """
+    from rishivan.council.rishis.sakshi import route_after_sakshi as _route
+
+    return _route(state)
+
+
+def route_re_examination(state: RishivanState):
+    """Back to the Rishis a finding named, or on to synthesis.
+
+    Returning `"synthesis"` on an empty list matters more than it looks: an
+    audit whose findings all name Rishis that were never invited would
+    otherwise strand the run between the auditor and the answer.
+    """
+    from rishivan.council.rishis.roster import route_re_examination as _route
+
+    return _route(state) or "synthesis"

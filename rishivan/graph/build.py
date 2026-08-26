@@ -14,7 +14,8 @@ from langgraph.graph import END, START, StateGraph
 
 from rishivan.graph import edges as R
 from rishivan.graph.nodes import (
-    answer, chart, diagnosis, ground, hierarchy, intake, koonji, timing, varga,
+    answer, chart, diagnosis, ground, hierarchy, intake, koonji, rishi,
+    sakshi, synthesis, timing, varga,
 )
 from rishivan.graph.nodes import retrieve as retrieval
 from rishivan.graph.state import RishivanState
@@ -25,7 +26,9 @@ NODE_NAMES = (
     "varga_select", "koonji_read", "dasha_windows",
     "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
     "render_numerology",
-    "ground", "council_routing", "retrieve", "answer", "insufficient",
+    "ground", "council_routing", "retrieve",
+    "fan_out", "rishi", "sakshi", "re_examine", "synthesis",
+    "answer", "insufficient",
 )
 
 EDGE_MAPS: dict[str, dict[str, str]] = {
@@ -55,7 +58,17 @@ EDGE_MAPS: dict[str, dict[str, str]] = {
         "render_ashtakavarga": "render_ashtakavarga",
         "render_numerology": "render_numerology",
     },
-    "retrieve": {"answer": "answer", "insufficient": "insufficient"},
+    # Retrieval no longer goes straight to prose. `fan_out` is the council;
+    # `insufficient` is unchanged and still short-circuits, because nothing
+    # retrieved and nothing fired is an answer rather than an error.
+    "retrieve": {"answer": "fan_out", "insufficient": "insufficient"},
+    "sakshi": {"re_examine": "re_examine", "synthesis": "synthesis"},
+    # Both fan-outs return `Send`s, so these mappings declare the *permitted*
+    # destinations rather than translating a return value. They are in the
+    # table anyway, because `test_every_node_leads_somewhere` walks it and a
+    # node whose only exit is registered inline is a node that test cannot see.
+    "fan_out": {"rishi": "rishi", "synthesis": "synthesis"},
+    "re_examine": {"rishi": "rishi", "synthesis": "synthesis"},
 }
 """router source -> {router return value: node to run}.
 
@@ -95,6 +108,12 @@ STATIC_EDGES: dict[str, str] = {
     "render_dasha": END,
     "render_ashtakavarga": END,
     "render_numerology": END,
+    # The council. `rishi` is one node reached by many `Send`s; `sakshi` audits
+    # the reports it produced; `re_examine` fans back out to the Rishis a
+    # finding names, at most once, and returns through `sakshi` - which is why
+    # the bound lives in `route_after_sakshi` rather than in a while loop.
+    "rishi": "sakshi",
+    "synthesis": "answer",
     "answer": END,
     "insufficient": END,
 }
@@ -107,6 +126,11 @@ def _chart_render_passthrough(state: RishivanState) -> dict:
     folding the branch into the chart nodes keeps `route_chart_kind` separately
     testable, which is the whole reason for this refactor.
     """
+    return {}
+
+
+def _fan_out_passthrough(state: RishivanState) -> dict:
+    """The council's branch point, with no work of its own."""
     return {}
 
 
@@ -134,6 +158,11 @@ def build_graph(*, store, client, checkpointer=None):
         "retrieve",
         partial(retrieval.retrieve_node, vector_store=store, client=client),
     )
+    g.add_node("fan_out", _fan_out_passthrough)
+    g.add_node("rishi", partial(rishi.rishi_node, client=client))
+    g.add_node("sakshi", partial(sakshi.sakshi_node, client=client))
+    g.add_node("re_examine", sakshi.re_examine_node)
+    g.add_node("synthesis", synthesis.synthesis_node)
     g.add_node("answer", partial(answer.answer_node, client=client))
     g.add_node("insufficient", answer.insufficient_node)
 
@@ -146,6 +175,21 @@ def build_graph(*, store, client, checkpointer=None):
     )
     g.add_conditional_edges(
         "retrieve", R.route_after_retrieval, EDGE_MAPS["retrieve"]
+    )
+    # The fan-out. `fan_out` is a named branch point rather than a node,
+    # because `route_rishis` returns `Send`s and LangGraph needs somewhere to
+    # hang them - and because a Rishi that is never invited must still leave a
+    # path to synthesis, which `_fan_out_passthrough` provides by returning an
+    # empty Send list when nothing qualifies.
+    g.add_conditional_edges(
+        "fan_out", R.route_rishis, list(EDGE_MAPS["fan_out"].values())
+    )
+    g.add_conditional_edges(
+        "re_examine", R.route_re_examination,
+        list(EDGE_MAPS["re_examine"].values()),
+    )
+    g.add_conditional_edges(
+        "sakshi", R.route_after_sakshi, EDGE_MAPS["sakshi"]
     )
     for source, destination in STATIC_EDGES.items():
         g.add_edge(source, destination)
