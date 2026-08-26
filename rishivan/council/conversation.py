@@ -26,6 +26,14 @@ class Turn:
     question: str
     answer: str
     rishi: str
+    claims: tuple[tuple[str, str], ...] = ()
+    """(claim_id, band) for everything this turn was licensed to assert.
+
+    Claim ids rather than more prose. The prose is already in the transcript
+    and the model can read it; what it cannot do is notice on its own that it
+    is about to say the same thing more confidently than last time. A band is
+    comparable, a paragraph is not.
+    """
 
 
 @dataclass
@@ -34,8 +42,14 @@ class Conversation:
 
     turns: list[Turn] = field(default_factory=list)
 
-    def add(self, question: str, answer: str, rishi: str) -> None:
-        self.turns.append(Turn(question.strip(), answer.strip(), rishi))
+    def add(
+        self, question: str, answer: str, rishi: str,
+        claims: tuple[tuple[str, str], ...] = (),
+    ) -> None:
+        """`claims` is optional so every existing caller is unchanged."""
+        self.turns.append(
+            Turn(question.strip(), answer.strip(), rishi, tuple(claims))
+        )
 
     @property
     def is_empty(self) -> bool:
@@ -96,3 +110,95 @@ def is_probable_followup(question: str, convo: Conversation | None) -> bool:
         "that one", "the second", "please do", "i am", "i'm", "it is",
     )
     return q.startswith(openers)
+
+
+# ==========================================================================
+# Consistency across turns
+# ==========================================================================
+
+_BAND_ORDER = (
+    "some_indications", "moderately_supported",
+    "strongly_indicated", "consistently_supported",
+)
+
+
+def claims_of(plan) -> tuple[tuple[str, str], ...]:
+    """A plan's licensed claims, in the shape a `Turn` stores."""
+    if plan is None:
+        return ()
+    return tuple((c.claim_id, c.band) for c in plan.allowed)
+
+
+def _rank(band: str) -> int:
+    try:
+        return _BAND_ORDER.index(band)
+    except ValueError:
+        return -1
+
+
+def consistency_instruction(convo, plan) -> str:
+    """What this turn must not contradict, given what earlier turns asserted.
+
+    **Turn 14 disagreeing with turn 13 about a fact is the failure a reader
+    notices fastest and forgives least.** It is also the one a model cannot
+    avoid unaided: it sees the earlier prose, but "strongly indicated" and
+    "some indications suggest" are a tone difference in text and a real
+    difference in evidence, and nothing in the transcript marks which.
+
+    Three things get flagged, and a fourth deliberately does not:
+
+      * a claim stated more strongly than before - nothing changed but the
+        retelling
+      * a claim stated more weakly - the reader deserves to hear why
+      * a claim that has dropped out entirely - silently ceasing to mention
+        something you asserted is the quietest way to be inconsistent
+      * a NEW claim is not flagged. A different question was asked; saying
+        something new is the point.
+    """
+    if convo is None or convo.is_empty:
+        return ""
+
+    previous: dict[str, str] = {}
+    for turn in convo.recent():
+        for claim_id, band in turn.claims:
+            previous[claim_id] = band
+    if not previous:
+        return ""
+
+    current = {c.claim_id: c.band for c in (plan.allowed if plan else ())}
+    lines: list[str] = []
+
+    for claim_id, was in previous.items():
+        now = current.get(claim_id)
+        if now is None:
+            lines.append(
+                f"  {claim_id} — you asserted this earlier and this turn's "
+                f"evidence no longer supports it. Say so if it comes up; do "
+                f"not quietly stop mentioning it."
+            )
+        elif _rank(now) > _rank(was):
+            lines.append(
+                f"  {claim_id} — you said \"{was}\" earlier and the evidence "
+                f"now reads \"{now}\". Do not present it as stronger than you "
+                f"already did unless you say what changed."
+            )
+        elif _rank(now) < _rank(was):
+            lines.append(
+                f"  {claim_id} — you said \"{was}\" earlier and it now reads "
+                f"weaker. If you soften it, say that you are softening it."
+            )
+        else:
+            lines.append(
+                f"  {claim_id} — already stated at \"{was}\". Stay consistent "
+                f"with that."
+            )
+
+    if not lines:
+        return ""
+    return (
+        "WHAT YOU HAVE ALREADY TOLD THIS SEEKER\n"
+        + "\n".join(lines)
+        + "\n  Contradicting yourself across turns is the failure a reader "
+          "notices fastest. Changing your mind is allowed; changing it "
+          "silently is not."
+    )

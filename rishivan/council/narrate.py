@@ -108,6 +108,20 @@ def gate_block(plan) -> str:
     return "\n\n".join(blocks)
 
 
+def consistency_for(plan, state) -> str:
+    """What earlier turns already asserted, and how loudly.
+
+    Separate from `continuity_instruction`, which `build_rishi_prompt` already
+    adds: that one carries the prose so the voice stays continuous, this one
+    carries the claim *bands* so the evidence stays consistent. A model reading
+    only the prose cannot tell that "strongly indicated" and "some indications
+    suggest" are a difference in evidence rather than in tone.
+    """
+    from rishivan.council.conversation import consistency_instruction
+
+    return consistency_instruction((state or {}).get("conversation"), plan)
+
+
 def build_narration_prompt(plan, *, state=None) -> str:
     """Everything the narrative voice sees. Deterministic given plan and state.
 
@@ -123,7 +137,9 @@ def build_narration_prompt(plan, *, state=None) -> str:
 
     state = state or {}
     council = "\n\n---\n\n".join(
-        b for b in (gate_block(plan), state.get("council_summary", "")) if b
+        b for b in (gate_block(plan),
+                    consistency_for(plan, state),
+                    state.get("council_summary", "")) if b
     )
     return build_rishi_prompt(
         rishi_name=state.get("primary_rishi") or "vyom",

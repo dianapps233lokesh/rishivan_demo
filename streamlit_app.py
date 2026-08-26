@@ -738,8 +738,15 @@ if ask_btn and question.strip():
                             unsafe_allow_html=True,
                         )
 
-            # Remember the exchange so the Rishi's closing hook leads somewhere.
-            st.session_state.conversation.add(question.strip(), answer, rishi_name)
+            # Remember the exchange so the Rishi's closing hook leads somewhere,
+            # and what it was licensed to claim so the next turn cannot quietly
+            # contradict it.
+            from rishivan.council.conversation import claims_of
+
+            st.session_state.conversation.add(
+                question.strip(), answer, rishi_name,
+                claims=claims_of(result.get("answer_plan")),
+            )
             st.session_state.history.insert(0, {
                 "q": question.strip(), "a": answer,
                 "rishi": rishi_name, "domain": domain_str,
