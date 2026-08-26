@@ -297,8 +297,18 @@ For every rule you extract:
   quoted_text   MUST appear VERBATIM in the passage. Copy it, do not retype it.
                 This is checked by string match, so a paraphrase will be caught.
   when          a boolean tree using only the predicates above
-  the consequent block matching the assertion kind
   confidence    your own, honestly
+
+  plus the consequent block for the assertion kind you chose. The block name is
+  NOT the kind name, and a rule that carries the wrong one is discarded whole:
+
+    assert_claim        -> "indicates"
+    derive_fact         -> "derives"
+    define_attribute    -> "defines"
+    direct_subject      -> "remedy"
+    compute_value       -> "computes"
+    direct_interpreter  -> "guidance"
+    record_application  -> "example"
 
 One verse often yields several rules - "Jupiter in the 2nd gives wealth; in the
 6th, debt" is two. Split them.

@@ -361,6 +361,7 @@ SEED_NAMESPACES: dict[str, str] = {
     "school.prashna": "Kerala horary, Prasna Marga",
     "school.lalkitab": "Lal Kitab - namespaced, never merged into Parashari",
     "school.tajika": "Tajika annual charts",
+    "school.muhurta": "Muhurta Chintamani - electing a moment, not reading a birth",
 }
 
 SEED_DOMAINS = (

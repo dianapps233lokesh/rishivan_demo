@@ -49,6 +49,13 @@ BOOKS: dict[str, tuple[str, str]] = {
     "brihatjataka-row-1919": ("brihat-jataka", "brihatjataka-row-1919"),
     "cheiros-book-of-numbers": ("cheiro-numbers", "cheiros-book-of-numbers"),
     "numerology-and-the-divine-triangle": ("divine-triangle", "numerology-and-the-divine-triangle"),
+    # Bridged by `prepare_corpus` but never exported, so unreachable to the
+    # extractor until `scripts.export_corpus` existed to join the two.
+    "phaladeepika-sastri-1950": ("phaladeepika", "phaladeepika-sastri-1950"),
+    "saravali-santhanam-en": ("saravali", "saravali-santhanam-en"),
+    "sarvartha-chintamani": ("sarvartha-chintamani", "sarvartha-chintamani"),
+    "prashna-tantra": ("prashna-tantra", "prashna-tantra"),
+    "muhurtachintamani": ("muhurta-chintamani", "muhurtachintamani"),
 }
 """Filename stem -> the ids a citation is built from.
 
@@ -63,7 +70,15 @@ SCHOOL_BY_BOOK: dict[str, str] = {
     "bhavartha-ratnakara": "school.parashari",
     "brihat-jataka": "school.parashari",
     "hindu-predictive": "school.parashari",
+    "phaladeepika": "school.parashari",
+    "saravali": "school.parashari",
+    "sarvartha-chintamani": "school.parashari",
     "prasna-marga": "school.prashna",
+    "prashna-tantra": "school.prashna",
+    # Electional, not natal. Given its own school for the same reason numerology
+    # has none: a muhurta rule reasons about an elected moment, and filing it
+    # under Parashari would let it fire on a birth chart it was never about.
+    "muhurta-chintamani": "school.muhurta",
     # Numerology is a separate modality, not a Jyotisha school. It has no
     # school symbol and no rules should be emitted from it into the Parashari
     # namespace - which is why it is absent rather than mapped to a default.
@@ -115,11 +130,39 @@ def clean_translation(text: str) -> str:
     return _LEADING_REF.sub("", text or "").strip()
 
 
-def corpus_files(root: Optional[Path] = None) -> list[Path]:
-    """Every ingested book, in a stable order."""
+LEGACY_SUBDIR = "koonji/legacy"
+"""The OLD extractor's artefacts, which `convert.py` reads and nothing else does.
+
+Two pipelines shared one set of files and only one of them could be right. The
+old extractor wrote **one row per extracted rule** - unit 18050 of Jataka
+Parijata carries eighteen - while the new extractor needs **one row per verse**,
+because it re-reads the verse itself and a duplicated unit means paying six
+model calls to extract the same shloka eighteen times.
+
+So they are separated: `koonji/*.jsonl` is the bridged corpus keyed by verse,
+`koonji/legacy/*.jsonl` is the old rule-per-row output. Reading the wrong one
+silently halved the converted rule base (1,117 -> 895) and only a count
+assertion noticed.
+"""
+
+
+def corpus_files(root: Optional[Path] = None, *, legacy: bool = False) -> list[Path]:
+    """Every ingested book, in a stable order.
+
+    With `legacy=True` the archive wins where it exists and the normal location
+    is the fallback, because only books that have actually been re-exported have
+    an archived copy - BPHS and the numerology texts were never touched and
+    their originals are still in place. Globbing the archive alone would have
+    silently dropped BPHS, which is 903 of the converted rules.
+    """
     root = root or CORPUS_DIR
-    found = sorted((root / "koonji").glob("*.jsonl")) + sorted(root.glob("koonji-*.jsonl"))
-    return [p for p in found if p.stem in BOOKS]
+    current = sorted((root / "koonji").glob("*.jsonl")) + sorted(root.glob("koonji-*.jsonl"))
+    current = [p for p in current if p.stem in BOOKS]
+    if not legacy:
+        return current
+
+    archived = {p.stem: p for p in (root / LEGACY_SUBDIR).glob("*.jsonl") if p.stem in BOOKS}
+    return [archived.get(p.stem, p) for p in current]
 
 
 def load_units(path: Path | str) -> list[Unit]:
@@ -151,12 +194,19 @@ def load_units(path: Path | str) -> list[Unit]:
 
 
 def load_corpus(
-    root: Optional[Path] = None, *, books: Optional[Iterable[str]] = None
+    root: Optional[Path] = None,
+    *,
+    books: Optional[Iterable[str]] = None,
+    legacy: bool = False,
 ) -> list[Unit]:
-    """Every book, or the named ones. Book ids, not filenames."""
+    """Every book, or the named ones. Book ids, not filenames.
+
+    `legacy=True` reads the old extractor's rule-per-row artefacts instead of
+    the bridged verse corpus - see `LEGACY_SUBDIR`. Only `convert.py` wants it.
+    """
     wanted = set(books) if books else None
     units: list[Unit] = []
-    for path in corpus_files(root):
+    for path in corpus_files(root, legacy=legacy):
         book_id, _ = BOOKS[path.stem]
         if wanted is None or book_id in wanted or path.stem in wanted:
             units.extend(load_units(path))

@@ -205,11 +205,46 @@ _MODALITY_KEYS = {
 }
 
 
+CONSEQUENT_BLOCK: dict[AssertionKind, str] = {
+    AssertionKind.ASSERT_CLAIM: "indicates",
+    AssertionKind.DERIVE_FACT: "derives",
+    AssertionKind.DEFINE_ATTRIBUTE: "defines",
+    AssertionKind.DIRECT_SUBJECT: "remedy",
+    AssertionKind.COMPUTE_VALUE: "computes",
+    AssertionKind.DIRECT_INTERPRETER: "guidance",
+    AssertionKind.RECORD_APPLICATION: "example",
+}
+"""Assertion kind -> the block its consequent must arrive in.
+
+Exported so `prompts.py` can name them to the model rather than say "the
+consequent block matching the assertion kind" and hope. A model that picked
+`direct_interpreter` had no way to learn the block is called `guidance`, and the
+result was `KeyError: 'guidance'` -- a Python error where a content error was
+meant, reported against a rule the extractor had otherwise built correctly.
+"""
+
+
+def _block(doc: dict[str, Any], assertion: AssertionKind, rule_id: str) -> dict:
+    """The consequent block for this assertion kind, or a usable complaint.
+
+    `doc["guidance"]` raising `KeyError: 'guidance'` tells a reader which dict
+    key was absent and nothing about which rule, which kind, or what was
+    expected instead. Every kind below went through a bare subscript; only
+    `derive_fact` had been given a message, presumably after someone hit it.
+    """
+    name = CONSEQUENT_BLOCK[assertion]
+    block = doc.get(name)
+    if not block:
+        raise ValueError(
+            f"{rule_id}: assertion `{assertion.value}` needs a `{name}` block "
+            f"and the document has {sorted(doc) or 'no keys'}"
+        )
+    return block
+
+
 def _build_consequent(doc: dict[str, Any], assertion: AssertionKind, rule_id: str):
     if assertion is AssertionKind.ASSERT_CLAIM:
-        block = doc.get("indicates")
-        if not block:
-            raise ValueError(f"{rule_id}: assert_claim needs an `indicates` block")
+        block = _block(doc, assertion, rule_id)
         return ClaimConsequent(
             claim_id=block["claim"],
             polarity=block.get("polarity", "positive"),
@@ -224,9 +259,7 @@ def _build_consequent(doc: dict[str, Any], assertion: AssertionKind, rule_id: st
             bound=block.get("bound"),
         )
     if assertion is AssertionKind.DERIVE_FACT:
-        block = doc.get("derives")
-        if not block:
-            raise ValueError(f"{rule_id}: derive_fact needs a `derives` block")
+        block = _block(doc, assertion, rule_id)
         return FactConsequent(
             fact_predicate=block["fact"],
             subject_expr=_maybe_resolve(block["subject"]),
@@ -234,7 +267,7 @@ def _build_consequent(doc: dict[str, Any], assertion: AssertionKind, rule_id: st
             value=_maybe_resolve(block["value"]),
         )
     if assertion is AssertionKind.DEFINE_ATTRIBUTE:
-        block = doc["defines"]
+        block = _block(doc, assertion, rule_id)
         return AttributeConsequent(
             entity_expr=_maybe_resolve(block["entity"]),
             attribute=block["attribute"],
@@ -244,7 +277,7 @@ def _build_consequent(doc: dict[str, Any], assertion: AssertionKind, rule_id: st
             exhaustive=block.get("exhaustive", False),
         )
     if assertion is AssertionKind.DIRECT_SUBJECT:
-        block = doc["remedy"]
+        block = _block(doc, assertion, rule_id)
         return DirectiveConsequent(
             injunction=block.get("injunction", "prescription"),
             acts_on=block.get("acts_on", "native"),
@@ -255,18 +288,18 @@ def _build_consequent(doc: dict[str, Any], assertion: AssertionKind, rule_id: st
             weekday=block.get("weekday"),
         )
     if assertion is AssertionKind.COMPUTE_VALUE:
-        block = doc["computes"]
+        block = _block(doc, assertion, rule_id)
         return ProcedureConsequent(
             computes=block["name"],
             method_note=block.get("note", ""),
             test_vectors=list(block.get("test_vectors", [])),
         )
     if assertion is AssertionKind.DIRECT_INTERPRETER:
-        block = doc["guidance"]
+        block = _block(doc, assertion, rule_id)
         return GuidanceConsequent(
             guidance_text=block["text"], applies_to=block.get("applies_to", "method")
         )
-    block = doc["example"]
+    block = _block(doc, AssertionKind.RECORD_APPLICATION, rule_id)
     return ExampleConsequent(
         chart_data=block.get("chart", {}),
         subject_note=block.get("subject"),

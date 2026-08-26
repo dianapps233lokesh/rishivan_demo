@@ -263,11 +263,11 @@ class TestDocuments:
     def test_nothing_is_ever_emitted_as_production(self):
         """Machine output nobody has read. `candidate` is the honest status and
         the serving default excludes it."""
-        report = convert_corpus(load_corpus())
+        report = convert_corpus(load_corpus(legacy=True))
         assert {d["status"] for d in report.docs} == {"candidate"}
 
     def test_every_document_carries_its_verse_and_a_hash(self):
-        report = convert_corpus(load_corpus())
+        report = convert_corpus(load_corpus(legacy=True))
         for doc in report.docs:
             assert doc["source"]["quote"].strip()
             assert doc["source"]["locator"].strip()
@@ -282,7 +282,7 @@ class TestDocuments:
     def test_rule_ids_are_unique_across_the_corpus(self):
         """A duplicate id compiles twice, indexes twice and fires twice - which
         reads as two independent sources agreeing."""
-        report = convert_corpus(load_corpus())
+        report = convert_corpus(load_corpus(legacy=True))
         ids = [d["id"] for d in report.docs]
         assert len(ids) == len(set(ids))
 
@@ -304,7 +304,7 @@ class TestDocuments:
         assert result.skipped
 
     def test_no_claim_ids_outside_the_registry(self):
-        report = convert_corpus(load_corpus())
+        report = convert_corpus(load_corpus(legacy=True))
         assert unknown_claims(report.docs, seed_registry()) == set()
 
 
@@ -313,13 +313,13 @@ class TestReport:
         """A converter that reports only its successes tells you it worked. One
         that reports the atom shapes and domain tags it could not express tells
         you what to build next."""
-        report = convert_corpus(load_corpus())
+        report = convert_corpus(load_corpus(legacy=True))
         assert report.reasons
         assert report.unmapped_domains
         assert "family" in report.unmapped_domains
 
     def test_the_report_renders(self):
-        assert "rule documents" in str(convert_corpus(load_corpus()[:200]))
+        assert "rule documents" in str(convert_corpus(load_corpus(legacy=True)[:200]))
 
 
 @pytest.fixture(scope="module")
@@ -327,7 +327,7 @@ def gated():
     """The whole corpus through the compiler once, shared by the tests below."""
     from rishivan.koonji.pipeline import gate
 
-    report = convert_corpus(load_corpus())
+    report = convert_corpus(load_corpus(legacy=True))
     rules, gate_report, _ = gate(report.docs, seed_registry())
     return rules, gate_report
 

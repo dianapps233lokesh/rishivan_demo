@@ -165,11 +165,17 @@ def convert_books(
     rules. Machine output and reviewed hand-authored material should never share
     a file: the generated file is overwritten on every run, and a hand edit made
     inside it would vanish without trace.
+
+    Reads the LEGACY corpus, which is the only thing it has ever converted: this
+    function turns the old extractor's output into the frame, and the old
+    extractor wrote one row per rule. The bridged corpus that `extract` now
+    reads is one row per verse and carries no `rule` key at all, so pointing
+    this at it produces nothing and says so only in the count.
     """
     started = time.perf_counter()
     registry = registry or seed_registry()
 
-    units = load_corpus(books=books)
+    units = load_corpus(books=books, legacy=True)
     if limit:
         units = units[:limit]
 
