@@ -17,12 +17,15 @@ all 20 result keys, and is now 81 lines of adapter.
 
 ```mermaid
 graph TD;
-	__start__([__start__]):::first
+	__start__([<p>__start__</p>]):::first
 	intake(intake)
 	warmth(warmth)
 	chart_natal(chart_natal)
 	chart_moment(chart_moment)
 	panchang(panchang)
+	chart_state(chart_state)
+	varga_select(varga_select)
+	dasha_windows(dasha_windows)
 	chart_render(chart_render)
 	render_varga(render_varga)
 	render_dasha(render_dasha)
@@ -33,35 +36,38 @@ graph TD;
 	retrieve(retrieve)
 	answer(answer)
 	insufficient(insufficient)
-	__end__([__end__]):::last
+	__end__([<p>__end__</p>]):::last
 	__start__ --> intake;
-	intake -.-> warmth;
-	intake -.-> chart_natal;
-	intake -.-> chart_moment;
-	intake -.-> panchang;
-	intake -. retrieve .-> ground;
-	chart_natal -.-> chart_render;
-	chart_natal -.-> panchang;
-	chart_natal -. retrieve .-> ground;
 	chart_moment -.-> chart_render;
+	chart_moment -. &nbsp;retrieve&nbsp; .-> chart_state;
 	chart_moment -.-> panchang;
-	chart_moment -. retrieve .-> ground;
-	chart_render -.-> render_varga;
-	chart_render -.-> render_dasha;
+	chart_natal -.-> chart_render;
+	chart_natal -. &nbsp;retrieve&nbsp; .-> chart_state;
+	chart_natal -.-> panchang;
 	chart_render -.-> render_ashtakavarga;
+	chart_render -.-> render_dasha;
 	chart_render -.-> render_numerology;
-	panchang --> ground;
-	ground --> council_routing;
+	chart_render -.-> render_varga;
+	chart_state --> varga_select;
 	council_routing --> retrieve;
+	dasha_windows --> ground;
+	ground --> council_routing;
+	intake -.-> chart_moment;
+	intake -.-> chart_natal;
+	intake -. &nbsp;retrieve&nbsp; .-> ground;
+	intake -.-> panchang;
+	intake -.-> warmth;
+	panchang --> chart_state;
 	retrieve -.-> answer;
 	retrieve -.-> insufficient;
-	warmth --> __end__;
-	render_varga --> __end__;
-	render_dasha --> __end__;
-	render_ashtakavarga --> __end__;
-	render_numerology --> __end__;
+	varga_select --> dasha_windows;
 	answer --> __end__;
 	insufficient --> __end__;
+	render_ashtakavarga --> __end__;
+	render_dasha --> __end__;
+	render_numerology --> __end__;
+	render_varga --> __end__;
+	warmth --> __end__;
 	classDef default fill:#f2f0ff,line-height:1.2
 	classDef first fill-opacity:0
 	classDef last fill:#bfb6fc
@@ -96,6 +102,9 @@ checks every literal key they write against the schema.
 
 | Node | Owns | Ported from |
 |---|---|---|
+| `chart_state` | `chart_state` `chart_digest` | new — blueprint §6 (Phase 2) |
+| `varga_select` | `vargas` | new — blueprint §7 (Phase 3) |
+| `dasha_windows` | `timing` | new — blueprint §8 (Phase 3) |
 | `intake` | `classification` `primary_rishi` `rishi_title` `query_domain` `search_query` | `council_consult:100-152` |
 | `warmth` | `is_warmth` `outcome` `answer_stream` `primary_rishi` `rishi_title` `query_domain` `routing` | `:111-132` |
 | `chart_natal` | `chart` `chart_summary` `chart_facts` `relevant_chart_tables` | `:156-194` |
@@ -164,12 +173,19 @@ parameter receives the framework's long-term-memory store rather than whatever
 Phases 2–5 add nodes; they do not edit these. See
 `docs/superpowers/specs/2026-08-25-chart-understanding-council-architecture.md`.
 
-| Phase | Adds | Between |
-|---|---|---|
-| 2 | `chart_state` (§6) — planet- and house-level diagnosis | chart → ground |
-| 3 | `varga_select` (§7), `dasha_windows` (§8) | chart_state → ground |
-| 4 | `evidence_plan` (§12), eight Rishi nodes + `sakshi` (§11) | retrieve → answer |
-| 5 | `answer_plan`, streaming critic, trace, prediction ledger | answer → end |
+| Phase | Adds | Between | State |
+|---|---|---|---|
+| ~~2~~ | ~~`chart_state` (§6)~~ | chart → ground | **done** |
+| ~~3~~ | ~~`varga_select` (§7), `dasha_windows` (§8)~~ | chart_state → ground | **done** |
+| 4 | `evidence_plan` (§12), eight Rishi nodes + `sakshi` (§11) | retrieve → answer | |
+| 5 | `answer_plan`, streaming critic, trace, prediction ledger | answer → end | |
+
+**Phase 4 has a reordering to make.** `dasha_windows` cannot produce a window
+until a Koonji reading establishes the promise, and retrieval currently runs
+*after* it. Either retrieval moves ahead of timing, or timing splits into a
+pre-retrieval half (which periods run) and a post-retrieval half (what they
+mean). The second is probably right — varga selection has to precede fact
+compilation, and fact compilation precedes retrieval.
 
 The state schema already carries `chart_state`, `vargas`, `timing`, `hierarchy`
 and `reports` as `None`/`[]`, so each phase adds nodes rather than migrating
