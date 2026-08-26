@@ -16,6 +16,11 @@ all 20 result keys, and is now 81 lines of adapter.
 ## Topology
 
 ```mermaid
+---
+config:
+  flowchart:
+    curve: linear
+---
 graph TD;
 	__start__([<p>__start__</p>]):::first
 	intake(intake)
@@ -24,7 +29,9 @@ graph TD;
 	chart_moment(chart_moment)
 	panchang(panchang)
 	chart_state(chart_state)
+	hierarchy(hierarchy)
 	varga_select(varga_select)
+	koonji_read(koonji_read)
 	dasha_windows(dasha_windows)
 	chart_render(chart_render)
 	render_varga(render_varga)
@@ -34,6 +41,11 @@ graph TD;
 	ground(ground)
 	council_routing(council_routing)
 	retrieve(retrieve)
+	fan_out(fan_out)
+	rishi(rishi)
+	sakshi(sakshi)
+	re_examine(re_examine)
+	synthesis(synthesis)
 	answer(answer)
 	insufficient(insufficient)
 	__end__([<p>__end__</p>]):::last
@@ -48,19 +60,29 @@ graph TD;
 	chart_render -.-> render_dasha;
 	chart_render -.-> render_numerology;
 	chart_render -.-> render_varga;
-	chart_state --> varga_select;
+	chart_state --> hierarchy;
 	council_routing --> retrieve;
 	dasha_windows --> ground;
+	fan_out -.-> rishi;
+	fan_out -.-> synthesis;
 	ground --> council_routing;
+	hierarchy --> varga_select;
 	intake -.-> chart_moment;
 	intake -.-> chart_natal;
 	intake -. &nbsp;retrieve&nbsp; .-> ground;
 	intake -.-> panchang;
 	intake -.-> warmth;
+	koonji_read --> dasha_windows;
 	panchang --> chart_state;
-	retrieve -.-> answer;
+	re_examine -.-> rishi;
+	re_examine -.-> synthesis;
+	retrieve -. &nbsp;answer&nbsp; .-> fan_out;
 	retrieve -.-> insufficient;
-	varga_select --> dasha_windows;
+	rishi --> sakshi;
+	sakshi -.-> re_examine;
+	sakshi -.-> synthesis;
+	synthesis --> answer;
+	varga_select --> koonji_read;
 	answer --> __end__;
 	insufficient --> __end__;
 	render_ashtakavarga --> __end__;
@@ -170,23 +192,40 @@ parameter receives the framework's long-term-memory store rather than whatever
 
 ## What comes next
 
-Phases 2–5 add nodes; they do not edit these. See
+Phase 5 adds nodes; it does not edit these. See
 `docs/superpowers/specs/2026-08-25-chart-understanding-council-architecture.md`.
 
 | Phase | Adds | Between | State |
 |---|---|---|---|
 | ~~2~~ | ~~`chart_state` (§6)~~ | chart → ground | **done** |
 | ~~3~~ | ~~`varga_select` (§7), `dasha_windows` (§8)~~ | chart_state → ground | **done** |
-| 4 | `evidence_plan` (§12), eight Rishi nodes + `sakshi` (§11) | retrieve → answer | |
+| ~~4~~ | ~~`hierarchy` + `koonji_read` (§12), the Rishi fan-out and `sakshi` (§11)~~ | chart_state → answer | **done** |
 | 5 | `answer_plan`, streaming critic, trace, prediction ledger | answer → end | |
 
-**Phase 4 has a reordering to make.** `dasha_windows` cannot produce a window
-until a Koonji reading establishes the promise, and retrieval currently runs
-*after* it. Either retrieval moves ahead of timing, or timing splits into a
-pre-retrieval half (which periods run) and a post-retrieval half (what they
-mean). The second is probably right — varga selection has to precede fact
-compilation, and fact compilation precedes retrieval.
+**The Phase 4 reordering is done.** The note that stood here said
+`dasha_windows` could not produce a window until a Koonji reading established
+the promise, and that retrieval ran after it. The resolution was neither of the
+two options it proposed: the reading is not retrieval, and it does not need to
+wait for retrieval. The chain is now
 
-The state schema already carries `chart_state`, `vargas`, `timing`, `hierarchy`
-and `reports` as `None`/`[]`, so each phase adds nodes rather than migrating
-state.
+```
+chart_state → hierarchy → varga_select → koonji_read → dasha_windows → ground → …
+```
+
+`hierarchy` settles the domain, `varga_select` picks the divisions, `koonji_read`
+compiles facts with those divisions and fires the rules, and `dasha_windows`
+times the promise that came out. Page retrieval still runs later and is
+independent of all of it.
+
+**Two things Phase 4 measured and did not fix, because neither is an
+engineering problem:**
+
+1. **Every one of the 1,117 rules is `status: candidate`.** None has been
+   promoted. `Engine.read` defaults to production-only, so `koonji_read` states
+   its status set explicitly (`nodes/koonji.SERVED_STATUSES`) and carries
+   `reading_is_unreviewed` so the answer layer can say so. When a review pass
+   runs, the flag goes false on its own.
+2. **The corpus has no yoga-typed claims.** Claim ids fall in fifteen
+   namespaces and none is `yoga.*`; nine rules mention a yoga in free text.
+   `PlanetDiagnosis.yogas` therefore stays empty, alongside `functional_nature`,
+   on the corpus-blocked list.
