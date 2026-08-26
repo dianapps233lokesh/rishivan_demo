@@ -399,3 +399,103 @@ class TestTheGraphIsNowSerialisable:
         for claim in final["reading"].claims:
             if claim.confidence < INSUFFICIENT_BELOW:
                 assert claim.claim_id not in block, claim.claim_id
+
+
+class TestTheAnswerIsGatedEndToEnd:
+    """Phase 5's deliverables, asserted on one real run through the graph.
+
+    Node tests cannot see the node-to-graph seam. Phase 1 shipped two bugs
+    there, Phase 4 found `Send` replacing rather than merging state, and Phase
+    5 dropped the retrieved passages for one commit. So the phase closes the
+    way the others did: on what actually reaches the reader.
+    """
+
+    def test_the_answer_verifies_against_its_own_plan(self, served):
+        """The loop closed. What was said, checked against what was licensed."""
+        from rishivan.council.verify import verify_answer
+
+        final, _ = served
+        violations = verify_answer(final["answer_text"], final["answer_plan"])
+        assert violations == [], [v.detail for v in violations]
+
+    def test_the_trace_was_written_to_state(self, served):
+        final, _ = served
+        assert final["trace"]["run_id"]
+        assert final["trace"]["koonji"]
+
+    def test_the_trace_records_the_chart_digest(self, served):
+        final, _ = served
+        assert final["trace"]["chart_digest"] == final["chart_digest"]
+
+    def test_the_trace_carries_the_plan_that_produced_the_answer(self, served):
+        final, _ = served
+        assert (len(final["trace"]["answer_plan"]["allowed"])
+                == len(final["answer_plan"].allowed))
+
+    def test_the_plan_licenses_only_claims_above_the_floor(self, served):
+        from rishivan.koonji.evidence import INSUFFICIENT_BELOW
+
+        final, _ = served
+        for claim in final["answer_plan"].allowed:
+            assert claim.confidence >= INSUFFICIENT_BELOW
+
+    def test_every_licensed_claim_carries_a_citation(self, served):
+        final, _ = served
+        for claim in final["answer_plan"].allowed:
+            assert claim.citations or claim.rule_ids
+
+    def test_the_whole_turn_runs_under_a_checkpointer(self, monkeypatch):
+        """Phase 5's structural deliverable, on the analytic path — which is
+        the one that carries the `Reading` a plain `AtomTable` used to make
+        unpersistable."""
+        from rishivan.council import classifier
+        from rishivan.graph.build import build_graph, checkpointer_for
+        from rishivan.graph.state import initial_state
+
+        monkeypatch.setattr(
+            classifier, "classify_query",
+            lambda client, question, **kw: {
+                "is_smalltalk_or_gibberish": False,
+                "primary_rishi": "dhruvan",
+                "query_domain": QueryDomain.NATAL,
+                "intent": "predict",
+                "search_query": "wealth dhana yoga",
+                "dasha_level": "none",
+                "relevant_vargas": [],
+            },
+        )
+        graph = build_graph(
+            store=FakeStore(), client=RecordingClient(),
+            checkpointer=checkpointer_for("demo"),
+            trace_sink=lambda trace, predictions: None,
+        )
+        final = graph.invoke(
+            initial_state("will I be wealthy?", birth_data=BIRTH, query_time=WHEN),
+            config={"configurable": {"thread_id": "phase5-1"}},
+        )
+        assert final["outcome"] == "served"
+        assert final["answer_plan"] is not None
+
+    def test_the_verifier_would_catch_an_over_claiming_answer(self, served):
+        """The other half of the check above, which passes trivially on a
+        two-word fake answer. This one proves the verifier bites on the real
+        plan a real run produced — otherwise "no violations" means nothing."""
+        from rishivan.council.verify import verify_answer
+
+        final, _ = served
+        bad = "This is guaranteed, and it happens in 2029."
+        violations = verify_answer(bad, final["answer_plan"])
+        kinds = {v.kind for v in violations}
+        assert "overclaimed_band" in kinds
+        assert "uncited_date" in kinds
+
+    def test_the_template_fallback_verifies_against_the_real_plan(self, served):
+        """Closing the loop on a plan built from an actual chart rather than a
+        fixture. If the fallback can violate a real plan, it is shipping the
+        failure it exists to prevent."""
+        from rishivan.council.narrate import render_template
+        from rishivan.council.verify import verify_answer
+
+        final, _ = served
+        plan = final["answer_plan"]
+        assert verify_answer(render_template(plan), plan) == []
