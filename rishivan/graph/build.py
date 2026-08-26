@@ -15,7 +15,7 @@ from langgraph.graph import END, START, StateGraph
 from rishivan.graph import edges as R
 from rishivan.graph.nodes import (
     answer, answer_plan, chart, diagnosis, ground, hierarchy, intake, koonji,
-    rishi, sakshi, synthesis, timing, varga,
+    persist, rishi, sakshi, synthesis, timing, varga,
 )  # noqa: F401 - `answer` re-exported for callers still importing it
 from rishivan.graph.nodes import retrieve as retrieval
 from rishivan.graph.state import RishivanState
@@ -28,7 +28,7 @@ NODE_NAMES = (
     "render_numerology",
     "ground", "council_routing", "retrieve",
     "fan_out", "rishi", "sakshi", "re_examine", "synthesis",
-    "answer_plan", "insufficient",
+    "answer_plan", "persist", "insufficient",
 )
 
 EDGE_MAPS: dict[str, dict[str, str]] = {
@@ -117,11 +117,14 @@ STATIC_EDGES: dict[str, str] = {
     # generated FROM the plan, so anything absent from the plan is absent from
     # the prompt and cannot be said however the generation goes.
     "synthesis": "answer_plan",
-    # The graph ends here. Narration happens in `council_consult`, from the
-    # plan - because a live generator in state is not serialisable, and a graph
-    # that puts one there cannot be checkpointed. See `council/narrate.py`.
-    "answer_plan": END,
-    "insufficient": END,
+    # Narration happens in `council_consult`, from the plan - a live generator
+    # in state is not serialisable, and a graph that puts one there cannot be
+    # checkpointed. See `council/narrate.py`.
+    "answer_plan": "persist",
+    "persist": END,
+    # An insufficient turn is traced too. Why a question produced no reading
+    # is exactly what a trace is for, and it is the case most worth reviewing.
+    "insufficient": "persist",
 }
 
 
@@ -140,7 +143,7 @@ def _fan_out_passthrough(state: RishivanState) -> dict:
     return {}
 
 
-def build_graph(*, store, client, checkpointer=None):
+def build_graph(*, store, client, checkpointer=None, trace_sink=None):
     g = StateGraph(RishivanState)
 
     g.add_node("intake", partial(intake.intake_node, client=client))
@@ -170,6 +173,7 @@ def build_graph(*, store, client, checkpointer=None):
     g.add_node("re_examine", sakshi.re_examine_node)
     g.add_node("synthesis", synthesis.synthesis_node)
     g.add_node("answer_plan", answer_plan.answer_plan_node)
+    g.add_node("persist", partial(persist.persist_node, sink=trace_sink))
     g.add_node("insufficient", answer.insufficient_node)
 
     g.add_edge(START, "intake")

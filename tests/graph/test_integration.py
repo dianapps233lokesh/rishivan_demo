@@ -195,8 +195,14 @@ class TestNodesOnlyWriteDeclaredKeys:
 
         A key a node returns but the state does not declare is dropped in
         silence, so this walks the node modules for the literal keys they write
-        and checks each against the schema. Three lines of test against four
-        remaining phases of new nodes.
+        and checks each against the schema.
+
+        **Scoped to `*_node` functions**, not to every dict literal in the
+        module. The looser version worked while every node was a single
+        function returning an inline dict, and false-positived the moment
+        `persist.py` grew helpers that build payload dicts — thirteen "keys"
+        that were fields of a trace, not channels of the state. A guard that
+        cries wolf on ordinary refactors is a guard somebody deletes.
         """
         import ast
         import pathlib
@@ -207,27 +213,59 @@ class TestNodesOnlyWriteDeclaredKeys:
 
         for path in sorted(nodes_dir.glob("*.py")):
             tree = ast.parse(path.read_text())
-            for node in ast.walk(tree):
-                # `return {...}` and `out["key"] = ...`
-                keys: list[str] = []
-                if isinstance(node, ast.Return) and isinstance(node.value, ast.Dict):
-                    keys = [k.value for k in node.value.keys
-                            if isinstance(k, ast.Constant) and isinstance(k.value, str)]
-                elif (isinstance(node, ast.Assign)
-                      and len(node.targets) == 1
-                      and isinstance(node.targets[0], ast.Subscript)
-                      and isinstance(node.targets[0].value, ast.Name)
-                      and node.targets[0].value.id == "out"
-                      and isinstance(node.targets[0].slice, ast.Constant)):
-                    keys = [node.targets[0].slice.value]
-                for key in keys:
-                    if isinstance(key, str) and key not in declared:
-                        offenders.append(f"{path.name}: {key!r}")
+            for func in ast.walk(tree):
+                if not isinstance(func, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    continue
+                if not func.name.endswith("_node"):
+                    continue
+                for node in ast.walk(func):
+                    # `return {...}` and `out["key"] = ...`
+                    keys: list[str] = []
+                    if (isinstance(node, ast.Return)
+                            and isinstance(node.value, ast.Dict)):
+                        keys = [
+                            k.value for k in node.value.keys
+                            if isinstance(k, ast.Constant)
+                            and isinstance(k.value, str)
+                        ]
+                    elif (isinstance(node, ast.Assign)
+                          and len(node.targets) == 1
+                          and isinstance(node.targets[0], ast.Subscript)
+                          and isinstance(node.targets[0].value, ast.Name)
+                          and node.targets[0].value.id == "out"
+                          and isinstance(node.targets[0].slice, ast.Constant)):
+                        keys = [node.targets[0].slice.value]
+                    for key in keys:
+                        if isinstance(key, str) and key not in declared:
+                            offenders.append(f"{path.name}:{func.name}: {key!r}")
 
         assert not offenders, (
             "these keys are written by a node and not declared in "
             f"RishivanState, so LangGraph discards them silently: {offenders}"
         )
+
+    def test_the_walk_would_catch_an_undeclared_key(self):
+        """The guard's own guard.
+
+        Tightening the walk to `*_node` functions narrowed what it inspects,
+        and a scoping change that quietly stops catching anything looks exactly
+        like a passing test. This proves it still bites."""
+        import ast
+
+        source = (
+            "def fake_node(state):\n"
+            "    return {'definitely_not_a_channel': 1}\n"
+        )
+        declared = set(RishivanState.__annotations__)
+        found = []
+        for func in ast.walk(ast.parse(source)):
+            if isinstance(func, ast.FunctionDef) and func.name.endswith("_node"):
+                for node in ast.walk(func):
+                    if isinstance(node, ast.Return) and isinstance(node.value, ast.Dict):
+                        found += [k.value for k in node.value.keys
+                                  if isinstance(k, ast.Constant)
+                                  and k.value not in declared]
+        assert found == ["definitely_not_a_channel"]
 
 
 class TestTheCouncilReachesTheAnswer:
