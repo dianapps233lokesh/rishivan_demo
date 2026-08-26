@@ -388,10 +388,16 @@ def extract_books(
                 "GENERATED - do not edit by hand.\n"
                 "  python -m rishivan.koonji extract\n"
                 "\n"
-                "Extracted by the six-call pipeline in extract.py, then compiled and\n"
-                "round-tripped. Candidates that failed validation are NOT here -\n"
-                "they are in the review queue. Nothing here has been read by a\n"
-                "reviewer either; `candidate` means exactly that."
+                f"Extracted by {'a single model call' if single_call else 'the six-call pipeline'} "
+                f"in extract.py, then compiled\n"
+                f"and round-tripped. Candidates that failed validation are NOT\n"
+                f"here - they are in the review queue.\n"
+                + ("\nNO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it\n"
+                   "because review is manual; a rule nothing examined and a rule\n"
+                   "that passed a verifier are different things.\n"
+                   if single_call else "")
+                + "\nNothing here has been read by a reviewer either; `candidate`\n"
+                  "means exactly that."
             ),
         )
 
