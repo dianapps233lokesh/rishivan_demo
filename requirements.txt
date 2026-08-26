@@ -28,3 +28,10 @@ pydantic-settings>=2.0          # app.core.config reads DATABASE_* from the env
 # here: a floating graph library is exactly the dependency whose breaking change
 # surfaces at import on the deploy rather than in CI.
 langgraph==1.2.11
+
+# MongoDB Atlas — telemetry: one document per answered turn, plus the
+# prediction ledger. `certifi` is not optional: a stock macOS Python has no
+# root certificates and every Atlas connection dies with
+# CERTIFICATE_VERIFY_FAILED, so the CA bundle is passed explicitly.
+pymongo>=4.8
+certifi>=2024.2

@@ -20,6 +20,12 @@ from typing import Annotated, Any, Generator, TypedDict
 class RishivanState(TypedDict, total=False):
     # -- request identity, written once at intake --------------------------
     run_id: str
+    """Also the telemetry document id — one row per turn, upserted on it."""
+
+    thread_id: str
+    """The conversation this turn belongs to, when the caller supplied one.
+    Groups telemetry rows and keys the checkpointer."""
+
     question: str
     rishi_override: str | None
     conversation: Any
@@ -181,6 +187,7 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
     return RishivanState(
         run_id=f"ir_{int(time.time() * 1000):x}_{uuid.uuid4().hex[:8]}",
         question=question,
+        thread_id=kw.get("thread_id", "") or "",
         rishi_override=kw.get("rishi_override"),
         conversation=kw.get("conversation"),
         birth_data=kw.get("birth_data"),

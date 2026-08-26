@@ -78,6 +78,7 @@ def council_consult(
         tz_offset=tz_offset,
         place=place,
         conversation=conversation,
+        thread_id=thread_id,
     ), config=config)
 
     # Narration happens HERE, not in the graph. The graph's final state has to

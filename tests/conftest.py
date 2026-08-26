@@ -53,3 +53,26 @@ def skip_without_database(exc: BaseException) -> None:
     ):
         pytest.skip(f"database unavailable: {name}")
     raise exc
+
+
+@pytest.fixture(autouse=True)
+def no_telemetry_writes(monkeypatch):
+    """Keep the test suite out of the real MongoDB Atlas cluster.
+
+    `persist_node`'s default sink picks MongoDB whenever credentials are
+    present, and `.streamlit/secrets.toml` is present on a developer machine —
+    so the first full run after wiring it up put **34 turns and 34 predictions
+    into the production `client_testing` collection**, and took two minutes
+    doing it over the network.
+
+    A test that silently writes to a shared database is a test that corrupts
+    the data somebody is about to demo from. Autouse, so it protects tests
+    written later by someone who has never read this docstring.
+
+    Tests that genuinely want the store patch it back themselves — see
+    `tests/store/test_mongo.py`.
+    """
+    from rishivan.store import mongo
+
+    monkeypatch.setattr(mongo, "is_configured", lambda: False)
+    monkeypatch.setattr(mongo, "client", lambda: None)

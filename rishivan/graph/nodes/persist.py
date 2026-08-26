@@ -6,10 +6,10 @@ could not be decided and why, and the verse behind each one. It is not
 reimplemented here. This node composes it with the council half and hands the
 whole thing to a sink, along with any dated predictions the plan produced.
 
-**The sink is injected, and defaults to JSONL on disk.** Not Postgres:
-Streamlit Cloud has none and the demo's requirements deliberately exclude it. A
-node that assumes a database is a node that fails in the one environment this
-repo actually ships to.
+**The sink is injected.** It defaults to MongoDB when credentials are present
+and to JSONL on disk when they are not, decided per call so adding the
+credentials takes effect on the next request rather than the next restart. Not
+Postgres: Streamlit Cloud has none and the demo's requirements exclude it.
 
 **A sink failure never fails the turn.** A full disk must not cost the reader
 their answer. The trace still reaches state, so it is visible in the result even
@@ -141,8 +141,30 @@ def build_trace(state: RishivanState) -> dict:
     }
 
 
+def mongo_sink(trace: dict, predictions) -> None:
+    """Telemetry into MongoDB Atlas. Trimmed first — see `store/slim.py`."""
+    from rishivan.store.telemetry import record_turn
+
+    record_turn(trace, predictions)
+
+
+def default_sink(trace: dict, predictions) -> None:
+    """Mongo when it is configured, files otherwise.
+
+    Chosen per call rather than at import, so adding the credentials to
+    `secrets.toml` takes effect on the next request instead of the next
+    restart — which is what actually happens during a client test round.
+    """
+    from rishivan.store import mongo
+
+    if mongo.is_configured():
+        mongo_sink(trace, predictions)
+        return
+    jsonl_sink(trace, predictions)
+
+
 def jsonl_sink(trace: dict, predictions) -> None:
-    """The default. One trace per file, predictions appended to one ledger."""
+    """The local fallback. One trace per file, predictions in one ledger."""
     from rishivan.council.ledger import Ledger
 
     TRACE_DIR.mkdir(parents=True, exist_ok=True)
@@ -169,7 +191,7 @@ def persist_node(
     )
 
     try:
-        (sink or jsonl_sink)(trace, predictions)
+        (sink or default_sink)(trace, predictions)
     except Exception:  # noqa: BLE001
         # A full disk must not cost the reader their answer. The trace still
         # reaches state, so it is visible in the result even when it did not

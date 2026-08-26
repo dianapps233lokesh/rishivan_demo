@@ -31,6 +31,30 @@ def _parent_env_values() -> dict[str, str]:
     return values
 
 
+_MONGO_URI = re.compile(r"^(mongodb(?:\+srv)?://)([^:@/]+):([^@]*)@(.+)$")
+
+
+def _encode_mongo_userinfo(uri: str) -> str:
+    """Percent-encode the username and password inside a Mongo URI.
+
+    Idempotent: a URI whose credentials are already encoded is returned
+    unchanged, because encoding an encoded string doubles the escapes and
+    produces a password that authenticates against nothing.
+    """
+    from urllib.parse import quote_plus, unquote_plus
+
+    match = _MONGO_URI.match(uri.strip())
+    if not match:
+        # No inline credentials, or a shape we do not recognise. Hand it to
+        # the driver as given rather than mangling it.
+        return uri.strip()
+    scheme, user, password, rest = match.groups()
+    return (
+        f"{scheme}{quote_plus(unquote_plus(user))}:"
+        f"{quote_plus(unquote_plus(password))}@{rest}"
+    )
+
+
 def _secret(name: str, default: str = "") -> str:
     """Streamlit secret, else environment, else the sibling `.env`, else default."""
     try:  # Streamlit is absent in scripts and tests; fall back quietly.
@@ -104,6 +128,59 @@ class Settings:
             database=_secret("DATABASE_NAME", "rishivan_dev_local"),
         ).render_as_string(hide_password=False)
 
+    # ── MongoDB (telemetry: traces and the prediction ledger) ───────────────
+    @cached_property
+    def MONGODB_URI(self) -> str:
+        """The connection string, with its credentials percent-encoded.
+
+        Atlas hands you a URI with the password inline, and pymongo refuses it
+        outright if the password contains a reserved character - the real one
+        here holds a `%` and raised `InvalidURI: Username and password must be
+        escaped according to RFC 3986`. Encoding it here rather than asking
+        whoever pastes the secret to remember: the same reasoning as
+        `database_url`, which uses `URL.create` for exactly this.
+
+        An already-encoded URI passes through unchanged, because `quote_plus`
+        of an encoded string would double-encode it - so the check is whether
+        decoding changes anything.
+        """
+        raw = _secret("MONGODB_URI")
+        if not raw:
+            return ""
+        return _encode_mongo_userinfo(raw)
+
+    @cached_property
+    def MONGODB_DB_NAME(self) -> str:
+        return _secret("MONGODB_DB_NAME", "rishivan_telemetry")
+
+    @cached_property
+    def MONGODB_COLLECTION_NAME(self) -> str:
+        """The turn-level telemetry collection - one document per answer."""
+        return _secret("MONGODB_COLLECTION_NAME", "client_testing")
+
+    @cached_property
+    def MONGODB_PREDICTIONS_COLLECTION(self) -> str:
+        """The prediction ledger.
+
+        Derived from the turn collection rather than configured separately, so
+        a second test round only needs the one name changed and its ledger
+        follows it. Override explicitly if the two must diverge.
+        """
+        return _secret(
+            "MONGODB_PREDICTIONS_COLLECTION",
+            f"{self.MONGODB_COLLECTION_NAME}_predictions",
+        )
+
+    @cached_property
+    def MONGODB_RETENTION_DAYS(self) -> int:
+        """TTL on telemetry documents. Zero disables expiry.
+
+        The Atlas free tier is 512 MB and there is no alarm before it fills -
+        writes simply start failing. A TTL index means the cap is reached by
+        age rather than by surprise.
+        """
+        return int(_secret("MONGODB_RETENTION_DAYS", "90"))
+
     # ── Derived ─────────────────────────────────────────────────────────────
     @cached_property
     def has_vertex(self) -> bool:
@@ -112,6 +189,10 @@ class Settings:
     @cached_property
     def has_helicone(self) -> bool:
         return bool(self.HELICONE_API_KEY)
+
+    @cached_property
+    def has_mongo(self) -> bool:
+        return bool(self.MONGODB_URI)
 
     def missing(self) -> list[str]:
         """Config the app cannot start without, for a clear error on screen."""

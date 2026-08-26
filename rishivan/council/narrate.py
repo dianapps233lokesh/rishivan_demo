@@ -219,6 +219,40 @@ def stream_answer(plan, *, client, state=None) -> Generator[str, None, None]:
         yield render_template(plan)
 
 
+def _recorded(stream, final):
+    """Wrap a stream so the finished answer reaches telemetry.
+
+    The prose does not exist when the `persist` node runs — narration happens
+    outside the graph — so the turn document is written in two halves and this
+    closes the second. Wrapping rather than asking every caller to remember:
+    `streamlit_app` and `run_eval` both consume the stream, and a rule only one
+    of them follows is a rule that produces half a dataset.
+
+    A telemetry failure is swallowed whole. The reader has already seen the
+    answer; losing the record of it is not worth an exception on their screen.
+    """
+    answer: list[str] = []
+    try:
+        for chunk in stream:
+            answer.append(chunk)
+            yield chunk
+    finally:
+        try:
+            from rishivan.council.verify import verify_answer
+            from rishivan.store.telemetry import record_answer
+
+            text = "".join(answer)
+            record_answer(
+                final.get("run_id", ""),
+                text,
+                violations=verify_answer(text, final.get("answer_plan")),
+                rishi=final.get("primary_rishi", ""),
+                thread_id=final.get("thread_id", "") or "",
+            )
+        except Exception:  # noqa: BLE001
+            pass
+
+
 def stream_for(final, *, client):
     """The stream a finished run should hand back, or None.
 
@@ -235,8 +269,13 @@ def stream_for(final, *, client):
     if final.get("outcome") == "insufficient":
         return None
     if final.get("is_warmth"):
+        # A greeting is not a reading: no plan, no claims, nothing to verify
+        # and nothing worth a telemetry row.
         return stream_warmth(final, client=client)
-    return stream_answer(final.get("answer_plan"), client=client, state=final)
+    return _recorded(
+        stream_answer(final.get("answer_plan"), client=client, state=final),
+        final,
+    )
 
 
 def stream_warmth(final, *, client):
