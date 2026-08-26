@@ -71,7 +71,15 @@ class TestWiring:
             assert EDGE_MAPS[node]["retrieve"] == "chart_state"
 
     def test_it_leads_to_grounding(self):
-        assert STATIC_EDGES["chart_state"] == "ground"
+        """Walked, not pinned to one hop. Phase 3 legitimately inserted the
+        varga and timing nodes between the diagnosis and grounding, and a test
+        that pins a single edge fails on every correct extension."""
+        node = "chart_state"
+        for _ in range(10):
+            node = STATIC_EDGES[node]
+            if node == "ground":
+                return
+        raise AssertionError("the diagnosis never reaches grounding")
 
     def test_the_panchang_path_is_also_diagnosed(self):
         """A chart question that also mentions panchang took `chart -> panchang

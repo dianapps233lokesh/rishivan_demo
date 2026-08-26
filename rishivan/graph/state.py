@@ -60,9 +60,15 @@ class RishivanState(TypedDict, total=False):
     stored answers. The highest-severity alarm in the system, and the one
     nobody would otherwise notice."""
 
-    # -- Phase 3-5 placeholders. Nodes are added later; state is not. --------
+    # -- §7 and §8 (Phase 3) --------------------------------------------------
     vargas: Any
     timing: Any
+    birth_confidence: Any
+    """An explicit `BirthConfidence`, when the caller knows better than the
+    heuristic over the recorded digits — a rectified chart, or a hospital
+    record. None means infer."""
+
+    # -- Phase 4-5 placeholders. Nodes are added later; state is not. --------
     hierarchy: Any
     reading: Any
 
@@ -161,6 +167,7 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         chart_state=None,
         chart_digest="",
         vargas=None,
+        birth_confidence=kw.get("birth_confidence"),
         timing=None,
         hierarchy=None,
         reading=None,

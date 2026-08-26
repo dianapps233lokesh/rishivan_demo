@@ -13,13 +13,15 @@ from functools import partial
 from langgraph.graph import END, START, StateGraph
 
 from rishivan.graph import edges as R
-from rishivan.graph.nodes import answer, chart, diagnosis, ground, intake
+from rishivan.graph.nodes import (
+    answer, chart, diagnosis, ground, intake, timing, varga,
+)
 from rishivan.graph.nodes import retrieve as retrieval
 from rishivan.graph.state import RishivanState
 
 NODE_NAMES = (
     "intake", "warmth",
-    "chart_natal", "chart_moment", "panchang", "chart_state",
+    "chart_natal", "chart_moment", "panchang", "chart_state", "varga_select", "dasha_windows",
     "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
     "render_numerology",
     "ground", "council_routing", "retrieve", "answer", "insufficient",
@@ -70,7 +72,12 @@ STATIC_EDGES: dict[str, str] = {
     # diagnosis when there is no chart, so the chartless panchang path is
     # unaffected.
     "panchang": "chart_state",
-    "chart_state": "ground",
+    # §7 and §8 read the diagnosis and neither reads the other. Sequential
+    # today because the graph is linear here; independent by construction, so a
+    # later phase can fan them out without needing a reducer.
+    "chart_state": "varga_select",
+    "varga_select": "dasha_windows",
+    "dasha_windows": "ground",
     "ground": "council_routing",
     "council_routing": "retrieve",
     "render_varga": END,
@@ -101,6 +108,8 @@ def build_graph(*, store, client, checkpointer=None):
     g.add_node("chart_moment", chart.chart_moment_node)
     g.add_node("panchang", chart.panchang_node)
     g.add_node("chart_state", diagnosis.chart_state_node)
+    g.add_node("varga_select", varga.varga_select_node)
+    g.add_node("dasha_windows", timing.dasha_windows_node)
     g.add_node("chart_render", _chart_render_passthrough)
     g.add_node("render_varga", chart.render_varga_node)
     g.add_node("render_dasha", chart.render_dasha_node)
