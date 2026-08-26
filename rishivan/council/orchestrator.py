@@ -53,6 +53,7 @@ def council_consult(
       primary_rishi, rishi_title, query_domain, classification,
       chart_summary, chart_facts, sources, search_query, answer_stream
     """
+    from rishivan.council import narrate
     from rishivan.graph.build import build_graph
     from rishivan.graph.state import RESULT_KEYS, initial_state
 
@@ -70,7 +71,14 @@ def council_consult(
         conversation=conversation,
     ))
 
+    # Narration happens HERE, not in the graph. The graph's final state has to
+    # be plain data for a checkpointer to persist it, and a live generator is
+    # the one thing that cannot be - so the plan comes out of the graph and the
+    # stream is built from it, one layer out. The caller contract is unchanged:
+    # `answer_stream` is still a generator of text chunks.
     result = {key: final.get(key) for key in RESULT_KEYS}
+    result["answer_stream"] = narrate.stream_for(final, client=client)
+    result["answer_plan"] = final.get("answer_plan")
     # Set only on the paths that produce them, and read with `.get()` by every
     # caller. Promising them unconditionally would be a new contract.
     for optional in ("routing", "panchang", "life_domain"):

@@ -86,6 +86,7 @@ def atom_name(predicate: str, *args: str) -> str:
     return f"{predicate}({','.join(args)})"
 
 
+@dataclass(slots=True)
 class AtomTable:
     """Interns atom names to dense integers.
 
@@ -93,13 +94,24 @@ class AtomTable:
     any rule mentions. At serve time the fact compiler looks up against it and
     drops what it does not find: an atom no rule references cannot change which
     rules fire, so interning it would be pure cost.
+
+    **A dataclass rather than a plain class, and that is not cosmetic.**
+    LangGraph's checkpointer serialises dataclasses and refuses plain classes
+    outright - `Type is not msgpack serializable`. `FactSet` holds one of these
+    and `Reading` holds a `FactSet`, so this single plain class made the entire
+    graph state unpersistable. Measured, after removing the generator turned out
+    to be necessary and not sufficient.
     """
 
-    __slots__ = ("_to_id", "_to_name")
+    _to_id: dict[str, int] = field(default_factory=dict)
+    _to_name: list[str] = field(default_factory=list)
 
     def __init__(self, names: Iterable[str] = ()) -> None:
-        self._to_id: dict[str, int] = {}
-        self._to_name: list[str] = []
+        # Hand-written rather than generated, to keep the positional
+        # `AtomTable(names)` constructor every call site already uses. The
+        # generated one would take `_to_id` first and break all of them.
+        self._to_id = {}
+        self._to_name = []
         for n in names:
             self.intern(n)
 

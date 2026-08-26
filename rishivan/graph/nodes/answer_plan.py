@@ -21,6 +21,10 @@ def answer_plan_node(state: RishivanState) -> dict:
     from rishivan.council.answer_plan import build_answer_plan
 
     return {
+        # The graph's terminal outcome. `answer_node` used to set it on its way
+        # to building a stream; with narration outside the graph, the last node
+        # that runs has to say the run was served.
+        "outcome": "served",
         "answer_plan": build_answer_plan(
             question=state["question"],
             domain=state.get("koonji_domain") or "",

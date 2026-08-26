@@ -79,8 +79,14 @@ def test_the_node_is_deterministic(prepared):
     assert answer_plan_node(prepared) == answer_plan_node(prepared)
 
 
-def test_it_returns_only_the_key_it_owns(prepared):
-    assert set(answer_plan_node(prepared)) == {"answer_plan"}
+def test_it_returns_only_the_keys_it_owns(prepared):
+    """It is the graph's last node now, so it also settles the outcome —
+    `answer_node` used to do that on its way to building a stream."""
+    assert set(answer_plan_node(prepared)) == {"answer_plan", "outcome"}
+
+
+def test_it_marks_the_run_served(prepared):
+    assert answer_plan_node(prepared)["outcome"] == "served"
 
 
 def test_every_key_returned_is_declared_in_the_state(prepared):

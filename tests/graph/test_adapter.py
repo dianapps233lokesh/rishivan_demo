@@ -88,3 +88,29 @@ class TestNoBranchingLeftBehind:
 
         lines = inspect.getsource(council_consult).splitlines()
         assert len(lines) < 80, f"adapter is {len(lines)} lines"
+
+
+class TestNarrationLeftTheGraph:
+    """Phase 5's structural change, and the contract it must not break.
+
+    The graph used to end by putting a live generator in `state`. Nothing can
+    serialise that, so the graph could never be checkpointed. Narration now
+    happens in the adapter, built from the plan — and the caller contract is
+    unchanged, which is what these assert.
+    """
+
+    def test_the_adapter_still_returns_a_stream(self, stub_models):
+        assert "".join(consult()["answer_stream"]).strip()
+
+    def test_the_adapter_still_returns_every_promised_key(self, stub_models):
+        assert RESULT_KEYS <= set(consult())
+
+    def test_the_adapter_gained_no_branching(self):
+        """`TestNoBranchingLeftBehind` guards this too; repeated here because
+        Phase 5 is the change most likely to reintroduce it — the temptation
+        is one `if` for the insufficient path. It lives in `narrate.stream_for`
+        instead."""
+        from rishivan.council.orchestrator import council_consult
+
+        body = inspect.getsource(council_consult).split('"""', 2)[-1]
+        assert body.count("if ") <= 2

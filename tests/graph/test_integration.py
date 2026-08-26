@@ -127,11 +127,16 @@ def served(monkeypatch):
     final = build_graph(store=FakeStore(), client=client).invoke(
         initial_state("will I be wealthy?", birth_data=BIRTH, query_time=WHEN)
     )
-    # Drained here, because `answer_stream` is lazy: the prompt is built
-    # eagerly but `generate_content_stream` is not called until something reads
-    # the generator. The original behaves the same way — the caller streams it —
-    # so consuming it is what a real turn does, not a test contrivance.
-    final["answer_text"] = "".join(final["answer_stream"])
+    # Narration happens outside the graph now (Phase 5), so the test does what
+    # `council_consult` does: build the stream from the plan the graph
+    # produced, then drain it. Draining matters — the prompt is built eagerly
+    # but `generate_content_stream` is not called until something reads the
+    # generator.
+    from rishivan.council import narrate
+
+    final["answer_text"] = "".join(
+        narrate.stream_for(final, client=client) or [""]
+    )
     return final, client
 
 
@@ -291,3 +296,68 @@ class TestTheCouncilReachesTheAnswer:
         this test does not fail - it hangs, which is the point."""
         final, _ = served
         assert final["revisions"] <= 1
+
+
+class TestTheGraphIsNowSerialisable:
+    """Phase 5's structural deliverable, asserted on a real run.
+
+    A live generator in state is the one thing a checkpointer cannot persist,
+    and the graph put one there on every served turn. These are the tests that
+    say it no longer does.
+    """
+
+    def test_the_graph_no_longer_puts_a_generator_in_state(self, served):
+        import types
+
+        final, _ = served
+        assert not isinstance(final.get("answer_stream"), types.GeneratorType)
+
+    def test_the_graph_produces_a_plan_instead(self, served):
+        final, _ = served
+        assert final.get("answer_plan") is not None
+
+    def test_every_value_in_the_final_state_is_serialisable(self, served):
+        """One live object anywhere and the phase is back where it started."""
+        from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+
+        final, _ = served
+        JsonPlusSerializer().dumps_typed(final)
+
+    def test_the_narration_prompt_is_built_from_the_plan(self, served):
+        final, client = served
+        assert "WHAT YOU MAY SAY" in client.prompts[0]
+
+    def test_the_retrieved_passage_still_reaches_the_narration_prompt(self, served):
+        """The regression Phase 5 introduced for one commit. The gate covers
+        chart *claims*; page text is separate grounding, and most questions in
+        this corpus still answer from it alone."""
+        _, client = served
+        assert PAGE_TEXT in client.prompts[0]
+
+    def test_a_claim_below_the_floor_is_never_licensed(self, served):
+        """The gate. A model cannot assert what it was never licensed to.
+
+        The test is on the LICENCE, not on whether the claim id appears
+        anywhere in the prompt — the auditor legitimately names an
+        under-corroborated claim in order to caution against it, and a naive
+        substring check reads that caution as a leak."""
+        from rishivan.koonji.evidence import INSUFFICIENT_BELOW
+
+        final, client = served
+        allowed = set(final["answer_plan"].claim_ids())
+        below = {c.claim_id for c in final["reading"].claims
+                 if c.confidence < INSUFFICIENT_BELOW}
+        assert not (below & allowed), sorted(below & allowed)
+
+    def test_only_licensed_claims_appear_in_the_may_say_block(self, served):
+        """Tighter than the above, and where the gate actually bites: the
+        block headed "WHAT YOU MAY SAY" contains the licensed claims and
+        nothing else."""
+        final, client = served
+        prompt = client.prompts[0]
+        block = prompt.split("WHAT YOU MAY SAY", 1)[1].split("YOU MUST", 1)[0]
+        from rishivan.koonji.evidence import INSUFFICIENT_BELOW
+
+        for claim in final["reading"].claims:
+            if claim.confidence < INSUFFICIENT_BELOW:
+                assert claim.claim_id not in block, claim.claim_id
