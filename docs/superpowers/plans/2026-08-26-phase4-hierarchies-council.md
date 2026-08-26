@@ -658,7 +658,24 @@ git commit -m "feat(koonji): weight a firing by the kind of evidence it rests on
 **Files:** Modify `rishivan/koonji/engine.py` · Test `tests/koonji/test_reading_promises.py`
 
 **Interfaces:**
-- Produces: `Reading.promises(domain: str) -> bool`, `Reading.promise_basis(domain: str) -> tuple[str, ...]`, `Reading.yogas() -> dict[str, tuple[str, ...]]`
+- Produces: `Reading.promises(domain: str) -> bool`, `Reading.promise_basis(domain: str) -> tuple[str, ...]`, `Reading.rule_domains_seen() -> list[str]`
+
+**Amended during execution — two measured findings:**
+
+1. **`yogas()` is dropped. The corpus has no yoga-typed claims.** Measured
+   across all 1,117 rules: claim ids fall in 15 namespaces
+   (`wealth`, `relationship`, `temperament`, `general`, …) and **none** is
+   `yoga.*`. Nine rules mention a yoga in free `literal_text`
+   ("blessed with Raj yoga"), unstructured and unbindable to a graha. Building
+   an extractor over nine free-text mentions is the scope inflation the rule
+   validator exists to catch. `PlanetDiagnosis.yogas` therefore stays empty and
+   joins `functional_nature` on the corpus-blocked list — not an engineering
+   gap, and no amount of graph work closes it.
+2. **All 1,117 rules are `status: candidate`. None is `production`.**
+   `Engine.read` defaults to `PRODUCTION_ONLY`, so a reading taken at the
+   default returns *zero candidates* — silently, and looking exactly like a
+   chart the classical material is silent about. Task 6 must pass an explicit
+   status set and label what it served as unreviewed.
 
 `timing/windows.py` already calls `reading.promises(domain)` behind a
 `bool(reading and ...)` guard. The guard has been holding back an
