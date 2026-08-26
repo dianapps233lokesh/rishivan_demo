@@ -28,3 +28,4 @@ data/rules-*.json
 eval*.csv
 rishivan-cosmos-d3f1b99c72a0.json
 traces/
+.koonji-staging/

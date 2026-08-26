@@ -19,7 +19,7 @@ cd "$(dirname "$0")/.."
 
 PY=.venv/bin/python
 OUT=rishivan/koonji/rules/extracted
-STAGE=/private/tmp/claude-501/-Users-admin-Desktop-live-projects-rishivan-demo/35dd264f-47fd-4c40-b202-21f459a71354/scratchpad/koonji-out
+STAGE=${STAGE:-.koonji-staging}
 LOGS=logs
 WORKERS=${WORKERS:-16}
 
@@ -66,8 +66,7 @@ for book in "${BOOKS[@]}"; do
   if [ -d "$STAGE/$book/extracted" ]; then
     mkdir -p "$OUT/$book"
     cp "$STAGE/$book/extracted/"*.yaml "$OUT/$book/" 2>/dev/null
-    echo "   $(grep -c '^- id:' "$OUT/$book/"*.yaml 2>/dev/null | \
-             awk -F: '{s+=$2} END {print s+0}') rules -> $OUT/$book/"
+    echo "   $(grep -h -o '^- id:' "$OUT/$book/"*.yaml 2>/dev/null | wc -l | tr -d ' ') rules -> $OUT/$book/"
   else
     echo "   no rules written; see $log"
   fi
@@ -76,4 +75,4 @@ done
 
 echo
 echo "== total rules on disk:"
-grep -rc '^- id:' "$OUT" 2>/dev/null | awk -F: '{s+=$2} END {print "   " s+0}'
+echo "   $(grep -rh -o '^- id:' "$OUT" 2>/dev/null | wc -l | tr -d ' ')"
