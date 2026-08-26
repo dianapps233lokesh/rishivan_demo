@@ -148,10 +148,10 @@ Two facts to carry into the map:
 | Shared calculation engine | `DONE` | — | Swiss Ephemeris, local, no network |
 | Domain-specific Koonji retrieval | `DONE (Tier 1)` | — | Now gated on §4-11 coverage. A rule whose subject house is outside the routed Rishi's coverage scores 0 and cannot be rescued by its affinity tag. |
 | Source retrieval | `DONE` | — | 52,958 page vectors, authority-weighted |
-| Rishi reasoning | `PARTIAL` | L | One prose generation. No ordered protocol, no evidence structure before prose. |
-| Cross-Rishi evidence comparison | `ABSENT` | L | Nothing compares two Rishis' evidence. Zero files mention convergence or conflict. |
-| Master synthesis | `ABSENT` | L | No synthesis stage exists. |
-| Uncertainty in the answer | `PARTIAL` | S | The prompt asks for hedging on sensitive rules; there is no computed confidence to report, since `rule.confidence` is uniformly 0.5. |
+| Rishi reasoning | `DONE (Phase 4)` | — | `RishiReport`: supporting, **weakening (required)**, assumptions, would_change_my_mind, scored confidence with reasons. Structure before prose, so the prose can be checked against it. |
+| Cross-Rishi evidence comparison | `DONE (Phase 4)` | — | `synthesis_node` reports convergence and preserves disagreement. `sakshi` raises a `contradiction` finding when two reports disagree in sign. |
+| Master synthesis | `DONE (Phase 4)` | — | `graph/nodes/synthesis.py`, deterministic. It arranges what the council said; it does not run a ninth opinion over the eight. |
+| Uncertainty in the answer | `PARTIAL` | S | Each report now carries a scored confidence with stated reasons, and per-domain corroboration floors cap claims that do not meet them. **`rule.confidence` is still uniformly 0.5** — the confidence reported comes from the evidence graph, not from the rule, and that field remains unset. |
 
 ### ER §2 — the shared Rishivan Core
 
