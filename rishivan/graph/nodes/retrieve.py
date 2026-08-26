@@ -104,7 +104,18 @@ def retrieve_node(state: RishivanState, *, vector_store, client) -> dict:
 
 def _match_rules(state: RishivanState, embed_fn, search_query: str, routing: dict) -> dict:
     """Step 4b. Wrapped whole in `except Exception` on purpose: a missing or
-    stale rule base must degrade to page retrieval, never to no answer."""
+    stale rule base must degrade to page retrieval, never to no answer.
+
+    **The rules come from the Koonji reading, not from Qdrant.** Both matchers
+    existed and they disagreed: Qdrant held rules in the old extractor's format
+    and the engine held them in the frame's, so the panel and the answer were
+    counting different corpora. Everything the extractor has produced since the
+    format changed -- 274 rules -- was invisible in the panel while firing
+    correctly in the reading behind it.
+
+    `koonji_read` runs before this node (see `build.STATIC_EDGES`), so the
+    reading is already computed and nothing here re-evaluates it.
+    """
     chart = state.get("chart")
     if chart is None:
         return {"matched_rules": [], "contributors": [], "contributor_reports": ()}
@@ -112,54 +123,38 @@ def _match_rules(state: RishivanState, embed_fn, search_query: str, routing: dic
     out: dict = {}
     try:
         from rishivan.chart.tokens import all_chart_tokens
-        from rishivan.config import settings
         from rishivan.council.contributors import gather
         from rishivan.council.routing import merge_supporting, route_question
-        from rishivan.rag.rules import (
-            rank_true_rules,
-            rule_collection_name,
-            true_rules,
-        )
-        from rishivan.rag.vector_store import get_vector_store
+        from rishivan.graph.nodes.koonji import _engine
+        from rishivan.koonji.panel import counts_from_reading, hits_from_reading
 
-        rule_store = get_vector_store(
-            rule_collection_name(settings.VECTOR_COLLECTION)
-        )
         # Dated by the reading, not the wall clock. Dasha tokens are the only
         # ones that move, and matching them against `now` while every other
         # token came from `query_time` would evaluate a Prashna cast for a
         # stated moment against today's periods.
         when = state.get("query_time") or datetime.now()
         tokens = all_chart_tokens(chart, when=when)
-
-        applicable = true_rules(rule_store, tokens)
         out["chart_tokens"] = tokens
+
+        engine = _engine()
+        reading = state.get("reading")
         # The gap between rules true of the chart and rules this Rishi was
         # shown is the specialisation doing its job, and it should be visible
         # rather than implied.
-        out["rules_true_of_chart"] = len(applicable)
-        # Zero timing labels on a "when" question is a deployment fact, not an
-        # astrological one - a collection predating the activation field parses
-        # every rule to `active=None`, correctly and silently.
-        out["rules_with_timing"] = sum(1 for r in applicable if r.active is not None)
-        out["rules_running_now"] = sum(1 for r in applicable if r.active is True)
+        out.update(counts_from_reading(reading, engine=engine))
 
         routing_obj = merge_supporting(
             route_question(state["question"]),
             state["classification"].get("supporting_rishis") or [],
         )
-        matched = rank_true_rules(
-            applicable,
-            embed_fn([search_query])[0],
-            routing=routing_obj,
+        matched = hits_from_reading(
+            reading, engine=engine, domain=routing.get("primary"),
             limit=MAX_MATCHED_RULES,
-            # The question's own words gate what may be shown. Gating on the
-            # answering Rishi's domains was circular - Medhan owns health, so
-            # every Medhan question admitted every death rule.
-            question=state["question"],
         )
+        # `gather` reports what each Rishi computed and wants rules true of the
+        # chart, which is exactly the fired set rather than the ten displayed.
         contributors = gather(
-            chart, applicable, routing=routing_obj,
+            chart, matched, routing=routing_obj,
             question=state["question"], when=state.get("query_time"),
         )
         out["matched_rules"] = matched

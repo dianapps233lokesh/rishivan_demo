@@ -84,6 +84,13 @@ def intake_node(
     # that key and writes a different shape (with `unsupported`, without
     # `scores`); nothing reads it in between. Two writers with two shapes under
     # one key is the ownership violation that makes the Phase 4 fan-out unsafe.
+    print(f'''===============classify returned the below details:-\n
+        "classification": {classification},
+        "primary_rishi": {rishi},
+        "rishi_title": {get_persona(rishi).title},
+        "query_domain": {domain},
+        "search_query": {state["question"]},
+    ''')
     return {
         "classification": classification,
         "primary_rishi": rishi,

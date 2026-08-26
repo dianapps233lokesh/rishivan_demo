@@ -211,19 +211,32 @@ class TestRetrieval:
 
     def test_counters_survive_a_failure_after_matching(self, chart, monkeypatch):
         """The counters exist to make a stale index visible. Zeroing them on a
-        partial failure is the silent degradation they were built to prevent."""
-        import rishivan.rag.rules as rules_mod
+        partial failure is the silent degradation they were built to prevent.
 
-        monkeypatch.setattr(
-            rules_mod, "rank_true_rules",
-            lambda *a, **kw: (_ for _ in ()).throw(RuntimeError("ranker down")),
+        The failure is injected into `hits_from_reading` because that is what
+        builds the panel now; it used to be Qdrant's ranker. The counters are
+        computed before it and must outlive it.
+        """
+        import rishivan.koonji.panel as panel_mod
+        from rishivan.koonji.engine import Engine
+
+        engine = Engine.from_rules()
+        reading = engine.read(
+            chart, when=WHEN, statuses=frozenset({"candidate", "production"})
         )
-        s = state(chart=chart, query_time=WHEN,
+        # Patched on the panel module rather than on the node: the node imports
+        # it inside the function, so the name it binds is resolved at call time
+        # from here.
+        monkeypatch.setattr(
+            panel_mod, "hits_from_reading",
+            lambda *a, **kw: (_ for _ in ()).throw(RuntimeError("panel down")),
+        )
+        s = state(chart=chart, query_time=WHEN, reading=reading,
                   routing={"universes": ["jyotisha"], "primary": "artha"})
         out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
                             client=FakeClient())
         assert out["matched_rules"] == []
-        assert out["rules_true_of_chart"] > 0, "the count survived the ranker"
+        assert out["rules_true_of_chart"] > 0, "the count survived the panel builder"
 
     def test_it_returns_only_the_keys_it_owns(self):
         s = state(routing={"universes": ["jyotisha"], "primary": "artha"})
@@ -248,3 +261,56 @@ class TestInsufficient:
         refusal instead would put it inside a Rishi answer card - a product
         decision, and Phase 1 changes control flow only."""
         assert insufficient_node(state())["answer_stream"] is None
+
+
+class TestThePanelSeesTheNewRules:
+    """The reason the panel was moved off Qdrant.
+
+    Two matchers existed and they read different corpora: Qdrant held rules in
+    the old extractor's format, the engine holds them in the frame's. Every
+    rule extracted since the format changed fired correctly in the reading and
+    was invisible in the panel above it, so the count on screen and the
+    evidence behind the answer disagreed by construction.
+    """
+
+    def test_the_panel_is_built_from_the_reading(self, chart):
+        from rishivan.koonji.engine import Engine
+
+        engine = Engine.from_rules()
+        reading = engine.read(
+            chart, when=WHEN, statuses=frozenset({"candidate", "production"})
+        )
+        s = state(chart=chart, query_time=WHEN, reading=reading,
+                  routing={"universes": ["jyotisha"], "primary": "artha"})
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
+                            client=FakeClient())
+        assert out["matched_rules"], "the reading fired rules and the panel is empty"
+        assert out["rules_true_of_chart"] >= len(out["matched_rules"])
+
+    def test_no_reading_means_an_empty_panel_not_a_crash(self, chart):
+        """A chart with no reading is a real state -- `koonji_read` returns None
+        when the engine cannot load -- and it must degrade to page retrieval."""
+        s = state(chart=chart, query_time=WHEN, reading=None,
+                  routing={"universes": ["jyotisha"], "primary": "artha"})
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
+                            client=FakeClient())
+        assert out["matched_rules"] == []
+        assert out["rules_true_of_chart"] == 0
+        assert out["sources"], "page retrieval still ran"
+
+    def test_every_shown_rule_can_say_why_it_fired(self, chart):
+        """`condition_text` is what the panel prints after "because". Empty
+        means a reader is shown a citation with no reason attached."""
+        from rishivan.koonji.engine import Engine
+
+        engine = Engine.from_rules()
+        reading = engine.read(
+            chart, when=WHEN, statuses=frozenset({"candidate", "production"})
+        )
+        s = state(chart=chart, query_time=WHEN, reading=reading,
+                  routing={"universes": ["jyotisha"], "primary": "artha"})
+        out = retrieve_node(s, vector_store=FakeStore(hits_when_filtered=True),
+                            client=FakeClient())
+        for hit in out["matched_rules"]:
+            assert hit.condition_text, f"{hit.rule_key} has no reason"
+            assert hit.citation and "None" not in hit.citation

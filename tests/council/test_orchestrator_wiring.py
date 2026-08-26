@@ -75,8 +75,15 @@ def test_the_orchestrator_reports_how_many_rules_carried_timing():
     them makes that visible instead of quiet -- zero timing on a "when" question means
     the index predates the field, not that the chart has no periods.
 
-    Reads `graph/nodes/retrieve.py`; see the note on the test above."""
-    from pathlib import Path
+    Asserts the key is produced rather than that the file contains its name.
+    The source-text version passed for as long as the literal appeared in
+    `retrieve.py` and broke the moment the counters moved into
+    `koonji.panel.counts_from_reading` -- while the counter itself still
+    worked. A grep is not a test of behaviour.
+    """
+    from rishivan.koonji.panel import counts_from_reading
 
-    source = Path("rishivan/graph/nodes/retrieve.py").read_text()
-    assert "rules_with_timing" in source
+    counts = counts_from_reading(None, engine=None)
+    assert "rules_with_timing" in counts
+    assert "rules_running_now" in counts
+    assert "rules_true_of_chart" in counts

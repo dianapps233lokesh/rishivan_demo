@@ -22,6 +22,9 @@ BOOK_TITLES: dict[str, str] = {
     "laghu-parashari": "Laghu Parashari",
     "sarvartha-chintamani": "Sarvartha Chintamani",
     "bhavartha-ratnakara-by-b-v-raman-text": "Bhavartha Ratnakara",
+    # The citation id `koonji.corpus.BOOKS` uses for this book differs from its
+    # Postgres slug, and a citation is rendered from whichever one is to hand.
+    "bhavartha-ratnakara-raman": "Bhavartha Ratnakara",
     "muhurtachintamani": "Muhurta Chintamani",
     "prasnamarga-raman-part1": "Prashna Marga, Part 1",
     "prasnamarga-raman-part2": "Prashna Marga, Part 2",

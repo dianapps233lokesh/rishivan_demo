@@ -215,7 +215,7 @@ def classify_query(
             rishi = "vyom"
 
         domain = QueryDomain(result.get("query_domain", "general"))
-
+        # print(f"=========. domain classified by orchestrator is {domain}")
         intent = result.get("intent", "fact")
         if intent not in ("chart", "fact"):
             intent = "fact"
@@ -249,7 +249,7 @@ def classify_query(
                 is_followup = is_probable_followup(question, conversation)
             if is_followup:
                 rishi = conversation.current_rishi or rishi
-
+        print(f"orchestrator classification is primary rishi is {rishi}, domain classified is {domain}, supporting rishis are {result.get("supporting_rishis", [])}, intent classified is {intent}, varga code is {varga_code}, relevant vargas are {relevant_vargas}, dasha level is {dasha_level}")
         return {
             "is_smalltalk_or_gibberish": is_smalltalk_or_gibberish,
             "primary_rishi": rishi,

@@ -136,7 +136,17 @@ def row_for(rule: dict, book_slug: str, verse: str = "") -> dict:
             # The original, unprojected. Everything above is a lossy view of it.
             "urf": rule,
         },
-        "life_domains": [d.removeprefix("domain.") for d in (rule.get("domains") or {})],
+        # `general` when the extraction tagged no domain at all, which happens
+        # for about one rule in seven and is not new -- 100 of the 903 BPHS
+        # rules predating this are the same. An empty list derives no Rishi
+        # affinity, and a rule no Rishi can cite is a rule nobody ever sees, so
+        # the choice is between a visible default and silent invisibility.
+        # `general` is already a bucket the corpus uses and ATMA already claims
+        # it, so this routes them somewhere a reviewer will actually look.
+        # `effects_of` has always defaulted the same way; this only stops the
+        # column and the effect disagreeing.
+        "life_domains": ([d.removeprefix("domain.") for d in (rule.get("domains") or {})]
+                         or ["general"]),
         "school": str(rule.get("school", "school.parashari")).removeprefix("school."),
         # `translation` is the key `embedding_text` reads; URF has only `quote`.
         "source": {**source, "translation": verse or source.get("quote", "")},

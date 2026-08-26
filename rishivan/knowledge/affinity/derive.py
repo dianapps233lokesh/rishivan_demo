@@ -26,26 +26,32 @@ LIFE_DOMAIN_KEYWORDS: dict[str, tuple[str, ...]] = {
         "physical body", "physical", "mind", "psycholog", "intellig", "intellect",
         "knowledge", "learning", "education", "skill", "art", "valour", "courage",
         "initiative", "enterprise", "speech", "communication", "general", "desires",
-        "morality", "ethics", "misery", "comforts", "pleasures", "well-being",
+        "morality", "ethics", "misery", "comforts", "pleasure", "well-being",
         "happiness", "mental", "emotions", "habits", "behavior", "behaviour",
         "wisdom", "virtue", "fear", "freedom",
+        # Values the newly extracted books introduced. `pleasures` above became
+        # `pleasure` for the same reason: the match is a substring of the
+        # domain value, so the singular catches both and the plural caught one.
+        "distress", "sorrow", "temperament", "prowess", "wellbeing", "life",
     ),
     # §3 PREMA -- love, spouse, compatibility, separation, relationship timing.
     "prema": (
         "marriage", "spouse", "relationship", "wife", "husband", "compatib",
-        "sexuality", "menses", "menstruation",
+        "sexuality", "menses", "menstruation", "interpersonal",
     ),
     # §3 ARTHA -- money, assets, financial cycles, wealth Yogas.
     "artha": (
         "wealth", "money", "financ", "asset", "income", "gain", "possession",
         "sustenance", "expenditure", "prosper", "friendship", "servant",
         "friends", "agriculture", "animals", "cattle", "food", "trade",
+        "livestock",
     ),
     # §3 KARMA -- profession, business, leadership, status, achievement.
     "karma": (
         "career", "profession", "business", "status", "reputation", "fame", "honour",
         "authority", "leadership", "work", "legal", "social", "power", "success",
         "achievement", "kingship", "government", "society", "rank",
+        "employ", "kingdom", "royal", "service", "crime",
     ),
     # §3 VANSH -- parents, siblings, children, lineage, family dynamics.
     "vansh": (
@@ -58,6 +64,7 @@ LIFE_DOMAIN_KEYWORDS: dict[str, tuple[str, ...]] = {
         "health", "disease", "illness", "longevity", "death", "vitality", "strength",
         "body", "protection", "enem", "afterlife", "physical body", "danger",
         "injur", "wound", "accident", "safety", "imprisonment", "captivity",
+        "diet", "theft",
     ),
     # §3 YATRA -- travel, migration, property, residence, life transitions.
     "yatra": (
@@ -68,7 +75,13 @@ LIFE_DOMAIN_KEYWORDS: dict[str, tuple[str, ...]] = {
     "dharma": (
         "religion", "spiritual", "dharma", "karma", "moksha", "occult", "fortune",
         "devotion", "pilgrim", "penance", "yajna", "charity", "remed",
-        "auspiciousness", "inauspiciousness", "omen", "ritual",
+        "auspicious", "inauspicious", "omen", "ritual",
+        # `timing` and `timing of birth / lost horoscope` arrive as life domains
+        # although timing is really a rule category. Mapped here rather than
+        # left unrouted -- Prashna and omen work is DHARMA's -- because an
+        # unrouted rule is one no Rishi can cite and therefore one nobody sees.
+        # The data problem is upstream, in what the extractor calls a domain.
+        "timing",
     ),
 }
 """Client dimension -> its concepts, matched as substrings.
