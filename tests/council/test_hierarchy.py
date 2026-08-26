@@ -100,3 +100,63 @@ def test_every_hierarchy_names_at_least_one_house():
 def test_the_domain_field_matches_its_key():
     for key, h in HIERARCHIES.items():
         assert h.domain == key
+
+
+# ==========================================================================
+# The bridge to the client's life-domain taxonomy
+# ==========================================================================
+
+
+def test_no_koonji_domain_is_orphaned_from_the_client_taxonomy():
+    """An orphaned domain means a question routes to a rule set no persona is
+    allowed to read, and the symptom is an empty answer nobody can trace."""
+    from rishivan.council.domains import LIFE_DOMAIN_KEYS
+    from rishivan.council.hierarchy import LIFE_DOMAIN_OF
+
+    assert set(LIFE_DOMAIN_OF) == set(HIERARCHIES)
+    for domain, keys in LIFE_DOMAIN_OF.items():
+        assert keys, domain
+        assert set(keys) <= set(LIFE_DOMAIN_KEYS), domain
+
+
+def test_the_marriage_rishi_can_reach_marriage_rules():
+    from rishivan.council.hierarchy import koonji_domains_for_rishi
+
+    assert "domain.relationship" in koonji_domains_for_rishi("medhan")
+
+
+def test_the_wealth_rishi_can_reach_wealth_and_career():
+    from rishivan.council.hierarchy import koonji_domains_for_rishi
+
+    reach = koonji_domains_for_rishi("dhruvan")
+    assert {"domain.wealth", "domain.career"} <= reach
+
+
+def test_a_service_rishi_reaches_everything():
+    """vyom is the fallback voice and rates every life domain MEDIUM. A
+    fallback that reaches nothing is not a fallback."""
+    from rishivan.council.hierarchy import koonji_domains_for_rishi
+
+    assert koonji_domains_for_rishi("vyom") == frozenset(HIERARCHIES)
+
+
+def test_an_unknown_persona_reaches_nothing():
+    """Silently reaching everything would let a typo in a roster entry read as
+    a Rishi with universal competence."""
+    from rishivan.council.hierarchy import koonji_domains_for_rishi
+
+    assert koonji_domains_for_rishi("nobody") == frozenset()
+
+
+def test_every_persona_reaches_at_least_one_domain():
+    from rishivan.council.personas import ALL_RISHI_NAMES
+    from rishivan.council.hierarchy import koonji_domains_for_rishi
+
+    for rishi in ALL_RISHI_NAMES:
+        assert koonji_domains_for_rishi(rishi), rishi
+
+
+def test_the_lookup_is_case_insensitive():
+    from rishivan.council.hierarchy import koonji_domains_for_rishi
+
+    assert koonji_domains_for_rishi("MEDHAN") == koonji_domains_for_rishi("medhan")

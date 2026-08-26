@@ -174,3 +174,61 @@ def hierarchy_for(domain: str) -> EvidenceHierarchy:
     broad reading rather than to a 500.
     """
     return HIERARCHIES.get(domain, HIERARCHIES[DEFAULT_DOMAIN])
+
+
+# ==========================================================================
+# The bridge to the client's life-domain taxonomy
+# ==========================================================================
+
+LIFE_DOMAIN_OF: dict[str, tuple[str, ...]] = {
+    "domain.temperament":  ("atma",),
+    "domain.spiritual":    ("dharma", "atma"),
+    "domain.wealth":       ("artha",),
+    "domain.career":       ("karma",),
+    "domain.status":       ("karma", "vansh"),
+    "domain.property":     ("artha", "yatra"),
+    "domain.travel":       ("yatra",),
+    "domain.relationship": ("prema",),
+    "domain.progeny":      ("vansh",),
+    "domain.education":    ("vansh", "karma"),
+    "domain.health":       ("aarogya",),
+    "domain.longevity":    ("aarogya",),
+}
+"""Koonji rule domain -> the client's life-domain Rishi keys.
+
+Two of these are judgement calls, and are marked as such rather than left to
+look self-evident:
+
+  * **education -> vansh, karma.** Eight Rishis doc §8 gives VANSH houses
+    2/3/4/5/9, which is where education actually sits. KARMA is second because a
+    degree is usually asked about in service of a career.
+  * **status -> karma, vansh.** Reputation and rank are the 10th, which is
+    KARMA. But `domain.status` also carries the *father* sense - its keyword
+    list includes "father", "paternal" - and that is VANSH's 9th.
+
+Every value is non-empty and a test asserts it. An orphaned domain means a
+question routes to a rule set no persona may read, and the symptom is an empty
+answer with nothing in it pointing at the cause.
+"""
+
+
+def koonji_domains_for_rishi(rishi: str) -> frozenset[str]:
+    """Which rule domains this persona may argue from.
+
+    Derived from `RISHI_LIFE_DOMAINS` rather than hand-written, so the weighted
+    table that is already tested for no-orphan coverage stays the single source
+    of truth. A persona rating a life domain above zero may reach the Koonji
+    domains that map onto it.
+
+    An unknown persona reaches nothing. Falling back to everything would let a
+    typo in a roster entry read as a Rishi with universal competence, which is
+    the failure that looks most like success.
+    """
+    from rishivan.council.domains import RISHI_LIFE_DOMAINS
+
+    weights = RISHI_LIFE_DOMAINS.get(rishi.lower(), {})
+    return frozenset(
+        domain
+        for domain, keys in LIFE_DOMAIN_OF.items()
+        if any(weights.get(key, 0.0) > 0.0 for key in keys)
+    )
