@@ -141,6 +141,11 @@ class RishivanState(TypedDict, total=False):
 
     convergence: dict
 
+    # -- §19 the narrative gate (Phase 5) --------------------------------------
+    answer_plan: Any
+    """Everything the prose may say, and nothing else. Plain data, because it
+    is what leaves the graph - see `nodes/answer_plan.py`."""
+
     # -- output ----------------------------------------------------------------
     is_warmth: bool
     answer_stream: Generator[str, None, None] | None
@@ -226,6 +231,7 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         revisions=0,
         council_summary="",
         convergence={},
+        answer_plan=None,
         is_warmth=False,
         answer_stream=None,
         trace={},

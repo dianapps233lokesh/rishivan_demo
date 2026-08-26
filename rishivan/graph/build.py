@@ -14,8 +14,8 @@ from langgraph.graph import END, START, StateGraph
 
 from rishivan.graph import edges as R
 from rishivan.graph.nodes import (
-    answer, chart, diagnosis, ground, hierarchy, intake, koonji, rishi,
-    sakshi, synthesis, timing, varga,
+    answer, answer_plan, chart, diagnosis, ground, hierarchy, intake, koonji,
+    rishi, sakshi, synthesis, timing, varga,
 )
 from rishivan.graph.nodes import retrieve as retrieval
 from rishivan.graph.state import RishivanState
@@ -28,7 +28,7 @@ NODE_NAMES = (
     "render_numerology",
     "ground", "council_routing", "retrieve",
     "fan_out", "rishi", "sakshi", "re_examine", "synthesis",
-    "answer", "insufficient",
+    "answer_plan", "answer", "insufficient",
 )
 
 EDGE_MAPS: dict[str, dict[str, str]] = {
@@ -113,7 +113,11 @@ STATIC_EDGES: dict[str, str] = {
     # finding names, at most once, and returns through `sakshi` - which is why
     # the bound lives in `route_after_sakshi` rather than in a while loop.
     "rishi": "sakshi",
-    "synthesis": "answer",
+    # The gate sits between the council and the prose, deliberately: prose is
+    # generated FROM the plan, so anything absent from the plan is absent from
+    # the prompt and cannot be said however the generation goes.
+    "synthesis": "answer_plan",
+    "answer_plan": "answer",
     "answer": END,
     "insufficient": END,
 }
@@ -163,6 +167,7 @@ def build_graph(*, store, client, checkpointer=None):
     g.add_node("sakshi", partial(sakshi.sakshi_node, client=client))
     g.add_node("re_examine", sakshi.re_examine_node)
     g.add_node("synthesis", synthesis.synthesis_node)
+    g.add_node("answer_plan", answer_plan.answer_plan_node)
     g.add_node("answer", partial(answer.answer_node, client=client))
     g.add_node("insufficient", answer.insufficient_node)
 
