@@ -1,0 +1,164 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.WEALTH.CH17V1.X0014
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: changeable wealth
+    quote_sha256: e8f8198b1a07c905afa607922d68de2e91a1826c892b09a781ea59a6fd922fb7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: wealth.income_flow
+    polarity: mixed
+    magnitude: moderate
+    text: The native has changeable wealth.
+- id: BRIHATJATAKA.WEALTH.CH17V2.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v2
+    quote: possessing paraphernalia
+    quote_sha256: a1ee11ad6444518bf9b18ac6de732cd8e2aeb202e6da2e0196cc6f39a82bef83
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the native possesses paraphernalia (goods, equipment, belongings)
+- id: BRIHATJATAKA.WEALTH.CH17V6.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: possessed of others wealth and houses
+    quote_sha256: da16b497513da758ca151b13866c2d288577458b963152e8cb42edffe3965a8f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: The native will possess wealth belonging to others.
+- id: BRIHATJATAKA.WEALTH.CH17V11.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+    domain.status: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v11
+    quote: changeable fortune
+    quote_sha256: 3f51f65e8ed4f658304031a043450da5393eab75da53e8471923be5cb518f200
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+  indicates:
+    claim: wealth.income_flow
+    polarity: mixed
+    magnitude: moderate
+    text: the native has a changeable fortune
+- id: BRIHATJATAKA.WEALTH.CH17V4.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v4
+    quote: waxing and waning wealth like the Moon
+    quote_sha256: 5b22e14620c9be290ee6ff332a683aa6ee928711568c82a001ee10cf9078e359
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: wealth.income_flow
+    polarity: mixed
+    magnitude: moderate
+    text: The native's wealth fluctuates, increasing and decreasing.
+- id: BRIHATJATAKA.WEALTH.CH17V7.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: rich
+    quote_sha256: 7baa68f2418ba82d2545a780c00d7a8778249bbcdaf7369114534874ea6d3bd6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: The native is rich.

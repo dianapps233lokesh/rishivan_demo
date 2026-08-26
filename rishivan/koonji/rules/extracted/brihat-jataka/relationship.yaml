@@ -1,0 +1,59 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.RELATIONSHIP.CH17V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: liked by females
+    quote_sha256: 9b4327a43bf5244ce7ad970286960ef609cb816e1641ff38a01f3e8d3d5885af
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: The native is liked by females.
+- id: BRIHATJATAKA.RELATIONSHIP.CH17V5.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: hater of women
+    quote_sha256: 87bdbf92629d4eea35856003c34c0d907af8f3dd4490aab02e01fa95ec71aa1d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: The native is a hater of women.

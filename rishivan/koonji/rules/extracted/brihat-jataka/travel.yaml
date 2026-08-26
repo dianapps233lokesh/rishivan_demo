@@ -1,0 +1,111 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.TRAVEL.CH17V1.X0013
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: traveller
+    quote_sha256: 2d5a3ad551501170f7a1ddf141b99a6c8e428a96e9cfedb59c97a1f0808a0909
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: The native is a traveller.
+- id: BRIHATJATAKA.TRAVEL.CH17V6.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: foreign residence
+    quote_sha256: 225248be9536448da5c429b81bfad23b9a48d2f360b8141ff56e51eb2e4c70d8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: The native will have foreign residence.
+- id: BRIHATJATAKA.TRAVEL.CH17V7.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: traveller
+    quote_sha256: 2d5a3ad551501170f7a1ddf141b99a6c8e428a96e9cfedb59c97a1f0808a0909
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: The native is a traveller.
+- id: BRIHATJATAKA.TRAVEL.CH17V10.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: traveller
+    quote_sha256: 2d5a3ad551501170f7a1ddf141b99a6c8e428a96e9cfedb59c97a1f0808a0909
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: is a traveller

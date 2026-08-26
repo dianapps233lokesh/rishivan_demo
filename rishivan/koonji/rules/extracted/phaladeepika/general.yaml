@@ -1,0 +1,666 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V111.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v1-11
+    quote: अत्र वामे दक्षिणे वा नक्षत्रवर्ण राशिश्चराणां वेधो ज्ञेयः नान्येषाम् ।
+      यतः स्पष्टमुक्तं राजविजये—
+    quote_sha256: 47dea2214786d5286dda9d3ace57e1070a1f155fb50d51c448d794d012e66433
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The vedha (affliction) of nakshatras, varnas, and rashis should be considered
+      for moving planets (grahas), not for other points. The following is cited from
+      the text Rajavijaya.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v1
+    quote: Whatever effects are declared for' men'e horoscopes are entirely applicable
+      to women too
+    quote_sha256: 338feb44dd6b562373d26c9f3ff447bd3cb9db087abe7276edee8bb052de5335
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Interpretive rules given for male horoscopes are also applicable to female
+      horoscopes.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v1
+    quote: Whatever effects are declared for' men'e horoscopes are entirely applicable
+      to women too, or to their husband.
+    quote_sha256: 5dcc21b077671b42b507315515347f9024b64f23aadef509abb0716f668a291c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The effects seen in a woman's horoscope can be applied to her husband.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v19
+    quote: When several planets are in a Bhava, only the strongest of them causes
+      a reduction in the Ayurdaya.
+    quote_sha256: 6659977448e9ef78191121944f28ae615b25499964e15be2cc3f4018094cada8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When multiple planets occupy a house that causes Ayurdaya reduction (houses
+      7 through 12), the reduction is caused only by the strongest planet among them.
+      Do not apply reductions for the other planets in that house.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v27
+    quote: Then will come the Dasa of the planets in its Kendra and other positions.
+    quote_sha256: 95ed13bdb573335089e520ceabcf6744fcb6c4fd76bc928857b864211b81ef0a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: In the dasha system described, the dasha of the starting point (strongest
+      of Lagna, Sun, Moon) is followed by the dashas of planets in Kendra positions
+      (1, 4, 7, 10) from that starting point. The term 'other positions' is too ambiguous
+      to be encoded.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v27
+    quote: When several occupy together any one of these positions the precedence
+      will be given to the planet which predominates in strength.
+    quote_sha256: 349c10ff5dde1ae26d6629115867d82d47c3d6bb767d64cc79dcf9c6f3acfd3f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When determining the dasha sequence for planets within the same group (e.g.,
+      all planets in Kendras), the planet with the greatest strength has its dasha
+      first. The sequence follows descending order of strength.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V27.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v27
+    quote: When they happen to be of equal strength, that which gives a longer period,
+      in years, of आयुर्दाय (Ayurdaya) will have its turn first.
+    quote_sha256: 14c9c14f0fcf5ebaaa2e7f4e1ee569887921342878fb1bdb74857a8553aec680
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: As a tie-breaker in dasha sequencing, if multiple planets have equal strength,
+      precedence is given to the planet that contributes a longer period (in years)
+      to Ayurdaya (longevity calculation).
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V27.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v27
+    quote: When there is equality even in regard to the number of years of the आयुर्दाय
+      (Ayurdaya) of the planets, that which rises first after being eclipsed by the
+      Sun gets its Dasa prior to its fellows.
+    quote_sha256: b5199574b21ca6e6130f6d07d7538917a8e33c0b13bf7670c5e461fde7ecd47d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: As a further tie-breaker in dasha sequencing, if planets have equal strength
+      and equal Ayurdaya periods, precedence is given to the planet that has its heliacal
+      rising (emerges from combustion) first.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v33
+    quote: Ascertain what planets are naturally friendly, what are naturally neutral
+      and what are inimical and then deduce from these two kinds of friendship those
+      that are very friendly and those that are very inimical.
+    quote_sha256: db075ff5362300a627826ef5df4a192501c3a644eddb0327be5aa457dfd3001c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The astrologer should combine the natural relationship (Naisargika Maitri)
+      and the temporary relationship (Tatkalika Maitri) between planets to determine
+      their compound relationship (Panchadha Maitri), such as 'very friendly' (Adhi
+      Mitra) or 'very inimical' (Adhi Shatru).
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V55.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v55
+    quote: Even among these, the one that is the weakest will be the killer of the
+      native and this may happen in his Dasa or अपहार (Apahara).
+    quote_sha256: b10d1354d831cc12fa04850b9a0572f0ca58dc4f89f66e91021eeda9702bc680
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: 'To identify the primary death-inflicting planet (maraka), first identify
+      the group of planets consisting of: (1) occupants of the 8th house, (2) planets
+      aspecting the 8th house, (3) the lord of the 8th house, (4) the lord of the
+      decanate of the 8th house, and (5) the lord of the sign occupied by Mandi. Among
+      this group, the one with the least strength is to be considered the ''killer''.
+      The fatal event may occur during this planet''s major period (Dasa) or sub-period
+      (Apahara).'
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V63.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v63
+    quote: While so guessing, one must refer also to the positions of the planets
+      with reference to the Lagna at the time of the query or the जन्मराशि (Janma
+      Rasi) or Lagna at birth and then attempt his predictions.
+    quote_sha256: d240039d8c7ac594de81bfdd7cd722095270b861e9fc0d4ff453baf0065f6d1a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Predictions should be made by considering planetary positions from the Lagna
+      at the time of the query, the natal Moon's sign (Janma Rasi), and the natal
+      Ascendant (Janma Lagna).
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH4V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch4.v1
+    quote: Of the Nisarga (निसर्ग) and Tatkalika (तात्कालिक) friendships, the former
+      is more preferable.
+    quote_sha256: c1420635b8cc23b820d554e8bae6b57c0235111c512f338c3a44cfe10ac5f8e0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: In assessing compound planetary relationships, natural friendship (Nisarga)
+      is more significant than temporary friendship (Tatkalika).
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH4V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch4.v1
+    quote: Moon' is the basis for the strength of all planents.
+    quote_sha256: c5a0949f7d0554e4bd62d7645893ca40b54ade0230674ba8276f11e09ac449d7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The strength of the Moon should be considered as the foundation for assessing
+      the strength of all other planets.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH4V1.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch4.v1
+    quote: Importance of the 7th house aspect.
+    quote_sha256: 80f78ba594e54b3257c810f41f15a212d778e2661c51590e540b1bcf079788cc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The aspect that any planet casts on the 7th sign from its own position is
+      of special importance.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH19V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch19.v1
+    quote: An examination of the Moon's strength is necessary before any declaration
+      is made.
+    quote_sha256: 94f10bf115fc7f8df6c121aba808b02cc4acfc075c73ced13c48b12115c1359f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Before predicting the effects of the Moon's Dasa, the astrologer must first
+      assess the Moon's strength.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH22V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch22.v1-2
+    quote: Effects already stated before the several Mahadasas will apply also in
+      the cause of Utpanna and Adhana Mahadasas.
+    quote_sha256: d371cf755b291340ec7adc0245b57b74988e8dfb4c3d5e78912d9ee6db1af7e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The effects described for Mahadasas in general should also be applied when
+      interpreting Utpanna and Adhana Mahadasas.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH24V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch24.v1-6
+    quote: To ascertain the effects in the case of a horoscope, the Ashtakavarga system
+      is the best.
+    quote_sha256: 60dba3cd13d2737d74e7896208ef1cfbe154d53eccc03a7944e40395469543d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Advises that the Ashtakavarga system is the best method for judging the
+      effects in a horoscope.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH26V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch26.v1
+    quote: Gocharapala to be predicted with reference this alone.
+    quote_sha256: 2d1b7c2a9a70c12b42953d40403f44007bc6c53330275e8e931570c4ff55c23c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Transit (Gochara) results should be predicted with reference to the natal
+      Moon's sign (Janma Rasi) as the ascendant.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v43
+    quote: In the year indicated by the figure obtained by (1) adding the figures
+      (of benefic dots) in the houses occupied by benefic planets and (2) then multiplying
+      the same by 7 and (3) dividing the result by 27 should the year indicating anything
+      auspicious be intimated. On such an occasion, one will, without doubt, obtain
+      issue, wealth, happiness, etc.
+    quote_sha256: 584712a820e5711d464d197df1b8b2d34d5fc6ad771fe6927732f1b246d9c43e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: To identify a year for auspicious events such as the birth of a child, acquisition
+      of wealth, or general happiness, a calculation is prescribed. First, sum the
+      'benefic dots' (commonly interpreted as Sarvashtakavarga bindus) in the houses
+      occupied by benefic planets. Second, multiply this sum by 7. Third, divide the
+      product by 27. The integer part of this result (the quotient) indicates a year
+      in the native's life when these positive events will occur.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V84.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v84
+    quote: What has been stated as the effect in each of the Bhuktis of a Dasa should
+      be so declared as to suitably fit in with the person's caste, status, occupation,
+      etc. In a similar way should results be attempted for each Antara or Antarantara;
+    quote_sha256: 8b6fe219eb706805ce1cd5297d616f438220198f2e5d2610ea19b611cc9f232e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The astrologer should adapt the interpretation of Dasa, Bhukti, Antara,
+      and Antarantara effects to the native's specific social context, including their
+      caste, status, and occupation.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V84.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v84
+    quote: the effects may also be foretold after guessing correctly the particular
+      Dasa then ruling by means of the characteristics revealed (exhibited) at the
+      time in the native's person by the elements (Panchabhutas Fire, Air, Ether,
+      Water and Earth) through Eyes, Touch, Ears, Face and Nose; or by hearing the
+      words emanating at the time.
+    quote_sha256: 19841555790a36d0a747ca68fab555c96e7413e8431f01657b29ce261fca0198
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: An alternative method to determine the active Dasa is to observe physical
+      signs in the native related to the five elements and their corresponding senses,
+      or by interpreting words heard at the time of consultation.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v9
+    quote: For विषघटिका (Vishaghatika), see जा. पा. V—112. p. 293.
+    quote_sha256: ecddc0390940a295ec4389befe13add68de7a28fae131aa05d04aea2dd701a05
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The definition and details of Vishaghatika can be found in Jataka Parijata,
+      Chapter 5, verse 112.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH9V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch9.v13
+    quote: Similar effects should be predicted when the several Rasis from Mesha onwards
+      happen to contain the Moon in them.
+    quote_sha256: 18d0b0f109a9411c87e4eaa53c43fef15d0361be10355655d9ef3354deac58af
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The effects described for the Lagna falling in a specific Rasi should also
+      be applied when the Moon occupies that Rasi.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V3436.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v34-36
+    quote: The Ashtakavarga system is declared to be effective in all undertakings.
+      There is no other way to determine the power of the influence arising at the
+      time---whether good or bad.
+    quote_sha256: 213144c2a751846a39b7aa213bc2174c64e00780c2ab30dcd4ef9d25a838c67e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The Ashtakavarga system is presented as the supreme and indispensable method
+      for evaluating the quality of time (good or bad) for any undertaking.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH13V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch13.v1
+    quote: The longevity of the person should be the first thing to be ascertained.
+    quote_sha256: 0f89b2b2c5d546b358e76b5b62bc8bbf13d30f3673fa9e625d8e2dbb0c91d6d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The astrologer should prioritize the assessment of longevity before making
+      other predictions.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH13V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch13.v1
+    quote: Ayus (आयुस्) should be predicted only after a correct examination of the
+      Dasas described by Sripati (श्रीपति), of the Ashtakavargas, the Kalachakra (कालचक्र)
+      Dasas, etc.
+    quote_sha256: 25ed3b6e8fef10fe16a5828eda89120ffb90ed6e51c720cf54b966564277f1c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Longevity predictions should be confirmed by examining multiple systems,
+      including Sripati Dasas, Ashtakavargas, and Kalachakra Dasas.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH13V1.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch13.v1
+    quote: The life of children under 12 years cannot be calculated for the reasons
+      stated.
+    quote_sha256: 4773da8f6fc18bb867c96b1a16950a06a49ebcd032ebbf70c2da5cef66a2a6c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The astrologer should not attempt to calculate the longevity of children
+      under 12 years of age.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V62.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v62
+    quote: The Moon in one of these favourable positions promotes prosperity in respect
+      of the Bhava represented by the Rasi occupied.
+    quote_sha256: e3dd68c4784f0ca599bbf1a200be4670ada1cd2b50c8121d367699a8c4440c9b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When the Moon transits a rasi corresponding to a 'favourable' natal house
+      (contextually identified as the 1st, 3rd, 6th, 10th, or 11th from the Lagna),
+      the affairs signified by that house are promoted.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V62.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v62
+    quote: In the unfavourable positions, the Bhava represented by the Rasi (occupied
+      by the Moon) suffers damage.
+    quote_sha256: df7ea41f47642a13e76ec045d45abb42e3e9ac81e9552b872766993a21104411
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When the Moon transits a rasi corresponding to an 'unfavourable' natal house
+      (contextually implied to be the 2nd, 4th, 5th, 7th, 8th, 9th, or 12th from the
+      Lagna), the affairs signified by that house suffer damage.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v10
+    quote: In their own, exaltation, friendly or Upachaya places, the planets invariably
+      advance the benefic effect revealed by Ashtakavarga.
+    quote_sha256: 9e2aaa6318d13fc235e25e72f4de67ca389e581515ac4b923bb024b9ba10c764
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: A planet's capacity to produce benefic effects indicated by Ashtakavarga
+      is enhanced if it is natally placed in its own sign, its exaltation sign, a
+      friendly sign, or an Upachaya house (3, 6, 10, 11).
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V10.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v10
+    quote: In their depression, inimical or Apachaya houses, they generally fail to
+      sustain whatever good effect may appear from the Ashtakavarga process.
+    quote_sha256: a2294a0b956b820ab7860af16d88cad5473456241da0098b762209887dc21bc8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: A planet's capacity to deliver good effects indicated by Ashtakavarga is
+      diminished if it is natally placed in its sign of depression, an inimical sign,
+      or an Apachaya house (any house other than 3, 6, 10, 11).
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V10.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v10
+    quote: That is a planet produces very good results when it passes through a Rasi
+      that contains many benefic dots in its own Ashtakavarga chart.
+    quote_sha256: 41720df2bf3bcf6dcc63de949a687cc8a1c966c9d45281cc912e8e5faa7d0566
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: A planet in transit is expected to produce very good results when passing
+      through a Rasi where it has a high number of benefic dots (bindus) in its Bhinna
+      Ashtakavarga chart.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH18V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch18.v1
+    quote: What has been stated in slokas 6--11 should also be understood to apply
+      in the case of Dwadasamasas also.
+    quote_sha256: 578c740dab6a2b61539a3bd002f0d886108a9fa3ee877c6036be493be4c94ecc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The rules concerning aspects on the Moon in the 12 Rasis (as described in
+      slokas 6-11) should also be applied to the Moon's position in the Dwadasamsa
+      (D12) chart.
+    applies_to: method

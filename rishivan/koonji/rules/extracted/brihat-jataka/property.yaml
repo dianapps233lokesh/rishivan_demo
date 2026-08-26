@@ -1,0 +1,59 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.PROPERTY.CH17V6.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: possessed of others wealth and houses
+    quote_sha256: da16b497513da758ca151b13866c2d288577458b963152e8cb42edffe3965a8f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: The native will possess houses belonging to others.
+- id: BRIHATJATAKA.PROPERTY.CH17V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v4
+    quote: many houses
+    quote_sha256: a877cc3daf91a3d3556aaa6db78f6b8dcb4d67d12cd8fbd618a85f409d86f29d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: The native will have many houses.

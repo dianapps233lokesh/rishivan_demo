@@ -1,0 +1,85 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.PROGENY.CH17V6.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: female children
+    quote_sha256: 1bf4d10337391d339075e20fb85241caa30de09c3e4327fbe61c1865d495767c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: The native will have female children.
+- id: BRIHATJATAKA.PROGENY.CH17V6.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: few issues
+    quote_sha256: 3f452fa4a170c8089442e73a2e392b23cc376ac903d1e4777f6164c93e4792f8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: slight
+    text: The native will have few children.
+- id: BRIHATJATAKA.PROGENY.CH17V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: few children
+    quote_sha256: aab1bc70668dbbb876469640aa3315a6fd719b3ddce276108f89c13809583868
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: The native has few children.

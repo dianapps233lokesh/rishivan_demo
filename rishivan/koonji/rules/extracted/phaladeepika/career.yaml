@@ -1,0 +1,232 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.CAREER.CH15V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch15.v1
+    quote: Malefics in the 6th, 8th and 12th and benefics in the other houses generally
+      promote advancement of the native.
+    quote_sha256: 6a8536618aa6c68a63c67cbee78ea607c885c9b38f929c4880f7e3a44714e97b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - not:
+        in_dusthana:
+          subject: graha.jupiter
+    - not:
+        in_dusthana:
+          subject: graha.venus
+    - not:
+        in_dusthana:
+          subject: graha.mercury
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: benefics in the other houses generally promote advancement of the native
+- id: PHALADEEPIKA.CAREER.CH28V1565.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: will be a king's adviser.
+    quote_sha256: 4a78b0dad4826b0632a7563df1250ba8f3cb2946679d33042a1cd05c801694cd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: will be a king's adviser
+- id: PHALADEEPIKA.CAREER.CH15V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch15.v1
+    quote: Malefics in the 6th, 8th and 12th and benefics in the other houses generally
+      promote advancement of the native.
+    quote_sha256: 6a8536618aa6c68a63c67cbee78ea607c885c9b38f929c4880f7e3a44714e97b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - in_dusthana:
+        subject: graha.saturn
+    - in_dusthana:
+        subject: graha.mars
+    - in_dusthana:
+        subject: graha.sun
+    - in_dusthana:
+        subject: graha.rahu
+    - in_dusthana:
+        subject: graha.ketu
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: Malefics in the 6th, 8th and 12th... generally promote advancement of the
+      native
+- id: PHALADEEPIKA.CAREER.CH28V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: a lord and a commander of the army.
+    quote_sha256: 91da3da214d9ca5b8ec4a2c2d7cf5f7e2a93be8523b499a6333badbe2c0a2a7f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.08
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: will be a lord and a commander of the army
+- id: PHALADEEPIKA.CAREER.CH28V54.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v54
+    quote: The person born in the ख्याति (Khyati) Yoga will become a King who will
+      protect his good subjects by following a course of conduct approved by all.
+      He will be blessed with sons, friends, wife and wealth, and will be prosperous
+      and widely renowned.
+    quote_sha256: 0c6b964e1164bc1b57590ec7dc8f4ae77cfb0851c0198e544068b3d5bda28f67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.pisces
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: will become a King
+- id: PHALADEEPIKA.CAREER.CH28V69.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 1.0
+    domain.wealth: 0.5
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: '...and will be a lord happily employed.'
+    quote_sha256: 1357f889f95256fdcf0c10784034487a4cee55f6963abd3b9a55ae31bd033391
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: will be a lord happily employed
+- id: PHALADEEPIKA.CAREER.CH28V73.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v73
+    quote: loss of position
+    quote_sha256: f9b3bfdce62069be37b839382fa5ef4839f5d3e8c769a7302d6a5e31faa2f7ff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: moderate
+    text: experiences loss of position

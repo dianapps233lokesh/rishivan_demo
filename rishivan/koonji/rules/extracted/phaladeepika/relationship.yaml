@@ -1,0 +1,241 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V26.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: suffer separation from his beloved
+    quote_sha256: de65e58a955ae5ea7358f5a450a816940c05aeef1a16bd6d449d94b2deea2714
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the native will suffer separation from his beloved
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V64.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v64
+    quote: will lose his wife
+    quote_sha256: 461cf21ada836a492e0dfbe07f3e29ea93647cf99d78dcd863df7ce1d8c7f8ae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native will lose his wife
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V12.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: and will have a rich lady as his wife.
+    quote_sha256: 601fad36e7548690a678eb20847bfaaec18b976f33f0c99abffe544b4eefa315
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: will have a rich lady as his wife (implying a fortunate union)
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V47.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v47
+    quote: Distress through relations
+    quote_sha256: 9eb3abf30ec69a690aea2b7abcc0b3de5c126f24c320f66906c92448eb6f2549
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: Distress through relations
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V54.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v54
+    quote: The person born in the ख्याति (Khyati) Yoga will become a King who will
+      protect his good subjects by following a course of conduct approved by all.
+      He will be blessed with sons, friends, wife and wealth, and will be prosperous
+      and widely renowned.
+    quote_sha256: 0c6b964e1164bc1b57590ec7dc8f4ae77cfb0851c0198e544068b3d5bda28f67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.pisces
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: He will be blessed with ... wife
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V69.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: If Venus occupy the 9th house at a birth, the person concerned will be
+      blessed with a wife...
+    quote_sha256: 175f9178903a3cd3f75a1005389f1c8a9b8af02237e9782827b148bf0b94e4ad
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will be blessed with a wife
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v7
+    quote: If the Moon be in Simha, the effects of the Moon being posited in the several
+      Trimsamsas will respectively be to make the woman born (1) a wicked wife
+    quote_sha256: e6e891e22c00168ede98031c2d1849c0f7c08e5cc45b648c7548b1dbce828d5e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - varga_occupies:
+        varga: varga.d30
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: a wicked wife
+- id: PHALADEEPIKA.RELATIONSHIP.CH28V1565.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: the person born will possess a good wife
+    quote_sha256: de9a09aafaa744088c1b5077248b9ebd96acb4f75369eca08aa53225b8a67eef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: will possess a good wife

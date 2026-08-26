@@ -1,0 +1,559 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.WEALTH.CH28V26.X0014
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: He will be wealthy
+    quote_sha256: 0a2fa5fb386d9f6dd19ca7d7df20a9b2079dfa0e183e02b7b27490ad45f0494b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.06
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the native will be wealthy
+- id: PHALADEEPIKA.WEALTH.CH28V26.X0015
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+    domain.relationship: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: When Rahu occupies the 7th house, the person concerned will lose his wealth
+      through intrigues with women.
+    quote_sha256: c8f75c26c0c882ef3743296eef758dd44e4619ed1e4505fb5039b24a92b7eb9b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the native will lose his wealth through intrigues with women
+- id: PHALADEEPIKA.WEALTH.CH28V83.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v83
+    quote: He will have wealth, splendour, friends, fame and sons.
+    quote_sha256: 01012bbdbf4a48827b8aeb6def9281fdeeb32b6d6c1dbd621ef8eb03f41ea907
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.06
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: The native will have wealth.
+- id: PHALADEEPIKA.WEALTH.CH28V74.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.property: 0.6
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v74
+    quote: monetary gain from lands
+    quote_sha256: fd6b11eab287a0c38e46ae9354b35928ed7b3d10459946c20ac0735124aabf82
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: moderate
+    text: monetary gain from lands
+- id: PHALADEEPIKA.WEALTH.CH28V74.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v74
+    quote: loss in cattle
+    quote_sha256: 0c8edc914e4230508bfb52a8ac1d0839a01e6230e795ce69d102ed3ae65f6137
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss in cattle
+- id: PHALADEEPIKA.WEALTH.CH28V77.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v77
+    quote: When the Moon has her interval in the Dasa of Venus, a person suffers much
+      pain from a disease due to an inflammation in the nails, head and teeth, sickness
+      arising from wind and bile, or loss of wealth or trouble through diarrhoea,
+      disease of the spleen or consumption.
+    quote_sha256: 5d81603c742a826ccb7a0dacfcb4ef59863ed0199ab6c71a7d45031bc5ef9b41
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss of wealth
+- id: PHALADEEPIKA.STATUS.CH20V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.7
+    domain.wealth: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch20.v27
+    quote: Nature of Rahu and Ketu in their effects when posited in a Kendra or Trikona.
+    quote_sha256: ae10dbefd8e9f0c70468b8a5644b0a24a3df75d024c57ed7681b697885c34078
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - in_kendra:
+        subject: graha.rahu
+    - in_trikona:
+        subject: graha.rahu
+    - in_kendra:
+        subject: graha.ketu
+    - in_trikona:
+        subject: graha.ketu
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: The effects of Rahu and Ketu are auspicious when they are posited in a Kendra
+      or Trikona.
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V11.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  domains:
+    domain.property: 1.0
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v11
+    quote: friend, vehicle, mother
+    quote_sha256: a3c3cdeb9e8506078f5418de2c4601ae6cb1c984455ebfeb78675b29f0ae4a4c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Propose new claim 'property.vehicles'. The term 'vehicle' (vahana) is a
+      distinct category of possession in classical texts, separate from land or liquid
+      assets. The nearest existing claim, 'wealth.accumulation', is too general. This
+      signification is core to the 4th house.
+    applies_to: method
+- id: PHALADEEPIKA.WEALTH.CH28V12.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.6
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: and will have a rich lady as his wife.
+    quote_sha256: 601fad36e7548690a678eb20847bfaaec18b976f33f0c99abffe544b4eefa315
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: will have a rich wife
+- id: PHALADEEPIKA.WEALTH.CH28V47.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v47
+    quote: loss of wealth
+    quote_sha256: d8d0eab9e3fc4afb5e0a243d961fd6d04e9b3e7538d7f1bd3cb9e9fbf481e44f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss of wealth
+- id: PHALADEEPIKA.WEALTH.CH28V54.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v54
+    quote: The person born in the ख्याति (Khyati) Yoga will become a King who will
+      protect his good subjects by following a course of conduct approved by all.
+      He will be blessed with sons, friends, wife and wealth, and will be prosperous
+      and widely renowned.
+    quote_sha256: 0c6b964e1164bc1b57590ec7dc8f4ae77cfb0851c0198e544068b3d5bda28f67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.pisces
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: He will be blessed with ... wealth, and will be prosperous
+- id: PHALADEEPIKA.WEALTH.CH28V69.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: '...and will become prosperous through royal favor.'
+    quote_sha256: 2ade8ac17e161ed728989de6908aa94154278bcb667daaecc08b653c4a497287
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will become prosperous through royal favor
+- id: PHALADEEPIKA.WEALTH.CH28V73.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v73
+    quote: loss of money
+    quote_sha256: 6c531b5124a8521ccad7fe201210405cd0d987c79a2657d11eb796dd250acb3e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: experiences loss of money
+- id: PHALADEEPIKA.WEALTH.CH28V1565.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: the person born will be poor
+    quote_sha256: c835ae51f9a2869b58972706ade667f29586093ee0b035e34ae2c4b9ca5d8886
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: will be poor
+- id: PHALADEEPIKA.WEALTH.CH28V22.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: If at a birth Saturn should occupy the 4th house, the person concerned
+      will be unhappy, house-less, without vehicles, deprived of his mother and sickly
+      during his early years.
+    quote_sha256: 3781c1cbfab675ea0a728d3952bc0adcb2c20e4b082d562adb1ce0f2d07e7106
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: the person concerned will be ... without vehicles
+- id: PHALADEEPIKA.WEALTH.CH28V22.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: If Saturn should be posited in the 5th house, the person born will be roaming
+      about, will have lost his reason, will be bereft of children, wealth and happiness,
+      will be perfidious and evil-minded.
+    quote_sha256: e25700f6e2bd47f17e5ecaa60c513d6ac26071469254c5e901377875fc7af44f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: will be bereft of ... wealth
+- id: PHALADEEPIKA.WEALTH.CH28V22.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: When Saturn occupies the 6th house, the person born will be a voracious
+      eater, will be wealthy, subdued by his enemies, will be stubborn and possessed
+      of self-respect.
+    quote_sha256: ba796f11a73fa1caa17041d69b5467b85f5b82e86472647998015527c364bb18
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.06
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will be wealthy
+- id: PHALADEEPIKA.WEALTH.CH28V22.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: Saturn in the 7th house will cause the native to be wedded to a bad wife,
+      to be poor, roaming and be distressed.
+    quote_sha256: 97bf16f923b90e4316fb54c7d2cd16bd0fe4e63a8a42440ba5d258b6f9a5c0ca
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: to be poor
+- id: PHALADEEPIKA.WEALTH.CH28V58.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v58
+    quote: He will suffer from extreme poverty
+    quote_sha256: d06d3762d3598ed22477c66426b1ccc71b2180fe3afd9b2a2b8ca11697a418e8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.01
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: extreme
+    text: The native will suffer from extreme poverty.

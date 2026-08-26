@@ -1,0 +1,64 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PRASNAMARGA.DIRECTINTERPRETER.CH16V134.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: prasna-marga
+    edition: prasnamarga-raman-part1
+    locator: ch16.v134
+    quote: Of the several Niryana Rasis mentioned above for Saturn, Jupiter, the Sun
+      and the Moon, that alone can be considered as the Niryana Rasi, which has the
+      least number of points in the concerned Ashtakavarga.
+    quote_sha256: bd9d161a843aff49ebf492ab9233e6723ddea7d754b03f52f10274e5686f2db0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When multiple Niryana Rasis are identified for a planet, select the one
+      with the lowest number of bindus in that planet's Bhinnashtakavarga.
+    applies_to: method
+- id: PRASNAMARGA.DIRECTINTERPRETER.CH16V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: prasna-marga
+    edition: prasnamarga-raman-part1
+    locator: ch16.v22
+    quote: The exalted and recondite science of astrology is to be studied only by
+      Brahmins.
+    quote_sha256: 1a6bb09d85e4fa689f7dcc550a0f710390bfee2466ea8a4db1d83c80df168fb2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The study of astrology should be restricted to Brahmins.
+    applies_to: method
+- id: PRASNAMARGA.DIRECTINTERPRETER.CH16V22.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: prasna-marga
+    edition: prasnamarga-raman-part1
+    locator: ch16.v22
+    quote: it is clear that all intelligent persons, irrespective of their caste,
+      creed or religion, can take to the study of the subject through proper initiation.
+    quote_sha256: 9e08f77be85afd126ed1f476d456660bf4b6f6d8c2919d27732d9c1e1c8fc17d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The study of astrology is open to all intelligent persons who receive proper
+      initiation, regardless of caste, creed, or religion.
+    applies_to: method

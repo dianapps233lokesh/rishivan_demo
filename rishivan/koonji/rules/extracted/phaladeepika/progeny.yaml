@@ -1,0 +1,485 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.RECORDAPPLICATION.CH28V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v14
+    quote: Adding (1) (6) and (5) we get 7—20°—39′—21″= Vrischika Rasi, Makara Navamsa.
+      Both Rasi and Navamsa are even So the virility in the male to produce offspring
+      is not strong
+    quote_sha256: 303524cbee90ce85f3151a6ff0257a2064085c230138b0fdd84c733ad995644e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  example:
+    reading: the virility in the male to produce offspring is not strong
+- id: PHALADEEPIKA.RECORDAPPLICATION.CH28V14.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v14
+    quote: Adding (5), (2) and (3) we get 6—17°—11′—51″ Tula Rasi, Meena Navamsa Rasi
+      odd Navamsa even The result in this case is mixed
+    quote_sha256: dcc2609b67740523521bae3183463500c8f9e7cd7513b1a5688fc24b62e057b8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  example:
+    reading: The result in this case is mixed
+- id: PHALADEEPIKA.KSHETRASPHUTA.CH28V14.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: compute_value
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v14
+    quote: Add together the figures representing the positions of Jupiter, the Moon
+      and Mars in the case of female horoscopes.
+    quote_sha256: a044768fa74642ff024c254f08c388f189af0751e00f8df1dc6f20a986145c69
+    authority_tier: S0
+    review:
+      state: unreviewed
+  computes:
+    name: KshetraSphuta
+- id: PHALADEEPIKA.BEEJASPHUTA.CH28V14.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: compute_value
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v14
+    quote: the sum-total of the figures denoting the positions of the Sun, Venus and
+      Jupiter
+    quote_sha256: a2fa4f227ea97004c71926808aba83997945fea5b25d93848d3fe158d69993da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  computes:
+    name: BeejaSphuta
+- id: PHALADEEPIKA.PROGENY.CH28V1725.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: When the lord of the 5th house is deficient in strength, the person concerned
+      will during the planet's Dasa lose a son.
+    quote_sha256: ff30ed3ca260ec38abf1ab8c9dbd254b03c8c4e46b5e4c7ed9f44adf0ee46881
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.05
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.05
+        level: level.maha
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: The native will lose a son.
+- id: PHALADEEPIKA.PROGENY.CH28V26.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: will be childless
+    quote_sha256: 7251246fe8ebaab596349d0cc202676d8657508e2bc18b751344e6ed854199f6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: the native will be childless
+- id: PHALADEEPIKA.PROGENY.CH28V26.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: and will have limited issue.
+    quote_sha256: cdaa73c228407cd2cbe5c6dc8291900654af44fa1446a4465766ff07da42e754
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: the native will have limited issue
+- id: PHALADEEPIKA.PROGENY.CH28V83.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v83
+    quote: He will have wealth, splendour, friends, fame and sons.
+    quote_sha256: 01012bbdbf4a48827b8aeb6def9281fdeeb32b6d6c1dbd621ef8eb03f41ea907
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.06
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: The native will have sons.
+- id: PHALADEEPIKA.PROGENY.CH28V74.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v74
+    quote: Birth of a very good son
+    quote_sha256: 74b93c00902fdf4c7e9dad66ade00eff1ac15bbcdd2fd036e1d7f4073cf3d847
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: Birth of a very good son
+- id: PHALADEEPIKA.PROGENY.CH28V12.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: He will have a good number of children
+    quote_sha256: dff3bf0732019992d6b67a7af17fbe79f08593fc23588c2973b20af312fc1b89
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: will have a good number of children
+- id: PHALADEEPIKA.PROGENY.CH28V47.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v47
+    quote: disease to one's elders or to youngsters of his family
+    quote_sha256: 89cac0c6ea3ad2d50348faeea21bffcb7ffc97841bbb9db35bd4b1e684d1a00b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: disease to youngsters of his family
+- id: PHALADEEPIKA.PROGENY.CH28V54.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v54
+    quote: The person born in the ख्याति (Khyati) Yoga will become a King who will
+      protect his good subjects by following a course of conduct approved by all.
+      He will be blessed with sons, friends, wife and wealth, and will be prosperous
+      and widely renowned.
+    quote_sha256: 0c6b964e1164bc1b57590ec7dc8f4ae77cfb0851c0198e544068b3d5bda28f67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.pisces
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: He will be blessed with sons
+- id: PHALADEEPIKA.PROGENY.CH28V69.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: If Venus occupy the 9th house at a birth, the person concerned will be
+      blessed with a wife, friends and children...
+    quote_sha256: 0d7f0cf01a750a836d053c5a4af6306fe2b8d131aa9625124adeb32537ad72db
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will be blessed with... children
+- id: PHALADEEPIKA.PROGENY.CH28V1565.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: Jupiter in the 5th house at a birth makes the native suffer distress through
+      sons.
+    quote_sha256: 4bcc98e7d106f74c83ff52a116c5e605f8ee85b2c34ab52d0eb3cdf91b20e69c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: suffer distress through sons
+- id: PHALADEEPIKA.PROGENY.CH28V1565.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: the person born will possess a good wife and sons.
+    quote_sha256: 47e9d786920a984a74eb70e8e401294d7a5b620658ca907331a26f9434f64a97
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: will possess sons
+- id: PHALADEEPIKA.PROGENY.CH28V30.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v30
+    quote: in the case of Ketu, it will be owing to the curse of a Brahmin.
+    quote_sha256: 00834f8e335ec3eba42bdf6abd10d9a3c79bf1bca014f9aa084298e9f04e7bce
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: sonlessness will be owing to the curse of a Brahmin
+- id: PHALADEEPIKA.PROGENY.CH28V30.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v30
+    quote: if Rahu should occupy the 5th house or be associated with the lord of that
+      house it will be due to the curse of a serpent
+    quote_sha256: a9ce71f822891bf467dc733c82caa4662dfa5f605c0250fd0eae11b8887e3b21
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+    - conjunct:
+        subject: graha.rahu
+        other: lord.bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: sonlessness will be due to the curse of a serpent
+- id: PHALADEEPIKA.PROGENY.CH28V22.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: If Saturn should be posited in the 5th house, the person born will be roaming
+      about, will have lost his reason, will be bereft of children, wealth and happiness,
+      will be perfidious and evil-minded.
+    quote_sha256: e25700f6e2bd47f17e5ecaa60c513d6ac26071469254c5e901377875fc7af44f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: will be bereft of children

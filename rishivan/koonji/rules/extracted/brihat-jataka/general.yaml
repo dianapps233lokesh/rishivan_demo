@@ -1,0 +1,25 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.DIRECTINTERPRETER.CH28V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch28.v1
+    quote: Mark the positions of planets in all the Kendras.
+    quote_sha256: eeb69367a712b540985b704c075d69954679c8cf3aa510be880c47a984d187ff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The interpreter should pay special attention to planets situated in the
+      Kendra houses.
+    applies_to: method

@@ -1,0 +1,825 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.HEALTH.CH28V1725.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.5
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: He will have aberration of mind
+    quote_sha256: 315d2ec73b8eafa98775d14e91c60f0172e2f7350ecfdcb695244a350c9d8bc1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.05
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.05
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native will have aberration of mind.
+- id: PHALADEEPIKA.HEALTH.CH28V1725.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: trouble in the stomach
+    quote_sha256: e41d9e4f5ccb4f478a967bd43d661155934691d90795ef54b73f5f4afd7a839d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.05
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.05
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native will have trouble in the stomach.
+- id: PHALADEEPIKA.HEALTH.CH28V1725.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: bodily weakness
+    quote_sha256: 47f712efc8ea27265a3c8031edf79eedc6b517a60a7dec7f0bc80dcfb9207c97
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.05
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.05
+        level: level.maha
+  indicates:
+    claim: health.vitality
+    polarity: negative
+    magnitude: moderate
+    text: The native will have bodily weakness.
+- id: PHALADEEPIKA.HEALTH.CH28V1725.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: various diseases
+    quote_sha256: 0908f2805aa8a5bae98f971f8d34522e22a38fa34c03de30ed0da0c2c9f0efa6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.06
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.06
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native will suffer from various diseases.
+- id: PHALADEEPIKA.HEALTH.CH28V1725.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: will suffer from wounds
+    quote_sha256: fa6e7b96a928d6ca4372a2d8880b5ae11e23205296d4a49d5d01f041c870e7f4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.06
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.06
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native will suffer from wounds.
+- id: PHALADEEPIKA.HEALTH.CH28V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: If at a person's birth Rahu should be posited in the 5th house, he will
+      talk through the nose.
+    quote_sha256: 2408e5733b07bf7a3173a13eff510db2f2b2544f843c5ef6f70ff77a03817e8a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will talk through the nose
+- id: PHALADEEPIKA.HEALTH.CH28V26.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: suffer from belly-ache.
+    quote_sha256: cd063873de16a51f34c737bd9ab03750268652237753670f0d0ad8c13f8f7ee5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will suffer from belly-ache
+- id: PHALADEEPIKA.HEALTH.CH28V26.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: He will suffer from a disease in the anus.
+    quote_sha256: 6c6b276c8a1e9989be2dd4a914d91b4117607a0a8615a3b7accd5881c60342cb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will suffer from a disease in the anus
+- id: PHALADEEPIKA.HEALTH.CH28V26.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+    domain.relationship: 0.5
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: lose his manhood
+    quote_sha256: 19ed80fad1d57f8acb55eaf821b6a078ee28c1454efae1a04ba9b0d5908288ef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will lose his manhood
+- id: PHALADEEPIKA.HEALTH.CH28V26.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: will be defective of a limb
+    quote_sha256: f31b1bde79e1b8a74ba93df67983bd64d918be30ee26aa5918d53b7b25c8a9da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will be defective of a limb
+- id: PHALADEEPIKA.HEALTH.CH28V26.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: will suffer from wind-disease
+    quote_sha256: 8648b71b9be5b77fb5203bd36cb95006cee8e367d1a8a33e2a21089ee31f44be
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will suffer from wind-disease
+- id: PHALADEEPIKA.HEALTH.CH28V83.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v83
+    quote: a strong constitution
+    quote_sha256: 0a757ceade8f3a8c0b171227dbe019c275a959b3ee5cf436519b746821872bfd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.06
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: The native has a strong constitution.
+- id: PHALADEEPIKA.HEALTH.CH28V64.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v64
+    quote: will suffer from gonorrhea and such other venereal diseases
+    quote_sha256: a17b85da2785756bf07d57fb660ed81185204cbc63a115eecbb89e4c41d5faf9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native will suffer from gonorrhea and other venereal diseases
+- id: PHALADEEPIKA.HEALTH.CH28V77.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v77
+    quote: When the Moon has her interval in the Dasa of Venus, a person suffers much
+      pain from a disease due to an inflammation in the nails, head and teeth, sickness
+      arising from wind and bile, or loss of wealth or trouble through diarrhoea,
+      disease of the spleen or consumption.
+    quote_sha256: 5d81603c742a826ccb7a0dacfcb4ef59863ed0199ab6c71a7d45031bc5ef9b41
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: suffers much pain from a disease due to an inflammation in the nails, head
+      and teeth, sickness arising from wind and bile, or trouble through diarrhoea,
+      disease of the spleen or consumption
+- id: PHALADEEPIKA.HEALTH.CH28V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.5
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v47
+    quote: excessive mental anguish
+    quote_sha256: c16f24bcfef808db63ca1ae13cc11cf6ca3d3d4d04a1612ead0106a238da02cb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: excessive mental anguish
+- id: PHALADEEPIKA.HEALTH.CH28V47.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v47
+    quote: sickness
+    quote_sha256: f96954f05a42c2a257d3e1cffcf585015c3568b581c6723a9eb4fc1702c16228
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: sickness
+- id: PHALADEEPIKA.HEALTH.CH28V73.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v73
+    quote: the break-ing of some limb thereby
+    quote_sha256: 6fe7ade7e3672036a6d8327f0785b5f4237e53bf8f52356873a33e190f381855
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: may suffer the breaking of a limb as a result of quarrels
+- id: PHALADEEPIKA.HEALTH.CH28V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: If at a birth Saturn should occupy the 4th house, the person concerned
+      will be unhappy, house-less, without vehicles, deprived of his mother and sickly
+      during his early years.
+    quote_sha256: 3781c1cbfab675ea0a728d3952bc0adcb2c20e4b082d562adb1ce0f2d07e7106
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will be ... sickly during his early years
+- id: PHALADEEPIKA.HEALTH.CH28V22.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: If Saturn should be posited in the 5th house, the person born will be roaming
+      about, will have lost his reason, will be bereft of children, wealth and happiness,
+      will be perfidious and evil-minded.
+    quote_sha256: e25700f6e2bd47f17e5ecaa60c513d6ac26071469254c5e901377875fc7af44f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: will have lost his reason
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: If the 6th or the 8th house be occupied by the Sun, there would be fear
+      of fever
+    quote_sha256: f7580a1689a1e4c72cfe0a931a43677f70dfdbeb63bc720c5b656da81251d4c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there would be fear of fever
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: if by Mars or Ketu, the danger will be from ulcer
+    quote_sha256: 6d5c457ab9d735e14fec3793b291deabed79b4ca361bda262f6de5b6a7b8459f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the danger will be from ulcer
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: if by Mars or Ketu, the danger will be from ulcer
+    quote_sha256: 6d5c457ab9d735e14fec3793b291deabed79b4ca361bda262f6de5b6a7b8459f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the danger will be from ulcer
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: if by Venus, it will be through a disease in the private parts.
+    quote_sha256: 478809698710907af275bba0f0b0e6949fdeda0a621aafc68be4a9dc4e3361cf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: it will be through a disease in the private parts
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: If Jupiter should occupy the 6th or the 8th house, the native will be seized
+      with consumption.
+    quote_sha256: de1e1579f9fc8ad8b7a70425ff779371b1e4d65bccd34643df9c73abd2c83d8a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will be seized with consumption
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: If Saturn be in such a position, the native will suffer from nervous diseases.
+    quote_sha256: 34489940628632013abdaaa326ef0649ad3e4879dca3e1a8f10983de58aca74e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will suffer from nervous diseases
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: If Rahu aspected by Mars be in the 6th or the 8th, the person concerned
+      will suffer from carbuncle.
+    quote_sha256: e0b50d29556a74cb6a7c266d97a4a7a6c23bfc7abf91b4d92ea6297bfbaaf18d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.08
+    - aspects:
+        subject: graha.mars
+        target: graha.rahu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will suffer from carbuncle
+- id: PHALADEEPIKA.HEALTH.CH28V16.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v16
+    quote: If Saturn in conjunction with the Moon occupy any of the above two houses,
+      the native will suffer from the enlargement of spleen.
+    quote_sha256: 7fab195fcd31eba17ee086b39f26bf28f3d213f1db71d82ea995254e2b0c8eff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.06
+      - same_bhava:
+          subject: graha.saturn
+          other: graha.moon
+    - all:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.08
+      - same_bhava:
+          subject: graha.saturn
+          other: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will suffer from the enlargement of spleen
+- id: PHALADEEPIKA.HEALTH.CH28V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v58
+    quote: and will be deformed.
+    quote_sha256: 87a590b47b09b30c0f7a40a022985ed84aed764bcf397109fc10c28faf52954f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: The native will be deformed.

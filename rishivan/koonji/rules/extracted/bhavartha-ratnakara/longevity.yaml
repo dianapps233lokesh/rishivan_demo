@@ -1,0 +1,27 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BHAVARTHARATNAKARA.RECORDAPPLICATION.CH1V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.longevity: 1.0
+  source:
+    book: bhavartha-ratnakara
+    edition: bhavartha-ratnakara-raman
+    locator: ch1.v3
+    quote: In Chart No 1 death occurred in the 20th year of the native, in the sub
+      period of Saturn in the major period of Mercury
+    quote_sha256: 5968e9be386c50de4561213d41cdc9b07500681cb5985cc48ee937f9c2c43891
+    authority_tier: S0
+    review:
+      state: unreviewed
+  example:
+    reading: death occurred in the 20th year of the native, in the sub period of Saturn
+      in the major period of Mercury

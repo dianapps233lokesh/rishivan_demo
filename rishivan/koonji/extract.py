@@ -18,6 +18,7 @@ matters, because the orchestration is where the interesting mistakes are.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from typing import Any, Callable, Iterable, Optional, Protocol
 
@@ -130,6 +131,52 @@ class PassageResult:
             ),
             key=lambda row: -row[0],
         )
+
+
+_ID_CLEAN = re.compile(r"[^A-Z0-9]+")
+
+CONSEQUENT_TOPIC = {
+    "indicates": "claim", "derives": "fact", "defines": "attribute",
+    "remedy": "action", "computes": "name",
+}
+"""Which key in a consequent block names what the rule is *about*, for the id."""
+
+
+def stamped_rule_id(passage: Passage, raw: dict, index: int) -> str:
+    """The rule's id, derived from its citation. The model does not get a vote.
+
+    Ids arrived from the model and were used verbatim, and models get them
+    wrong: Phaladeepika ch28.v83 and ch28.v63 both came back as
+    `PD.28.63.0002`, because the model mistyped the verse number into the id of
+    one of them. Two different rules then shared an id, and the compiler refused
+    the whole bundle -- correctly, since a duplicated id fires twice and counts
+    as two independent sources under noisy-OR. The engine would not load at all.
+
+    Same principle as `parse_report` stamping the rishi and domain from the
+    caller: an identity is a fact about where the thing came from, not content
+    for a generation to author. Derived from the citation rather than a counter
+    so a re-run produces the same ids and a diff shows what actually changed --
+    matching `convert.rule_id_for`, which has always done this.
+
+    The trailing ordinal carries an `X` that `convert.rule_id_for`'s does not.
+    Both derive an id from `{BOOK}.{TOPIC}.{LOCATOR}.{n}` and both read the same
+    books, so re-extracting a verse the converter had already handled produced
+    the same id twice and the compiler refused the bundle again -- with the
+    engine, and therefore the app, refusing to start. The marker makes the
+    collision structurally impossible rather than accidentally avoided, and it
+    is legible in a trace: `.X0001` came from the model, `.0001` from the
+    deterministic converter.
+    """
+    book = _ID_CLEAN.sub("", passage.book_id.upper())
+    where = _ID_CLEAN.sub("", passage.locator.upper())
+
+    topic = str(raw.get("assertion") or "rule")
+    for block, key in CONSEQUENT_TOPIC.items():
+        value = raw.get(block)
+        if isinstance(value, dict) and value.get(key):
+            topic = str(value[key]).split(".")[0]
+            break
+    return f"{book}.{_ID_CLEAN.sub('', topic.upper())}.{where}.X{index:04d}"
 
 
 def _as_document(payload: Any) -> dict:
@@ -314,15 +361,26 @@ class Extractor:
             result.skipped = result.skipped or "no rules extracted"
             return
 
-        for raw in raw_rules:
-            candidate, why = self._to_candidate(passage, raw, result.proposals)
+        for index, raw in enumerate(raw_rules, start=1):
+            # The verifier was shown the model's documents and keys its verdicts
+            # by the ids they carried, so the lookup below has to know both:
+            # `_to_candidate` replaces the id with a citation-derived one, and
+            # keying only on the new id silently dropped every verdict.
+            model_id = raw.get("id")
+            candidate, why = self._to_candidate(
+                passage, raw, result.proposals, index
+            )
             if candidate is None:
                 result.unbuildable.append(why)
                 continue
             result.candidates.append(candidate)
 
             findings = validate_candidate(candidate)
-            verdict = verdicts.get(candidate.rule.rule_id, {})
+            verdict = (
+                verdicts.get(candidate.rule.rule_id)
+                or verdicts.get(model_id)
+                or {}
+            )
             for problem in verdict.get("findings", []):
                 findings.append(Finding(
                     code=problem.get("category", "verifier"),
@@ -378,14 +436,23 @@ class Extractor:
         return result
 
     def _to_candidate(
-        self, passage: Passage, raw: dict, proposals: list[ExtensionProposal]
+        self, passage: Passage, raw: dict,
+        proposals: list[ExtensionProposal], index: int = 1,
     ) -> tuple[Optional[ExtractionCandidate], str]:
         raw = dict(raw)
         raw.setdefault("status", "candidate")
+        # Overwritten, not defaulted. Which book a passage came from is a fact
+        # the caller holds and the model is guessing at: one Phaladeepika run
+        # produced `phaladeepika`, `Phaladeepika` and `phaladeepika-sastri-1950`
+        # across 169 rules, so the engine reported three books where there is
+        # one. `book_id` drives citation text, restatement clustering and the
+        # §15 source-authority matrix, and an unrecognised value does not error
+        # -- it silently scores the book as neutral and drops it out of the
+        # weighting. Same reasoning as the rule id above.
         source = dict(raw.get("source") or {})
-        source.setdefault("book", passage.book_id)
-        source.setdefault("edition", passage.edition_id)
-        source.setdefault("locator", passage.locator)
+        source["book"] = passage.book_id
+        source["edition"] = passage.edition_id
+        source["locator"] = passage.locator
         raw["source"] = source
 
         flags = ExtractionFlags(
@@ -400,6 +467,8 @@ class Extractor:
         # from the one the prompt tells the model to send.
         for key in prompts.EXTRACTOR_FLAG_KEYS:
             raw.pop(key, None)
+
+        raw["id"] = stamped_rule_id(passage, raw, index)
         try:
             rule = self._build_rule(raw, self.registry)
         except Exception as exc:  # noqa: BLE001 - the reason is the payload

@@ -1,0 +1,624 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V1725.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: He will do wicked acts
+    quote_sha256: bf66aa858b63b6860efea2ed2f8c87848300eaa39d37fd2fb0896b1fdb853a11
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.06
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.06
+        level: level.maha
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native will do wicked acts.
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V26.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: will be hard-hearted
+    quote_sha256: e9f334a36e23f5eb5fd45b972ca1dd425ab2a2d96d7981d21d7db0c8484413f2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be hard-hearted
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V26.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: become self-willed
+    quote_sha256: ea24d815b4391bf4c6b24015777acb80dee29a0673f7c1c3dfe24de7cfeb4a82
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will become self-willed
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V26.X0013
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v26
+    quote: and silly.
+    quote_sha256: 2a3aa3d6eafb1fcbfc964295d654ee4e924b79fcffa243be034ca861ed04b1f2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will become silly
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V64.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v64
+    quote: be addicted to others' wives
+    quote_sha256: 703a077f67c61d2d2aa50a1b992b57bacb513a7e5ca5cb62708ddaca507e94fd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: the native will be addicted to others' wives
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V71.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+    domain.spiritual: 0.5
+  source:
+    book: phaladeepika
+    edition: '1950'
+    locator: ch28.v71
+    quote: working spells for the injury of another person (சூந்யம்) are to be expected
+      in Rahu's Bhukti in Ketu's Mahadasa.
+    quote_sha256: 10dd423d34fefd8c4260975e19f2e43f3487a31524f192df2c1406e5afb05176
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: working spells for the injury of another person
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v11
+    quote: Hibuka (हिबुक), Sukha (सुख happiness)
+    quote_sha256: dac32a51f23b363a345c065bfc340ede53ce63d85409d0f5cf5a5b1ca7c92d9b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: Propose new claim 'general.happiness'. The term 'Sukha' (happiness, comfort)
+      is a fundamental concept and a primary signification of the 4th house. The nearest
+      existing claim, 'temperament.disposition', describes character, not the state
+      of well-being and contentment that 'Sukha' implies.
+    applies_to: method
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V12.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: If Mercury be in the 5th house at a birth, the person concerned, will be
+      learned, happy and courageous.
+    quote_sha256: b954697d37e76d0deb07d75e10e610b8309e57f79ba361f92e85e5fe5bdc6e64
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person will be happy and courageous
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V12.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: Mercury in the 6th house makes the person born angry through disputes,
+      harsh in speach and idle.
+    quote_sha256: 360e065aec6280d92b5c0e7f64b2847915198169a06ec46a894ec38bc58789ae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.06
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: the person will be angry through disputes, harsh in speech, and idle
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v2
+    quote: If the Moon be associated with Mercury, the man born in the Yoga will speak
+      sweetly and modestly
+    quote_sha256: c367ac9ede81b789a0d80798c9283bcb915c2ffb0e017bd84c2d6751f0a4783e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: speaks sweetly and modestly
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V25.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v25
+    quote: The person who has at his birth Rahu in the 2nd house will be dubious or
+      insincere in his speech
+    quote_sha256: aab5f1efd010a3d9b945fd356a22c5370a3c50d7a4ff2a443465536e586c7a8d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.02
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: will be dubious or insincere in his speech
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V25.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v25
+    quote: Rahu in the 3rd house makes the person born proud
+    quote_sha256: b31de6db180030df1cde2c6f90b3daaafb9f3c8931fdcdb34441541de5326b17
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.03
+  indicates:
+    claim: temperament.disposition
+    polarity: neutral
+    magnitude: moderate
+    text: makes the person born proud
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V54.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v54
+    quote: The person born in the ख्याति (Khyati) Yoga will become a King who will
+      protect his good subjects by following a course of conduct approved by all.
+      He will be blessed with sons, friends, wife and wealth, and will be prosperous
+      and widely renowned.
+    quote_sha256: 0c6b964e1164bc1b57590ec7dc8f4ae77cfb0851c0198e544068b3d5bda28f67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.pisces
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will protect his good subjects by following a course of conduct approved
+      by all
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V69.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+    domain.relationship: 0.5
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: '...fond of the company of other females...'
+    quote_sha256: b35ded1fe33b00568b6797768f6f667de0cfa20d209ad55026140850557b849a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: temperament.disposition
+    polarity: neutral
+    magnitude: moderate
+    text: fond of the company of other females
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V7.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v7
+    quote: 'If the Moon be posited in Karkataka, the effects in their order are: (1)
+      she will be self-willed and uncontrolled'
+    quote_sha256: c77cd2bdf97579b6f0c440212825123883650fe6b93963505c4530047744f80c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - varga_occupies:
+        varga: varga.d30
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: she will be self-willed and uncontrolled
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V7.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v7
+    quote: If the Moon occupies a sign of Jupiter, the effect will be to make the
+      woman born (1) endowed with many good qualities
+    quote_sha256: 3a19eb07e33d6fcf93bdbfc94554b2a0f3c236769e09f41e40484c9f3fc2a7d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d30
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: endowed with many good qualities
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V7.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v7
+    quote: If the Moon occupies a sign of Jupiter, the effect will be to make the
+      woman born (1) endowed with many good qualities
+    quote_sha256: 3a19eb07e33d6fcf93bdbfc94554b2a0f3c236769e09f41e40484c9f3fc2a7d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - varga_occupies:
+        varga: varga.d30
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: endowed with many good qualities
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V1565.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: the person concerned will be very inactive
+    quote_sha256: a46298b78fd0ec3f3eccff5cba0bf95f7237cee2966e87f585c49da5d2d57b84
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.06
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: will be very inactive
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V1565.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: He will be very amiable
+    quote_sha256: c2d59ad6edc0d64942aa8f86f756dd4d12a52d1c61b93400edca8dc3203ba537
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will be very amiable
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V1565.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.5
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: more munificent than his father.
+    quote_sha256: fbb7ce7506b8145def2819daa93dee0f1806eef16065d3615e31e3e02f765292
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: will be more munificent than his father
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V1565.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.spiritual: 0.6
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: he will be sinful
+    quote_sha256: 346c82dcdaf65e29ec3ba425fad975b1bf261d9082db7286aeca11d54d5e16bf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: will be sinful
+- id: PHALADEEPIKA.TEMPERAMENT.CH28V58.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v58
+    quote: he will associate with the wicked, will be of bad behaviour
+    quote_sha256: 97e0f7069e4d2976d6e53abc22e72a24f2946162949ee49dafde42396523fa98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: The native will associate with the wicked and have bad behaviour.

@@ -1,0 +1,349 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.EDUCATION.CH17V3.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: skilled in sexual sciences
+    quote_sha256: 86967ce07d81e27de49e542c937fb429a641eca0ed1f9531f693a71d993176da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native is skilled in sexual sciences.
+- id: BRIHATJATAKA.EDUCATION.CH17V3.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+    domain.career: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: scientist
+    quote_sha256: c2da2700b851b132c6ca6ce3c97f50ca3f362e22aebbefd69b77ceeab261bd88
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native is a scientist.
+- id: BRIHATJATAKA.EDUCATION.CH17V3.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: clever knowledge in wit and human nature and gambling
+    quote_sha256: da97aa245a4703f8917187bb2af5356af035d4704c4aafd7a2c96588c610ef95
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native has clever knowledge in wit, human nature, and gambling.
+- id: BRIHATJATAKA.EDUCATION.CH17V3.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: skilled in dancing
+    quote_sha256: dcf2c51a647cec83bb3ccfdff09583cf213507e8dcd388118119786413fe0b94
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native is skilled in dancing.
+- id: BRIHATJATAKA.EDUCATION.CH17V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: skilled in arts, learned in shastras, intelligent
+    quote_sha256: 7d8ef7332834b495069d25b040a87a3ef13bf548bd512f834ac76dc35fb83e42
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native is skilled in arts, learned in shastras, and intelligent.
+- id: BRIHATJATAKA.EDUCATION.CH17V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: intelligent
+    quote_sha256: 040eb379271f55d0ddbc0abca1ab71b5307b7bd898592b4be8b3e60dc6d844e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native is intelligent.
+- id: BRIHATJATAKA.EDUCATION.CH17V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: clever speaker
+    quote_sha256: 7fe0bff3c408321864e2083bbd9cd3af092f6c9f1b92d4e4c8a255b95b7660e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: is a clever speaker
+- id: BRIHATJATAKA.EDUCATION.CH17V8.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: fine arts
+    quote_sha256: cd8a5f41f16091774b7946a01ef8584105ab07058d65ade98163a1c7d822755b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: is skilled in fine arts
+- id: BRIHATJATAKA.EDUCATION.CH17V8.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: highly intelligent
+    quote_sha256: a3937e01f75b0de7fc8d22358b5fc85b2cee28543ff11ebdee4984ea12e18b5c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: is highly intelligent
+- id: BRIHATJATAKA.EDUCATION.CH17V8.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+    domain.spiritual: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: separated from parents and Guru
+    quote_sha256: f9e52728372dfc17be2d0237a8b17c55a2d16e7dc823a9afa14f2000d7280fe8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: is separated from their Guru (teacher)
+- id: BRIHATJATAKA.EDUCATION.CH17V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: grasping intelligence
+    quote_sha256: 013d707dc2123bd2e310681d8a0d34b906a183ea6c37ce8372a1b762271e5e43
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: has a grasping intelligence
+- id: BRIHATJATAKA.EDUCATION.CH17V10.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.career: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: strong or liberal poet
+    quote_sha256: e396d59a8e26237964747f7226fcfbece59ae57abc48f61a39ac6c82f56001d1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: is a strong or liberal poet
+- id: BRIHATJATAKA.EDUCATION.CH17V10.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: learned
+    quote_sha256: d78e3c38d98d17d7355ec4a989e477bace56a6fa2508121a520146cd0a23ec80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: is learned

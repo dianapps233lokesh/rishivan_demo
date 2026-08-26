@@ -1,0 +1,132 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  domains:
+    domain.longevity: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v13
+    quote: After a careful examination as to which among the two or three possibilities
+      predominates and what malefics are posited in the 5th and the 8th houses, one
+      ought to divine about the ills of the child.
+    quote_sha256: 79e1a38d9d8b66a9f0b8ca1de3aefa68c1dea15a68b550dab5e6ac287ee4fbd0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When assessing childhood afflictions, the astrologer should weigh the relative
+      strengths of the different indicators of early death and also consider the presence
+      of malefics in the 5th and 8th houses.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  domains:
+    domain.longevity: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v20
+    quote: The rule of Satyacharya is preferable (to that laid down by Maya or Jeevasarman).
+    quote_sha256: 421cea4a8b9820cddd7d5faa158958ff3ca2e4b971030fdfd568e235345f6d7f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: In the calculation of Ayurdaya (longevity), the method of Satyacharya is
+      to be preferred over the methods of Maya or Jeevasarman.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V20.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  domains:
+    domain.longevity: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v20
+    quote: When several multiplications crop up, only one and that the highest, is
+      to be gone through.
+    quote_sha256: fe5785bd898620c49075c00a0c036a111f928dff53931645f6f650c6aaf04223
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When calculating Ayurdaya, if a planet qualifies for multiple multiplications
+      of its contribution, only the single highest multiplication factor should be
+      applied. For example, if a planet is in its own house (doubling), exalted (trebling),
+      and retrograde (trebling), its contribution should be trebled once, not multiplied
+      successively.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V20.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  domains:
+    domain.longevity: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v20
+    quote: Again, when there are several reductions applicable only one, and that,
+      the greatest should be made.
+    quote_sha256: bb1b68d7c07e093ed6fe5b3e017c937a46ac526d279ca0bc26371eceeb9ed56c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: When calculating Ayurdaya, if a planet qualifies for multiple reductions
+      of its contribution, only the single greatest reduction should be applied. For
+      example, if a planet is in an inimical sign and is also combust (eclipsed by
+      the Sun), only the reduction for combustion (by half), being the greater reduction,
+      should be applied.
+    applies_to: method
+- id: PHALADEEPIKA.DIRECTINTERPRETER.CH28V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  domains:
+    domain.longevity: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v18
+    quote: The signs, degrees, minutes, etc., of a planet should be converted into
+      minutes, and as many multiples of 2400 as may be found necessary should be subtracted
+      from the same The remainder represents the Ayushkalas of the planet. The same
+      should be divided by 200 (आशा स्वाश्व—आशा=10 or 0, ख=0, अश्व=2). The quotient
+      gives the number of years, months and days in the अंशाायर्दाय (Amsayurdaya)
+      contribution towards the span of life by a planet according to its Degree, etc
+      , according to Satyacharya. If the planet be retrograde or in exaltation, this
+      quotient has to be trebled. If the planet be in his own Rasi or Navamsa, decanate
+      or Vargottama, the Ayurdaya has to be doubled; if in depression, it has to be
+      reduced by half. If the planet be eclipsed, then also the reduction is half.
+      But this last reduction will not apply to Venus and Saturn.
+    quote_sha256: c7b15f368027221c6585650b836851de17c8acd0425a78d0c95f9c7341f17e46
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: 'This verse describes Satyacharya''s method for Amsayurdaya calculation.
+      For each planet, a base contribution is calculated from its longitude: Years
+      = ((Longitude in minutes) mod 2400) / 200. This base value is then modified:
+      trebled for a retrograde or exalted planet; doubled for a planet in its own
+      Rasi, Navamsa, decanate, or Vargottama; halved for a planet in depression or
+      combust. The combustion reduction does not apply to Venus or Saturn.'
+    applies_to: method

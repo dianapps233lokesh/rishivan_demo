@@ -1,0 +1,48 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BHAVARTHARATNAKARA.DIRECTINTERPRETER.CH1V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: bhavartha-ratnakara
+    edition: bhavartha-ratnakara-raman
+    locator: ch1.v1
+    quote: It is not clear as to what the author means when he refers to Mars being
+      in association with 8th lord "SHASHTAMASHTAMANATHENA YUTHO BHUVI SUTHO YADI"
+      Mars is himself the 8th lord for Mesha lagna. Consequently the 6th sloka should
+      be taken to mean that when Mars conjoins the 6th lord, death will be caused
+      in his Dasa.
+    quote_sha256: a0fb17884dcc05f796bcb867fcb95b044f59c052b2cc2313c46dc5603c691acc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: The rule stating 'Mars associated with 6th and 8th lords' is problematic
+      and should be interpreted as 'Mars conjoins the 6th lord' to be practically
+      applicable, especially for charts like Aries Lagna where Mars is the 8th lord.
+    applies_to: method
+- id: BHAVARTHARATNAKARA.DIRECTINTERPRETER.CH1V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_interpreter
+  source:
+    book: bhavartha-ratnakara
+    edition: bhavartha-ratnakara-raman
+    locator: ch1.v2
+    quote: But this does not prevent Kuja from conferring Yoga also.
+    quote_sha256: 6afd8db0e05020379ef484e9d618d0c50b574a86c7b599e57f2ac5ee8ebc115f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  guidance:
+    text: A planet's capacity to act as a Maraka (death-inflictor) does not prevent
+      it from also conferring positive yogas.
+    applies_to: method

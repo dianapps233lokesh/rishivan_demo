@@ -341,7 +341,8 @@ def main(argv: list[str] | None = None) -> int:
     ext = sub.add_parser("extract", help="re-read the verses with a model (costs money)")
     ext.add_argument("--book", action="append")
     ext.add_argument("--limit", type=int, default=20,
-                     help="passages to process. Defaults low on purpose.")
+                     help="passages to process. Defaults low on purpose; "
+                          "0 means the whole book.")
     ext.add_argument("--max-calls", type=int, default=200,
                      help="hard ceiling on model calls. 0 disables it.")
     ext.add_argument("--fast-model", default="gemini-2.5-flash")

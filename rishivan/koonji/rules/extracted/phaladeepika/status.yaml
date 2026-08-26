@@ -1,0 +1,526 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.CAREER.CH28V1725.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+    domain.status: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: displeasure of the sovereign
+    quote_sha256: b6b331dd9039ec1460d1843ac77b862ad898efcbccd56c8971ed1363052724fe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.05
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.05
+        level: level.maha
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: moderate
+    text: The native will face displeasure of the sovereign.
+- id: PHALADEEPIKA.STATUS.CH28V1725.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v17-25
+    quote: He will be despised and scandalised
+    quote_sha256: b7d3a16d62c2622c7c755f5ba6dba2f62930431e0bbe0a75e81765df8852e27a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.06
+        band: band.weak
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.06
+        level: level.maha
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: The native will be despised and scandalised.
+- id: PHALADEEPIKA.STATUS.CH28V83.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v83
+    quote: he will become a friend of illustrious and prominent people.
+    quote_sha256: f2bfe386f5e9118f0034e6ac4ba21bc563320c8e2d0f8dd8956ec75a45ca2853
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.06
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: The native will befriend illustrious and prominent people.
+- id: PHALADEEPIKA.STATUS.CH28V83.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v83
+    quote: He will have wealth, splendour, friends, fame and sons.
+    quote_sha256: 01012bbdbf4a48827b8aeb6def9281fdeeb32b6d6c1dbd621ef8eb03f41ea907
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.06
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: The native will have splendour, friends, and fame.
+- id: PHALADEEPIKA.STATUS.CH28V64.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.7
+    domain.property: 0.4
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v64
+    quote: will be roaming on the roads unperceived
+    quote_sha256: 016ca530a222320c37ebab0a089f998af8b31c45961a31c941186835d2aa4e76
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.07
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: the native will be roaming on the roads unperceived
+- id: PHALADEEPIKA.STATUS.CH28V64.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.6
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v64
+    quote: trouble from the sovereign
+    quote_sha256: 81917f8f99aadcc711309af156064493a31436cedc350dba7646b855f13909c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.07
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: the native will have trouble from the sovereign
+- id: PHALADEEPIKA.STATUS.CH28V72.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v72
+    quote: honour from the sovereign may be looked for in Jupiter's Bhukti in Ketu's
+      Dasa.
+    quote_sha256: 4bf082770aae8d93ca798d28a6e82f91b57266f2684cff79704d866e3194d8c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: honour from the sovereign
+- id: PHALADEEPIKA.STATUS.CH28V74.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+    domain.wealth: 0.3
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v74
+    quote: appreciation from a big wealthy lord
+    quote_sha256: a82057d457821092ba6b10a4c8afd61b8ffbf40bd4643dec615feaf7a1635188
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: appreciation from a big wealthy lord
+- id: PHALADEEPIKA.STATUS.CH28V12.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: he will dress himself beautifully, will have all the greatness,
+    quote_sha256: 82df356be49aa050666b8c9d03c62a34b0a76a4ca151d0d9fdf08ccab2f6c25f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: will dress beautifully and have greatness
+- id: PHALADEEPIKA.STATUS.CH28V12.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v12
+    quote: If Mercury should be posited in the 8th house at a birth, the person concerned
+      will be widely renowned,
+    quote_sha256: 52437500b1bae14a648282fda7abc629b9efc1da4bbcb6c998aa1056725b48cc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.08
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the person will be widely renowned
+- id: PHALADEEPIKA.STATUS.CH28V54.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v54
+    quote: The person born in the ख्याति (Khyati) Yoga will become a King who will
+      protect his good subjects by following a course of conduct approved by all.
+      He will be blessed with sons, friends, wife and wealth, and will be prosperous
+      and widely renowned.
+    quote_sha256: 0c6b964e1164bc1b57590ec7dc8f4ae77cfb0851c0198e544068b3d5bda28f67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: lord.bhava.10
+          rashi: rashi.pisces
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: will become a King ... and will be widely renowned
+- id: PHALADEEPIKA.STATUS.CH28V69.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: If Venus occupy the 9th house at a birth, the person concerned will be
+      blessed with a wife, friends and children...
+    quote_sha256: 0d7f0cf01a750a836d053c5a4af6306fe2b8d131aa9625124adeb32537ad72db
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will be blessed with... friends
+- id: PHALADEEPIKA.STATUS.CH28V69.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+    domain.wealth: 0.5
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: '...and will become prosperous through royal favor.'
+    quote_sha256: 2ade8ac17e161ed728989de6908aa94154278bcb667daaecc08b653c4a497287
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: will become prosperous through royal favor
+- id: PHALADEEPIKA.STATUS.CH28V69.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v69
+    quote: If Venus should be in the 10th house, the person born will become widely
+      renowned, will have friends...
+    quote_sha256: 9eb8a2926fcdaf73ac3bdd3720a6549bae70798c134923b4932c1aaa24736a32
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: will become widely renowned, will have friends
+- id: PHALADEEPIKA.STATUS.CH7V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.7
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch7.v6
+    quote: 12. A strong Moon aspected by a strong planet in the Lagna ushers an emperor
+      into the World.
+    quote_sha256: f49969900261e1e89c18ef49113b049175d9d357138bb465088c1548a78f7c33
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.moon
+        band: band.strong
+    - any:
+      - all:
+        - occupies_bhava:
+            subject: graha.sun
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.sun
+            band: band.strong
+        - aspects:
+            subject: graha.sun
+            target: graha.moon
+      - all:
+        - occupies_bhava:
+            subject: graha.mars
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.mars
+            band: band.strong
+        - aspects:
+            subject: graha.mars
+            target: graha.moon
+      - all:
+        - occupies_bhava:
+            subject: graha.mercury
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.mercury
+            band: band.strong
+        - aspects:
+            subject: graha.mercury
+            target: graha.moon
+      - all:
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.jupiter
+            band: band.strong
+        - aspects:
+            subject: graha.jupiter
+            target: graha.moon
+      - all:
+        - occupies_bhava:
+            subject: graha.venus
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.venus
+            band: band.strong
+        - aspects:
+            subject: graha.venus
+            target: graha.moon
+      - all:
+        - occupies_bhava:
+            subject: graha.saturn
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.saturn
+            band: band.strong
+        - aspects:
+            subject: graha.saturn
+            target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: ushers an emperor into the World
+- id: PHALADEEPIKA.STATUS.CH28V1565.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v15-65
+    quote: suffer disrespect
+    quote_sha256: 43f9c741564ac8f30302d5f4b8c244bf2385a217356101edef9d7533aadd8e70
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.06
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: suffer disrespect

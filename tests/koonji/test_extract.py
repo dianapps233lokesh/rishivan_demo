@@ -154,12 +154,68 @@ class TestBlindness:
         assert "CORRECT AND EXPECTED OUTCOME" in extract_call["system"]
 
 
+class TestIdentityIsStampedNotAuthored:
+    """The model does not name its own rules.
+
+    It got one wrong in production: Phaladeepika ch28.v83 and ch28.v63 both came
+    back as `PD.28.63.0002`, two different rules sharing an id. The compiler
+    refuses a duplicated id -- correctly, since it would fire twice and count as
+    two independent sources under noisy-OR -- so the whole bundle failed to
+    compile and the engine would not start. Nothing caught it until the app
+    stopped loading.
+    """
+
+    def test_the_id_is_derived_from_the_citation(self, registry):
+        result = Extractor(ScriptedClient(full_script()), registry).process(passage())
+        assert result.candidates[0].rule.rule_id == "BPHS.WEALTH.CH23V13.X0001"
+
+    def test_the_models_id_is_overwritten(self, registry):
+        """`RULE_JSON` carries `BPHS.WEALTH.10L11H.0001`. It must not survive."""
+        result = Extractor(ScriptedClient(full_script()), registry).process(passage())
+        assert result.candidates[0].rule.rule_id != RULE_JSON["id"]
+
+    def test_two_rules_from_one_passage_get_different_ids(self, registry):
+        """The ordinal is what separates siblings, and a verse routinely yields
+        several - "Jupiter in the 2nd gives wealth; in the 6th, debt"."""
+        both = {"rules": [dict(RULE_JSON), dict(RULE_JSON)], "proposals": []}
+        script = [
+            {"is_rule_bearing": True, "assertion_kinds": ["assert_claim"]},
+            both, both,
+            {**both, "material_disagreements": []},
+            {"verdicts": []},
+            "back translation", "back translation",
+        ]
+        result = Extractor(ScriptedClient(script), registry).process(passage())
+        ids = [c.rule.rule_id for c in result.candidates]
+        assert len(ids) == len(set(ids)), ids
+
+    def test_the_extracted_id_cannot_collide_with_a_converted_one(self, registry):
+        """`convert.rule_id_for` builds `{BOOK}.{TOPIC}.{LOCATOR}.{n:04d}` from
+        the same books. Without the `X` the two namespaces overlap, which is the
+        second way this broke the bundle."""
+        result = Extractor(ScriptedClient(full_script()), registry).process(passage())
+        ordinal = result.candidates[0].rule.rule_id.rsplit(".", 1)[-1]
+        assert ordinal.startswith("X")
+
+    def test_the_book_id_comes_from_the_passage_not_the_model(self, registry):
+        """One run produced `phaladeepika`, `Phaladeepika` and
+        `phaladeepika-sastri-1950` across a single book, so the engine reported
+        three. An unrecognised book scores neutral in the §15 matrix rather than
+        erroring, so it fails silently."""
+        lying = dict(RULE_JSON, source={**RULE_JSON.get("source", {}),
+                                        "book": "Bphs Gcsharma Vol1"})
+        result = Extractor(
+            ScriptedClient(full_script(lying)), registry
+        ).process(passage())
+        assert result.candidates[0].rule.provenance.book_id == "bphs"
+
+
 class TestCandidates:
     def test_a_clean_extraction_becomes_a_candidate(self, registry):
         result = Extractor(ScriptedClient(full_script()), registry).process(passage())
         assert len(result.candidates) == 1
         candidate = result.candidates[0]
-        assert candidate.rule.rule_id == "BPHS.WEALTH.10L11H.0001"
+        assert candidate.rule.rule_id == "BPHS.WEALTH.CH23V13.X0001"
         assert candidate.flags.confidence == 0.82
 
     def test_source_metadata_is_filled_from_the_passage(self, registry):
@@ -184,7 +240,7 @@ class TestValidationIsApplied:
     def test_a_fabricated_quote_blocks_the_candidate(self, registry):
         fabricated = dict(RULE_JSON, source={"quote": "Jupiter in the 5th gives sons."})
         result = Extractor(ScriptedClient(full_script(fabricated)), registry).process(passage())
-        assert result.blocked == ["BPHS.WEALTH.10L11H.0001"]
+        assert result.blocked == ["BPHS.WEALTH.CH23V13.X0001"]
 
     def test_a_verifier_rejection_blocks_the_candidate(self, registry):
         verdicts = [{
@@ -196,7 +252,7 @@ class TestValidationIsApplied:
         result = Extractor(
             ScriptedClient(full_script(verdicts=verdicts)), registry
         ).process(passage())
-        assert result.blocked == ["BPHS.WEALTH.10L11H.0001"]
+        assert result.blocked == ["BPHS.WEALTH.CH23V13.X0001"]
 
     def test_an_accepting_verifier_leaves_the_candidate_clean(self, registry):
         verdicts = [{"rule_id": "BPHS.WEALTH.10L11H.0001", "verdict": "ACCEPT", "findings": []}]

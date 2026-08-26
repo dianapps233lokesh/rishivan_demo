@@ -1,0 +1,1293 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: Round and red eyes
+    quote_sha256: 9ee0fa07cf52d7e4b4fad9e112f5de767bf635baa3485958df80bfadb1103720
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native has round and red eyes.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: bad nails
+    quote_sha256: a4d47252d6a51cf23d7fdc6e18b6997af312e4619870f02f2134fe37d0b791fa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native has bad nails.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: proud
+    quote_sha256: d069c85283b98c2c0ca831cb4fd19356e98813b5d0ee31e7b7a4a894e8aca23c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is proud.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: has Sakterakha (line) in the palm
+    quote_sha256: fe5d4d558ec8290fdd3cdc8eaa2ecf7e1b0dedade7ef95d4efe5d6df8cb8ca7a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native has a Sakterakha line in the palm.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: capricious and dreading water
+    quote_sha256: 18450a904075feb3e8d130144ae8d95e4d9e657a3b8cb4d06b4d073d55b2b869
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is capricious and dreads water.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: eating hot and light food, fond of grains
+    quote_sha256: c1e78feb446a795c804ead5e065eff5d52b4da96724b2368fc971d69004856c5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native eats hot and light food and is fond of grains.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: easily calmed
+    quote_sha256: 4ae3a57d65f4e42ae88260760caabe64bffc4aa77dde5848c36c0775b3a5c320
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is easily calmed.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: passionate
+    quote_sha256: 117621ca9b86ec98e0cf23b565d3dc74e11eb3defb1721ae0d41308f135ee10a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is passionate.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: fleshless knees
+    quote_sha256: 19e2c5f8e32e472365d6ceb8f9c372fd6aad32b168a97e2b9040e2ead1bfa74d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native has fleshless knees.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V1.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: courageous
+    quote_sha256: 22eafa27fd2cd5628cbce0233e5cab41f96887dd5ce22ee1ae5fbb72170b5120
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is courageous.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V2.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v2
+    quote: liberal
+    quote_sha256: 559359f07850f1bc717d788f18c7c0f99df6715db4886dcfc2f245b4db5064c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native is liberal
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V2.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.7
+    domain.health: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v2
+    quote: phlegmatic
+    quote_sha256: 2c37e1a818b069f070ca9ae1044c9cd35244e673c9bebb716d5e7f18ef7ff57b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native has a phlegmatic (kapha) constitution
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V2.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v2
+    quote: patient
+    quote_sha256: 2295ff7a8bd8b3f2884c6482146e3ded0417f72072c079fbe223e13e83a0388e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native is patient
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V3.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.6
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: Fond of women
+    quote_sha256: e94519924bbe44234252da878f7ac32386c7b049c91f19400bb069be26ddadb9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is fond of women.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V3.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: sweet speech
+    quote_sha256: efe8e741e41f102ce1e75ef26e4f6c83f4be66091304989961d1d89d8c119224
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native has sweet speech.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V3.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.7
+    domain.health: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: good eater
+    quote_sha256: b0a933030ea240167fc3a7354c2fc8c59d5a9417411f05ef29b152a300e6fd5b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is a good eater.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V3.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: fond of music
+    quote_sha256: b639916ff2826671f0f28d1e4b7338946f45d29e9a911ead01b27d488ea6edf3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is fond of music.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V3.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v3
+    quote: playing with impotents
+    quote_sha256: 76dd6f2fc64faa4bc21d1dad9139109a4ae1720f9b99e36fd85a98ed1ddc1792
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native plays with impotents.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V6.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: Walk and sight will be characterised by modesty
+    quote_sha256: 7791e8ab121d790a5e5781a7f296743540d3034730e2cf38cf9d4239b18f011d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native's walk and sight are characterized by modesty.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V6.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: happy, sweet speaker, truthful, charitable
+    quote_sha256: f6be0fe059c599a59a62e3cc16a18c8fb4e61e383d1e8261e2bccb9bf6b1d989
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is happy, a sweet speaker, truthful, and charitable.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V6.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: passionate
+    quote_sha256: 117621ca9b86ec98e0cf23b565d3dc74e11eb3defb1721ae0d41308f135ee10a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is passionate.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V6.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v6
+    quote: calm speech
+    quote_sha256: 540e1531d3dbd58d026c72d7b8c8d4f6545be614c28093bd1d41c60ccb923e7e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native has calm speech.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.status: 0.4
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v11
+    quote: surrounded by good flowers, scents and friends
+    quote_sha256: 281c6a75a216c395b904891730282f0a00c85abdd6b30ae295d468b5cab1c7eb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native enjoys pleasant surroundings and company
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V11.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.6
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v11
+    quote: fond of others wealth
+    quote_sha256: 2d64c1e9601c5dd3b41087ad41d721097c7988cc1e36aeb6a86df9b7fc7b5f60
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native is fond of others' wealth
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V11.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v11
+    quote: fond of others wealth and women
+    quote_sha256: 8f9b575f991e85c1e513f3f813bf9d8d9a34aace55e50a6303a322f3be06fd7f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native is fond of others' women
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V11.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.spiritual: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v11
+    quote: sinful
+    quote_sha256: 8461f6395144799e3bbe4739c55d4dd394155cc1603e6082a82fe63d41ef15e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native is sinful
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V11.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v11
+    quote: stubborn
+    quote_sha256: 34f9a187aeae47e4f367981f3b9e68818f5058a47eebd9fd7cdb9cbaa01a05a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native is stubborn
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V4.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v4
+    quote: submissive to women
+    quote_sha256: 0d3781dc1292a16365b7f705c6f03563852120ccae5ee4ef8873ffd3c63a8697
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is submissive to women.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V4.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v4
+    quote: amenable to kind words
+    quote_sha256: bfe8725649ed3e3ce78355f1fdb9bf5b7aeb568576685eb6595a8feb6cb984b4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is amenable to kind words.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V4.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v4
+    quote: fond of friends, water and gardens
+    quote_sha256: 64110c37f33abeab1cfe091dda3957d305628e8994afce02a53a0afd9830722e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is fond of friends, water, and gardens.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V7.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: clean
+    quote_sha256: 3b066804f6d1d077173cfe4d06002e6a61e6f21c2b2e648417962115f1afcd8e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is clean.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V7.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: submissive to women
+    quote_sha256: 0d3781dc1292a16365b7f705c6f03563852120ccae5ee4ef8873ffd3c63a8697
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is submissive to women.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V8.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: liberal
+    quote_sha256: 559359f07850f1bc717d788f18c7c0f99df6715db4886dcfc2f245b4db5064c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: is liberal
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V8.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.career: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: active worker
+    quote_sha256: 201faecafd7fcead4849cc96935f6b8ad014763b3ddbe4c19935efed2a1e7569
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: is an active worker
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V8.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: won over by fair means and kind words
+    quote_sha256: bda46b65d504eac85a12ab77c92da572552d0482a3368438e44cddfd1a6492bf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: is won over by fair means and kind words
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V8.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: cruel
+    quote_sha256: b4ca32d7b0dbfc0fe26905fa9bc513a2d16f853a9106e37cae6c62d3b5134b77
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: is cruel
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V8.X0013
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: secret sinner
+    quote_sha256: 797f6fb078dc5faa32963f3638a4c1e752ae65b22fb7bdeb7b4f663d008a5c98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: is a secret sinner
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V10.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: pretending charity
+    quote_sha256: d5492677e5683594c5b91d00beb063506f6e196f2beda3187195694a3b4f3046
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: pretends to be charitable
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V10.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: idle
+    quote_sha256: 4fb62348858c2f6fbd6db27fa4c11edd8559119869d1034e2bd3390fd92b1a04
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: is idle
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V10.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: miserly
+    quote_sha256: 78e64ba88c841aecf5920225346022e7a07eff7dfebd8cdf3649375fee43be9f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: is miserly
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V10.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: incestuous and low intercourse
+    quote_sha256: 7794aecc1118f904e58689753b3b6cc6503abf349d5d28ddf7dca96ba27bc711
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: engages in incestuous and low intercourse
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V10.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: shameless
+    quote_sha256: ea3080ac2bedca6fc93944cd404eda22c506abf601b8d944caa07f8fb1a8aa58
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: is shameless
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V10.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: merciless
+    quote_sha256: b3207a439f55d03bd6adddda0d28158466de05aa727777fcd97478cae16c4ed9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: is merciless
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V5.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: Angry
+    quote_sha256: c553665085d3840af3fd2852f49c29046a1ff3142702eecf4a1833e4a49e9281
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is angry.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V5.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.travel: 0.2
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: fond of flesh, wilderness, and mountains
+    quote_sha256: 360218b59bdcb5e33068d81b7f09662b845edf7757a1c2f0e532a284c786c262
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is fond of flesh, wilderness, and mountains.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V5.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: long displeasure
+    quote_sha256: 9c6fe157638cea27f76809fdbae9624f895197fe6033655071fea6572ba5a513
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native holds displeasure for a long time.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V5.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: liberal
+    quote_sha256: 559359f07850f1bc717d788f18c7c0f99df6715db4886dcfc2f245b4db5064c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is liberal.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V5.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: courageous
+    quote_sha256: 22eafa27fd2cd5628cbce0233e5cab41f96887dd5ce22ee1ae5fbb72170b5120
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native is courageous.
+- id: BRIHATJATAKA.TEMPERAMENT.CH17V5.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: fixed, proud mind
+    quote_sha256: 642906d9f972b6f9fbc151a180c515e48895ecb8ee6875e977bc20970a68e47a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: The native has a fixed and proud mind.

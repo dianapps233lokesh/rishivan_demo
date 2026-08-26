@@ -1,0 +1,121 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.STATUS.CH17V2.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v2
+    quote: popular
+    quote_sha256: 2c810fd03484ce327b8424680058543822cd88b577809c73529104583a936627
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the native is popular
+- id: BRIHATJATAKA.STATUS.CH17V8.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: respected by Royal members
+    quote_sha256: 985b9252ef7cfa743ff5372a64ebea6202dd064b124f93b2e2a66750a042b808
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: is respected by royal members
+- id: BRIHATJATAKA.STATUS.CH17V10.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: popular
+    quote_sha256: 2c810fd03484ce327b8424680058543822cd88b577809c73529104583a936627
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: is popular
+- id: BRIHATJATAKA.STATUS.CH28V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.7
+    domain.temperament: 0.5
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch28.v1
+    quote: his presence in the 10th house along with Buda and Guru has enabled me
+      to hold the view that I am destined to become a great man and write valuable
+      works on a variety of subjects
+    quote_sha256: b506d739e0ba0eddffae6bfdc9eada0fcceeaa9cc5b4bab0d47f78fbbbc8310e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native is destined to become a great man and write valuable works

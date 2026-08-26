@@ -1,0 +1,269 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: BRIHATJATAKA.HEALTH.CH17V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v1
+    quote: cut or scar in the head
+    quote_sha256: f265dedf23b945d0a2e31c2e5f4916841f4f9eea223cb72523cdcec0b5012327
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native has a cut or scar on the head.
+- id: BRIHATJATAKA.HEALTH.CH17V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v2
+    quote: bearing fatigue
+    quote_sha256: a68f7bed465fedb6d5a9c73915bea58cac6a9012dda41f263f2cef8243e270a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: the native has good endurance and can bear fatigue
+- id: BRIHATJATAKA.HEALTH.CH17V2.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v2
+    quote: strong digestion
+    quote_sha256: 18deb627663c295ec2d6cafa20a83e52c14646b35ca468bccbd7abfe4d2b7708
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: the native has strong digestion
+- id: BRIHATJATAKA.HEALTH.CH17V7.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: weak and disjointed organs
+    quote_sha256: 3f5173f6da1867ec8f70a002c48d174d62eba08803429de2fc4c678684a41399
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native has weak and disjointed organs.
+- id: BRIHATJATAKA.HEALTH.CH17V7.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: ill-developed organs
+    quote_sha256: 7905618481360845f2a11d6adf2f3b4d91d7ed3033c64ea2493725a10fdaf117
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native has ill-developed organs.
+- id: BRIHATJATAKA.HEALTH.CH17V7.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v7
+    quote: sickly
+    quote_sha256: 8e033ac0fd77fd9984c0f4929a7c2271ac6456979cdbbfa08bed467522f46767
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native is sickly.
+- id: BRIHATJATAKA.HEALTH.CH17V8.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: strong
+    quote_sha256: eda15ce4834ac303532bc6973df5ff8a5deb75d7dfceb9fc2cdf1bb450a01cf5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: is strong
+- id: BRIHATJATAKA.HEALTH.CH17V8.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v8
+    quote: Sickly in infancy
+    quote_sha256: 140b71cf0665e6c9bfc545c4bf2c7f6887cb9cc30525cc6a0f0cd3c9589925a2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: is sickly in infancy
+- id: BRIHATJATAKA.HEALTH.CH17V10.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v10
+    quote: not able to bear cold
+    quote_sha256: 62100be7e779c00ba99eafccdc0e60a0646a01fe02e87231cdf7722d0aa0a620
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: is not able to bear cold
+- id: BRIHATJATAKA.HEALTH.CH17V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v5
+    quote: suffering from complaints arising out of hunger, thirst, stomach, teeth
+      and mind
+    quote_sha256: 7d036cd971382fb1c05746df7ae2e6ca35642e23cc89678811de422565bab03c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native suffers from complaints related to hunger, thirst, stomach, teeth,
+      and mind.

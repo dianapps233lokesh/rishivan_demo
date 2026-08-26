@@ -1,0 +1,35 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by the six-call pipeline in extract.py, then compiled and
+# round-tripped. Candidates that failed validation are NOT here -
+# they are in the review queue. Nothing here has been read by a
+# reviewer either; `candidate` means exactly that.
+- id: PHALADEEPIKA.PROPERTY.CH28V22.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 1.0
+  source:
+    book: phaladeepika
+    edition: phaladeepika-sastri-1950
+    locator: ch28.v22
+    quote: If at a birth Saturn should occupy the 4th house, the person concerned
+      will be unhappy, house-less, without vehicles, deprived of his mother and sickly
+      during his early years.
+    quote_sha256: 3781c1cbfab675ea0a728d3952bc0adcb2c20e4b082d562adb1ce0f2d07e7106
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: the person concerned will be ... house-less
