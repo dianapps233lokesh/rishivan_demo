@@ -1,0 +1,1278 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BPHS.PROPERTY.CH25V14.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch25.v1-4
+    quote: >-
+      1-4 O Brahmin, now I explain to you the effects of the 12th House: If the 12th Lord
+      has a benefic planet with him, is in his own sign or in his sign of exaltation, the
+      native's expenses are made on good accounts. If the Moon happens to be the 12th Lord
+      and is situated in the 9th, 11th or 5th House, in her exaltation sign or own sign or
+      in her own Navamamsha or in the Navamamsha of 11th, 9th or 5th sign, the native will
+      enjoy beautiful houses, beds and superior scented articles. One having these combinations
+      passes his life comfortably as he is endowed with such clothes, beautiful garlands and
+      ornaments. He is gifted with riches and is learned and lordly.
+    quote_sha256: 77cc4310750a26935034ab90705aae6741b2586f9052f2e42a528ab5a854d667
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12.2_moon_12th_lord_in_houses
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.12
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.05
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      The native passes his life comfortably as he is endowed with such clothes, beautiful
+      garlands and ornaments.
+- id: BPHS.PROPERTY.CH26V37.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v37
+    quote: >-
+      When the 4th Lord is situated in the Ascendant, the native is blessed with learning,
+      virtues, ornaments, lands, conveyances and maternal happiness.
+    quote_sha256: 5d12216e1700a6d0d02952add125f431e3cc45472abf1b9fc3a3cdb0953a841b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.37.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: blessed with lands
+- id: BPHS.PROPERTY.CH26V424.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v424
+    quote: 'In case the 11th Lord is situated in the 4th House, the native will have gains
+      from maternal relatives, will make pilgrimages and will possess happiness of house and
+      lands.
+
+      Notes : A native having this combination will earn wealth through the sale and purchase
+      of lands, transport, agriculture, Nursery etc.'
+    quote_sha256: 9048fa0481fa92e44146efa8ad620655c396468f58cbbb860e5a6e6487922f88
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 11th_lord_in_4th_gains_maternal
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: native will possess happiness of house and lands
+- id: BPHS.PROPERTY.CH26V88.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v88
+    quote: >-
+      88 When the 8th Lord occupies the 4th House the native will be deprived of his mother
+      and there can be no doubt in it that he will be devoid of a house, lands and, happiness
+      and will be a betrayer of friends.
+    quote_sha256: 0bf824073b8be40a9f008ed2459fc744052ade9e7ac2fb26342ceefbc23e774d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.88_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: devoid of a house, lands and happiness
+- id: BPHS.PROPERTY.CH49V2326.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch49.v23-26
+    quote: >-
+      If the Moon is in the sign of debilitation and powerless being in Krishna Pakasha, in
+      the Dasa of such Moon, there will be gain in wealth. In case, the powerful Moon is in
+      the 3rd house, fluctuating effects, at times, comforts and at time, gain in wealth are
+      felt. Having conjunct with the malefic planets, the weak Moon sets in sluggish feeling,
+      mental derangement, trouble in service, loss of wealth and intense trouble (death like)
+      from the maternal relations. If the same weak Moon is posited in the 6th, the 8th or
+      the 12th house, (Trik Houses), blame from the authorities (King), mental tension, loss
+      of wealth and health, conflict with mother, enertness, mental depression etc., will
+      also cause during the Dasa. If the Moon is posited in Trik houses (6th, 8th or 12th)
+      but powerful, mixed results of gain in wealth, happiness or bodily pains etc., will
+      be felt intermittently.
+    quote_sha256: b79c2455670f0984f2bf7b2b16f451ff5afca128d7614f2d1b0dff542be7d039
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 49.23_powerful_moon_3rd
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.03
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: fluctuating effects, at times comforts
+- id: BPHS.PROPERTY.CH49V2326.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch49.v23-26
+    quote: >-
+      If the Moon is in the sign of debilitation and powerless being in Krishna Pakasha, in
+      the Dasa of such Moon, there will be gain in wealth. In case, the powerful Moon is in
+      the 3rd house, fluctuating effects, at times, comforts and at time, gain in wealth are
+      felt. Having conjunct with the malefic planets, the weak Moon sets in sluggish feeling,
+      mental derangement, trouble in service, loss of wealth and intense trouble (death like)
+      from the maternal relations. If the same weak Moon is posited in the 6th, the 8th or
+      the 12th house, (Trik Houses), blame from the authorities (King), mental tension, loss
+      of wealth and health, conflict with mother, enertness, mental depression etc., will
+      also cause during the Dasa. If the Moon is posited in Trik houses (6th, 8th or 12th)
+      but powerful, mixed results of gain in wealth, happiness or bodily pains etc., will
+      be felt intermittently.
+    quote_sha256: b79c2455670f0984f2bf7b2b16f451ff5afca128d7614f2d1b0dff542be7d039
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 49.26_powerful_moon_trik
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: mixed
+    magnitude: moderate
+    text: happiness or bodily pains etc., will be felt intermittently
+- id: BPHS.PROPERTY.CH49V3439.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch49.v34-39
+    quote: >-
+      34-39-1/2: O Brahmin! Now I explain the signs etc., of Rahu and Ketu so that I can disclose
+      the results of their Dasa before you. The exaltation signs of Rahu is Scorpio and for
+      Ketu it is Taurus and the Moola Trikona signs are respectively Sagittarius and Gemini.
+      Own sign of Rahu is Aquarius and of Ketu is Scorpio. Some have reckoned Virgo and Pisces
+      signs respectively. If Rahu is exalted in the nativity, its Dasa will be extremely favourable
+      and wealth, prosperity etc., is attained. Ambitions are accomplished through friends
+      and king (Government), possibility of conveyance and son, construction of new residence,
+      religious feelings, festivity, Royal recognition in the foreign land, decorative items,
+      Jewellery etc., are also achieved. If Rahu is also aspected by and in conjunction with
+      the benefic planets, posited in Angles, Trines the 11th or the 3rd house and with auspicious
+      sign, property, land etc. and happiness is achieved with the blessing of king. Also
+      recognition from the head of the family and welfare of house become possible.
+    quote_sha256: 7057dabc8c846519e2afc51f289499e7bd4a95bd4cb02f83e0b88dbcd62f0002
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_exalted_dasa_results
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.rahu
+      dignity: dignity.exalted
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: construction of new residence
+- id: BPHS.PROPERTY.CH54V46.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v4-6
+    quote: 'In the running Mahadasa of the Sun with the Moon Antardasa, if the Moon is posited
+      in the Ascendant, Angles or Trines, the marriage or other auspicious functions will
+      take place and one gets fame through wealth and prosperity, growth in land and property
+      and gratifying feelings with the acquisitions of vehicles, animals and other assets.
+      If the Moon occupies own or exalted sign, woman''s affection, gain of wealth is caused
+      and happiness of son''s birth, King''s recognition and blessings, contentment over the
+      attainment of desired objectives, will also be the results.
+
+      If the Antardasa''s lord is also the lord of the 2nd house and occupies 11th or any
+      other good house, the native will have good gain of wealth during this period. He will
+      also acquire fixed assets of the kind which will be useful for his children. An example
+      related to this aspect, is illustrated as under : Example 19 :
+
+      Balance Dasa at birth : Ketu 1 year 9 months 2 days. Mahadasa of the Sun and Antardasa
+      of the Moon from 8.8.1971 to 7.2.1972. Data: Date of birth 19.7.1949; Time of birth:
+      3-25 hrs. (IST)
+
+      Lattitude 28°-43'' N Longitude 77°-50''E In this duration, the elder brother of the
+      native who had no issue, but had abundant wealth and immovable property in the form
+      of agriculture land which was to be inherited by the native''s sons as per the ''will''
+      of his brother. The 2nd house signifies parental property and this house also represents
+      the elder brother''s immovable property being the 4th house from the 11th house. The
+      house of wealth of the elder brother (2nd from 11th) has the lordship of Venus which
+      is posited in the 2nd house of the native. Therefore, the liquid cash, Jewellery etc.,
+      was inherited by the native. Since the Sun is posited in the 2nd house (Wealth) in the
+      sign of the Moon, situated in the 11th house (gain) whose dispositor Mars (brother)
+      is in conjunction with Venus (lord the house of wealth of the elder brother) also having
+      the aspects of Jupiter, these results got fructified in the Main period of the Sun and
+      sub-period of the Moon. With the acquisition of the assets, the native had been taken
+      to a high status in the society. This factor is quite evident from Dasamsa Chart where
+      the Moon is posited in the Ascendant and in its own sign.'
+    quote_sha256: 55fc2b8e7fa31f075027642423676f4eebe85433d718fd83e348fe710bea1ad5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sun_moon_dasha_moon_kendra_trikona_1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: growth in land and property
+- id: BPHS.PROPERTY.CH55V4748.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch55.v47-48
+    quote: >-
+      If Ketu is placed in the Angle, the Trine or the 11th, the 3rd house and possessing
+      strength, the Antardasa of Ketu of the Mahadasa of the Moon will provide gain of wealth,
+      great enjoyment, happiness to wife and children, religious deeds and the beginning of
+      the Antardasa will cause loss of wealth and in the middle, will bring high level of
+      comforts.
+    quote_sha256: d62f36daf600343ad631e3b7a29fee69418ccd82d20912964528e450f5dead5c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_in_kendra_trikona_11_3_moon_maha_ketu_antar
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.03
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: High level of comforts in the middle of the Antardasa
+  timing:
+    requires_activation: true
+- id: BPHS.PROPERTY.CH58V4547.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v45-47
+    quote: >-
+      45-47½: Placement of Venus in the Angle sign, the 2nd house or the 9th house from the
+      Mahadasa lord will depose results of the Antardasa of Venus in the Mahadasa of Jupiter
+      like, gain of wealth and food grains; blessings of Goddess Laxami (wealth); meeting
+      with the king; acquisition of vehicle; child birth; accretion of animals; utmost happiness;
+      solace through music, association of scholars, enjoyment of sumptuous food, nourishment
+      of co-borns etc.
+    quote_sha256: 4dc4518d336cfb0a9ad028ed97c77c33bb9b4e91346b324bdd6787d4d1b95901
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.45-47.venus_kendra_2_9_from_mahadasha_lord
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: acquisition of vehicle
+  timing:
+    requires_activation: true
+- id: BPHS.PROPERTY.CH58V6971.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v69-71
+    quote: >-
+      If Mars is posited at the 6th, the 8th or the 12th house or in debilitation, aspected
+      conjoined with the malefic planets, there will be loss of wealth, crops, house, fear
+      and grief of various diseases; possibility of eye trouble. There will be great distress
+      in first half and extreme happiness in the 2nd half of the Antardasa. This Mars if acquires
+      the lordship of the 2nd or the 7th house, it will cause physical and mental anguish.
+    quote_sha256: 3efa6814168446895d7a8984682f04ee823b184ede444e10de90bd5d19776548
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.69_mars_dusthana_loss
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: loss of crops
+- id: BPHS.PROPERTY.CH58V6971.0002.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v69-71
+    quote: >-
+      If Mars is posited at the 6th, the 8th or the 12th house or in debilitation, aspected
+      conjoined with the malefic planets, there will be loss of wealth, crops, house, fear
+      and grief of various diseases; possibility of eye trouble. There will be great distress
+      in first half and extreme happiness in the 2nd half of the Antardasa. This Mars if acquires
+      the lordship of the 2nd or the 7th house, it will cause physical and mental anguish.
+    quote_sha256: 3efa6814168446895d7a8984682f04ee823b184ede444e10de90bd5d19776548
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.69_mars_debilitated_loss
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mars
+      dignity: dignity.debilitated
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: loss of crops
+- id: BPHS.PROPERTY.CH58V6971.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v69-71
+    quote: >-
+      If Mars is posited at the 6th, the 8th or the 12th house or in debilitation, aspected
+      conjoined with the malefic planets, there will be loss of wealth, crops, house, fear
+      and grief of various diseases; possibility of eye trouble. There will be great distress
+      in first half and extreme happiness in the 2nd half of the Antardasa. This Mars if acquires
+      the lordship of the 2nd or the 7th house, it will cause physical and mental anguish.
+    quote_sha256: 3efa6814168446895d7a8984682f04ee823b184ede444e10de90bd5d19776548
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.69_mars_dusthana_loss
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: loss of house
+- id: BPHS.PROPERTY.CH58V6971.0003.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v69-71
+    quote: >-
+      If Mars is posited at the 6th, the 8th or the 12th house or in debilitation, aspected
+      conjoined with the malefic planets, there will be loss of wealth, crops, house, fear
+      and grief of various diseases; possibility of eye trouble. There will be great distress
+      in first half and extreme happiness in the 2nd half of the Antardasa. This Mars if acquires
+      the lordship of the 2nd or the 7th house, it will cause physical and mental anguish.
+    quote_sha256: 3efa6814168446895d7a8984682f04ee823b184ede444e10de90bd5d19776548
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.69_mars_debilitated_loss
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mars
+      dignity: dignity.debilitated
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: loss of house
+- id: BPHS.PROPERTY.CH59V5557.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v55-57
+    quote: >-
+      During the Antardasa c Mars in the Mahadasa of Saturn, if Mars is placed in Angle, Trine
+      or in the 11th house, exaltation or in own sign from the Ascendent and is in conjunction
+      with the lord of the Mahadasa or the Ascendant, there will be happiness right from the
+      beginning of the Antardasa and influx of wealth, affection with the king; acquisition
+      of vehicle, clothes and ornaments; rank of Army commander, felicitation by the King
+      (State); improvement in the crops, animals, wealth and assets; construction of new house,
+      comforts from brothers etc.
+    quote_sha256: 8136d791648d859baecf6d46ed22aa0c88977c168eddbf932a4a170e4160b40a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_saturn_dasha_8
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.11
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.exalted
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.own_sign
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: construction of new house
+  timing:
+    requires_activation: true
+- id: BPHS.PROPERTY.CH59V7678.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v76-78
+    quote: >-
+      Placement of Jupiter in Angle, Trine or in the 2nd or the 11th house, will confer luxuries,
+      rise of wife's fortune, power of king (political power), gain of wealth and other assets;
+      comforts of food and clothes; excessive duty and religious inclinations, acquisition
+      of knowledge of Vedas (sacred books) and Vedantas, benefit of oblations, donation of
+      food grains, glorification, listening to Vedantas (Hindu scriptures), in Antardasa of
+      Jupiter.
+    quote_sha256: b41736d22c93ec2a11225a6bdac7e544c3f16611e99a2c668428e20fee082373
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 59.76_78_jupiter_placement_dasha
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.11
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: comforts of food and clothes
+  timing:
+    requires_activation: true
+- id: BPHS.PROPERTY.CH59V811.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v8-11
+    quote: >-
+      In the duration of Mercury's Antardasa of the Saturn's Mahadasa, if Mercury is posited
+      in Angle or Trine, the results like felicitation, reputation, gain of education and
+      wealth; attainment of comforts in own country; acquisition of vehicles etc., inclination
+      towards oblational rites, possibility of Rajayoga; physical comforts; exultation at
+      heart; prosperity at home; bathing in the pond, pilgrimage etc., are achieved. It will
+      also produce the results of profit in business, attending discourses on Puranas (religious
+      scripture); donation of food grains; daily meals with sweet etc.
+    quote_sha256: 658f603b82c4101765f39b8005adcd7558b889acf606248a2331eaad0c220e8a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: saturn_mercury_dasha_kendra_trine
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: Attainment of comforts in own country (Swadeshe sukham)
+  timing:
+    requires_activation: true
+- id: BPHS.PROPERTY.CH60V1315.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch60.v13-15
+    quote: >-
+      In the Antardasa of Venus in the Mahadasa of Mercury, if Venus is placed in Angle, in
+      the 11th house or in Trine, it will attribute results like listening to religious discourses;
+      devoted to pious deeds and inclination towards religion; accomplishment of ambitions
+      at the behest of Master (employer) and friends; gain of land and comforts. If Venus
+      is in Angle, Trine or in the 11th house from the lord of the Mahadasa, there will be
+      quick manifestation of wealth and property from the king, construction of pond, well,
+      water pool etc., inclination towards religion; accumlation of wealth and prosperity
+      due to great success in the business activities etc.
+    quote_sha256: 9900bf6735f3da696975b3868c15535a4bb9c77fa829032a7ebb9684808812cc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_dasha_13
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: gain of land and comforts
+- id: BPHS.PROPERTY.CH61V2930.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v29-30
+    quote: >-
+      If the Moon is bereft of strength, debilitated, placed in Trik house (6/8/12), it will
+      cause frustration over personal discomforts; obstruction at work; frightfulness, grief
+      of father and mother, stiffness in the body; mental anguish, loss in the business; apprehension
+      of losing animals.
+    quote_sha256: f5d46da62b259c6d50d8b0a80bf1bb3b2cc70e3ce6db02eb082f634bd802f427
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_debilitated
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.moon
+      dignity: dignity.debilitated
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: frustration over personal discomforts
+- id: BPHS.PROPERTY.CH61V4142.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v41-42
+    quote: >-
+      From the lord of the Mahadasa, if Ketu is placed in the 8th, 12th or 2nd house, it will
+      cause apprehension of early death; hurdles be created in the process of proceeding to
+      a foreign trip; apprehension of urinary disease, distress due to urinary problem (diabetes);
+      trouble from the King, and thief, quarrel coupled with repentance, slight increase in
+      the comforts.
+    quote_sha256: 31db2736346ff11e9191c9b8918b14f7452bad406da3de53fa8d880843eb928c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '61.41_42_1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.02
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: slight
+    text: slight increase in the comforts
+- id: BPHS.PROPERTY.CH61V4547.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v45-47
+    quote: >-
+      In the Mahadasa of Ketu when Antardasa of Rahu falls and if, Rahu is in the state of
+      exaltation, own or friendly sign; in Angle, Trine or in the 11th, the 3rd or the 2nd
+      house, this period will yield gain of wealth and journies; acquisitions of house, happiness
+      through the king, wealth, food grains, animals, village (big estate), land etc. In the
+      beginning of the Antardasa, there will be conflicts but the middle and the end will
+      bring happiness.
+    quote_sha256: d411dfb9d350713811c404930b991cd6ebeada5066ef20e61dd8a8ed577e6a3b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.45-47.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.exalted
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.02
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: Acquisitions of house
+  timing:
+    requires_activation: true
+- id: BPHS.PROPERTY.CH61V4547.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v45-47
+    quote: >-
+      In the Mahadasa of Ketu when Antardasa of Rahu falls and if, Rahu is in the state of
+      exaltation, own or friendly sign; in Angle, Trine or in the 11th, the 3rd or the 2nd
+      house, this period will yield gain of wealth and journies; acquisitions of house, happiness
+      through the king, wealth, food grains, animals, village (big estate), land etc. In the
+      beginning of the Antardasa, there will be conflicts but the middle and the end will
+      bring happiness.
+    quote_sha256: d411dfb9d350713811c404930b991cd6ebeada5066ef20e61dd8a8ed577e6a3b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.45-47.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.exalted
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.02
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: Acquisition of animals, big estate, land etc.
+  timing:
+    requires_activation: true
+- id: JATAKAPARIJATA.PROPERTY.CH17V142.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v142
+    quote: >-
+      Sloka 142. The lord of the 4th bhava occupying it or any other strong planet therein
+      will easily lead to the acquisition of a house. If the lord of the 4th bhava occupy
+      a दुःस्थान (Dusthana) or if the planet occupying the 4th bhava has strength for evil
+      (as an adversary), the house falling to the lot of the person born will be either crazy
+      or haunted.
+    quote_sha256: 02cb7957b73b2574b4d565e0dc7001290da86ad5065c305a06f0a09d389dadcb
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.142_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: acquisition of a house easily
+- id: JATAKAPARIJATA.PROPERTY.CH17V142.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v142
+    quote: >-
+      Sloka 142. The lord of the 4th bhava occupying it or any other strong planet therein
+      will easily lead to the acquisition of a house. If the lord of the 4th bhava occupy
+      a दुःस्थान (Dusthana) or if the planet occupying the 4th bhava has strength for evil
+      (as an adversary), the house falling to the lot of the person born will be either crazy
+      or haunted.
+    quote_sha256: 02cb7957b73b2574b4d565e0dc7001290da86ad5065c305a06f0a09d389dadcb
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.142_3'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: the house will be either crazy or haunted
+- id: JATAKAPARIJATA.PROPERTY.CH17V161.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v161
+    quote: >-
+      Sloka 141. If the lord of the 4th bhava from the Lagna occupy the 12th, the person born
+      will lodge in a stranger's house in a foreign land ; if it occupy the 8th bhava, there
+      will be no house etc., owned or tenanted by him ; if the planet be in the 6th bhava,
+      he will lodge in a house of which the master is a paternal relation, such as an uncle,
+      a cousin, etc.
+    quote_sha256: dbd6ba1040523ae82e80e4fd88a654f7bc36286a95e0e18b4d7cd32d33ce2f04
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.161_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: the person born will lodge in a stranger's house in a foreign land
+- id: JATAKAPARIJATA.PROPERTY.CH17V161.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v161
+    quote: >-
+      Sloka 141. If the lord of the 4th bhava from the Lagna occupy the 12th, the person born
+      will lodge in a stranger's house in a foreign land ; if it occupy the 8th bhava, there
+      will be no house etc., owned or tenanted by him ; if the planet be in the 6th bhava,
+      he will lodge in a house of which the master is a paternal relation, such as an uncle,
+      a cousin, etc.
+    quote_sha256: dbd6ba1040523ae82e80e4fd88a654f7bc36286a95e0e18b4d7cd32d33ce2f04
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.161_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.08
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: there will be no house etc., owned or tenanted by him
+- id: JATAKAPARIJATA.PROPERTY.CH17V161.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v161
+    quote: >-
+      Sloka 141. If the lord of the 4th bhava from the Lagna occupy the 12th, the person born
+      will lodge in a stranger's house in a foreign land ; if it occupy the 8th bhava, there
+      will be no house etc., owned or tenanted by him ; if the planet be in the 6th bhava,
+      he will lodge in a house of which the master is a paternal relation, such as an uncle,
+      a cousin, etc.
+    quote_sha256: dbd6ba1040523ae82e80e4fd88a654f7bc36286a95e0e18b4d7cd32d33ce2f04
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.161_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.06
+  indicates:
+    claim: property.land_and_home
+    polarity: neutral
+    magnitude: moderate
+    text: >-
+      he will lodge in a house of which the master is a paternal relation, such as an uncle,
+      a cousin, etc.
+- id: JATAKAPARIJATA.PROPERTY.CH9V107.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: >-
+      Sloka 107. When the Sun is in the house of a friendly planet, the person born will have
+      firm friends and will be liberal and famous ; when the Moon is in such a position, the
+      person born will be esteemed, live in comfort and have wealth ; when Mars is in a friendly
+      house the person born will enjoy the favor of rich friends; when Mercury is in that
+      position, the person born will be most witty and jovial; when Jupiter occupies the house
+      of a friendly planet, the person born will delight in the society of the learned and
+      the virtuous ; when Venus occupies such a position the effect is that the person will
+      be happy in the society of his children. If Saturn be in a friendly house at a person's
+      birth, the latter will be fed by another as he will have no wealth.
+    quote_sha256: 9ea9cbc5898a07072ee20b39d2902c4e4246f2018f4af5703f90b74514a2598a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9.107.moon
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.moon
+      dignity: dignity.friendly
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: person born will live in comfort

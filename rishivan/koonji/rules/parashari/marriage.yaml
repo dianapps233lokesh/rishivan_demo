@@ -1,0 +1,37 @@
+# A quantified outcome. The consequent is a number with a unit, which the older
+# effect schema — polarity and magnitude only — had no slot for at all.
+
+- id: BPHS.MARRIAGE.VENUS2.7L11.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  binding: quantified
+  domains:
+    domain.relationship: 0.9
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v24
+    quote: >-
+      24. In the event of Venus occupying the 2nd House and the 7th Lord
+      occupying the 11th House, the native is generally married in the 10th or
+      16th year.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  when:
+    all:
+      - occupies_bhava: {subject: Venus, bhava: 2}
+      - occupies_bhava: {subject: 7th lord, bhava: 11}
+
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: moderate
+    text: "the native is generally married in the 10th or 16th year"
+    quantity: 10
+    quantity_max: 16
+    unit: years
+    bound: range

@@ -31,7 +31,7 @@ import time
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Iterable, Optional
 
 from rishivan.chart.ephemeris import Chart
 from rishivan.koonji.bundle import Bundle
@@ -330,12 +330,27 @@ class Engine:
         schools: Optional[set[str]] = None,
         statuses: frozenset[str] = PRODUCTION_ONLY,
         min_domain_weight: float = 0.0,
+        vargas: Optional[Iterable[str]] = None,
+        tier_weights: Optional[dict[str, float]] = None,
+        min_independent: Optional[int] = None,
     ) -> Reading:
+        """`vargas`, `tier_weights` and `min_independent` come from the
+        question's `EvidenceHierarchy` (blueprint §12) and all default to None,
+        which reproduces this method's behaviour before Phase 4 exactly.
+
+        `vargas` matters more than it looks. The fact set is compiled once, so
+        a division not named here can never be matched by any rule however the
+        varga policy scoped it - selecting D9 for a marriage question and then
+        compiling facts without it buys nothing at all.
+        """
         started = time.perf_counter()
         when = when or datetime.now()
 
         # 1. The chart becomes a flat set of interned ground atoms.
-        facts = self.bundle.index.facts_for(chart, when=when)
+        facts = self.bundle.index.facts_for(
+            chart, when=when,
+            **({"vargas": tuple(vargas)} if vargas is not None else {}),
+        )
         base_atoms = len(facts.atoms)
 
         # 2. Derivations run in stratified tier order, writing new atoms back.
@@ -377,7 +392,8 @@ class Engine:
 
         # 5. Firings become claims, with restatements discounted.
         evidence = build_evidence(
-            firings, candidates, lineage=self.bundle.lineage
+            firings, candidates, lineage=self.bundle.lineage,
+            tier_weights=tier_weights, min_independent=min_independent,
         )
 
         return Reading(
@@ -519,6 +535,9 @@ class Engine:
         spec: QuestionSpec,
         *,
         widened: bool = False,
+        vargas: Optional[Iterable[str]] = None,
+        tier_weights: Optional[dict[str, float]] = None,
+        min_independent: Optional[int] = None,
     ) -> Reading:
         reading = self.read(
             chart,
@@ -527,6 +546,9 @@ class Engine:
             schools=set(plan.schools) if plan.schools else None,
             statuses=plan.statuses,
             min_domain_weight=plan.min_domain_weight,
+            vargas=vargas,
+            tier_weights=tier_weights,
+            min_independent=min_independent,
         )
         reading.spec = spec
         reading.plan = plan

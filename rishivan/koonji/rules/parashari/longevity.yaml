@@ -1,0 +1,38 @@
+# Longevity, handled the way the corpus analysis insists it must be: restricted
+# at EXTRACTION, not at the output filter.
+#
+# `never_user_facing` makes the rule structurally unreachable from the serving
+# path. It stays in the corpus for scholarly completeness and provenance, and no
+# question can retrieve it. A filter you cannot accidentally remove beats one you
+# have to remember to apply — and Brihat Jataka's Balarishta chapters and Prasna
+# Marga X–XI are hundreds of rules of exactly this kind.
+
+- id: BPHS.LONGEVITY.8L.KENDRA.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  restriction: never_user_facing
+  domains:
+    domain.longevity: 1.0
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch21.v1
+    quote: >-
+      1. O excellent Brahmin, now I explain to you the effects of the 8th House.
+      If the 8th Lord is placed in a Kendra or angle, it gives long life to the
+      native.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  when:
+    all:
+      - in_kendra: {subject: 8th lord}
+
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: "it gives long life to the native"

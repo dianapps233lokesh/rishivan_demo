@@ -1,0 +1,2742 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BPHS.PROGENY.CH18V16.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch18.v16
+    quote: 'The 5th Lord in his exaltation occupies the 2nd, 3rd, Ist, 5th or 9th house and
+      these have the aspect or conjunction of Jupiter, the native will have the blessing of
+      obtaining a son.
+
+      Notes : The 5th Lord is in his exaltation sign and is in the 5th House, this is possible
+      only when the Ascendant is Taurus, because as per this Ascendant the 5th Lord will be
+      Mercury who is exalted in his own sign that is Virgo.
+
+      ‘Jataka Parijaat’ ‘ Phal Deepika’, ‘Surya Jataka’ give the following combinations for
+      obtaining a son. The consideration of the son is to be made from the Ascendant, the
+      Moon, the 7th House and Jupiter. If the 5th House from Jupiter is situated by benefic
+      planet, Jupiter himself is together with a benefic planet, the native obtains a son
+      and the son is longlived. The same result should be understood from the Ascendant, the
+      Moon and the 7th House, that is in the 5th House from these there are placed benefic
+      planets and they themselves are together with benefic planets, then any of these combinations
+      in the horoscope will bless the native with the obtainment of a son.
+
+      If Mercury, Venus and the Moon are placed in the 5th House the issues will be daughters.
+      Only Jupiter placed in the 5th House has the capability of conferring 5 sons on the
+      native. The fifth Lord in his highest exaltation and in the Navamamsha of a male planet
+      being placed in the 5th House and not being conjuct with or aspected by malefic planets
+      gives the native many sons.
+
+      If Mercury, Jupiter, Venus are in their own signs or in their exaltation signs, are
+      placed in a Kendra or Trikona, the native obtains a son as wealthy as a king.'
+    quote_sha256: a95db73c56888e377cdce5bd9f9678c610007c9000a09ea46c80199732ea0ef2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 18.16.1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.exalted
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.02
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.09
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the native will have the blessing of obtaining a son
+- id: BPHS.PROGENY.CH18V4.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch18.v4
+    quote: 'In case the 5th Lord being in the 6th House, and the Ascendant Lord in Conjunction
+      with Mars, the native''s first born child will die whereafter his wife will become sterile
+      ("काकबन्ध्या" "Kakbandhya") (one who is incapable of conceiving after producing one
+      child). Here are two examples to prove this :
+
+      Date of birth Time of birth Place of birth
+
+      2-11-1955 9.50 P M IST Meerut.
+
+      This native has Gemini Ascendant. The 5th Lord is Venus who is placed in the 6th House.
+      The Ascendant Lord Mercury together with Mars is in the 4th House. The native got a
+      son two years after marriage. He (the son) died 1 1/2 years after by snakebite. The
+      wife felt pain in the abdomen after sometime. During medi- cal tests it was found that
+      she had developed a lump of tissues on the mouth of her ovary which was operated. After
+      operation she was incapacitated of conceiving and produc- ing children as the ovary
+      itself was removed in the operation. The second example is that of an acquaintance of
+      mine:
+
+      Date of birth Time of birth Place of birth
+
+      3-4-1942 11.15 P.M. IST Hapur Here the Ascendant is Sagittarius. The fifth Lord is Mars
+      who is placed in the 6th House. The Ascendant Lord Jupiter is also together with Mars.
+      Therefore, this combination brought the above said effect hundred percent.'
+    quote_sha256: bfcb02c41e047fa5f984b656eb681725e5054904069871e482e67f5bbd9fa40b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: Koonji_18_4_1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.06
+    - not:
+        conjunct:
+          subject: graha.mercury
+          other: graha.mars
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the native's first born child will die
+- id: BPHS.PROGENY.CH18V4.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch18.v4
+    quote: 'In case the 5th Lord being in the 6th House, and the Ascendant Lord in Conjunction
+      with Mars, the native''s first born child will die whereafter his wife will become sterile
+      ("काकबन्ध्या" "Kakbandhya") (one who is incapable of conceiving after producing one
+      child). Here are two examples to prove this :
+
+      Date of birth Time of birth Place of birth
+
+      2-11-1955 9.50 P M IST Meerut.
+
+      This native has Gemini Ascendant. The 5th Lord is Venus who is placed in the 6th House.
+      The Ascendant Lord Mercury together with Mars is in the 4th House. The native got a
+      son two years after marriage. He (the son) died 1 1/2 years after by snakebite. The
+      wife felt pain in the abdomen after sometime. During medi- cal tests it was found that
+      she had developed a lump of tissues on the mouth of her ovary which was operated. After
+      operation she was incapacitated of conceiving and produc- ing children as the ovary
+      itself was removed in the operation. The second example is that of an acquaintance of
+      mine:
+
+      Date of birth Time of birth Place of birth
+
+      3-4-1942 11.15 P.M. IST Hapur Here the Ascendant is Sagittarius. The fifth Lord is Mars
+      who is placed in the 6th House. The Ascendant Lord Jupiter is also together with Mars.
+      Therefore, this combination brought the above said effect hundred percent.'
+    quote_sha256: bfcb02c41e047fa5f984b656eb681725e5054904069871e482e67f5bbd9fa40b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: Koonji_18_4_1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.06
+    - not:
+        conjunct:
+          subject: graha.mercury
+          other: graha.mars
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the native's wife will become sterile
+- id: BPHS.PROGENY.CH18V7.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch18.v7
+    quote: 'If the 9th Lord is in the 5th House and the 5th Lord is debilitated and Mercury
+      and Ketu are there in the 5th House, son will be obtained after great ordeal, the astrologer
+      should predict so.
+
+      Notes : Here ordeal implies medical treatment, performance of religious rituals etc.
+      Getting of son by making efforts is possible only if the 9th Lord is situated in the
+      5th House. The reason is that according to the principle of Bhavat Bhavam “भावत्भावम्”
+      the 9th House is also the House of sons.'
+    quote_sha256: cad49d8bdc139caffbde3d7a6a7ae3eeb073387e980b06fdde0d4a06143daf50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 18.7.7
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.05
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.debilitated
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - dignity:
+        subject: graha.ketu
+        dignity: dignity.debilitated
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: son will be obtained after great ordeal
+- id: BPHS.PROGENY.CH26V101.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v101
+    quote: >-
+      Should the 9th Lord be placed in the 5th House, the native will have the blessing of
+      sons and good fortune. He will be devoted to his elders or teachers, will have fortitude,
+      be religious and charitable and learned.
+    quote_sha256: a6fe755d5e8c968fd597ca3a9a214b16f8f35ba46327a6d53544ce5d55d3807d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9th_lord_in_5th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.09
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: The native will have the blessing of sons
+- id: BPHS.PROGENY.CH26V113.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v113
+    quote: 'In the event of the 10th Lord being placed in the 5th House the native will be
+      endowed with all kinds of learning, be always cheerful, wealthy and be blessed with
+      sons.
+
+      Notes : According to this sloka an angle, the 10th House, gets related to a trine, the
+      5th House. This combination, therefore, is specially auspicious. In it the native earns
+      great fame on the basis of his intellectual powers and is very successful in his field
+      of action. This combination is generally found in the horoscopes of wise statesmen,
+      scholars, professors, writers, educationists, actors etc. In the Pisces Ascendant, the
+      effects described in the sloka are obtained, by the native in their highest degree.
+      Here is an example to prove the truth. The present Horoscope is of the world famous
+      poet, Ravindra Nath Tagore, who got the famous nobel prize on his book ''Gitanjali''
+      (A Garland of Songs). In this horoscope of Pisces Ascendant the 10th Lord Jupiter, being
+      placed in the 5th House, is in his sign of exaltation. The fifth Lord, the Moon has
+      exchange also with the Ascendant Lord Jupiter. Which very greatly increases the auspicious
+      nature of this horoscope. The Second Horoscope is of Shivaji Ganeshan, a famous Indian
+      Film Actor. He has been famous due to his art of acting. Here the 10th Lord Mars is
+      situated in the 5th House.'
+    quote_sha256: 267cee04e6e7fd23677ae5615c6f219f3a2caeb784df01237ddd01e6da273739
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.113.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: blessed with sons
+- id: BPHS.PROGENY.CH26V117.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v117
+    quote: >-
+      Should the 10th Lord occupy the 9th House, the native is born in a royal family and
+      becomes a king while as an ordinary person he will be equal to a king. This combination
+      confers on him wealth and progenic happiness.
+    quote_sha256: 702c908eacaa3cebb0be3d3503601774ef6999323f724f45cdeb5fea7361912c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.117.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.09
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: Endowed with progenic happiness
+- id: BPHS.PROGENY.CH26V119.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v119
+    quote: >-
+      If the 10th Lord is situated in the 11th House, the native is blessed with wealth and,
+      sons. He will enjoy happiness, be truthful, be always delighted and be virtuous
+    quote_sha256: bca1bb1d77ba6e8f8a69d3bea96765487b983f2b1494cc8f4a3087e023b81c90
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 10th_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: blessed with sons
+- id: BPHS.PROGENY.CH26V13.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v13
+    quote: >-
+      When the 2nd Lord has gone in the Ascendant, the native will be endowed with sons and
+      wealth, will be inimical to his family, lustful, hard hearted and will do other’s jobs.
+    quote_sha256: a5fdb0b8b017a5a552eb205a7affd4e87daef373761d9e261959b092888e1887
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.13.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: endowed with sons
+- id: BPHS.PROGENY.CH26V137.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v137
+    quote: 'Should the 12th Lord occupy the 5th House, the native will be bereft of sons and
+      learning. He will spend money and also make pilgrimages to beget a son.
+
+      Notes : According to this rule, the 12th House or the House of Foreign Countries gets
+      related to the 5th House, the House of Learning. Therefore, such a native often gets
+      education in foreign countries which makes him spend much money. If the 12th Lord is
+      weakened he gets education in his own country living in a hostel. We give here two examples
+      to illustrate it.
+
+      Date of birth : 5.5.1958
+
+      Time of birth : IST 8.15 P.M.
+
+      Place of birth : Lat. 28°. 43 Long. 77°.55 In this Horoscope of Scorpio Ascendant the
+      12th Lord is situated in the 5th House who is exalted there. This native got medical
+      education in a foreign country and is now engaged in practice in his native country.
+      In this Horoscope the 5th Lord is also situated in the 12th House, the House of foreign
+      country. Therefore, both the 5th and the 12th Lords have exchange with each other. Though
+      Mercury in the 5th House is in his sign of debilitation, but in the same House the planet
+      Venus is in her sign of exaltation and therefore the debilitation of Mercury is broken
+      (Neecha Bhanga). The native got the education of engineering in a foreign country and
+      then returned to his native country India.
+
+      Date of birth : 11.5.1953
+
+      Time of birth : IST 11.55 P.M.
+
+      Lat, 28°.43'' Long. 77°.55 In this Horoscope also the 12th Lord Jupiter is situated
+      in the 5th House in the sign of Taurus. The Fifth Lord Venus is in her sign of exaltation
+      in a sign of Jupiter (3rd House). In this combination the special point is that the
+      5th Lord and the 5th House should be endowed with strength'
+    quote_sha256: 50de1772b95aa2c06438edc9f4ef7d398532a25e8095dfd1060928cb24ec9d97
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.137'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: bereft of sons
+- id: BPHS.PROGENY.CH26V14.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v14
+    quote: >-
+      In case the 2nd Lord is in the 2nd House, the native will be wealthy, proud, will have
+      two or more wives but will have no son.
+    quote_sha256: cf8693f44c4fbf8a117602d261aff22df0a1c411c4b7498526cb5132b4bb8ca5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.14.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.02
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: the native will have no son
+- id: BPHS.PROGENY.CH26V22.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v22
+    quote: >-
+      In case the 2nd Lord is situated in the 10th House, the native will be libidinous, honourable
+      and learned, will have many wives but will be bereft of filial happiness.
+    quote_sha256: 83ef5d0ddcaed2b8286e6df95359e43082b408da3b8ab7dce9886ab0e0fac0aa
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.22'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.10
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: bereft of filial happiness
+- id: BPHS.PROGENY.CH26V24.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v24
+    quote: >-
+      If the 2nd Lord occupies the 12th House the combination makes the native adventurous,
+      devoid of wealth, dependent on others and keeps him bereft of the happiness of the eldest
+      son.
+    quote_sha256: e66ad846338498fdfb0c095abfb7b6b2778daa53cb4eb030854936db9bb2e4df
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.24_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.12
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: bereft of the happiness of the eldest son
+- id: BPHS.PROGENY.CH26V27.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v27
+    quote: >-
+      If the 3rd Lord occupies the 3rd House the native will be endowed with happiness through
+      brothers, will be wealthy, have sons and be cheerful and extremely happy.
+    quote_sha256: 58cab5946a85bf52c94eee39f58de5ae830276e0f3f8d1c7b53bb9cd5995eaab
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 3rd_lord_in_3rd_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.03
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: have sons
+- id: BPHS.PROGENY.CH26V29.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v29
+    quote: 'In case the 3rd is placed in the 5th House the native will be blessed with sons
+      and be worthy. If he is in conjunction with or is aspected by a malefic planet the native’s
+      wife is of cruel nature.
+
+      Notes : In the Gemini and Sagittarius Ascendants the 3rd Lord being situated in the
+      5th House falls in his sign of debilitation. Therefore, the native’s wife is specially
+      of cruel nature, be unreligious. The native doesnot get a son or if he gets he gets
+      one son only who dies. The native gets mental trouble because of his brother. Here worthy
+      should be taken to mean well versed in sculpture or Engineering Education. If the 3rd
+      House is related to the 5th House, the native is accomplished in Physics and Engineering
+      education because these branches of learning are performed by hands and mind and in
+      this combination these two very things have conjunction at one place. Drawing, painting
+      and education in arms and weapons are also the result of this combination.'
+    quote_sha256: 26b50fbaf2e92acdf7862ecaffb8e60787efc22b861f00a20dc1674f07e6209a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '29.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.03
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: The native will be blessed with sons.
+- id: BPHS.PROGENY.CH26V33.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v33
+    quote: >-
+      If the 3rd Lord happens to fall in the 9th House, the native is bereft of paternal happiness,
+      makes fortunes through his wife and enjoys the happiness of having son etc.
+    quote_sha256: 13042f643a570fd339bbc70607fe53686be0b84ec55a52f378cb7ce683665a83
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.33_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.09
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: enjoys the happiness of having sons etc.
+- id: BPHS.PROGENY.CH26V49.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v49
+    quote: >-
+      Should the 5th Lord occupy the Ascendant, the native will be Scholarly, be blessed with
+      progenic happiness, be miserly, crooked and stealer of other's wealth.
+    quote_sha256: 8200e4b659c9d2bddf479d04d11f2b6d0bd76f0f26245158abe64d3290f62e25
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.49.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: The native will be blessed with progenic happiness
+- id: BPHS.PROGENY.CH26V5.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v5
+    quote: >-
+      In case the Ascendant Lord has gone into the 5th House, the native will have mediocre
+      happiness through his sons, the first born will not live, he will be honourable, wrathful
+      and favourite to a king.
+    quote_sha256: e0ae2c0bc009a238b5677318c20a70a16df326e21ebd6746305319b112ca0164
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_in_5th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: mixed
+    magnitude: moderate
+    text: mediocre happiness through his sons
+- id: BPHS.PROGENY.CH26V5.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v5
+    quote: >-
+      In case the Ascendant Lord has gone into the 5th House, the native will have mediocre
+      happiness through his sons, the first born will not live, he will be honourable, wrathful
+      and favourite to a king.
+    quote_sha256: e0ae2c0bc009a238b5677318c20a70a16df326e21ebd6746305319b112ca0164
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_in_5th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the first born child will not live
+- id: BPHS.PROGENY.CH26V50.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v50
+    quote: >-
+      If the 5th Lord occupies the 2nd House the native will have the blessing of having many
+      sons and wealth. He will be supporter of his family, honourable, be attached to his
+      wife and be famous in the world.
+    quote_sha256: 6797ef62e460aa8b8ab3fcc1a44b083481955fa7f1e069b6e7ceed3007f0480f
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_2nd
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.02
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the native will have many sons
+- id: BPHS.PROGENY.CH26V54.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v54
+    quote: >-
+      In the event of the 5th Lord being relegated to the 6th House, the native’s sons will
+      be equal to his enemies or he will die or the naitve will acquire an adopted or purchased
+      son.
+    quote_sha256: ef250b445ca8851a04bc05d44f2330023bd775b6d50aa19634b28ffbef379f94
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.54_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.06
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: The native's sons will be equal to his enemies
+- id: BPHS.PROGENY.CH26V54.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v54
+    quote: >-
+      In the event of the 5th Lord being relegated to the 6th House, the native’s sons will
+      be equal to his enemies or he will die or the naitve will acquire an adopted or purchased
+      son.
+    quote_sha256: ef250b445ca8851a04bc05d44f2330023bd775b6d50aa19634b28ffbef379f94
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.54_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.06
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: The native's children will die
+- id: BPHS.PROGENY.CH26V54.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v54
+    quote: >-
+      In the event of the 5th Lord being relegated to the 6th House, the native’s sons will
+      be equal to his enemies or he will die or the naitve will acquire an adopted or purchased
+      son.
+    quote_sha256: ef250b445ca8851a04bc05d44f2330023bd775b6d50aa19634b28ffbef379f94
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.54_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.06
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: The native will acquire an adopted or purchased son
+- id: BPHS.PROGENY.CH26V55.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v55
+    quote: >-
+      If the 5th Lord is situated in the 7th House, the native will be tolerant of all religions
+      and very religious, endowed with progenic happiness and be helpful to others.
+    quote_sha256: 961d9262fa74fe8b890bba86f31f6b945fa2e49c0fb2e29e98f92996acdc928f
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.55_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.07
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: endowed with progenic happiness
+- id: BPHS.PROGENY.CH26V59.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v59
+    quote: >-
+      In case the 5th Lord occupies the 11th House, the native will be learned, be dear to
+      the people, be an illustrious author, be very skilful and be endowed with many sons
+      and wealth.
+    quote_sha256: a14291e7b9383997659c93ad5fc53d101292bd90268c69cfd4750187b7ef5afc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: be endowed with many sons
+- id: BPHS.PROGENY.CH26V60.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v60
+    quote: >-
+      In the event of the 5th Lord having fallen in the 12th House, the native is bereft of
+      the happiness of having his own sons. He will have an adopted or purchased son.
+    quote_sha256: 1b11e3130514ec2db442f6d3d481aacbed283467ad6c77c989abf16e5fdbf62c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.60_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.12
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: bereft of the happiness of having his own sons
+- id: BPHS.PROGENY.CH26V60.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v60
+    quote: >-
+      In the event of the 5th Lord having fallen in the 12th House, the native is bereft of
+      the happiness of having his own sons. He will have an adopted or purchased son.
+    quote_sha256: 1b11e3130514ec2db442f6d3d481aacbed283467ad6c77c989abf16e5fdbf62c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.60_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.12
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: will have an adopted son
+- id: BPHS.PROGENY.CH26V60.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v60
+    quote: >-
+      In the event of the 5th Lord having fallen in the 12th House, the native is bereft of
+      the happiness of having his own sons. He will have an adopted or purchased son.
+    quote_sha256: 1b11e3130514ec2db442f6d3d481aacbed283467ad6c77c989abf16e5fdbf62c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.60_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.12
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: will have a purchased son
+- id: BPHS.PROGENY.CH26V71.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v71
+    quote: 'Should the 6th Lord occupy the 11th House, the native will gain from his enemies,
+      be virtuous, adventurous, honourable but be bereft of progenic happiness.
+
+      Notes : If the 6th Lord occupies the 11th House, the native earns wealth through medicines.
+      But sometimes he confronts difficulties in the fulfilment of his ambitions, gets enmity
+      with his elder brother and gets progeny after medical treatment.'
+    quote_sha256: eb4cfa34c32595755700e9d4d7daff05a44049f5a53104bb76815f0ff56a95a6
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.71.5
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: native will be bereft of progenic happiness
+- id: BPHS.PROGENY.CH26V82.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v82
+    quote: >-
+      In the event of the 7th Lord being placed in the 10th House, the native's wife will
+      not remain under his control. The native himself will be religious and be gifted with
+      Wealth, sons etc.
+    quote_sha256: fa5a9d3849a5f47f25735cb532df5e585d3aea657e99ca6369bdc5f64f91c6c4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_lord_in_10th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.10
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the native will be gifted with sons etc.
+- id: BPHS.PROGENY.CH26V83.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v83
+    quote: >-
+      If the 7th Lord occupies the 11th House the native will gain wealth through his wife,
+      will get less happiness from his sons and will have more daughters (than sons).
+    quote_sha256: 61b263bb53f0814d29beed60404a504899f81d27e0c26671a28b918199922866
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_lord_in_11th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: gets less happiness from his sons
+- id: BPHS.PROGENY.CH26V83.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v83
+    quote: >-
+      If the 7th Lord occupies the 11th House the native will gain wealth through his wife,
+      will get less happiness from his sons and will have more daughters (than sons).
+    quote_sha256: 61b263bb53f0814d29beed60404a504899f81d27e0c26671a28b918199922866
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_lord_in_11th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: neutral
+    magnitude: moderate
+    text: has more daughters than sons
+- id: BPHS.PROGENY.CH26V89.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v89
+    quote: >-
+      If the 8th Lord happens to fall in the 5th House the native will be dull witted. He
+      will have a few children and be longlived and wealthy.
+    quote_sha256: 27ec22293e2f85dca56f4ec847ddae7aecadb136f5943b0f7ee21e757926ee7b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.89.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: have a few children
+- id: BPHS.PROGENY.CH26V95.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v95
+    quote: 'If the 11th Lord is placed in the 5th House, the native''s children will be happy,
+      educated and virtuous. He himself will be religious and happy.
+
+      Notes : A native having this combination in his horoscope studies Commerce and makes
+      great progress in his studies. The effects described in the sloka will not be obtained
+      in the Scorpio Ascendant because in the 5th house, the 11th Lord Mercury will be debilitated.'
+    quote_sha256: 4af235d15ce5da87afa7c20f79bc59708c3a17861623b5c103cb7d972b0846a0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '125.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the native's children will be happy
+- id: BPHS.PROGENY.CH26V95.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v95
+    quote: 'If the 11th Lord is placed in the 5th House, the native''s children will be happy,
+      educated and virtuous. He himself will be religious and happy.
+
+      Notes : A native having this combination in his horoscope studies Commerce and makes
+      great progress in his studies. The effects described in the sloka will not be obtained
+      in the Scorpio Ascendant because in the 5th house, the 11th Lord Mercury will be debilitated.'
+    quote_sha256: 4af235d15ce5da87afa7c20f79bc59708c3a17861623b5c103cb7d972b0846a0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '125.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the native's children will be educated
+- id: BPHS.PROGENY.CH26V95.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v95
+    quote: 'If the 11th Lord is placed in the 5th House, the native''s children will be happy,
+      educated and virtuous. He himself will be religious and happy.
+
+      Notes : A native having this combination in his horoscope studies Commerce and makes
+      great progress in his studies. The effects described in the sloka will not be obtained
+      in the Scorpio Ascendant because in the 5th house, the 11th Lord Mercury will be debilitated.'
+    quote_sha256: 4af235d15ce5da87afa7c20f79bc59708c3a17861623b5c103cb7d972b0846a0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '125.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the native's children will be virtuous
+- id: BPHS.PROGENY.CH55V6567.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch55.v65-67
+    quote: >-
+      If the Sun is exalted or in own sign or posited in Angle, Trine or in the 11th, the
+      2nd or the 3rd, the native will regain the lost kingdom or wealth, welfare at home,
+      gain of control over the village and land with the favour of friends and the king and
+      birth of child, abundant wealth at home will be the effects of the Antardasa of the
+      Sun.
+    quote_sha256: 4c32ac3f9924fc6f47aa945b811c93d39e3729c691fe0bde876f8653c54f50f1
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 55.65-67.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.own_sign
+    - any:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.02
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.03
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: Birth of child
+- id: BPHS.PROGENY.CH58V15.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v15
+    quote: >-
+      15-15½: Placement of Saturn in an Angle or Trine posited at the 11th or the 2nd house
+      from the Mahadasa lord (Jupiter) will produce comforts of wealth, children and animals
+      like cows, buffaloes etc.; gain of wealth through low caste people etc., types of results.
+    quote_sha256: eb6c1ca35f2391016198e6a06fc10d2cc0312c78bb4f54e4f4c3b0e11ff9ed80
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.15_saturn_placement
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: gains of children are produced
+- id: BPHS.PROGENY.CH58V4547.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v45-47
+    quote: >-
+      45-47½: Placement of Venus in the Angle sign, the 2nd house or the 9th house from the
+      Mahadasa lord will depose results of the Antardasa of Venus in the Mahadasa of Jupiter
+      like, gain of wealth and food grains; blessings of Goddess Laxami (wealth); meeting
+      with the king; acquisition of vehicle; child birth; accretion of animals; utmost happiness;
+      solace through music, association of scholars, enjoyment of sumptuous food, nourishment
+      of co-borns etc.
+    quote_sha256: 4dc4518d336cfb0a9ad028ed97c77c33bb9b4e91346b324bdd6787d4d1b95901
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.45-47.venus_kendra_2_9_from_mahadasha_lord
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: child birth
+  timing:
+    requires_activation: true
+- id: BPHS.PROGENY.CH61V7576.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v75-76
+    quote: >-
+      Even if Mercury is placed in the Angle, Trine or in the 11th house, it will produce
+      sound health, abundant gains, beneficence and great luxuries attained by the son; acquistion
+      of food, clothes, animals etc. and good profit in the business.
+    quote_sha256: c96be66fc5b75c8de4b210f69b44e9db7c5bb5ba9c1af6f241e3d228dded0346
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.75_mercury_kendra_trikona_11
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: beneficence and great luxuries attained by the son
+- id: BPHS.PROGENY.CH62V12.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v1-2
+    quote: >-
+      1-2½: In the Antardasa of Venus in the Mahadasa of Venus, if Venus duly strong, is posited
+      in Angle, Trine or in the 11th house from the Ascendant, it will manifest gain of wealth,
+      cow, buffalo (female) etc. at the behest of Brahmins; exceptional happiness over the
+      birth of a child, welfare at home, respectability, felicitation by the king, acquisition
+      of kingdom etc.
+    quote_sha256: 8ddfb18ffac2f62d0bc673c980cb8335a93f6d91bc4b9d5549daa8304c3f98f2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_venus_dasha_kendra_trikona_11th
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: exceptional happiness over the birth of a child
+  timing:
+    requires_activation: true
+- id: BPHS.PROGENY.CH62V6062.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_kendra_trikona_11_own_exalt
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: birth of a child
+  timing:
+    requires_activation: true
+- id: BPHS.PROGENY.CH62V6062.0004.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.exalted
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: birth of a child
+  timing:
+    requires_activation: true
+- id: BPHS.PROGENY.CH62V6062.0004.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.own_sign
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: birth of a child
+  timing:
+    requires_activation: true
+- id: BPHS.PROGENY.CH82V3033.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v30-33
+    quote: >-
+      The position of Jupiter in the 8th house will make the woman shameless, of less children,
+      with thick hands and feet, deserts her husband and a voracious eater. If Venus be in
+      the 8th house, she will be lethargic, bereft of wealth, irreligious, cruel, filthy and
+      cunning. If Saturn is situated in the 8th house, she will be ill mannered, remain filthy
+      and deprived of her husband's affection. Rahu's being in the 8th house, she will be
+      repulsive (ugly), without a husband, stone hearted, sickly and of a bad conduct.
+    quote_sha256: cfaefc4671a8316440a523c7a4f339d7ced3fbc4db2c48824130f0e467e6fe36
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.30.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: less children
+- id: BPHS.PROGENY.CH82V37.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v37
+    quote: >-
+      If the Moon, Mercury and Venus are posited in the Ascendant in the horoscope of a woman,
+      she is endowed with many qualities. If Jupiter happens to be in the Ascendant, she will
+      be bestowed with great satisfaction, children, wealth and happiness.
+    quote_sha256: 213057b8a9f6272a078f429484c9201c129c2c7e65795eb07c6f4eb86927f7d1
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.37.2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: she will be bestowed with children
+- id: BPHS.PROGENY.CH85V7178.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v71-78
+    quote: 'The one getting proud and overbearing of ones power, if insults the Brahmins,
+      this affliction (दोष) or the curse of the Brahmins destorys the children (The kind of
+      pride could be due to excessive property, physical strength, status, wealth etc.)
+
+      If Rahu is posited in the sign of Jupiter, the 5th house contains Jupiter, Mars and
+      Saturn and the lord of the 9th house is posited in the 8th house, the children get destroyed
+      due to the curse of the Brahmins.
+
+      When the 9th lord is in the 5th house, the lord of the 5th house be in the 8th house
+      and gets conjunct with or aspected by Jupiter, Mars, Rahu, it will attribute childlessness
+      due the curse of the Brahmins.
+
+      Should the lord of the 9th house get debilitated, the lord of the 12th house is posited
+      in the 5th house and either gets conjunct or aspected by Rahu, it will cause loss of
+      children as a result of the curse of the Brahmins.
+
+      If Jupiter being debilitated, Rahu is situated in the Ascendant or in the 5th house
+      and the lord of the 5th house is in a Trik house (6th, 8th, 12th), it will also denote
+      destruction of children following the curse from the Brahmins.
+
+      If Jupiter being the lord of the 5th house and posited in the 8th house duly conjunct
+      with the malefic planet or the lord of the 5th house alongwith the Sun and the Moon
+      is in the 8th house, there will be loss of children due to the curse of the Brahmins.
+
+      When Jupiter being in the Navaṁsa of Saturn and Saturn conjoins Mars and the lord of
+      the 5th house is posited in the 12th house, the Brahmins'' curse destroys the children.
+
+      Should the Ascendant contain''s Jupiter and Saturn and Rahu being in the 9th house or
+      Rahu joins Jupiter in the 12th house, even then it will cause deprivation of children.'
+    quote_sha256: 1235553fc2ae9f112c654563f1ec0375f5c68c2ae6dec8630715a9d8175e0bde
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '85.73'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: loss of children due to the curse of the Brahmins
+- id: BPHS.PROGENY.CH85V7178.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v71-78
+    quote: 'The one getting proud and overbearing of ones power, if insults the Brahmins,
+      this affliction (दोष) or the curse of the Brahmins destorys the children (The kind of
+      pride could be due to excessive property, physical strength, status, wealth etc.)
+
+      If Rahu is posited in the sign of Jupiter, the 5th house contains Jupiter, Mars and
+      Saturn and the lord of the 9th house is posited in the 8th house, the children get destroyed
+      due to the curse of the Brahmins.
+
+      When the 9th lord is in the 5th house, the lord of the 5th house be in the 8th house
+      and gets conjunct with or aspected by Jupiter, Mars, Rahu, it will attribute childlessness
+      due the curse of the Brahmins.
+
+      Should the lord of the 9th house get debilitated, the lord of the 12th house is posited
+      in the 5th house and either gets conjunct or aspected by Rahu, it will cause loss of
+      children as a result of the curse of the Brahmins.
+
+      If Jupiter being debilitated, Rahu is situated in the Ascendant or in the 5th house
+      and the lord of the 5th house is in a Trik house (6th, 8th, 12th), it will also denote
+      destruction of children following the curse from the Brahmins.
+
+      If Jupiter being the lord of the 5th house and posited in the 8th house duly conjunct
+      with the malefic planet or the lord of the 5th house alongwith the Sun and the Moon
+      is in the 8th house, there will be loss of children due to the curse of the Brahmins.
+
+      When Jupiter being in the Navaṁsa of Saturn and Saturn conjoins Mars and the lord of
+      the 5th house is posited in the 12th house, the Brahmins'' curse destroys the children.
+
+      Should the Ascendant contain''s Jupiter and Saturn and Rahu being in the 9th house or
+      Rahu joins Jupiter in the 12th house, even then it will cause deprivation of children.'
+    quote_sha256: 1235553fc2ae9f112c654563f1ec0375f5c68c2ae6dec8630715a9d8175e0bde
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '85.74'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.debilitated
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.05
+    - conjunct:
+        subject: lord.bhava.12
+        other: graha.rahu
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: loss of children as a result of the curse of the Brahmins
+- id: BPHS.PROGENY.CH85V7178.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v71-78
+    quote: 'The one getting proud and overbearing of ones power, if insults the Brahmins,
+      this affliction (दोष) or the curse of the Brahmins destorys the children (The kind of
+      pride could be due to excessive property, physical strength, status, wealth etc.)
+
+      If Rahu is posited in the sign of Jupiter, the 5th house contains Jupiter, Mars and
+      Saturn and the lord of the 9th house is posited in the 8th house, the children get destroyed
+      due to the curse of the Brahmins.
+
+      When the 9th lord is in the 5th house, the lord of the 5th house be in the 8th house
+      and gets conjunct with or aspected by Jupiter, Mars, Rahu, it will attribute childlessness
+      due the curse of the Brahmins.
+
+      Should the lord of the 9th house get debilitated, the lord of the 12th house is posited
+      in the 5th house and either gets conjunct or aspected by Rahu, it will cause loss of
+      children as a result of the curse of the Brahmins.
+
+      If Jupiter being debilitated, Rahu is situated in the Ascendant or in the 5th house
+      and the lord of the 5th house is in a Trik house (6th, 8th, 12th), it will also denote
+      destruction of children following the curse from the Brahmins.
+
+      If Jupiter being the lord of the 5th house and posited in the 8th house duly conjunct
+      with the malefic planet or the lord of the 5th house alongwith the Sun and the Moon
+      is in the 8th house, there will be loss of children due to the curse of the Brahmins.
+
+      When Jupiter being in the Navaṁsa of Saturn and Saturn conjoins Mars and the lord of
+      the 5th house is posited in the 12th house, the Brahmins'' curse destroys the children.
+
+      Should the Ascendant contain''s Jupiter and Saturn and Rahu being in the 9th house or
+      Rahu joins Jupiter in the 12th house, even then it will cause deprivation of children.'
+    quote_sha256: 1235553fc2ae9f112c654563f1ec0375f5c68c2ae6dec8630715a9d8175e0bde
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '85.75'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.debilitated
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.12
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: destruction of children following the curse from the Brahmins
+- id: BPHS.PROGENY.CH85V8105.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v8-105
+    quote: 'By non performance of Shradha of the parents (previous birth) that gets into an
+      evil spirit (soul) and with the curse of this spirit, there will be deprivation of children.
+      Yogas of these kinds in relation to the Ascendant are described over here. If Saturn
+      and the Sun are posited in the 5th house, the weak Moon in the 7th house and Rahu and
+      Jupiter being in the Ascendant and in the 12th house respectively, the curse of evil
+      spirit will destroy the children. When Saturn being, the lord of the 5th house is posited
+      in the 8th house and Karaka (Jupiter) is also placed in the 8th house, it will cause
+      deprivation of children due to the curse of the evil spirit.
+
+      Positioning of malefic planet in the Ascendant, the Sun being in the 12th house and
+      Mars, Saturn, Mercury in the 5th house and the lord of the 5th house is in the 8th house
+      will cause destruction of the children as a result of the evil spirit.
+
+      Should Rahu be posited in the Ascendant, Saturn in the 5th house and Jupiter being posited
+      in the 8th house, loss of children will be the result owing to the curse of the evil
+      spirit.
+
+      If Venus, Jupiter and Rahu are posited in the Ascendant, Saturn is in conjunction with
+      the Moon and the lord of the Ascendant is posited in the 8th house, the curse of evil
+      spirit will destroy the children.
+
+      If the Karaka (Jupiter) and lord of the 5th house being in the signs of debilitation
+      and also aspected by the debilitated planets, it will also cause loss of children. When
+      Saturn is in the Ascendant, Rahu in the 5th house, the Sun in the 8th house and Mars
+      being in the 12th house, the evil spirit will destroy the children.
+
+      If lord of the 7th house is in a Trik house (6th, 8th, 12th), the Moon is posited in
+      the 5th house and Mars and Gulika are in the Ascendant, it will bring about the loss
+      of children following the curse of the evil spirit.
+
+      Positioning of the lord of the 8th house, Saturn and Venus in the 5th house and Karaka
+      Jupiter being in the 8th house will cause the destruction of the children due to the
+      curse of the evil spirit.'
+    quote_sha256: dfc3f4171ccd8adbfdb7780acc49be3d6d3b51c9c97577922b8f2e5dfff985ea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 85.8_105_rule_1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.12
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: destruction of children due to the curse of an evil spirit
+- id: BPHS.PROGENY.CH85V8105.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v8-105
+    quote: 'By non performance of Shradha of the parents (previous birth) that gets into an
+      evil spirit (soul) and with the curse of this spirit, there will be deprivation of children.
+      Yogas of these kinds in relation to the Ascendant are described over here. If Saturn
+      and the Sun are posited in the 5th house, the weak Moon in the 7th house and Rahu and
+      Jupiter being in the Ascendant and in the 12th house respectively, the curse of evil
+      spirit will destroy the children. When Saturn being, the lord of the 5th house is posited
+      in the 8th house and Karaka (Jupiter) is also placed in the 8th house, it will cause
+      deprivation of children due to the curse of the evil spirit.
+
+      Positioning of malefic planet in the Ascendant, the Sun being in the 12th house and
+      Mars, Saturn, Mercury in the 5th house and the lord of the 5th house is in the 8th house
+      will cause destruction of the children as a result of the evil spirit.
+
+      Should Rahu be posited in the Ascendant, Saturn in the 5th house and Jupiter being posited
+      in the 8th house, loss of children will be the result owing to the curse of the evil
+      spirit.
+
+      If Venus, Jupiter and Rahu are posited in the Ascendant, Saturn is in conjunction with
+      the Moon and the lord of the Ascendant is posited in the 8th house, the curse of evil
+      spirit will destroy the children.
+
+      If the Karaka (Jupiter) and lord of the 5th house being in the signs of debilitation
+      and also aspected by the debilitated planets, it will also cause loss of children. When
+      Saturn is in the Ascendant, Rahu in the 5th house, the Sun in the 8th house and Mars
+      being in the 12th house, the evil spirit will destroy the children.
+
+      If lord of the 7th house is in a Trik house (6th, 8th, 12th), the Moon is posited in
+      the 5th house and Mars and Gulika are in the Ascendant, it will bring about the loss
+      of children following the curse of the evil spirit.
+
+      Positioning of the lord of the 8th house, Saturn and Venus in the 5th house and Karaka
+      Jupiter being in the 8th house will cause the destruction of the children due to the
+      curse of the evil spirit.'
+    quote_sha256: dfc3f4171ccd8adbfdb7780acc49be3d6d3b51c9c97577922b8f2e5dfff985ea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 85.8_105_rule_2
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: deprivation of children due to the curse of the evil spirit
+- id: BPHS.PROGENY.CH85V8105.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v8-105
+    quote: 'By non performance of Shradha of the parents (previous birth) that gets into an
+      evil spirit (soul) and with the curse of this spirit, there will be deprivation of children.
+      Yogas of these kinds in relation to the Ascendant are described over here. If Saturn
+      and the Sun are posited in the 5th house, the weak Moon in the 7th house and Rahu and
+      Jupiter being in the Ascendant and in the 12th house respectively, the curse of evil
+      spirit will destroy the children. When Saturn being, the lord of the 5th house is posited
+      in the 8th house and Karaka (Jupiter) is also placed in the 8th house, it will cause
+      deprivation of children due to the curse of the evil spirit.
+
+      Positioning of malefic planet in the Ascendant, the Sun being in the 12th house and
+      Mars, Saturn, Mercury in the 5th house and the lord of the 5th house is in the 8th house
+      will cause destruction of the children as a result of the evil spirit.
+
+      Should Rahu be posited in the Ascendant, Saturn in the 5th house and Jupiter being posited
+      in the 8th house, loss of children will be the result owing to the curse of the evil
+      spirit.
+
+      If Venus, Jupiter and Rahu are posited in the Ascendant, Saturn is in conjunction with
+      the Moon and the lord of the Ascendant is posited in the 8th house, the curse of evil
+      spirit will destroy the children.
+
+      If the Karaka (Jupiter) and lord of the 5th house being in the signs of debilitation
+      and also aspected by the debilitated planets, it will also cause loss of children. When
+      Saturn is in the Ascendant, Rahu in the 5th house, the Sun in the 8th house and Mars
+      being in the 12th house, the evil spirit will destroy the children.
+
+      If lord of the 7th house is in a Trik house (6th, 8th, 12th), the Moon is posited in
+      the 5th house and Mars and Gulika are in the Ascendant, it will bring about the loss
+      of children following the curse of the evil spirit.
+
+      Positioning of the lord of the 8th house, Saturn and Venus in the 5th house and Karaka
+      Jupiter being in the 8th house will cause the destruction of the children due to the
+      curse of the evil spirit.'
+    quote_sha256: dfc3f4171ccd8adbfdb7780acc49be3d6d3b51c9c97577922b8f2e5dfff985ea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 85.8_105_rule_4
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: loss of children owing to the curse of the evil spirit
+- id: BPHS.PROGENY.CH85V8105.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v8-105
+    quote: 'By non performance of Shradha of the parents (previous birth) that gets into an
+      evil spirit (soul) and with the curse of this spirit, there will be deprivation of children.
+      Yogas of these kinds in relation to the Ascendant are described over here. If Saturn
+      and the Sun are posited in the 5th house, the weak Moon in the 7th house and Rahu and
+      Jupiter being in the Ascendant and in the 12th house respectively, the curse of evil
+      spirit will destroy the children. When Saturn being, the lord of the 5th house is posited
+      in the 8th house and Karaka (Jupiter) is also placed in the 8th house, it will cause
+      deprivation of children due to the curse of the evil spirit.
+
+      Positioning of malefic planet in the Ascendant, the Sun being in the 12th house and
+      Mars, Saturn, Mercury in the 5th house and the lord of the 5th house is in the 8th house
+      will cause destruction of the children as a result of the evil spirit.
+
+      Should Rahu be posited in the Ascendant, Saturn in the 5th house and Jupiter being posited
+      in the 8th house, loss of children will be the result owing to the curse of the evil
+      spirit.
+
+      If Venus, Jupiter and Rahu are posited in the Ascendant, Saturn is in conjunction with
+      the Moon and the lord of the Ascendant is posited in the 8th house, the curse of evil
+      spirit will destroy the children.
+
+      If the Karaka (Jupiter) and lord of the 5th house being in the signs of debilitation
+      and also aspected by the debilitated planets, it will also cause loss of children. When
+      Saturn is in the Ascendant, Rahu in the 5th house, the Sun in the 8th house and Mars
+      being in the 12th house, the evil spirit will destroy the children.
+
+      If lord of the 7th house is in a Trik house (6th, 8th, 12th), the Moon is posited in
+      the 5th house and Mars and Gulika are in the Ascendant, it will bring about the loss
+      of children following the curse of the evil spirit.
+
+      Positioning of the lord of the 8th house, Saturn and Venus in the 5th house and Karaka
+      Jupiter being in the 8th house will cause the destruction of the children due to the
+      curse of the evil spirit.'
+    quote_sha256: dfc3f4171ccd8adbfdb7780acc49be3d6d3b51c9c97577922b8f2e5dfff985ea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 85.8_105_rule_5
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.saturn
+        other: graha.moon
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: curse of evil spirit will destroy the children
+- id: BPHS.PROGENY.CH85V8105.0001.04
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v8-105
+    quote: 'By non performance of Shradha of the parents (previous birth) that gets into an
+      evil spirit (soul) and with the curse of this spirit, there will be deprivation of children.
+      Yogas of these kinds in relation to the Ascendant are described over here. If Saturn
+      and the Sun are posited in the 5th house, the weak Moon in the 7th house and Rahu and
+      Jupiter being in the Ascendant and in the 12th house respectively, the curse of evil
+      spirit will destroy the children. When Saturn being, the lord of the 5th house is posited
+      in the 8th house and Karaka (Jupiter) is also placed in the 8th house, it will cause
+      deprivation of children due to the curse of the evil spirit.
+
+      Positioning of malefic planet in the Ascendant, the Sun being in the 12th house and
+      Mars, Saturn, Mercury in the 5th house and the lord of the 5th house is in the 8th house
+      will cause destruction of the children as a result of the evil spirit.
+
+      Should Rahu be posited in the Ascendant, Saturn in the 5th house and Jupiter being posited
+      in the 8th house, loss of children will be the result owing to the curse of the evil
+      spirit.
+
+      If Venus, Jupiter and Rahu are posited in the Ascendant, Saturn is in conjunction with
+      the Moon and the lord of the Ascendant is posited in the 8th house, the curse of evil
+      spirit will destroy the children.
+
+      If the Karaka (Jupiter) and lord of the 5th house being in the signs of debilitation
+      and also aspected by the debilitated planets, it will also cause loss of children. When
+      Saturn is in the Ascendant, Rahu in the 5th house, the Sun in the 8th house and Mars
+      being in the 12th house, the evil spirit will destroy the children.
+
+      If lord of the 7th house is in a Trik house (6th, 8th, 12th), the Moon is posited in
+      the 5th house and Mars and Gulika are in the Ascendant, it will bring about the loss
+      of children following the curse of the evil spirit.
+
+      Positioning of the lord of the 8th house, Saturn and Venus in the 5th house and Karaka
+      Jupiter being in the 8th house will cause the destruction of the children due to the
+      curse of the evil spirit.'
+    quote_sha256: dfc3f4171ccd8adbfdb7780acc49be3d6d3b51c9c97577922b8f2e5dfff985ea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 85.8_105_rule_7
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: evil spirit will destroy the children
+- id: BPHS.PROGENY.CH85V8105.0001.05
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v8-105
+    quote: 'By non performance of Shradha of the parents (previous birth) that gets into an
+      evil spirit (soul) and with the curse of this spirit, there will be deprivation of children.
+      Yogas of these kinds in relation to the Ascendant are described over here. If Saturn
+      and the Sun are posited in the 5th house, the weak Moon in the 7th house and Rahu and
+      Jupiter being in the Ascendant and in the 12th house respectively, the curse of evil
+      spirit will destroy the children. When Saturn being, the lord of the 5th house is posited
+      in the 8th house and Karaka (Jupiter) is also placed in the 8th house, it will cause
+      deprivation of children due to the curse of the evil spirit.
+
+      Positioning of malefic planet in the Ascendant, the Sun being in the 12th house and
+      Mars, Saturn, Mercury in the 5th house and the lord of the 5th house is in the 8th house
+      will cause destruction of the children as a result of the evil spirit.
+
+      Should Rahu be posited in the Ascendant, Saturn in the 5th house and Jupiter being posited
+      in the 8th house, loss of children will be the result owing to the curse of the evil
+      spirit.
+
+      If Venus, Jupiter and Rahu are posited in the Ascendant, Saturn is in conjunction with
+      the Moon and the lord of the Ascendant is posited in the 8th house, the curse of evil
+      spirit will destroy the children.
+
+      If the Karaka (Jupiter) and lord of the 5th house being in the signs of debilitation
+      and also aspected by the debilitated planets, it will also cause loss of children. When
+      Saturn is in the Ascendant, Rahu in the 5th house, the Sun in the 8th house and Mars
+      being in the 12th house, the evil spirit will destroy the children.
+
+      If lord of the 7th house is in a Trik house (6th, 8th, 12th), the Moon is posited in
+      the 5th house and Mars and Gulika are in the Ascendant, it will bring about the loss
+      of children following the curse of the evil spirit.
+
+      Positioning of the lord of the 8th house, Saturn and Venus in the 5th house and Karaka
+      Jupiter being in the 8th house will cause the destruction of the children due to the
+      curse of the evil spirit.'
+    quote_sha256: dfc3f4171ccd8adbfdb7780acc49be3d6d3b51c9c97577922b8f2e5dfff985ea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 85.8_105_rule_9
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: destruction of the children due to the curse of the evil spirit
+- id: BPHS.PROGENY.CH85V916.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch85.v9-16
+    quote: 'If Rahu is posited in the 5th house and aspected by Mars or similar combination
+      is formed in Aries or Scorpio sign, it will cause childlessness due to the curse of
+      the ''Snake'' (नाग).
+
+
+      When lord of the 5th house conjoins with Rahu and Saturn forms conjunction with or aspects
+      the Moon in the 5th house, it will cause loss of children attributed to the curse of
+      the ''Snake''.
+
+
+      Should Jupiter conjoin Rahu, lord of the 5th house is weak, lord of the Ascendant is
+      conjunct with Mars, there will be loss of children owing to the curse of the ''Snake''.
+
+
+      Conjunction of Jupiter and Mars, Rahu''s position in the Ascendant, the 5th lord being
+      in a Trik house (6th, 8th, 12th) will also give effect to the childlessness.
+
+
+      If 5th lord Mercury is in the Navamsa of Mars and conjoined with Mars, the ascendant
+      contains Rahu and Mandi, the curse of ''Snake'' will destroy the children (progeny).
+
+      If the 5th house is of the sign of Mars and the 5th lord is in conjunction with Rahu
+      and is also under the aspect or conjunction of Mercury, it will denote loss of children
+      as a result of the curse of the ''Snake''.
+
+      When the 5th house contains the Sun, Saturn, Mars, Rahu, Mercury, Jupiter and the 5th
+      and the Ascendant lords are weak, the childlessness will be ascribed to the curse of
+      the ''Snake''.
+
+      Conjunction of the lord of the Ascendant with Rahu and the lord of the 5th house with
+      Mars or Jupiter with Rahu, will also effect the destruction of children attributed to
+      the curse of the ''Snake''.'
+    quote_sha256: 92b4a440d3c93e7b5d4df044f580f1efdd657319d6adf2a561159c55845c4f7a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '85.9_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: lord.bhava.05
+      rashi: rashi.aries
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: Loss of children due to the curse of the Snake
+- id: HINDUPREDICTIVE.PROGENY.CH15V6.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch15.v6
+    quote: >-
+      If the dasa of a death-inflicting planet does not at all come into operation, then the
+      most malicious planet in the horoscope will cause death. Saturn, inclined to produce
+      evil by his conjunction with the lords of death houses, will cause death in preference
+      to any of those planets. There are many rules to ascertain the probable time of death
+      knowing beforehand Maraka dasas. Any detailed information in regard to this would increase
+      the bulk of the book beyond reasonable proportion. Add together the longitudes of Saturn,
+      Jupiter, the Sun and the Moon. This gives us a point in the zodiac after expunging multiples
+      of 12. In the case of short, middle and long life, death occurs when Saturn transits
+      over this point, in his first, second and third cycles respectively. THE notable triumphs
+      in Hindu astrology so far as the predictive portion is concerned are entirely due to
+      the great scrutiny, the planetary influences are subjected to in the analysis of a horoscope
+      and the relative values of the good and evil sources of strength of different planets
+      and bhavas. The following points are noteworthy in the consideration of a horoscope.
+      The lords of trines are always auspicious and produce good. The lords of kendras (quadrants)
+      are also good. When malefics become lords of quadrants they invariably become good.
+      The lords of the 2nd and 12th houses give good results if they are in conjunction with
+      favourable planets. The lord of the 8th if he happens to be the lord of the first or
+      is in conjunction with a benefic, becomes good. Mars in addition to the 10th house,
+      if he also becomes the lord of the 5th, produces good. Rahu and Kethu produce good results
+      when they are posited in the signs of benefic planets. 128 Good and evil planets become
+      more and more powerful as they are lords of the 1st, 4th, 7th or 10th houses; 5th and
+      9th houses; or 3rd, 6th and 11th houses respectively. Lords of 3, 6, 8 and 11 do evil
+      and cause miseries in life. The lords of 2nd and 12th remain neutral. Jupiter and Venus
+      owning quadrants become very inauspicious. In addition to this when they occupy the
+      2nd and 7th houses they become very powerful and consequently inflict death upon such
+      natives. Mercury as the lord of a quadrant is less malicious than Jupiter and Venus
+      and the Moon less than Mercury. Mars does not become good when he owns the 10th house.
+      Rahu and Kethu in evil signs produce evil. The lords of quadrants and trines in conjunction,
+      without any other bad aspects, become extremely powerful in producing good results.*
+      If the lords of the 9th and 10th houses exchange places they produce much good. The
+      greatest assets of a man in this life, apart from the shadowy wealth and fame, are *
+      See How to Judge a Horoscope. 129 9 self-respect, courage and prowess. In a horoscope
+      these can be determined by considering Mars and the characteristics attributed to him
+      which are discussed in the future chapters. But here I shall confine myself to the discussion
+      of the most salient points involved in the judgment of a horoscope. The lord of the
+      3rd also must be considered ; both of them must occupy a friendly house and must be
+      found not in a Bhava sandhi (junction of two houses) but in a Bhava-madhya (mid-point
+      of a house). Mars must occupy the 10th for good courage and the lords of the 3rd and
+      11th should occupy favourable and friendly navamsas. The position of Jupiter also considerably
+      improves the situation by making the person not depending upon another but to earn the
+      name of a self-made man. Jupiter adds to the dignity of the person in a sure but silent
+      way. Marriage is a landmark in the history of human race. With regard to the number
+      of wives, the character and temperament of one's wife, her disposition towards the husband
+      and her own health and happiness, much information is incorporated in Chapter XIX under
+      the caption 7th house or Saptamabhava, and the student must pay special attention to
+      that chapter for fuller details. Venus gets the Commander-in-Chief post over matrimonial
+      alliances and all things concerned about them and the 7th house controls marriage in
+      general. In hundreds of horoscopes, it has been observed that Venus when afflicted has
+      given rise to more than one legal wife. It could be vouched with sufficient confidence
+      that Venus in favourable positions is certain to assure marital felicity and success
+      with a single wife. The marriage aspect would be most important to the Hindus among
+      whom the dangerous contagion of divorce has not spread as in the Western nations. Considerable
+      attention has been bestowed upon this subject by the ancient writers. When Venus occupies
+      the house of Jupiter or that of the lord of the 1st or 9th either in the rasi or navamsa,
+      the native will have a chaste, loving and happy wife. 7th house should not be occupied
+      by any planet save a benefic. In the case of a woman the Moon must occupy the navamsa
+      of Jupiter to make her loyal and chaste and should never fall in the navamsa of Saturn
+      or Mars. Mars in the 8th house causes widowhood. Lords of 3, 6 and 11 play an important
+      part in causing debts, diseases and ill-health. The best feature in a horoscope would
+      be that those lords of 3, 6 and 11 must remain isolated and unassociated with any other
+      planet. The lord of the 3rd causes debts and diseases in a speed ; and ill-timed courage
+      and headlong spirit work much in the native. Egotism and misanthropy are marked by the
+      lord of the 6th, in exercising discretion, who has special control over debts and diseases.
+      Anarchic qualities would result if the lord of the 11th is very powerful. Delicate circumstances
+      involving life and honour for the sake of debts and diseases can be overcome but for
+      Mars and Saturn who if they occupy unfriendly signs give rise to excess of evil. The
+      Sun governs father, and the 9th house indicates father. Jupiter has control over children
+      as he is called Putrakaraka and the 5th house is Putrasthana or the house of children.
+      The fourth represents mother and the Moon governs her. When the lords of 4, 5 and 9
+      and the Moon, Jupiter and the Sun are well situated, and occupy favourable and friendly
+      navamsas prosperity for father, mother and children is invariably indicated. An examination
+      of a number of horoscopes has revealed that the Moon, Jupiter or the Sun in the 4th,
+      5th or 9th with Saturn has caused death to mother, children or father respectively early
+      in life. Moon with Saturn without any favourable aspect has caused death to the mother
+      within one year of the birth of the child. Mercury and Mars in the 5th house make the
+      children short-lived. Jupiter in the ascendant is the best gift in a horoscope and the
+      native gets dutiful children and long-lived parents. Long life for an individual may
+      be predicted if the lords of 1 and 8 and Saturn are in good positions and have the aspect
+      of Jupiter. This important and final event is elaborately dealt with in a separate chapter
+      and the readers must study the principles contained in it very carefully. 133 AS soon
+      as the dasas and bhukthies are determined, the next step would be to find out the good
+      and evil planets for each ascendant so that in applying the principles to decipher the
+      future history of man, the student may be able to carefully analyse the intensity of
+      good or evil combinations and proceed further with his predictions when applying the
+      results of dasas and other combinations. Aries.—Saturn, Mercury and Venus are ill-disposed.
+      Jupiter and the Sun are auspicious. The mere combination of Jupiter and Saturn produces
+      no beneficial results. Jupiter is the Yogakaraka or the planet producing success. If
+      Venus becomes a Maraka he will not kill the native but planets like Saturn will bring
+      about death to the person. Taurus.—Saturn is the most auspicious and powerful planet.
+      Jupiter, Venus and the Moon are evil planets. Saturn alone produces Rajayoga. The native
+      will be killed in the periods and sub-periods of Jupiter, Venus and the Moon if they
+      get death-inflicting powers.
+    quote_sha256: f507144cb97448e1f5d65cef93ebf6632c5a614f344aa99a70fca0489ff39525
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '15.6_31'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: Jupiter in the ascendant gives dutiful children and long-lived parents.
+- id: JATAKAPARIJATA.PROGENY.CH17V18.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v18
+    quote: >-
+      Sloka 17. When the lord of the 1st bhava, occupies the 5th and the lord of the latter
+      possesses strength and Jupiter also is in full strength, there will undoubtedly be a
+      son.
+    quote_sha256: f0a1723acf3a7e2e516e96620ca6ea411563e2ef1908de061d37b98c049a0f4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.17'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: there will undoubtedly be a son
+- id: JATAKAPARIJATA.PROGENY.CH17V7.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v7
+    quote: >-
+      Sloka 5. If Venus and Mars be in the 7th bhava, the person born will be bereft of a
+      wife. The same effect will follow if the planets be in the 9th and the 5th bhavas. If
+      the Moon and Venus occupy the 6th bhava, the person concerned will have only one son.
+      If malefic planets occupy the 1st, the 7th and the 12th bhavas, and the Moon occupying
+      the 5th be weak, the person born will either have a barren wife or be wifeless.
+    quote_sha256: 8b42ffbf7590e518a78522f3e825379560d714e78faff0a4d3b65e07c35bcf38
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.5.4
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.06
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: The person concerned will have only one son.
+- id: JATAKAPARIJATA.PROGENY.CH9V107.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: >-
+      Sloka 107. When the Sun is in the house of a friendly planet, the person born will have
+      firm friends and will be liberal and famous ; when the Moon is in such a position, the
+      person born will be esteemed, live in comfort and have wealth ; when Mars is in a friendly
+      house the person born will enjoy the favor of rich friends; when Mercury is in that
+      position, the person born will be most witty and jovial; when Jupiter occupies the house
+      of a friendly planet, the person born will delight in the society of the learned and
+      the virtuous ; when Venus occupies such a position the effect is that the person will
+      be happy in the society of his children. If Saturn be in a friendly house at a person's
+      birth, the latter will be fed by another as he will have no wealth.
+    quote_sha256: 9ea9cbc5898a07072ee20b39d2902c4e4246f2018f4af5703f90b74514a2598a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9.107.venus
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.venus
+      dignity: dignity.friendly
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: person will be happy in the society of his children
+- id: JATAKAPARIJATA.PROGENY.CH9V42.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: 'Sloka 42 If Jupiter be in a sign of Mars at the birth of a person, the latter
+      will be superior to others in his army, wealth and sons, highly virtuous and bountiful,
+      if in a sign of Venus, the person concerned will be energetic, if in a sign of Mercury,
+      he will have a large following of friends, if Jupiter be in Kataka, the person born
+      will be wise and rich in sons, if in Kumbha, the person concerned will enjoy pleasures,
+      if the planet be in Simha, the person affected will become famous, if Jupiter occupy
+      a स्वक्षेत्र (Swakshetra), the person born will be a king or on a par with a king If
+      in the depression sign Makara the person concerned will be a wanderer and have a careworn
+      mind NOTES
+
+      cf बृहज्जातक XVIII—slokas 12—13'
+    quote_sha256: f7aa0c4cdda629b3fce4e1d8d81020006659fed3b5d0d767785d1752f7803818
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_in_cancer
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.jupiter
+      rashi: rashi.cancer
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: Rich in sons

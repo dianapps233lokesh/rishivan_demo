@@ -1,0 +1,29 @@
+- id: BPHS.FATHER.9L.KENDRA.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.6
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch22.v6
+    quote: >-
+      6. When the 9th Lord is in an angle and is aspected by Jupiter, the
+      native's father will be a king endowed with conveyances or will be equal to
+      king.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  when:
+    all:
+      - in_kendra: {subject: 9th lord}
+      - aspects: {subject: Jupiter, target: 9th lord}
+
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: "the native's father will be a king endowed with conveyances or will be equal to king"

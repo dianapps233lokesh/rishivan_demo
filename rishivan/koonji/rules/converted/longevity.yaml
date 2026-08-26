@@ -1,0 +1,1674 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BPHS.LONGEVITY.CH11V36.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch11.v3-6
+    quote: >-
+      3-6 If the Moon is in 6th, or 8th or 12th Houses (Trik Houses) from the Ascendant and
+      is aspected by malefic planets, then the native’s death will occur soon. It will occur
+      in the 8th year if aspected by benefic planets. Even the retrograde benefic planets
+      are death-giving like the Moon, when they are aspected by malefic planets. If the Ascendant
+      does not have the aspect of a benefic planet upon itself then the child will die within
+      a month from the birth. Should the 5 th House from the Ascendant is occupied by Saturn,
+      Mars, the Sun and the Moon, soon his mother and brother would die. If Mars is placed
+      in the Ascendant and is in conjunction with the Sun or Saturn and is not aspected by
+      benefics, it will cause death of the native immediately. It will also prove an immediate
+      source of death, when Mars is placed in the 8th House in conjunction with Saturn and
+      the Sun.
+    quote_sha256: e3ca90c639556beb3ca1cfeb4b93fc7a54d51c3dd463db78cd199dd89475c504
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 3-6_mars_8th_conjunction
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mars
+        other: graha.sun
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: It will prove an immediate source of death.
+- id: BPHS.LONGEVITY.CH11V711.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch11.v7-11
+    quote: >-
+      In the House of the Moon or of the Sun, the presence of Rahu in conjunction with the
+      Sun and the Moon, and the aspect of Mars and Saturn on the Lagna (Ascendant) in such
+      combinations the child does not live even for a week. The child dies along with its
+      mother if Saturn is placed in the House of Karma' or the 10th House, the Moon in the
+      6th House and Mars in the Seventh House. The native in whose Lagna (Ascendant) is situated
+      the son of the Sun (Saturn), in the 8th house the Moon and in the 3rd House Jupiter,
+      will soon go to the abode of Yama. If there is the Sun in the Lagna (Ascendant) or in
+      the Ninth House, Saturn in the 7th House and Jupiter and Venus in the 11th house, the
+      native will live only for a month. In the 12th House from the Lagna (Ascendant) all
+      the planets are source of evil, but the Sun, the Moon, Venus and Rahu are specially
+      destroyers (of life). But the aspect of these on the 12th house will counteract the
+      evil.
+    quote_sha256: 85fe8fe94a59dfab3630e333e44a48f542c0c8662bbb399e123817f6b63c42ff
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '8.1'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: The child dies along with its mother
+- id: BPHS.LONGEVITY.CH11V711.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch11.v7-11
+    quote: >-
+      In the House of the Moon or of the Sun, the presence of Rahu in conjunction with the
+      Sun and the Moon, and the aspect of Mars and Saturn on the Lagna (Ascendant) in such
+      combinations the child does not live even for a week. The child dies along with its
+      mother if Saturn is placed in the House of Karma' or the 10th House, the Moon in the
+      6th House and Mars in the Seventh House. The native in whose Lagna (Ascendant) is situated
+      the son of the Sun (Saturn), in the 8th house the Moon and in the 3rd House Jupiter,
+      will soon go to the abode of Yama. If there is the Sun in the Lagna (Ascendant) or in
+      the Ninth House, Saturn in the 7th House and Jupiter and Venus in the 11th house, the
+      native will live only for a month. In the 12th House from the Lagna (Ascendant) all
+      the planets are source of evil, but the Sun, the Moon, Venus and Rahu are specially
+      destroyers (of life). But the aspect of these on the 12th house will counteract the
+      evil.
+    quote_sha256: 85fe8fe94a59dfab3630e333e44a48f542c0c8662bbb399e123817f6b63c42ff
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '9.1'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.03
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: The native will soon go to the abode of Yama (die)
+- id: BPHS.LONGEVITY.CH11V711.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch11.v7-11
+    quote: >-
+      In the House of the Moon or of the Sun, the presence of Rahu in conjunction with the
+      Sun and the Moon, and the aspect of Mars and Saturn on the Lagna (Ascendant) in such
+      combinations the child does not live even for a week. The child dies along with its
+      mother if Saturn is placed in the House of Karma' or the 10th House, the Moon in the
+      6th House and Mars in the Seventh House. The native in whose Lagna (Ascendant) is situated
+      the son of the Sun (Saturn), in the 8th house the Moon and in the 3rd House Jupiter,
+      will soon go to the abode of Yama. If there is the Sun in the Lagna (Ascendant) or in
+      the Ninth House, Saturn in the 7th House and Jupiter and Venus in the 11th house, the
+      native will live only for a month. In the 12th House from the Lagna (Ascendant) all
+      the planets are source of evil, but the Sun, the Moon, Venus and Rahu are specially
+      destroyers (of life). But the aspect of these on the 12th house will counteract the
+      evil.
+    quote_sha256: 85fe8fe94a59dfab3630e333e44a48f542c0c8662bbb399e123817f6b63c42ff
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '10.1'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: The native will live only for a month (Sun in Lagna)
+- id: BPHS.LONGEVITY.CH11V711.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch11.v7-11
+    quote: >-
+      In the House of the Moon or of the Sun, the presence of Rahu in conjunction with the
+      Sun and the Moon, and the aspect of Mars and Saturn on the Lagna (Ascendant) in such
+      combinations the child does not live even for a week. The child dies along with its
+      mother if Saturn is placed in the House of Karma' or the 10th House, the Moon in the
+      6th House and Mars in the Seventh House. The native in whose Lagna (Ascendant) is situated
+      the son of the Sun (Saturn), in the 8th house the Moon and in the 3rd House Jupiter,
+      will soon go to the abode of Yama. If there is the Sun in the Lagna (Ascendant) or in
+      the Ninth House, Saturn in the 7th House and Jupiter and Venus in the 11th house, the
+      native will live only for a month. In the 12th House from the Lagna (Ascendant) all
+      the planets are source of evil, but the Sun, the Moon, Venus and Rahu are specially
+      destroyers (of life). But the aspect of these on the 12th house will counteract the
+      evil.
+    quote_sha256: 85fe8fe94a59dfab3630e333e44a48f542c0c8662bbb399e123817f6b63c42ff
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '10.2'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: The native will live only for a month (Sun in Ninth House)
+- id: BPHS.LONGEVITY.CH12V4.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch12.v4
+    quote: 'Just as Lord Shiva, the holder of bow destroyed the demon Tripur, the Lord of
+      the Lagna or Ascendant has the capability of destroying all evils provided that he is
+      strongly placed in Kendra (1/4/7/10).
+
+      Notes : From the Lagna or Ascendant is known the native''s physical strength and capacity,
+      his stamina etc. the excess or lack of these. Therefore if the Ascendant Lord himself
+      is strongly placed in a Kendra House, the longevity of the native is a certainty.'
+    quote_sha256: c92054523b93c6fdcdb613de68d7097874933a4b55288e7ea183718dbf7ed96a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_in_kendra_destroys_evils
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.10
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: destroys all evils and ensures longevity
+- id: BPHS.LONGEVITY.CH14V57.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.09
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: moderate
+    text: The native will be longlived
+- id: BPHS.LONGEVITY.CH14V57.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: moderate
+    text: The native will be longlived
+- id: BPHS.LONGEVITY.CH14V57.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: moderate
+    text: The native will be longlived
+- id: BPHS.LONGEVITY.CH14V57.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: moderate
+    text: The native will be longlived
+- id: BPHS.LONGEVITY.CH21V1.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch21.v1
+    quote: >-
+      O excellent Brahmin, now I explain to you the effects of the 8th House. If the 8th Lord
+      is placed in a Kendra or angle, it gives long life to the native.
+    quote_sha256: fc37e2687ca974b4e5f1cbbc8405e37488f012f47c0401ed700be873616daafe
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '21.1_1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.10
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: gives long life to the native
+- id: BPHS.LONGEVITY.CH21V1415.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch21.v14-15
+    quote: >-
+      14-15 If the Ascendant Lord is in his exaltation sign, the Moon is in the 11th house
+      and Jupiter is in the 8th House, there is no doubt in it that the native will be long
+      lived. If the Ascendant is exceedingly strong and is aspected by a benefic from an angle,
+      the native will have long life along with wealth and virtues.
+    quote_sha256: 172102ddc38909cf63f23f3566ba038b5f19789e10267a5f07282da0becb39fc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '21.14_2'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: The native will have a long life
+- id: BPHS.LONGEVITY.CH26V116.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v116
+    quote: >-
+      In case the 10th Lord is a posited in the 8th House, the native will be devoid of good
+      acts, long lived and intent on blaming others.
+    quote_sha256: f05e80d4ff8cf3d2001cf47004f2d633cd428ccc1144d9e2bd0e6b25ac85c464
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 10th_lord_in_8th_long_lived
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.08
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: moderate
+    text: long lived
+- id: BPHS.LONGEVITY.CH26V128.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v128
+    quote: >-
+      If the 11th Lord is fallen in the 8th House, the native will suffer losses in his undertakings.
+      He will be long lived while his wife will die before him.
+    quote_sha256: 5c32d55496ba84facae5c1f032e0fb88893ac286c494680b5dadc1deda7f496e
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.128.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.08
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: moderate
+    text: He will be long lived.
+- id: BPHS.LONGEVITY.CH26V140.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v140
+    quote: >-
+      In case the 12th Lord is gone in the 8th House, the native will always have gains, will
+      speak affably, will enjoy a medium span of life and he will be endowed with all good
+      qualities.
+    quote_sha256: ee33db8249d6088596cfca4fa029631de34e52b4d2256dc46d0a1411c5ed17fe
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12th_lord_in_8th_gains_qualities
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.08
+  indicates:
+    claim: longevity.span
+    polarity: neutral
+    magnitude: moderate
+    text: The native will enjoy a medium span of life
+- id: BPHS.LONGEVITY.CH26V89.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v89
+    quote: >-
+      If the 8th Lord happens to fall in the 5th House the native will be dull witted. He
+      will have a few children and be longlived and wealthy.
+    quote_sha256: 27ec22293e2f85dca56f4ec847ddae7aecadb136f5943b0f7ee21e757926ee7b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.89.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.05
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: moderate
+    text: longlived
+- id: BPHS.LONGEVITY.CH26V92.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v92
+    quote: >-
+      Should the 8th Lord occupy the 8th House, the native will be long lived. If he (the
+      8th Lord) is weak, longevity will be medium and the native will be a thief, be blameworthy
+      himself and will blame others as well.
+    quote_sha256: f9f5db981d524386b91cf76b93961f15d5ae2d208282320bdd13254ecdc3c95c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.92_a
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.08
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: The native will be long-lived.
+- id: BPHS.LONGEVITY.CH26V96.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v96
+    quote: >-
+      If the 8th Lord be situated in the 12th House the native will squander his wealth on
+      evil deeds, be short lived; more so if he in is in conjunction with a malefic planet.
+    quote_sha256: d74a2cb7f525a32cec66357ce687e3b035a078bd92e49fdded2c14e777c34b16
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 8th_lord_in_12th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.12
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: moderate
+    text: short lived
+- id: BPHS.LONGEVITY.CH54V13.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v1-3
+    quote: >-
+      If the Sun is exalted, or posited in its own sign, the 11th house, Angles (Kendras)
+      or Trines (Trikonas), there will be gain of wealth and food grains in the Antardasa
+      of the Mahadasa of the Sun. Reverse will be the results if the Sun is in debilitation,
+      inauspicious sign etc. The Sun being the lord of the 2nd or the 7th house, it will cause
+      apprehension of early death. In order to guard against these ill effects, “Mrityunjaya
+      Japa” be recited (or have it done through some one). Undertaking the worship and other
+      religious observance of the Sun, will bestow good health.
+    quote_sha256: c8f99e2d935f843c89e4daa54379468158777115bc770e3e597fff6123b566a7
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sun_2nd_lord_in_1st
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.01
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: apprehension of early death
+- id: BPHS.LONGEVITY.CH54V13.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v1-3
+    quote: >-
+      If the Sun is exalted, or posited in its own sign, the 11th house, Angles (Kendras)
+      or Trines (Trikonas), there will be gain of wealth and food grains in the Antardasa
+      of the Mahadasa of the Sun. Reverse will be the results if the Sun is in debilitation,
+      inauspicious sign etc. The Sun being the lord of the 2nd or the 7th house, it will cause
+      apprehension of early death. In order to guard against these ill effects, “Mrityunjaya
+      Japa” be recited (or have it done through some one). Undertaking the worship and other
+      religious observance of the Sun, will bestow good health.
+    quote_sha256: c8f99e2d935f843c89e4daa54379468158777115bc770e3e597fff6123b566a7
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sun_7th_lord_in_1st
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.01
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: apprehension of early death
+- id: BPHS.LONGEVITY.CH54V6973.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v69-73
+    quote: >-
+      In the Mahadasa of the Sun, if Venus is placed in the 6th, the 8th or the 12th house,
+      or devoid of strength, the result of the Antardasa will be persecution by the King,
+      mental conflicts, loss of wealth, wife or children etc. In the beginning of Dasa, the
+      results will be of medium intensity; in the middle of the Dasa, native gains wealth
+      and other auspicious effects; in the end of Dasa loss of fame, destruction of place,
+      hatred from friends, loss of comforts etc. Venus being in the 7th house will inflict
+      bodily pains and fear of some disease. Placement of Venus in the 8th or the 12th house
+      will cause early death. In order to neutralize the ill effects, Mrityunjaya Mantras
+      should be recited, pious donations of white cow or buffalo (female) and Lord Shiva Japa
+      be performed. By undergoing penance of this kind, peace and tranquillity will prevail
+      with the blessings of Lord Shiva.
+    quote_sha256: f234ba55ee96c5ff3e05ce90f5ac346ee9c8a7d987f93c194dc1a631831d015c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_in_8_12_early_death
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.12
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: early death
+- id: BPHS.LONGEVITY.CH55V6364.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch55.v63-64
+    quote: >-
+      if Venus is the lord of the 2nd or the 7th house, danger of death is there and to alleviate
+      the evil effects, recitation of hymns in praise of Lord Shiva, charity of white cow
+      and silver be resorted to and with the blessings of Lord Shiva, peace will undoubtedly,
+      prevail.
+    quote_sha256: 6674976d9b66e0c36dd68dff857705e7a6d79c9f24fca375f0909cfe8eae8696
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_lord_2_7_apamrityu
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: lord.bhava.02
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: lord.bhava.07
+        rashi: rashi.aries
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: danger of death is there
+- id: BPHS.LONGEVITY.CH60V5455.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch60.v54-55
+    quote: >-
+      If Rahu is posited in the 2nd or the 7th house, it will cause premature death. For the
+      alleviation of the evil effects, the Japa (जप) of Goddess Laxmi be performed. By giving
+      white cow, buffalo etc., in charity will confer longevity and sound health. Comforts
+      will be achieved with the blessing of Goddess Jagdamba (जगदम्बा).
+    quote_sha256: dbacfd9c84caf524e6d6e4e0188cb942c26ae0e7e7a6a06855b033f5de79fb21
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_2_7_premature_death
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: Premature death occurs
+- id: BPHS.LONGEVITY.CH61V4142.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v41-42
+    quote: >-
+      From the lord of the Mahadasa, if Ketu is placed in the 8th, 12th or 2nd house, it will
+      cause apprehension of early death; hurdles be created in the process of proceeding to
+      a foreign trip; apprehension of urinary disease, distress due to urinary problem (diabetes);
+      trouble from the King, and thief, quarrel coupled with repentance, slight increase in
+      the comforts.
+    quote_sha256: 31db2736346ff11e9191c9b8918b14f7452bad406da3de53fa8d880843eb928c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '61.41_42_1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.02
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: moderate
+    text: apprehension of early death
+- id: HINDUPREDICTIVE.LONGEVITY.CH14V6.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch14.v6
+    quote: 'Jupiter in the Lagna, Venus in the 4th and Saturn and the Moon in the 10th make
+      a person live for a long time. After ascertaining to which class a particular horoscope
+      belongs, the marakas or the death-inflicting planets must be determined and the death
+      predicted under the dasas of such planets. MARAKAS are planets possessed of the power
+      of inflicting death. Death generally occurs during the periods and sub-periods of such
+      planets. Suppose, a horoscope indicates middle life or Madhyayu whereas the dasa of
+      a most powerful maraka comes into operation after 80 years. In such a circumstance the
+      period of a planet, no matter even if it is less malicious in causing death which comes
+      within the maximum number of years allotted for Madhyayu, must be determined as bringing
+      about death, in preference to the most malicious one. Ascertain beforehand, whether
+      a horoscope indicates short, middle or long life ; determine the maraka planets and
+      the times when their influences will come to fruition. The 8th house from lagna (ascendant)
+      and the 8th from that, i.e., the 3rd from lagna are termed as houses of life. The 7th
+      house and the 2nd house are called houses of death. The 2nd house is always stronger
+      in inflicting death than the 7th. Planets who occupy the 2nd are stronger than the planets
+      who own it, intending to cause death and the planets who are in association with the
+      lord of the 2nd are the most powerful in causing death. Thus the lords of the 2nd and
+      the 7th, their occupants and the planets who are in conjunction with them are the Maraka
+      planets. If marakas cannot be found out of these three, then the planet in conjunction
+      with the lord of 12th, even if it is a benefic, causes death in his dasa (period) in
+      the bhukthi (sub-period) of a papa (malefic) if he is the lord of the 3rd or 8th house.
+      If the dasa of Vyayadhipathi (lord of the 12th) does not come then one most powerful
+      among the lords of the 3rd, 6th and 8th becomes maraka. If the Sun and Sukra (Venus)
+      are lords of the 2nd and 7th or get Kendradhipatya (lordship of quadrant)--they are
+      sure to become marakas. Summarising the above:--Death will be caused by:
+
+      1. Planets who occupy the 2nd and 7th houses.
+
+      2. Planets who are lords of the 2nd and 7th houses.
+
+      3. Planets who are not owners of 2nd and 7th houses, and who are not occupying those
+      houses but who join with the lords of those houses, i.e., 2nd and 7th.'
+    quote_sha256: 2cf95623856496329df95d528c3c9c50203420564646b977e41d1e246a42a531
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: longevity_yoga_1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: The native will live for a long time
+- id: JATAKAPARIJATA.LONGEVITY.CH17V55.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v55
+    quote: >-
+      Sloka 55. If the lord of the Lagna occupy the 6th, the 8th, or the 12th bhava in conjunction
+      with Rahu or Ketu, the fatal dasa to the person born is that of the planet which is
+      associated with the lord of the Lagna or of the 8th bhava. (If there be no planet so
+      associated) the dasa of the planet owning the Rasi occupied by the lord of the Lagna
+      or the 8th bhava will prove fateful. The death of the person concerned will occur during
+      the bhukti and apahara of Rahu in the fatal dasa when Rahu takes precedence of other
+      planets in ripening that portion of the fatal dasa.
+    quote_sha256: 75f01ada31f6ef7e03d55bcc62cea04ccc2a41eca427ff04fbc3585cf8bdc73f
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.55_1'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.12
+    - conjunct:
+        subject: graha.mercury
+        other: graha.rahu
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: >-
+      Death occurs during the dasha of the planet associated with the lord of the Lagna or
+      the 8th bhava, when the lord of the Lagna occupies the 6th, 8th, or 12th bhava in conjunction
+      with Rahu or Ketu.
+- id: JATAKAPARIJATA.LONGEVITY.CH9V18.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v18
+    quote: >-
+      Sloka 14 Mars and Saturn in the 7th place from the Sun bring illness upon the husband
+      The two planets in the 7th place from the Moon afflict the wife with disease They bring
+      on death if they be in the 12th and the 2nd place of the Sun in the one case and of
+      the Moon in the other If one of them be in conjunction with the Sun or the Moon and
+      the other aspect the Sun or the Moon, they likewise cause death
+    quote_sha256: 569730887324e9873e17c0f3285278dbd7513baa9ed98f3f70f695e8aad1e293
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9.14.3
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: death is brought on
+- id: JATAKAPARIJATA.LONGEVITY.CH9V18.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v18
+    quote: >-
+      Sloka 14 Mars and Saturn in the 7th place from the Sun bring illness upon the husband
+      The two planets in the 7th place from the Moon afflict the wife with disease They bring
+      on death if they be in the 12th and the 2nd place of the Sun in the one case and of
+      the Moon in the other If one of them be in conjunction with the Sun or the Moon and
+      the other aspect the Sun or the Moon, they likewise cause death
+    quote_sha256: 569730887324e9873e17c0f3285278dbd7513baa9ed98f3f70f695e8aad1e293
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9.14.4
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+  indicates:
+    claim: longevity.span
+    polarity: negative
+    magnitude: strong
+    text: death is brought on
+- id: JATAKAPARIJATA.LONGEVITY.CH9V85.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v85
+    quote: >-
+      Sloka 85 When the Kendra is occupied by benefic planets and the lord of the Lagna is
+      in conjunction with them or is aspected by Jupiter, the astrologer must pronounce the
+      period of life of the native to be full.
+    quote_sha256: daef1a08376aec34f9c39b305da4957cbd7fc3b7c4013cf180bf41df24b0ca21
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '85.1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupant_count:
+          bhava: bhava.01
+          op: eq
+          n: 0
+      - occupant_count:
+          bhava: bhava.04
+          op: eq
+          n: 0
+      - occupant_count:
+          bhava: bhava.07
+          op: eq
+          n: 0
+      - occupant_count:
+          bhava: bhava.10
+          op: eq
+          n: 0
+    - all:
+      - occupant_count:
+          bhava: bhava.01
+          op: eq
+          n: 0
+      - occupant_count:
+          bhava: bhava.04
+          op: eq
+          n: 0
+      - occupant_count:
+          bhava: bhava.07
+          op: eq
+          n: 0
+      - occupant_count:
+          bhava: bhava.10
+          op: eq
+          n: 0
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: The native will attain a full span of life
+- id: PRASNAMARGA.LONGEVITY.CH16V1.0001
+  version: 1.0.0
+  status: candidate
+  school: school.prashna
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: prasna-marga
+    edition: prasnamarga-raman-part1
+    locator: ch16.v1
+    quote: 'Lords of Lagna and the 8th should be inimical.
+
+      2. Lords of Chandra Lagna and the 8th from it should be enemies.
+
+      3. Lord of the Navamsa occupied by Chandra and the lord of the 64th from Chandra Navamsa
+      should be enemies.
+
+      4. Lord of Lagna and the Sun should be enemies. The four pairs listed above should be
+      neutrals. The four pairs should be friends.
+
+      Suppose the Moon, in Navamsa, is in Leo. The lord is Sun. The 64th Navamsa from the
+      Moon''s Navamsa would be Scorpio and the lord is Mars. The Sun and Mars are friends.
+      Relationships should be considered in this way. Stanzas 62 to 65. — The Lagna and Chandra
+      Lagna are strong; are occupied or aspected by benefics; benefics are in quadrants, trines,
+      2nd and 8th; malefics are disposed in the 3rd, 6th and 11th; Jupiter rises in Lagna;
+      Jupiter and the Moon are in association; and the lord of Lagna is in a kendra ; the
+      lord of Chandra Lagna is strong. Lagna lord occupies the 11th from Lagna. The above
+      combinations confer long life.
+
+      NOTES
+
+      Wherever Lagna is mentioned in the above stanzas, Chandra Lagna should also be considered.
+      Combinations for long life given in stanzas 62 to 65 may be listed thus: —
+
+      (1) Lagna is strong. (2) Chandra is strong. (3) Lagna is aspected by good planets. (4)
+      Chandra is aspected by good planets. (5) Lagna is occupied by good planets. (6) Chandra
+      is conjoined with good planets. (7) Good planets should occupy quadrants, trines, the
+      2nd and 8th houses. (8) Good planets should occupy quadrants, trines, 2nd and 8th houses
+      from Chandra. (9) Evil planets should occupy 3rd, 6th and 11th from Lagna. (10) Evil
+      planets should occupy 3rd, 6th and llth from Chandra, (11) Jupiter in Lagna. (12) Jupiter
+      and the Moon are in one Rasi. (13) The lord of Lagna is in a kendra from Lagna. (14)
+      The lord of Chandra Lagna is in a kendra from Chandra Lagna. (15) The lord of Lagna
+      is strong. (16) Lord of Chandra Lagna is strong. (17) The lord of Lagna occupies the
+      llth house from Lagna. (18) The lord of Chandra Lagna occupies the llth house from Chandra
+      Lagna. These are the 18 yogas indicating long life. Stanzas 66 to 73. — The Lagna and
+      the Moon are weak; they have evil aspects or associations ; lords of Lagna and Chandra
+      Lagna are combust; they are in the 6th, 8th or 12th; birth takes place when the Sun
+      or the Moon is surrounded by a halo or when there is an eclipse, or at twilight, or
+      at the time of earthquakes or other evil omens or in the Mrityubhagas of Rasis or Rasi
+      Sandhis; Chandra occupies Mrityubhagas in kendra Rasis or the 8th from Lagna; Chandra
+      is in the 6th or 8th aspected by planets; benefics occupy the 6th or 8th aspected by
+      retrograde malefics; evil planets are in kendras, trikonas or in the 8th. The above
+      combinations indicate short life.
+
+      NOTES
+
+      Combinations for short life are listed in these stanzas. Chandra Lagna has been given
+      equal prominence with Lagna. The Mrityubhagas or fatal degrees are the 1st, 9th, 22nd,
+      23rd, 25th, 2nd, 4th, 23rd, 18th, 20th, 24th and 10th in Aries onwards in regular order.
+      Chandra Mrityubhagas, i.e., the degrees considered fatal for the Moon are 26th, 12th,
+      13th, 25th, 24th, 11th, 26th, 14th, 13th, 25th, 5th and 12th in Aries, etc. According
+      to stanzas 66 to 73, short life is indicated: — (1) If Lagna is weak. (2) If Chandra
+      is weak. (3) If Lagna is associated with bad planets. (4) If Lagna is aspected by bad
+      planets. (5) If Chandra is conjoined by bad planets. (6) If Chandra is aspected by bad
+      planets. (7) If the lord of Lagna is in combustion. (8) If the Lord of Chandra Lagna
+      is in combustion. (9) If Lagnadhipa occupies 6th, 8th and 12th houses from Lagna. (10)
+      If Chandra Lagnadhipa occupies 6, 8, 12 from Chandra Lagna. (11) If Chandra Lagnadhipa
+      is weak. (12) When the Sun or the Moon is surrounded by a halo (Parivesha) and is eclispsed.
+      (13) If birth takes place in Saadhyas. (14) Dikdaha or earthquakes or Ulkapatha take
+      place at the time of birth. (15) If birth takes place in the Mrityubhagas of Rasis.
+      (16) If born in Rasi Sandhyas. (17) If the Moon occupies the Mrityubhaga of kendras
+      and the 8th house from Lagna. (18) If Chandra occupies kendras or 8th house or Mrityubhagas
+      in conjunction with evil planets. (19) If Chandra occupies the 6th or 8th house aspected
+      by any planet. (20) If good planets occupy 6th or 8th house aspected by evil planets
+      with retrograde movement. (21) If evil planets occupy the kendras and trines and the
+      8th house. Thus there are 21 yogas. Stanza 74. — If there are more yogas for long life,
+      long life is to be predicted. If there are more yogas for short life, short life is
+      to be expected. If the yogas are found mixed, the intensity and strength of these yogas
+      should be examined and then the prediction given. Stanza 75. — If after examining Prasna
+      and Jataka, it is found that the questioner will die, by what diseases and when he will
+      die, should be predicted. If he has a long life, when his recovery will begin should
+      be ascertained. If there are any doubts, the Thrisphutas also should be examined and
+      the indications for death and recovery determined. These should be well balanced. Here
+      ends the examination of life with the help of a horoscope. Stanza 1. — The question
+      of death should be examined from the birth and horary charts. In order to ascertain
+      the nature of death, its cause and the time of its occurrence, the yogas, the nature
+      of Dasas and the nature and positions of Saturn, Jupiter, the Sun arid the Moon should
+      all be first studied. Stanza 2. — Death takes place at the end of the period indicated
+      by Yogayus. Sometimes the age as contributed by Dasas goes counter to the age given
+      by yogas. This should be carefully understood. Stanza 3. — In the absence of any yogas
+      in the horoscope indicating age, we have to be guided by the Dasas and determine the
+      period of death. From this we see that ''Dasayus'' is very important. But ''Yogayus''
+      is no less \aluable. Certain yogas as Sadhyorishta, Arishta. etc., are not said to be
+      controlled by Dasas. Certain yogas as Rishta-Yogas, Madhyayus or Deer-ghayur yogas are
+      to be checked by the age contributed by Dasas and Bhuktis. If Yogayus indicates, say
+      75 years, and according to Dasas also the same age is obtained, then one can boldly
+      declare the length of life. Stanza 4. — Death can happen in the Dasa or Antardasa of
+      the weakest — that which occupies the 6th, 8th, 12th or that which is associated with
+      or aspected by malefics of the following: Lords of 8th from Lagna and the Moon; planets
+      occupying or aspecting the 8th from Lagna and the Moon; Saturn; lords of the 22nd Drekkana
+      from Lagna and the Moon; lord of the house occupied by Gulika; lords of the houses and
+      Navamsas occupied by these factors; and Rahu. An exhaustive list of marakas is furnished
+      in this stanza. Wherever Lagna is mentioned, Chandra Lagna is automatically meant. A
+      discriminating astrologer should very carefully pick out the appropfiate maraka. Of
+      all these lords, the weakest — by occupying 6th or 8th house or subject to affliction
+      — should be selected. The marakas can be listed thus:
+
+      1. The lord of the 8th house from Lagna.
+
+      2. The lord of the 8th house from Chandra.
+
+      3. The planets that occupy the 8th house from Lagna.
+
+      4. The planets that occupy the 8th house from Chandra.
+
+      5. The planets that aspect the 8th house from Lagna.
+
+      6. The planets that aspect the 8th house from Chandra.
+
+      7. Saturn. 128'
+    quote_sha256: cf6e2ec07540027ad0e115b8f49db680e82be5167a5a2b5837aba6788fafce40
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: long_life_yoga_11
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.01
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: The native has long life
+- id: PRASNAMARGA.LONGEVITY.CH16V1.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.prashna
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: prasna-marga
+    edition: prasnamarga-raman-part1
+    locator: ch16.v1
+    quote: 'Lords of Lagna and the 8th should be inimical.
+
+      2. Lords of Chandra Lagna and the 8th from it should be enemies.
+
+      3. Lord of the Navamsa occupied by Chandra and the lord of the 64th from Chandra Navamsa
+      should be enemies.
+
+      4. Lord of Lagna and the Sun should be enemies. The four pairs listed above should be
+      neutrals. The four pairs should be friends.
+
+      Suppose the Moon, in Navamsa, is in Leo. The lord is Sun. The 64th Navamsa from the
+      Moon''s Navamsa would be Scorpio and the lord is Mars. The Sun and Mars are friends.
+      Relationships should be considered in this way. Stanzas 62 to 65. — The Lagna and Chandra
+      Lagna are strong; are occupied or aspected by benefics; benefics are in quadrants, trines,
+      2nd and 8th; malefics are disposed in the 3rd, 6th and 11th; Jupiter rises in Lagna;
+      Jupiter and the Moon are in association; and the lord of Lagna is in a kendra ; the
+      lord of Chandra Lagna is strong. Lagna lord occupies the 11th from Lagna. The above
+      combinations confer long life.
+
+      NOTES
+
+      Wherever Lagna is mentioned in the above stanzas, Chandra Lagna should also be considered.
+      Combinations for long life given in stanzas 62 to 65 may be listed thus: —
+
+      (1) Lagna is strong. (2) Chandra is strong. (3) Lagna is aspected by good planets. (4)
+      Chandra is aspected by good planets. (5) Lagna is occupied by good planets. (6) Chandra
+      is conjoined with good planets. (7) Good planets should occupy quadrants, trines, the
+      2nd and 8th houses. (8) Good planets should occupy quadrants, trines, 2nd and 8th houses
+      from Chandra. (9) Evil planets should occupy 3rd, 6th and 11th from Lagna. (10) Evil
+      planets should occupy 3rd, 6th and llth from Chandra, (11) Jupiter in Lagna. (12) Jupiter
+      and the Moon are in one Rasi. (13) The lord of Lagna is in a kendra from Lagna. (14)
+      The lord of Chandra Lagna is in a kendra from Chandra Lagna. (15) The lord of Lagna
+      is strong. (16) Lord of Chandra Lagna is strong. (17) The lord of Lagna occupies the
+      llth house from Lagna. (18) The lord of Chandra Lagna occupies the llth house from Chandra
+      Lagna. These are the 18 yogas indicating long life. Stanzas 66 to 73. — The Lagna and
+      the Moon are weak; they have evil aspects or associations ; lords of Lagna and Chandra
+      Lagna are combust; they are in the 6th, 8th or 12th; birth takes place when the Sun
+      or the Moon is surrounded by a halo or when there is an eclipse, or at twilight, or
+      at the time of earthquakes or other evil omens or in the Mrityubhagas of Rasis or Rasi
+      Sandhis; Chandra occupies Mrityubhagas in kendra Rasis or the 8th from Lagna; Chandra
+      is in the 6th or 8th aspected by planets; benefics occupy the 6th or 8th aspected by
+      retrograde malefics; evil planets are in kendras, trikonas or in the 8th. The above
+      combinations indicate short life.
+
+      NOTES
+
+      Combinations for short life are listed in these stanzas. Chandra Lagna has been given
+      equal prominence with Lagna. The Mrityubhagas or fatal degrees are the 1st, 9th, 22nd,
+      23rd, 25th, 2nd, 4th, 23rd, 18th, 20th, 24th and 10th in Aries onwards in regular order.
+      Chandra Mrityubhagas, i.e., the degrees considered fatal for the Moon are 26th, 12th,
+      13th, 25th, 24th, 11th, 26th, 14th, 13th, 25th, 5th and 12th in Aries, etc. According
+      to stanzas 66 to 73, short life is indicated: — (1) If Lagna is weak. (2) If Chandra
+      is weak. (3) If Lagna is associated with bad planets. (4) If Lagna is aspected by bad
+      planets. (5) If Chandra is conjoined by bad planets. (6) If Chandra is aspected by bad
+      planets. (7) If the lord of Lagna is in combustion. (8) If the Lord of Chandra Lagna
+      is in combustion. (9) If Lagnadhipa occupies 6th, 8th and 12th houses from Lagna. (10)
+      If Chandra Lagnadhipa occupies 6, 8, 12 from Chandra Lagna. (11) If Chandra Lagnadhipa
+      is weak. (12) When the Sun or the Moon is surrounded by a halo (Parivesha) and is eclispsed.
+      (13) If birth takes place in Saadhyas. (14) Dikdaha or earthquakes or Ulkapatha take
+      place at the time of birth. (15) If birth takes place in the Mrityubhagas of Rasis.
+      (16) If born in Rasi Sandhyas. (17) If the Moon occupies the Mrityubhaga of kendras
+      and the 8th house from Lagna. (18) If Chandra occupies kendras or 8th house or Mrityubhagas
+      in conjunction with evil planets. (19) If Chandra occupies the 6th or 8th house aspected
+      by any planet. (20) If good planets occupy 6th or 8th house aspected by evil planets
+      with retrograde movement. (21) If evil planets occupy the kendras and trines and the
+      8th house. Thus there are 21 yogas. Stanza 74. — If there are more yogas for long life,
+      long life is to be predicted. If there are more yogas for short life, short life is
+      to be expected. If the yogas are found mixed, the intensity and strength of these yogas
+      should be examined and then the prediction given. Stanza 75. — If after examining Prasna
+      and Jataka, it is found that the questioner will die, by what diseases and when he will
+      die, should be predicted. If he has a long life, when his recovery will begin should
+      be ascertained. If there are any doubts, the Thrisphutas also should be examined and
+      the indications for death and recovery determined. These should be well balanced. Here
+      ends the examination of life with the help of a horoscope. Stanza 1. — The question
+      of death should be examined from the birth and horary charts. In order to ascertain
+      the nature of death, its cause and the time of its occurrence, the yogas, the nature
+      of Dasas and the nature and positions of Saturn, Jupiter, the Sun arid the Moon should
+      all be first studied. Stanza 2. — Death takes place at the end of the period indicated
+      by Yogayus. Sometimes the age as contributed by Dasas goes counter to the age given
+      by yogas. This should be carefully understood. Stanza 3. — In the absence of any yogas
+      in the horoscope indicating age, we have to be guided by the Dasas and determine the
+      period of death. From this we see that ''Dasayus'' is very important. But ''Yogayus''
+      is no less \aluable. Certain yogas as Sadhyorishta, Arishta. etc., are not said to be
+      controlled by Dasas. Certain yogas as Rishta-Yogas, Madhyayus or Deer-ghayur yogas are
+      to be checked by the age contributed by Dasas and Bhuktis. If Yogayus indicates, say
+      75 years, and according to Dasas also the same age is obtained, then one can boldly
+      declare the length of life. Stanza 4. — Death can happen in the Dasa or Antardasa of
+      the weakest — that which occupies the 6th, 8th, 12th or that which is associated with
+      or aspected by malefics of the following: Lords of 8th from Lagna and the Moon; planets
+      occupying or aspecting the 8th from Lagna and the Moon; Saturn; lords of the 22nd Drekkana
+      from Lagna and the Moon; lord of the house occupied by Gulika; lords of the houses and
+      Navamsas occupied by these factors; and Rahu. An exhaustive list of marakas is furnished
+      in this stanza. Wherever Lagna is mentioned, Chandra Lagna is automatically meant. A
+      discriminating astrologer should very carefully pick out the appropfiate maraka. Of
+      all these lords, the weakest — by occupying 6th or 8th house or subject to affliction
+      — should be selected. The marakas can be listed thus:
+
+      1. The lord of the 8th house from Lagna.
+
+      2. The lord of the 8th house from Chandra.
+
+      3. The planets that occupy the 8th house from Lagna.
+
+      4. The planets that occupy the 8th house from Chandra.
+
+      5. The planets that aspect the 8th house from Lagna.
+
+      6. The planets that aspect the 8th house from Chandra.
+
+      7. Saturn. 128'
+    quote_sha256: cf6e2ec07540027ad0e115b8f49db680e82be5167a5a2b5837aba6788fafce40
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: long_life_yoga_12
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.jupiter
+      other: graha.moon
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: The native has long life
+- id: PRASNAMARGA.LONGEVITY.CH16V1.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.prashna
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.7
+  source:
+    book: prasna-marga
+    edition: prasnamarga-raman-part1
+    locator: ch16.v1
+    quote: 'Lords of Lagna and the 8th should be inimical.
+
+      2. Lords of Chandra Lagna and the 8th from it should be enemies.
+
+      3. Lord of the Navamsa occupied by Chandra and the lord of the 64th from Chandra Navamsa
+      should be enemies.
+
+      4. Lord of Lagna and the Sun should be enemies. The four pairs listed above should be
+      neutrals. The four pairs should be friends.
+
+      Suppose the Moon, in Navamsa, is in Leo. The lord is Sun. The 64th Navamsa from the
+      Moon''s Navamsa would be Scorpio and the lord is Mars. The Sun and Mars are friends.
+      Relationships should be considered in this way. Stanzas 62 to 65. — The Lagna and Chandra
+      Lagna are strong; are occupied or aspected by benefics; benefics are in quadrants, trines,
+      2nd and 8th; malefics are disposed in the 3rd, 6th and 11th; Jupiter rises in Lagna;
+      Jupiter and the Moon are in association; and the lord of Lagna is in a kendra ; the
+      lord of Chandra Lagna is strong. Lagna lord occupies the 11th from Lagna. The above
+      combinations confer long life.
+
+      NOTES
+
+      Wherever Lagna is mentioned in the above stanzas, Chandra Lagna should also be considered.
+      Combinations for long life given in stanzas 62 to 65 may be listed thus: —
+
+      (1) Lagna is strong. (2) Chandra is strong. (3) Lagna is aspected by good planets. (4)
+      Chandra is aspected by good planets. (5) Lagna is occupied by good planets. (6) Chandra
+      is conjoined with good planets. (7) Good planets should occupy quadrants, trines, the
+      2nd and 8th houses. (8) Good planets should occupy quadrants, trines, 2nd and 8th houses
+      from Chandra. (9) Evil planets should occupy 3rd, 6th and 11th from Lagna. (10) Evil
+      planets should occupy 3rd, 6th and llth from Chandra, (11) Jupiter in Lagna. (12) Jupiter
+      and the Moon are in one Rasi. (13) The lord of Lagna is in a kendra from Lagna. (14)
+      The lord of Chandra Lagna is in a kendra from Chandra Lagna. (15) The lord of Lagna
+      is strong. (16) Lord of Chandra Lagna is strong. (17) The lord of Lagna occupies the
+      llth house from Lagna. (18) The lord of Chandra Lagna occupies the llth house from Chandra
+      Lagna. These are the 18 yogas indicating long life. Stanzas 66 to 73. — The Lagna and
+      the Moon are weak; they have evil aspects or associations ; lords of Lagna and Chandra
+      Lagna are combust; they are in the 6th, 8th or 12th; birth takes place when the Sun
+      or the Moon is surrounded by a halo or when there is an eclipse, or at twilight, or
+      at the time of earthquakes or other evil omens or in the Mrityubhagas of Rasis or Rasi
+      Sandhis; Chandra occupies Mrityubhagas in kendra Rasis or the 8th from Lagna; Chandra
+      is in the 6th or 8th aspected by planets; benefics occupy the 6th or 8th aspected by
+      retrograde malefics; evil planets are in kendras, trikonas or in the 8th. The above
+      combinations indicate short life.
+
+      NOTES
+
+      Combinations for short life are listed in these stanzas. Chandra Lagna has been given
+      equal prominence with Lagna. The Mrityubhagas or fatal degrees are the 1st, 9th, 22nd,
+      23rd, 25th, 2nd, 4th, 23rd, 18th, 20th, 24th and 10th in Aries onwards in regular order.
+      Chandra Mrityubhagas, i.e., the degrees considered fatal for the Moon are 26th, 12th,
+      13th, 25th, 24th, 11th, 26th, 14th, 13th, 25th, 5th and 12th in Aries, etc. According
+      to stanzas 66 to 73, short life is indicated: — (1) If Lagna is weak. (2) If Chandra
+      is weak. (3) If Lagna is associated with bad planets. (4) If Lagna is aspected by bad
+      planets. (5) If Chandra is conjoined by bad planets. (6) If Chandra is aspected by bad
+      planets. (7) If the lord of Lagna is in combustion. (8) If the Lord of Chandra Lagna
+      is in combustion. (9) If Lagnadhipa occupies 6th, 8th and 12th houses from Lagna. (10)
+      If Chandra Lagnadhipa occupies 6, 8, 12 from Chandra Lagna. (11) If Chandra Lagnadhipa
+      is weak. (12) When the Sun or the Moon is surrounded by a halo (Parivesha) and is eclispsed.
+      (13) If birth takes place in Saadhyas. (14) Dikdaha or earthquakes or Ulkapatha take
+      place at the time of birth. (15) If birth takes place in the Mrityubhagas of Rasis.
+      (16) If born in Rasi Sandhyas. (17) If the Moon occupies the Mrityubhaga of kendras
+      and the 8th house from Lagna. (18) If Chandra occupies kendras or 8th house or Mrityubhagas
+      in conjunction with evil planets. (19) If Chandra occupies the 6th or 8th house aspected
+      by any planet. (20) If good planets occupy 6th or 8th house aspected by evil planets
+      with retrograde movement. (21) If evil planets occupy the kendras and trines and the
+      8th house. Thus there are 21 yogas. Stanza 74. — If there are more yogas for long life,
+      long life is to be predicted. If there are more yogas for short life, short life is
+      to be expected. If the yogas are found mixed, the intensity and strength of these yogas
+      should be examined and then the prediction given. Stanza 75. — If after examining Prasna
+      and Jataka, it is found that the questioner will die, by what diseases and when he will
+      die, should be predicted. If he has a long life, when his recovery will begin should
+      be ascertained. If there are any doubts, the Thrisphutas also should be examined and
+      the indications for death and recovery determined. These should be well balanced. Here
+      ends the examination of life with the help of a horoscope. Stanza 1. — The question
+      of death should be examined from the birth and horary charts. In order to ascertain
+      the nature of death, its cause and the time of its occurrence, the yogas, the nature
+      of Dasas and the nature and positions of Saturn, Jupiter, the Sun arid the Moon should
+      all be first studied. Stanza 2. — Death takes place at the end of the period indicated
+      by Yogayus. Sometimes the age as contributed by Dasas goes counter to the age given
+      by yogas. This should be carefully understood. Stanza 3. — In the absence of any yogas
+      in the horoscope indicating age, we have to be guided by the Dasas and determine the
+      period of death. From this we see that ''Dasayus'' is very important. But ''Yogayus''
+      is no less \aluable. Certain yogas as Sadhyorishta, Arishta. etc., are not said to be
+      controlled by Dasas. Certain yogas as Rishta-Yogas, Madhyayus or Deer-ghayur yogas are
+      to be checked by the age contributed by Dasas and Bhuktis. If Yogayus indicates, say
+      75 years, and according to Dasas also the same age is obtained, then one can boldly
+      declare the length of life. Stanza 4. — Death can happen in the Dasa or Antardasa of
+      the weakest — that which occupies the 6th, 8th, 12th or that which is associated with
+      or aspected by malefics of the following: Lords of 8th from Lagna and the Moon; planets
+      occupying or aspecting the 8th from Lagna and the Moon; Saturn; lords of the 22nd Drekkana
+      from Lagna and the Moon; lord of the house occupied by Gulika; lords of the houses and
+      Navamsas occupied by these factors; and Rahu. An exhaustive list of marakas is furnished
+      in this stanza. Wherever Lagna is mentioned, Chandra Lagna is automatically meant. A
+      discriminating astrologer should very carefully pick out the appropfiate maraka. Of
+      all these lords, the weakest — by occupying 6th or 8th house or subject to affliction
+      — should be selected. The marakas can be listed thus:
+
+      1. The lord of the 8th house from Lagna.
+
+      2. The lord of the 8th house from Chandra.
+
+      3. The planets that occupy the 8th house from Lagna.
+
+      4. The planets that occupy the 8th house from Chandra.
+
+      5. The planets that aspect the 8th house from Lagna.
+
+      6. The planets that aspect the 8th house from Chandra.
+
+      7. Saturn. 128'
+    quote_sha256: cf6e2ec07540027ad0e115b8f49db680e82be5167a5a2b5837aba6788fafce40
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: long_life_yoga_17
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.11
+  indicates:
+    claim: longevity.span
+    polarity: positive
+    magnitude: strong
+    text: The native has long life

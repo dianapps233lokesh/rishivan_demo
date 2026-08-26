@@ -1,0 +1,1550 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BPHS.EDUCATION.CH14V57.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be intelligent
+- id: BPHS.EDUCATION.CH14V57.0003.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be intelligent
+- id: BPHS.EDUCATION.CH14V57.0003.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be intelligent
+- id: BPHS.EDUCATION.CH14V57.0003.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch14.v5-7
+    quote: >-
+      When the Ascendant lord, Mercury, Jupiter or Venus are in a Kendra or a Trikona (angle
+      or trine) the native will be longlived, wealthy, intelligent and favourite of the king.
+      The Ascendant lord being placed in a movable sign and having the aspect of a benefic
+      planet confers on the native fame, wealth, abundant pleasures and comforts of the body.
+      If Mercury, Jupiter or Venus are situated in the Ascendant together with the Moon or
+      if they are in a Kendra from the Ascendant the native is endowed with royal marks.
+    quote_sha256: 9ac47e1c1722a815fbe27ceb31e01c37a4a06c0ae4574275278788265342d54d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be intelligent
+- id: BPHS.EDUCATION.CH26V101.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v101
+    quote: >-
+      Should the 9th Lord be placed in the 5th House, the native will have the blessing of
+      sons and good fortune. He will be devoted to his elders or teachers, will have fortitude,
+      be religious and charitable and learned.
+    quote_sha256: a6fe755d5e8c968fd597ca3a9a214b16f8f35ba46327a6d53544ce5d55d3807d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9th_lord_in_5th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.09
+      bhava: bhava.05
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be learned
+- id: BPHS.EDUCATION.CH26V109.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v109
+    quote: >-
+      Should the 10th Lord be situated in the Ascendant; the native will be learned, famous,
+      be a poet, will incur diseases in childhood, be happy later on and his wealth will increase
+      day by day.
+    quote_sha256: afce69b6397dc0645657bcbc569685c5225b27643c5c01f9501deefe3439f523
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.109.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be learned
+- id: BPHS.EDUCATION.CH26V113.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v113
+    quote: 'In the event of the 10th Lord being placed in the 5th House the native will be
+      endowed with all kinds of learning, be always cheerful, wealthy and be blessed with
+      sons.
+
+      Notes : According to this sloka an angle, the 10th House, gets related to a trine, the
+      5th House. This combination, therefore, is specially auspicious. In it the native earns
+      great fame on the basis of his intellectual powers and is very successful in his field
+      of action. This combination is generally found in the horoscopes of wise statesmen,
+      scholars, professors, writers, educationists, actors etc. In the Pisces Ascendant, the
+      effects described in the sloka are obtained, by the native in their highest degree.
+      Here is an example to prove the truth. The present Horoscope is of the world famous
+      poet, Ravindra Nath Tagore, who got the famous nobel prize on his book ''Gitanjali''
+      (A Garland of Songs). In this horoscope of Pisces Ascendant the 10th Lord Jupiter, being
+      placed in the 5th House, is in his sign of exaltation. The fifth Lord, the Moon has
+      exchange also with the Ascendant Lord Jupiter. Which very greatly increases the auspicious
+      nature of this horoscope. The Second Horoscope is of Shivaji Ganeshan, a famous Indian
+      Film Actor. He has been famous due to his art of acting. Here the 10th Lord Mars is
+      situated in the 5th House.'
+    quote_sha256: 267cee04e6e7fd23677ae5615c6f219f3a2caeb784df01237ddd01e6da273739
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.113.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.05
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: endowed with all kinds of learning
+- id: BPHS.EDUCATION.CH26V131.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v131
+    quote: >-
+      In case the 11th Lord is situated in the 11th House, the native will have gains in all
+      his undertakings. His learning and happiness will be on the increase day by day.
+    quote_sha256: d21a4f09bd4ac6cc24df0bd1fc8ce27edb1e7b069830120a290cc27c0c216307
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.131.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.11
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: learning will be on the increase day by day
+- id: BPHS.EDUCATION.CH26V133.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v133
+    quote: >-
+      If the 12th Lord is situated in the Ascendant the native will be a spendthrift,be weak
+      in constitution, will suffer from phlegmatic disorders and be devoid of wealth and learning.
+    quote_sha256: 705fdd8cc697a2b70817521760fa02be6567654b2c6b57602975381313cdd0c6
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.133.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: native will be devoid of learning
+- id: BPHS.EDUCATION.CH26V137.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v137
+    quote: 'Should the 12th Lord occupy the 5th House, the native will be bereft of sons and
+      learning. He will spend money and also make pilgrimages to beget a son.
+
+      Notes : According to this rule, the 12th House or the House of Foreign Countries gets
+      related to the 5th House, the House of Learning. Therefore, such a native often gets
+      education in foreign countries which makes him spend much money. If the 12th Lord is
+      weakened he gets education in his own country living in a hostel. We give here two examples
+      to illustrate it.
+
+      Date of birth : 5.5.1958
+
+      Time of birth : IST 8.15 P.M.
+
+      Place of birth : Lat. 28°. 43 Long. 77°.55 In this Horoscope of Scorpio Ascendant the
+      12th Lord is situated in the 5th House who is exalted there. This native got medical
+      education in a foreign country and is now engaged in practice in his native country.
+      In this Horoscope the 5th Lord is also situated in the 12th House, the House of foreign
+      country. Therefore, both the 5th and the 12th Lords have exchange with each other. Though
+      Mercury in the 5th House is in his sign of debilitation, but in the same House the planet
+      Venus is in her sign of exaltation and therefore the debilitation of Mercury is broken
+      (Neecha Bhanga). The native got the education of engineering in a foreign country and
+      then returned to his native country India.
+
+      Date of birth : 11.5.1953
+
+      Time of birth : IST 11.55 P.M.
+
+      Lat, 28°.43'' Long. 77°.55 In this Horoscope also the 12th Lord Jupiter is situated
+      in the 5th House in the sign of Taurus. The Fifth Lord Venus is in her sign of exaltation
+      in a sign of Jupiter (3rd House). In this combination the special point is that the
+      5th Lord and the 5th House should be endowed with strength'
+    quote_sha256: 50de1772b95aa2c06438edc9f4ef7d398532a25e8095dfd1060928cb24ec9d97
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.137'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.05
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: bereft of learning
+- id: BPHS.EDUCATION.CH26V139.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v139
+    quote: >-
+      Should the 12th Lord occupy the 7th House, the native will always expend on account
+      of his wife, will not enjoy conjugal bliss and will be bereft of learning and strength.
+    quote_sha256: 3c5ae69277e48406518a71898253d20b73936e3e932cd5f8e10537136f74c038
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.139.3
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.07
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: the native will be bereft of learning
+- id: BPHS.EDUCATION.CH26V2.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v2
+    quote: >-
+      When the Lord of the Ascendant has been placed in the 2nd House, the native will be
+      gainful, learned, happy, good natured, religious minded, honourable will have many wives
+      and good qualities.
+    quote_sha256: f178ab6a6c4dbfea2cfbc4c2d2440f57cf50a7fcb4fe8e48a7f17fbfa627d286
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.2.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.02
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be learned
+- id: BPHS.EDUCATION.CH26V25.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v25
+    quote: >-
+      Should the 3rd Lord be situated in the Ascendant the native will have self-made wealth,
+      will be disposed to serve, valorous and intelligent although devoid of learning.
+    quote_sha256: 43cc587aedc4b58ec8efb9ff3dbce94937c2e92d74befbc661e626cb70b75f49
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 3rd_lord_in_1st_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be intelligent
+- id: BPHS.EDUCATION.CH26V25.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v25
+    quote: >-
+      Should the 3rd Lord be situated in the Ascendant the native will have self-made wealth,
+      will be disposed to serve, valorous and intelligent although devoid of learning.
+    quote_sha256: 43cc587aedc4b58ec8efb9ff3dbce94937c2e92d74befbc661e626cb70b75f49
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 3rd_lord_in_1st_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: The native will be devoid of learning
+- id: BPHS.EDUCATION.CH26V28.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v28
+    quote: >-
+      Should the 3rd be situated in the 4th House, the native will be happy, wealthy and intelligent
+      but will acquire a vicious wife.
+    quote_sha256: d8a41e534b4f7e967c71e890a04119fa8125278406f6516ce6b80fc4cfeff94d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 3rd_lord_in_4th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.04
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be intelligent
+- id: BPHS.EDUCATION.CH26V35.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v35
+    quote: >-
+      If the 3rd Lord has gone into the 11th House, the native will always gain in trading,
+      will be intelligent inspite of being illiterate, be adventurous and will serve others.
+    quote_sha256: 02b5d1756e16a8c2f4eadf4d6b10e0a5106435ff2b4b2c0dc18a05117766502d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.35'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.11
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: intelligent inspite of being illiterate
+- id: BPHS.EDUCATION.CH26V37.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v37
+    quote: >-
+      When the 4th Lord is situated in the Ascendant, the native is blessed with learning,
+      virtues, ornaments, lands, conveyances and maternal happiness.
+    quote_sha256: 5d12216e1700a6d0d02952add125f431e3cc45472abf1b9fc3a3cdb0953a841b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.37.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: blessed with learning
+- id: BPHS.EDUCATION.CH26V43.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v43
+    quote: >-
+      If the 4th Lord has gone in the 7th House the native will be highly learned in various
+      branches of knowledge, will be apt to leave his paternal property, and will be akin
+      to the dumb in an assembly.
+    quote_sha256: 46bca3b538569af1c636ec28447255d26f6c52fde29d7b8e87ab5ca5b061395c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.43.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.07
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: highly learned in various branches of knowledge
+- id: BPHS.EDUCATION.CH26V49.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v49
+    quote: >-
+      Should the 5th Lord occupy the Ascendant, the native will be Scholarly, be blessed with
+      progenic happiness, be miserly, crooked and stealer of other's wealth.
+    quote_sha256: 8200e4b659c9d2bddf479d04d11f2b6d0bd76f0f26245158abe64d3290f62e25
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.49.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: The native will be scholarly
+- id: BPHS.EDUCATION.CH26V52.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v52
+    quote: >-
+      If the 5th Lord occupies the 4th House the native will be happy, having the blessing
+      of maternal happiness, wealth and intelligence and be a king or a minister or a preceptor.
+    quote_sha256: c598b76ba78da6bc22c947b4013a8fdc04ba3fe82abee95804b44599410886da
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '52.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.04
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be intelligent
+- id: BPHS.EDUCATION.CH26V59.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v59
+    quote: >-
+      In case the 5th Lord occupies the 11th House, the native will be learned, be dear to
+      the people, be an illustrious author, be very skilful and be endowed with many sons
+      and wealth.
+    quote_sha256: a14291e7b9383997659c93ad5fc53d101292bd90268c69cfd4750187b7ef5afc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.11
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be learned
+- id: BPHS.EDUCATION.CH26V89.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v89
+    quote: >-
+      If the 8th Lord happens to fall in the 5th House the native will be dull witted. He
+      will have a few children and be longlived and wealthy.
+    quote_sha256: 27ec22293e2f85dca56f4ec847ddae7aecadb136f5943b0f7ee21e757926ee7b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.89.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.05
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: dull witted
+- id: BPHS.EDUCATION.CH26V98.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v98
+    quote: >-
+      Should the 9th Lord be situated in the 2nd House, the native will be learned, popular,
+      wealthy, lustful, and be blessed with happiness through sons and wife.
+    quote_sha256: ad95ce357e9bfc01d27e61788dcc91e0df77ea0ab1b5a3b61dc1b61c5637c90a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9th_lord_in_2nd
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.09
+      bhava: bhava.02
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: The native will be learned
+- id: BPHS.EDUCATION.CH58V4547.0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v45-47
+    quote: >-
+      45-47½: Placement of Venus in the Angle sign, the 2nd house or the 9th house from the
+      Mahadasa lord will depose results of the Antardasa of Venus in the Mahadasa of Jupiter
+      like, gain of wealth and food grains; blessings of Goddess Laxami (wealth); meeting
+      with the king; acquisition of vehicle; child birth; accretion of animals; utmost happiness;
+      solace through music, association of scholars, enjoyment of sumptuous food, nourishment
+      of co-borns etc.
+    quote_sha256: 4dc4518d336cfb0a9ad028ed97c77c33bb9b4e91346b324bdd6787d4d1b95901
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.45-47.venus_kendra_2_9_from_mahadasha_lord
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: association of scholars
+  timing:
+    requires_activation: true
+- id: BPHS.EDUCATION.CH59V7678.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v76-78
+    quote: >-
+      Placement of Jupiter in Angle, Trine or in the 2nd or the 11th house, will confer luxuries,
+      rise of wife's fortune, power of king (political power), gain of wealth and other assets;
+      comforts of food and clothes; excessive duty and religious inclinations, acquisition
+      of knowledge of Vedas (sacred books) and Vedantas, benefit of oblations, donation of
+      food grains, glorification, listening to Vedantas (Hindu scriptures), in Antardasa of
+      Jupiter.
+    quote_sha256: b41736d22c93ec2a11225a6bdac7e544c3f16611e99a2c668428e20fee082373
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 59.76_78_jupiter_placement_dasha
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.11
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: acquisition of knowledge of Vedas and Vedantas
+  timing:
+    requires_activation: true
+- id: BPHS.EDUCATION.CH59V811.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v8-11
+    quote: >-
+      In the duration of Mercury's Antardasa of the Saturn's Mahadasa, if Mercury is posited
+      in Angle or Trine, the results like felicitation, reputation, gain of education and
+      wealth; attainment of comforts in own country; acquisition of vehicles etc., inclination
+      towards oblational rites, possibility of Rajayoga; physical comforts; exultation at
+      heart; prosperity at home; bathing in the pond, pilgrimage etc., are achieved. It will
+      also produce the results of profit in business, attending discourses on Puranas (religious
+      scripture); donation of food grains; daily meals with sweet etc.
+    quote_sha256: 658f603b82c4101765f39b8005adcd7558b889acf606248a2331eaad0c220e8a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: saturn_mercury_dasha_kendra_trine
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: Gain of education (Vidyalabha)
+  timing:
+    requires_activation: true
+- id: BRIHATJATAKA.EDUCATION.CH17V12.0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_pisces
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.pisces
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: learned
+- id: JATAKAPARIJATA.EDUCATION.CH17V76.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      Sloka 76. If Mars and Mercury be together in the 9th bhava, the person born will be
+      learned in the sacred books and devoted to pleasure and ease ; if Mars combine with
+      Jupiter in that bhava, the person concerned will be wealthy and respected The effect
+      of Mars being associated with Venus in the 9th bhava is that the person born will have
+      two wives and will be an ex- pounder of law in a foreign land. If the planet combining
+      with Mars in the 9th bhava be Saturn, the influence of the yoga on the person born is
+      to make him wicked and addicted to women not his own. When Mercury and Jupiter are found
+      together in the 9th bhava, the person born will be keen-witted, wise, wealthy and learned.
+    quote_sha256: 786bc1db05011e4d3be1b4e4d0cad6e61d9ab1e3ef4b3b858538566c62214f0d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_mercury_in_9th_1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be learned in the sacred books
+- id: JATAKAPARIJATA.EDUCATION.CH17V76.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      Sloka 76. If Mars and Mercury be together in the 9th bhava, the person born will be
+      learned in the sacred books and devoted to pleasure and ease ; if Mars combine with
+      Jupiter in that bhava, the person concerned will be wealthy and respected The effect
+      of Mars being associated with Venus in the 9th bhava is that the person born will have
+      two wives and will be an ex- pounder of law in a foreign land. If the planet combining
+      with Mars in the 9th bhava be Saturn, the influence of the yoga on the person born is
+      to make him wicked and addicted to women not his own. When Mercury and Jupiter are found
+      together in the 9th bhava, the person born will be keen-witted, wise, wealthy and learned.
+    quote_sha256: 786bc1db05011e4d3be1b4e4d0cad6e61d9ab1e3ef4b3b858538566c62214f0d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_jupiter_in_9th_5
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be learned
+- id: JATAKAPARIJATA.EDUCATION.CH9V13.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v1-3
+    quote: >-
+      Sloka 49. If the Moon in Kataka be aspected severally by the six planets from Mars taken
+      in order, the persons born in the six cases will respectively be valiant, honorable,
+      endowed with the highest poetical talent, of royal rank, working in iron, and suffering
+      from ophthalmia. If the Moon be in Simha under the same aspects, the person born will
+      respectively be a king, one speaking learnedly, a wealthy man, a king, a wicked person
+      and one that is mighty  If the Moon be in Kanya and be aspected by the several planets
+      taken in the same order, the person born in the several cases will be respectively wealthy,
+      mighty, lordly, learned, badly behaved and in easy comfortable circumstances
+    quote_sha256: 751c2716fb742193e658b7b359b2b0261888cd54afc2d9c2f930f458d3d8aca2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_virgo_venus
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: graha.venus
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: learned
+- id: JATAKAPARIJATA.EDUCATION.CH9V3.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3
+    quote: >-
+      Sluka 3. When the Moon is in conjunction with Jupiter, the person born will be very
+      intelligent and protect good people. When Venus is associated with the Moon, the effect
+      of the yoga on the person born will be that he will be evil-minded and clever in making
+      bargains. If the Moon be in conjunction with Saturn, the person born will have a bad
+      wife, abuse his parents and will be without wealth. If Mars and Mercury be together,
+      the person born in the yoga will be eloquent and clever in medicine and fine arts.
+    quote_sha256: 06ec0bf7e963ac02a731c5d6b7c230a10b370ade988ae09683630b15cf243a95
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_jupiter_conjunct_03
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.moon
+      other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be very intelligent
+- id: JATAKAPARIJATA.EDUCATION.CH9V5.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      Sloka 5 If Venus be in conjunction with Mercury, the person born will be versed in the
+      sacred books, and fond of music, play and mirth. If Saturn be associated with Mercury,
+      the person born will be learned, wealthy and distinguished for his moral worth. The
+      man at whose birth Jupiter and Venus occupy one sign will be energetic, in favor with
+      the king and exceedingly intelligent. If Jupiter be in conjunction with Saturn, the
+      effect of the yoga will be that the person born in it will be an artist. If Venus and
+      Saturn be together at a birth the person affected by the yoga will own large herds of
+      cattle and be an athlete.
+    quote_sha256: 7d981b75580718928a4d994001f1fddff707584fc539b7507296b142e0a29007
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_conjunction
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.venus
+      other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: versed in the sacred books
+- id: JATAKAPARIJATA.EDUCATION.CH9V5.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      Sloka 5 If Venus be in conjunction with Mercury, the person born will be versed in the
+      sacred books, and fond of music, play and mirth. If Saturn be associated with Mercury,
+      the person born will be learned, wealthy and distinguished for his moral worth. The
+      man at whose birth Jupiter and Venus occupy one sign will be energetic, in favor with
+      the king and exceedingly intelligent. If Jupiter be in conjunction with Saturn, the
+      effect of the yoga will be that the person born in it will be an artist. If Venus and
+      Saturn be together at a birth the person affected by the yoga will own large herds of
+      cattle and be an athlete.
+    quote_sha256: 7d981b75580718928a4d994001f1fddff707584fc539b7507296b142e0a29007
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: saturn_mercury_conjunction
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.saturn
+      other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: learned
+- id: JATAKAPARIJATA.EDUCATION.CH9V5.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      Sloka 5 If Venus be in conjunction with Mercury, the person born will be versed in the
+      sacred books, and fond of music, play and mirth. If Saturn be associated with Mercury,
+      the person born will be learned, wealthy and distinguished for his moral worth. The
+      man at whose birth Jupiter and Venus occupy one sign will be energetic, in favor with
+      the king and exceedingly intelligent. If Jupiter be in conjunction with Saturn, the
+      effect of the yoga will be that the person born in it will be an artist. If Venus and
+      Saturn be together at a birth the person affected by the yoga will own large herds of
+      cattle and be an athlete.
+    quote_sha256: 7d981b75580718928a4d994001f1fddff707584fc539b7507296b142e0a29007
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_venus_conjunction
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.jupiter
+      other: graha.venus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: exceedingly intelligent
+- id: JATAKAPARIJATA.EDUCATION.CH9V68.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      Sloka 68. When the Sun is in the सुख (Sukha 4th) bhava, the person born will suffer
+      from heart disease, will lack money, corn and common sense and will be hard-hearted.
+      If the Moon be in that bhava, the effect thereof is that the person born will possess
+      learning, good nature and prosperity, but will hanker after other people's wives. The
+      person born with Mars in the बन्धु (Bandhu 4th) bhava will be bereft of relations, and
+      hen pecked, though valiant. If Mercury be in that bhava, the person born will be a forlorn
+      creature without friends or relatives, while growing up to be a pandit distinguished
+      for sterling knowledge and affluence.
+    quote_sha256: 36046804074bdaf373f056b1a6aa19078a1db2e0fdcec6322a204358917b2000
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_4th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.04
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: possess learning
+- id: JATAKAPARIJATA.EDUCATION.CH9V68.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      Sloka 68. When the Sun is in the सुख (Sukha 4th) bhava, the person born will suffer
+      from heart disease, will lack money, corn and common sense and will be hard-hearted.
+      If the Moon be in that bhava, the effect thereof is that the person born will possess
+      learning, good nature and prosperity, but will hanker after other people's wives. The
+      person born with Mars in the बन्धु (Bandhu 4th) bhava will be bereft of relations, and
+      hen pecked, though valiant. If Mercury be in that bhava, the person born will be a forlorn
+      creature without friends or relatives, while growing up to be a pandit distinguished
+      for sterling knowledge and affluence.
+    quote_sha256: 36046804074bdaf373f056b1a6aa19078a1db2e0fdcec6322a204358917b2000
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_in_4th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.04
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: pandit distinguished for sterling knowledge
+- id: JATAKAPARIJATA.EDUCATION.CH9V751.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v7-51
+    quote: >-
+      Sloka 51. When the Moon occupies Dhanus and has the aspect of benefic planets upon it,
+      the person born will have plenty of learning, wealth, wisdom, fame and strength. When
+      the Moon in Dhanus is aspected by Mars, the Sun or Saturn, the person born under such
+      influence will be an arbitrator in a court and addicted to courtezans.
+    quote_sha256: d84903098ee9f22576c7447f0a61321933d9fc446aeed80d8caa52d82dab9899
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9.7-51_1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.moon
+        target: graha.jupiter
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+    - aspects:
+        subject: graha.moon
+        target: graha.venus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: plenty of learning
+- id: JATAKAPARIJATA.EDUCATION.CH9V92.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      Sloka 92 If a person be born when the Moon is in Simha, he will have broad eyes, a beautiful
+      face, grave looks and will be happy; if the Moon be in Kanya at a person's birth, the
+      latter will be afflicted with a craving for sensual enjoyment, of graceful address,
+      eminent in learning and prosperous; if in Tula, the person will view with reverence
+      Gods and Brahmanas, show affection... towards his relatives and will be opulent the
+      person born when the Moon is in Vrischika will be heedless, ailing, avaricious and given
+      to wandering
+    quote_sha256: 1f0372e043bc43bcdc3fcae14edd3692b40d023a618fafc9e24872b155a921f4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_virgo
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.virgo
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: eminent in learning
+- id: JATAKAPARIJATA.EDUCATION.CH9V93.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v93
+    quote: >-
+      Sloka 93 When Ketu is in the 10th bhava, the person born will be wise, strong, skilled
+      in the arts, self-knowing, loving the people but acting in a contrary wise, phlegmatic,
+      foremost among brave men and continually wandering.
+    quote_sha256: a9ba8799746130b09265299f0f81f6f3e1497d24638a4ba0b0442651d1290ca0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_in_10th_93
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.10
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be wise

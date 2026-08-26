@@ -1,0 +1,4599 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BHAVARTHARATNAKARA.GENERAL.CH8V2.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bhavartha-ratnakara
+    edition: bhavartha-ratnakara-raman
+    locator: ch8.v2
+    quote: '2 The 2nd and 11th lords should be in the 10th free from affliction
+
+      3 Rahu should be in the 10th 11th 4th, or 5th to confer Rajayoga in his Dasa
+
+      4 Kethu''s presence in the 3rd is good but inauspicious in the 9th and 5th
+
+      5 Sukra becomes capable of conferring power if he is in the 3rd with the Moon
+
+      6 The native does not always wield power if the 10th lord is in the 3rd or the 11th
+      but will do so only temporarily
+
+      Illustrative of some of the combinations given above are the following charts — In Chart
+      No 42 it will be seen that lord of the 2nd Mercury is in the 2nd and that of the 5th
+      is in the 5th This has no doubt given rise to Rajayoga especially because Mercury the
+      2nd lord is exalted But Jupiter''s association with Kethu going under the technical
+      name of Guruchandalayoga has somewhat marred the Rajayoga Chart No 42 given above illustrates
+      the Rajayoga mentioned in stanza 2 In Chart No 43 given herewith Jupiter is lord of
+      the 2nd and 11th and he is in the 10th This is a very auspicious combination in as much
+      as finance gains and means of livelihood are brought together so that all these three
+      functions are promoted Guru Dasa in the case of the native of Chart No 43 has produced
+      very beneficial results in respect of money, fame, profession and gains. This horoscope
+      (Chart No 44) illustrates the principle adumbrated in stanza 3 that Rahu in the 10th
+      house confers Rajayoga in his dasa Rahu by himself is not capable of giving rise to
+      any results He gives the effects of the lords of Rasis which he occupies Consequently,
+      in this particular chart Rahu must cause the result of Jupiter who as lord of lagna
+      and the 10th lord is exalted in the 5th This is a unique combination which has made
+      the subject a great figure in the field of poetry and literature According to Stanza
+      6, if the 10th lord is in the 3rd the native does not always enjoy Rajayoga but will
+      do so only temporarily In this horoscope (Chart No 45) the 10th lord Venus is in the
+      3rd in his own house with Mercury lord of finance The native was once very well off
+      and commanded much influence but now he is humble Mark the Dwirdwadasa positions of
+      planets Stanza 7 is rather vague It says that if Jupiter as 10th lord (which is possible
+      in case of Mithuna and Meena Lagnas) is in the 3rd, he would give rise to the same yoga
+      as he would do, if he were lord of the 3rd What results Jupiter would give as lord of
+      the 3rd the author has not elucidated We have to take the information from other books
+      Stanza 8 If the 9th lord is in the 8th, his Dasa will not confer any fame If Jupiter
+      as lord of the 9th is in the 8th the person becomes highly fortunate This is an important
+      stanza not only as enunciating a general principle but as pointing out an exception
+      Thus the 9th lord in the 8th is not good But Jupiter is an exception In our humble experience
+      we have found that if Jupiter, even without being lord of the 9th, is in the 8th the
+      native enjoys much wealth But such Jupiter should be lord of Lagna The following horoscope
+      (Chart No 46) illustrates this principle The Lagna is Dhanus and the lord Jupiter is
+      exalted in the 8th There are of course several other good combinations but this one
+      has made the native amass much fortune Stanza 9 If the 8th and 9th lords are in conjunctionor
+      aspect each other, fame and power will be conferred in the Dasa of the 8 lord This combination
+      is to be found in Chart No 46 given above The Sun and the Moon—lords of 9th and 8th
+      respectively aspect each other so that the Moon''s Dasa will confer fame and prosperity
+      on the native Stanza 10 If the 9th and 8th lords combine with or aspect each other fame
+      and power will be conferred not in the Dasa of the 9th lord but in the sub-period of
+      the 8th lord In stanza 9, it is stated that the 8th lord gets the power to produce yoga
+      which means the 9th lord delegates his power to the 8th lord with the result he himself
+      becomes powerless Stanza 11 If the 10th and 11th lords combine with or aspect each other
+      Rajayoga will be caused in the Dasa of the 11th lord Stanza 12 If the 10th and 11th
+      lords combine with or aspect each other, good and bad results will be equal during the
+      Dasa of the 10th lord Stanza 13 The person will be deprived of fame and prosperity in
+      the sub-period of the 11th lord When Venus is in the 10th no yoga will be produced in
+      his Dasa Rajayoga will be conferred in Sani Dasa if Sani is in the 7th house In Chart
+      No 47 note lord of the 10th aspects the lord of the 11th while from Chandra Lagna lords
+      of the 10th and 11th aspect each other mutually The native has been enjoying Rajayoga
+      in the Dasa of Jupiter lord of the 11th (stanza 11) The principle given out in stanza
+      13 that the sub period of the lord of the 11th would deprive the native of Rajayoga
+      is applicable in toto to the above example In the sub period of Jupiter (in the Dasa
+      of Guru) the native lost fame and money and his reputation was at stake for no fault
+      of his There was a clear break in the Rajayoga Stanza 14. Rahu in the 7th will certainly
+      confer fame and prosperity. Saturn in the 3rd and 9th will also confer yoga. Stanza
+      15 Jupiter in the 3rd, 8th and 9th will confer fame and prosperity. The person goes
+      to heaven after death if Jupiter is in the 12th. Stanza 16. If the 9th and 10th lords
+      are in the 10th and 9th respectively the native will enjoy Rajayoga and much fame. The
+      yogas mentioned in stanzas 14 and 15 are simple enough Contrary to the commonly accepted
+      notion that Saturn destroys the bhava he occupies, the author holds that Saturn in the
+      9th confers yoga. But readers will have to note that such a situation of Saturn would
+      adversely affect the father. The 12th represents moksha or emancipation As Jupiter is
+      a Deva planet, his situation in the 12th takes the person to heaven after his death.
+      The combination given in stanza 16 goes under the name of Dharmakarmadhipa yoga or exchange
+      of houses between 9th and 10th lords and it is an auspicious combination Though it may
+      not give much fame it will certainly confer prosperity and wealth In this horoscope
+      (Chart No. 48) lord of the 9th Mercury is in the 10th while the 10th lord Venus is in
+      the 9th. Though Venus is Neecha, he is free from Neecha effect. The native is very well
+      off in life and enjoys much prosperity Stanza 17. If the 9th lord is in the 10th and
+      the 10th lord is in the 9th the native enjoys much fame and power. This is merely a
+      repetition of stanza 16 in a different form and is quite unnecessary. Stanza 18. The
+      person enjoys much fame and power if the 9th lord is in the 9th and the 10th lord is
+      in the 10th. Stanza 19. Power and fame are conferred if the 10th and 5th lords are in
+      the 10th and 5th. Stanza 20 Power and fame are conferred if the 9th and 10th lords are
+      in the 7th and 1st houses respectively Stanza 21. If the 6th, 7th and 10th lords are
+      situated in quadrants or trines, the person enjoys power and much fame Stanza 22. Rajayoga
+      is caused if the Sun is in Aries, Jupiter and the Moon are in Cancer, Saturn is in Libra
+      and Mars is in Capricorn. Stanzas 18 to 20 inclusive suggest the combinations which
+      confer Rajayoga. Such combinations are to be found in almost all horoscopes of any pretence
+      to power. The 10th, 9th, 5th, 7th and 1st houses are taken into account and certain
+      dispositions of these lords are said to confer Rajayoga. It is not clear as to why the
+      6th lord is given importance along with the 7th and 10th lords in stanza 21. Probably
+      the 6th lord will lose the evil of 6th lordship if he is in a kendra or thrikona but
+      still the evil will be there and it will manifest in some shape in the period or sub
+      period of the 6th lord. The combination given in the last stanza is to be found in very
+      rare and exceptional cases as for instance in the horoscope of Sri Rama The Moon and
+      Jupiter are in Cancer The Sun is in Aries, Saturn is in Libra and Mars is in Makara
+      thus causing a very powerful Raja yoga The same combination will be found in the horoscopes
+      of several well known Emperors of Puranic fame Stanza 1 If Jupiter is combined with
+      or aspected by the lord of the 10th the native will be engaged in good deeds
+
+      Stanza 2 If the lords of the 7th 5th 9th Jupiter and 10th are all combined in an aquatic
+      sign (Jalarasi)
+
+      Stanza 3 the native will have dips in rivers as sacred as Ganges but not in Ganges
+
+      Stanza 4 No pilgrimage will be undertaken in the Dasas of the 5th and 7th lords The
+      native will devote himself to listening to the stories of Vishnu
+
+      Stanza 5 A person born in Mithuna Lagna will certainly have dips in Ganges in the Dasas
+      of Jupiter and Saturn if they are in the 9th house
+
+      Stanza 6 A person born in Mesha Lagna will bathe in Ganges in the Dasas of Venus Jupiter
+      and the Sun if they are in the 10th house Stanza 7. If the 10th lord is combined with
+      Jupiter the native will be highly religious or orthodox. If the 10th lord is in the
+      6th or 12th he will not be religious. That a separate chapter should be devoted to giving
+      combinations for bathing in sacred rivers shows the importance which the Hindus have
+      attached from time immemorial to the question of pilgrimage. Careful study reveals that
+      pilgrimage to which a religious touch was given was undertaken as part of education.
+      Pilgrimage is the final phase of education and it has its own moral, intellectual and
+      social values. The waters of Ganges and several other sacred rivers are full of medicinal
+      virtue and a dip in these rivers is held so sacred that it washes not only the physical
+      dirt but the mental impurity also. Even now, the majority of the Hindus or for that
+      matter people of all religions yearn to undertake pilgrimages so that their existence
+      on the earth might be justified. The first stanza says that if the 10th lord and Jupiter
+      are conjoined together or aspect each other the native will be engaged in Satkarmas
+      or good deeds. Jupiter is the Guru or preceptor of the Gods and as the 10th is the house
+      of action, Jupiter''s connection with it or its lord is bound to have very favourable
+      influences. Human nature takes different moulds. There are people who are always for
+      destruction, wicked acts, selfishness and engaged in dirty and scandalous things. Jupiter
+      in the 10th generally counteracts this evil influence and makes the native fear God
+      and hate injuring others, detest evil company and engage himself in charitable acts
+      and deeds. In Chart No. 50 Jupiter—the Karmakaraka is in the 10th. In Jupiter''s Dasa
+      in his own bhukthi the native had dips in not only the Ganges but also in other sacred
+      rivers and visited a number of holy places. Thus ends the Ninth chapter entitled Rajayogas
+      in Bhavartha Ratnakara of Sri Ramanujacharya. Stanza 1. The 2nd lord becomes a Maraka
+      in the Dasa of the 12th lord. The 12th lord becomes a Maraka in the Dasa of the 2nd
+      lord Stanza 2. If the 12th lord is aspected by or is in conjunction with the 2nd lord,
+      he becomes a powerful maraka in his Dasa . Stanza 3. The planets in the 12th house which
+      are aspected by the 12th lord become powerful marakas during the Dasa of the 2nd lord.
+      Maraka or death is an important event in the life of an individual I have dealt with
+      this question fairly exhaustively in my books Hindu Predictive Astrology and How to
+      Judge a Horoscope. The ancient seers have given a number of methods—mathematical as
+      well as predictive for finding the duration of life of an individual As far as my humble
+      experience goes, the mathematical methods have their own pitfalls and do not seem to
+      yield correct results in the majority of cases The predictive processes on the other
+      hand, if handled properly by an expert who has developed intuition will be very helpful
+      in finding the time of death. Whatever be the combinations given for finding the maraka
+      planets one should first ascertain, whether a horoscope in question indicates Balarishta
+      (early death), Alpayu (short life Madhyayu (middle life) or Purnayu (full life) Generally
+      speaking if the majority of the planets are disposed in Kendras or quadrants, one will
+      have long life if in Panaparas (cadent houses) middle life and if in Apoklimas (succeedent
+      houses) short life This is only a general principle and it should be applied with great
+      care There are well known principles which will enable any reader of average intelligence
+      to judge the kind of Ayurdaya, and they can be studied from any standard book. The author
+      of this work, Sri Ramanuja has given beautiful combinations According to him —'
+    quote_sha256: bc5224952f6f5dec4d6108b72f5478e3173e9fc3dae7c6fc2111e1df16aa16b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: br_ch_rajayoga_4a
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.03
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Kethu's presence in the 3rd is good
+- id: BHAVARTHARATNAKARA.GENERAL.CH8V2.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bhavartha-ratnakara
+    edition: bhavartha-ratnakara-raman
+    locator: ch8.v2
+    quote: '2 The 2nd and 11th lords should be in the 10th free from affliction
+
+      3 Rahu should be in the 10th 11th 4th, or 5th to confer Rajayoga in his Dasa
+
+      4 Kethu''s presence in the 3rd is good but inauspicious in the 9th and 5th
+
+      5 Sukra becomes capable of conferring power if he is in the 3rd with the Moon
+
+      6 The native does not always wield power if the 10th lord is in the 3rd or the 11th
+      but will do so only temporarily
+
+      Illustrative of some of the combinations given above are the following charts — In Chart
+      No 42 it will be seen that lord of the 2nd Mercury is in the 2nd and that of the 5th
+      is in the 5th This has no doubt given rise to Rajayoga especially because Mercury the
+      2nd lord is exalted But Jupiter''s association with Kethu going under the technical
+      name of Guruchandalayoga has somewhat marred the Rajayoga Chart No 42 given above illustrates
+      the Rajayoga mentioned in stanza 2 In Chart No 43 given herewith Jupiter is lord of
+      the 2nd and 11th and he is in the 10th This is a very auspicious combination in as much
+      as finance gains and means of livelihood are brought together so that all these three
+      functions are promoted Guru Dasa in the case of the native of Chart No 43 has produced
+      very beneficial results in respect of money, fame, profession and gains. This horoscope
+      (Chart No 44) illustrates the principle adumbrated in stanza 3 that Rahu in the 10th
+      house confers Rajayoga in his dasa Rahu by himself is not capable of giving rise to
+      any results He gives the effects of the lords of Rasis which he occupies Consequently,
+      in this particular chart Rahu must cause the result of Jupiter who as lord of lagna
+      and the 10th lord is exalted in the 5th This is a unique combination which has made
+      the subject a great figure in the field of poetry and literature According to Stanza
+      6, if the 10th lord is in the 3rd the native does not always enjoy Rajayoga but will
+      do so only temporarily In this horoscope (Chart No 45) the 10th lord Venus is in the
+      3rd in his own house with Mercury lord of finance The native was once very well off
+      and commanded much influence but now he is humble Mark the Dwirdwadasa positions of
+      planets Stanza 7 is rather vague It says that if Jupiter as 10th lord (which is possible
+      in case of Mithuna and Meena Lagnas) is in the 3rd, he would give rise to the same yoga
+      as he would do, if he were lord of the 3rd What results Jupiter would give as lord of
+      the 3rd the author has not elucidated We have to take the information from other books
+      Stanza 8 If the 9th lord is in the 8th, his Dasa will not confer any fame If Jupiter
+      as lord of the 9th is in the 8th the person becomes highly fortunate This is an important
+      stanza not only as enunciating a general principle but as pointing out an exception
+      Thus the 9th lord in the 8th is not good But Jupiter is an exception In our humble experience
+      we have found that if Jupiter, even without being lord of the 9th, is in the 8th the
+      native enjoys much wealth But such Jupiter should be lord of Lagna The following horoscope
+      (Chart No 46) illustrates this principle The Lagna is Dhanus and the lord Jupiter is
+      exalted in the 8th There are of course several other good combinations but this one
+      has made the native amass much fortune Stanza 9 If the 8th and 9th lords are in conjunctionor
+      aspect each other, fame and power will be conferred in the Dasa of the 8 lord This combination
+      is to be found in Chart No 46 given above The Sun and the Moon—lords of 9th and 8th
+      respectively aspect each other so that the Moon''s Dasa will confer fame and prosperity
+      on the native Stanza 10 If the 9th and 8th lords combine with or aspect each other fame
+      and power will be conferred not in the Dasa of the 9th lord but in the sub-period of
+      the 8th lord In stanza 9, it is stated that the 8th lord gets the power to produce yoga
+      which means the 9th lord delegates his power to the 8th lord with the result he himself
+      becomes powerless Stanza 11 If the 10th and 11th lords combine with or aspect each other
+      Rajayoga will be caused in the Dasa of the 11th lord Stanza 12 If the 10th and 11th
+      lords combine with or aspect each other, good and bad results will be equal during the
+      Dasa of the 10th lord Stanza 13 The person will be deprived of fame and prosperity in
+      the sub-period of the 11th lord When Venus is in the 10th no yoga will be produced in
+      his Dasa Rajayoga will be conferred in Sani Dasa if Sani is in the 7th house In Chart
+      No 47 note lord of the 10th aspects the lord of the 11th while from Chandra Lagna lords
+      of the 10th and 11th aspect each other mutually The native has been enjoying Rajayoga
+      in the Dasa of Jupiter lord of the 11th (stanza 11) The principle given out in stanza
+      13 that the sub period of the lord of the 11th would deprive the native of Rajayoga
+      is applicable in toto to the above example In the sub period of Jupiter (in the Dasa
+      of Guru) the native lost fame and money and his reputation was at stake for no fault
+      of his There was a clear break in the Rajayoga Stanza 14. Rahu in the 7th will certainly
+      confer fame and prosperity. Saturn in the 3rd and 9th will also confer yoga. Stanza
+      15 Jupiter in the 3rd, 8th and 9th will confer fame and prosperity. The person goes
+      to heaven after death if Jupiter is in the 12th. Stanza 16. If the 9th and 10th lords
+      are in the 10th and 9th respectively the native will enjoy Rajayoga and much fame. The
+      yogas mentioned in stanzas 14 and 15 are simple enough Contrary to the commonly accepted
+      notion that Saturn destroys the bhava he occupies, the author holds that Saturn in the
+      9th confers yoga. But readers will have to note that such a situation of Saturn would
+      adversely affect the father. The 12th represents moksha or emancipation As Jupiter is
+      a Deva planet, his situation in the 12th takes the person to heaven after his death.
+      The combination given in stanza 16 goes under the name of Dharmakarmadhipa yoga or exchange
+      of houses between 9th and 10th lords and it is an auspicious combination Though it may
+      not give much fame it will certainly confer prosperity and wealth In this horoscope
+      (Chart No. 48) lord of the 9th Mercury is in the 10th while the 10th lord Venus is in
+      the 9th. Though Venus is Neecha, he is free from Neecha effect. The native is very well
+      off in life and enjoys much prosperity Stanza 17. If the 9th lord is in the 10th and
+      the 10th lord is in the 9th the native enjoys much fame and power. This is merely a
+      repetition of stanza 16 in a different form and is quite unnecessary. Stanza 18. The
+      person enjoys much fame and power if the 9th lord is in the 9th and the 10th lord is
+      in the 10th. Stanza 19. Power and fame are conferred if the 10th and 5th lords are in
+      the 10th and 5th. Stanza 20 Power and fame are conferred if the 9th and 10th lords are
+      in the 7th and 1st houses respectively Stanza 21. If the 6th, 7th and 10th lords are
+      situated in quadrants or trines, the person enjoys power and much fame Stanza 22. Rajayoga
+      is caused if the Sun is in Aries, Jupiter and the Moon are in Cancer, Saturn is in Libra
+      and Mars is in Capricorn. Stanzas 18 to 20 inclusive suggest the combinations which
+      confer Rajayoga. Such combinations are to be found in almost all horoscopes of any pretence
+      to power. The 10th, 9th, 5th, 7th and 1st houses are taken into account and certain
+      dispositions of these lords are said to confer Rajayoga. It is not clear as to why the
+      6th lord is given importance along with the 7th and 10th lords in stanza 21. Probably
+      the 6th lord will lose the evil of 6th lordship if he is in a kendra or thrikona but
+      still the evil will be there and it will manifest in some shape in the period or sub
+      period of the 6th lord. The combination given in the last stanza is to be found in very
+      rare and exceptional cases as for instance in the horoscope of Sri Rama The Moon and
+      Jupiter are in Cancer The Sun is in Aries, Saturn is in Libra and Mars is in Makara
+      thus causing a very powerful Raja yoga The same combination will be found in the horoscopes
+      of several well known Emperors of Puranic fame Stanza 1 If Jupiter is combined with
+      or aspected by the lord of the 10th the native will be engaged in good deeds
+
+      Stanza 2 If the lords of the 7th 5th 9th Jupiter and 10th are all combined in an aquatic
+      sign (Jalarasi)
+
+      Stanza 3 the native will have dips in rivers as sacred as Ganges but not in Ganges
+
+      Stanza 4 No pilgrimage will be undertaken in the Dasas of the 5th and 7th lords The
+      native will devote himself to listening to the stories of Vishnu
+
+      Stanza 5 A person born in Mithuna Lagna will certainly have dips in Ganges in the Dasas
+      of Jupiter and Saturn if they are in the 9th house
+
+      Stanza 6 A person born in Mesha Lagna will bathe in Ganges in the Dasas of Venus Jupiter
+      and the Sun if they are in the 10th house Stanza 7. If the 10th lord is combined with
+      Jupiter the native will be highly religious or orthodox. If the 10th lord is in the
+      6th or 12th he will not be religious. That a separate chapter should be devoted to giving
+      combinations for bathing in sacred rivers shows the importance which the Hindus have
+      attached from time immemorial to the question of pilgrimage. Careful study reveals that
+      pilgrimage to which a religious touch was given was undertaken as part of education.
+      Pilgrimage is the final phase of education and it has its own moral, intellectual and
+      social values. The waters of Ganges and several other sacred rivers are full of medicinal
+      virtue and a dip in these rivers is held so sacred that it washes not only the physical
+      dirt but the mental impurity also. Even now, the majority of the Hindus or for that
+      matter people of all religions yearn to undertake pilgrimages so that their existence
+      on the earth might be justified. The first stanza says that if the 10th lord and Jupiter
+      are conjoined together or aspect each other the native will be engaged in Satkarmas
+      or good deeds. Jupiter is the Guru or preceptor of the Gods and as the 10th is the house
+      of action, Jupiter''s connection with it or its lord is bound to have very favourable
+      influences. Human nature takes different moulds. There are people who are always for
+      destruction, wicked acts, selfishness and engaged in dirty and scandalous things. Jupiter
+      in the 10th generally counteracts this evil influence and makes the native fear God
+      and hate injuring others, detest evil company and engage himself in charitable acts
+      and deeds. In Chart No. 50 Jupiter—the Karmakaraka is in the 10th. In Jupiter''s Dasa
+      in his own bhukthi the native had dips in not only the Ganges but also in other sacred
+      rivers and visited a number of holy places. Thus ends the Ninth chapter entitled Rajayogas
+      in Bhavartha Ratnakara of Sri Ramanujacharya. Stanza 1. The 2nd lord becomes a Maraka
+      in the Dasa of the 12th lord. The 12th lord becomes a Maraka in the Dasa of the 2nd
+      lord Stanza 2. If the 12th lord is aspected by or is in conjunction with the 2nd lord,
+      he becomes a powerful maraka in his Dasa . Stanza 3. The planets in the 12th house which
+      are aspected by the 12th lord become powerful marakas during the Dasa of the 2nd lord.
+      Maraka or death is an important event in the life of an individual I have dealt with
+      this question fairly exhaustively in my books Hindu Predictive Astrology and How to
+      Judge a Horoscope. The ancient seers have given a number of methods—mathematical as
+      well as predictive for finding the duration of life of an individual As far as my humble
+      experience goes, the mathematical methods have their own pitfalls and do not seem to
+      yield correct results in the majority of cases The predictive processes on the other
+      hand, if handled properly by an expert who has developed intuition will be very helpful
+      in finding the time of death. Whatever be the combinations given for finding the maraka
+      planets one should first ascertain, whether a horoscope in question indicates Balarishta
+      (early death), Alpayu (short life Madhyayu (middle life) or Purnayu (full life) Generally
+      speaking if the majority of the planets are disposed in Kendras or quadrants, one will
+      have long life if in Panaparas (cadent houses) middle life and if in Apoklimas (succeedent
+      houses) short life This is only a general principle and it should be applied with great
+      care There are well known principles which will enable any reader of average intelligence
+      to judge the kind of Ayurdaya, and they can be studied from any standard book. The author
+      of this work, Sri Ramanuja has given beautiful combinations According to him —'
+    quote_sha256: bc5224952f6f5dec4d6108b72f5478e3173e9fc3dae7c6fc2111e1df16aa16b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: br_ch_rajayoga_4b
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Kethu's presence in the 9th is inauspicious
+- id: BHAVARTHARATNAKARA.GENERAL.CH8V2.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bhavartha-ratnakara
+    edition: bhavartha-ratnakara-raman
+    locator: ch8.v2
+    quote: '2 The 2nd and 11th lords should be in the 10th free from affliction
+
+      3 Rahu should be in the 10th 11th 4th, or 5th to confer Rajayoga in his Dasa
+
+      4 Kethu''s presence in the 3rd is good but inauspicious in the 9th and 5th
+
+      5 Sukra becomes capable of conferring power if he is in the 3rd with the Moon
+
+      6 The native does not always wield power if the 10th lord is in the 3rd or the 11th
+      but will do so only temporarily
+
+      Illustrative of some of the combinations given above are the following charts — In Chart
+      No 42 it will be seen that lord of the 2nd Mercury is in the 2nd and that of the 5th
+      is in the 5th This has no doubt given rise to Rajayoga especially because Mercury the
+      2nd lord is exalted But Jupiter''s association with Kethu going under the technical
+      name of Guruchandalayoga has somewhat marred the Rajayoga Chart No 42 given above illustrates
+      the Rajayoga mentioned in stanza 2 In Chart No 43 given herewith Jupiter is lord of
+      the 2nd and 11th and he is in the 10th This is a very auspicious combination in as much
+      as finance gains and means of livelihood are brought together so that all these three
+      functions are promoted Guru Dasa in the case of the native of Chart No 43 has produced
+      very beneficial results in respect of money, fame, profession and gains. This horoscope
+      (Chart No 44) illustrates the principle adumbrated in stanza 3 that Rahu in the 10th
+      house confers Rajayoga in his dasa Rahu by himself is not capable of giving rise to
+      any results He gives the effects of the lords of Rasis which he occupies Consequently,
+      in this particular chart Rahu must cause the result of Jupiter who as lord of lagna
+      and the 10th lord is exalted in the 5th This is a unique combination which has made
+      the subject a great figure in the field of poetry and literature According to Stanza
+      6, if the 10th lord is in the 3rd the native does not always enjoy Rajayoga but will
+      do so only temporarily In this horoscope (Chart No 45) the 10th lord Venus is in the
+      3rd in his own house with Mercury lord of finance The native was once very well off
+      and commanded much influence but now he is humble Mark the Dwirdwadasa positions of
+      planets Stanza 7 is rather vague It says that if Jupiter as 10th lord (which is possible
+      in case of Mithuna and Meena Lagnas) is in the 3rd, he would give rise to the same yoga
+      as he would do, if he were lord of the 3rd What results Jupiter would give as lord of
+      the 3rd the author has not elucidated We have to take the information from other books
+      Stanza 8 If the 9th lord is in the 8th, his Dasa will not confer any fame If Jupiter
+      as lord of the 9th is in the 8th the person becomes highly fortunate This is an important
+      stanza not only as enunciating a general principle but as pointing out an exception
+      Thus the 9th lord in the 8th is not good But Jupiter is an exception In our humble experience
+      we have found that if Jupiter, even without being lord of the 9th, is in the 8th the
+      native enjoys much wealth But such Jupiter should be lord of Lagna The following horoscope
+      (Chart No 46) illustrates this principle The Lagna is Dhanus and the lord Jupiter is
+      exalted in the 8th There are of course several other good combinations but this one
+      has made the native amass much fortune Stanza 9 If the 8th and 9th lords are in conjunctionor
+      aspect each other, fame and power will be conferred in the Dasa of the 8 lord This combination
+      is to be found in Chart No 46 given above The Sun and the Moon—lords of 9th and 8th
+      respectively aspect each other so that the Moon''s Dasa will confer fame and prosperity
+      on the native Stanza 10 If the 9th and 8th lords combine with or aspect each other fame
+      and power will be conferred not in the Dasa of the 9th lord but in the sub-period of
+      the 8th lord In stanza 9, it is stated that the 8th lord gets the power to produce yoga
+      which means the 9th lord delegates his power to the 8th lord with the result he himself
+      becomes powerless Stanza 11 If the 10th and 11th lords combine with or aspect each other
+      Rajayoga will be caused in the Dasa of the 11th lord Stanza 12 If the 10th and 11th
+      lords combine with or aspect each other, good and bad results will be equal during the
+      Dasa of the 10th lord Stanza 13 The person will be deprived of fame and prosperity in
+      the sub-period of the 11th lord When Venus is in the 10th no yoga will be produced in
+      his Dasa Rajayoga will be conferred in Sani Dasa if Sani is in the 7th house In Chart
+      No 47 note lord of the 10th aspects the lord of the 11th while from Chandra Lagna lords
+      of the 10th and 11th aspect each other mutually The native has been enjoying Rajayoga
+      in the Dasa of Jupiter lord of the 11th (stanza 11) The principle given out in stanza
+      13 that the sub period of the lord of the 11th would deprive the native of Rajayoga
+      is applicable in toto to the above example In the sub period of Jupiter (in the Dasa
+      of Guru) the native lost fame and money and his reputation was at stake for no fault
+      of his There was a clear break in the Rajayoga Stanza 14. Rahu in the 7th will certainly
+      confer fame and prosperity. Saturn in the 3rd and 9th will also confer yoga. Stanza
+      15 Jupiter in the 3rd, 8th and 9th will confer fame and prosperity. The person goes
+      to heaven after death if Jupiter is in the 12th. Stanza 16. If the 9th and 10th lords
+      are in the 10th and 9th respectively the native will enjoy Rajayoga and much fame. The
+      yogas mentioned in stanzas 14 and 15 are simple enough Contrary to the commonly accepted
+      notion that Saturn destroys the bhava he occupies, the author holds that Saturn in the
+      9th confers yoga. But readers will have to note that such a situation of Saturn would
+      adversely affect the father. The 12th represents moksha or emancipation As Jupiter is
+      a Deva planet, his situation in the 12th takes the person to heaven after his death.
+      The combination given in stanza 16 goes under the name of Dharmakarmadhipa yoga or exchange
+      of houses between 9th and 10th lords and it is an auspicious combination Though it may
+      not give much fame it will certainly confer prosperity and wealth In this horoscope
+      (Chart No. 48) lord of the 9th Mercury is in the 10th while the 10th lord Venus is in
+      the 9th. Though Venus is Neecha, he is free from Neecha effect. The native is very well
+      off in life and enjoys much prosperity Stanza 17. If the 9th lord is in the 10th and
+      the 10th lord is in the 9th the native enjoys much fame and power. This is merely a
+      repetition of stanza 16 in a different form and is quite unnecessary. Stanza 18. The
+      person enjoys much fame and power if the 9th lord is in the 9th and the 10th lord is
+      in the 10th. Stanza 19. Power and fame are conferred if the 10th and 5th lords are in
+      the 10th and 5th. Stanza 20 Power and fame are conferred if the 9th and 10th lords are
+      in the 7th and 1st houses respectively Stanza 21. If the 6th, 7th and 10th lords are
+      situated in quadrants or trines, the person enjoys power and much fame Stanza 22. Rajayoga
+      is caused if the Sun is in Aries, Jupiter and the Moon are in Cancer, Saturn is in Libra
+      and Mars is in Capricorn. Stanzas 18 to 20 inclusive suggest the combinations which
+      confer Rajayoga. Such combinations are to be found in almost all horoscopes of any pretence
+      to power. The 10th, 9th, 5th, 7th and 1st houses are taken into account and certain
+      dispositions of these lords are said to confer Rajayoga. It is not clear as to why the
+      6th lord is given importance along with the 7th and 10th lords in stanza 21. Probably
+      the 6th lord will lose the evil of 6th lordship if he is in a kendra or thrikona but
+      still the evil will be there and it will manifest in some shape in the period or sub
+      period of the 6th lord. The combination given in the last stanza is to be found in very
+      rare and exceptional cases as for instance in the horoscope of Sri Rama The Moon and
+      Jupiter are in Cancer The Sun is in Aries, Saturn is in Libra and Mars is in Makara
+      thus causing a very powerful Raja yoga The same combination will be found in the horoscopes
+      of several well known Emperors of Puranic fame Stanza 1 If Jupiter is combined with
+      or aspected by the lord of the 10th the native will be engaged in good deeds
+
+      Stanza 2 If the lords of the 7th 5th 9th Jupiter and 10th are all combined in an aquatic
+      sign (Jalarasi)
+
+      Stanza 3 the native will have dips in rivers as sacred as Ganges but not in Ganges
+
+      Stanza 4 No pilgrimage will be undertaken in the Dasas of the 5th and 7th lords The
+      native will devote himself to listening to the stories of Vishnu
+
+      Stanza 5 A person born in Mithuna Lagna will certainly have dips in Ganges in the Dasas
+      of Jupiter and Saturn if they are in the 9th house
+
+      Stanza 6 A person born in Mesha Lagna will bathe in Ganges in the Dasas of Venus Jupiter
+      and the Sun if they are in the 10th house Stanza 7. If the 10th lord is combined with
+      Jupiter the native will be highly religious or orthodox. If the 10th lord is in the
+      6th or 12th he will not be religious. That a separate chapter should be devoted to giving
+      combinations for bathing in sacred rivers shows the importance which the Hindus have
+      attached from time immemorial to the question of pilgrimage. Careful study reveals that
+      pilgrimage to which a religious touch was given was undertaken as part of education.
+      Pilgrimage is the final phase of education and it has its own moral, intellectual and
+      social values. The waters of Ganges and several other sacred rivers are full of medicinal
+      virtue and a dip in these rivers is held so sacred that it washes not only the physical
+      dirt but the mental impurity also. Even now, the majority of the Hindus or for that
+      matter people of all religions yearn to undertake pilgrimages so that their existence
+      on the earth might be justified. The first stanza says that if the 10th lord and Jupiter
+      are conjoined together or aspect each other the native will be engaged in Satkarmas
+      or good deeds. Jupiter is the Guru or preceptor of the Gods and as the 10th is the house
+      of action, Jupiter''s connection with it or its lord is bound to have very favourable
+      influences. Human nature takes different moulds. There are people who are always for
+      destruction, wicked acts, selfishness and engaged in dirty and scandalous things. Jupiter
+      in the 10th generally counteracts this evil influence and makes the native fear God
+      and hate injuring others, detest evil company and engage himself in charitable acts
+      and deeds. In Chart No. 50 Jupiter—the Karmakaraka is in the 10th. In Jupiter''s Dasa
+      in his own bhukthi the native had dips in not only the Ganges but also in other sacred
+      rivers and visited a number of holy places. Thus ends the Ninth chapter entitled Rajayogas
+      in Bhavartha Ratnakara of Sri Ramanujacharya. Stanza 1. The 2nd lord becomes a Maraka
+      in the Dasa of the 12th lord. The 12th lord becomes a Maraka in the Dasa of the 2nd
+      lord Stanza 2. If the 12th lord is aspected by or is in conjunction with the 2nd lord,
+      he becomes a powerful maraka in his Dasa . Stanza 3. The planets in the 12th house which
+      are aspected by the 12th lord become powerful marakas during the Dasa of the 2nd lord.
+      Maraka or death is an important event in the life of an individual I have dealt with
+      this question fairly exhaustively in my books Hindu Predictive Astrology and How to
+      Judge a Horoscope. The ancient seers have given a number of methods—mathematical as
+      well as predictive for finding the duration of life of an individual As far as my humble
+      experience goes, the mathematical methods have their own pitfalls and do not seem to
+      yield correct results in the majority of cases The predictive processes on the other
+      hand, if handled properly by an expert who has developed intuition will be very helpful
+      in finding the time of death. Whatever be the combinations given for finding the maraka
+      planets one should first ascertain, whether a horoscope in question indicates Balarishta
+      (early death), Alpayu (short life Madhyayu (middle life) or Purnayu (full life) Generally
+      speaking if the majority of the planets are disposed in Kendras or quadrants, one will
+      have long life if in Panaparas (cadent houses) middle life and if in Apoklimas (succeedent
+      houses) short life This is only a general principle and it should be applied with great
+      care There are well known principles which will enable any reader of average intelligence
+      to judge the kind of Ayurdaya, and they can be studied from any standard book. The author
+      of this work, Sri Ramanuja has given beautiful combinations According to him —'
+    quote_sha256: bc5224952f6f5dec4d6108b72f5478e3173e9fc3dae7c6fc2111e1df16aa16b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: br_ch_rajayoga_4c
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.05
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Kethu's presence in the 5th is inauspicious
+- id: BPHS.GENERAL.CH12V3.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch12.v3
+    quote: 'A single but strong Jupiter in the Lagna or Ascendant has the ability to destroy
+      all evils just as a single reverential obeisance to Lord Shiva can destroy all sins.
+
+      Notes : Jupiter situated in Capricorn as Lagna or Ascendant should have ''Neecha Bhanga''
+      ''नीचभंग'' (neutralisation of debilitation) to do so.'
+    quote_sha256: 85e3133f562fe3a74c1377cd619febeb56acdd78de85ffd888e71cf3d7a90097
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12.3.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: destruction of all evils
+- id: BPHS.GENERAL.CH19V2325.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch19.v23-25
+    quote: >-
+      23-25 Fear from water is to be predicted in the 5th or 9th year in case the Sun be placed
+      in the 6th or the 8th House and the Moon in the 12th House from him. In the event of
+      Saturn being placed in the 8th House, and 12th from him (Saturn), that is, in the 7th
+      House, being Mars, smallpox in the 30th or 10th year should be indicated. If the 8th
+      Lord, together with Rahu, and being in his Navamamsha is placed in the 9th or the 5th
+      House from the 8th house, the native will be troubled by swelling of blood vessels,
+      urinary disorders etc. during the 22nd and the 18th year.
+    quote_sha256: 48ed306145e19e3260178ef7dbf15aa4382cd803b36ef7856e63a0521c22d1e3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 19.23_sun_6_8_moon_12_from_sun
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Fear from water in the 5th or 9th year
+- id: BPHS.GENERAL.CH19V2325.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch19.v23-25
+    quote: >-
+      23-25 Fear from water is to be predicted in the 5th or 9th year in case the Sun be placed
+      in the 6th or the 8th House and the Moon in the 12th House from him. In the event of
+      Saturn being placed in the 8th House, and 12th from him (Saturn), that is, in the 7th
+      House, being Mars, smallpox in the 30th or 10th year should be indicated. If the 8th
+      Lord, together with Rahu, and being in his Navamamsha is placed in the 9th or the 5th
+      House from the 8th house, the native will be troubled by swelling of blood vessels,
+      urinary disorders etc. during the 22nd and the 18th year.
+    quote_sha256: 48ed306145e19e3260178ef7dbf15aa4382cd803b36ef7856e63a0521c22d1e3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 19.24_saturn_8_mars_12_from_saturn
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Smallpox or similar eruptions in the 30th or 10th year
+- id: BPHS.GENERAL.CH23V810.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch23.v8-10
+    quote: >-
+      8-10 If in conjunction with Jupiter the 10th Lord be in his exaltation sign and the
+      9th Lord be in the 10th House, the combination will confer on the native honour, wealth
+      and valour. The native will have happiness as his portion in life when the 11th Lord
+      has gone into the 10th House and the 10th Lord into the Ascendant House or they both
+      have gone into an (angle) sign. There is no doubt in it that the native will have the
+      blessing of having robes, ornaments and happiness should the strong 10th Lord be placed
+      in Pisces in conjunction with Jupiter.
+    quote_sha256: 7709642affad3b6e98c63ec85877287ba0117c720a9e29ce422a52af1c3cff28
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 23.8_10_rule_2
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.11
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: happiness as life's portion
+- id: BPHS.GENERAL.CH25V56.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch25.v5-6
+    quote: >-
+      5-6 And in the event of the 12th Lord falling in the Navamamsha of his enemy, the Navamamsha
+      of his debilitation sign or the Navamamsha of the 8th House or in the 6th or 8th House,
+      the native is deprived of happiness through his wife; is troubled by expenses and remains
+      bereft of general happiness. That very 12th Lord being in an angle or a trine, the native
+      will have full happiness of his wife.
+    quote_sha256: cfaf3670b119e69783c0054a376282e278cde1d8865245c4abbbb76d33433f10
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12th_lord_in_6th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.06
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: remains bereft of general happiness
+- id: BPHS.GENERAL.CH25V56.0003.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch25.v5-6
+    quote: >-
+      5-6 And in the event of the 12th Lord falling in the Navamamsha of his enemy, the Navamamsha
+      of his debilitation sign or the Navamamsha of the 8th House or in the 6th or 8th House,
+      the native is deprived of happiness through his wife; is troubled by expenses and remains
+      bereft of general happiness. That very 12th Lord being in an angle or a trine, the native
+      will have full happiness of his wife.
+    quote_sha256: cfaf3670b119e69783c0054a376282e278cde1d8865245c4abbbb76d33433f10
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12th_lord_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: remains bereft of general happiness
+- id: BPHS.GENERAL.CH26V109.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v109
+    quote: >-
+      Should the 10th Lord be situated in the Ascendant; the native will be learned, famous,
+      be a poet, will incur diseases in childhood, be happy later on and his wealth will increase
+      day by day.
+    quote_sha256: afce69b6397dc0645657bcbc569685c5225b27643c5c01f9501deefe3439f523
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.109.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: the native will be happy later on
+- id: BPHS.GENERAL.CH26V112.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v112
+    quote: 'Should the 10th Lord be situated in the 4th House, the native will enjoy happiness,
+      be devoted to his mother, and be interested in her welfare, will have conveyances, lands
+      and houses, be virtuous and wealthy.
+
+      Notes : In this combination the native mostly adopts a profession relating to automobiles,
+      building material, agriculture, dairy etc.'
+    quote_sha256: 0e42c59a2b825fb1fa0132b99b4592e0930bc6e91eee6d29c816ab780293f935
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 10th_lord_in_4th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.04
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: the native will enjoy happiness
+- id: BPHS.GENERAL.CH26V113.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v113
+    quote: 'In the event of the 10th Lord being placed in the 5th House the native will be
+      endowed with all kinds of learning, be always cheerful, wealthy and be blessed with
+      sons.
+
+      Notes : According to this sloka an angle, the 10th House, gets related to a trine, the
+      5th House. This combination, therefore, is specially auspicious. In it the native earns
+      great fame on the basis of his intellectual powers and is very successful in his field
+      of action. This combination is generally found in the horoscopes of wise statesmen,
+      scholars, professors, writers, educationists, actors etc. In the Pisces Ascendant, the
+      effects described in the sloka are obtained, by the native in their highest degree.
+      Here is an example to prove the truth. The present Horoscope is of the world famous
+      poet, Ravindra Nath Tagore, who got the famous nobel prize on his book ''Gitanjali''
+      (A Garland of Songs). In this horoscope of Pisces Ascendant the 10th Lord Jupiter, being
+      placed in the 5th House, is in his sign of exaltation. The fifth Lord, the Moon has
+      exchange also with the Ascendant Lord Jupiter. Which very greatly increases the auspicious
+      nature of this horoscope. The Second Horoscope is of Shivaji Ganeshan, a famous Indian
+      Film Actor. He has been famous due to his art of acting. Here the 10th Lord Mars is
+      situated in the 5th House.'
+    quote_sha256: 267cee04e6e7fd23677ae5615c6f219f3a2caeb784df01237ddd01e6da273739
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.113.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.05
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: always cheerful
+- id: BPHS.GENERAL.CH26V119.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v119
+    quote: >-
+      If the 10th Lord is situated in the 11th House, the native is blessed with wealth and,
+      sons. He will enjoy happiness, be truthful, be always delighted and be virtuous
+    quote_sha256: bca1bb1d77ba6e8f8a69d3bea96765487b983f2b1494cc8f4a3087e023b81c90
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 10th_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.11
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: enjoy happiness
+- id: BPHS.GENERAL.CH26V120.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v120
+    quote: >-
+      If the 10th Lord is placed in the 12th House, the native will spend in royal courts.
+      He will also have fear from enemies and will be worried inspite of being skilful.
+    quote_sha256: 3656b3aee1ed0b784b8de27e29754cf6b5f413aacd668786ae6952758983d305
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '120.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: the native will be worried in spite of being skilful
+- id: BPHS.GENERAL.CH26V121.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v121
+    quote: >-
+      If the 11th Lord is placed in the Ascendant the native will be of Sattwika nature, be
+      rich, happy, even sighted, a poet, eloquent in speech and be always endowed with gains.
+    quote_sha256: 0b753d3366146edb797056c9de910e65bda7a44f1e6df459780bba57a6c9fdbc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.121_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: native will be happy
+- id: BPHS.GENERAL.CH26V122.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v122
+    quote: >-
+      Should the 11th Lord be placed in the 2nd House, the native will be endowed with all
+      kinds of wealth and all kinds of accomplishments, be charitable, religious and always
+      happy.
+    quote_sha256: 0c3635dc778221c432741cc1be3f14ee88f805db1081b512f647a36af7c9ebc8
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.122'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: endowed with all kinds of accomplishments
+- id: BPHS.GENERAL.CH26V122.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v122
+    quote: >-
+      Should the 11th Lord be placed in the 2nd House, the native will be endowed with all
+      kinds of wealth and all kinds of accomplishments, be charitable, religious and always
+      happy.
+    quote_sha256: 0c3635dc778221c432741cc1be3f14ee88f805db1081b512f647a36af7c9ebc8
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.122'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: always happy
+- id: BPHS.GENERAL.CH26V131.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v131
+    quote: >-
+      In case the 11th Lord is situated in the 11th House, the native will have gains in all
+      his undertakings. His learning and happiness will be on the increase day by day.
+    quote_sha256: d21a4f09bd4ac6cc24df0bd1fc8ce27edb1e7b069830120a290cc27c0c216307
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.131.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.11
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: happiness will be on the increase day by day
+- id: BPHS.GENERAL.CH26V2.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v2
+    quote: >-
+      When the Lord of the Ascendant has been placed in the 2nd House, the native will be
+      gainful, learned, happy, good natured, religious minded, honourable will have many wives
+      and good qualities.
+    quote_sha256: f178ab6a6c4dbfea2cfbc4c2d2440f57cf50a7fcb4fe8e48a7f17fbfa627d286
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.2.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: the native will be happy
+- id: BPHS.GENERAL.CH26V21.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v21
+    quote: >-
+      Should the 2nd Lord be placed int he 9th House the native will be wealthy, diligent
+      and skilful. He remains sickly in childhood but happy in the remaining years of life.
+      He visits shrines and observes religious rites etc.
+    quote_sha256: 4f6fec4e1f2db8e4dcac796cd5c4d5635ed10311c7905911c87699e1c92b9525
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '21.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: The native remains happy in the remaining years of life
+- id: BPHS.GENERAL.CH26V26.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v26
+    quote: >-
+      If the 3rd Lord happens to fall in the 2nd House the native will be corpulent, devoid
+      of valour, less disposed to take initiative, unhappy and will have eyes on others' wives
+      and others' wealth.
+    quote_sha256: 21e840a7dddeef8bb9b0c63e36936e01159fd3aaf384fbc42d4c0fb7bdaf2b17
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.26_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: The native will be unhappy
+- id: BPHS.GENERAL.CH26V3.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v3
+    quote: 'Should the Ascendant Lord be placed in the Third House, the native will be equal
+      to lion in valour, will have all kinds of wealth, will be honourable, will have two
+      wives and be intelligent and happy.
+
+      Notes : The 3rd is the House of bodily strength and valour. If the Ascendant Lord is
+      in the 3rd House, the native will be marvellously enterprising and will have the courage
+      to face every situation. The faculties of the body become most flourishing in the Third
+      House, and the body is represented by the Ascendant and its Lord. The Ascendant Lord
+      being placed in the Third House, the native will require more nutrition and his diet
+      will be richer. In case the Ascendant is Gemini and the Ascendant Lord has gone in the
+      Third House, the native becomes ascetic towards earning money from the age of 40 or
+      45. His vitality and strength are decayed. In Aquarius Ascendant also when the Ascendant
+      Lord occupies the Third House Saturn will be in his debilitation sign and opposite effects
+      will be seen.'
+    quote_sha256: 7e06a90114de280c400b004183b7aafb3f83246e985c323b049e8016892af5a2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_in_3rd_general
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.03
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: will be happy
+- id: BPHS.GENERAL.CH26V31.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v31
+    quote: >-
+      Should the 3rd Lord occupy the 7th House the native will have aptitude for serving the
+      king, he will not be happy during childhood but there is no doubt in it that he will
+      get happiness at the end.
+    quote_sha256: 44d5df51578c5bf617c52e5e35f8c99e99eac12afd2907ca2261dc3ce85696dd
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: saravali_26_31_3rd_lord_in_7th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.07
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: unhappy during childhood
+- id: BPHS.GENERAL.CH26V31.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v31
+    quote: >-
+      Should the 3rd Lord occupy the 7th House the native will have aptitude for serving the
+      king, he will not be happy during childhood but there is no doubt in it that he will
+      get happiness at the end.
+    quote_sha256: 44d5df51578c5bf617c52e5e35f8c99e99eac12afd2907ca2261dc3ce85696dd
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: saravali_26_31_3rd_lord_in_7th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.07
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: will get happiness at the end
+- id: BPHS.GENERAL.CH26V4.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v4
+    quote: 'Should the Ascendant Lord be in the 4th House the native will be blessed with
+      paternal and maternal happiness, many brothers and will be lascivious, virtuous and
+      charming.
+
+      Notes : When the Ascendant Lord falls in the Fourth House, the native will not only
+      be lustful, he will also become mentally very sensitive. The Fourth House is related
+      to the mind and psychological effects. The Ascendant is itself the body. The psychology
+      of sex is quite near to the body. Therefore, the native may be lustful. Such a man takes
+      special care of his body. He is always engaged in adorning his body and improving his
+      personality.
+
+      The auspicious effects that have been told in this sloka will not be seen when the Ascendants
+      are Aries and Capricorn. In these Ascendants they will be reversed because in these
+      Ascendants the Ascendant Lord will be in his sign of debilitation when placed in the
+      4th House.'
+    quote_sha256: 63ef1f5d81f3e28100c77eed3f942c88ea44954741a97824288ab9cc49b8893c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagnesha_in_4th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.04
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: blessed with paternal and maternal happiness
+- id: BPHS.GENERAL.CH26V40.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v40
+    quote: >-
+      In case the 4th Lord occupies the 4th House, the native will rise to the ministership,
+      will possess all kinds of wealths, he will be skilful, virtuous, honourable, learned,
+      happy and be well disposed to his wife.
+    quote_sha256: cd28729e73d3966ac58a199cf24fec3ecc4c84e66b751fdafc5a152783533b69
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.40.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.04
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: will be happy
+- id: BPHS.GENERAL.CH26V41.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v41
+    quote: >-
+      If the 4th Lord is situated in the 5th House, the native will be happy, be favourite
+      of all, devotee of Lord Vishnu, virtuous, honourable and will possess self earned wealth.
+    quote_sha256: 3a2d078b80336d61ad87d00dcddf7e1a554eba749a696146f754af6e9f3de6e4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.41_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.05
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: native will be happy
+- id: BPHS.GENERAL.CH26V45.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v45
+    quote: >-
+      If the 4th Lord is situated in the 9th House, the native will be loved by one and all,
+      be a devotee of God, Virtuous, honourable and blessed with every kind of happiness.
+    quote_sha256: 2f67da57cca8aba53319bdad935d91b222fdd57da962c71ce8e11a095b40c49b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.45.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: loved by one and all
+- id: BPHS.GENERAL.CH26V45.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v45
+    quote: >-
+      If the 4th Lord is situated in the 9th House, the native will be loved by one and all,
+      be a devotee of God, Virtuous, honourable and blessed with every kind of happiness.
+    quote_sha256: 2f67da57cca8aba53319bdad935d91b222fdd57da962c71ce8e11a095b40c49b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.45.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: blessed with every kind of happiness
+- id: BPHS.GENERAL.CH26V52.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v52
+    quote: >-
+      If the 5th Lord occupies the 4th House the native will be happy, having the blessing
+      of maternal happiness, wealth and intelligence and be a king or a minister or a preceptor.
+    quote_sha256: c598b76ba78da6bc22c947b4013a8fdc04ba3fe82abee95804b44599410886da
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '52.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.04
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: the native will be happy
+- id: BPHS.GENERAL.CH26V55.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v55
+    quote: >-
+      If the 5th Lord is situated in the 7th House, the native will be tolerant of all religions
+      and very religious, endowed with progenic happiness and be helpful to others.
+    quote_sha256: 961d9262fa74fe8b890bba86f31f6b945fa2e49c0fb2e29e98f92996acdc928f
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.55_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.07
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: be helpful to others
+- id: BPHS.GENERAL.CH26V62.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v62
+    quote: >-
+      In case the 6th Lord has fallen in the 2nd House, the native will be adventurous, illustrious
+      in his family and he will live in alien countries or foreign lands, be happy, be a good
+      speaker and be always interested in his own work.
+    quote_sha256: 05eb4665ea9f626dac18bb5f2d24e9e1ab54c6bd29dedc1eae8e2ce7dba13c4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '62.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: be happy
+- id: BPHS.GENERAL.CH26V65.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v65
+    quote: >-
+      In the event of the 6th Lord occupying the 5th House, the native's wealth will be always
+      fluctuating, he will contract enmity with his son and friend, be happy, selfish and
+      kind.
+    quote_sha256: 1f4e36bef740284d751a9212cab82e06b25a3ba1b7420e601039b51196354372
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 6th_lord_in_5th_happy
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.05
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Happy
+- id: BPHS.GENERAL.CH26V78.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v78
+    quote: >-
+      If the 7th Lord is placed in the 6th House, the native's wife will be sickly or the
+      native is inimical towards her, he is himself given to anger and remains devoid of happiness.
+    quote_sha256: 3eeeb9d6b6cb6d6e073a2317d9f7dba3de95ac67f5718c92defa83f51885d2d9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_lord_in_6th_4
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.06
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: the native remains devoid of happiness
+- id: BPHS.GENERAL.CH26V87.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v87
+    quote: >-
+      In case the 8th Lord is gone in the 3rd House, the native will be devoid of fraternal
+      happiness, be indolent, devoid of vigour and without servants.
+    quote_sha256: 09babb388471c672ec0b879e709ed70cbf90f00784d58f571113b348bedb315c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 8th_lord_in_3rd_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.03
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: native will be indolent
+- id: BPHS.GENERAL.CH26V87.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v87
+    quote: >-
+      In case the 8th Lord is gone in the 3rd House, the native will be devoid of fraternal
+      happiness, be indolent, devoid of vigour and without servants.
+    quote_sha256: 09babb388471c672ec0b879e709ed70cbf90f00784d58f571113b348bedb315c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 8th_lord_in_3rd_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.03
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: native will be devoid of vigour
+- id: BPHS.GENERAL.CH26V95.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v95
+    quote: 'If the 11th Lord is placed in the 5th House, the native''s children will be happy,
+      educated and virtuous. He himself will be religious and happy.
+
+      Notes : A native having this combination in his horoscope studies Commerce and makes
+      great progress in his studies. The effects described in the sloka will not be obtained
+      in the Scorpio Ascendant because in the 5th house, the 11th Lord Mercury will be debilitated.'
+    quote_sha256: 4af235d15ce5da87afa7c20f79bc59708c3a17861623b5c103cb7d972b0846a0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '125.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.05
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: the native will be happy
+- id: BPHS.GENERAL.CH36V27.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch36.v2-7
+    quote: >-
+      Natural Benefics do not give auspicious effects when they are lords of the angles, and
+      natural malefics in that position do not give in auspicious effects, while the lords
+      of the trines (whether benefic or malefic) always give auspicious effects. The Lord
+      of the Ascendant is especially auspicious as the Ascendant House is both an angle and
+      a trine. The 5th and 9th Houses are specially related to wealth and the 7th and the
+      10th Houses to happiness. All the planets lording the Trishadayas (the 3rd, 6th and
+      11th House) are known as giver of inauspicious effects. The Lords of the 12th, the 2nd
+      and the 8th House give effects according to their association (with a benefic or a malefic)
+      and give effects according to their second House (the House in which they have their
+      2nd sign) and they are stronger in their qualities in the ascending order. Among these
+      the 8th Lord when he owns the 12th House from the 9th House is not auspicious and if
+      he (the 8th Lord) is the lord of the 3rd, 6th and 11th House also simultaneously he
+      becomes still more inauspicious, but if he is the Lord of the trine (1st, 5th or 9th
+      Lord) he becomes even more auspicious in giving effects. The stronger among the above
+      mentioned combinations becomes the obstructor of the weaker one and gives his own effects.
+      Here the 8th Lordship of the Sun and the Moon is not evil.
+    quote_sha256: a104fabe269f84f228249c78d3286447f259b1b9998358ca2f31793f94b2750a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: phaladipika_36_3_1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: The Lord of the Ascendant is especially auspicious
+- id: BPHS.GENERAL.CH36V27.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch36.v2-7
+    quote: >-
+      Natural Benefics do not give auspicious effects when they are lords of the angles, and
+      natural malefics in that position do not give in auspicious effects, while the lords
+      of the trines (whether benefic or malefic) always give auspicious effects. The Lord
+      of the Ascendant is especially auspicious as the Ascendant House is both an angle and
+      a trine. The 5th and 9th Houses are specially related to wealth and the 7th and the
+      10th Houses to happiness. All the planets lording the Trishadayas (the 3rd, 6th and
+      11th House) are known as giver of inauspicious effects. The Lords of the 12th, the 2nd
+      and the 8th House give effects according to their association (with a benefic or a malefic)
+      and give effects according to their second House (the House in which they have their
+      2nd sign) and they are stronger in their qualities in the ascending order. Among these
+      the 8th Lord when he owns the 12th House from the 9th House is not auspicious and if
+      he (the 8th Lord) is the lord of the 3rd, 6th and 11th House also simultaneously he
+      becomes still more inauspicious, but if he is the Lord of the trine (1st, 5th or 9th
+      Lord) he becomes even more auspicious in giving effects. The stronger among the above
+      mentioned combinations becomes the obstructor of the weaker one and gives his own effects.
+      Here the 8th Lordship of the Sun and the Moon is not evil.
+    quote_sha256: a104fabe269f84f228249c78d3286447f259b1b9998358ca2f31793f94b2750a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: phaladipika_36_4_3
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.03
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Planets lording the 3rd House are givers of inauspicious effects
+- id: BPHS.GENERAL.CH36V27.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch36.v2-7
+    quote: >-
+      Natural Benefics do not give auspicious effects when they are lords of the angles, and
+      natural malefics in that position do not give in auspicious effects, while the lords
+      of the trines (whether benefic or malefic) always give auspicious effects. The Lord
+      of the Ascendant is especially auspicious as the Ascendant House is both an angle and
+      a trine. The 5th and 9th Houses are specially related to wealth and the 7th and the
+      10th Houses to happiness. All the planets lording the Trishadayas (the 3rd, 6th and
+      11th House) are known as giver of inauspicious effects. The Lords of the 12th, the 2nd
+      and the 8th House give effects according to their association (with a benefic or a malefic)
+      and give effects according to their second House (the House in which they have their
+      2nd sign) and they are stronger in their qualities in the ascending order. Among these
+      the 8th Lord when he owns the 12th House from the 9th House is not auspicious and if
+      he (the 8th Lord) is the lord of the 3rd, 6th and 11th House also simultaneously he
+      becomes still more inauspicious, but if he is the Lord of the trine (1st, 5th or 9th
+      Lord) he becomes even more auspicious in giving effects. The stronger among the above
+      mentioned combinations becomes the obstructor of the weaker one and gives his own effects.
+      Here the 8th Lordship of the Sun and the Moon is not evil.
+    quote_sha256: a104fabe269f84f228249c78d3286447f259b1b9998358ca2f31793f94b2750a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: phaladipika_36_4_6
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.06
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Planets lording the 6th House are known as giver of inauspicious effects
+- id: BPHS.GENERAL.CH36V27.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch36.v2-7
+    quote: >-
+      Natural Benefics do not give auspicious effects when they are lords of the angles, and
+      natural malefics in that position do not give in auspicious effects, while the lords
+      of the trines (whether benefic or malefic) always give auspicious effects. The Lord
+      of the Ascendant is especially auspicious as the Ascendant House is both an angle and
+      a trine. The 5th and 9th Houses are specially related to wealth and the 7th and the
+      10th Houses to happiness. All the planets lording the Trishadayas (the 3rd, 6th and
+      11th House) are known as giver of inauspicious effects. The Lords of the 12th, the 2nd
+      and the 8th House give effects according to their association (with a benefic or a malefic)
+      and give effects according to their second House (the House in which they have their
+      2nd sign) and they are stronger in their qualities in the ascending order. Among these
+      the 8th Lord when he owns the 12th House from the 9th House is not auspicious and if
+      he (the 8th Lord) is the lord of the 3rd, 6th and 11th House also simultaneously he
+      becomes still more inauspicious, but if he is the Lord of the trine (1st, 5th or 9th
+      Lord) he becomes even more auspicious in giving effects. The stronger among the above
+      mentioned combinations becomes the obstructor of the weaker one and gives his own effects.
+      Here the 8th Lordship of the Sun and the Moon is not evil.
+    quote_sha256: a104fabe269f84f228249c78d3286447f259b1b9998358ca2f31793f94b2750a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: phaladipika_36_4_11
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.11
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Planets lording the 11th House are known as giver of inauspicious effects
+- id: BPHS.GENERAL.CH49V3439.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch49.v34-39
+    quote: >-
+      34-39-1/2: O Brahmin! Now I explain the signs etc., of Rahu and Ketu so that I can disclose
+      the results of their Dasa before you. The exaltation signs of Rahu is Scorpio and for
+      Ketu it is Taurus and the Moola Trikona signs are respectively Sagittarius and Gemini.
+      Own sign of Rahu is Aquarius and of Ketu is Scorpio. Some have reckoned Virgo and Pisces
+      signs respectively. If Rahu is exalted in the nativity, its Dasa will be extremely favourable
+      and wealth, prosperity etc., is attained. Ambitions are accomplished through friends
+      and king (Government), possibility of conveyance and son, construction of new residence,
+      religious feelings, festivity, Royal recognition in the foreign land, decorative items,
+      Jewellery etc., are also achieved. If Rahu is also aspected by and in conjunction with
+      the benefic planets, posited in Angles, Trines the 11th or the 3rd house and with auspicious
+      sign, property, land etc. and happiness is achieved with the blessing of king. Also
+      recognition from the head of the family and welfare of house become possible.
+    quote_sha256: 7057dabc8c846519e2afc51f289499e7bd4a95bd4cb02f83e0b88dbcd62f0002
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_exalted_dasa_results
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.rahu
+      dignity: dignity.exalted
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Ambitions are accomplished through friends and king (Government)
+- id: BPHS.GENERAL.CH49V3439.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch49.v34-39
+    quote: >-
+      34-39-1/2: O Brahmin! Now I explain the signs etc., of Rahu and Ketu so that I can disclose
+      the results of their Dasa before you. The exaltation signs of Rahu is Scorpio and for
+      Ketu it is Taurus and the Moola Trikona signs are respectively Sagittarius and Gemini.
+      Own sign of Rahu is Aquarius and of Ketu is Scorpio. Some have reckoned Virgo and Pisces
+      signs respectively. If Rahu is exalted in the nativity, its Dasa will be extremely favourable
+      and wealth, prosperity etc., is attained. Ambitions are accomplished through friends
+      and king (Government), possibility of conveyance and son, construction of new residence,
+      religious feelings, festivity, Royal recognition in the foreign land, decorative items,
+      Jewellery etc., are also achieved. If Rahu is also aspected by and in conjunction with
+      the benefic planets, posited in Angles, Trines the 11th or the 3rd house and with auspicious
+      sign, property, land etc. and happiness is achieved with the blessing of king. Also
+      recognition from the head of the family and welfare of house become possible.
+    quote_sha256: 7057dabc8c846519e2afc51f289499e7bd4a95bd4cb02f83e0b88dbcd62f0002
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_exalted_dasa_results
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.rahu
+      dignity: dignity.exalted
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: possibility of conveyance and son
+- id: BPHS.GENERAL.CH49V3439.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch49.v34-39
+    quote: >-
+      34-39-1/2: O Brahmin! Now I explain the signs etc., of Rahu and Ketu so that I can disclose
+      the results of their Dasa before you. The exaltation signs of Rahu is Scorpio and for
+      Ketu it is Taurus and the Moola Trikona signs are respectively Sagittarius and Gemini.
+      Own sign of Rahu is Aquarius and of Ketu is Scorpio. Some have reckoned Virgo and Pisces
+      signs respectively. If Rahu is exalted in the nativity, its Dasa will be extremely favourable
+      and wealth, prosperity etc., is attained. Ambitions are accomplished through friends
+      and king (Government), possibility of conveyance and son, construction of new residence,
+      religious feelings, festivity, Royal recognition in the foreign land, decorative items,
+      Jewellery etc., are also achieved. If Rahu is also aspected by and in conjunction with
+      the benefic planets, posited in Angles, Trines the 11th or the 3rd house and with auspicious
+      sign, property, land etc. and happiness is achieved with the blessing of king. Also
+      recognition from the head of the family and welfare of house become possible.
+    quote_sha256: 7057dabc8c846519e2afc51f289499e7bd4a95bd4cb02f83e0b88dbcd62f0002
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_exalted_dasa_results
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.rahu
+      dignity: dignity.exalted
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: festivity
+- id: BPHS.GENERAL.CH49V3439.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch49.v34-39
+    quote: >-
+      34-39-1/2: O Brahmin! Now I explain the signs etc., of Rahu and Ketu so that I can disclose
+      the results of their Dasa before you. The exaltation signs of Rahu is Scorpio and for
+      Ketu it is Taurus and the Moola Trikona signs are respectively Sagittarius and Gemini.
+      Own sign of Rahu is Aquarius and of Ketu is Scorpio. Some have reckoned Virgo and Pisces
+      signs respectively. If Rahu is exalted in the nativity, its Dasa will be extremely favourable
+      and wealth, prosperity etc., is attained. Ambitions are accomplished through friends
+      and king (Government), possibility of conveyance and son, construction of new residence,
+      religious feelings, festivity, Royal recognition in the foreign land, decorative items,
+      Jewellery etc., are also achieved. If Rahu is also aspected by and in conjunction with
+      the benefic planets, posited in Angles, Trines the 11th or the 3rd house and with auspicious
+      sign, property, land etc. and happiness is achieved with the blessing of king. Also
+      recognition from the head of the family and welfare of house become possible.
+    quote_sha256: 7057dabc8c846519e2afc51f289499e7bd4a95bd4cb02f83e0b88dbcd62f0002
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_exalted_dasa_results
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.rahu
+      dignity: dignity.exalted
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Royal recognition in the foreign land
+- id: BPHS.GENERAL.CH50V913.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 50_9_13_7a
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.10
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Good results during the dasas of trine lords occupying angle houses (kendras)
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH50V913.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 50_9_13_7b
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.10
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Good results during the dasas of trine lords occupying angle houses (kendras)
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH50V913.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 50_9_13_7c
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.10
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Good results during the dasas of trine lords occupying angle houses (kendras)
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH50V913.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 50_9_13_8a
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Good results during the dasas of angle lords located in trine houses
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH50V913.0001.04
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 50_9_13_8b
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Good results during the dasas of angle lords located in trine houses
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH50V913.0001.05
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 50_9_13_8c
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Good results during the dasas of angle lords located in trine houses
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH50V913.0001.06
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 50_9_13_8d
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Good results during the dasas of angle lords located in trine houses
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V2326.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v23-26
+    quote: >-
+      23-26½ : If Rahu is placed in Angles or Trines from the Ascendant, in the beginning
+      of two months of the Antardasa, heavy loss of wealth will incur and state of psychosis
+      fear will exist. In this Antardasa, the fear of theft, snake bites, injury will also
+      persist and wife and son will under go sufferings. After two months, good results will
+      prevail. Should Rahu have the conjunction of the benefic planets or is situated in a
+      benefic Navamsa, sound health, mental satisfaction and affection of the King (Governments)
+      are the results. From the Ascendant, if Rahu having a conjunction of Yogakaraka planet
+      and is situated in the 3rd, the 6th, the 10th or the 11th (Upachaya) house or in a auspicious
+      house, from the lord of the Mahadasa, the native will get recongnition from the King
+      (Government), rise is the fortune, fame etc; but wife and children will have some kind
+      of sufferings though the birth of child and other festivities will also take place at
+      home.
+    quote_sha256: f21724a133215357e5786e232a97e7160f6a597a15305fe56fc89eef4951a4b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_in_kendra_trine_first_two_months
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: fear of theft
+- id: BPHS.GENERAL.CH54V2326.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v23-26
+    quote: >-
+      23-26½ : If Rahu is placed in Angles or Trines from the Ascendant, in the beginning
+      of two months of the Antardasa, heavy loss of wealth will incur and state of psychosis
+      fear will exist. In this Antardasa, the fear of theft, snake bites, injury will also
+      persist and wife and son will under go sufferings. After two months, good results will
+      prevail. Should Rahu have the conjunction of the benefic planets or is situated in a
+      benefic Navamsa, sound health, mental satisfaction and affection of the King (Governments)
+      are the results. From the Ascendant, if Rahu having a conjunction of Yogakaraka planet
+      and is situated in the 3rd, the 6th, the 10th or the 11th (Upachaya) house or in a auspicious
+      house, from the lord of the Mahadasa, the native will get recongnition from the King
+      (Government), rise is the fortune, fame etc; but wife and children will have some kind
+      of sufferings though the birth of child and other festivities will also take place at
+      home.
+    quote_sha256: f21724a133215357e5786e232a97e7160f6a597a15305fe56fc89eef4951a4b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_in_kendra_trine_first_two_months
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: fear of snake bites
+- id: BPHS.GENERAL.CH54V4042.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v40-42
+    quote: >-
+      If Saturn is posited in the Angle or Trine, the Mahadasa of the Sun and Antardasa of
+      Saturn will produce results like destruction of enemies, abundant happiness, gain of
+      wealth and food grains (in a low profile). There will be marriage festivities and other
+      auspicious functions in the native's house. Saturn if acquires position of exaltation
+      or own sign or in the company of a friendly planet, there will be welfare activities
+      at home, accretion of assets, recognition from the king, attainments of national prominence,
+      wealth, different kinds of garments etc.
+    quote_sha256: 10e5802a729aff6c4c937286074aa76a1f7dc78326c8721145773b5b178589fc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sun_maha_saturn_antar_saturn_in_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: abundant happiness
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V4547.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v45-47
+    quote: >-
+      In the commencement of the Antardasa, enmity with the friends, in the middle of the
+      Dasa, a little bit of comfort, and towards the end of the Dasa, conflicts will be the
+      results of debilitated Saturn. Besides, there will be grief of parents and a good amount
+      of travelling. Saturn, if acquires the lordship of the 2nd or the 7th house, early death
+      will be feared. To mitigate these ill effects, one should donate black cow, buffalo
+      (female), goat in charity and undertake the Japa of Mrityunjaya. With these acts of
+      seeking propitiation, happiness and prosperity could be restored.
+    quote_sha256: bd0c8d1dbe09d8c2c9038e75f7d21ec5e4fd86397584ca2b6a9bbc786ed2cec0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 54.45.1
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.saturn
+      dignity: dignity.debilitated
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: enmity with the friends at the commencement of the Antardasa of debilitated Saturn
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V4547.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v45-47
+    quote: >-
+      In the commencement of the Antardasa, enmity with the friends, in the middle of the
+      Dasa, a little bit of comfort, and towards the end of the Dasa, conflicts will be the
+      results of debilitated Saturn. Besides, there will be grief of parents and a good amount
+      of travelling. Saturn, if acquires the lordship of the 2nd or the 7th house, early death
+      will be feared. To mitigate these ill effects, one should donate black cow, buffalo
+      (female), goat in charity and undertake the Japa of Mrityunjaya. With these acts of
+      seeking propitiation, happiness and prosperity could be restored.
+    quote_sha256: bd0c8d1dbe09d8c2c9038e75f7d21ec5e4fd86397584ca2b6a9bbc786ed2cec0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 54.45.2
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.saturn
+      dignity: dignity.debilitated
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: slight
+    text: a little bit of comfort in the middle of the Dasa of debilitated Saturn
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V4547.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v45-47
+    quote: >-
+      In the commencement of the Antardasa, enmity with the friends, in the middle of the
+      Dasa, a little bit of comfort, and towards the end of the Dasa, conflicts will be the
+      results of debilitated Saturn. Besides, there will be grief of parents and a good amount
+      of travelling. Saturn, if acquires the lordship of the 2nd or the 7th house, early death
+      will be feared. To mitigate these ill effects, one should donate black cow, buffalo
+      (female), goat in charity and undertake the Japa of Mrityunjaya. With these acts of
+      seeking propitiation, happiness and prosperity could be restored.
+    quote_sha256: bd0c8d1dbe09d8c2c9038e75f7d21ec5e4fd86397584ca2b6a9bbc786ed2cec0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 54.45.3
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.saturn
+      dignity: dignity.debilitated
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: conflicts towards the end of the Dasa of debilitated Saturn
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V4547.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v45-47
+    quote: >-
+      In the commencement of the Antardasa, enmity with the friends, in the middle of the
+      Dasa, a little bit of comfort, and towards the end of the Dasa, conflicts will be the
+      results of debilitated Saturn. Besides, there will be grief of parents and a good amount
+      of travelling. Saturn, if acquires the lordship of the 2nd or the 7th house, early death
+      will be feared. To mitigate these ill effects, one should donate black cow, buffalo
+      (female), goat in charity and undertake the Japa of Mrityunjaya. With these acts of
+      seeking propitiation, happiness and prosperity could be restored.
+    quote_sha256: bd0c8d1dbe09d8c2c9038e75f7d21ec5e4fd86397584ca2b6a9bbc786ed2cec0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 54.46.1
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.saturn
+      dignity: dignity.debilitated
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: grief of parents in the Dasa of debilitated Saturn
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V4547.0001.04
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v45-47
+    quote: >-
+      In the commencement of the Antardasa, enmity with the friends, in the middle of the
+      Dasa, a little bit of comfort, and towards the end of the Dasa, conflicts will be the
+      results of debilitated Saturn. Besides, there will be grief of parents and a good amount
+      of travelling. Saturn, if acquires the lordship of the 2nd or the 7th house, early death
+      will be feared. To mitigate these ill effects, one should donate black cow, buffalo
+      (female), goat in charity and undertake the Japa of Mrityunjaya. With these acts of
+      seeking propitiation, happiness and prosperity could be restored.
+    quote_sha256: bd0c8d1dbe09d8c2c9038e75f7d21ec5e4fd86397584ca2b6a9bbc786ed2cec0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 54.46.2
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.saturn
+      dignity: dignity.debilitated
+  indicates:
+    claim: general.protection
+    polarity: neutral
+    magnitude: moderate
+    text: a good amount of travelling in the Dasa of debilitated Saturn
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V710.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v7-10
+    quote: >-
+      A weak Moon, if having conjunction with the malefic planets brings sufferings to wife
+      and children etc., conflicts with the society, degradation in service, confrontation
+      with public, wrath of the king, loss of wealth, animals and prosperity. If the Moon
+      is situated in the 6th, the 8th or the 12th house, danger from water, loss of confidence,
+      imprisonment, fear of disease, change of place, visits to unwanted places, controversies
+      over litigations, meagre food, distress caused by theft and authorities, urinary connected
+      diseases and other health hazards, will be the pronounced results during the Antardasa.
+    quote_sha256: d77625d95257b647f398103a88b2d80530f35db9d059a68b9928ea198fe05a19
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_dusthana_antardasa
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: danger from water
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V710.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v7-10
+    quote: >-
+      A weak Moon, if having conjunction with the malefic planets brings sufferings to wife
+      and children etc., conflicts with the society, degradation in service, confrontation
+      with public, wrath of the king, loss of wealth, animals and prosperity. If the Moon
+      is situated in the 6th, the 8th or the 12th house, danger from water, loss of confidence,
+      imprisonment, fear of disease, change of place, visits to unwanted places, controversies
+      over litigations, meagre food, distress caused by theft and authorities, urinary connected
+      diseases and other health hazards, will be the pronounced results during the Antardasa.
+    quote_sha256: d77625d95257b647f398103a88b2d80530f35db9d059a68b9928ea198fe05a19
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_dusthana_antardasa
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: imprisonment
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH54V710.0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v7-10
+    quote: >-
+      A weak Moon, if having conjunction with the malefic planets brings sufferings to wife
+      and children etc., conflicts with the society, degradation in service, confrontation
+      with public, wrath of the king, loss of wealth, animals and prosperity. If the Moon
+      is situated in the 6th, the 8th or the 12th house, danger from water, loss of confidence,
+      imprisonment, fear of disease, change of place, visits to unwanted places, controversies
+      over litigations, meagre food, distress caused by theft and authorities, urinary connected
+      diseases and other health hazards, will be the pronounced results during the Antardasa.
+    quote_sha256: d77625d95257b647f398103a88b2d80530f35db9d059a68b9928ea198fe05a19
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_dusthana_antardasa
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: distress caused by theft and authorities
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH55V1314.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch55.v13-14
+    quote: >-
+      During the Moon's Mahadasa and the Antardasa of Rahu, if Rahu is in Angle or Trine from
+      the Ascendant, in the beginning, there will be very little good results and thereafter
+      it will cause trouble from the enemies, great fear, theft, fright, danger from the king,
+      disease to the animal, destruction of the relatives, loss of friend, embarrassment and
+      mental distress.
+    quote_sha256: 838f290c83cc6fe27034c595b199e0359113acc4c5c4372cf14cf9b8bb42ae21
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '55.13_14_1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: neutral
+    magnitude: slight
+    text: very little good results in the beginning
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH55V4748.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch55.v47-48
+    quote: >-
+      If Ketu is placed in the Angle, the Trine or the 11th, the 3rd house and possessing
+      strength, the Antardasa of Ketu of the Mahadasa of the Moon will provide gain of wealth,
+      great enjoyment, happiness to wife and children, religious deeds and the beginning of
+      the Antardasa will cause loss of wealth and in the middle, will bring high level of
+      comforts.
+    quote_sha256: d62f36daf600343ad631e3b7a29fee69418ccd82d20912964528e450f5dead5c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_in_kendra_trikona_11_3_moon_maha_ketu_antar
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.03
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: Great enjoyment
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH55V5052.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch55.v50-52
+    quote: >-
+      Should the lord of Antardasa be at the 6th or the 8th house from the lord of the Mahadasa
+      and in conjunction with or aspected by the malefic planets, in that case there will
+      defintely be the loss in the venture through the enemies and befall of sudden calamity.
+      The same Ketu if posited in the 2nd or the 7th house, physical ailment, great fear will
+      be the effects. In this critical period, the recitation (Japa) of Mrityunjaya Matras
+      (Vedic hymns), the evil effects will get mellowed down with the blessings of Lord Shiva.
+    quote_sha256: 5a54a40e146922b53b51fb7103120035bd92f6d9e1cae3eef1d31aa44d5748a7
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 55.51_ketu_2_7
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: great fear
+- id: BPHS.GENERAL.CH56V1114.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v11-14
+    quote: >-
+      If Rahu is posited in the 8th or the 12th house or combined with or aspected by the
+      malefic planets, in the Antardasa of Rahu of Mahadasa of Mars, will cause danger of
+      theft, snake bite, injury, loss of animals, fear of gastric or bile diseases, imprisonment
+      etc. Rahu, if placed in the 2nd house, loss of wealth and great fear and in the 7th
+      house, untimely death will take place. Worship of Naga Deva (God of Serpents), food
+      to Brahmins, recitation (Japa) of Mrityunjaya Mantaras will ward off the evil affects
+      and provide a sound health.
+    quote_sha256: e37f21e551688a448fc21df14d624d1f383ae0d0f8e8b3ee88f7b951606f4015
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_12
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.rahu
+      bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: danger of theft
+- id: BPHS.GENERAL.CH56V1114.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v11-14
+    quote: >-
+      If Rahu is posited in the 8th or the 12th house or combined with or aspected by the
+      malefic planets, in the Antardasa of Rahu of Mahadasa of Mars, will cause danger of
+      theft, snake bite, injury, loss of animals, fear of gastric or bile diseases, imprisonment
+      etc. Rahu, if placed in the 2nd house, loss of wealth and great fear and in the 7th
+      house, untimely death will take place. Worship of Naga Deva (God of Serpents), food
+      to Brahmins, recitation (Japa) of Mrityunjaya Mantaras will ward off the evil affects
+      and provide a sound health.
+    quote_sha256: e37f21e551688a448fc21df14d624d1f383ae0d0f8e8b3ee88f7b951606f4015
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.rahu
+      bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: great fear
+- id: BPHS.GENERAL.CH56V5556.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v55-56
+    quote: >-
+      55-56½: If Venus is placed in Angles, Trines, in the 11th house, in the sign of exaltation
+      or own sign or having the lordship of auspicious houses, its Antardasa during the Mahadasa
+      of Mars will attribute benefit from the king, immoderate happiness; acquisition of elephant,
+      horses, clothes, ornaments. Should Venus has any connection with the Ascendant, comforts
+      from wife and birth of child, accretion in longevity, plentiful of luxuries, improvement
+      in the fortune or happiness will be the results of its Antardasa.
+    quote_sha256: 96fd9c2f9386503d39236b8648b4fb72db5815352ddb5db179bca1c0c38d5d6d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_venus_dasha_venus_kendra_trikona_11th
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: immoderate happiness
+- id: BPHS.GENERAL.CH56V5556.0002.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v55-56
+    quote: >-
+      55-56½: If Venus is placed in Angles, Trines, in the 11th house, in the sign of exaltation
+      or own sign or having the lordship of auspicious houses, its Antardasa during the Mahadasa
+      of Mars will attribute benefit from the king, immoderate happiness; acquisition of elephant,
+      horses, clothes, ornaments. Should Venus has any connection with the Ascendant, comforts
+      from wife and birth of child, accretion in longevity, plentiful of luxuries, improvement
+      in the fortune or happiness will be the results of its Antardasa.
+    quote_sha256: 96fd9c2f9386503d39236b8648b4fb72db5815352ddb5db179bca1c0c38d5d6d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_venus_dasha_venus_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.venus
+      dignity: dignity.exalted
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: immoderate happiness
+- id: BPHS.GENERAL.CH56V5556.0002.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v55-56
+    quote: >-
+      55-56½: If Venus is placed in Angles, Trines, in the 11th house, in the sign of exaltation
+      or own sign or having the lordship of auspicious houses, its Antardasa during the Mahadasa
+      of Mars will attribute benefit from the king, immoderate happiness; acquisition of elephant,
+      horses, clothes, ornaments. Should Venus has any connection with the Ascendant, comforts
+      from wife and birth of child, accretion in longevity, plentiful of luxuries, improvement
+      in the fortune or happiness will be the results of its Antardasa.
+    quote_sha256: 96fd9c2f9386503d39236b8648b4fb72db5815352ddb5db179bca1c0c38d5d6d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_venus_dasha_venus_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.venus
+      dignity: dignity.own_sign
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: immoderate happiness
+- id: BPHS.GENERAL.CH57V56.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch57.v5-6
+    quote: >-
+      If Rahu is posited in the 8th or the 12th house from the Ascendant, in its own Mahadasa
+      and Antardasa, there will undoubtedly, be grief from theft, injury etc., conflicts with
+      the administratives of the king; destruction of co-borns; trouble to wife and children.
+    quote_sha256: 6a6a5fc09cd75ff29fc980de3c5603dc8aac0e040120c958a8fa4c7dd0fa2db0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_in_8_12_malefic_aspect
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: grief from theft and injury
+- id: BPHS.GENERAL.CH57V56.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch57.v5-6
+    quote: >-
+      If Rahu is posited in the 8th or the 12th house from the Ascendant, in its own Mahadasa
+      and Antardasa, there will undoubtedly, be grief from theft, injury etc., conflicts with
+      the administratives of the king; destruction of co-borns; trouble to wife and children.
+    quote_sha256: 6a6a5fc09cd75ff29fc980de3c5603dc8aac0e040120c958a8fa4c7dd0fa2db0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_in_8_12_malefic_aspect
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: conflicts with the administratives of the king
+- id: BPHS.GENERAL.CH57V56.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch57.v5-6
+    quote: >-
+      If Rahu is posited in the 8th or the 12th house from the Ascendant, in its own Mahadasa
+      and Antardasa, there will undoubtedly, be grief from theft, injury etc., conflicts with
+      the administratives of the king; destruction of co-borns; trouble to wife and children.
+    quote_sha256: 6a6a5fc09cd75ff29fc980de3c5603dc8aac0e040120c958a8fa4c7dd0fa2db0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_in_8_12_malefic_aspect
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: destruction of co-borns
+- id: BPHS.GENERAL.CH57V56.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch57.v5-6
+    quote: >-
+      If Rahu is posited in the 8th or the 12th house from the Ascendant, in its own Mahadasa
+      and Antardasa, there will undoubtedly, be grief from theft, injury etc., conflicts with
+      the administratives of the king; destruction of co-borns; trouble to wife and children.
+    quote_sha256: 6a6a5fc09cd75ff29fc980de3c5603dc8aac0e040120c958a8fa4c7dd0fa2db0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: rahu_in_8_12_malefic_aspect
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: trouble to wife and children
+- id: BPHS.GENERAL.CH58V2021.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: excessive comforts
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH58V2021.0004.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.exalted
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: excessive comforts
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH58V2021.0004.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.own_sign
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: excessive comforts
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH58V2021.0004.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_conjunct_10th_lord
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mercury
+      other: graha.sun
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: excessive comforts
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH58V22.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v22
+    quote: >-
+      22-22½: If Mercury is under the aspect of Mars, the Antardasa of Mercury will produce
+      malefic results like, increase of enemies, loss of happiness and business; disease like
+      fever and dysentery.
+    quote_sha256: 55850df051e6f2d50d45d59f592f22db79fcbf8e60afd47d2061ecf9978d50c1
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_mars_aspect_mercury_antar
+    review:
+      state: unreviewed
+  when:
+    aspects:
+      subject: graha.mercury
+      target: graha.mars
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: loss of happiness
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH58V4547.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v45-47
+    quote: >-
+      45-47½: Placement of Venus in the Angle sign, the 2nd house or the 9th house from the
+      Mahadasa lord will depose results of the Antardasa of Venus in the Mahadasa of Jupiter
+      like, gain of wealth and food grains; blessings of Goddess Laxami (wealth); meeting
+      with the king; acquisition of vehicle; child birth; accretion of animals; utmost happiness;
+      solace through music, association of scholars, enjoyment of sumptuous food, nourishment
+      of co-borns etc.
+    quote_sha256: 4dc4518d336cfb0a9ad028ed97c77c33bb9b4e91346b324bdd6787d4d1b95901
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 58.45-47.venus_kendra_2_9_from_mahadasha_lord
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: utmost happiness
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH59V1213.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v12-13
+    quote: '12-13½ : If Mercury is placed at the 6th, the 8th or the 12th house Brihat Parasara
+      Hora Sastra 311
+
+
+      from the Ascendant or the lord of the Mahadasa or combust or associated with the Sun,
+      Mars, Rahu, in the beginning of the Antardasa, there will be coronation; acquisition
+      of wealth; administratorship of the country or village. In the middle and end of the
+      Dasa, it will cause distress due to diseases, hurdles in the success of every pursuit,
+      anxiety and tremendous amount of frightfulness.'
+    quote_sha256: 3f8ea50746ac0c6e4dc2fe4df34be0c21b5149597d19736390e1b906cd69e47a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_6_8_12_house
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.12
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: >-
+      Hurdles in the success of every pursuit, anxiety, and tremendous amount of frightfulness
+      in the middle and end of the period
+- id: BPHS.GENERAL.CH59V1213.0003.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v12-13
+    quote: '12-13½ : If Mercury is placed at the 6th, the 8th or the 12th house Brihat Parasara
+      Hora Sastra 311
+
+
+      from the Ascendant or the lord of the Mahadasa or combust or associated with the Sun,
+      Mars, Rahu, in the beginning of the Antardasa, there will be coronation; acquisition
+      of wealth; administratorship of the country or village. In the middle and end of the
+      Dasa, it will cause distress due to diseases, hurdles in the success of every pursuit,
+      anxiety and tremendous amount of frightfulness.'
+    quote_sha256: 3f8ea50746ac0c6e4dc2fe4df34be0c21b5149597d19736390e1b906cd69e47a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_debilitated
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.debilitated
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: >-
+      Hurdles in the success of every pursuit, anxiety, and tremendous amount of frightfulness
+      in the middle and end of the period
+- id: BPHS.GENERAL.CH59V1213.0003.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v12-13
+    quote: '12-13½ : If Mercury is placed at the 6th, the 8th or the 12th house Brihat Parasara
+      Hora Sastra 311
+
+
+      from the Ascendant or the lord of the Mahadasa or combust or associated with the Sun,
+      Mars, Rahu, in the beginning of the Antardasa, there will be coronation; acquisition
+      of wealth; administratorship of the country or village. In the middle and end of the
+      Dasa, it will cause distress due to diseases, hurdles in the success of every pursuit,
+      anxiety and tremendous amount of frightfulness.'
+    quote_sha256: 3f8ea50746ac0c6e4dc2fe4df34be0c21b5149597d19736390e1b906cd69e47a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_conjunct_sun
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mercury
+      other: graha.sun
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: >-
+      Hurdles in the success of every pursuit, anxiety, and tremendous amount of frightfulness
+      in the middle and end of the period
+- id: BPHS.GENERAL.CH59V1213.0003.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v12-13
+    quote: '12-13½ : If Mercury is placed at the 6th, the 8th or the 12th house Brihat Parasara
+      Hora Sastra 311
+
+
+      from the Ascendant or the lord of the Mahadasa or combust or associated with the Sun,
+      Mars, Rahu, in the beginning of the Antardasa, there will be coronation; acquisition
+      of wealth; administratorship of the country or village. In the middle and end of the
+      Dasa, it will cause distress due to diseases, hurdles in the success of every pursuit,
+      anxiety and tremendous amount of frightfulness.'
+    quote_sha256: 3f8ea50746ac0c6e4dc2fe4df34be0c21b5149597d19736390e1b906cd69e47a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_conjunct_mars
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mercury
+      other: graha.mars
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: >-
+      Hurdles in the success of every pursuit, anxiety, and tremendous amount of frightfulness
+      in the middle and end of the period
+- id: BPHS.GENERAL.CH59V1213.0003.04
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v12-13
+    quote: '12-13½ : If Mercury is placed at the 6th, the 8th or the 12th house Brihat Parasara
+      Hora Sastra 311
+
+
+      from the Ascendant or the lord of the Mahadasa or combust or associated with the Sun,
+      Mars, Rahu, in the beginning of the Antardasa, there will be coronation; acquisition
+      of wealth; administratorship of the country or village. In the middle and end of the
+      Dasa, it will cause distress due to diseases, hurdles in the success of every pursuit,
+      anxiety and tremendous amount of frightfulness.'
+    quote_sha256: 3f8ea50746ac0c6e4dc2fe4df34be0c21b5149597d19736390e1b906cd69e47a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_conjunct_rahu
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mercury
+      other: graha.rahu
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: strong
+    text: >-
+      Hurdles in the success of every pursuit, anxiety, and tremendous amount of frightfulness
+      in the middle and end of the period
+- id: BPHS.GENERAL.CH59V5557.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v55-57
+    quote: >-
+      During the Antardasa c Mars in the Mahadasa of Saturn, if Mars is placed in Angle, Trine
+      or in the 11th house, exaltation or in own sign from the Ascendent and is in conjunction
+      with the lord of the Mahadasa or the Ascendant, there will be happiness right from the
+      beginning of the Antardasa and influx of wealth, affection with the king; acquisition
+      of vehicle, clothes and ornaments; rank of Army commander, felicitation by the King
+      (State); improvement in the crops, animals, wealth and assets; construction of new house,
+      comforts from brothers etc.
+    quote_sha256: 8136d791648d859baecf6d46ed22aa0c88977c168eddbf932a4a170e4160b40a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_saturn_dasha_1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.11
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.exalted
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.own_sign
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: happiness right from the beginning of the antardasa
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH61V2930.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v29-30
+    quote: >-
+      If the Moon is bereft of strength, debilitated, placed in Trik house (6/8/12), it will
+      cause frustration over personal discomforts; obstruction at work; frightfulness, grief
+      of father and mother, stiffness in the body; mental anguish, loss in the business; apprehension
+      of losing animals.
+    quote_sha256: f5d46da62b259c6d50d8b0a80bf1bb3b2cc70e3ce6db02eb082f634bd802f427
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_debilitated
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.moon
+      dignity: dignity.debilitated
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: frightfulness
+- id: BPHS.GENERAL.CH61V4547.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v45-47
+    quote: >-
+      In the Mahadasa of Ketu when Antardasa of Rahu falls and if, Rahu is in the state of
+      exaltation, own or friendly sign; in Angle, Trine or in the 11th, the 3rd or the 2nd
+      house, this period will yield gain of wealth and journies; acquisitions of house, happiness
+      through the king, wealth, food grains, animals, village (big estate), land etc. In the
+      beginning of the Antardasa, there will be conflicts but the middle and the end will
+      bring happiness.
+    quote_sha256: d411dfb9d350713811c404930b991cd6ebeada5066ef20e61dd8a8ed577e6a3b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.45-47.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.exalted
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: Conflicts in the beginning of the antardasa
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH61V4547.0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v45-47
+    quote: >-
+      In the Mahadasa of Ketu when Antardasa of Rahu falls and if, Rahu is in the state of
+      exaltation, own or friendly sign; in Angle, Trine or in the 11th, the 3rd or the 2nd
+      house, this period will yield gain of wealth and journies; acquisitions of house, happiness
+      through the king, wealth, food grains, animals, village (big estate), land etc. In the
+      beginning of the Antardasa, there will be conflicts but the middle and the end will
+      bring happiness.
+    quote_sha256: d411dfb9d350713811c404930b991cd6ebeada5066ef20e61dd8a8ed577e6a3b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.45-47.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.exalted
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.02
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: Happiness in the middle and the end of the antardasa
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH62V3839.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v38-39
+    quote: >-
+      If Rahu is placed in the Upachaya houses (3,6,10,11) from the Ascendant, the Antardasa
+      of Rahu will be of pleasure renderings. In this duration, destruction of enemies, great
+      exuberance, happiness of the king etc., types of auspicious results discernable in the
+      first five months of the Antardasa and the end of Antardasa will cause fever and ailment
+      of indigestion.
+    quote_sha256: 543687dc754503b76abb1a7a907626fcfedb5b3d7e3852885489106e0a472914
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 62.38_39_rahu_upachaya_pleasure
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.11
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Antardasa of Rahu will be of pleasure renderings
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH62V3839.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v38-39
+    quote: >-
+      If Rahu is placed in the Upachaya houses (3,6,10,11) from the Ascendant, the Antardasa
+      of Rahu will be of pleasure renderings. In this duration, destruction of enemies, great
+      exuberance, happiness of the king etc., types of auspicious results discernable in the
+      first five months of the Antardasa and the end of Antardasa will cause fever and ailment
+      of indigestion.
+    quote_sha256: 543687dc754503b76abb1a7a907626fcfedb5b3d7e3852885489106e0a472914
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 62.38_39_rahu_upachaya_pleasure
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.11
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Great exuberance
+  timing:
+    requires_activation: true
+- id: BPHS.GENERAL.CH82V2629.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sun_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: remains in distress
+- id: BPHS.GENERAL.CH82V2629.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: remain frightful
+- id: BPHS.GENERAL.CH82V2629.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: not beautiful
+- id: BPHS.GENERAL.CH82V2629.0004.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: deprived of pride
+- id: BPHS.GENERAL.CH82V2629.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: deprived of good qualities
+- id: BPHS.GENERAL.CH82V2629.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: criticised by others
+- id: BPHS.GENERAL.CH82V2629.0006.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: distress
+- id: BPHS.GENERAL.CH82V37.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v37
+    quote: >-
+      If the Moon, Mercury and Venus are posited in the Ascendant in the horoscope of a woman,
+      she is endowed with many qualities. If Jupiter happens to be in the Ascendant, she will
+      be bestowed with great satisfaction, children, wealth and happiness.
+    quote_sha256: 213057b8a9f6272a078f429484c9201c129c2c7e65795eb07c6f4eb86927f7d1
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.37.1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: she is endowed with many qualities
+- id: BPHS.GENERAL.CH82V37.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v37
+    quote: >-
+      If the Moon, Mercury and Venus are posited in the Ascendant in the horoscope of a woman,
+      she is endowed with many qualities. If Jupiter happens to be in the Ascendant, she will
+      be bestowed with great satisfaction, children, wealth and happiness.
+    quote_sha256: 213057b8a9f6272a078f429484c9201c129c2c7e65795eb07c6f4eb86927f7d1
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.37.2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: she will be bestowed with great satisfaction
+- id: BPHS.GENERAL.CH82V37.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v37
+    quote: >-
+      If the Moon, Mercury and Venus are posited in the Ascendant in the horoscope of a woman,
+      she is endowed with many qualities. If Jupiter happens to be in the Ascendant, she will
+      be bestowed with great satisfaction, children, wealth and happiness.
+    quote_sha256: 213057b8a9f6272a078f429484c9201c129c2c7e65795eb07c6f4eb86927f7d1
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.37.2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: she will be bestowed with happiness
+- id: HINDUPREDICTIVE.GENERAL.CH17V9.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v9
+    quote: >-
+      9 Sagittarius.—Mars is the best planet and in conjunction with Jupiter produces much
+      good. The Sun and Mars also produce good. Venus is evil. When the Sun and Mars combine
+      together they produce Rajayoga. Saturn does not bring about death even when he is a
+      Maraka. But Venus causes death when he gets jurisdiction as a Maraka planet.
+    quote_sha256: 208ec606a17619fb4cb16ca45ec59fcb80f6328e796ba5450251fab50399c1fc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.9.1
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mars
+      other: graha.jupiter
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Mars in conjunction with Jupiter produces much good
+- id: HINDUPREDICTIVE.GENERAL.CH17V9.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v9
+    quote: >-
+      9 Sagittarius.—Mars is the best planet and in conjunction with Jupiter produces much
+      good. The Sun and Mars also produce good. Venus is evil. When the Sun and Mars combine
+      together they produce Rajayoga. Saturn does not bring about death even when he is a
+      Maraka. But Venus causes death when he gets jurisdiction as a Maraka planet.
+    quote_sha256: 208ec606a17619fb4cb16ca45ec59fcb80f6328e796ba5450251fab50399c1fc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.9.2
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.sun
+      other: graha.mars
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: The Sun and Mars in conjunction produce good
+- id: HINDUPREDICTIVE.GENERAL.CH17V9.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v9
+    quote: >-
+      9 Sagittarius.—Mars is the best planet and in conjunction with Jupiter produces much
+      good. The Sun and Mars also produce good. Venus is evil. When the Sun and Mars combine
+      together they produce Rajayoga. Saturn does not bring about death even when he is a
+      Maraka. But Venus causes death when he gets jurisdiction as a Maraka planet.
+    quote_sha256: 208ec606a17619fb4cb16ca45ec59fcb80f6328e796ba5450251fab50399c1fc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.9.3
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.sun
+      other: graha.mars
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: When the Sun and Mars combine together they produce Rajayoga
+- id: JATAKAPARIJATA.GENERAL.CH9V105.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: >-
+      Sloka 105. If the Sun be in स्वक्षेत्र (Swakshetra), the person born will own a fine
+      mansion, lead a de- praved life and will suffer from fierce lust, if it be the Moon
+      that is in स्वक्षेत्र (Swakshetra), the person born will have power, beauty and wealth,
+      if Mars, he will be famed for his agricultural strength, if Mercury, he will be learned,
+      if Jupiter be the planet occupying स्वक्षेत्र (Swakshetra), the person born will be
+      devoted to poetry, the arts, traditional doctrines and the sacred scriptures, if Venus,
+      he will be intellectual and wealthy, if Saturn, the person born will be distinguished
+      by fierce prowess but bereft of happiness, if Rahu be the planet in स्वक्षेत्र (Swakshetra),
+      the person born will possess fame and wealth
+    quote_sha256: b4973f9ac98f366eedd0639cb21c45c7ba8b6c9e1a4a3f0b68593e7f6bb5d30d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: swakshetra_saturn
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.saturn
+      dignity: dignity.own_sign
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: person born will be bereft of happiness
+- id: JATAKAPARIJATA.GENERAL.CH9V13.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v1-3
+    quote: >-
+      Sloka 49. If the Moon in Kataka be aspected severally by the six planets from Mars taken
+      in order, the persons born in the six cases will respectively be valiant, honorable,
+      endowed with the highest poetical talent, of royal rank, working in iron, and suffering
+      from ophthalmia. If the Moon be in Simha under the same aspects, the person born will
+      respectively be a king, one speaking learnedly, a wealthy man, a king, a wicked person
+      and one that is mighty  If the Moon be in Kanya and be aspected by the several planets
+      taken in the same order, the person born in the several cases will be respectively wealthy,
+      mighty, lordly, learned, badly behaved and in easy comfortable circumstances
+    quote_sha256: 751c2716fb742193e658b7b359b2b0261888cd54afc2d9c2f930f458d3d8aca2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_virgo_sun
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: in easy comfortable circumstances
+- id: JATAKAPARIJATA.GENERAL.CH9V65.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v65
+    quote: >-
+      Sloka 65. When the Sun is in the 3rd bhava, the person born will be brave, served by
+      bad men, very wealthy and liberal; when the Moon occupies the bhava representing younger
+      brothers, the person born will have insignificant wealth, be kind to relatives and virtuous
+      With Mars in the 3rd bhava, the person born becomes famous, of immense prowess, and
+      of upright (uncrooked) views, but when Mercury occupies the 3rd bhava, the person born
+      is bent on the practice of deception, of vagrant habits, excessively vacillating and
+      miserable
+    quote_sha256: 1e7bdf43e11f0f871fabf5223c52bd767a6d09d4a5b08b74c7219a4b1bb2cdfb
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_in_3
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.03
+  indicates:
+    claim: general.protection
+    polarity: negative
+    magnitude: moderate
+    text: miserable
+- id: JATAKAPARIJATA.GENERAL.CH9V7374.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v73-74
+    quote: >-
+      Slokas 73-74 Mercury (when in strength) can counteract the evil caused by Rahu. Saturn
+      (in a similar position) can counteract the evil influences of the former two combined,
+      Mars (when in a position of advantage) can remove the evil caused by the three foregoing
+      planets put together. Venus has power to nullify the evil caused by these four. Jupiter
+      can destroy the evil worked by the previous five. The Moon can obviate the malefic influence
+      of the six preceding. The Sun can remove the evil effects of the foregoing seven. This
+      he does more effectually when he is in his northward course.
+    quote_sha256: 2ea9f64541f90dca143065b6d8853a3edb02d4e7e08d8b5d421376ba24a49818
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_rahu_counteract
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mercury
+      other: graha.rahu
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: Mercury counteracts the evil caused by Rahu
+- id: JATAKAPARIJATA.GENERAL.CH9V92.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      Sloka 92 If a person be born when the Moon is in Simha, he will have broad eyes, a beautiful
+      face, grave looks and will be happy; if the Moon be in Kanya at a person's birth, the
+      latter will be afflicted with a craving for sensual enjoyment, of graceful address,
+      eminent in learning and prosperous; if in Tula, the person will view with reverence
+      Gods and Brahmanas, show affection... towards his relatives and will be opulent the
+      person born when the Moon is in Vrischika will be heedless, ailing, avaricious and given
+      to wandering
+    quote_sha256: 1f0372e043bc43bcdc3fcae14edd3692b40d023a618fafc9e24872b155a921f4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_leo
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.leo
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: happy
+- id: JATAKAPARIJATA.GENERAL.CH9V94.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v94
+    quote: >-
+      Sloka 94. The person at whose birth the Sun is in the 11th bhava, will have extensive
+      wealth, wife, children and slaves and will be happy, when the Moon is in that bhava,
+      the person born will be of a pensive disposition and wealthy, when Mars occupies the
+      आय (Aya, 11th) bhava at a person's birth, he will be clever in speech, lustful, wealthy
+      and valiant, when the occupant of the 11th bhava is Mercury, the person born will possess
+      an acute intellect, be famed for his learning and in possession of wealth
+    quote_sha256: 92c922848a7bcb1736807889963be01cddb4152066c40de2a4eb19d6ea2de189
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: phala_depika_9.94_sun
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.11
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: happy

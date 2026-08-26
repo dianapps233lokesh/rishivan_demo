@@ -1,0 +1,5146 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BPHS.RELATIONSHIP.CH20V23.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v23
+    quote: >-
+      If the Sun is situated in the 7th House and the 7th lord is in Conjunction with Venus,
+      the native mostly gets married in the 7th or 11th year.
+    quote_sha256: 3f8748a026c4cc5cbf0e2c315d7e81aca0205b55eab47a5b378682d52ab9c199
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '20.23'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+    - conjunct:
+        subject: lord.bhava.07
+        other: graha.venus
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: marriage occurs in the 7th or 11th year
+- id: BPHS.RELATIONSHIP.CH20V24.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v24
+    quote: >-
+      In the event of Venus occupying the 2nd House and the 7th Lord occupying the 11th House,
+      the native is generally married in the 10th or 16th year.
+    quote_sha256: d69a532a546bb3b795964eef7b1919f90351292f7945448f55e5f85db1701091
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 20.24.1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: Marriage generally occurs in the 10th or 16th year
+- id: BPHS.RELATIONSHIP.CH20V26.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v26
+    quote: >-
+      If Venus is placed in a kendra (angle) from the Ascendant and in the 7th House from
+      Venus, there is Saturn, the native’s marriage generally takes place in the 12th or 19th
+      year.
+    quote_sha256: c651093a24a36145f3bfeef1e49d61b60b442797a4235eef260be196e78cb589
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: marriage_timing_venus_saturn
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.10
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: marriage takes place in the 12th year
+  timing:
+    requires_activation: true
+- id: BPHS.RELATIONSHIP.CH20V26.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v26
+    quote: >-
+      If Venus is placed in a kendra (angle) from the Ascendant and in the 7th House from
+      Venus, there is Saturn, the native’s marriage generally takes place in the 12th or 19th
+      year.
+    quote_sha256: c651093a24a36145f3bfeef1e49d61b60b442797a4235eef260be196e78cb589
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: marriage_timing_venus_saturn
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.10
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: marriage takes place in the 19th year
+  timing:
+    requires_activation: true
+- id: BPHS.RELATIONSHIP.CH20V3.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v3
+    quote: >-
+      In the event of Venus being placed in the 7th House the native will be excessively lustful.
+      And should Venus be placed in any house together with a malefic planet,t he combination
+      will cause the death of the native's wife.
+    quote_sha256: 258c701107f937753c0fa99ac8358f5c2eb43a5a20ec0f89ea6040289ed2b835
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '20.3_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.venus
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: The native will be excessively lustful
+- id: BPHS.RELATIONSHIP.CH20V30.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v30
+    quote: >-
+      If Venus is placed 7th from the 8th House (that is second from the Ascendant) and the
+      2nd Lord is in the conjunction with Mars, the native's marriage will take place in the
+      22nd or the 27th year.
+    quote_sha256: e04f94d2a15989e4f2bce96c85128e9c8dedb8e2120816b1e8801fd8a9b11d94
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: marriage_timing_venus_2nd_lord_mars
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.02
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: Marriage takes place in the 22nd or 27th year
+- id: BPHS.RELATIONSHIP.CH20V34.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v34
+    quote: 'Should Venus be situated 7th from the 9th House (that is in the 3rd House from
+      the Ascendant) and 7th from Venus be the 7th Lord the native gets married in the 30th
+      or 27th year.
+
+      Notes: The Sage means to indicate in this sloka that if Venus is situated in the 3rd
+      House and the 7th lord in the 9th House the benefit of marriage is obtained by the native
+      in the 27th or 30 th year.'
+    quote_sha256: 43500642d240e6be81cb7bdc71bc171b855437be7650d7322e116873d6f06103
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '20.34'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native gets married in the 27th or 30th year
+- id: BPHS.RELATIONSHIP.CH20V42.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v42
+    quote: >-
+      The native's wife doesnot live (long) in case there is the situation of Mars in the
+      6th House, of Rahu in the 7th House and of Saturn in the 8th House.
+    quote_sha256: 5db863c14896aabd2bb9fc65a4aac0296990ef9cba61b79e9546287201f5efe3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '20.42'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: The native's wife does not live (long).
+- id: BPHS.RELATIONSHIP.CH20V78.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_sun
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have the company of barren women
+- id: BPHS.RELATIONSHIP.CH20V78.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_moon
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have a wife of the nature of the sign in the 7th House
+- id: BPHS.RELATIONSHIP.CH20V78.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_mars
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have the company of a girl having menses
+- id: BPHS.RELATIONSHIP.CH20V78.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_mercury
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will befriend a harlot
+- id: BPHS.RELATIONSHIP.CH20V78.0001.04
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_jupiter
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with the wife of a Brahmin
+- id: BPHS.RELATIONSHIP.CH20V78.0001.05
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_saturn
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.saturn
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with a base woman
+- id: BPHS.RELATIONSHIP.CH20V78.0001.06
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_rahu
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.rahu
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with a base woman
+- id: BPHS.RELATIONSHIP.CH20V78.0001.07
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_ketu
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with a base woman
+- id: BPHS.RELATIONSHIP.CH20V78.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_mars
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have the company of a barren woman
+- id: BPHS.RELATIONSHIP.CH20V78.0002.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_mercury
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will befriend a low caste woman
+- id: BPHS.RELATIONSHIP.CH20V78.0002.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_jupiter
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with a pregnant woman
+- id: BPHS.RELATIONSHIP.CH20V78.0002.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_saturn
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.saturn
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with a woman having menses
+- id: BPHS.RELATIONSHIP.CH20V78.0002.04
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_rahu
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.rahu
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with a woman having menses
+- id: BPHS.RELATIONSHIP.CH20V78.0002.05
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_ketu
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will have relation with a woman having menses
+- id: BPHS.RELATIONSHIP.CH20V78.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v7-8
+    quote: >-
+      7-8 1/2 If the Sun is placed in the 7th House, the native will have the company of barren
+      women, if there is the Moon in this house he will have a wife of the nature of the sign
+      in the 7th House, if Mars is placed there he will have the company of a girl having
+      menses and who is barren : Similarly, if Mercury is placed in the 7th House the native
+      will befriend a harlot ,a low caste woman or a female belonging to the trader community.
+      In case Jupiter be there he will have relation with the wife of a Brahmin or with a
+      pregnant woman; and in case Saturn, Rahu and Ketu have gone there (in the 7th House)
+      he will have relation with a base woman and with a woman having menses.
+    quote_sha256: 2bba8326c52ecc8ebe000361b1804167e994054d00e405c97efc3740e8788b50
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_house_mercury
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: The native will befriend a female belonging to the trader community
+- id: BPHS.RELATIONSHIP.CH20V9.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v9
+    quote: >-
+      9-9 1/2 If the 7th House has Mars in it, the native will have a wife having attractive
+      breasts, if Saturn is there, his wife will be sickly and weak, in case Jupiter is there
+      she will have hard and prominent breasts and the presence of Venus will confer on him
+      a wife having bulky and excellent breasts.
+    quote_sha256: 3fcbccd9849d1beb218875d21f1571cade5cd55bb8b89e0e9e3b942fabc40f29
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 20.9_mars
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: wife has attractive breasts
+- id: BPHS.RELATIONSHIP.CH20V9.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v9
+    quote: >-
+      9-9 1/2 If the 7th House has Mars in it, the native will have a wife having attractive
+      breasts, if Saturn is there, his wife will be sickly and weak, in case Jupiter is there
+      she will have hard and prominent breasts and the presence of Venus will confer on him
+      a wife having bulky and excellent breasts.
+    quote_sha256: 3fcbccd9849d1beb218875d21f1571cade5cd55bb8b89e0e9e3b942fabc40f29
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 20.9_saturn
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.saturn
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: wife is sickly and weak
+- id: BPHS.RELATIONSHIP.CH20V9.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v9
+    quote: >-
+      9-9 1/2 If the 7th House has Mars in it, the native will have a wife having attractive
+      breasts, if Saturn is there, his wife will be sickly and weak, in case Jupiter is there
+      she will have hard and prominent breasts and the presence of Venus will confer on him
+      a wife having bulky and excellent breasts.
+    quote_sha256: 3fcbccd9849d1beb218875d21f1571cade5cd55bb8b89e0e9e3b942fabc40f29
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 20.9_jupiter
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: wife has hard and prominent breasts
+- id: BPHS.RELATIONSHIP.CH20V9.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch20.v9
+    quote: >-
+      9-9 1/2 If the 7th House has Mars in it, the native will have a wife having attractive
+      breasts, if Saturn is there, his wife will be sickly and weak, in case Jupiter is there
+      she will have hard and prominent breasts and the presence of Venus will confer on him
+      a wife having bulky and excellent breasts.
+    quote_sha256: 3fcbccd9849d1beb218875d21f1571cade5cd55bb8b89e0e9e3b942fabc40f29
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 20.9_venus
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.venus
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: wife has bulky and excellent breasts
+- id: BPHS.RELATIONSHIP.CH25V56.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch25.v5-6
+    quote: >-
+      5-6 And in the event of the 12th Lord falling in the Navamamsha of his enemy, the Navamamsha
+      of his debilitation sign or the Navamamsha of the 8th House or in the 6th or 8th House,
+      the native is deprived of happiness through his wife; is troubled by expenses and remains
+      bereft of general happiness. That very 12th Lord being in an angle or a trine, the native
+      will have full happiness of his wife.
+    quote_sha256: cfaf3670b119e69783c0054a376282e278cde1d8865245c4abbbb76d33433f10
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12th_lord_in_6th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.06
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: deprived of happiness through his wife
+- id: BPHS.RELATIONSHIP.CH25V56.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch25.v5-6
+    quote: >-
+      5-6 And in the event of the 12th Lord falling in the Navamamsha of his enemy, the Navamamsha
+      of his debilitation sign or the Navamamsha of the 8th House or in the 6th or 8th House,
+      the native is deprived of happiness through his wife; is troubled by expenses and remains
+      bereft of general happiness. That very 12th Lord being in an angle or a trine, the native
+      will have full happiness of his wife.
+    quote_sha256: cfaf3670b119e69783c0054a376282e278cde1d8865245c4abbbb76d33433f10
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12th_lord_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: deprived of happiness through his wife
+- id: BPHS.RELATIONSHIP.CH25V56.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch25.v5-6
+    quote: >-
+      5-6 And in the event of the 12th Lord falling in the Navamamsha of his enemy, the Navamamsha
+      of his debilitation sign or the Navamamsha of the 8th House or in the 6th or 8th House,
+      the native is deprived of happiness through his wife; is troubled by expenses and remains
+      bereft of general happiness. That very 12th Lord being in an angle or a trine, the native
+      will have full happiness of his wife.
+    quote_sha256: cfaf3670b119e69783c0054a376282e278cde1d8865245c4abbbb76d33433f10
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 12th_lord_in_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: native will have full happiness of his wife
+- id: BPHS.RELATIONSHIP.CH26V107.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v107
+    quote: >-
+      Should the 9th Lord be situated in the 11th House, the native will have financial gains
+      day by day, be devoted to his teachers, virtuous and be doer of charitable deeds.
+    quote_sha256: a914e0f7c08cd6c776ffc11081d65148b2d87602b4d835a46d06171dce8c4cb3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.107_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.09
+      bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: Devoted to his teachers
+- id: BPHS.RELATIONSHIP.CH26V11.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v11
+    quote: >-
+      In case the Ascendant Lord has been placed in the 11th House, the native will always
+      have gains, good qualities, fame and many wives.
+    quote_sha256: 0cc78c6f3399b3e8e77002ba50d0104a0ba5c5618b98fd9945e32585c42b3ab2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ascendant_lord_in_11th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native will have many wives
+- id: BPHS.RELATIONSHIP.CH26V115.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v115
+    quote: >-
+      If the 10th Lord occupies the 7th House the native will get happiness through wife,
+      be intelligent, virtuous, eloquent, truthful and devoted to religion.
+    quote_sha256: 68a2434adfc5ffed389d35f75039266deee251bbfbc287b8fd770d5e092294fe
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.115.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: native will get happiness through wife
+- id: BPHS.RELATIONSHIP.CH26V118.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v118
+    quote: >-
+      Should the 10th Lord be placed in the 10th House, the native will be skilful in all
+      jobs, be valorous, truthful and devoted to his teachers and elders.
+    quote_sha256: 5811b02d19b244d021b996e110999101b22043f042bdd3f9d8d9a9dbd97253b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 118_10th_lord_in_10th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.10
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: devoted to his teachers and elders
+- id: BPHS.RELATIONSHIP.CH26V127.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v127
+    quote: 'If the 11th Lord is situated in the 7th House, the native always gains through
+      his wife’s relatives. He will be liberal, virtuous, sensual and will remain at the command
+      of his wife.
+
+      Notes : If the Ascendants are Aries and Libra, the 11th Lords will be respectively Saturn
+      and the Sun. Being placed in the 7th House both they will be in their signs of exaltation.
+      Therefore, the native will have special gains from his wife’s relatives. Such a native
+      is generally married in a rich family. In the Gemini Ascendant the 11th Lord Mars will
+      be the 6th Lord also. The 6th House is the House of enemies, oppositions and disputes.
+      Therefore, a native having this combination will certainly face opposition from his
+      wife. One of the reasons of opposition between wife and husband may be relating to dowry.
+
+      In the Leo and Aquarius Ascendants the 11th Lords will be respectively Mercury and Jupiter.
+      They will be the Second Lords also. Therefore, both the planets who are the representatives
+      of value will be in the 2nd and 11th House which also represent value. A native having
+      this combination in his horoscope has special gains of wealth from his wife’s relatives.
+      His wealth increases greatly after marriage.
+
+      In the Capricorn Ascendant the native doesnot get happiness through his wife for a long
+      time because in this Ascendant the 11th Lord Mars will be debilitated in the 7th House
+      and he will soon cause the death of the native’s wife. Some natives get their engagements
+      broken.'
+    quote_sha256: 504a6d0d038bee357e23678993338659b5cae6f08c8311aac61e636b49e5cee7
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.127.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: he will remain at the command of his wife
+- id: BPHS.RELATIONSHIP.CH26V128.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v128
+    quote: >-
+      If the 11th Lord is fallen in the 8th House, the native will suffer losses in his undertakings.
+      He will be long lived while his wife will die before him.
+    quote_sha256: 5c32d55496ba84facae5c1f032e0fb88893ac286c494680b5dadc1deda7f496e
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.128.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: His wife will die before him.
+- id: BPHS.RELATIONSHIP.CH26V13.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v13
+    quote: >-
+      When the 2nd Lord has gone in the Ascendant, the native will be endowed with sons and
+      wealth, will be inimical to his family, lustful, hard hearted and will do other’s jobs.
+    quote_sha256: a5fdb0b8b017a5a552eb205a7affd4e87daef373761d9e261959b092888e1887
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.13.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.01
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: lustful
+- id: BPHS.RELATIONSHIP.CH26V132.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v132
+    quote: >-
+      Should the 11th Lord occupy the 12th House, the native will always expend on good deeds,
+      be sensual, will have many wives and will have friendship with barbarians or foreigners
+      in general.
+    quote_sha256: 11495328681b53668bbbc34b977085412993d6d0a5a3269a9115800c44f45307
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.132.2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: mixed
+    magnitude: moderate
+    text: sensual
+- id: BPHS.RELATIONSHIP.CH26V132.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v132
+    quote: >-
+      Should the 11th Lord occupy the 12th House, the native will always expend on good deeds,
+      be sensual, will have many wives and will have friendship with barbarians or foreigners
+      in general.
+    quote_sha256: 11495328681b53668bbbc34b977085412993d6d0a5a3269a9115800c44f45307
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.132.3
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: mixed
+    magnitude: moderate
+    text: will have many wives
+- id: BPHS.RELATIONSHIP.CH26V135.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v135
+    quote: >-
+      If the 12th Lord is placed in the 3rd House, the native will be devoid of fraternal
+      bliss, will have hatred for other people and will promote self nourishment or will be
+      self centred.
+    quote_sha256: 26d28a5e20562e112007363594717d3f078d4ebef3e8c11180081abb9030836c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.135_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.03
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: devoid of fraternal bliss
+- id: BPHS.RELATIONSHIP.CH26V135.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v135
+    quote: >-
+      If the 12th Lord is placed in the 3rd House, the native will be devoid of fraternal
+      bliss, will have hatred for other people and will promote self nourishment or will be
+      self centred.
+    quote_sha256: 26d28a5e20562e112007363594717d3f078d4ebef3e8c11180081abb9030836c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.135_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.03
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: hatred for other people
+- id: BPHS.RELATIONSHIP.CH26V138.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v138
+    quote: >-
+      If the 12th Lord is fallen in the 6th House, the native will incur enmity with his own
+      men, be given to anger, be sinful, miserable, and will traverse others' wives.
+    quote_sha256: 8b6e555d51b7de288f0217cc6ec2f00cd694976d4f8eaa89e5c1569998cefbec
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.138.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.06
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: incurs enmity with his own men
+- id: BPHS.RELATIONSHIP.CH26V138.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v138
+    quote: >-
+      If the 12th Lord is fallen in the 6th House, the native will incur enmity with his own
+      men, be given to anger, be sinful, miserable, and will traverse others' wives.
+    quote_sha256: 8b6e555d51b7de288f0217cc6ec2f00cd694976d4f8eaa89e5c1569998cefbec
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.138.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.06
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: traverses others' wives
+- id: BPHS.RELATIONSHIP.CH26V139.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v139
+    quote: >-
+      Should the 12th Lord occupy the 7th House, the native will always expend on account
+      of his wife, will not enjoy conjugal bliss and will be bereft of learning and strength.
+    quote_sha256: 3c5ae69277e48406518a71898253d20b73936e3e932cd5f8e10537136f74c038
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.139.2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native will not enjoy conjugal bliss
+- id: BPHS.RELATIONSHIP.CH26V14.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v14
+    quote: >-
+      In case the 2nd Lord is in the 2nd House, the native will be wealthy, proud, will have
+      two or more wives but will have no son.
+    quote_sha256: cf8693f44c4fbf8a117602d261aff22df0a1c411c4b7498526cb5132b4bb8ca5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.14.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native will have two or more wives
+- id: BPHS.RELATIONSHIP.CH26V144.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v144
+    quote: >-
+      In case the 12th Lord in situated in the 12th House, the native expends heavily. He
+      will not have physical felicity, will be irritable and spiteful.
+    quote_sha256: 7f910bd419382a4b3ae82e68457d6561bbf1a90a88b68a7997bda83f02400079
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.144_4'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The native will be spiteful.
+- id: BPHS.RELATIONSHIP.CH26V19.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v19
+    quote: >-
+      In the event of the 2nd Lord falling in the 7th House, the native will apt to traverse
+      other’s wife and will be a physician. If the 2nd Lord in the 7th House is in conjunction
+      with or is aspected by a malefic his wife will be a harlot.
+    quote_sha256: 110ec4558b1f40d858ead210de13f717be3544bf453b3517f1684a6852589dc6
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.19.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: apt to traverse other's wife
+- id: BPHS.RELATIONSHIP.CH26V2.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v2
+    quote: >-
+      When the Lord of the Ascendant has been placed in the 2nd House, the native will be
+      gainful, learned, happy, good natured, religious minded, honourable will have many wives
+      and good qualities.
+    quote_sha256: f178ab6a6c4dbfea2cfbc4c2d2440f57cf50a7fcb4fe8e48a7f17fbfa627d286
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.2.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native will have many wives
+- id: BPHS.RELATIONSHIP.CH26V20.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v20
+    quote: >-
+      Should the 2nd Lord happen to be placed in the 8th House the native is endowed with
+      abundant land wealth, but he will have little marital felicity and be bereft of happiness
+      through elder brother.
+    quote_sha256: 05b669b5ba61dd3415a29d6136588b88ac81928c213e48eab1ae36fe85369005
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.20_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: little marital felicity
+- id: BPHS.RELATIONSHIP.CH26V24.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v24
+    quote: >-
+      If the 2nd Lord occupies the 12th House the combination makes the native adventurous,
+      devoid of wealth, dependent on others and keeps him bereft of the happiness of the eldest
+      son.
+    quote_sha256: e66ad846338498fdfb0c095abfb7b6b2778daa53cb4eb030854936db9bb2e4df
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.24_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: dependent on others
+- id: BPHS.RELATIONSHIP.CH26V28.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v28
+    quote: >-
+      Should the 3rd be situated in the 4th House, the native will be happy, wealthy and intelligent
+      but will acquire a vicious wife.
+    quote_sha256: d8a41e534b4f7e967c71e890a04119fa8125278406f6516ce6b80fc4cfeff94d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 3rd_lord_in_4th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The native will acquire a vicious wife
+- id: BPHS.RELATIONSHIP.CH26V3.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v3
+    quote: 'Should the Ascendant Lord be placed in the Third House, the native will be equal
+      to lion in valour, will have all kinds of wealth, will be honourable, will have two
+      wives and be intelligent and happy.
+
+      Notes : The 3rd is the House of bodily strength and valour. If the Ascendant Lord is
+      in the 3rd House, the native will be marvellously enterprising and will have the courage
+      to face every situation. The faculties of the body become most flourishing in the Third
+      House, and the body is represented by the Ascendant and its Lord. The Ascendant Lord
+      being placed in the Third House, the native will require more nutrition and his diet
+      will be richer. In case the Ascendant is Gemini and the Ascendant Lord has gone in the
+      Third House, the native becomes ascetic towards earning money from the age of 40 or
+      45. His vitality and strength are decayed. In Aquarius Ascendant also when the Ascendant
+      Lord occupies the Third House Saturn will be in his debilitation sign and opposite effects
+      will be seen.'
+    quote_sha256: 7e06a90114de280c400b004183b7aafb3f83246e985c323b049e8016892af5a2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_in_3rd_general
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.03
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: will have two wives
+- id: BPHS.RELATIONSHIP.CH26V33.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v33
+    quote: >-
+      If the 3rd Lord happens to fall in the 9th House, the native is bereft of paternal happiness,
+      makes fortunes through his wife and enjoys the happiness of having son etc.
+    quote_sha256: 13042f643a570fd339bbc70607fe53686be0b84ec55a52f378cb7ce683665a83
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.33_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: makes fortunes through his wife
+- id: BPHS.RELATIONSHIP.CH26V36.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v36
+    quote: >-
+      In the event of the 3rd Lord being placed in the 12th House, the native will spend his
+      wealth in evil deeds, his father will be cruel and the native becomes fortunate through
+      his wife.
+    quote_sha256: 50d10bb9f18a7f6ca960d1364429a76567eb233930ad49ecd9cb275c44ea521a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lord_3_in_12_fortunate_through_wife
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native becomes fortunate through his wife
+- id: BPHS.RELATIONSHIP.CH26V40.0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v40
+    quote: >-
+      In case the 4th Lord occupies the 4th House, the native will rise to the ministership,
+      will possess all kinds of wealths, he will be skilful, virtuous, honourable, learned,
+      happy and be well disposed to his wife.
+    quote_sha256: cd28729e73d3966ac58a199cf24fec3ecc4c84e66b751fdafc5a152783533b69
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.40.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: will be well disposed to his wife
+- id: BPHS.RELATIONSHIP.CH26V41.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v41
+    quote: >-
+      If the 4th Lord is situated in the 5th House, the native will be happy, be favourite
+      of all, devotee of Lord Vishnu, virtuous, honourable and will possess self earned wealth.
+    quote_sha256: 3a2d078b80336d61ad87d00dcddf7e1a554eba749a696146f754af6e9f3de6e4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.41_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.05
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: native will be favourite of all
+- id: BPHS.RELATIONSHIP.CH26V47.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v47
+    quote: >-
+      In case the 4th Lord has gone in the 11th House, the native will be obsessed with fear
+      of secret disease, be liberal, virtuous, charitable and helpful to others.
+    quote_sha256: fbb242a8743635ff62e32a5a72e09a1a3ccbefd9ca583b4b3ba9127703ebf4e6
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.47_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: helpful to others
+- id: BPHS.RELATIONSHIP.CH26V50.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v50
+    quote: >-
+      If the 5th Lord occupies the 2nd House the native will have the blessing of having many
+      sons and wealth. He will be supporter of his family, honourable, be attached to his
+      wife and be famous in the world.
+    quote_sha256: 6797ef62e460aa8b8ab3fcc1a44b083481955fa7f1e069b6e7ceed3007f0480f
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_2nd
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native will be attached to his wife
+- id: BPHS.RELATIONSHIP.CH26V59.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v59
+    quote: >-
+      In case the 5th Lord occupies the 11th House, the native will be learned, be dear to
+      the people, be an illustrious author, be very skilful and be endowed with many sons
+      and wealth.
+    quote_sha256: a14291e7b9383997659c93ad5fc53d101292bd90268c69cfd4750187b7ef5afc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: be dear to the people
+- id: BPHS.RELATIONSHIP.CH26V61.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v61
+    quote: >-
+      If the 6th Lord is situated in the Ascendant, the native will be sickly, famous, inimical
+      to his relatives, adventurous and virtuous.
+    quote_sha256: 033f46265adea436bb423723c627d55cd99e7c852825d9b7d17492fce88e8434
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 6th_lord_in_1st
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.01
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The native will be inimical to his relatives.
+- id: BPHS.RELATIONSHIP.CH26V65.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v65
+    quote: >-
+      In the event of the 6th Lord occupying the 5th House, the native's wealth will be always
+      fluctuating, he will contract enmity with his son and friend, be happy, selfish and
+      kind.
+    quote_sha256: 1f4e36bef740284d751a9212cab82e06b25a3ba1b7420e601039b51196354372
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 6th_lord_in_5th_enmity
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.05
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: Enmity with son and friend
+- id: BPHS.RELATIONSHIP.CH26V67.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v67
+    quote: >-
+      In case the 6th Lord is situated in the 7th House the native will be devoid of happiness
+      through wedlock, be famous, virtuous honourable, adventurous and wealthy.
+    quote_sha256: 8f418668f2ad4120136a6bb2d7721b2f0470d996bca013b2076c33ddbb56ad1c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 6th_lord_in_7th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: devoid of happiness through wedlock
+- id: BPHS.RELATIONSHIP.CH26V68.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v68
+    quote: >-
+      In the event of the 6th Lord falling in the 8th House, the native will be sickly, inimical
+      to the learned and the wise, will desire others' wealth be interested in others' wives
+      and be impure.
+    quote_sha256: fb3de80df1f6b85fca1cc1748e8c1ea9e30d5f11fd502092d9abda75e076e6e5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.68_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native will be inimical to the learned and the wise
+- id: BPHS.RELATIONSHIP.CH26V68.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v68
+    quote: >-
+      In the event of the 6th Lord falling in the 8th House, the native will be sickly, inimical
+      to the learned and the wise, will desire others' wealth be interested in others' wives
+      and be impure.
+    quote_sha256: fb3de80df1f6b85fca1cc1748e8c1ea9e30d5f11fd502092d9abda75e076e6e5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.68_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native will be interested in others' wives
+- id: BPHS.RELATIONSHIP.CH26V72.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v72
+    quote: 'In case the 6th Lord is placed in the 12th House the money is spent on vices and
+      the native is inimical to the learned and does violence to animals.
+
+      Notes : The situation of the 6th Lord in the 12th House will be very auspicious for
+      the natives haivng Aries Ascendant, because in this Ascendant Mercury is the giver of
+      malefic effects and he, being placed in the 12th House, will be in his sign of debilitation
+      and thus will be extremely weakened as if his malefic nature and powers of doing harm
+      were completely destroyed. Therefore, his malefic effects are completely neutralised.
+      In all Ascendants the native will be of questionable character and will ever be intent
+      on traversing other people''s wives.'
+    quote_sha256: fb9d7630c0d9e9ba420485e40891591a5c03844db648d2429a07ee5d23bc38e9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 6th_lord_in_12th_vices
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: native is inimical to the learned
+- id: BPHS.RELATIONSHIP.CH26V73.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v73
+    quote: >-
+      In case the 7th Lord happens to fall in the Ascendant, the native will traverse other
+      people's wives, be wicked, skilful, be devoid of fortitude and will be afflicted by
+      windy diseases.
+    quote_sha256: e869ad102e1fc275e917919956c3adcdb429011a7285ac2624e20450098624e4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.73_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native will traverse other people's wives
+- id: BPHS.RELATIONSHIP.CH26V74.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v74
+    quote: >-
+      If the 7th Lord is placed in the 2nd House the native will have many wives, will gain
+      wealth through his wife and will be of procastinating nature.
+    quote_sha256: 47fc6ec785e2f3aa9fd6f72f4acf56586ab9578fc4ff4eff6f4999571c5d4db8
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.74_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: The native will have many wives
+- id: BPHS.RELATIONSHIP.CH26V76.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v76
+    quote: >-
+      In case the 7th Lord is situated in the 4th House, the wife of the native will not remain
+      under his control. He will himself be truthful, intelligent and religious and he will
+      suffer from dental diseases.
+    quote_sha256: bf76604eacb566518ad848e8ae523ea1cb4ba5cdcea2d848b17c51f5fd28c9d5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.76.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the wife of the native will not remain under his control
+- id: BPHS.RELATIONSHIP.CH26V78.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v78
+    quote: >-
+      If the 7th Lord is placed in the 6th House, the native's wife will be sickly or the
+      native is inimical towards her, he is himself given to anger and remains devoid of happiness.
+    quote_sha256: 3eeeb9d6b6cb6d6e073a2317d9f7dba3de95ac67f5718c92defa83f51885d2d9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_lord_in_6th_1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.06
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native's wife will be sickly
+- id: BPHS.RELATIONSHIP.CH26V78.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v78
+    quote: >-
+      If the 7th Lord is placed in the 6th House, the native's wife will be sickly or the
+      native is inimical towards her, he is himself given to anger and remains devoid of happiness.
+    quote_sha256: 3eeeb9d6b6cb6d6e073a2317d9f7dba3de95ac67f5718c92defa83f51885d2d9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_lord_in_6th_2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.06
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native is inimical towards his wife
+- id: BPHS.RELATIONSHIP.CH26V79.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v79
+    quote: >-
+      Should the 7th Lord occupy the 7th House the native will be endowed with happiness through
+      wife, be courageous, skilful and intelligent but only afflicted by windy diseases.
+    quote_sha256: a6e05445b2a7e84cf30424a1cb4381149137947e4294d568ef7ae8fb9a82f09d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.79_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: endowed with happiness through wife
+- id: BPHS.RELATIONSHIP.CH26V8.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v8
+    quote: >-
+      Should the Ascendant Lord occupy the 8th House, the native will be Siddha Vidya Visharada
+      (having the knowledge of occult powers), sickly, thievish, extremely wrathful, a gambler
+      and given to traversing others wives.
+    quote_sha256: 512383e38f69bde995309431d3e2f1e84389d14f71a3fc525d518cc2119c4b78
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagnesha_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: given to traversing others wives
+- id: BPHS.RELATIONSHIP.CH26V80.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v80
+    quote: >-
+      In case the 7th Lord happens to fall in the 8th House, the native will be bereft of
+      marital happiness. His wife also will be afflicted by diseases, bad-natured and will
+      not remain obedient to the native.
+    quote_sha256: ca9ba899185332efeb63818a44902a84159ae406a971ceca959795756b42e1cd
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.80_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The native will be bereft of marital happiness.
+- id: BPHS.RELATIONSHIP.CH26V80.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v80
+    quote: >-
+      In case the 7th Lord happens to fall in the 8th House, the native will be bereft of
+      marital happiness. His wife also will be afflicted by diseases, bad-natured and will
+      not remain obedient to the native.
+    quote_sha256: ca9ba899185332efeb63818a44902a84159ae406a971ceca959795756b42e1cd
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.80_2'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The native's wife will be afflicted by diseases.
+- id: BPHS.RELATIONSHIP.CH26V80.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v80
+    quote: >-
+      In case the 7th Lord happens to fall in the 8th House, the native will be bereft of
+      marital happiness. His wife also will be afflicted by diseases, bad-natured and will
+      not remain obedient to the native.
+    quote_sha256: ca9ba899185332efeb63818a44902a84159ae406a971ceca959795756b42e1cd
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.80_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The native's wife will be bad-natured.
+- id: BPHS.RELATIONSHIP.CH26V80.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v80
+    quote: >-
+      In case the 7th Lord happens to fall in the 8th House, the native will be bereft of
+      marital happiness. His wife also will be afflicted by diseases, bad-natured and will
+      not remain obedient to the native.
+    quote_sha256: ca9ba899185332efeb63818a44902a84159ae406a971ceca959795756b42e1cd
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.80_4'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The native's wife will not remain obedient to the native.
+- id: BPHS.RELATIONSHIP.CH26V81.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v81
+    quote: >-
+      It the 7th Lord is situated in the 9th House, the native will have union with many women,
+      be well disposed to his own wife, and will initiate a number of deeds.
+    quote_sha256: f9748daf3c8d8b7f47fc0cbe045a8c9cb09b2c24be7ee9064a178972f6c23ad8
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.81_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native will have union with many women
+- id: BPHS.RELATIONSHIP.CH26V81.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v81
+    quote: >-
+      It the 7th Lord is situated in the 9th House, the native will have union with many women,
+      be well disposed to his own wife, and will initiate a number of deeds.
+    quote_sha256: f9748daf3c8d8b7f47fc0cbe045a8c9cb09b2c24be7ee9064a178972f6c23ad8
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.81_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native will be well disposed to his own wife
+- id: BPHS.RELATIONSHIP.CH26V82.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v82
+    quote: >-
+      In the event of the 7th Lord being placed in the 10th House, the native's wife will
+      not remain under his control. The native himself will be religious and be gifted with
+      Wealth, sons etc.
+    quote_sha256: fa5a9d3849a5f47f25735cb532df5e585d3aea657e99ca6369bdc5f64f91c6c4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 7th_lord_in_10th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.10
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native's wife will not remain under his control
+- id: BPHS.RELATIONSHIP.CH26V84.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v84
+    quote: >-
+      If the 7th Lord is gone in the 12th House, the native will be penurious, miserly, and
+      his wife will be spendthrift. He will earn his livelihood by trading in Clothes(textiles/garments
+      etc).
+    quote_sha256: 26ef23a51dc0a69558b91cc5b8bd9b50ec483ec4b65d3a57723018aecf8a9873
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.84.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native's wife will be spendthrift
+- id: BPHS.RELATIONSHIP.CH26V88.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v88
+    quote: >-
+      88 When the 8th Lord occupies the 4th House the native will be deprived of his mother
+      and there can be no doubt in it that he will be devoid of a house, lands and, happiness
+      and will be a betrayer of friends.
+    quote_sha256: 0bf824073b8be40a9f008ed2459fc744052ade9e7ac2fb26342ceefbc23e774d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.88_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: betrayer of friends
+- id: BPHS.RELATIONSHIP.CH26V9.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v9
+    quote: >-
+      If the Ascendant Lord is situated in the 9th House the native will be fortunate, dear
+      to the people, devotee of Lord Vishnu, skilful eloquent speaker and will be endowed
+      with wife, sons and wealth.
+    quote_sha256: 542f5d69756dfc673dde72be906b0aa41cf08066df44d16493ebebb1725ffd3d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.9'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: dear to the people
+- id: BPHS.RELATIONSHIP.CH26V91.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v91
+    quote: >-
+      If the 8th Lord is placed in the 7th House, the native will have two wives and if he
+      is in conjunction with a malefic planet also, there will certainly be loss in his trade.
+    quote_sha256: 0ed855a18951cfcdd164367d59c892cdc26bfbcfe9c5912d70376272eceb5e56
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.91_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: the native will have two wives
+- id: BPHS.RELATIONSHIP.CH26V93.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v93
+    quote: >-
+      If the 8th Lord is situated in the 9th House, the native will be a betrayer of his religion
+      and a heterodox; he will be the husband of a wicked wife and will steal other's wealth.
+    quote_sha256: cdfa95785e813cbd78a07e0a2f2c516693fda1b75e8c5858bb91362aac4a118c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.93_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: husband of a wicked wife
+- id: BPHS.RELATIONSHIP.CH26V941.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v941
+    quote: >-
+      Should the 12th Lord occupy the 9th House, the native will dishonour his teachers, be
+      inimical even to his friends and be always intent on achieving his own ends.
+    quote_sha256: 7a3ddd1c39344ddc49ac2e32dbe775f62f53570b8df524528b49b535f9477caf
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.941.2
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.12
+      bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native will be inimical even to his friends
+- id: BPHS.RELATIONSHIP.CH54V46.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v4-6
+    quote: 'In the running Mahadasa of the Sun with the Moon Antardasa, if the Moon is posited
+      in the Ascendant, Angles or Trines, the marriage or other auspicious functions will
+      take place and one gets fame through wealth and prosperity, growth in land and property
+      and gratifying feelings with the acquisitions of vehicles, animals and other assets.
+      If the Moon occupies own or exalted sign, woman''s affection, gain of wealth is caused
+      and happiness of son''s birth, King''s recognition and blessings, contentment over the
+      attainment of desired objectives, will also be the results.
+
+      If the Antardasa''s lord is also the lord of the 2nd house and occupies 11th or any
+      other good house, the native will have good gain of wealth during this period. He will
+      also acquire fixed assets of the kind which will be useful for his children. An example
+      related to this aspect, is illustrated as under : Example 19 :
+
+      Balance Dasa at birth : Ketu 1 year 9 months 2 days. Mahadasa of the Sun and Antardasa
+      of the Moon from 8.8.1971 to 7.2.1972. Data: Date of birth 19.7.1949; Time of birth:
+      3-25 hrs. (IST)
+
+      Lattitude 28°-43'' N Longitude 77°-50''E In this duration, the elder brother of the
+      native who had no issue, but had abundant wealth and immovable property in the form
+      of agriculture land which was to be inherited by the native''s sons as per the ''will''
+      of his brother. The 2nd house signifies parental property and this house also represents
+      the elder brother''s immovable property being the 4th house from the 11th house. The
+      house of wealth of the elder brother (2nd from 11th) has the lordship of Venus which
+      is posited in the 2nd house of the native. Therefore, the liquid cash, Jewellery etc.,
+      was inherited by the native. Since the Sun is posited in the 2nd house (Wealth) in the
+      sign of the Moon, situated in the 11th house (gain) whose dispositor Mars (brother)
+      is in conjunction with Venus (lord the house of wealth of the elder brother) also having
+      the aspects of Jupiter, these results got fructified in the Main period of the Sun and
+      sub-period of the Moon. With the acquisition of the assets, the native had been taken
+      to a high status in the society. This factor is quite evident from Dasamsa Chart where
+      the Moon is posited in the Ascendant and in its own sign.'
+    quote_sha256: 55fc2b8e7fa31f075027642423676f4eebe85433d718fd83e348fe710bea1ad5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sun_moon_dasha_moon_kendra_trikona_1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: marriage or other auspicious functions will take place
+- id: BPHS.RELATIONSHIP.CH58V4344.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v43-44
+    quote: >-
+      43-44½: If Venus is placed at the 6th, the 8th or the 12th house from the Ascendant
+      or the Mahadasa lord in the sign of debilitation, it will give rise to disputes, opposition
+      with the co-borns and sufferings of wife and children. If this Venus conjoins with Saturn
+      or Rahu, quarrels; fear of persecution by the king, dispute on account of wife; conflict
+      with father-in-law, differences with the brothers and loss of wealth and prosperity,
+      would be the results of the Antardasa of Venus.
+    quote_sha256: 25250f47d19af1c17638eaedae183aec101171c5613d6374f4ad3239f4d39891
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '58.43_1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: disputes
+- id: BPHS.RELATIONSHIP.CH58V4344.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v43-44
+    quote: >-
+      43-44½: If Venus is placed at the 6th, the 8th or the 12th house from the Ascendant
+      or the Mahadasa lord in the sign of debilitation, it will give rise to disputes, opposition
+      with the co-borns and sufferings of wife and children. If this Venus conjoins with Saturn
+      or Rahu, quarrels; fear of persecution by the king, dispute on account of wife; conflict
+      with father-in-law, differences with the brothers and loss of wealth and prosperity,
+      would be the results of the Antardasa of Venus.
+    quote_sha256: 25250f47d19af1c17638eaedae183aec101171c5613d6374f4ad3239f4d39891
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '58.43_2'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.12
+    - not:
+        conjunct:
+          subject: graha.venus
+          other: graha.saturn
+    - not:
+        conjunct:
+          subject: graha.venus
+          other: graha.rahu
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: quarrels
+- id: BPHS.RELATIONSHIP.CH58V4344.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v43-44
+    quote: >-
+      43-44½: If Venus is placed at the 6th, the 8th or the 12th house from the Ascendant
+      or the Mahadasa lord in the sign of debilitation, it will give rise to disputes, opposition
+      with the co-borns and sufferings of wife and children. If this Venus conjoins with Saturn
+      or Rahu, quarrels; fear of persecution by the king, dispute on account of wife; conflict
+      with father-in-law, differences with the brothers and loss of wealth and prosperity,
+      would be the results of the Antardasa of Venus.
+    quote_sha256: 25250f47d19af1c17638eaedae183aec101171c5613d6374f4ad3239f4d39891
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '58.43_2'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.12
+    - not:
+        conjunct:
+          subject: graha.venus
+          other: graha.saturn
+    - not:
+        conjunct:
+          subject: graha.venus
+          other: graha.rahu
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: dispute on account of wife
+- id: BPHS.RELATIONSHIP.CH59V2021.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v20-21
+    quote: >-
+      20-21½ : Placement of Ketu at the 8th or the 12th house, from the Ascendant or Mahadasa
+      lord, will cause fear of untimely death, unpalatable food, shivering fever, dysentery,
+      injuries, distress from thieves, detachment from wife and children. This is an absolute
+      certaimity.
+    quote_sha256: 6fb1e538c9a94b928d741aed6a471c9f8f81033243f7d41b7b9c489a10c8d212
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_8_12_ascendant
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: detachment from wife and children
+- id: BPHS.RELATIONSHIP.CH59V7678.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v76-78
+    quote: >-
+      Placement of Jupiter in Angle, Trine or in the 2nd or the 11th house, will confer luxuries,
+      rise of wife's fortune, power of king (political power), gain of wealth and other assets;
+      comforts of food and clothes; excessive duty and religious inclinations, acquisition
+      of knowledge of Vedas (sacred books) and Vedantas, benefit of oblations, donation of
+      food grains, glorification, listening to Vedantas (Hindu scriptures), in Antardasa of
+      Jupiter.
+    quote_sha256: b41736d22c93ec2a11225a6bdac7e544c3f16611e99a2c668428e20fee082373
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 59.76_78_jupiter_placement_dasha
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: rise of wife's fortune
+  timing:
+    requires_activation: true
+- id: BPHS.RELATIONSHIP.CH60V45.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch60.v4-5
+    quote: >-
+      Should Mercury be the lord of the 2nd or the 7th house, it will manifest distress to
+      wife, death of some relative, disease like gastric, intense abdomen pains etc. In order
+      to alleviate such afflictions, Japa (जप) of Vishu-Sahasarnama be performed.
+    quote_sha256: a86a1f39f1b0b94ec966566c2cfb865084339bab1ad5b183c669e203470e2162
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_lord_2_in_sign
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: lord.bhava.02
+      rashi: rashi.gemini
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: distress to wife
+- id: BPHS.RELATIONSHIP.CH60V45.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch60.v4-5
+    quote: >-
+      Should Mercury be the lord of the 2nd or the 7th house, it will manifest distress to
+      wife, death of some relative, disease like gastric, intense abdomen pains etc. In order
+      to alleviate such afflictions, Japa (जप) of Vishu-Sahasarnama be performed.
+    quote_sha256: a86a1f39f1b0b94ec966566c2cfb865084339bab1ad5b183c669e203470e2162
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_lord_7_in_sign
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: lord.bhava.07
+      rashi: rashi.gemini
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: distress to wife
+- id: BPHS.RELATIONSHIP.CH60V45.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch60.v4-5
+    quote: >-
+      Should Mercury be the lord of the 2nd or the 7th house, it will manifest distress to
+      wife, death of some relative, disease like gastric, intense abdomen pains etc. In order
+      to alleviate such afflictions, Japa (जप) of Vishu-Sahasarnama be performed.
+    quote_sha256: a86a1f39f1b0b94ec966566c2cfb865084339bab1ad5b183c669e203470e2162
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_lord_2_in_sign_virgo
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: lord.bhava.02
+      rashi: rashi.virgo
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: distress to wife
+- id: BPHS.RELATIONSHIP.CH60V45.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch60.v4-5
+    quote: >-
+      Should Mercury be the lord of the 2nd or the 7th house, it will manifest distress to
+      wife, death of some relative, disease like gastric, intense abdomen pains etc. In order
+      to alleviate such afflictions, Japa (जप) of Vishu-Sahasarnama be performed.
+    quote_sha256: a86a1f39f1b0b94ec966566c2cfb865084339bab1ad5b183c669e203470e2162
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_lord_7_in_sign_virgo
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: lord.bhava.07
+      rashi: rashi.virgo
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: distress to wife
+- id: BPHS.RELATIONSHIP.CH61V1214.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v12-14
+    quote: >-
+      Placement of Ketu in the Trik houses (6, 8, 12) from the Mahadasa lord or conjoined
+      with the malefic planets will manifest impalpable quarrels, destruction of animals and
+      crops. If Ketu is in conjunction with the debilitated planet or located in the 6th or
+      the 8th house from the Ascendant, there will be coflict with the co-borns; injury or
+      pain in the head and eyes; heart trouble; disrepute; loss of wealth, food grains and
+      animals; distress to wife and children and extensive travellings.
+    quote_sha256: a54ddd60d9b4220dd69e401f63bbff7c22215aaff2f31b387680193a221d5ec3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_placement_1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: sudden or inexplicable quarrels
+- id: BPHS.RELATIONSHIP.CH61V1214.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v12-14
+    quote: >-
+      Placement of Ketu in the Trik houses (6, 8, 12) from the Mahadasa lord or conjoined
+      with the malefic planets will manifest impalpable quarrels, destruction of animals and
+      crops. If Ketu is in conjunction with the debilitated planet or located in the 6th or
+      the 8th house from the Ascendant, there will be coflict with the co-borns; injury or
+      pain in the head and eyes; heart trouble; disrepute; loss of wealth, food grains and
+      animals; distress to wife and children and extensive travellings.
+    quote_sha256: a54ddd60d9b4220dd69e401f63bbff7c22215aaff2f31b387680193a221d5ec3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_placement_2
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.ketu
+      other: graha.mars
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: sudden or inexplicable quarrels
+- id: BPHS.RELATIONSHIP.CH61V1214.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v12-14
+    quote: >-
+      Placement of Ketu in the Trik houses (6, 8, 12) from the Mahadasa lord or conjoined
+      with the malefic planets will manifest impalpable quarrels, destruction of animals and
+      crops. If Ketu is in conjunction with the debilitated planet or located in the 6th or
+      the 8th house from the Ascendant, there will be coflict with the co-borns; injury or
+      pain in the head and eyes; heart trouble; disrepute; loss of wealth, food grains and
+      animals; distress to wife and children and extensive travellings.
+    quote_sha256: a54ddd60d9b4220dd69e401f63bbff7c22215aaff2f31b387680193a221d5ec3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_placement_4
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: conflict with co-borns
+- id: BPHS.RELATIONSHIP.CH61V4142.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v41-42
+    quote: >-
+      From the lord of the Mahadasa, if Ketu is placed in the 8th, 12th or 2nd house, it will
+      cause apprehension of early death; hurdles be created in the process of proceeding to
+      a foreign trip; apprehension of urinary disease, distress due to urinary problem (diabetes);
+      trouble from the King, and thief, quarrel coupled with repentance, slight increase in
+      the comforts.
+    quote_sha256: 31db2736346ff11e9191c9b8918b14f7452bad406da3de53fa8d880843eb928c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '61.41_42_1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: quarrel coupled with repentance
+- id: BPHS.RELATIONSHIP.CH62V3234.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v32-34
+    quote: >-
+      If Mars is located in the 8th or the 12th house from the Ascendant or the lord of the
+      Mahadasa, it will cause distress from shivering fever; disease with sustained fever
+      to the mother and father; loss of place, mental agony; loss of relatives, quarrel; confrontation
+      with the king, conflict with the member of the kings' Assembly (court); excessive expenditure
+      of the wealth and heavy depletion of the food grain (loss of prosperity).
+    quote_sha256: b0cedb959acf89ffba38ce361ac1b03dbdb96b7395c0a9199d961766ae6690f1
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_8_12_from_lagna
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: Quarrel
+- id: BPHS.RELATIONSHIP.CH62V6062.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_kendra_trikona_11_own_exalt
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: company of eminent romantic poets
+  timing:
+    requires_activation: true
+- id: BPHS.RELATIONSHIP.CH62V6062.0007.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.exalted
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: company of eminent romantic poets
+  timing:
+    requires_activation: true
+- id: BPHS.RELATIONSHIP.CH62V6062.0007.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.own_sign
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: company of eminent romantic poets
+  timing:
+    requires_activation: true
+- id: BPHS.RELATIONSHIP.CH82V2629.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: widow
+- id: BPHS.RELATIONSHIP.CH82V2629.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v26-29
+    quote: >-
+      If the Sun be posited in the 8th house in the horoscope of a female, the woman remains
+      in distress and faces poverty. She will have a deformed limb (or suffers from ulcer)
+      and irreligious. If the Moon be in the 8th house, she will have defective vagina, deformed
+      breasts and repulsive eyes. She will be bereft of clothes (decent) and ornaments, will
+      be diseased and criticised by others. If Mars is posited in the 8th house, that woman
+      will be of weak physique, sickly, widow, not beautiful and will face destitution and
+      distress. The position of Mercury, in the 8th house, she will be irreligious, remain
+      frightful, deprived of wealth, pride, good qualities and will be quarrelsome.
+    quote_sha256: 04cfc74de07dc06d4380176072440eeddab638f748f1e67403d554d292013a4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_in_8th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: quarrelsome
+- id: BPHS.RELATIONSHIP.CH82V3033.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v30-33
+    quote: >-
+      The position of Jupiter in the 8th house will make the woman shameless, of less children,
+      with thick hands and feet, deserts her husband and a voracious eater. If Venus be in
+      the 8th house, she will be lethargic, bereft of wealth, irreligious, cruel, filthy and
+      cunning. If Saturn is situated in the 8th house, she will be ill mannered, remain filthy
+      and deprived of her husband's affection. Rahu's being in the 8th house, she will be
+      repulsive (ugly), without a husband, stone hearted, sickly and of a bad conduct.
+    quote_sha256: cfaefc4671a8316440a523c7a4f339d7ced3fbc4db2c48824130f0e467e6fe36
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.33.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.rahu
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: without a husband
+- id: BPHS.RELATIONSHIP.CH82V3033.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v30-33
+    quote: >-
+      The position of Jupiter in the 8th house will make the woman shameless, of less children,
+      with thick hands and feet, deserts her husband and a voracious eater. If Venus be in
+      the 8th house, she will be lethargic, bereft of wealth, irreligious, cruel, filthy and
+      cunning. If Saturn is situated in the 8th house, she will be ill mannered, remain filthy
+      and deprived of her husband's affection. Rahu's being in the 8th house, she will be
+      repulsive (ugly), without a husband, stone hearted, sickly and of a bad conduct.
+    quote_sha256: cfaefc4671a8316440a523c7a4f339d7ced3fbc4db2c48824130f0e467e6fe36
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.32.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.saturn
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: deprived of her husband's affection
+- id: BPHS.RELATIONSHIP.CH82V3033.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch82.v30-33
+    quote: >-
+      The position of Jupiter in the 8th house will make the woman shameless, of less children,
+      with thick hands and feet, deserts her husband and a voracious eater. If Venus be in
+      the 8th house, she will be lethargic, bereft of wealth, irreligious, cruel, filthy and
+      cunning. If Saturn is situated in the 8th house, she will be ill mannered, remain filthy
+      and deprived of her husband's affection. Rahu's being in the 8th house, she will be
+      repulsive (ugly), without a husband, stone hearted, sickly and of a bad conduct.
+    quote_sha256: cfaefc4671a8316440a523c7a4f339d7ced3fbc4db2c48824130f0e467e6fe36
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 82.30.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: deserts her husband
+- id: BRIHATJATAKA.RELATIONSHIP.CH17V12.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_aries
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mars
+      rashi: rashi.aries
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: Respected by Kings
+- id: BRIHATJATAKA.RELATIONSHIP.CH17V12.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_scorpio
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mars
+      rashi: rashi.scorpio
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: Respected by Kings
+- id: BRIHATJATAKA.RELATIONSHIP.CH17V12.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_pisces
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.pisces
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: fond of wife
+- id: BRIHATJATAKA.RELATIONSHIP.CH17V12.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_pisces
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.pisces
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: submissive to women
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH15V6.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch15.v6
+    quote: >-
+      If the dasa of a death-inflicting planet does not at all come into operation, then the
+      most malicious planet in the horoscope will cause death. Saturn, inclined to produce
+      evil by his conjunction with the lords of death houses, will cause death in preference
+      to any of those planets. There are many rules to ascertain the probable time of death
+      knowing beforehand Maraka dasas. Any detailed information in regard to this would increase
+      the bulk of the book beyond reasonable proportion. Add together the longitudes of Saturn,
+      Jupiter, the Sun and the Moon. This gives us a point in the zodiac after expunging multiples
+      of 12. In the case of short, middle and long life, death occurs when Saturn transits
+      over this point, in his first, second and third cycles respectively. THE notable triumphs
+      in Hindu astrology so far as the predictive portion is concerned are entirely due to
+      the great scrutiny, the planetary influences are subjected to in the analysis of a horoscope
+      and the relative values of the good and evil sources of strength of different planets
+      and bhavas. The following points are noteworthy in the consideration of a horoscope.
+      The lords of trines are always auspicious and produce good. The lords of kendras (quadrants)
+      are also good. When malefics become lords of quadrants they invariably become good.
+      The lords of the 2nd and 12th houses give good results if they are in conjunction with
+      favourable planets. The lord of the 8th if he happens to be the lord of the first or
+      is in conjunction with a benefic, becomes good. Mars in addition to the 10th house,
+      if he also becomes the lord of the 5th, produces good. Rahu and Kethu produce good results
+      when they are posited in the signs of benefic planets. 128 Good and evil planets become
+      more and more powerful as they are lords of the 1st, 4th, 7th or 10th houses; 5th and
+      9th houses; or 3rd, 6th and 11th houses respectively. Lords of 3, 6, 8 and 11 do evil
+      and cause miseries in life. The lords of 2nd and 12th remain neutral. Jupiter and Venus
+      owning quadrants become very inauspicious. In addition to this when they occupy the
+      2nd and 7th houses they become very powerful and consequently inflict death upon such
+      natives. Mercury as the lord of a quadrant is less malicious than Jupiter and Venus
+      and the Moon less than Mercury. Mars does not become good when he owns the 10th house.
+      Rahu and Kethu in evil signs produce evil. The lords of quadrants and trines in conjunction,
+      without any other bad aspects, become extremely powerful in producing good results.*
+      If the lords of the 9th and 10th houses exchange places they produce much good. The
+      greatest assets of a man in this life, apart from the shadowy wealth and fame, are *
+      See How to Judge a Horoscope. 129 9 self-respect, courage and prowess. In a horoscope
+      these can be determined by considering Mars and the characteristics attributed to him
+      which are discussed in the future chapters. But here I shall confine myself to the discussion
+      of the most salient points involved in the judgment of a horoscope. The lord of the
+      3rd also must be considered ; both of them must occupy a friendly house and must be
+      found not in a Bhava sandhi (junction of two houses) but in a Bhava-madhya (mid-point
+      of a house). Mars must occupy the 10th for good courage and the lords of the 3rd and
+      11th should occupy favourable and friendly navamsas. The position of Jupiter also considerably
+      improves the situation by making the person not depending upon another but to earn the
+      name of a self-made man. Jupiter adds to the dignity of the person in a sure but silent
+      way. Marriage is a landmark in the history of human race. With regard to the number
+      of wives, the character and temperament of one's wife, her disposition towards the husband
+      and her own health and happiness, much information is incorporated in Chapter XIX under
+      the caption 7th house or Saptamabhava, and the student must pay special attention to
+      that chapter for fuller details. Venus gets the Commander-in-Chief post over matrimonial
+      alliances and all things concerned about them and the 7th house controls marriage in
+      general. In hundreds of horoscopes, it has been observed that Venus when afflicted has
+      given rise to more than one legal wife. It could be vouched with sufficient confidence
+      that Venus in favourable positions is certain to assure marital felicity and success
+      with a single wife. The marriage aspect would be most important to the Hindus among
+      whom the dangerous contagion of divorce has not spread as in the Western nations. Considerable
+      attention has been bestowed upon this subject by the ancient writers. When Venus occupies
+      the house of Jupiter or that of the lord of the 1st or 9th either in the rasi or navamsa,
+      the native will have a chaste, loving and happy wife. 7th house should not be occupied
+      by any planet save a benefic. In the case of a woman the Moon must occupy the navamsa
+      of Jupiter to make her loyal and chaste and should never fall in the navamsa of Saturn
+      or Mars. Mars in the 8th house causes widowhood. Lords of 3, 6 and 11 play an important
+      part in causing debts, diseases and ill-health. The best feature in a horoscope would
+      be that those lords of 3, 6 and 11 must remain isolated and unassociated with any other
+      planet. The lord of the 3rd causes debts and diseases in a speed ; and ill-timed courage
+      and headlong spirit work much in the native. Egotism and misanthropy are marked by the
+      lord of the 6th, in exercising discretion, who has special control over debts and diseases.
+      Anarchic qualities would result if the lord of the 11th is very powerful. Delicate circumstances
+      involving life and honour for the sake of debts and diseases can be overcome but for
+      Mars and Saturn who if they occupy unfriendly signs give rise to excess of evil. The
+      Sun governs father, and the 9th house indicates father. Jupiter has control over children
+      as he is called Putrakaraka and the 5th house is Putrasthana or the house of children.
+      The fourth represents mother and the Moon governs her. When the lords of 4, 5 and 9
+      and the Moon, Jupiter and the Sun are well situated, and occupy favourable and friendly
+      navamsas prosperity for father, mother and children is invariably indicated. An examination
+      of a number of horoscopes has revealed that the Moon, Jupiter or the Sun in the 4th,
+      5th or 9th with Saturn has caused death to mother, children or father respectively early
+      in life. Moon with Saturn without any favourable aspect has caused death to the mother
+      within one year of the birth of the child. Mercury and Mars in the 5th house make the
+      children short-lived. Jupiter in the ascendant is the best gift in a horoscope and the
+      native gets dutiful children and long-lived parents. Long life for an individual may
+      be predicted if the lords of 1 and 8 and Saturn are in good positions and have the aspect
+      of Jupiter. This important and final event is elaborately dealt with in a separate chapter
+      and the readers must study the principles contained in it very carefully. 133 AS soon
+      as the dasas and bhukthies are determined, the next step would be to find out the good
+      and evil planets for each ascendant so that in applying the principles to decipher the
+      future history of man, the student may be able to carefully analyse the intensity of
+      good or evil combinations and proceed further with his predictions when applying the
+      results of dasas and other combinations. Aries.—Saturn, Mercury and Venus are ill-disposed.
+      Jupiter and the Sun are auspicious. The mere combination of Jupiter and Saturn produces
+      no beneficial results. Jupiter is the Yogakaraka or the planet producing success. If
+      Venus becomes a Maraka he will not kill the native but planets like Saturn will bring
+      about death to the person. Taurus.—Saturn is the most auspicious and powerful planet.
+      Jupiter, Venus and the Moon are evil planets. Saturn alone produces Rajayoga. The native
+      will be killed in the periods and sub-periods of Jupiter, Venus and the Moon if they
+      get death-inflicting powers.
+    quote_sha256: f507144cb97448e1f5d65cef93ebf6632c5a614f344aa99a70fca0489ff39525
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '15.6_22'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.08
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: Mars in the 8th house causes widowhood.
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V4.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v4
+    quote: >-
+      If Saturn is in the 7th house the querist will be married within 3 months from the date
+      of question. If the Moon in 3, 5, 6, 7 or 11 is aspected by Jupiter, the Sun and Mercury
+      and if benefics occupy quadrants or trines, the querist will have marriage very early.
+    quote_sha256: ebb28d41777b96c6d26177af290cb198f289f893a0a86004d6cc441c42ec1123
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 27.4.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.saturn
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the querist will be married within 3 months from the date of question
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH30V6.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v6
+    quote: >-
+      If Jupiter is in the ascendant, the Moon in the 7th and Venus in the 10th, the woman
+      becomes the wife of a very rich man, even if she is born in humble surroundings.
+    quote_sha256: d903743757479f1cd7232c5e7446d91eb8bf30132699ba6931ba6d8261143cc5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '30.6'
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: marriage into great wealth despite humble birth
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V54.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v54
+    quote: 'Sloka 54. In this chapter on Female Horoscope, we have given accurately with reference
+      to husbands the same information which we gave while treating of men''s horoscope regarding
+      wives such as the regions from which they may come, their status, the protection of
+      their virtue and the qualities evinced in their acts. The number of children will correspond
+      to the number of Navamsas attained by the powerful among the planets occupying the 7th
+      bhava or its Amsa. The lord of that bhava when occupying a Kendra will produce much
+      jubilation on marriage and other festal occasions.
+
+      Thus ends &c. The (कालचक्र) kalachakra system of ayurdaya referred to already in Adhyaya
+      5, sloka 33, is based on the Moon''s position in a नक्षत्रपाद or quarter of an asterism.
+      For the purposes of this ayurdaya, the 27 stars from Aswini to Revati are classified
+      into nine groups of three each, the five odd groups or triads being styled सव्य (Savya)
+      or दक्षिण (Dakshina) and the four even ones as अपसव्य (Apasavya), वाम (Vama) or उत्तर
+      (Uttara). The peculiarity of a सव्य (Savya) triad is that its 12 padas (पाद) are assigned
+      to the 12 Rasis from Mesha onwards. In an अपसव्य (Apasavya) triad, the 12 padas belong
+      to the 12 Rasis reckoned in a reverse order from वृश्चिक to धनुष. The 12 Nakshatra padas
+      (नक्षत्रपाद) whether of a सव्य (Savya) or of an अपसव्य (Apasavya) triad can be brought
+      under the four triangular signs according to the Rasis to which they are severally assigned.
+      In accordance with this classification, four kinds of परमायुस् (Paramayus) or maximum
+      life will be shown to result (Vide sloka 12). Each कालचक्रनक्षत्रपादआयुस् (Kalachakra
+      nakshatrapadayus) in its entire length comprises nine mahadasas (महादशा) presided over
+      by nine Rasis and their lords. The order in which the several Nakshatra padas get each
+      its nine mahadasas is indicated in the mnemonic formulas for the सव्य (Savya) and अपसव्य
+      (Apasavya) chakras respectively. These formulas are expressed by conventional letters
+      कटपयादि (Katapayadi) referred to already in page 696. Two additional letters भ and श
+      used in the formulas denote the numbers 11 and 12 respectively. It appears to be an
+      accepted canon in the kalachakra system that the maximum length of the life of any person
+      whether born in the beginning, middle or end of a नक्षत्रपाद (nakshatra pada) should
+      not exceed the length of the nine mahadasas (for that pada) reckoned from that at birth.
+
+      For a knowledge of the terms देह (Deha), जीव (Jeeva), मण्डूकगति (Mandukagati), मर्कटगति
+      (Markatagati), सिंहावलोकन (Simhavalokana), the reader should refer to slokas 89—92.
+      In connection with the terms मण्डूकगति (Manduka gati) and मर्कटगति (Markata gati), it
+      will be interesting to note that in a सव्यचक्र (Savya chakra), the two movements take
+      place from Kanya to Kataka and Simha to Mithuna respectively, while in an अपसव्यचक्र
+      (Apasavya chakra) they are invariably from Kataka to Kanya and Mithuna to Simha and
+      these occur only in the cycles which run from Vrischika to Dhanus and vice versa.
+
+      A reason for this will appear when we remember that it is only by such an arrangement
+      the order of planets in both the cycles can be made identical.'
+    quote_sha256: cbdadf168ac07705fd2e4bb78f70ef979b44f53e30ddd9eb89217ac9bb6e1e60
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 16.54_7th_lord_kendra
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.10
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      The lord of the 7th house when occupying a Kendra will produce much jubilation on marriage
+      and other festal occasions.
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V6.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v6
+    quote: >-
+      Sloka 4. If the lords of the 10th, the 2nd and 7th bhavas occupy the 10th bhava, the
+      person born will have intrigues with women other than his wife. If the lords of the
+      5th, the 9th and the 7th bhavas which are the initiatory planets in respect to an offspring
+      be in a दुःस्थान (Dustthana) and if the 5th bhava be aspected by a malefic planet, the
+      person concerned will be childless. If Jupiter and Mercury or the Moon and Venus be
+      in the 7th bhava, the person will be addicted to many women. If Venus occupying the
+      7th bhava be strong, the person concerned will have many wives.
+    quote_sha256: c4afda318905cd3693d3ceb787ce37c64ded8bdd117fcc2f517efa9229687aea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sloka_4_lords_10_2_7_in_10
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.10
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: The person born will have intrigues with women other than his wife
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V6.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v6
+    quote: >-
+      Sloka 4. If the lords of the 10th, the 2nd and 7th bhavas occupy the 10th bhava, the
+      person born will have intrigues with women other than his wife. If the lords of the
+      5th, the 9th and the 7th bhavas which are the initiatory planets in respect to an offspring
+      be in a दुःस्थान (Dustthana) and if the 5th bhava be aspected by a malefic planet, the
+      person concerned will be childless. If Jupiter and Mercury or the Moon and Venus be
+      in the 7th bhava, the person will be addicted to many women. If Venus occupying the
+      7th bhava be strong, the person concerned will have many wives.
+    quote_sha256: c4afda318905cd3693d3ceb787ce37c64ded8bdd117fcc2f517efa9229687aea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sloka_4_jupiter_mercury_in_7
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: The person will be addicted to many women
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V6.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v6
+    quote: >-
+      Sloka 4. If the lords of the 10th, the 2nd and 7th bhavas occupy the 10th bhava, the
+      person born will have intrigues with women other than his wife. If the lords of the
+      5th, the 9th and the 7th bhavas which are the initiatory planets in respect to an offspring
+      be in a दुःस्थान (Dustthana) and if the 5th bhava be aspected by a malefic planet, the
+      person concerned will be childless. If Jupiter and Mercury or the Moon and Venus be
+      in the 7th bhava, the person will be addicted to many women. If Venus occupying the
+      7th bhava be strong, the person concerned will have many wives.
+    quote_sha256: c4afda318905cd3693d3ceb787ce37c64ded8bdd117fcc2f517efa9229687aea
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sloka_4_moon_venus_in_7
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: The person will be addicted to many women
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V7.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v7
+    quote: >-
+      Sloka 5. If Venus and Mars be in the 7th bhava, the person born will be bereft of a
+      wife. The same effect will follow if the planets be in the 9th and the 5th bhavas. If
+      the Moon and Venus occupy the 6th bhava, the person concerned will have only one son.
+      If malefic planets occupy the 1st, the 7th and the 12th bhavas, and the Moon occupying
+      the 5th be weak, the person born will either have a barren wife or be wifeless.
+    quote_sha256: 8b42ffbf7590e518a78522f3e825379560d714e78faff0a4d3b65e07c35bcf38
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.5.1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: The person born will be bereft of a wife.
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V7.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v7
+    quote: >-
+      Sloka 5. If Venus and Mars be in the 7th bhava, the person born will be bereft of a
+      wife. The same effect will follow if the planets be in the 9th and the 5th bhavas. If
+      the Moon and Venus occupy the 6th bhava, the person concerned will have only one son.
+      If malefic planets occupy the 1st, the 7th and the 12th bhavas, and the Moon occupying
+      the 5th be weak, the person born will either have a barren wife or be wifeless.
+    quote_sha256: 8b42ffbf7590e518a78522f3e825379560d714e78faff0a4d3b65e07c35bcf38
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.5.2
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: The person born will be bereft of a wife.
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V7.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v7
+    quote: >-
+      Sloka 5. If Venus and Mars be in the 7th bhava, the person born will be bereft of a
+      wife. The same effect will follow if the planets be in the 9th and the 5th bhavas. If
+      the Moon and Venus occupy the 6th bhava, the person concerned will have only one son.
+      If malefic planets occupy the 1st, the 7th and the 12th bhavas, and the Moon occupying
+      the 5th be weak, the person born will either have a barren wife or be wifeless.
+    quote_sha256: 8b42ffbf7590e518a78522f3e825379560d714e78faff0a4d3b65e07c35bcf38
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.5.3
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: The person born will be bereft of a wife.
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V76.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      Sloka 76. If Mars and Mercury be together in the 9th bhava, the person born will be
+      learned in the sacred books and devoted to pleasure and ease ; if Mars combine with
+      Jupiter in that bhava, the person concerned will be wealthy and respected The effect
+      of Mars being associated with Venus in the 9th bhava is that the person born will have
+      two wives and will be an ex- pounder of law in a foreign land. If the planet combining
+      with Mars in the 9th bhava be Saturn, the influence of the yoga on the person born is
+      to make him wicked and addicted to women not his own. When Mercury and Jupiter are found
+      together in the 9th bhava, the person born will be keen-witted, wise, wealthy and learned.
+    quote_sha256: 786bc1db05011e4d3be1b4e4d0cad6e61d9ab1e3ef4b3b858538566c62214f0d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_venus_in_9th_3
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the person born will have two wives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V76.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      Sloka 76. If Mars and Mercury be together in the 9th bhava, the person born will be
+      learned in the sacred books and devoted to pleasure and ease ; if Mars combine with
+      Jupiter in that bhava, the person concerned will be wealthy and respected The effect
+      of Mars being associated with Venus in the 9th bhava is that the person born will have
+      two wives and will be an ex- pounder of law in a foreign land. If the planet combining
+      with Mars in the 9th bhava be Saturn, the influence of the yoga on the person born is
+      to make him wicked and addicted to women not his own. When Mercury and Jupiter are found
+      together in the 9th bhava, the person born will be keen-witted, wise, wealthy and learned.
+    quote_sha256: 786bc1db05011e4d3be1b4e4d0cad6e61d9ab1e3ef4b3b858538566c62214f0d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_saturn_in_9th_4
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the person born will be addicted to women not his own
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V93.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v93
+    quote: >-
+      Sloka 24. When a malefic sign representing the 7th bhava is occupied by Saturn the female
+      will become afflicted with widowhood. If Venus and Mars occupy each other's Rasi or
+      Amsa, she will be a "coquette and addicted to a paramour. (Cf. sloka 19, supra.) If
+      the Moon be in the 7th bhava, she will lead a depraved life along with her husband.
+      If the Moon and Venus occupy the 1st bhava identical with a sign owned by Saturn or
+      Mars and if a malefic planet be in the 5th bhava, the female concerned will be barren.
+    quote_sha256: cf74cb515f9e355ac592b80e61c3a7977b9823c32cf61c0f24645bc59365dcc5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '17.24_3'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: she will lead a depraved life along with her husband
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V3.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3
+    quote: >-
+      Sluka 3. When the Moon is in conjunction with Jupiter, the person born will be very
+      intelligent and protect good people. When Venus is associated with the Moon, the effect
+      of the yoga on the person born will be that he will be evil-minded and clever in making
+      bargains. If the Moon be in conjunction with Saturn, the person born will have a bad
+      wife, abuse his parents and will be without wealth. If Mars and Mercury be together,
+      the person born in the yoga will be eloquent and clever in medicine and fine arts.
+    quote_sha256: 06ec0bf7e963ac02a731c5d6b7c230a10b370ade988ae09683630b15cf243a95
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_saturn_conjunct_03
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.moon
+      other: graha.saturn
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the person born will have a bad wife
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V68.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      Sloka 68. When the Sun is in the सुख (Sukha 4th) bhava, the person born will suffer
+      from heart disease, will lack money, corn and common sense and will be hard-hearted.
+      If the Moon be in that bhava, the effect thereof is that the person born will possess
+      learning, good nature and prosperity, but will hanker after other people's wives. The
+      person born with Mars in the बन्धु (Bandhu 4th) bhava will be bereft of relations, and
+      hen pecked, though valiant. If Mercury be in that bhava, the person born will be a forlorn
+      creature without friends or relatives, while growing up to be a pandit distinguished
+      for sterling knowledge and affluence.
+    quote_sha256: 36046804074bdaf373f056b1a6aa19078a1db2e0fdcec6322a204358917b2000
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_4th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: bereft of relations
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V68.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      Sloka 68. When the Sun is in the सुख (Sukha 4th) bhava, the person born will suffer
+      from heart disease, will lack money, corn and common sense and will be hard-hearted.
+      If the Moon be in that bhava, the effect thereof is that the person born will possess
+      learning, good nature and prosperity, but will hanker after other people's wives. The
+      person born with Mars in the बन्धु (Bandhu 4th) bhava will be bereft of relations, and
+      hen pecked, though valiant. If Mercury be in that bhava, the person born will be a forlorn
+      creature without friends or relatives, while growing up to be a pandit distinguished
+      for sterling knowledge and affluence.
+    quote_sha256: 36046804074bdaf373f056b1a6aa19078a1db2e0fdcec6322a204358917b2000
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mercury_in_4th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: forlorn creature without friends or relatives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V68.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      Sloka 68. When the Sun is in the सुख (Sukha 4th) bhava, the person born will suffer
+      from heart disease, will lack money, corn and common sense and will be hard-hearted.
+      If the Moon be in that bhava, the effect thereof is that the person born will possess
+      learning, good nature and prosperity, but will hanker after other people's wives. The
+      person born with Mars in the बन्धु (Bandhu 4th) bhava will be bereft of relations, and
+      hen pecked, though valiant. If Mercury be in that bhava, the person born will be a forlorn
+      creature without friends or relatives, while growing up to be a pandit distinguished
+      for sterling knowledge and affluence.
+    quote_sha256: 36046804074bdaf373f056b1a6aa19078a1db2e0fdcec6322a204358917b2000
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_4th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: hen-pecked
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V68.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      Sloka 68. When the Sun is in the सुख (Sukha 4th) bhava, the person born will suffer
+      from heart disease, will lack money, corn and common sense and will be hard-hearted.
+      If the Moon be in that bhava, the effect thereof is that the person born will possess
+      learning, good nature and prosperity, but will hanker after other people's wives. The
+      person born with Mars in the बन्धु (Bandhu 4th) bhava will be bereft of relations, and
+      hen pecked, though valiant. If Mercury be in that bhava, the person born will be a forlorn
+      creature without friends or relatives, while growing up to be a pandit distinguished
+      for sterling knowledge and affluence.
+    quote_sha256: 36046804074bdaf373f056b1a6aa19078a1db2e0fdcec6322a204358917b2000
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_4th_house
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.04
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: hanker after other people's wives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V751.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v7-51
+    quote: >-
+      Sloka 51. When the Moon occupies Dhanus and has the aspect of benefic planets upon it,
+      the person born will have plenty of learning, wealth, wisdom, fame and strength. When
+      the Moon in Dhanus is aspected by Mars, the Sun or Saturn, the person born under such
+      influence will be an arbitrator in a court and addicted to courtezans.
+    quote_sha256: d84903098ee9f22576c7447f0a61321933d9fc446aeed80d8caa52d82dab9899
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9.7-51_2
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.moon
+        target: graha.mars
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+    - aspects:
+        subject: graha.moon
+        target: graha.saturn
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: addicted to courtezans
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V92.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      Sloka 92 If a person be born when the Moon is in Simha, he will have broad eyes, a beautiful
+      face, grave looks and will be happy; if the Moon be in Kanya at a person's birth, the
+      latter will be afflicted with a craving for sensual enjoyment, of graceful address,
+      eminent in learning and prosperous; if in Tula, the person will view with reverence
+      Gods and Brahmanas, show affection... towards his relatives and will be opulent the
+      person born when the Moon is in Vrischika will be heedless, ailing, avaricious and given
+      to wandering
+    quote_sha256: 1f0372e043bc43bcdc3fcae14edd3692b40d023a618fafc9e24872b155a921f4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_libra
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.libra
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: shows affection towards relatives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V93.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v93
+    quote: >-
+      Sloka 93 When Ketu is in the 10th bhava, the person born will be wise, strong, skilled
+      in the arts, self-knowing, loving the people but acting in a contrary wise, phlegmatic,
+      foremost among brave men and continually wandering.
+    quote_sha256: a9ba8799746130b09265299f0f81f6f3e1497d24638a4ba0b0442651d1290ca0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_in_10th_93
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.10
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: loving the people
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V93.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v93
+    quote: >-
+      Sloka 93 When Ketu is in the 10th bhava, the person born will be wise, strong, skilled
+      in the arts, self-knowing, loving the people but acting in a contrary wise, phlegmatic,
+      foremost among brave men and continually wandering.
+    quote_sha256: a9ba8799746130b09265299f0f81f6f3e1497d24638a4ba0b0442651d1290ca0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_in_10th_93
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.10
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: acting in a contrary wise
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V94.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v94
+    quote: >-
+      Sloka 94. The person at whose birth the Sun is in the 11th bhava, will have extensive
+      wealth, wife, children and slaves and will be happy, when the Moon is in that bhava,
+      the person born will be of a pensive disposition and wealthy, when Mars occupies the
+      आय (Aya, 11th) bhava at a person's birth, he will be clever in speech, lustful, wealthy
+      and valiant, when the occupant of the 11th bhava is Mercury, the person born will possess
+      an acute intellect, be famed for his learning and in possession of wealth
+    quote_sha256: 92c922848a7bcb1736807889963be01cddb4152066c40de2a4eb19d6ea2de189
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: phala_depika_9.94_mars
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.11
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: lustful

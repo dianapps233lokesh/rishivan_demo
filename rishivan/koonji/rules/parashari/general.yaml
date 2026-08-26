@@ -1,0 +1,65 @@
+# Two rules from one verse, which is ordinary rather than exceptional: BPHS 12.2
+# both names the benefics and states what their placement does. One is a fact
+# about the vocabulary, the other a claim about a life, and filing them together
+# is what the seven assertion kinds exist to prevent.
+
+- id: BPHS.ONTOLOGY.BENEFICS.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: define_attribute
+  domains: {}
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch12.v2
+    quote: >-
+      2. If even one among Mercury, Jupiter and Venus happens to be placed in a
+      Kendra House (1, 4, 7, 10 are Kendra houses) the combination destroys all
+      the evils as darkness is eliminated only by the rising of the Sun.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  # No `when`. The verse names the benefics unconditionally; the kendra
+  # placement belongs to the claim below, not to the definition. Splitting them
+  # is exactly what the seven assertion kinds are for - filing a definition as a
+  # predictive rule pollutes the corpus permanently, and filing a prediction as a
+  # definition produces something that will never fire.
+  defines:
+    entity: graha.jupiter
+    attribute: natural_nature
+    values: [benefic]
+
+
+- id: BPHS.GENERAL.BENEFIC.KENDRA.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.4
+    domain.health: 0.3
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch12.v2
+    quote: >-
+      2. If even one among Mercury, Jupiter and Venus happens to be placed in a
+      Kendra House (1, 4, 7, 10 are Kendra houses) the combination destroys all
+      the evils as darkness is eliminated only by the rising of the Sun.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  when:
+    any:
+      - in_kendra: {subject: Mercury}
+      - in_kendra: {subject: Jupiter}
+      - in_kendra: {subject: Venus}
+
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: "the combination destroys all the evils"

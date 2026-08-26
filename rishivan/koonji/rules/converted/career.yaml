@@ -1,0 +1,2629 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BPHS.CAREER.CH23V11.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch23.v11
+    quote: >-
+      The Sun in conjunction with Rahu, Mars and Saturn being placed in the 11th House makes
+      the native a failure in the performance of his duties.
+    quote_sha256: 9c904533baf7a918757bf8f5650f955fc5318f1cbb28b55699a4f1b32194d588
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: sun_in_11th_with_rahu_mars_saturn
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+    - conjunct:
+        subject: graha.sun
+        other: graha.rahu
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: career.stability_and_authority
+    polarity: negative
+    magnitude: strong
+    text: the native is a failure in the performance of his duties
+- id: BPHS.CAREER.CH26V10.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v10
+    quote: >-
+      Should the Ascendant Lord be situated in the 10th House, the native will be endowed
+      with paternal happiness, will enjoy royal favour, fame among men and will undoubtedly
+      have self earned wealth.
+    quote_sha256: 1ec35ef6fc2ee83772f3134d79f514fb4d71b6b75beff82aad01766180552136
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_in_10th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: Will enjoy royal favour
+- id: BPHS.CAREER.CH26V106.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v106
+    quote: >-
+      If the 9th Lord is placed in the 10th House, the native will be a king or equal to a
+      King, or be a minister or an army chief, be virtuous and be worshipped by all.
+    quote_sha256: 919c91eec35c4467b008b268fb49db2bf0194b7b79f8ac91692d8fcefdd837d2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.106.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.09
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: native will be a king or equal to a king
+- id: BPHS.CAREER.CH26V106.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v106
+    quote: >-
+      If the 9th Lord is placed in the 10th House, the native will be a king or equal to a
+      King, or be a minister or an army chief, be virtuous and be worshipped by all.
+    quote_sha256: 919c91eec35c4467b008b268fb49db2bf0194b7b79f8ac91692d8fcefdd837d2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.106.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.09
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: native will be a minister or an army chief
+- id: BPHS.CAREER.CH26V116.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v116
+    quote: >-
+      In case the 10th Lord is a posited in the 8th House, the native will be devoid of good
+      acts, long lived and intent on blaming others.
+    quote_sha256: f05e80d4ff8cf3d2001cf47004f2d633cd428ccc1144d9e2bd0e6b25ac85c464
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 10th_lord_in_8th_devoid_of_good_acts
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.08
+  indicates:
+    claim: career.stability_and_authority
+    polarity: negative
+    magnitude: moderate
+    text: devoid of good acts
+- id: BPHS.CAREER.CH26V118.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v118
+    quote: >-
+      Should the 10th Lord be placed in the 10th House, the native will be skilful in all
+      jobs, be valorous, truthful and devoted to his teachers and elders.
+    quote_sha256: 5811b02d19b244d021b996e110999101b22043f042bdd3f9d8d9a9dbd97253b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 118_10th_lord_in_10th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: skilful in all jobs
+- id: BPHS.CAREER.CH26V13.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v13
+    quote: >-
+      When the 2nd Lord has gone in the Ascendant, the native will be endowed with sons and
+      wealth, will be inimical to his family, lustful, hard hearted and will do other’s jobs.
+    quote_sha256: a5fdb0b8b017a5a552eb205a7affd4e87daef373761d9e261959b092888e1887
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.13.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.01
+  indicates:
+    claim: career.stability_and_authority
+    polarity: neutral
+    magnitude: moderate
+    text: will do other's jobs
+- id: BPHS.CAREER.CH26V19.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v19
+    quote: >-
+      In the event of the 2nd Lord falling in the 7th House, the native will apt to traverse
+      other’s wife and will be a physician. If the 2nd Lord in the 7th House is in conjunction
+      with or is aspected by a malefic his wife will be a harlot.
+    quote_sha256: 110ec4558b1f40d858ead210de13f717be3544bf453b3517f1684a6852589dc6
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.19.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.02
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: will be a physician
+- id: BPHS.CAREER.CH26V21.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v21
+    quote: >-
+      Should the 2nd Lord be placed int he 9th House the native will be wealthy, diligent
+      and skilful. He remains sickly in childhood but happy in the remaining years of life.
+      He visits shrines and observes religious rites etc.
+    quote_sha256: 4f6fec4e1f2db8e4dcac796cd5c4d5635ed10311c7905911c87699e1c92b9525
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '21.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: The native will be diligent
+- id: BPHS.CAREER.CH26V23.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v23
+    quote: >-
+      Should the 2nd Lord be in the 11th House the native will enjoy all kinds of wealth and
+      gains, will be ever diligent, honourable and famous.
+    quote_sha256: 2116b728cd2e21cc4b4f3ef5bdfbf95ebcd106ee0daa0cbf3491d1c4d05226d2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 2nd_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.02
+      bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: Ever diligent
+- id: BPHS.CAREER.CH26V25.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v25
+    quote: >-
+      Should the 3rd Lord be situated in the Ascendant the native will have self-made wealth,
+      will be disposed to serve, valorous and intelligent although devoid of learning.
+    quote_sha256: 43cc587aedc4b58ec8efb9ff3dbce94937c2e92d74befbc661e626cb70b75f49
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 3rd_lord_in_1st_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.01
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: The native will be disposed to serve
+- id: BPHS.CAREER.CH26V31.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v31
+    quote: >-
+      Should the 3rd Lord occupy the 7th House the native will have aptitude for serving the
+      king, he will not be happy during childhood but there is no doubt in it that he will
+      get happiness at the end.
+    quote_sha256: 44d5df51578c5bf617c52e5e35f8c99e99eac12afd2907ca2261dc3ce85696dd
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: saravali_26_31_3rd_lord_in_7th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.07
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: aptitude for serving the king
+- id: BPHS.CAREER.CH26V35.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v35
+    quote: >-
+      If the 3rd Lord has gone into the 11th House, the native will always gain in trading,
+      will be intelligent inspite of being illiterate, be adventurous and will serve others.
+    quote_sha256: 02b5d1756e16a8c2f4eadf4d6b10e0a5106435ff2b4b2c0dc18a05117766502d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.35'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.03
+      bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: negative
+    magnitude: moderate
+    text: serve others
+- id: BPHS.CAREER.CH26V40.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v40
+    quote: >-
+      In case the 4th Lord occupies the 4th House, the native will rise to the ministership,
+      will possess all kinds of wealths, he will be skilful, virtuous, honourable, learned,
+      happy and be well disposed to his wife.
+    quote_sha256: cd28729e73d3966ac58a199cf24fec3ecc4c84e66b751fdafc5a152783533b69
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.40.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.04
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: will rise to the ministership
+- id: BPHS.CAREER.CH26V423.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v423
+    quote: >-
+      If the 11th Lord be situated in the 3rd House, the native will be skilful in all jobs,
+      wealthy, be blessed with fraternal bliss and sometimes may, incur gout pains.
+    quote_sha256: bcbcf655d27322c774b2c3694a009010cb155e3dc70194e6adf989c8aadb2e41
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.423.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.03
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: skilful in all jobs
+- id: BPHS.CAREER.CH26V46.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v46
+    quote: >-
+      Should the 4th Lord occupy the 10th house, the native will enjoy royal honours, be an
+      alchemist, be extremely pleased, will have pleasures and will be conqueror of his five
+      senses.
+    quote_sha256: c60ccf23ab5002f66c802dc7b28c9c67e13c53f5b7728b758579fea11ebf7a37
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.46_4th_lord_10th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.04
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: the native will enjoy royal honours
+- id: BPHS.CAREER.CH26V5.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v5
+    quote: >-
+      In case the Ascendant Lord has gone into the 5th House, the native will have mediocre
+      happiness through his sons, the first born will not live, he will be honourable, wrathful
+      and favourite to a king.
+    quote_sha256: e0ae2c0bc009a238b5677318c20a70a16df326e21ebd6746305319b112ca0164
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: lagna_lord_in_5th_effects
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.05
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: the native will be a favourite to a king
+- id: BPHS.CAREER.CH26V51.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v51
+    quote: >-
+      In case the 5th Lord is situated in the 3rd House, the native will be dear to his brothers,
+      be a tale bearer and miserly and is always interested in his own work.
+    quote_sha256: 241b20872952b642914ce68286badb508fe78c351e29a22ff6fbc84b48268036
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_3rd_house_interested_in_own_work
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.03
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: The native is always interested in his own work.
+- id: BPHS.CAREER.CH26V52.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v52
+    quote: >-
+      If the 5th Lord occupies the 4th House the native will be happy, having the blessing
+      of maternal happiness, wealth and intelligence and be a king or a minister or a preceptor.
+    quote_sha256: c598b76ba78da6bc22c947b4013a8fdc04ba3fe82abee95804b44599410886da
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '52.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.04
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: the native will be a king or a minister or a preceptor
+- id: BPHS.CAREER.CH26V58.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v58
+    quote: >-
+      Should the 5th Lord occupy the 10th House the native will be blessed with Raj yoga (governmental
+      favour) and various pleasures and be very illustrious.
+    quote_sha256: fcc4554b6cecc2c9fa5c8b5b6cb52d281639884fe8f8a1e851d8c858bfa65b2b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.58_5th_lord_in_10th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: blessed with Raj yoga (governmental favour)
+- id: BPHS.CAREER.CH26V59.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v59
+    quote: >-
+      In case the 5th Lord occupies the 11th House, the native will be learned, be dear to
+      the people, be an illustrious author, be very skilful and be endowed with many sons
+      and wealth.
+    quote_sha256: a14291e7b9383997659c93ad5fc53d101292bd90268c69cfd4750187b7ef5afc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: be an illustrious author
+- id: BPHS.CAREER.CH26V59.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v59
+    quote: >-
+      In case the 5th Lord occupies the 11th House, the native will be learned, be dear to
+      the people, be an illustrious author, be very skilful and be endowed with many sons
+      and wealth.
+    quote_sha256: a14291e7b9383997659c93ad5fc53d101292bd90268c69cfd4750187b7ef5afc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 5th_lord_in_11th
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.05
+      bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: be very skilful
+- id: BPHS.CAREER.CH26V62.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v62
+    quote: >-
+      In case the 6th Lord has fallen in the 2nd House, the native will be adventurous, illustrious
+      in his family and he will live in alien countries or foreign lands, be happy, be a good
+      speaker and be always interested in his own work.
+    quote_sha256: 05eb4665ea9f626dac18bb5f2d24e9e1ab54c6bd29dedc1eae8e2ce7dba13c4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '62.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.02
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: be always interested in his own work
+- id: BPHS.CAREER.CH26V84.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v84
+    quote: >-
+      If the 7th Lord is gone in the 12th House, the native will be penurious, miserly, and
+      his wife will be spendthrift. He will earn his livelihood by trading in Clothes(textiles/garments
+      etc).
+    quote_sha256: 26ef23a51dc0a69558b91cc5b8bd9b50ec483ec4b65d3a57723018aecf8a9873
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 26.84.1
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.12
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: the native will earn his livelihood by trading in clothes
+- id: BPHS.CAREER.CH26V9.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v9
+    quote: >-
+      If the Ascendant Lord is situated in the 9th House the native will be fortunate, dear
+      to the people, devotee of Lord Vishnu, skilful eloquent speaker and will be endowed
+      with wife, sons and wealth.
+    quote_sha256: 542f5d69756dfc673dde72be906b0aa41cf08066df44d16493ebebb1725ffd3d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.9'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.01
+      bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: skilful eloquent speaker
+- id: BPHS.CAREER.CH26V94.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v94
+    quote: >-
+      If the 8th Lord occupies the 10th House the native will not have paternal bliss, will
+      be a talebearer and be bereft of livelihood. If there is an aspect in the process from
+      a benefic, then these evils will not mature.
+    quote_sha256: e0a9b771ab988a6b01ef7ee234d8f3595e086ae84965593ee8d071e261ad3c6f
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.94_1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.08
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: negative
+    magnitude: moderate
+    text: bereft of livelihood
+- id: BPHS.CAREER.CH41V39.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch41.v39
+    quote: >-
+      If Jupiter in conjunction with Venus and in his own sign or Jupiter in conjunction with
+      the 5th Lord, is situated in the 9th House, the native will be a King.
+    quote_sha256: 88563e97d846124a1e05ebf39bb250f08c6eb68af2b14a94377bd5d01734cc73
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 41.39.1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.venus
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.own_sign
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the native will be a King
+- id: BPHS.CAREER.CH50V913.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch50.v9-13
+    quote: >-
+      The results of the Dasa of the 10th lord will be auspicious if conjunct with the 5th
+      or the 9th lord. The Dasa of the other planets will also be favourable if posited with
+      the 5th lord. Conjunction of the 9th lord with the other planets will cause exceedingly
+      good results during the Dasa of such planets. The Dasa of the 9th lord if conjoined
+      with the 4th lord and the Dasa of the 10th lord if posited in the 5th house are also
+      the benefic Dasas. The Dasas of the Trine lords occupying Angles (kendras) position
+      or the Angle lords located in the Trine houses, also render good results and these Dasas
+      according to the Astrological Savants are said to be extremely auspicious.
+    quote_sha256: fc48ffccab6641eaa66bf89687dccb050d543c2d4744eda92cf58f96bf4851b0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '50_9_13_6'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.10
+      bhava: bhava.05
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: Benefic dasa of the 10th lord when posited in the 5th house
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH56V3637.0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v36-37
+    quote: >-
+      36-37½: If Mercury is posited at angles or Trines from the Ascendant, during the Antardasa
+      of Mercury in the Mahadasa of Mars, the results will be, listening to religious discourses,
+      Ajpajapa Japa(अजपाजप) (vtikti) (perpetual recitation of mantra in heart), charity religious
+      thinkings; very high reputation; leading life with moral values; consumption of food
+      with sweet every day; acquisition of conveyance, clothes, animal; enjoyment of political
+      power; success in the agricultural field, procurement of elephant (vehicle like limousine),
+      ornaments etc.
+    quote_sha256: 9f26055988fe49b2d5853111ca714181669b718be4a1cdf84944f9d6a236c070
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 36-37.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: enjoyment of political power
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH56V3637.0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v36-37
+    quote: >-
+      36-37½: If Mercury is posited at angles or Trines from the Ascendant, during the Antardasa
+      of Mercury in the Mahadasa of Mars, the results will be, listening to religious discourses,
+      Ajpajapa Japa(अजपाजप) (vtikti) (perpetual recitation of mantra in heart), charity religious
+      thinkings; very high reputation; leading life with moral values; consumption of food
+      with sweet every day; acquisition of conveyance, clothes, animal; enjoyment of political
+      power; success in the agricultural field, procurement of elephant (vehicle like limousine),
+      ornaments etc.
+    quote_sha256: 9f26055988fe49b2d5853111ca714181669b718be4a1cdf84944f9d6a236c070
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 36-37.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: success in the agricultural field
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH56V7073.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v70-73
+    quote: >-
+      During the Mahadasa of Mars and the Antardasa of the Moon, if the Moon is in the sign
+      of exaltation, own sign or in Angles in conjunction with the lords of the 9th, the 4th
+      or the 10th house or the Ascendant lord, it will give fragrance, rosary of the flowers
+      or clothes; will undertake pious deeds, construction of pond, cow shed etc., will have
+      festivity of marriage, happiness from wife and children, co-operation from the parents,
+      blessings of Goddess Laxami (wealth), completion of ambitious tasks with the blessings
+      of the king etc. If it is full Moon, the result will be total and in case of weak Moon,
+      diminishing results will be experienced.
+    quote_sha256: c8cb78a5d6b162b6aa1cb959ed0f19a561cf83dc9c0d8be80a339ace5d22bebb
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 56.70_73_moon_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.moon
+      dignity: dignity.exalted
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: completion of ambitious tasks with the blessings of the king etc.
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH56V7073.0006.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v70-73
+    quote: >-
+      During the Mahadasa of Mars and the Antardasa of the Moon, if the Moon is in the sign
+      of exaltation, own sign or in Angles in conjunction with the lords of the 9th, the 4th
+      or the 10th house or the Ascendant lord, it will give fragrance, rosary of the flowers
+      or clothes; will undertake pious deeds, construction of pond, cow shed etc., will have
+      festivity of marriage, happiness from wife and children, co-operation from the parents,
+      blessings of Goddess Laxami (wealth), completion of ambitious tasks with the blessings
+      of the king etc. If it is full Moon, the result will be total and in case of weak Moon,
+      diminishing results will be experienced.
+    quote_sha256: c8cb78a5d6b162b6aa1cb959ed0f19a561cf83dc9c0d8be80a339ace5d22bebb
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 56.70_73_moon_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.moon
+      dignity: dignity.own_sign
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: completion of ambitious tasks with the blessings of the king etc.
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH56V7073.0006.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch56.v70-73
+    quote: >-
+      During the Mahadasa of Mars and the Antardasa of the Moon, if the Moon is in the sign
+      of exaltation, own sign or in Angles in conjunction with the lords of the 9th, the 4th
+      or the 10th house or the Ascendant lord, it will give fragrance, rosary of the flowers
+      or clothes; will undertake pious deeds, construction of pond, cow shed etc., will have
+      festivity of marriage, happiness from wife and children, co-operation from the parents,
+      blessings of Goddess Laxami (wealth), completion of ambitious tasks with the blessings
+      of the king etc. If it is full Moon, the result will be total and in case of weak Moon,
+      diminishing results will be experienced.
+    quote_sha256: c8cb78a5d6b162b6aa1cb959ed0f19a561cf83dc9c0d8be80a339ace5d22bebb
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 56.70_73_moon_kendra
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: completion of ambitious tasks with the blessings of the king etc.
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH58V2021.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_kendra_trikona
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: profit through king or state
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH58V2021.0003.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.exalted
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: profit through king or state
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH58V2021.0003.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.own_sign
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: profit through king or state
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH58V2021.0003.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch58.v20-21
+    quote: >-
+      20-21½: Placement of Mercury in the Angle, Trine, own or exaltation sign or conjoined
+      with the lord of the 10th house, will produce results such as gain of wealth; happiness
+      of sound health, profit through king (state), excessive comforts, accomplishment of
+      the ambitious plans with the blessing of the king; accumulation of vehicles, clothes,
+      animals like cows etc., in the Antardasa of Mercury and in the Mahadasa of Jupiter.
+    quote_sha256: 6460dcaa2e4fa5ad44f03ed7999c64a68952adb76ac628d178454903f2ae32b5
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_mercury_dasha_mercury_conjunct_10th_lord
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mercury
+      other: graha.sun
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: profit through king or state
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH59V5557.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v55-57
+    quote: >-
+      During the Antardasa c Mars in the Mahadasa of Saturn, if Mars is placed in Angle, Trine
+      or in the 11th house, exaltation or in own sign from the Ascendent and is in conjunction
+      with the lord of the Mahadasa or the Ascendant, there will be happiness right from the
+      beginning of the Antardasa and influx of wealth, affection with the king; acquisition
+      of vehicle, clothes and ornaments; rank of Army commander, felicitation by the King
+      (State); improvement in the crops, animals, wealth and assets; construction of new house,
+      comforts from brothers etc.
+    quote_sha256: 8136d791648d859baecf6d46ed22aa0c88977c168eddbf932a4a170e4160b40a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_saturn_dasha_5
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.11
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.exalted
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.own_sign
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: rank of Army commander
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH59V5557.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch59.v55-57
+    quote: >-
+      During the Antardasa c Mars in the Mahadasa of Saturn, if Mars is placed in Angle, Trine
+      or in the 11th house, exaltation or in own sign from the Ascendent and is in conjunction
+      with the lord of the Mahadasa or the Ascendant, there will be happiness right from the
+      beginning of the Antardasa and influx of wealth, affection with the king; acquisition
+      of vehicle, clothes and ornaments; rank of Army commander, felicitation by the King
+      (State); improvement in the crops, animals, wealth and assets; construction of new house,
+      comforts from brothers etc.
+    quote_sha256: 8136d791648d859baecf6d46ed22aa0c88977c168eddbf932a4a170e4160b40a
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_saturn_dasha_6
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.11
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.exalted
+    - not:
+        dignity:
+          subject: graha.mars
+          dignity: dignity.own_sign
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: felicitation by the King (State)
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH60V1315.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch60.v13-15
+    quote: >-
+      In the Antardasa of Venus in the Mahadasa of Mercury, if Venus is placed in Angle, in
+      the 11th house or in Trine, it will attribute results like listening to religious discourses;
+      devoted to pious deeds and inclination towards religion; accomplishment of ambitions
+      at the behest of Master (employer) and friends; gain of land and comforts. If Venus
+      is in Angle, Trine or in the 11th house from the lord of the Mahadasa, there will be
+      quick manifestation of wealth and property from the king, construction of pond, well,
+      water pool etc., inclination towards religion; accumlation of wealth and prosperity
+      due to great success in the business activities etc.
+    quote_sha256: 9900bf6735f3da696975b3868c15535a4bb9c77fa829032a7ebb9684808812cc
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_dasha_13
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: accomplishment of ambitions at the behest of master and friends
+- id: BPHS.CAREER.CH61V3133.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v31-33
+    quote: >-
+      Placement of the Moon in the Angle, Trine or in the 11th house and being strong will
+      manifest gain of crops, cows and lands; meeting with the co-borns and accomplishment
+      of work through them; inercase in the quantity of milk at home. The beginning of Antardasa
+      will confer happiness and sound health and in the middle, affection of the king and
+      in the end it will cause fear from the King, foreign travel; distant journey but with
+      in the country and felicitation by the colleagues.
+    quote_sha256: bd745c1c2d045b2fa1f51deae7b2b89f288f57745a7c83af1fa06c798fa513f9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_placement_32_antardasa_middle
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: affection of the king
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH61V3133.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v31-33
+    quote: >-
+      Placement of the Moon in the Angle, Trine or in the 11th house and being strong will
+      manifest gain of crops, cows and lands; meeting with the co-borns and accomplishment
+      of work through them; inercase in the quantity of milk at home. The beginning of Antardasa
+      will confer happiness and sound health and in the middle, affection of the king and
+      in the end it will cause fear from the King, foreign travel; distant journey but with
+      in the country and felicitation by the colleagues.
+    quote_sha256: bd745c1c2d045b2fa1f51deae7b2b89f288f57745a7c83af1fa06c798fa513f9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_placement_33_antardasa_end
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: negative
+    magnitude: moderate
+    text: fear from the King
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH61V4547.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v45-47
+    quote: >-
+      In the Mahadasa of Ketu when Antardasa of Rahu falls and if, Rahu is in the state of
+      exaltation, own or friendly sign; in Angle, Trine or in the 11th, the 3rd or the 2nd
+      house, this period will yield gain of wealth and journies; acquisitions of house, happiness
+      through the king, wealth, food grains, animals, village (big estate), land etc. In the
+      beginning of the Antardasa, there will be conflicts but the middle and the end will
+      bring happiness.
+    quote_sha256: d411dfb9d350713811c404930b991cd6ebeada5066ef20e61dd8a8ed577e6a3b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.45-47.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.exalted
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.02
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: Happiness through the king
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH61V7576.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v75-76
+    quote: >-
+      Even if Mercury is placed in the Angle, Trine or in the 11th house, it will produce
+      sound health, abundant gains, beneficence and great luxuries attained by the son; acquistion
+      of food, clothes, animals etc. and good profit in the business.
+    quote_sha256: c96be66fc5b75c8de4b210f69b44e9db7c5bb5ba9c1af6f241e3d228dded0346
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.75_mercury_kendra_trikona_11
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: good profit in the business
+- id: BPHS.CAREER.CH62V12.0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v1-2
+    quote: >-
+      1-2½: In the Antardasa of Venus in the Mahadasa of Venus, if Venus duly strong, is posited
+      in Angle, Trine or in the 11th house from the Ascendant, it will manifest gain of wealth,
+      cow, buffalo (female) etc. at the behest of Brahmins; exceptional happiness over the
+      birth of a child, welfare at home, respectability, felicitation by the king, acquisition
+      of kingdom etc.
+    quote_sha256: 8ddfb18ffac2f62d0bc673c980cb8335a93f6d91bc4b9d5549daa8304c3f98f2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_venus_dasha_kendra_trikona_11th
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: acquisition of kingdom and great happiness
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH62V6062.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_kendra_trikona_11_own_exalt
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: affection of the ruler
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH62V6062.0002.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.exalted
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: affection of the ruler
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH62V6062.0002.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.own_sign
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: affection of the ruler
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH62V6062.0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_kendra_trikona_11_own_exalt
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: great affection from the employer (ruler)
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH62V6062.0009.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_exalted
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.exalted
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: great affection from the employer (ruler)
+  timing:
+    requires_activation: true
+- id: BPHS.CAREER.CH62V6062.0009.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch62.v60-62
+    quote: >-
+      During the Antardasa of Mercury in the Mahadasa of Venus, if Mercury is placed in Angle,
+      Trine or in the 11th house or in exaltation or own sign, it will usher auspiciousness;
+      affection of the ruler; exaltation of good fortune; birth of a child; gain of wealth
+      through honest means. Listening to religious or ancient scriptures (Purana-पुराण); company
+      of eminent romantic poets; festivity on the visit of beloved ones, great affection from
+      the employer (ruler), sweets with daily meals.
+    quote_sha256: e958471bf0893e4098e3a3d05ef2e5edeab86ce5a9af2b16a129221cd0070aae
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: venus_mercury_mercury_own_sign
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mercury
+      dignity: dignity.own_sign
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: great affection from the employer (ruler)
+  timing:
+    requires_activation: true
+- id: BPHS.LIVELIHOOD.CH61V2930.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v29-30
+    quote: >-
+      If the Moon is bereft of strength, debilitated, placed in Trik house (6/8/12), it will
+      cause frustration over personal discomforts; obstruction at work; frightfulness, grief
+      of father and mother, stiffness in the body; mental anguish, loss in the business; apprehension
+      of losing animals.
+    quote_sha256: f5d46da62b259c6d50d8b0a80bf1bb3b2cc70e3ce6db02eb082f634bd802f427
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_debilitated
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.moon
+      dignity: dignity.debilitated
+  indicates:
+    claim: livelihood.means
+    polarity: negative
+    magnitude: moderate
+    text: obstruction at work
+- id: BRIHATJATAKA.CAREER.CH17V12.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_aries
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mars
+      rashi: rashi.aries
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: commander
+- id: BRIHATJATAKA.CAREER.CH17V12.0003.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_scorpio
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mars
+      rashi: rashi.scorpio
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: commander
+- id: JATAKAPARIJATA.CAREER.CH17V85.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v85
+    quote: >-
+      Sloka 85. Mars and Mercury combining with Jupiter in the 9th bhava make the person born
+      a ruler of a province. The same planets combining with Venus in the same bhava will
+      make him conversant with Sastras, but fickle-minded and cowardly. If those two planets
+      again be associated with Saturn in the 9th bhava, the person born will be captious and
+      incompetent.
+    quote_sha256: 449d4c2cee28b44551d788668f6488111abc0f15ee8d36176a01acfeb9a4432c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 17.85.1
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: lord.bhava.01
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aries
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the person born becomes a ruler of a province
+- id: JATAKAPARIJATA.CAREER.CH9V105.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: >-
+      Sloka 105. If the Sun be in स्वक्षेत्र (Swakshetra), the person born will own a fine
+      mansion, lead a de- praved life and will suffer from fierce lust, if it be the Moon
+      that is in स्वक्षेत्र (Swakshetra), the person born will have power, beauty and wealth,
+      if Mars, he will be famed for his agricultural strength, if Mercury, he will be learned,
+      if Jupiter be the planet occupying स्वक्षेत्र (Swakshetra), the person born will be
+      devoted to poetry, the arts, traditional doctrines and the sacred scriptures, if Venus,
+      he will be intellectual and wealthy, if Saturn, the person born will be distinguished
+      by fierce prowess but bereft of happiness, if Rahu be the planet in स्वक्षेत्र (Swakshetra),
+      the person born will possess fame and wealth
+    quote_sha256: b4973f9ac98f366eedd0639cb21c45c7ba8b6c9e1a4a3f0b68593e7f6bb5d30d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: swakshetra_mars
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.mars
+      dignity: dignity.own_sign
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: person born will be famed for his agricultural strength
+- id: JATAKAPARIJATA.CAREER.CH9V13.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v1-3
+    quote: >-
+      Sloka 49. If the Moon in Kataka be aspected severally by the six planets from Mars taken
+      in order, the persons born in the six cases will respectively be valiant, honorable,
+      endowed with the highest poetical talent, of royal rank, working in iron, and suffering
+      from ophthalmia. If the Moon be in Simha under the same aspects, the person born will
+      respectively be a king, one speaking learnedly, a wealthy man, a king, a wicked person
+      and one that is mighty  If the Moon be in Kanya and be aspected by the several planets
+      taken in the same order, the person born in the several cases will be respectively wealthy,
+      mighty, lordly, learned, badly behaved and in easy comfortable circumstances
+    quote_sha256: 751c2716fb742193e658b7b359b2b0261888cd54afc2d9c2f930f458d3d8aca2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_cancer_venus
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: graha.venus
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: of royal rank
+- id: JATAKAPARIJATA.CAREER.CH9V13.0001.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v1-3
+    quote: >-
+      Sloka 49. If the Moon in Kataka be aspected severally by the six planets from Mars taken
+      in order, the persons born in the six cases will respectively be valiant, honorable,
+      endowed with the highest poetical talent, of royal rank, working in iron, and suffering
+      from ophthalmia. If the Moon be in Simha under the same aspects, the person born will
+      respectively be a king, one speaking learnedly, a wealthy man, a king, a wicked person
+      and one that is mighty  If the Moon be in Kanya and be aspected by the several planets
+      taken in the same order, the person born in the several cases will be respectively wealthy,
+      mighty, lordly, learned, badly behaved and in easy comfortable circumstances
+    quote_sha256: 751c2716fb742193e658b7b359b2b0261888cd54afc2d9c2f930f458d3d8aca2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_cancer_saturn
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: graha.saturn
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: career.stability_and_authority
+    polarity: neutral
+    magnitude: moderate
+    text: working in iron
+- id: JATAKAPARIJATA.CAREER.CH9V13.0001.02
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v1-3
+    quote: >-
+      Sloka 49. If the Moon in Kataka be aspected severally by the six planets from Mars taken
+      in order, the persons born in the six cases will respectively be valiant, honorable,
+      endowed with the highest poetical talent, of royal rank, working in iron, and suffering
+      from ophthalmia. If the Moon be in Simha under the same aspects, the person born will
+      respectively be a king, one speaking learnedly, a wealthy man, a king, a wicked person
+      and one that is mighty  If the Moon be in Kanya and be aspected by the several planets
+      taken in the same order, the person born in the several cases will be respectively wealthy,
+      mighty, lordly, learned, badly behaved and in easy comfortable circumstances
+    quote_sha256: 751c2716fb742193e658b7b359b2b0261888cd54afc2d9c2f930f458d3d8aca2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_leo_mars
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: graha.mars
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: a king
+- id: JATAKAPARIJATA.CAREER.CH9V13.0001.03
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v1-3
+    quote: >-
+      Sloka 49. If the Moon in Kataka be aspected severally by the six planets from Mars taken
+      in order, the persons born in the six cases will respectively be valiant, honorable,
+      endowed with the highest poetical talent, of royal rank, working in iron, and suffering
+      from ophthalmia. If the Moon be in Simha under the same aspects, the person born will
+      respectively be a king, one speaking learnedly, a wealthy man, a king, a wicked person
+      and one that is mighty  If the Moon be in Kanya and be aspected by the several planets
+      taken in the same order, the person born in the several cases will be respectively wealthy,
+      mighty, lordly, learned, badly behaved and in easy comfortable circumstances
+    quote_sha256: 751c2716fb742193e658b7b359b2b0261888cd54afc2d9c2f930f458d3d8aca2
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_leo_venus
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: graha.venus
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: a king
+- id: JATAKAPARIJATA.CAREER.CH9V450.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v4-50
+    quote: >-
+      Sloka 50. When the Moon in Thula is aspected severally by the benefic planets, Mercury,
+      Jupiter and Venus, the persons born in the several cases will be respectively a king,
+      a mint-master and a merchant. If the Moon in Thula be aspected severally by Mars, the
+      Sun and Saturn, the person born in each case will be impotent. If the Moon occupy the
+      sign Scorpio and be severally aspected by the planets taken in order from Mercury, the
+      person born in the several cases will be (1) a man with two fathers and two mothers
+      (2) a favorite of the king, (3) a mean-wretch, (4) a sickly person, (5) a poor man,
+      (6) and a minister of a king. वञ्चक (Vanchakaha) is another reading for षण्डक (Pandakaha)
+      in the 2nd pada of the sloka
+    quote_sha256: 02988c02c76d2e5de923119bd96292cc2dbded12d83a3868c428d5d35a80d8e3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_scorpio_sun_aspect
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: The person born will be a minister of a king
+- id: JATAKAPARIJATA.CAREER.CH9V5.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      Sloka 5 If Venus be in conjunction with Mercury, the person born will be versed in the
+      sacred books, and fond of music, play and mirth. If Saturn be associated with Mercury,
+      the person born will be learned, wealthy and distinguished for his moral worth. The
+      man at whose birth Jupiter and Venus occupy one sign will be energetic, in favor with
+      the king and exceedingly intelligent. If Jupiter be in conjunction with Saturn, the
+      effect of the yoga will be that the person born in it will be an artist. If Venus and
+      Saturn be together at a birth the person affected by the yoga will own large herds of
+      cattle and be an athlete.
+    quote_sha256: 7d981b75580718928a4d994001f1fddff707584fc539b7507296b142e0a29007
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_venus_conjunction
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.jupiter
+      other: graha.venus
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: in favor with the king
+- id: JATAKAPARIJATA.CAREER.CH9V751.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v7-51
+    quote: >-
+      Sloka 51. When the Moon occupies Dhanus and has the aspect of benefic planets upon it,
+      the person born will have plenty of learning, wealth, wisdom, fame and strength. When
+      the Moon in Dhanus is aspected by Mars, the Sun or Saturn, the person born under such
+      influence will be an arbitrator in a court and addicted to courtezans.
+    quote_sha256: d84903098ee9f22576c7447f0a61321933d9fc446aeed80d8caa52d82dab9899
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 9.7-51_2
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.moon
+        target: graha.mars
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+    - aspects:
+        subject: graha.moon
+        target: graha.saturn
+  indicates:
+    claim: career.stability_and_authority
+    polarity: mixed
+    magnitude: moderate
+    text: arbitrator in a court
+- id: JATAKAPARIJATA.CAREER.CH9V93.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v93
+    quote: >-
+      Sloka 93 When Ketu is in the 10th bhava, the person born will be wise, strong, skilled
+      in the arts, self-knowing, loving the people but acting in a contrary wise, phlegmatic,
+      foremost among brave men and continually wandering.
+    quote_sha256: a9ba8799746130b09265299f0f81f6f3e1497d24638a4ba0b0442651d1290ca0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_in_10th_93
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: skilled in the arts

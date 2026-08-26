@@ -1,0 +1,40 @@
+# The negation path. "…and the house is not aspected by benefics" is the whole
+# reason negated conditions are excluded from the retrieval index and evaluated
+# afterwards: a negative is not a fact the chart's atom set contains, so indexing
+# on it would build a core no chart could ever satisfy.
+
+- id: BPHS.LIVELIHOOD.12H.MALEFIC.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.55
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch25.v13
+    quote: >-
+      13. If Saturn or Mars occupies the 12th House and the house is not aspected
+      by benefics, the earnings will be made through sinful measures.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  when:
+    all:
+      - any:
+          - occupies_bhava: {subject: Saturn, bhava: 12}
+          - occupies_bhava: {subject: Mars, bhava: 12}
+      - not: {aspects: {subject: Jupiter, target: bhava.12}}
+      - not: {aspects: {subject: Venus, target: bhava.12}}
+      - not: {aspects: {subject: Mercury, target: bhava.12}}
+
+  indicates:
+    # Positive: this rule ASSERTS the claim. Polarity is a stance toward the
+    # claim, never a judgement about whether the outcome is welcome - the
+    # outcome here is plainly unwelcome, and the rule still asserts it.
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: "the earnings will be made through sinful measures"

@@ -81,6 +81,11 @@ class RishivanState(TypedDict, total=False):
     hierarchy: Any
     retrieval_plan: Any
     reading: Any
+    reading_is_unreviewed: bool
+    """Whether the rules behind this reading are `candidate` rather than
+    reviewed. Travels with the reading so the answer layer can say so - all
+    1,117 extracted rules are currently candidates, and serving them as though
+    somebody had signed them off is the quiet version of overclaiming."""
 
     # -- retrieval ------------------------------------------------------------
     search_query: str
@@ -184,6 +189,7 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         hierarchy=None,
         retrieval_plan=None,
         reading=None,
+        reading_is_unreviewed=False,
         search_query=question,
         sources=[],
         matched_rules=[],

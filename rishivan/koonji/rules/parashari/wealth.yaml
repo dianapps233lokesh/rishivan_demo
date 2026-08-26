@@ -1,0 +1,81 @@
+# BPHS on gains and their obstruction.
+#
+# The pair below is the point of the whole engine in miniature: a promise of
+# wealth, and a classical clause that cancels it. An engine that stores only the
+# first is not a simplification of the tradition, it is a misreading of it.
+
+- id: BPHS.WEALTH.10L11H.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.career: 0.35
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch23.v13
+    quote: >-
+      13. If the 10th Lord is situated in the 11th House, the 11th Lord in the
+      Ascendant and, Venus in the 10th, the combination makes the native a
+      possessor of precious stones.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  when:
+    all:
+      - occupies_bhava: {subject: 10th lord, bhava: 11}
+      - occupies_bhava: {subject: 11th lord, bhava: 1}
+      - occupies_bhava: {subject: Venus, bhava: 10}
+
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: "the combination makes the native a possessor of precious stones"
+
+  timing:
+    requires_activation: true
+    activated_by:
+      - {system: vimshottari, condition: "period_lord == lord.bhava.11", weight: primary}
+
+
+# The cancellation. Note it is a rule in its own right with its own citation and
+# its own version history - not a footnote on the rule above. A clause added in
+# a later revision has to be as traceable as the promise it revokes.
+- id: BPHS.WEALTH.11L.AFFLICTED.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  modality: cancel
+  targets: BPHS.WEALTH.10L11H.0001
+  domains:
+    domain.wealth: 0.9
+
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch24.v11
+    quote: >-
+      11. In the event of the 11th Lord being placed in his sign of debilitation,
+      being in combustion or occupying the 6th, 8th or 12th House with a malefic,
+      the native doesnot have any gain inspite of excessive efforts.
+    authority_tier: S0
+    review: {state: unreviewed}
+
+  when:
+    any:
+      - dignity: {subject: 11th lord, dignity: debilitated}
+      - combust: {subject: 11th lord}
+      - in_dusthana: {subject: 11th lord}
+
+  indicates:
+    # Positive because this rule ASSERTS the claim `wealth.loss`. Polarity is a
+    # stance toward the claim, not a judgement about the outcome.
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: "the native doesnot have any gain inspite of excessive efforts"

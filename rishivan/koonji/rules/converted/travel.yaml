@@ -1,0 +1,686 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji convert
+#
+# Converted from the earlier extractor's output by convert.py. Every
+# rule here is `candidate`: it compiled, it round-trips, and no
+# Jyotish reviewer has read it. Promotion to `production` is a
+# human act, and it happens by moving the rule into a reviewed file,
+# not by editing the status in place - this file is overwritten.
+
+- id: BPHS.TRAVEL.CH26V126.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v126
+    quote: 'In case the 11th Lord is posited in the 6th House, the native will generally remain
+      sickly. He will be cruel, living in foregin places and is troubled by enemies.
+
+      In the Gemini Ascendant, the 11th Lord will be Mars who will also be the 6th Lord and
+      he will be in his own sign here. A native having this combination may have to confront
+      enemies but he will not be troubled by them.'
+    quote_sha256: 6d84be7e8547700275c71f8ec0818e6906c061d8a194fa8efd0e80c3998f7074
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '26.126'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.11
+      bhava: bhava.06
+  indicates:
+    claim: travel.relocation
+    polarity: neutral
+    magnitude: moderate
+    text: the native will be living in foreign places
+- id: BPHS.TRAVEL.CH26V62.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol1
+    locator: ch26.v62
+    quote: >-
+      In case the 6th Lord has fallen in the 2nd House, the native will be adventurous, illustrious
+      in his family and he will live in alien countries or foreign lands, be happy, be a good
+      speaker and be always interested in his own work.
+    quote_sha256: 05eb4665ea9f626dac18bb5f2d24e9e1ab54c6bd29dedc1eae8e2ce7dba13c4d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '62.1'
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.06
+      bhava: bhava.02
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: he will live in alien countries or foreign lands
+- id: BPHS.TRAVEL.CH54V710.0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch54.v7-10
+    quote: >-
+      A weak Moon, if having conjunction with the malefic planets brings sufferings to wife
+      and children etc., conflicts with the society, degradation in service, confrontation
+      with public, wrath of the king, loss of wealth, animals and prosperity. If the Moon
+      is situated in the 6th, the 8th or the 12th house, danger from water, loss of confidence,
+      imprisonment, fear of disease, change of place, visits to unwanted places, controversies
+      over litigations, meagre food, distress caused by theft and authorities, urinary connected
+      diseases and other health hazards, will be the pronounced results during the Antardasa.
+    quote_sha256: d77625d95257b647f398103a88b2d80530f35db9d059a68b9928ea198fe05a19
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_dusthana_antardasa
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: visits to unwanted places
+  timing:
+    requires_activation: true
+- id: BPHS.TRAVEL.CH61V1214.0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v12-14
+    quote: >-
+      Placement of Ketu in the Trik houses (6, 8, 12) from the Mahadasa lord or conjoined
+      with the malefic planets will manifest impalpable quarrels, destruction of animals and
+      crops. If Ketu is in conjunction with the debilitated planet or located in the 6th or
+      the 8th house from the Ascendant, there will be coflict with the co-borns; injury or
+      pain in the head and eyes; heart trouble; disrepute; loss of wealth, food grains and
+      animals; distress to wife and children and extensive travellings.
+    quote_sha256: a54ddd60d9b4220dd69e401f63bbff7c22215aaff2f31b387680193a221d5ec3
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_placement_4
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: extensive travellings
+- id: BPHS.TRAVEL.CH61V3133.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v31-33
+    quote: >-
+      Placement of the Moon in the Angle, Trine or in the 11th house and being strong will
+      manifest gain of crops, cows and lands; meeting with the co-borns and accomplishment
+      of work through them; inercase in the quantity of milk at home. The beginning of Antardasa
+      will confer happiness and sound health and in the middle, affection of the king and
+      in the end it will cause fear from the King, foreign travel; distant journey but with
+      in the country and felicitation by the colleagues.
+    quote_sha256: bd745c1c2d045b2fa1f51deae7b2b89f288f57745a7c83af1fa06c798fa513f9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_placement_33_antardasa_end
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.11
+  indicates:
+    claim: travel.relocation
+    polarity: neutral
+    magnitude: moderate
+    text: foreign travel
+  timing:
+    requires_activation: true
+- id: BPHS.TRAVEL.CH61V3133.0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v31-33
+    quote: >-
+      Placement of the Moon in the Angle, Trine or in the 11th house and being strong will
+      manifest gain of crops, cows and lands; meeting with the co-borns and accomplishment
+      of work through them; inercase in the quantity of milk at home. The beginning of Antardasa
+      will confer happiness and sound health and in the middle, affection of the king and
+      in the end it will cause fear from the King, foreign travel; distant journey but with
+      in the country and felicitation by the colleagues.
+    quote_sha256: bd745c1c2d045b2fa1f51deae7b2b89f288f57745a7c83af1fa06c798fa513f9
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_placement_33_antardasa_end
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.11
+  indicates:
+    claim: travel.relocation
+    polarity: neutral
+    magnitude: moderate
+    text: distant journey within the country
+  timing:
+    requires_activation: true
+- id: BPHS.TRAVEL.CH61V4142.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v41-42
+    quote: >-
+      From the lord of the Mahadasa, if Ketu is placed in the 8th, 12th or 2nd house, it will
+      cause apprehension of early death; hurdles be created in the process of proceeding to
+      a foreign trip; apprehension of urinary disease, distress due to urinary problem (diabetes);
+      trouble from the King, and thief, quarrel coupled with repentance, slight increase in
+      the comforts.
+    quote_sha256: 31db2736346ff11e9191c9b8918b14f7452bad406da3de53fa8d880843eb928c
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: '61.41_42_1'
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.02
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: hurdles created in the process of proceeding to a foreign trip
+- id: BPHS.TRAVEL.CH61V4547.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: bphs
+    edition: bphs-gcsharma-vol2
+    locator: ch61.v45-47
+    quote: >-
+      In the Mahadasa of Ketu when Antardasa of Rahu falls and if, Rahu is in the state of
+      exaltation, own or friendly sign; in Angle, Trine or in the 11th, the 3rd or the 2nd
+      house, this period will yield gain of wealth and journies; acquisitions of house, happiness
+      through the king, wealth, food grains, animals, village (big estate), land etc. In the
+      beginning of the Antardasa, there will be conflicts but the middle and the end will
+      bring happiness.
+    quote_sha256: d411dfb9d350713811c404930b991cd6ebeada5066ef20e61dd8a8ed577e6a3b
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: 61.45-47.1
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.exalted
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.02
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: Journeys
+  timing:
+    requires_activation: true
+- id: BRIHATJATAKA.TRAVEL.CH17V12.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_aries
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mars
+      rashi: rashi.aries
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: traveller
+- id: BRIHATJATAKA.TRAVEL.CH17V12.0002.01
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: brihat-jataka
+    edition: brihatjataka-row-1919
+    locator: ch17.v12
+    quote: '12 Moon in Pisces—enjoying others wealth and aquatic articles, fond of wife and
+      clothes, well proportioned and handsome body prominent nose big head, conquering enemies
+      submissive to women charming eyes enjoying treasure trove, lustrous articles, wealthy
+      and learned When the Moon the sign in which he is and its Lord are powerful the results
+      indicated above will be fully verified. The other planetary results must be similarly
+      suggested The Moon at the time of birth occupies a zodiacal sign and this is technically
+      called the janmarasi Moon is identified with the rising constellation at the time and
+      will be moving there If the Moon is strong as well as the house and its lord he occupies,
+      the results predicted will be completely visible But when two of them are powerful they
+      will be partly visible When one is powerful there will be traces of these characteristics.
+      But when all of them are weak, then there will be no traces even of the qualities named
+      in the respective places The author is now going to relate the results from the occupation
+      of other planets in the various houses of the zodiac and desires the readers to judge
+      of them on the lines of argument suggested here As the results of the occupation of
+      the Moon in the 12 zodiacal signs are clearly given in simple language, I do not think
+      any further notes in this connection are wanted in the 1st 9 degrees and-from the 11th
+      to the 30th degree inclusive he is said to be in exaltation in Aries When he is in deep
+      exaltation, the Sun will make the man very famous clever, wealthy and commander of men
+      bearing arms So much is not in the original but Bhatotpala rightly adds in his commentaries
+      the results above sketched getting his information from other valuable sources When
+      the Sun is not in his deep exaltation in Aries the person will become famous clever
+      traveller, possessed of little wealth and bearer of arms When the Sun is in Taurus the
+      person will sell scents and clothes, hate females and be clever in drumming and music
+      Aries extends over 30 degrees of the zodiac and in its 10th degree the Sun is in Swatunga
+      or deep exaltation But When the Sun is in Gemini the native becomes educated, astrologer
+      and wealthy In Cancer he makes the native angry, poor, doing others work, and suffer
+      from fatigue by travelling and other cares In Leo the Sun causes love in forests mountains
+      and cattle courageous and dull When the Sun is in Virgo, the person becomes skilful
+      in writing, painting, poetry, philosophy and mathematics, and possesses a feminine body
+      When the Sun occupies Libra he makes the man a toddy-seller, drunkard, traveller, goldsmith
+      and mean When the Sun is in Scorpio he makes the man cruel, adventurous and rash, making
+      profits by sales of poisonous substances losing wealth by robbers, and skilled in military
+      weapons, and destroyer When the Sun is in Sagittarius the person will be respected,
+      rich, angry, doctor and artisan When the Sun is in Capricornus the person will be mean,
+      ignorant seller of low articles, little wealth, covetous and enjoying at others cost
+      The Sun in Aquarius makes a man mean, separated from children and wealth and poor. The
+      Sun in Pisces causes wealth through articles found in water and fondled by women When
+      the Sun and the Moon are combined in a Rasi marks or moles in the organ which is governed
+      by Kalapurusha, are governed. the person will have a mole or mark on the head If they
+      are in Scorpio the mark will be on the sexual organ Mars in Aries and Scorpio—Respected
+      by Kings, traveller, commander, merchant, rich, cut or scarred body, thief, running
+      through various sense pleasures or objects
+
+
+      Mars in Taurus and Libra—Submissive to women, ungrateful friend, fond of others wives,
+      cheat, fop, timid and unsocial Mars in Gemini and Virgo—jealous, sons, friendless, grateful,
+      clever in music and martial work, miserly, undaunted and mendicant
+
+
+      Mars in Cancer—rich, wealth procured through ships or through travelling, intelligent,
+      wanting in organs and cruel. Mars in Leo—poor, enduring, travelling in forests, few
+      children and wife.'
+    quote_sha256: 895e47962ca90936016d4e94b82f7aef9a0d11bb12e4ba69c528aba4ab02b592
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_in_scorpio
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mars
+      rashi: rashi.scorpio
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: traveller
+- id: JATAKAPARIJATA.TRAVEL.CH17V76.0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      Sloka 76. If Mars and Mercury be together in the 9th bhava, the person born will be
+      learned in the sacred books and devoted to pleasure and ease ; if Mars combine with
+      Jupiter in that bhava, the person concerned will be wealthy and respected The effect
+      of Mars being associated with Venus in the 9th bhava is that the person born will have
+      two wives and will be an ex- pounder of law in a foreign land. If the planet combining
+      with Mars in the 9th bhava be Saturn, the influence of the yoga on the person born is
+      to make him wicked and addicted to women not his own. When Mercury and Jupiter are found
+      together in the 9th bhava, the person born will be keen-witted, wise, wealthy and learned.
+    quote_sha256: 786bc1db05011e4d3be1b4e4d0cad6e61d9ab1e3ef4b3b858538566c62214f0d
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: mars_venus_in_9th_3
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be an expounder of law in a foreign land
+- id: JATAKAPARIJATA.TRAVEL.CH9V42.0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: 'Sloka 42 If Jupiter be in a sign of Mars at the birth of a person, the latter
+      will be superior to others in his army, wealth and sons, highly virtuous and bountiful,
+      if in a sign of Venus, the person concerned will be energetic, if in a sign of Mercury,
+      he will have a large following of friends, if Jupiter be in Kataka, the person born
+      will be wise and rich in sons, if in Kumbha, the person concerned will enjoy pleasures,
+      if the planet be in Simha, the person affected will become famous, if Jupiter occupy
+      a स्वक्षेत्र (Swakshetra), the person born will be a king or on a par with a king If
+      in the depression sign Makara the person concerned will be a wanderer and have a careworn
+      mind NOTES
+
+      cf बृहज्जातक XVIII—slokas 12—13'
+    quote_sha256: f7aa0c4cdda629b3fce4e1d8d81020006659fed3b5d0d767785d1752f7803818
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: jupiter_debilitated
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.jupiter
+      dignity: dignity.debilitated
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: Wanderer
+- id: JATAKAPARIJATA.TRAVEL.CH9V92.0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      Sloka 92 If a person be born when the Moon is in Simha, he will have broad eyes, a beautiful
+      face, grave looks and will be happy; if the Moon be in Kanya at a person's birth, the
+      latter will be afflicted with a craving for sensual enjoyment, of graceful address,
+      eminent in learning and prosperous; if in Tula, the person will view with reverence
+      Gods and Brahmanas, show affection... towards his relatives and will be opulent the
+      person born when the Moon is in Vrischika will be heedless, ailing, avaricious and given
+      to wandering
+    quote_sha256: 1f0372e043bc43bcdc3fcae14edd3692b40d023a618fafc9e24872b155a921f4
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: moon_in_scorpio
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.scorpio
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: given to wandering
+- id: JATAKAPARIJATA.TRAVEL.CH9V93.0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v93
+    quote: >-
+      Sloka 93 When Ketu is in the 10th bhava, the person born will be wise, strong, skilled
+      in the arts, self-knowing, loving the people but acting in a contrary wise, phlegmatic,
+      foremost among brave men and continually wandering.
+    quote_sha256: a9ba8799746130b09265299f0f81f6f3e1497d24638a4ba0b0442651d1290ca0
+    authority_tier: S0
+    extraction:
+      method: converted
+      converter: 1.0.0
+      from_rule_key: ketu_in_10th_93
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.10
+  indicates:
+    claim: travel.relocation
+    polarity: neutral
+    magnitude: moderate
+    text: continually wandering
