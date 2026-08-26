@@ -6,9 +6,11 @@ later phase run them concurrently without a reducer.
 
 **The promise comes from the reading, not from here.** A natal promise is a
 fired rule with a citation, and this node times a promise rather than
-adjudicating one. With no reading yet - which is the case until Phase 4 moves
-retrieval ahead of it - `promise` is False and no window is produced. That is
-the correct answer, not a missing feature: the dasha arithmetic would happily
+adjudicating one. Phase 4 put `koonji_read` immediately upstream so that the
+reading exists by the time this runs; before that it never did, and every
+window came back promise-less. Where there is still no reading - a chartless
+question, a failed bundle - `promise` is False and no window is produced. That
+is the correct answer, not a missing feature: the dasha arithmetic would happily
 yield a date, and yielding one is how a period becomes a prediction nobody
 grounded.
 """
@@ -24,10 +26,8 @@ DEFAULT_HORIZON_YEARS = 10
 mahadasha boundary to fall inside it, short enough that the window means
 something."""
 
-DEFAULT_DOMAIN = "domain.temperament"
-
-
 def dasha_windows_node(state: RishivanState) -> dict:
+    from rishivan.council.hierarchy import DEFAULT_DOMAIN
     from rishivan.timing.query import PRIMARY_SYSTEM, TimingReport, windows_between
 
     chart = state.get("chart")
@@ -35,9 +35,7 @@ def dasha_windows_node(state: RishivanState) -> dict:
     if chart is None or chart_state is None:
         return {"timing": None}
 
-    routing = state.get("routing") or {}
-    domains = routing.get("koonji_domains") or []
-    domain = domains[0] if domains else DEFAULT_DOMAIN
+    domain = state.get("koonji_domain") or DEFAULT_DOMAIN
 
     start = state.get("query_time") or datetime.now()
     end = start + timedelta(days=365.2425 * DEFAULT_HORIZON_YEARS)

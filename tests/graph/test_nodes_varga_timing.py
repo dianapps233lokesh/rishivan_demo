@@ -13,6 +13,7 @@ from rishivan.chart.ephemeris import BirthData
 from rishivan.graph.build import EDGE_MAPS, NODE_NAMES, STATIC_EDGES, build_graph
 from rishivan.graph.nodes.timing import dasha_windows_node
 from rishivan.graph.nodes.varga import varga_select_node
+from rishivan.council.hierarchy import hierarchy_for
 from rishivan.graph.state import RishivanState, initial_state
 from rishivan.varga.confidence import BirthConfidence
 
@@ -28,7 +29,12 @@ def diagnosed(birth=ROUND, domain="domain.career"):
     from rishivan.graph.nodes.diagnosis import chart_state_node
 
     s = initial_state("will my career improve?", birth_data=birth, query_time=WHEN)
-    s["routing"] = {"primary": "artha", "koonji_domains": [domain]}
+    s["routing"] = {"primary": "artha"}
+    # Written by `hierarchy_node` in Phase 4. Phase 3 put it under
+    # `routing["koonji_domains"]`, a key no node in the graph ever wrote - so
+    # both of these nodes silently read their default on every real request.
+    s["koonji_domain"] = domain
+    s["hierarchy"] = hierarchy_for(domain)
     s.update(chart_natal_node(s))
     s.update(chart_state_node(s))
     return s
@@ -101,10 +107,17 @@ class TestWiring:
             assert node in NODE_NAMES
 
     def test_the_diagnosis_leads_to_them(self):
-        assert STATIC_EDGES["chart_state"] == "varga_select"
+        """Via `hierarchy`, which settles the domain both of them read. Phase 4
+        put it between; before that they each guessed."""
+        assert STATIC_EDGES["chart_state"] == "hierarchy"
+        assert STATIC_EDGES["hierarchy"] == "varga_select"
 
     def test_they_run_in_sequence_and_reach_grounding(self):
-        assert STATIC_EDGES["varga_select"] == "dasha_windows"
+        """With `koonji_read` between them. The timing node reads
+        `reading.promises(domain)`, and with the reading downstream that call
+        could only ever see None."""
+        assert STATIC_EDGES["varga_select"] == "koonji_read"
+        assert STATIC_EDGES["koonji_read"] == "dasha_windows"
         assert STATIC_EDGES["dasha_windows"] == "ground"
 
     def test_neither_reads_the_other(self):

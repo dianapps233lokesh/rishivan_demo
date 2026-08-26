@@ -68,8 +68,18 @@ class RishivanState(TypedDict, total=False):
     heuristic over the recorded digits — a rectified chart, or a hospital
     record. None means infer."""
 
-    # -- Phase 4-5 placeholders. Nodes are added later; state is not. --------
+    # -- §12 hierarchies and the Koonji reading (Phase 4) --------------------
+    spec: Any
+    """The parsed `QuestionSpec` from `koonji.router.parse`. Deterministic."""
+
+    koonji_domain: str
+    """The one `domain.*` symbol this question is primarily about. Read by
+    `varga_select`, `koonji_read`, `dasha_windows` and the Rishi router, which
+    is exactly why it is settled once and written down rather than re-derived
+    four times."""
+
     hierarchy: Any
+    retrieval_plan: Any
     reading: Any
 
     # -- retrieval ------------------------------------------------------------
@@ -169,7 +179,10 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         vargas=None,
         birth_confidence=kw.get("birth_confidence"),
         timing=None,
+        spec=None,
+        koonji_domain="",
         hierarchy=None,
+        retrieval_plan=None,
         reading=None,
         search_query=question,
         sources=[],

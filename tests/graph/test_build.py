@@ -49,3 +49,32 @@ def test_a_checkpointer_can_be_attached():
 
     graph = build_graph(store=None, client=None, checkpointer=checkpointer_for("demo"))
     assert graph is not None
+
+
+# ==========================================================================
+# Phase 4: the dependency chain, straightened
+# ==========================================================================
+
+
+def test_varga_selection_runs_after_the_hierarchy_that_names_its_domain():
+    assert STATIC_EDGES["chart_state"] == "hierarchy"
+    assert STATIC_EDGES["hierarchy"] == "varga_select"
+
+
+def test_the_reading_is_computed_before_the_timing_that_needs_its_promise():
+    """`dasha_windows` reads `reading.promises(domain)`. With the reading
+    downstream of it, that call could only ever see None - which is how every
+    window came back promise-less."""
+    assert STATIC_EDGES["varga_select"] == "koonji_read"
+    assert STATIC_EDGES["koonji_read"] == "dasha_windows"
+
+
+def test_the_reading_is_computed_after_the_vargas_it_compiles_facts_from():
+    """Selecting D9 for a marriage question and then compiling the fact set
+    without it buys nothing."""
+    assert STATIC_EDGES["varga_select"] == "koonji_read"
+
+
+def test_the_new_nodes_are_declared():
+    for node in ("hierarchy", "koonji_read"):
+        assert node in NODE_NAMES

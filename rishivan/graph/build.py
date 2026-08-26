@@ -14,14 +14,15 @@ from langgraph.graph import END, START, StateGraph
 
 from rishivan.graph import edges as R
 from rishivan.graph.nodes import (
-    answer, chart, diagnosis, ground, intake, timing, varga,
+    answer, chart, diagnosis, ground, hierarchy, intake, koonji, timing, varga,
 )
 from rishivan.graph.nodes import retrieve as retrieval
 from rishivan.graph.state import RishivanState
 
 NODE_NAMES = (
     "intake", "warmth",
-    "chart_natal", "chart_moment", "panchang", "chart_state", "varga_select", "dasha_windows",
+    "chart_natal", "chart_moment", "panchang", "chart_state", "hierarchy",
+    "varga_select", "koonji_read", "dasha_windows",
     "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
     "render_numerology",
     "ground", "council_routing", "retrieve", "answer", "insufficient",
@@ -72,11 +73,21 @@ STATIC_EDGES: dict[str, str] = {
     # diagnosis when there is no chart, so the chartless panchang path is
     # unaffected.
     "panchang": "chart_state",
-    # §7 and §8 read the diagnosis and neither reads the other. Sequential
-    # today because the graph is linear here; independent by construction, so a
-    # later phase can fan them out without needing a reducer.
-    "chart_state": "varga_select",
-    "varga_select": "dasha_windows",
+    # The dependency chain, straightened. Each of these needs the one before
+    # it and Phase 4 is where that became true rather than aspirational:
+    #
+    #   hierarchy     settles the domain          -> varga_select needs it
+    #   varga_select  picks the divisions         -> the fact set is built once
+    #   koonji_read   fires the rules             -> the promise comes from here
+    #   dasha_windows times that promise
+    #
+    # Before this, varga_select and dasha_windows were siblings reading a
+    # routing key nothing wrote, and the timing node read a promise from a
+    # reading that was always None. Both were correct and both were inert.
+    "chart_state": "hierarchy",
+    "hierarchy": "varga_select",
+    "varga_select": "koonji_read",
+    "koonji_read": "dasha_windows",
     "dasha_windows": "ground",
     "ground": "council_routing",
     "council_routing": "retrieve",
@@ -108,7 +119,9 @@ def build_graph(*, store, client, checkpointer=None):
     g.add_node("chart_moment", chart.chart_moment_node)
     g.add_node("panchang", chart.panchang_node)
     g.add_node("chart_state", diagnosis.chart_state_node)
+    g.add_node("hierarchy", hierarchy.hierarchy_node)
     g.add_node("varga_select", varga.varga_select_node)
+    g.add_node("koonji_read", koonji.koonji_read_node)
     g.add_node("dasha_windows", timing.dasha_windows_node)
     g.add_node("chart_render", _chart_render_passthrough)
     g.add_node("render_varga", chart.render_varga_node)

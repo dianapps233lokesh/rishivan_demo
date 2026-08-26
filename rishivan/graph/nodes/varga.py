@@ -13,12 +13,8 @@ from __future__ import annotations
 
 from rishivan.graph.state import RishivanState
 
-DEFAULT_DOMAIN = "domain.temperament"
-"""What a question with no routed domain reads from. The self, broadly - which
-is what a question nobody could route is usually about."""
-
-
 def varga_select_node(state: RishivanState) -> dict:
+    from rishivan.council.hierarchy import DEFAULT_DOMAIN
     from rishivan.varga.confidence import resolve_confidence
     from rishivan.varga.select import select_vargas
 
@@ -26,9 +22,10 @@ def varga_select_node(state: RishivanState) -> dict:
     if chart is None:
         return {"vargas": None}
 
-    routing = state.get("routing") or {}
-    domains = routing.get("koonji_domains") or []
-    domain = domains[0] if domains else DEFAULT_DOMAIN
+    # Settled once by `hierarchy_node`. This used to read
+    # `routing["koonji_domains"]`, which nothing in the graph ever wrote - so
+    # every request, whatever it asked about, selected vargas for temperament.
+    domain = state.get("koonji_domain") or DEFAULT_DOMAIN
 
     confidence = resolve_confidence(
         state.get("birth_data"), state.get("birth_confidence")
