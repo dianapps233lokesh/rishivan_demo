@@ -276,6 +276,98 @@ def chart_state():
     return build_chart_state(compute_chart(BIRTH), when=WHEN)
 
 
+class TestTransits:
+    """The gap a competitor's answer exposed.
+
+    Their timing derived entirely from a transit exit — "Jupiter transiting
+    Cancer, house 7 from ascendant, until 31 Oct 2026 … Nov 2026 door opens
+    after this transit ends." Our prompt carried no transit data at all beyond
+    the transiting Moon's nakshatra, which moves every 2¼ days and is noise at
+    the scale of a career or a marriage. So step 8 of every protocol either came
+    back unsupported or was padded with the Moon.
+
+    Swiss Ephemeris computes a full chart in 0.08 ms, so the ingress and egress
+    dates that make a transit answerable cost nothing worth counting.
+    """
+
+    def test_the_block_is_present_with_a_chart(self, facts):
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert "TRANSITS NOW" in prompt
+
+    def test_it_is_absent_without_a_chart(self):
+        assert "TRANSITS NOW" not in build_direct_prompt(_state())
+
+    def test_the_slow_movers_are_all_reported(self, facts):
+        """Jupiter, Saturn and the nodes. The fast planets change too often to
+        time anything a seeker asks about."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        block = prompt[prompt.index("TRANSITS NOW"):]
+        for graha in ("Jupiter", "Saturn", "Rahu", "Ketu"):
+            assert graha in block
+
+    def test_each_transit_gives_its_house_from_the_natal_lagna(self, facts):
+        """A transiting sign means nothing on its own; which house of THIS chart
+        it is crossing is the whole content."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        block = prompt[prompt.index("TRANSITS NOW"):]
+        assert "house" in block
+        assert "from your lagna" in block
+
+    def test_the_next_sign_change_is_dated(self, facts):
+        """The date the competitor's whole answer hung on."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        block = prompt[prompt.index("TRANSITS NOW"):]
+        assert "leaves" in block
+        assert "20" in block  # some year
+
+    def test_retrogression_is_flagged(self, facts):
+        """Saturn is retrograde in Pisces on the test date, and a retrograde
+        transit can re-enter the sign it just left - so a date computed by
+        forward scan is the NEXT change, not a permanent exit."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        block = prompt[prompt.index("TRANSITS NOW"):]
+        assert "retrograde" in block
+
+    def test_sade_sati_is_named_when_it_applies(self, facts):
+        """Natal Moon is Aquarius on the test chart and Saturn transits Pisces -
+        the 2nd from the Moon, which is the setting leg. Naming it matters: it is
+        the single most asked-about transit in the tradition, and a reading that
+        misses it while the seeker's family is talking about it looks blind."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert "sade sati" in prompt.lower()
+
+    def test_the_sade_sati_leg_is_stated(self, facts):
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert any(leg in prompt for leg in ("rising", "peak", "setting"))
+
+    def test_transits_are_dated_to_the_reading_moment(self, facts):
+        """Not to `datetime.now()`. A transit block computed for today inside a
+        prompt whose chart was read for another date is two moments in one
+        reading."""
+        early = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+            query_time=datetime(2020, 1, 1, 12, 0),
+        ))
+        assert "TRANSITS NOW" in early
+        assert early != build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+
+
 class TestTheReadingKnowsWhatDayItIs:
     """The prompt carried period boundaries and never said which moment it was
     being read from.

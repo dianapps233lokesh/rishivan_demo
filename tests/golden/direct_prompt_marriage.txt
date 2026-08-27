@@ -122,6 +122,17 @@ Strength bands come from `parashari.partial.v1`, running partial - treat them as
 
 ---
 
+TRANSITS NOW - the slow planets, and which of YOUR houses they are
+crossing. Dates are the sign changes; for a retrograde planet that is the
+next crossing rather than a permanent exit:
+  - Jupiter transiting Cancer, crossing your 5th house from your lagna (in this sign since 2026-06-01; leaves it 2026-11-01)
+  - Saturn transiting Pisces retrograde, crossing your 1st house from your lagna (in this sign since 2025-03-29; leaves it 2027-06-03)
+  - Rahu transiting Aquarius retrograde, crossing your 12th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
+  - Ketu transiting Leo retrograde, crossing your 6th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
+  - Sade sati: RUNNING, setting leg (Saturn is in the 2nd sign from your natal Moon in Aquarius)
+
+---
+
 Antardashas within the running Saturn mahadasha (2024-02-09 to 2043-02-08):
   - Saturn: 2024-02-09 to 2027-02-12 [RUNNING NOW]
   - Mercury: 2027-02-12 to 2029-10-22 [future]

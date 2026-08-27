@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import re
 
+from rishivan.chart.facts import _ORDINAL
 from rishivan.council.constitution import Constitution
 from rishivan.council.prompts import _FRAMEWORK, _SUBJECT_HOUSE
 
@@ -534,6 +535,140 @@ def _varga_block(chart, selection) -> str:
     return "\n\n".join(blocks)
 
 
+_SLOW_MOVERS = ("Jupiter", "Saturn", "Rahu", "Ketu")
+"""Which transits can time a life event.
+
+The fast planets change sign every few weeks and the Moon every 2¼ days, so a
+reading that reaches for them is reaching for noise. Leaving them out is not an
+omission - `facts.derive_facts` still reports the transiting Moon's nakshatra,
+which is the literal answer to "which nakshatra is running for me", and that is
+the only question it answers.
+"""
+
+_SADE_SATI_LEGS = {12: "rising", 1: "peak", 2: "setting"}
+"""Saturn's position counted from the natal Moon sign.
+
+The single most asked-about transit in the tradition. A reading that misses it
+while the seeker's family is discussing it looks blind, and it costs two index
+subtractions to know.
+"""
+
+_SCAN_COARSE_DAYS = 4
+_SCAN_LIMIT_DAYS = 1200
+"""How far to look for a sign change, and at what resolution.
+
+Saturn holds a sign for about two and a half years and Rahu for eighteen months,
+so 1200 days brackets any of them. A full chart costs 0.08 ms, which is what
+makes a day-resolution scan cheaper than being clever about it.
+"""
+
+
+def _sign_change(graha: str, start, direction: int, lat, lon, tz_offset):
+    """The first date `graha` is in a different sign than it is at `start`.
+
+    Scanned rather than solved. A retrograde planet near a boundary crosses it
+    more than once, so there is no single "exit" to compute - the honest answer
+    is the NEXT change, in whichever direction was asked for, and a scan gives
+    exactly that. Coarse steps to bracket it, then day steps to pin it.
+    """
+    from datetime import timedelta
+
+    from rishivan.chart.transit import chart_for_moment
+
+    def sign_at(offset_days: int) -> str:
+        moment = start + timedelta(days=offset_days * direction)
+        chart = chart_for_moment(moment, lat=lat, lon=lon, tz_offset=tz_offset)
+        return chart.planets[graha].rashi
+
+    origin = sign_at(0)
+    offset = 0
+    while offset < _SCAN_LIMIT_DAYS:
+        offset += _SCAN_COARSE_DAYS
+        if sign_at(offset) != origin:
+            # Walk back to the first day that still differs.
+            for day in range(offset - _SCAN_COARSE_DAYS + 1, offset + 1):
+                if sign_at(day) != origin:
+                    return start + timedelta(days=day * direction)
+            return start + timedelta(days=offset * direction)
+    return None
+
+
+def transit_block(natal, when, *, lat=None, lon=None, tz_offset=None) -> str:
+    """Where the slow planets are now, which of THIS chart's houses they cross,
+    and when they move.
+
+    Added after a competitor's answer timed a promotion entirely off a transit
+    exit - "Jupiter transiting Cancer, house 7 from ascendant, until 31 Oct 2026
+    … Nov 2026 door opens after this transit ends" - and ours could not, because
+    the prompt had no transit data. Every protocol has a transit step; without
+    this it was padded with the transiting Moon or declared unsupported.
+
+    A transiting sign on its own says nothing. The house it crosses in this chart
+    is the content, which is why the lagna is what everything is counted from.
+    """
+    if natal is None or when is None:
+        return ""
+    from rishivan.chart.ephemeris import RASHIS
+    from rishivan.chart.transit import chart_for_moment
+
+    # Defaults match `chart.transit`'s own, which are New Delhi. A transit's
+    # SIGN barely moves with the observer - only the ascendant does, and nothing
+    # here reads a transit ascendant.
+    lat = 28.6139 if lat is None else lat
+    lon = 77.2090 if lon is None else lon
+    tz = 5.5 if tz_offset is None else tz_offset
+
+    transiting = chart_for_moment(when, lat=lat, lon=lon, tz_offset=tz)
+    lagna = RASHIS.index(natal.lagna_rashi)
+
+    lines = []
+    for graha in _SLOW_MOVERS:
+        position = transiting.planets.get(graha)
+        if position is None:
+            continue
+        sign = RASHIS.index(position.rashi)
+        house = ((sign - lagna) % 12) + 1
+        retro = " retrograde" if position.retrograde else ""
+        entered = _sign_change(graha, when, -1, lat, lon, tz)
+        leaves = _sign_change(graha, when, +1, lat, lon, tz)
+        span = []
+        if entered is not None:
+            span.append(f"in this sign since {entered.date()}")
+        if leaves is not None:
+            span.append(f"leaves it {leaves.date()}")
+        lines.append(
+            f"  - {graha} transiting {position.rashi}{retro}, crossing your "
+            f"{_ORDINAL.get(house, house)} house from your lagna"
+            + (f" ({'; '.join(span)})" if span else "")
+        )
+
+    # Saturn against the natal Moon. Reported either way: "not running" is an
+    # answer a seeker who has been told otherwise deserves to hear.
+    moon = natal.planets.get("Moon")
+    saturn = transiting.planets.get("Saturn")
+    if moon is not None and saturn is not None:
+        offset = ((RASHIS.index(saturn.rashi) - RASHIS.index(moon.rashi)) % 12) + 1
+        where = (
+            f"Saturn is in the {_ORDINAL.get(offset, offset)} sign from your "
+            f"natal Moon in {moon.rashi}"
+        )
+        leg = _SADE_SATI_LEGS.get(offset)
+        lines.append(
+            f"  - Sade sati: RUNNING, {leg} leg ({where})"
+            if leg
+            else f"  - Sade sati: not running ({where}; it runs only from the "
+                 "12th, 1st and 2nd)"
+        )
+
+    if not lines:
+        return ""
+    return (
+        "TRANSITS NOW - the slow planets, and which of YOUR houses they are\n"
+        "crossing. Dates are the sign changes; for a retrograde planet that is "
+        "the\nnext crossing rather than a permanent exit:\n" + "\n".join(lines)
+    )
+
+
 def today_block(when) -> str:
     """The moment the reading is being made.
 
@@ -685,6 +820,14 @@ def build_direct_prompt(state) -> str:
     varga = _varga_block(state.get("chart"), state.get("vargas"))
     if varga:
         parts.append(varga)
+
+    transits = transit_block(
+        state.get("chart"), state.get("query_time"),
+        lat=state.get("lat"), lon=state.get("lon"),
+        tz_offset=state.get("tz_offset"),
+    )
+    if transits:
+        parts.append(transits)
 
     sub_periods = _sub_period_block(
         state.get("chart"), state.get("query_time")
