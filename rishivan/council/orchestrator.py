@@ -37,6 +37,7 @@ def council_consult(
     tz_offset: float = 5.5,
     place: str = "",
     conversation=None,         # rishivan.council.conversation.Conversation
+    direct: bool = False,      # the direct lane; thread_id stays last, see below
     thread_id: str | None = None,
 ) -> dict:
     """Full Council consultation, run as a graph.
@@ -57,6 +58,9 @@ def council_consult(
     caller had before Phase 5. Opt-in rather than default because a checkpointer
     that nobody asked for is a database nobody provisioned.
 
+    `direct=True` takes the direct lane and adds `direct_prompt` to the result;
+    `docs/superpowers/specs/2026-08-27-direct-call-reading-design.md` says why.
+
     Returns a dict with keys:
       primary_rishi, rishi_title, query_domain, classification,
       chart_summary, chart_facts, sources, search_query, answer_stream
@@ -66,7 +70,8 @@ def council_consult(
     from rishivan.graph.state import RESULT_KEYS, initial_state
 
     checkpointer, config = runtime_for(thread_id)
-    graph = build_graph(store=store, client=client, checkpointer=checkpointer)
+    graph = build_graph(store=store, client=client,
+                        checkpointer=checkpointer, direct=direct)
     final = graph.invoke(initial_state(
         question,
         rishi_override=rishi_override,
@@ -91,7 +96,7 @@ def council_consult(
     result["answer_plan"] = final.get("answer_plan")
     # Set only on the paths that produce them, and read with `.get()` by every
     # caller. Promising them unconditionally would be a new contract.
-    for optional in ("routing", "panchang", "life_domain"):
+    for optional in ("routing", "panchang", "life_domain", "direct_prompt"):
         if final.get(optional):
             result[optional] = final[optional]
     if final.get("context_text"):

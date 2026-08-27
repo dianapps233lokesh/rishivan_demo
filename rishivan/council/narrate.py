@@ -291,6 +291,17 @@ def stream_for(final, *, client):
     Lives here rather than as a branch in `council_consult`, because that
     adapter is meant to be branch-free and a test asserts it.
     """
+    if final.get("direct_prompt"):
+        # The direct lane. One call did the reading and the writing both, so
+        # there is no plan to narrate from - the prompt IS what left the graph.
+        # Dispatched on the state key rather than on a flag threaded down from
+        # the caller: which lane ran is a fact about the run, and the run
+        # already recorded it.
+        from rishivan.council.direct import stream_direct
+
+        return _recorded(
+            stream_direct(final["direct_prompt"], client=client), final
+        )
     if final.get("outcome") == "insufficient":
         return None
     if final.get("is_warmth"):
