@@ -288,6 +288,25 @@ def _build_birth_data():
 
 birth_data = _build_birth_data()
 
+# ── Reading lane ──────────────────────────────────────────────────────────────
+# Two lanes, switchable, because the point is to compare them. The retrieval
+# pipeline stays exactly as it was; see
+# docs/superpowers/specs/2026-08-27-direct-call-reading-design.md.
+# `key=` writes it to session_state, which is where the consult call reads it —
+# so there is nothing to assign here.
+st.toggle(
+    "Direct reading (no corpus)",
+    value=False,
+    key="direct_mode",
+    help=(
+        "Answer from the model's own knowledge of the classical texts, with the "
+        "computed chart and the classical reading method in one prompt — no page "
+        "retrieval, no rule engine, no council. The full prompt is printed to the "
+        "terminal, and shown below the answer, so it can be pasted into other "
+        "platforms and compared."
+    ),
+)
+
 # ── Query Input ───────────────────────────────────────────────────────────────
 prefill_val = st.session_state.get("prefill", "")
 question = st.text_area(
@@ -364,6 +383,7 @@ if ask_btn and question.strip():
         birth_data=birth_data,
         query_time=dt.datetime.now(),
         conversation=_convo,
+        direct=st.session_state.get("direct_mode", False),
         thread_id=st.session_state.thread_id,
     )
 
@@ -708,6 +728,18 @@ if ask_btn and question.strip():
                             st.markdown(f"- {entry['rules']} matched rules supplied")
                         if entry.get("note"):
                             st.caption(entry["note"])
+
+            # The direct lane's prompt, for running the comparison from the
+            # deployed app rather than a terminal. Rendered from the result, not
+            # rebuilt — a second assembly is how a panel starts lying about what
+            # the model actually saw.
+            if result.get("direct_prompt"):
+                with st.expander("📋 The exact prompt", expanded=False):
+                    st.caption(
+                        f"{len(result['direct_prompt']):,} characters. Paste "
+                        "this into another platform to compare."
+                    )
+                    st.code(result["direct_prompt"], language="text")
 
             page_groups = result.get("sources", [])
 
