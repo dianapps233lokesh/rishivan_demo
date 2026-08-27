@@ -351,6 +351,38 @@ class TestBuildDirectPrompt:
         assert "(D9)" in prompt
         assert "Ascendant is" in prompt
 
+    def test_d1_is_not_repeated_as_a_division(self, facts):
+        """D1 *is* the chart. The framework and primary blocks already carry
+        "Sun is in Sagittarius in the 10th house"; emitting "Rashi chart (D1):
+        Sun is in Sagittarius in the house 10" beside it states every placement
+        twice in two wordings, which spends the prompt on making the model
+        wonder whether they are the same fact."""
+        from rishivan.varga.confidence import BirthConfidence
+        from rishivan.varga.select import VargaSelection
+
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart=compute_chart(BIRTH),
+            vargas=VargaSelection(
+                selected=("D1", "D9"), withheld=(),
+                confidence=BirthConfidence.MINUTE,
+            ),
+        ))
+        assert "Rashi chart (D1)" not in prompt
+        assert "(D9)" in prompt
+
+    def test_a_selection_of_only_d1_emits_no_division_block(self, facts):
+        from rishivan.varga.confidence import BirthConfidence
+        from rishivan.varga.select import VargaSelection
+
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart=compute_chart(BIRTH),
+            vargas=VargaSelection(
+                selected=("D1",), withheld=(),
+                confidence=BirthConfidence.MINUTE,
+            ),
+        ))
+        assert "DIVISIONAL CHARTS" not in prompt
+
     def test_withheld_vargas_are_stated_not_silent(self, facts):
         from rishivan.varga.confidence import BirthConfidence
         from rishivan.varga.select import VargaSelection, WithheldVarga

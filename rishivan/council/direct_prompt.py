@@ -363,6 +363,13 @@ def _varga_block(chart, selection) -> str:
     The withheld list is stated rather than dropped: "D60 needs a birth time to
     the minute and yours is recorded to the hour, so it was not used" is the
     sentence this selection exists to make available.
+
+    D1 is skipped. It is not a division of the chart, it *is* the chart, and the
+    framework and primary blocks already carry every one of its placements.
+    Emitting it here restated all nine grahas in a second wording ("Rashi chart
+    (D1): Sun is in Sagittarius in the house 10" beside "Sun is in Sagittarius
+    in the 10th house"), which spends prompt on making the model work out
+    whether the two are the same fact.
     """
     if chart is None or selection is None:
         return ""
@@ -370,6 +377,8 @@ def _varga_block(chart, selection) -> str:
 
     lines: list[str] = []
     for code in selection.selected:
+        if code == "D1":
+            continue
         facts = varga_facts(chart, code)
         if facts:
             lines.extend(f"  - {fact}" for fact in facts)
