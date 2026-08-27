@@ -77,11 +77,21 @@ class TestMethodBlock:
             constitution_for("domain.relationship")
         )
 
-    def test_an_unsupported_step_must_be_declared_not_skipped(self):
-        """The failure mode is a model that quietly drops the step it has no
-        facts for, which reads as a complete reading."""
+    def test_gaps_are_worked_but_their_announcement_is_budgeted(self):
+        """This reverses the original rule, and the reversal was earned.
+
+        The first version said to declare every step the facts could not settle.
+        A real reading then announced three of ten steps unsupported — D9,
+        Jaimini, transit — which reads as a broken machine rather than an honest
+        one. `answer_plan.MUST_SAY_LIMIT` had already settled this for the
+        retrieval lane at two disclosures, for the same reason: past the second
+        caveat a reader stops reading caveats and discounts the whole answer.
+
+        The step is still worked, and the gap still costs confidence. What
+        changed is whether the seeker is told."""
         block = method_block(constitution_for("domain.career"))
-        assert "unsupported" in block.lower()
+        assert "Work every step" in block
+        assert "at most two" in block
 
 
 class TestFramingBlock:
@@ -274,6 +284,79 @@ def _state(question="when will I marry?", **kw):
 def chart_state():
     from rishivan.chartstate.build import build_chart_state
     return build_chart_state(compute_chart(BIRTH), when=WHEN)
+
+
+class TestTheOutputShape:
+    """Rewritten after comparing against a competitor product.
+
+    Ours led with ten numbered method paragraphs and reached the answer eleventh,
+    each step opening on the method itself — "Marital harmony is evaluated
+    through the interaction between the Lagna and 7th house occupants". Theirs
+    opened: "The promotion comes between November 2026 and September 2027, not
+    before. Nothing lands in these next three months, so stop reading the current
+    silence as a rejection."
+
+    Same underlying craft; ours was unreadable. Both faults were mine: I ordered
+    the method before the answer, and I asked for the principle rather than the
+    consequence.
+    """
+
+    def test_the_answer_must_come_first(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("OUTPUT"):]
+        assert "first sentence" in block.lower()
+
+    def test_it_asks_what_will_not_happen(self, facts):
+        """The competitor's "not before … nothing lands in these next three
+        months" is what makes a forecast falsifiable and reassuring at once."""
+        block = build_direct_prompt(_state(chart_facts=facts))
+        assert "will NOT" in block or "will not happen" in block
+
+    def test_it_demands_consequences_not_principles(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("OUTPUT"):]
+        assert "consequence" in block.lower()
+
+    def test_it_forbids_narrating_the_method(self, facts):
+        """The steps are how the reading is reached, not what it looks like -
+        the same distinction the retrieval lane's seven movements made."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "never write" in prompt.lower()
+        assert "is evaluated through" in prompt
+
+    def test_the_method_block_says_the_steps_are_working_not_output(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        method = prompt[prompt.index("READING METHOD"):prompt.index("STOP AND READ")]
+        assert "working" in method.lower() or "do not appear" in method.lower()
+
+    def test_the_evidence_ledger_is_required(self, facts):
+        """The competitor's "Astro Reference" footer, which is a better answer to
+        the citation problem than dropping the panel was: it cites the CHART, not
+        a book, so every line is checkable against the computed facts."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "ASTRO REFERENCE" in prompt
+
+    def test_the_ledger_format_pairs_a_factor_with_a_consequence(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("ASTRO REFERENCE"):]
+        assert "factor" in block.lower()
+        assert "consequence" in block.lower()
+
+    def test_divisional_charts_get_plain_names_in_the_prose(self, facts):
+        """"D10" means nothing to a seeker; "career chart" does. The competitor
+        used the plain name in prose and the D-code only in its footer."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "career chart" in prompt
+        assert "birth chart" in prompt
+
+    def test_sanskrit_is_confined_to_the_reference_block(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("OUTPUT"):]
+        assert "gloss" in block.lower() or "plain English" in block
+
+    def test_the_falsifier_survives_the_rewrite(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "falsif" in prompt.lower()
 
 
 class TestTransits:
@@ -491,7 +574,7 @@ class TestSubPeriodBoundaries:
         prompt = build_direct_prompt(_state(
             chart=compute_chart(BIRTH), chart_facts=facts,
         ))
-        assert "before you write any date" in prompt.lower()
+        assert "Settle the promise before any date" in prompt
 
     def test_certainty_is_forbidden_for_dated_claims_not_only_for_health(self, facts):
         """The old rule covered health and death only, and the model wrote "You
@@ -623,11 +706,18 @@ class TestBuildDirectPrompt:
             "expert Vedic (Jyotish) astrologer",
             "READING METHOD",
             "CHART FRAMEWORK",
-            "OUTPUT",
+            "ASTRO REFERENCE",
             "THE QUESTION",
         ]
         positions = [prompt.index(marker) for marker in order]
         assert positions == sorted(positions), prompt[:400]
+
+    def test_the_output_header_is_unambiguous(self, facts):
+        """The method block used to refer to "the OUTPUT section", so
+        `index("OUTPUT")` found the reference rather than the header - which made
+        an ordering assertion pass or fail for the wrong reason."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert prompt.count("OUTPUT") == 1
 
     def test_the_question_is_last_and_present(self, facts):
         prompt = build_direct_prompt(_state(chart_facts=facts))

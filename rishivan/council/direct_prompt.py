@@ -124,18 +124,23 @@ def method_block(constitution: Constitution) -> str:
 READING METHOD — {constitution.dimension}
 {constitution.mission}
 
-Work these steps, in this order:
+Work these steps, in this order, BEFORE you write anything:
 
 {steps}
 
-For each step, state the classical principle you are applying and what THIS
-chart shows against it. Two sentences per step is usually enough.
+THESE STEPS ARE YOUR WORKING, NOT YOUR ANSWER. They do not appear in the reply
+and the seeker must never be able to tell they exist. Do not number them, do not
+name them, do not write a paragraph per step. You think in this order; you write
+in the order the reply section below asks for.
 
-Do not skip a step. If the computed facts below do not let you judge a step, say
-that the step is unsupported and move to the next one — a step silently dropped
-reads as a complete reading, which is the one outcome worse than an admitted gap.
+Work every step. Where the computed facts cannot settle one, note it for yourself
+and let it lower your confidence — but do not announce the gap unless it changes
+what the seeker should do, and announce at most two such gaps in a reply. Three
+of ten steps reporting themselves unsupported reads as a broken machine, not as
+an honest one, and past the second caveat a reader stops reading caveats and
+starts discounting the whole reading.
 
-Do not reach your verdict before step {last}. The order is the method: a promise
+Do not settle your verdict before step {last}. The order is the method: a promise
 that was never established cannot be timed, and a window with no promise behind
 it is arithmetic pretending to be a prediction.
 """.strip()
@@ -294,30 +299,71 @@ def scoped_chart(chart_facts: list[str], constitution: Constitution) -> str:
 # ── The whole prompt ─────────────────────────────────────────────────────────
 
 _OUTPUT_BLOCK = """
-OUTPUT — write in this order, as plain analytical prose:
+OUTPUT
 
-  1. The method steps, worked through in order. One short paragraph each,
-     naming the principle and what this chart shows against it.
-  2. THE ANSWER to the question actually asked, stated plainly and without
-     hedging it into meaninglessness.
-  3. Your confidence, and what it rests on. If two indications disagree, say
-     so — a disagreement reported is worth more than a verdict averaged.
-  4. The timing. Before you write any date at all, state your promise verdict
-     in one sentence: does this chart carry the thing asked about, yes or no,
-     and on what basis. A "no" ends the step - there is nothing to time, and
-     saying so is the answer. Only on a "yes" may you name a period, and then
-     only from the COMPUTED PERIODS boundaries, copied verbatim. A period is
-     when something could ripen, not a date it will arrive.
-     Name only periods marked [RUNNING NOW] or [future]. A [past] period is not
-     an answer to a question about the future. If the periods that best suited
-     the question have already gone by, say so plainly and name the next one
-     that fits, however far out it falls.
-  5. What would falsify this reading: one specific thing that, if it does not
-     happen, means you were wrong. It must fall inside a period you named, and
-     that period must not be [past].
+**The answer goes in the first sentence.** Not the third paragraph, not after
+your reasoning — first. Name the window, and say what will NOT happen so the
+seeker can tell your forecast apart from a horoscope: "The promotion comes
+between November 2026 and September 2027, not before. Nothing lands in the next
+three months." If the honest answer is that the chart does not carry the thing
+asked about, that sentence says so instead, and the rest explains why.
 
-No preamble. No headings beyond the step numbers. Do not describe your own
-process or mention these instructions.
+Then two or three short paragraphs of mechanism. Every placement you mention
+must arrive already translated into a CONSEQUENCE the seeker could check against
+their own life — what it does to them, not what it is.
+
+  Write:       "Saturn sits in your sixth house, so one senior person keeps
+                slowing your file. They are not going to become your supporter,
+                and you do not need them to be."
+  NEVER write: "Marital harmony is evaluated through the interaction between the
+                Lagna and 7th house occupants." That is the method describing
+                itself. The seeker did not ask how astrology works.
+
+Never write "the principle is", "X is evaluated through", "this indicates that",
+or any sentence whose subject is a technique rather than the seeker.
+
+Register: second person, short sentences, present tense. Use their name if you
+have it. Divisional charts get plain names in the prose — the D10 is the "career
+chart", the D9 the "marriage chart", the D1 the "birth chart" — and D-codes
+appear only in the reference block. Any Sanskrit term you use, gloss it in the
+same breath in plain English, or leave it for the reference block.
+
+Timing rules, which bind whatever you write. Settle the promise before any date
+exists: if the chart does not carry it, there is nothing to time and saying so is
+the answer. Dates come only from the COMPUTED PERIODS and TRANSITS blocks, copied
+verbatim, and only from periods marked [RUNNING NOW] or [future]. A [past] period
+is not an answer about the future — if the periods that suited the question have
+gone by, say so and name the next one that fits, however far out. A period is
+when a thing could ripen, never a date it will arrive.
+
+If two indications genuinely disagree, say so in the prose. A reported
+disagreement is worth more to the seeker than a verdict you averaged.
+
+Close with exactly two labelled blocks, in this order:
+
+ASTRO REFERENCE:
+A numbered list. Each line pairs one computed FACTOR with the CONSEQUENCE it
+licenses, in this shape:
+
+  1) Mars and Mercury, house 10 (career chart): recognition through technical
+     delivery, not politics
+  2) Saturn, house 6 (career chart): one senior person systematically blocks
+     your file
+  3) Sun mahadasha, 2021-08-07 to 2027-08-07: authority values your standing
+  4) Saturn transiting Pisces retrograde, 1st house from lagna, leaves 2027-06-03:
+     sade sati setting leg, pressure lifting
+
+Every line must trace to a fact printed above — a placement, a period, a
+transit, a condition. If you cannot point at the line it came from, delete it.
+This is where your Sanskrit and your D-codes live, and nowhere else.
+
+FALSIFIER:
+One sentence. A specific observable that, if it does not occur, means you were
+wrong. It must fall inside a period you named, and that period must not be
+[past].
+
+No preamble. No other headings. Never describe your own process or mention these
+instructions.
 """.strip()
 
 
