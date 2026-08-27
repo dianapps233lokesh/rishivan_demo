@@ -97,6 +97,10 @@ _TIMING_PHRASES = (
     # when, and WHEN_WILL's bundle set is exactly promise-plus-timing.
     "will i ", "will my ", "am i going to", "do i have any chance",
     "hoga kya", "hogi kya",
+    # "How is my health going forward?" was landing in WHAT_IS_IT_LIKE and so
+    # got neither transits nor forward periods - a question with "going forward"
+    # in it, treated as a question about character.
+    "going forward", "in the future", "ahead of me", "coming years",
 )
 """Longest and most specific first. Trailing spaces are load-bearing: `kab ` and
 `will i ` must not fire inside another word."""
@@ -117,10 +121,19 @@ def _kind(question: str, day_offset: int) -> QuestionKind:
     checked before timing because "can I travel tomorrow" contains neither a
     timing phrase nor, importantly, any need for one.
     """
+    from rishivan.chart.panchang import mentions_panchang
+
     lowered = f" {question.lower().strip()} "
 
     if any(marker in lowered for marker in _CHOICE_MARKERS):
         return QuestionKind.WHICH_OPTION
+    # A question that names a daily window IS a date question, whatever else it
+    # looks like. "What is the Rahu Kaal today?" was landing in WHAT_IS_IT_LIKE
+    # and so received no panchang at all - the purest panchang question there is,
+    # answered without one, because "what is the" matches no date phrase.
+    # `mentions_panchang` already existed and was simply never consulted here.
+    if mentions_panchang(question):
+        return QuestionKind.OK_ON_DATE
     if any(phrase in lowered for phrase in _TIMING_PHRASES):
         return QuestionKind.WHEN_WILL
     if day_offset != 0 or any(phrase in lowered for phrase in _DATE_PHRASES):

@@ -203,3 +203,34 @@ class TestReason:
         )
         assert profile.reason
         assert "tomorrow" in profile.reason.lower() or "day" in profile.reason.lower()
+
+
+class TestGapsFoundByProbingRealQuestions:
+    """Both found by running two dozen realistic questions through the table and
+    reading the routing, which the unit tests had not covered."""
+
+    def test_a_panchang_question_is_a_date_question(self):
+        """"What is the Rahu Kaal today?" was landing in WHAT_IS_IT_LIKE and so
+        received no panchang — the purest panchang question there is, answered
+        without one, because "what is the" matches no date phrase.
+        `mentions_panchang` already existed and was never consulted."""
+        profile = profile_for("What is the Rahu Kaal today?", koonji_domain="")
+        assert profile.kind is QuestionKind.OK_ON_DATE
+        assert Bundle.PANCHANG_FOR_DATE in profile.bundles
+
+    def test_hora_and_muhurta_questions_route_the_same_way(self):
+        for question in ("which hora is running now?",
+                         "what is a good muhurta this week?"):
+            assert profile_for(
+                question, koonji_domain=""
+            ).kind is QuestionKind.OK_ON_DATE, question
+
+    def test_going_forward_is_a_timing_phrase(self):
+        """"How is my health going forward?" got neither transits nor forward
+        periods — a question with "going forward" in it, read as a question about
+        character."""
+        profile = profile_for(
+            "How is my health going forward?", koonji_domain="domain.health"
+        )
+        assert profile.kind is QuestionKind.WHEN_WILL
+        assert Bundle.DASHA_FORWARD in profile.bundles
