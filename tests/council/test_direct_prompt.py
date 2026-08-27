@@ -11,8 +11,10 @@ import pytest
 from rishivan.chart.ephemeris import BirthData, compute_chart
 from rishivan.chart.facts import derive_facts
 from rishivan.council.direct_prompt import (
-    constitution_for, framing_block, method_block, scoped_chart,
+    build_direct_prompt, constitution_for, framing_block, method_block,
+    scoped_chart,
 )
+from rishivan.graph.state import initial_state
 
 BIRTH = BirthData(
     year=1990, month=1, day=1, hour=12, minute=0,
@@ -259,3 +261,173 @@ class TestScopedChart:
         text = scoped_chart([], constitution_for("domain.relationship"))
         assert "no chart" in text.lower()
         assert "CHART FRAMEWORK" not in text
+
+
+def _state(question="when will I marry?", **kw):
+    s = initial_state(question, query_time=WHEN)
+    s["koonji_domain"] = kw.pop("koonji_domain", "domain.relationship")
+    s.update(kw)
+    return s
+
+
+class TestBuildDirectPrompt:
+    def test_the_blocks_appear_in_order(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        order = [
+            "expert Vedic (Jyotish) astrologer",
+            "READING METHOD",
+            "CHART FRAMEWORK",
+            "OUTPUT",
+            "THE QUESTION",
+        ]
+        positions = [prompt.index(marker) for marker in order]
+        assert positions == sorted(positions), prompt[:400]
+
+    def test_the_question_is_last_and_present(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert prompt.rstrip().endswith("when will I marry?")
+
+    def test_the_ground_truth_rules_are_carried_over(self, facts):
+        """The copy-times-verbatim discipline exists because the model got it
+        wrong in production. Every reason for it still holds here."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "CHARACTER FOR CHARACTER" in prompt
+        assert "Copy the weekday from the Date line" in prompt
+        assert "Never convert, round, shift, or re-derive a time." in prompt
+
+    def test_it_does_not_warn_about_pages_that_do_not_exist(self, facts):
+        """`_GROUND_TRUTH_WARNING` tells the model that "the classical pages
+        further down" carry no times for this date. There are no classical pages
+        in this lane, so that line points at nothing — and an instruction
+        referring to absent material teaches the model that the instructions
+        describe a prompt other than the one it was given."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "classical pages further down" not in prompt
+        assert "pages" not in prompt.lower()
+
+    def test_every_other_line_of_the_warning_survives(self, facts):
+        """Only the pages line is dropped. Filtering by content rather than
+        rewriting the block keeps the two lanes from drifting on the lines they
+        still share."""
+        from rishivan.council.prompts import _GROUND_TRUTH_WARNING
+
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        dropped = [
+            line for line in _GROUND_TRUTH_WARNING.splitlines()
+            if line.strip() and line not in prompt
+        ]
+        assert len(dropped) == 1, f"expected only the pages line, got {dropped}"
+        assert "pages" in dropped[0]
+
+    def test_the_output_shape_asks_for_the_falsifier(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "falsif" in prompt.lower()
+
+    def test_the_output_shape_asks_for_confidence(self, facts):
+        assert "confidence" in build_direct_prompt(
+            _state(chart_facts=facts)
+        ).lower()
+
+    def test_a_chartless_question_still_builds_a_prompt(self):
+        prompt = build_direct_prompt(_state("what is a nakshatra?", chart_facts=None))
+        assert "READING METHOD" in prompt
+        assert "No chart was computed" in prompt
+
+    def test_selected_vargas_are_rendered_with_their_placements(self, facts):
+        """A varga CODE tells the model nothing. `varga_facts` gives the actual
+        divisional placements, which is what a D9 confirmation step needs."""
+        from rishivan.varga.confidence import BirthConfidence
+        from rishivan.varga.select import VargaSelection
+
+        chart = compute_chart(BIRTH)
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts,
+            chart=chart,
+            vargas=VargaSelection(
+                selected=("D9",), withheld=(),
+                confidence=BirthConfidence.MINUTE,
+            ),
+        ))
+        assert "(D9)" in prompt
+        assert "Ascendant is" in prompt
+
+    def test_withheld_vargas_are_stated_not_silent(self, facts):
+        from rishivan.varga.confidence import BirthConfidence
+        from rishivan.varga.select import VargaSelection, WithheldVarga
+
+        withheld = WithheldVarga(
+            code="D60", required=BirthConfidence.EXACT,
+            actual=BirthConfidence.HOUR,
+            reason="birth time recorded to the hour",
+        )
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart=compute_chart(BIRTH),
+            vargas=VargaSelection(
+                selected=("D9",), withheld=(withheld,),
+                confidence=BirthConfidence.HOUR,
+            ),
+        ))
+        assert "D60" in prompt
+        assert "not used" in prompt.lower()
+
+    def test_conversation_history_is_included_when_present(self, facts):
+        """Dropping it would make every follow-up answer as though asked cold,
+        and the comparison would read that as a grounding failure."""
+        from rishivan.council.conversation import Conversation
+
+        conversation = Conversation()
+        conversation.add("will I marry?", "Marriage is close.", rishi="medhan")
+        prompt = build_direct_prompt(_state(
+            "tell me more", chart_facts=facts, conversation=conversation,
+        ))
+        assert "Marriage is close." in prompt
+
+    def test_no_history_block_on_a_first_turn(self, facts):
+        assert "EARLIER IN THIS CONVERSATION" not in build_direct_prompt(
+            _state(chart_facts=facts)
+        )
+
+    def test_the_history_block_carries_no_voice_instructions(self, facts):
+        """`continuity_instruction` — the retrieval lane's version — ends with
+        "End on a NEW hook, never the same one twice", which is a persona
+        instruction. This lane has no persona and does not end on a hook."""
+        from rishivan.council.conversation import Conversation
+
+        conversation = Conversation()
+        conversation.add("will I marry?", "Marriage is close.", rishi="medhan")
+        prompt = build_direct_prompt(_state(
+            "tell me more", chart_facts=facts, conversation=conversation,
+        ))
+        assert "hook" not in prompt.lower()
+        assert "greet" not in prompt.lower()
+
+    def test_no_persona_language_anywhere(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        for banned in ("Rishi", "seeker asks", "seven movements", "sign-off"):
+            assert banned not in prompt
+
+    def test_it_is_deterministic(self, facts):
+        state = _state(chart_facts=facts)
+        assert build_direct_prompt(state) == build_direct_prompt(state)
+
+
+def test_no_network(monkeypatch, facts):
+    """The proof the retrieval dependency is gone.
+
+    Any stray import of the vector store or the database raises here rather than
+    quietly working in a dev environment that happens to have credentials. This
+    is the only test that would catch a re-introduction.
+    """
+    import builtins
+
+    real_import = builtins.__import__
+    forbidden = ("qdrant_client", "sqlalchemy", "psycopg", "google.genai")
+
+    def guarded(name, *args, **kwargs):
+        if any(name == f or name.startswith(f + ".") for f in forbidden):
+            raise AssertionError(f"direct prompt assembly imported {name}")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", guarded)
+    prompt = build_direct_prompt(_state(chart_facts=facts))
+    assert "READING METHOD" in prompt

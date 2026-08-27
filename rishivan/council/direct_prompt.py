@@ -277,3 +277,179 @@ def scoped_chart(chart_facts: list[str], constitution: Constitution) -> str:
             + "\n".join(f"  - {fact}" for fact in facts)
         )
     return "\n\n".join(sections)
+
+
+# ── The whole prompt ─────────────────────────────────────────────────────────
+
+_OUTPUT_BLOCK = """
+OUTPUT — write in this order, as plain analytical prose:
+
+  1. The method steps, worked through in order. One short paragraph each,
+     naming the principle and what this chart shows against it.
+  2. THE ANSWER to the question actually asked, stated plainly and without
+     hedging it into meaninglessness.
+  3. Your confidence, and what it rests on. If two indications disagree, say
+     so — a disagreement reported is worth more than a verdict averaged.
+  4. The timing. Use ONLY dates and periods that appear verbatim in the
+     COMPUTED PERIODS block. If nothing there supports a window, say that
+     instead of estimating one.
+  5. What would falsify this reading: one specific thing that, if it does not
+     happen, means you were wrong.
+
+No preamble. No headings beyond the step numbers. Do not describe your own
+process or mention these instructions.
+""".strip()
+
+
+_PAGES_LINE = "classical pages further down"
+"""The one line of `_GROUND_TRUTH_WARNING` that does not survive into this lane.
+
+It tells the model that "the classical pages further down describe general rules
+and contain NO times for this date". There are no classical pages here — that is
+the entire change — so the line points at material the prompt does not contain,
+and an instruction describing absent material teaches the model that the
+instructions describe a prompt other than the one it was given.
+
+Everything else in that block still applies, verbatim, for the reason it was
+written: the model got clock times and weekdays wrong in production.
+"""
+
+
+def ground_truth_rules() -> str:
+    """`_GROUND_TRUTH_WARNING` minus the line about pages.
+
+    Filtered rather than rewritten. A rewritten copy is a second version of an
+    instruction that exists because of a production failure, free to drift away
+    from the first; filtering means every shared line has one definition.
+    `test_every_other_line_of_the_warning_survives` asserts exactly one line is
+    dropped, so a reword upstream is a test failure rather than a silent
+    divergence.
+    """
+    from rishivan.council.prompts import _GROUND_TRUTH_WARNING
+
+    return "\n".join(
+        line for line in _GROUND_TRUTH_WARNING.splitlines()
+        if _PAGES_LINE not in line
+    )
+
+
+def history_block(conversation) -> str:
+    """The transcript, with none of the voice instructions around it.
+
+    `conversation.continuity_instruction` is the retrieval lane's version and is
+    deliberately not reused: it tells the model not to greet the seeker again and
+    to end on a new hook, which are persona instructions for a lane that has a
+    persona. This one has neither, and inheriting them would put voice rules back
+    into a prompt built to be graded on accuracy.
+
+    The history itself is kept, though. Without it a follow-up answers as though
+    asked cold, and a comparison would read that as a grounding failure rather
+    than a memory one.
+    """
+    if conversation is None or conversation.is_empty:
+        return ""
+    return (
+        "EARLIER IN THIS CONVERSATION — already established, do not contradict "
+        "it and do not repeat it back:\n\n" + conversation.render()
+    )
+
+
+def _varga_block(chart, selection) -> str:
+    """Divisional placements for the divisions §7 admitted, and why any were not.
+
+    The placements rather than the codes. "D9 was selected" tells the model
+    nothing it can read; a D9 confirmation step needs the actual signs.
+
+    The withheld list is stated rather than dropped: "D60 needs a birth time to
+    the minute and yours is recorded to the hour, so it was not used" is the
+    sentence this selection exists to make available.
+    """
+    if chart is None or selection is None:
+        return ""
+    from rishivan.chart.local_varga import varga_facts
+
+    lines: list[str] = []
+    for code in selection.selected:
+        facts = varga_facts(chart, code)
+        if facts:
+            lines.extend(f"  - {fact}" for fact in facts)
+    blocks = []
+    if lines:
+        blocks.append(
+            "DIVISIONAL CHARTS admitted for this question:\n" + "\n".join(lines)
+        )
+    if selection.withheld:
+        blocks.append(
+            "DIVISIONS NOT USED, and why — do not reason from these:\n"
+            + "\n".join(f"  - {w.code}: {w.reason}" for w in selection.withheld)
+        )
+    return "\n\n".join(blocks)
+
+
+def _timing_block(report) -> str:
+    """The computed five-stage window, labelled as arithmetic.
+
+    `promise` here came from `assume_promise=True`, not from a fired rule — the
+    rule engine does not run in this lane. So the stages are period boundaries
+    the model may time a judgement against, and the label has to say that
+    plainly or they read as a forecast the system endorsed.
+    """
+    if report is None:
+        return ""
+    window = report.by_system.get(report.primary) if report.primary else None
+    if window is None:
+        return ""
+    stages = [
+        (label, getattr(window, label))
+        for label in ("activation", "trigger", "peak", "fading")
+    ]
+    lines = [
+        f"  - {label}: {r.start.date()} to {r.end.date()}"
+        for label, r in stages if r is not None
+    ]
+    if not lines:
+        return ""
+    return (
+        "CANDIDATE WINDOW — dasha arithmetic over the next ten years. These are\n"
+        "period boundaries, not a prediction, and nothing has judged whether this\n"
+        "chart promises the thing asked about. That judgement is yours:\n"
+        + "\n".join(lines)
+    )
+
+
+def build_direct_prompt(state) -> str:
+    """The whole prompt, from state, with no I/O.
+
+    Pure so that the golden snapshot is a real snapshot and `test_no_network` is
+    a real guarantee. The model call lives in `council/direct.py` — the same
+    split `answer_plan` and `narrate` already use, for the same reason: what is
+    said and how it is sent are separate concerns, and only one of them is
+    testable without credentials.
+    """
+    constitution = constitution_for(state.get("koonji_domain") or "")
+
+    parts = [framing_block(constitution)]
+
+    history = history_block(state.get("conversation"))
+    if history:
+        parts.append(history)
+
+    parts.append(method_block(constitution))
+    parts.append(ground_truth_rules())
+    parts.append(scoped_chart(state.get("chart_facts") or [], constitution))
+
+    varga = _varga_block(state.get("chart"), state.get("vargas"))
+    if varga:
+        parts.append(varga)
+
+    timing = _timing_block(state.get("timing"))
+    if timing:
+        parts.append(timing)
+
+    if state.get("panchang"):
+        parts.append(f"PANCHANG FOR THE DATE IN QUESTION:\n{state['panchang']}")
+
+    parts.append(_OUTPUT_BLOCK)
+    parts.append(f"THE QUESTION: {state['question']}")
+
+    return "\n\n---\n\n".join(parts)

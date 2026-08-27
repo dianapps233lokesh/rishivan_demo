@@ -55,6 +55,20 @@ def skip_without_database(exc: BaseException) -> None:
     raise exc
 
 
+def pytest_addoption(parser):
+    """`--golden-update` rewrites golden files instead of asserting against them.
+
+    Registered here rather than beside the test that reads it: a
+    `pytest_addoption` hook in a test module is silently ignored, and
+    `config.getoption` then raises `ValueError: no option named` — which reads
+    like the test is broken rather than the hook being in the wrong file.
+    """
+    parser.addoption(
+        "--golden-update", action="store_true", default=False,
+        help="rewrite golden files instead of asserting against them",
+    )
+
+
 @pytest.fixture(autouse=True)
 def no_telemetry_writes(monkeypatch):
     """Keep the test suite out of the real MongoDB Atlas cluster.
