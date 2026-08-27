@@ -67,6 +67,11 @@ def chart_natal_node(state: RishivanState) -> dict:
 
     return {
         "chart": chart,
+        # Written explicitly rather than left to `initial_state`'s default. A
+        # thread is checkpointed, so a turn that cast a prashna chart leaves
+        # `chart_kind="prashna"` behind and the next turn would inherit it -
+        # labelling a real nativity `prashna` in the direct lane's fact table.
+        "chart_kind": "natal",
         "chart_summary": summarize(chart),
         "chart_facts": chart_facts,
         "relevant_chart_tables": tables,
@@ -101,7 +106,7 @@ def chart_moment_node(state: RishivanState) -> dict:
     return {
         "chart": chart,
         "chart_kind": "prashna",
-        "chart_summary": summarize(chart),
+        "chart_summary": summarize(chart, label="Moment"),
         "chart_facts": derive_muhurta_facts(chart),
     }
 

@@ -42,7 +42,21 @@ def route_after_intake(state: RishivanState) -> str:
         # rather than as an `if` inside one overloaded node.
         return "chart_natal"
     if domain in _CHARTED_WITHOUT_BIRTH:
-        return "chart_moment"
+        # ...but only when there is genuinely no birth to chart. A muhurta
+        # question from a seeker whose details are on file is a nativity read
+        # against a day, not a chartless one: `chart_moment_node` discards
+        # `birth_data`, so "can I travel abroad tomorrow?" was answered from a
+        # chart cast for tomorrow afternoon and labelled the birth chart. A
+        # Capricorn lagna for somebody born with Cancer rising, and every house
+        # claim in the reading about the wrong chart.
+        #
+        # The day itself is not lost. `transit_block`, the panchang block and
+        # the bala computation each cast it from `query_time`, and
+        # `route_after_chart` sends every muhurta question through `panchang`
+        # so the windows are computed whatever the wording.
+        if state.get("birth_data") is None:
+            return "chart_moment"
+        return "chart_natal"
     # A general question can still ask about today's panchang, and the
     # orchestrator computes it whether or not a chart was cast.
     return "panchang" if mentions_panchang(state["question"]) else "retrieve"
@@ -58,6 +72,12 @@ def route_after_chart(state: RishivanState) -> str:
 
     if state.get("chart") is not None and state["classification"].get("intent") == "chart":
         return "chart_render"
+    # A muhurta question is a question about a day, so the day gets computed
+    # whether or not the wording trips a panchang keyword. "Can I travel abroad
+    # tomorrow?" names no tithi and no Rahu Kaal, and answering it without them
+    # leaves the actual question untouched.
+    if state.get("query_domain") == QueryDomain.MUHURTA:
+        return "panchang"
     return "panchang" if mentions_panchang(state["question"]) else "retrieve"
 
 

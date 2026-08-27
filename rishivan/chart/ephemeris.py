@@ -182,10 +182,17 @@ def compute_chart(birth: BirthData) -> Chart:
 # repo's pure-arithmetic engines.
 
 
-def summarize(chart: Chart) -> str:
-    """Human-readable one-screen chart summary (for the UI + sanity checking)."""
+def summarize(chart: Chart, *, label: str = "Birth") -> str:
+    """Human-readable one-screen chart summary (for the UI + sanity checking).
+
+    `label` names what the moment on the first line IS. A muhurta or prashna
+    chart is cast for a target time, and printing `Birth: Query location
+    2026-08-28 17:56` above it told the reader that a chart for tomorrow
+    afternoon was their nativity - in the one panel that exists so a reading
+    can be checked against the numbers.
+    """
     lines = [
-        f"Birth: {chart.birth.place or 'unknown'} "
+        f"{label}: {chart.birth.place or 'unknown'} "
         f"{chart.birth.year:04d}-{chart.birth.month:02d}-{chart.birth.day:02d} "
         f"{chart.birth.hour:02d}:{chart.birth.minute:02d} "
         f"(TZ {chart.birth.tz_offset_hours:+g})",

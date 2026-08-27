@@ -52,6 +52,27 @@ class TestAfterIntake:
         s = state(query_domain=QueryDomain.PRASHNA, birth_data=None)
         assert route_after_intake(s) == "chart_moment"
 
+    def test_muhurta_with_birth_data_reads_the_nativity(self):
+        """A muhurta question asked by somebody whose birth details are on file
+        is not a chartless question. `chart_moment_node` discards `birth_data`
+        entirely, so routing here sent "can I travel abroad tomorrow?" to a
+        chart cast for tomorrow afternoon and labelled it the birth chart - a
+        Capricorn lagna for a seeker born with Cancer rising. Every house claim
+        in the reading was then about the wrong chart.
+
+        The day's own sky is not lost: it is what `transit_block`, the panchang
+        block and the bala computation are built from, and each of those casts
+        it from `query_time` rather than reading it out of `chart`."""
+        s = state(query_domain=QueryDomain.MUHURTA, birth_data=object())
+        assert route_after_intake(s) == "chart_natal"
+
+    def test_prashna_with_birth_data_reads_the_nativity_too(self):
+        """`intake_node` rewrites a chartless natal question to PRASHNA, so this
+        pairing means the rewrite fired for somebody who does have a chart -
+        and the nativity is the better answer than the moment of asking."""
+        s = state(query_domain=QueryDomain.PRASHNA, birth_data=object())
+        assert route_after_intake(s) == "chart_natal"
+
     def test_a_general_question_skips_the_chart(self):
         s = state(query_domain=QueryDomain.GENERAL, birth_data=None)
         assert route_after_intake(s) == "retrieve"
@@ -86,6 +107,17 @@ class TestAfterChart:
     def test_an_ordinary_question_goes_to_retrieval(self):
         s = state(chart=object(), classification={"intent": "predict"})
         assert route_after_chart(s) == "retrieve"
+
+    def test_a_muhurta_question_always_computes_the_day(self):
+        """"Can I travel abroad tomorrow?" trips no panchang keyword, so once
+        MUHURTA routes to the natal chart this edge is the only thing that still
+        computes tomorrow's tithi, weekday and Rahu Kaal. Asking whether a day
+        is fit for a journey and not computing that day is the whole question
+        unanswered."""
+        s = state(chart=object(), classification={"intent": "predict"},
+                  query_domain=QueryDomain.MUHURTA,
+                  question="can I travel abroad tomorrow?")
+        assert route_after_chart(s) == "panchang"
 
     def test_chart_intent_without_a_chart_does_not_render(self):
         """`if chart is not None and intent == 'chart'` - both halves."""

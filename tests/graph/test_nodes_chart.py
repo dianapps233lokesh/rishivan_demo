@@ -51,8 +51,8 @@ class TestNatalChart:
 
     def test_it_returns_only_the_keys_it_owns(self, charted):
         out = chart_natal_node(initial_state("q", birth_data=BIRTH))
-        assert set(out) <= {"chart", "chart_summary", "chart_facts",
-                            "relevant_chart_tables"}
+        assert set(out) <= {"chart", "chart_kind", "chart_summary",
+                            "chart_facts", "relevant_chart_tables"}
 
     def test_a_relevant_varga_is_added_to_the_facts(self):
         """`council_consult:176-193`. A marriage reading grounded in D9 with no
@@ -172,3 +172,73 @@ class TestRenderers:
                      render_ashtakavarga_node, render_numerology_node):
             out = node(charted)
             assert set(out) == {"chart_table", "chart_table_error"}, node.__name__
+
+
+class TestChartKindIsWrittenDown:
+    """Which kind of chart is in `chart` must be recorded by whichever node put
+    it there.
+
+    Both nodes write it explicitly rather than relying on `initial_state`'s
+    default. A thread is checkpointed, so a turn that cast a prashna chart
+    leaves `chart_kind="prashna"` in state; the next turn in the same thread
+    routing to `chart_natal` would inherit it and the direct lane's fact table
+    would label a genuine nativity `prashna`.
+    """
+
+    def test_the_natal_node_says_natal(self):
+        from rishivan.chart.ephemeris import BirthData
+        from rishivan.graph.nodes.chart import chart_natal_node
+
+        birth = BirthData(
+            year=2003, month=5, day=1, hour=13, minute=0,
+            tz_offset_hours=5.5, lat=26.9155, lon=75.8190, place="Jaipur",
+        )
+        out = chart_natal_node({
+            "birth_data": birth, "classification": {"relevant_vargas": []},
+        })
+        assert out["chart_kind"] == "natal"
+
+    def test_the_moment_node_says_prashna(self):
+        from datetime import datetime
+
+        from rishivan.council.domains import QueryDomain
+        from rishivan.graph.nodes.chart import chart_moment_node
+
+        out = chart_moment_node({
+            "question": "is tomorrow good to travel?",
+            "query_domain": QueryDomain.PRASHNA,
+            "query_time": datetime(2026, 8, 27, 12, 0),
+            "lat": 26.9155, "lon": 75.8190, "tz_offset": 5.5, "place": "Jaipur",
+        })
+        assert out["chart_kind"] == "prashna"
+
+
+class TestTheSummaryNamesWhatItIs:
+    """A moment chart's summary said `Birth: Query location 2026-08-28 17:56`.
+
+    The panel is the one place a user can check a reading against the numbers,
+    and it was calling a chart cast for tomorrow afternoon a birth chart.
+    """
+
+    def test_a_moment_chart_is_not_labelled_a_birth(self):
+        from datetime import datetime
+
+        from rishivan.council.domains import QueryDomain
+        from rishivan.graph.nodes.chart import chart_moment_node
+
+        out = chart_moment_node({
+            "question": "is now a good time?",
+            "query_domain": QueryDomain.PRASHNA,
+            "query_time": datetime(2026, 8, 27, 17, 56),
+            "lat": 26.9155, "lon": 75.8190, "tz_offset": 5.5, "place": "Jaipur",
+        })
+        first = out["chart_summary"].splitlines()[0]
+        assert not first.startswith("Birth:")
+        assert first.startswith("Moment:")
+
+    def test_a_natal_chart_still_says_birth(self):
+        from rishivan.graph.nodes.chart import chart_natal_node
+        from rishivan.graph.state import initial_state
+
+        out = chart_natal_node(initial_state("q", birth_data=BIRTH))
+        assert out["chart_summary"].splitlines()[0].startswith("Birth:")
