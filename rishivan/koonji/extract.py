@@ -174,9 +174,15 @@ def stamped_rule_id(passage: Passage, raw: dict, index: int) -> str:
     for block, key in CONSEQUENT_TOPIC.items():
         value = raw.get(block)
         if isinstance(value, dict) and value.get(key):
-            topic = str(value[key]).split(".")[0]
+            # First word only, then a hard cap. `indicates.claim` is a symbol
+            # like `wealth.accumulation` and yields one word, but `remedy.action`
+            # is free prose: one Hindu Predictive rule produced a 130-character
+            # id beginning COMMENCEBUSINESSENTERPRISESMARRIAGECEREMONIES... An id
+            # is a handle a reviewer types and a diff aligns on, so its length
+            # cannot be at the mercy of how long the sentence was.
+            topic = (str(value[key]).split(".")[0].split() or ["rule"])[0]
             break
-    return f"{book}.{_ID_CLEAN.sub('', topic.upper())}.{where}.X{index:04d}"
+    return f"{book}.{_ID_CLEAN.sub('', topic.upper())[:24] or 'RULE'}.{where}.X{index:04d}"
 
 
 def _as_document(payload: Any) -> dict:

@@ -1,0 +1,309 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.EDUCATION.CH5V1620.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.spiritual: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v16-20
+    quote: if Mercury is there he becomes a Gyani (one who has the knowledge of the Absolute)
+    quote_sha256: da7b68e05313155c723b4129951bdbd593f9dec2c6a3cff5c59de26f776a71ce
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he becomes a Gyani (one who has the knowledge of the Absolute)
+- id: MUHURTACHINTAMANI.EDUCATION.CH5V38.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v38
+    quote: >-
+      the Lord of the Ascendant running at the time of the beginning of Getting Education
+      should be a benefic planet
+    quote_sha256: f9fbf2352010537abc38f9ba7be1b7785372e2f5f9c0d304ddfe42bdb1be009f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.friendly
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: auspicious for the beginning of getting education
+- id: MUHURTACHINTAMANI.EDUCATION.CH5V44.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v44
+    quote: >-
+      If at the time of the Upanayana samaskara Jupiter and Venus (Lords of both the Varnas
+      and the Vedas) are in their enemy's sign, in their deep debilitation sign and are defeated
+      in the planetary war, then the concerned child is devoid of the Vedas and the shastras.
+    quote_sha256: 9923ebe3fa4f60971c007fbebe9364f2358c29379cca6a4c2e0ed379fdf2cac8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - dignity:
+          subject: graha.jupiter
+          dignity: dignity.inimical
+      - dignity:
+          subject: graha.jupiter
+          dignity: dignity.debilitated
+    - any:
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.inimical
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.debilitated
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: the concerned child is devoid of the Vedas and the shastras
+- id: MUHURTACHINTAMANI.EDUCATION.CH5V46.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v46
+    quote: if of Mercury he will be clever
+    quote_sha256: 248b709afba445b76a4834ed028b958e9b2d40204d7844efe25ff5156c5147a1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mercury
+        rashi: rashi.gemini
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mercury
+        rashi: rashi.virgo
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: he will be clever
+- id: MUHURTACHINTAMANI.EDUCATION.CH5V51.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+    domain.status: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v51
+    quote: if Jupiter, an excellent scholar or a learned man;
+    quote_sha256: a086c4272a8ccff76581a58a2a420a62a67a401b28fd0335f7a4300e6b46d07d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: an excellent scholar or a learned man
+- id: MUHURTACHINTAMANI.EDUCATION.CH5V52.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v52
+    quote: >-
+      and if with a benefic planet (Mercury), he will be an intelligent scholar or a learned
+      man.
+    quote_sha256: 3e69221913e63481d4ce00b25b71800dbe553ac75ddba0bf4c4b24ca13ce18b0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.mercury
+    - conjunct:
+        subject: graha.venus
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he will be an intelligent scholar or a learned man
+- id: MUHURTACHINTAMANI.EDUCATION.CH5V53.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+    domain.spiritual: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v53
+    quote: >-
+      If the Moon is in the Navamsha of Venus and Venus is in a Trine from the Lagna or Ascendant,
+      and Jupiter is posited in the Lagna or Ascendant then the child whose 'Upanayana Samskara'
+      is done (in such combination) will have the knowledge of all the Vedas
+    quote_sha256: a53eba13b51078fd06016803765105a18aee107b3768e0278ff53c424c02f317
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.taurus
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.libra
+    - in_trikona:
+        subject: graha.venus
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the child whose Upanayana Samskara is done will have the knowledge of all the Vedas
+- id: MUHURTACHINTAMANI.LEARNING.CH3V16.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.education: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch3.v16
+    quote: and if Saturn, learning (from the guru) should be taken
+    quote_sha256: 1ed8904c940f59a843d4e6b4b41e75688a5edbd1438bf0cca2d6b83ee69d29e9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: learning from the guru
+- id: MUHURTACHINTAMANI.READING.CH3V16.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.education: 0.9
+    domain.spiritual: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch3.v16
+    quote: >-
+      if the moon, there should be the reading and teaching of the shastras or ancient classics
+      (religious books)
+    quote_sha256: 9832a8f509468cab025778e75d69f0148bf4fcffccad85713ecc3fcc5e8a501f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.moon
+        band: band.strong
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: reading and teaching of the shastras

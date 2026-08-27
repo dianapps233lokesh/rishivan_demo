@@ -1,0 +1,1324 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.CAREER.CH2V3637.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v36-37
+    quote: >-
+      During the period when the Main Dasa lord and the Sub-period lord are located 6th &
+      8th to each other there is relinquishment of office or even death.
+    quote_sha256: 4dfabea1a4ac34dab796c2d1542449416e1df8b417cf00272f0cff7988d7951d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.01
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.01
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: extreme
+    text: relinquishment of office or even death
+- id: SARVARTHACHINTAMANI.EDUCATION.CH12V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+    domain.longevity: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v14
+    quote: If Jupiter and the lord of the 8th house are in lagna
+    quote_sha256: 862519c9b0cfd7d95b3752f1f07ad8cfa41185c882ccee20503c9526197fde81
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native knows the meaning of Shastras, is lucky & dies at the age of 60
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V135.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v135
+    quote: >-
+      If Saturn located in the 4th house is under the aspect of benefic planets mother lives
+      long.
+    quote_sha256: cc3c25229a213ec087f8f97df2cfe6430f243325569acb02ff0990649c901de8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.saturn
+      - aspects:
+          subject: graha.venus
+          target: graha.saturn
+      - aspects:
+          subject: graha.mercury
+          target: graha.saturn
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: strong
+    text: mother lives long
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V135.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v135
+    quote: >-
+      If however, Saturn in the 4th house is in the sign of a malefic planet and is also associated
+      with a malefic the mother is shortlived.
+    quote_sha256: 8be7e845449b0342fb1b9938ab3817b35b51027c919aa2d446af7b2b605f1efd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+    - any:
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.scorpio
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.aquarius
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.leo
+    - any:
+      - conjunct:
+          subject: graha.saturn
+          other: graha.sun
+      - conjunct:
+          subject: graha.saturn
+          other: graha.mars
+      - conjunct:
+          subject: graha.saturn
+          other: graha.saturn
+      - conjunct:
+          subject: graha.saturn
+          other: graha.rahu
+      - conjunct:
+          subject: graha.saturn
+          other: graha.ketu
+  indicates:
+    claim: family.mother
+    polarity: negative
+    magnitude: strong
+    text: the mother is shortlived
+- id: SARVARTHACHINTAMANI.FAMILY.CH5V3.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v3
+    quote: If Moon is then in the 5th mother dies soon (Moon being very weak).
+    quote_sha256: b6b499b1fcb8f7326b264bccd76c02b6838518adaa4b599479b8ee4f75624900
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - strength_band:
+        subject: graha.moon
+        band: band.very_weak
+  indicates:
+    claim: family.mother
+    polarity: negative
+    magnitude: strong
+    text: mother dies soon
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V49.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.longevity: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v49
+    quote: >-
+      If the lord of the 1st house is strong, but the lords of the 4th and the 9th houses
+      are weak and occupy the 8th house, there will be death of father and the mother at the
+      time of the birth of the native.
+    quote_sha256: 2c60e6b920c2649144fbc7ad9de9ea27b4ab31a070f0bfa2e27cb15655c5568b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.01
+        op: '>'
+        value: 0
+    - strength:
+        subject: lord.bhava.04
+        op: <=
+        value: 0
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.08
+    - strength:
+        subject: lord.bhava.09
+        op: <=
+        value: 0
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.08
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: extreme
+    text: death of father at the time of the birth of the native
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V49.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.longevity: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v49
+    quote: >-
+      If the lord of the 1st house is strong, but the lords of the 4th and the 9th houses
+      are weak and occupy the 8th house, there will be death of father and the mother at the
+      time of the birth of the native.
+    quote_sha256: 2c60e6b920c2649144fbc7ad9de9ea27b4ab31a070f0bfa2e27cb15655c5568b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.01
+        op: '>'
+        value: 0
+    - strength:
+        subject: lord.bhava.04
+        op: <=
+        value: 0
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.08
+    - strength:
+        subject: lord.bhava.09
+        op: <=
+        value: 0
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.08
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: extreme
+    text: death of the mother at the time of the birth of the native
+- id: SARVARTHACHINTAMANI.FAMILY.CH9V4546.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.85
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v45-46
+    quote: >-
+      If Moon is located 9th to the Sun the death of the father of the native takes place
+      due to water.
+    quote_sha256: d95a45a14b123ca5ccee37120eb9d9362d68079a9c95ba0d1d19a06ac5d24382
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.moon
+        distance: dist.09
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: the death of the father of the native takes place due to water
+- id: SARVARTHACHINTAMANI.FAMILY.CH9V4546.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.85
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v45-46
+    quote: >-
+      If Moon & Sun are located in Pisces and are aspected by malefics, the death of the father
+      takes place through water.
+    quote_sha256: a9b81941338349eaa1b9387fe3e656370da354f952fe694f6cc28d95df74a3c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: the death of the father takes place through water
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.95
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v10
+    quote: >-
+      If the lord of the lagna is a natural benefic planet & is located in kendra. aspected
+      by benefics it destroys all dangers to short life.
+    quote_sha256: 44f7bc87f8e85668c29bc96a59183e1bf8d6638b6ac4e1d6e03ebee58d599d42
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: lord.bhava.01
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: it destroys all dangers to short life
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v11
+    quote: >-
+      If Rahu is located in the 3rd or 6th house from the lagna and is free from malefic influence,
+      but has the aspect on it of benefics, destroys all dangers to short life like the strong
+      wind removing away by its strength the huge store of cotton.
+    quote_sha256: cd6a9022e47f824c2fbfe6c32bee173dbf82486c9df0dd6c2d9a533974a8d93b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.06
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: destroys all dangers to short life
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v16
+    quote: >-
+      If Rahu is located in lagna in Aries, Taurus or Cancer, it destroys all dangers to short
+      life like a happy king forgiving a criminal.
+    quote_sha256: 27ec04c0e9687799b966c95f9d0a1531517c3349440fd7dc1ad48237f6b08fad
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - any:
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.cancer
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: it destroys all dangers to short life
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.95
+    domain.health: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v4
+    quote: >-
+      If Moon is farthest away from the Sun, located in the sign or Navamsha of a benefic
+      planet removes all dangers for short life particularly when it is also aspected by Venus.
+    quote_sha256: 65dd47816f603e52b475f51e148072f36e7446500a20bd9fa3d1da480cf84a58
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.moon
+        bhava: bhava.07
+        reference: ref.sun
+    - any:
+      - varga_dignity:
+          varga: varga.d1
+          subject: graha.moon
+          dignity: dignity.friendly
+      - varga_dignity:
+          varga: varga.d1
+          subject: graha.moon
+          dignity: dignity.exalted
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.friendly
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.exalted
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: removes all dangers for short life
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 1.0
+    domain.health: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v5
+    quote: >-
+      If out of Jupiter, Venus and Mercury even one is strong and located in a kendra, without
+      the association or aspect of any malefic planet, at once destroys all dangers to short
+      life.
+    quote_sha256: 59f2e4df7b5cd7f9bef153cdc63d37d469113124548c239694c3b4e807471023
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.10
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: destroys all dangers to short life
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.95
+    domain.health: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v6
+    quote: >-
+      Moon even if located in an inimical sign but occupying the decante of Jupiter, Venus
+      or Mercury, removes dangers to short life just as Lord Vishnu destroys sin.
+    quote_sha256: cbcb3165545b438316daade154d94582f1eb683272e1dda6bb1d65d262644fb6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.inimical
+    - any:
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.pisces
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.libra
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.gemini
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.virgo
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: removes dangers to short life
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.95
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v7
+    quote: >-
+      If birth has taken place in the night time in the bright fortnight of the Moon, and
+      Moon is aspected by benefics then even if she is located in 6th or 8th house removes
+      all dangers to short life.
+    quote_sha256: 24972310e98b3cf6a61fafa6c76150ba5448d0c822e72adaa8529e3adf8573a8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: removes all dangers to short life
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v26
+    quote: 'During the ruling period of Mercury located in the 12th house,
+
+      the native faces sudden danger to his life, gets impairment of some
+
+      limb'
+    quote_sha256: ef54db5ac7af88067e27f9ac1b65b1b6e2c5997c770462419704c5382cbfe1df
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.12
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: faces sudden danger to his life, gets impairment of some limb
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v26
+    quote: >-
+      If both the lords of the 1st and the 8th houses are weak & are influenced by Mars &
+      the lord of the 6th house, the native dies in battle field or by weapons.
+    quote_sha256: c06a6e2544456a70b4f29c1c8a8c62b53d36a242407177c0df79efaf273dbbfc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.01
+        band: band.weak
+    - strength_band:
+        subject: lord.bhava.08
+        band: band.weak
+    - any:
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.01
+      - conjunct:
+          subject: graha.mars
+          other: lord.bhava.01
+    - any:
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.08
+      - conjunct:
+          subject: graha.mars
+          other: lord.bhava.08
+    - any:
+      - aspects:
+          subject: lord.bhava.06
+          target: lord.bhava.01
+      - conjunct:
+          subject: lord.bhava.06
+          other: lord.bhava.01
+    - any:
+      - aspects:
+          subject: lord.bhava.06
+          target: lord.bhava.08
+      - conjunct:
+          subject: lord.bhava.06
+          other: lord.bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native dies in battle field or by weapons
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.longevity: 0.95
+    domain.travel: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v28
+    quote: >-
+      If the lord of the 1st and 8th houses are located with the lord of the 4th house, death
+      of the native is caused by a conveyance.
+    quote_sha256: cfc6d35562069d4d7737e30a4bdd4b2595641b0f9c4f827965ff95581dcde374
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.04
+    - conjunct:
+        subject: lord.bhava.08
+        other: lord.bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death of the native is caused by a conveyance
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V28.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v28
+    quote: If the two are with Jupiter death is through loss of appetite.
+    quote_sha256: 57fd7cafff17595e02f873bc4fee4b25c1c69da823dc197935245c4fb3470811
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.08
+        other: graha.jupiter
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death is through loss of appetite
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V28.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v28
+    quote: >-
+      Death also takes place through loss of appetite if the lord of the 1st house & Jupiter
+      are located in the 6th house.
+    quote_sha256: 2dc792c9c2a77cf7d59c3d444534c40c08d0cc6c22fa1b7e651b37079a02403c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: Death also takes place through loss of appetite
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V29.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v29
+    quote: >-
+      If the lord of 1st, 4th houses and Jupiter are together, death takes place through loss
+      of appetite.
+    quote_sha256: f536bb3e505722413b3dcecacb799799c87f30ded82c45c6b315f5755915ba52
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.04
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.jupiter
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death takes place through loss of appetite
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V29.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v29
+    quote: >-
+      If the lords of the 1st, 4th & the 2nd houses are together then also death takes place
+      through loss of appetite.
+    quote_sha256: c6ee04ad2f22b32b12c089b998fd5456dcc895972212f6c782cc402eb413c959
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.04
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.02
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death takes place through loss of appetite
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V31.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v31
+    quote: >-
+      If the lords of the 1st and 2nd houses are located with Saturn, death takes place by
+      consumption of poison.
+    quote_sha256: cc9d7373916ebb8a661e0105c2a3996f795e26b2bb6d757bbeb1487c6c84bc18
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: death takes place by consumption of poison
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V31.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v31
+    quote: >-
+      If the two i.e. the lords of the 1st and 2nd house are with Rahu or Ketu & located in
+      6th, 8th or 12th house the man dies by being hanged.
+    quote_sha256: 8ffffacf26b0fa0905080feb81000f2abd8ac6c26f298c67f807efe6fe30756c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.ketu
+    - any:
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.ketu
+    - any:
+      - in_dusthana:
+          subject: lord.bhava.01
+      - in_dusthana:
+          subject: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the man dies by being hanged
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V32.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v32
+    quote: >-
+      If the lord of the 6th house is located with Rahu, Ketu and Saturn, the native dies
+      at the hands of some wild animal.
+    quote_sha256: 66942f60340a5a977da5bcdeac0e088733890ec49635129b11d04d579ca6f119
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.rahu
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.ketu
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native dies at the hands of some wild animal
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V32.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v32
+    quote: If the lord of 6th is with Jupiter the death is through an elephant.
+    quote_sha256: 7a9c4cdff1cede9836553068810816f5b711938cce1cd7642c7f0f41a338ef94
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.jupiter
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the death is through an elephant
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V32.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v32
+    quote: If it is with Moon it is caused by some horse.
+    quote_sha256: 20ae6d566b82ae460d4b7ccdb23f50fbf0501fcebf8577dc417e3d935e2f8e38
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: death is caused by some horse
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v33
+    quote: >-
+      If the lord of the 6th house & Saturn are located with the Sun, the death of the native
+      takes place through the horns of an animal.
+    quote_sha256: 81472e2e7dec94b7587c7972da03cbaf6b01be00041167eb006c1e391b8343e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the death of the native takes place through the horns of an animal
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V33.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v33
+    quote: If the lord of the 6th & Saturn are with Mars the fear of death is from a dog.
+    quote_sha256: fbeb085a0ebcc53c7845a01d3c899be3741d402987030bd1928ffe004a609a52
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the fear of death is from a dog
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V4546.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.9
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v45-46
+    quote: >-
+      If Mars and Rahu are with Saturn in the 4th house, there is fear of death through water
+      for the native himself.
+    quote_sha256: 8d2191d44103478b13fee86cd64b4db1d482aeebe5e3adac64fe5f8bd1398fc2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: fear of death through water for the native himself
+- id: SARVARTHACHINTAMANI.OBSTACLE.CH7V60.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v60
+    quote: >-
+      If there is influence of benefic planets on the 8th house there is no defeat for the
+      native.
+    quote_sha256: 5089a1ac5544742c2c8695d8204aa59c076e65617c98e6c9d4455530760faebf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupant_count:
+        bhava: bhava.08
+        op: '>'
+        n: 0
+    - aspects:
+        subject: lord.bhava.10
+        target: bhava.08
+  indicates:
+    claim: obstacle.general
+    polarity: negative
+    magnitude: strong
+    text: there is no defeat for the native
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH12V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v22
+    quote: >-
+      If Moon is in Cancer lagna. Saturn is in its sign of debilitation in the 7th house with
+      Sun also in the 7th the man is highly wise & lives for 65 years.
+    quote_sha256: e0c4d004bdda243b5bbf1e6d4aecce7bbe6dc9b54da63a1c6308579eee43418d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.debilitated
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the man is highly wise
+- id: SARVARTHACHINTAMANI.TRAVEL.CH7V6162.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.longevity: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v61-62
+    quote: >-
+      In case Saturn is located in movable sign & in a movable Navamsha the death takes away
+      from home.
+    quote_sha256: 7d41688b13498af248296b67033bd6a79f1770c2dac148c3deb075bd47997744
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+    - any:
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: graha.saturn
+          rashi: rashi.capricorn
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.saturn
+          rashi: rashi.aries
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.saturn
+          rashi: rashi.cancer
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.saturn
+          rashi: rashi.libra
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.saturn
+          rashi: rashi.capricorn
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the death takes away from home

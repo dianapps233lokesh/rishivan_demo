@@ -1,0 +1,98 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.SPIRITUAL.CH3V144.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v144
+    quote: >-
+      If the Sun occupies the ascendant, the querent sees in his dream a king, fire, weapon
+      or a bloody act.
+    quote_sha256: 31ae548d66b158706064f03201db5b80177dff9d8cafc9e25718cf63ddb1352c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the querent sees in his dream a king, fire, weapon or a bloody act
+- id: PRASHNATANTRA.SPIRITUAL.CH3V144.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v144
+    quote: >-
+      If the Moon is in the ascendant, he will see in the dream white flower, white cloth,
+      scent or a woman.
+    quote_sha256: 25e47897fd48898025595954b756b8379c3717d6163efc6b6ce0a0aa269edd9f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: he will see in the dream white flower, white cloth, scent or a woman
+- id: PRASHNATANTRA.SPIRITUAL.CH4V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v7
+    quote: >-
+      If the 8th and 12th houses are aspected by benefics, there will be increase of righteousness
+      and good actions.
+    quote_sha256: 85e4452eeed20324c14d8244e03394bcb3493074a8ab5e5e8928623764ec8203
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: lord.bhava.01
+        target: bhava.08
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: increase of righteousness and good actions

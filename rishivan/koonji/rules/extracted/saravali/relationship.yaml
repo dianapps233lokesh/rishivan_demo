@@ -1,0 +1,985 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.FAMILY.CH24V3136.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v31-36
+    quote: >-
+      If Mars as above is aspected by the Moon, the native will not honour his mother, be
+      wicked, will lord many women and be dear to them and will fear war.
+    quote_sha256: 4caaea8ad13f98a764ab978167e4603540560ff47275fd6e5151535166da5494
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.moon
+        target: graha.mars
+  indicates:
+    claim: family.mother
+    polarity: negative
+    magnitude: moderate
+    text: the native will not honour his mother
+- id: SARAVALI.HEALTH.CH23V8085.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v80-85
+    quote: >-
+      Should Saturn aspect the Moon in Pisces, he will be deformed, be unfavourable to mother,
+      be sexually distressed, be devoid of sons, wife and intelligence and will be attached
+      to mean and ugly females.
+    quote_sha256: 688c9c9f30370ac15188a54d08e4a3a8ecce10bef318789b76416c260e7d1686
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: he will be deformed
+- id: SARAVALI.HEALTH.CH24V2530.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v25-30
+    quote: >-
+      If the aspect is by the Moon, the native will be bereft of mother, will have a wounded
+      body, will hate his own people, will not have friends, be jealous and will have female
+      children.
+    quote_sha256: 33d602fe57615a170299aab09de3867f1f44d87a674fc6510f035e9966b24421
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.moon
+        target: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be bereft of mother, will have a wounded body, will hate his own people,
+      will not have friends, be jealous and will have female children
+- id: SARAVALI.RELATIONSHIP.CH12V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v23
+    quote: If Saturn and Mars plank the Moon, the native will be the husband of a bad lady.
+    quote_sha256: 1a21eb2234307a4cba62d868b3261abed2446f47bcd150a4bd0e38943010c0f2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.saturn
+        distance: dist.12
+    - house_distance:
+        subject: graha.moon
+        other: graha.mars
+        distance: dist.02
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the native will be the husband of a bad lady
+- id: SARAVALI.RELATIONSHIP.CH14V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.temperament: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v13
+    quote: If Mars and Mercury are together at birth, the native will have unlucky wife
+    quote_sha256: 9a9ea4258863ef1e136ca8a6d4ba9e0b3e6f1ccd9eb6b6f990e5311934008c2d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the native will have unlucky wife
+- id: SARAVALI.RELATIONSHIP.CH15V12.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v12
+    quote: >-
+      One who has Saturn, the Sun and Mercury in one house will be a neuter, will hate others,
+      and will be given up by his relatives.
+    quote_sha256: b4326f42f0c7096ef8b4e0980b83cc38d68d176fec238cb88c38e5339d1bf0d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.saturn
+        other: graha.sun
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: will be given up by his relatives
+- id: SARAVALI.RELATIONSHIP.CH15V31.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v31
+    quote: >-
+      If Saturn, Mars and Venus are in one house at birth, the native is born to an immoral
+      lady, will marry such a lady will be devoid of happiness, and will be intent on wandering
+      in distant places.
+    quote_sha256: ebf916fc2a91707559788c76b3213bda45ee91bb162f87c10b3fc2ae8523057f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.saturn
+        other: graha.mars
+    - conjunct:
+        subject: graha.saturn
+        other: graha.venus
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: the native is born to an immoral lady, will marry such a lady will be devoid of
+      happiness
+- id: SARAVALI.RELATIONSHIP.CH15V33.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v33
+    quote: >-
+      When Mercury, Saturn and Jupiter are together at birth, it denotes that the native will
+      enjoy honour, wealth and sovereignty, be learned, will have abundant pleasures, be atttached
+      to his wife, be courageous and fortunate.
+    quote_sha256: 92b4b940aa9e623a19dbdfe98fb304e1743b57cd6bd04aa81fa7e781f4c49d00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native will be attached to his wife
+- id: SARAVALI.RELATIONSHIP.CH16V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v26
+    quote: If these four planets are together, one will marry an unchaste lady
+    quote_sha256: c4aa00c25d5a26923b6fd7bf32cce5946b0ade2a6d510fdaf7349e8e891b8bdf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: one will marry an unchaste lady
+- id: SARAVALI.RELATIONSHIP.CH17V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v1
+    quote: >-
+      If these five planets are together at birth, the native will be subjected to grief,
+      will be cunning, be bereaved of wife, and will experience physical distresses.
+    quote_sha256: ffeb978c0c1e7727853a0533a05489b6c776aff859d73cfa89d6c8b745c59cef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: be bereaved of wife
+- id: SARAVALI.RELATIONSHIP.CH17V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v26
+    quote: >-
+      If these planets are together at birth, the native will be intent on seeking sexual
+      pleasures with others' wives
+    quote_sha256: 3f440b965ac987cc68e99d2a1e1706f50fe265d7a2055c2c24d4f2d8cee3a503
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native will be intent on seeking sexual pleasures with others' wives
+- id: SARAVALI.RELATIONSHIP.CH17V31.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v31
+    quote: >-
+      If these four planets are in one house, the subject will be fond of picking up quarrels
+      with his wife
+    quote_sha256: 8d593829f8ca4140d7894fb2776f6848d863a59eb360b757c040f97c72839f80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the subject will be fond of picking up quarrels with his wife
+- id: SARAVALI.RELATIONSHIP.CH21V1819.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.progeny: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v18-19
+    quote: affectionate (particularly to one's offspring)
+    quote_sha256: 904edbf7e7e98cb2596804250bc6d426cd99a151c7ce035b9c93ad70d12f4946
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.gemini
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: affectionate (particularly to one's offspring)
+- id: SARAVALI.RELATIONSHIP.CH22V5964.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.wealth: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v59-64
+    quote: >-
+      Should Venus aspect the Moon in Sagittarius, the native will be happy, beautiful and
+      fortunate, be endowed with sons, wealth and sexual desires and will have good friends
+      and wife.
+    quote_sha256: 34cb050c46dab270fbadf9329f9a896249356f26084edec64fa2d7127cc4124a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be happy, beautiful and fortunate, be endowed with sons, wealth and
+      sexual desires and will have good friends and wife
+- id: SARAVALI.RELATIONSHIP.CH22V614.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.health: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v6-14
+    quote: >-
+      If Mars aspects the Moon in Taurus, the subject will be highly libidinous, will lose
+      his wife and friends on account of another lady, will steal the heart of the fair sex,
+      and will prove adverse for the mother.
+    quote_sha256: b7c719f9ef68eb431849bc220314d5f4d308392de0828fa164df6c9a1263bb77
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: will lose his wife and friends on account of another lady
+- id: SARAVALI.RELATIONSHIP.CH22V7378.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v73-78
+    quote: >-
+      If Venus aspects the Moon in Aquarius, the person will be base, issueless, friendless,
+      timid, be censured by preceptors, be sinful, will have a bad wife and will be least
+      happy.
+    quote_sha256: 65e09aa7dfefd820d88af130a33265ccfd4fa3fd74495d333bff18009fe41083
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: will have a bad wife and will be least happy
+- id: SARAVALI.RELATIONSHIP.CH23V1012.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v10-12
+    quote: if by Venus, he will be inimical to the fair sex and will resemble a eunuch
+    quote_sha256: fe32f591c2100dc758de1099ab344ddfd4a184b0824b891236d50a83e6329074
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: he will be inimical to the fair sex and will resemble a eunuch
+- id: SARAVALI.RELATIONSHIP.CH23V1618.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v16-18
+    quote: if by Venus, he will be endowed with conjugal happiness
+    quote_sha256: ac336193d959d3f3bb69cddb53a005153dd6d827207dcf8e299ef05406ac321a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: he will be endowed with conjugal happiness
+- id: SARAVALI.RELATIONSHIP.CH23V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+    domain.wealth: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      If the Moon is in Taurus/Libra navamsa and is aspected by Venus, the person will be
+      happy in regard to wife, robes, food and drinks
+    quote_sha256: 033120422b07ccd5df237feddaaa8b48b9ec064102a222cf7f67e0a9754b301f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the person will be happy in regard to wife, robes, food and drinks
+- id: SARAVALI.RELATIONSHIP.CH23V46.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+    domain.wealth: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      If the Moon is in Taurus/Libra navamsa and is aspected by Venus, the person will be
+      happy in regard to wife, robes, food and drinks
+    quote_sha256: 033120422b07ccd5df237feddaaa8b48b9ec064102a222cf7f67e0a9754b301f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the person will be happy in regard to wife, robes, food and drinks
+- id: SARAVALI.RELATIONSHIP.CH23V8085.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.6
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v80-85
+    quote: >-
+      If Mars aspects the Moon in Pisces, the person will be insulted, be devoid of happiness,
+      is an unchaste woman's son, will be interested in sins, and will be valorous.
+    quote_sha256: c836682ad08b98b1f7cc0a5cc67551a2af2edc6c641cf0a04b908684993507e8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: be devoid of happiness
+- id: SARAVALI.RELATIONSHIP.CH24V1314.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v13-14
+    quote: will lose his first wife
+    quote_sha256: 0873df51a206ebd1b5efef210744422c047529e98feb19064ee292588b391f34
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.libra
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: will lose his first wife
+- id: SARAVALI.RELATIONSHIP.CH25V6166.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v61-66
+    quote: >-
+      If Venus aspect Mercury as above, he will be the husband of a base women, be ugly, be
+      unintelligible, be troubled by sexual passion and will have many sons.
+    quote_sha256: 00620b37450924c5ab5c1d3033bfb4c2960b40dac12a92a9e7e7d9bd2e54f43f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.venus
+        target: graha.mercury
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be the husband of a base women, be ugly, be unintelligible, be troubled by sexual
+      passion and will have many sons
+- id: SARAVALI.RELATIONSHIP.CH7V47.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v4-7
+    quote: >-
+      However, if the Moon in upachaya is aspected by Jupiter or her friends, or especially
+      Venus, the woman affectionately cohabits with the male.
+    quote_sha256: f957827bd9231e2c2cf6a9b59eb395ab1306dfc41f082002bda41828cdb3597a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_upachaya:
+        subject: graha.moon
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the woman affectionately cohabits with the male
+- id: SARAVALI.RELATIONSHIP.CH7V47.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v4-7
+    quote: >-
+      However, if the Moon in upachaya is aspected by Jupiter or her friends, or especially
+      Venus, the woman affectionately cohabits with the male.
+    quote_sha256: f957827bd9231e2c2cf6a9b59eb395ab1306dfc41f082002bda41828cdb3597a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_upachaya:
+        subject: graha.moon
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the woman affectionately cohabits with the male
+- id: SARAVALI.RELATIONSHIP.CH7V47.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v4-7
+    quote: If the Moon is aspected by Mars, the female unites with a person other than husband.
+    quote_sha256: 8abfe3809c9b3ea31c2369f04ba0c101b1ff5594533d9457994a40968b03d54e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the female unites with a person other than husband
+- id: SARAVALI.TEMPERAMENT.CH15V17.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v17
+    quote: >-
+      A native who has Mars, the Moon and Jupiter together at birth will have an even body,
+      be addicted to women, be a thief, be splendorous, dear to women and given to anger.
+    quote_sha256: 896df1c0c886c7d19779bb7943f122b8ae5af5c1b2651ed97f905a00a3b62414
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: be addicted to women, be a thief, be splendorous, dear to women and given to anger
+- id: SARAVALI.TEMPERAMENT.CH23V8085.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.6
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v80-85
+    quote: >-
+      If Venus aspects the Moon in Pisces, he will be skilful in coition, interested in dance,
+      instrumental music and songs and will steal the hearts of the fair sex.
+    quote_sha256: 7c0a07ac7ab61b13e3cacb6dfab17160af0a3a2df495bb955b548e12ab946acd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: interested in dance, instrumental music and songs
+- id: SARAVALI.WEALTH.CH21V2833.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v28-33
+    quote: >-
+      If Venus aspects the Sun in Cancer, the native will subordinate his wife (or women),
+      will have money through his wife, be helpful to others, fierce in battle, and will speak
+      sweetly.
+    quote_sha256: 7f2855f11bd8898c379b0b60947b2092d087bafa0f6e1e150de0c7e069ff0776
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: will have money through his wife
+- id: SARAVALI.WEALTH.CH21V49.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.wealth: 0.7
+    domain.health: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v4-9
+    quote: >-
+      If Venus aspects the Sun posited in a house of Mars, the native will be the husband
+      of a bad women, will have many enemies but few relatives (or not well-placed relatives),
+      be poor and will suffer from leprosy.
+    quote_sha256: ef66ef5daa6bb0b76a73fc33f5fd225a7a8b8e702742a56dd1c4de46558ed592
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: be poor

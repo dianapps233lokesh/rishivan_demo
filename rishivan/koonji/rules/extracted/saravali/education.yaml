@@ -1,0 +1,1331 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.EDUCATION.CH12V1011.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+    domain.temperament: 0.8
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v10-11
+    quote: >-
+      If Mercury be the cause of Sunapha yoga, the native will be expert in Vedas, Sastras
+      and music. He will be virtuous, and a poet. He will be high-minded, intent on thinking
+      of good for all and will possess a brillant physique.
+    quote_sha256: a37b8cd04e9fd9250b20dd5df5ab7016927fa832443884f3f1de1df23ca73b6d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.02
+        reference: ref.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be expert in Vedas, Sastras and music
+- id: SARAVALI.EDUCATION.CH12V1214.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v12-14
+    quote: >-
+      Should Jupiter cause Sunapha yoga, a person so born will have high learning, will be
+      famous and himself be a king or dear to a king.
+    quote_sha256: c68baa294fe4682574628a78b7f148ff3d42fd2f7010ebaf4e72a73d41311f38
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.02
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will have high learning
+- id: SARAVALI.EDUCATION.CH12V1519.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v15-19
+    quote: >-
+      If by Mercury, the native will be an expert in singing, dancing and writing, will be
+      a poet, and an able orator. He will be conferred honours by the ruler, will have a brilliant
+      body and will perform famous deeds.
+    quote_sha256: 4e71fa763796d6afda204c293d1c90bbb88f8d98c270ece4785ce2bb6ddd40e8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.12
+        reference: ref.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be an expert in singing, dancing and writing, will be a poet, and an
+      able orator
+- id: SARAVALI.EDUCATION.CH13V35.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      Should Jupiter cause Vesi Yoga, the native will accumulate money, be learned and be
+      good-hearted.
+    quote_sha256: b3729b4ee301fa8afbe251baad15cc5dce3202526ca0726268544e3272229f80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.jupiter
+        distance: dist.02
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: be learned
+- id: SARAVALI.EDUCATION.CH14V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.career: 0.8
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v17
+    quote: >-
+      One who has Mercury and Jupiter together will be a noted dancer, scholar, singer and
+      instrumentalist. He will be wise and happy.
+    quote_sha256: a610a51c54bed62606dfe0cba2865616463b62038256bffdc3160e7286c0d9b9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will be a noted dancer, scholar, singer and instrumentalist. He will be wise and
+      happy
+- id: SARAVALI.EDUCATION.CH14V18.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v18
+    quote: >-
+      Should Mercury and Venus be together at birth, the native will be abundantly rich, a
+      politician, an artisan, will study Vedas
+    quote_sha256: f1aaafad77801f0663617c09f5cfd5b3a773c5f24bfb238b9d56e84fe4ac82e4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will study Vedas
+- id: SARAVALI.EDUCATION.CH14V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v20
+    quote: One who has Jupiter and Venus together at birth, will live by education and arguments
+    quote_sha256: baeb04c6a810d1dfb87ae9d46b1f65abe84248ec84d17e1073d3eb8df29312a4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.venus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will live by education and arguments
+- id: SARAVALI.EDUCATION.CH15V13.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v13
+    quote: >-
+      Should Venus, Jupiter and the Sun be together at birth, the native will be weak-sighted,
+      bold, intelligent, indigent, be a minister and be devoted to others' jobs.
+    quote_sha256: 65e82c20c992d09a5ddbb3736d35276cf5cbf3aa5c43e0e26f34d84ab1b06661
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be intelligent
+- id: SARAVALI.EDUCATION.CH15V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v26
+    quote: One who has Mercury, Jupiter and Mars together will be a good poet
+    quote_sha256: 897f8751817a159e973a464ea7bbaf448a1cb0a8c489ff142cd9cd6e3eaa69ce
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: will be a good poet
+- id: SARAVALI.EDUCATION.CH15V33.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v33
+    quote: >-
+      When Mercury, Saturn and Jupiter are together at birth, it denotes that the native will
+      enjoy honour, wealth and sovereignty, be learned, will have abundant pleasures, be atttached
+      to his wife, be courageous and fortunate.
+    quote_sha256: 92b4b940aa9e623a19dbdfe98fb304e1743b57cd6bd04aa81fa7e781f4c49d00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be learned
+- id: SARAVALI.EDUCATION.CH15V4.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v4
+    quote: >-
+      Should the Sun, Moon and Venus be in one house at birth, the native will steal others'
+      money, will be a debaucher and be expert in Sastras.
+    quote_sha256: f1ec5cdde2d0f89cf5777aa22090a388f5dd7b4cbccaf296358c02b5a8c0ffff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: be expert in Sastras
+- id: SARAVALI.EDUCATION.CH16V16.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v16
+    quote: >-
+      Should these four planets be in conjunction at birth, one will be scurrilous in speech,
+      fortunate, learned, soft spoken, happy, energetic, pure, wealthy, bold and helpful to
+      friends.
+    quote_sha256: 359113bf0a0a9c360b0ec199e762dbd56c1f8a99cdc7d6f86ec32c67056fe00b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: learned
+- id: SARAVALI.EDUCATION.CH16V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v21
+    quote: >-
+      One who has the conjunction of these four planets at birth, will be an expert in Sasthras,
+      be a king or a great minister and be extermely intelligent.
+    quote_sha256: 2180137052f6331d79bed5933015b1acb3d2b607cd8b5d00abe435ab9be22ceb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will be an expert in Sasthras, be a king or a great minister and be extermely intelligent
+- id: SARAVALI.EDUCATION.CH16V4.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v4
+    quote: >-
+      One who has these four planets together at birth, will have uneven physique, be short
+      in stature, be unwealthy and will collect food by begging, and be a proven dunce.
+    quote_sha256: e14e1174199515e134d85c41837aa339b2a913a68475495f637f0fb8a82b9132
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: a proven dunce
+- id: SARAVALI.EDUCATION.CH17V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v27
+    quote: >-
+      One who has these four planets together will be learned, be devoid of parents, good
+      looking, wealthy, very lucky and be without enemies.
+    quote_sha256: 742b932798e2e345a139cfa4734f4c685455412a06ce4e927b72eeb2c6d316a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will be learned
+- id: SARAVALI.EDUCATION.CH18V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v1
+    quote: >-
+      If these six planets join together, the native will be learned, virtuous, will have
+      an emaciated body, be acquainted with many languages, and will have distinguished knowledge.
+    quote_sha256: 393bab0375594e44a047d69f522d49b1bf34e24abdd3f8857ef096fe98d0ce8f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be learned, virtuous, will have an emaciated body, be acquainted with
+      many languages, and will have distinguished knowledge
+- id: SARAVALI.EDUCATION.CH18V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v17
+    quote: >-
+      One with these planets in conjunction will be learned in many Sasthras, will help friends,
+      be dear to elders, virtuous and merciful.
+    quote_sha256: 1e9c5aa3666223b4ea245d0a318a1cd5033bcbb7aaf32857695c8825c43cd890
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: learned in many Sasthras
+- id: SARAVALI.EDUCATION.CH21V1217.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v12-17
+    quote: >-
+      Should it be Mercury that aspects the said Sun, one will be skilful in drawing, writing,
+      poetry, authorship, singing etc.
+    quote_sha256: dbd6c49b9b713b0c6706fc08905789eae13fab5f0e95d2376b0b228545584e15
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: one will be skilful in drawing, writing, poetry, authorship, singing etc.
+- id: SARAVALI.EDUCATION.CH21V1819.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v18-19
+    quote: One who has the Sun in Gemini will be a scholar
+    quote_sha256: bd6c3cff019ec0bd47d6c2b1d046402f03b086cb8005704c96bdb8d5fccf3413
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.gemini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will be a scholar
+- id: SARAVALI.EDUCATION.CH21V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v2-3
+    quote: One who has the Sun in Aries will comment on the meanings of Sastras
+    quote_sha256: 72bfac7277d20efee4ded5f64cbcb593cc0f7b4badbe2d012de6e0bd94b5b174
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: will comment on the meanings of Sastras
+- id: SARAVALI.EDUCATION.CH21V3641.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+    domain.relationship: 0.7
+    domain.health: 0.7
+    domain.status: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v36-41
+    quote: >-
+      If the Sun occupying Leo is aspected by the Moon, the native will be a scholar, will
+      have a good wife, will suffer from phlegmatic disorders, and will be dear to king.
+    quote_sha256: ebfd5aa048b4a2a35ae045a870ddb129246f4eacce2ff4169c73d80076b1b186
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be a scholar
+- id: SARAVALI.EDUCATION.CH21V3641.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+    domain.wealth: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v36-41
+    quote: >-
+      If Mercury aspects the Sun in Leo, the person will be a scholar, a writer (or an exponent),
+      a gambler, be wandering-natured, mean, and be endowed with great strength.
+    quote_sha256: 4e8aee941c8f3e8324ca46f3e16905253b159e809b40e54d784055206ad5268f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the person will be a scholar
+- id: SARAVALI.EDUCATION.CH21V4243.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+    domain.temperament: 0.75
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v42-43
+    quote: >-
+      Should the Sun be in Virgo at birth, the person will possess a physique akin to that
+      of a female, be a scholar, be weak, be an expert writer, be learned and will render
+      service to Gods and elders.
+    quote_sha256: f6c06b6d3f73b58487a119313d0b7f2c161bf3193d28fdd30ca94d099e8b1730
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.06
+    - bhava_in_rashi:
+        bhava: bhava.06
+        rashi: rashi.virgo
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person will possess a physique akin to that of a female, be a scholar, be weak,
+      be an expert writer, be learned and will render service to Gods and elders
+- id: SARAVALI.EDUCATION.CH22V1722.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.wealth: 0.7
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v17-22
+    quote: >-
+      If the Moon is in Gemini at birth and is aspected by the Sun, the native will be quite
+      learned, be splendorous, very beautiful, be charitable, be very miserable and be not
+      rich.
+    quote_sha256: 207cc040dc68d580e7c9da5cf5f3f6483e9cbb6b678801a37ea514afcd2a6179
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be quite learned
+- id: SARAVALI.EDUCATION.CH22V1722.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v17-22
+    quote: >-
+      If Jupiter aspects the Moon Gemini, one will be a teacher of sastras, be famous, truthful,
+      very beautiful, honourable and be an eloquent speaker.
+    quote_sha256: 241457a7fdf07de6d61314d7299ecfd31fb0a9a1e2022b9918b01556b0be46f6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: teacher of sastras
+- id: SARAVALI.EDUCATION.CH22V27.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v2-7
+    quote: >-
+      Should Mercury aspect the Moon in Aries, the native will teach various disciplines,
+      will possess good speech, will achieve his desires, be a great poet and be widely famous.
+    quote_sha256: 692a7a2cd3eef83551b43377558d3717b5642f20c5d4f080314d56aea1f07684
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will teach various disciplines, will possess good speech, will achieve his
+      desires, be a great poet and be widely famous
+- id: SARAVALI.EDUCATION.CH22V3843.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      Should it be Mercury that lends aspect to the Moon in Virgo, the native will be expert
+      in astrology and literature, be successful in disputes/quarrels, and be highly skilful
+      to a surprising extent.
+    quote_sha256: d1d23980d34d19ce7b61a55bb0d2a15a6e17648e96e322d818e489a05fa30f0e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be expert in astrology and literature, be successful in disputes/quarrels,
+      and be highly skilful to a surprising extent
+- id: SARAVALI.EDUCATION.CH22V5964.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+    domain.education: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v59-64
+    quote: >-
+      If the Moon in Sagittarius is aspected by Mercury, one will have many servants, will
+      be an expert astrologer and artist, and be a skilful dancer.
+    quote_sha256: 629a163ec9674fa471467bb9bb74a73d6ca3d8d00880fd9c97d383373949dcf3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      one will have many servants, will be an expert astrologer and artist, and be a skilful
+      dancer
+- id: SARAVALI.EDUCATION.CH22V614.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v6-14
+    quote: >-
+      Should the said Moon be in aspect to Mercury, the native will be highly learned, will
+      know the code of speech, be of pleasing disposition, be dear to everyone, and will incomparably
+      be of good qualities.
+    quote_sha256: 4baeb3a5269f441945a62ac7b1d5759f32aa0934ae87682514bfe3b46b09a0cf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be highly learned, will know the code of speech, be of pleasing disposition,
+      be dear to everyone, and will incomparably be of good qualities
+- id: SARAVALI.EDUCATION.CH23V46.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      if by Mercury he will have knowledge of playing musical instruments and be interested
+      in dance and music
+    quote_sha256: 49736fdb6007e746db2ad92acd9816abe776aa1134abb31a075735aa83dc048d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he will have knowledge of playing musical instruments and be interested in dance
+      and music
+- id: SARAVALI.EDUCATION.CH23V46.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      if by Mercury he will have knowledge of playing musical instruments and be interested
+      in dance and music
+    quote_sha256: 49736fdb6007e746db2ad92acd9816abe776aa1134abb31a075735aa83dc048d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he will have knowledge of playing musical instruments and be interested in dance
+      and music
+- id: SARAVALI.EDUCATION.CH24V3742.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.wealth: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v37-42
+    quote: >-
+      If at birth Mars be in Gemini/Virgo and in aspect to the Sun, the native will be blessed
+      with learning, wealth and courage
+    quote_sha256: 8a9d35a8d94475f138876e240b58fa8b26b00bb624df5173931390556ae19aa2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be blessed with learning, wealth and courage
+- id: SARAVALI.EDUCATION.CH24V3742.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.wealth: 0.3
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v37-42
+    quote: >-
+      If Mercury aspects Mars as above, one will be skilful in the art of writing, in mathematics
+      and in poetry, be garrulous, be liar, be a sweet speaker, be a messenger (or an ambassador),
+      and will endure lot of misery.
+    quote_sha256: d2534453bf10b6b134a0b78b7e6d2125b39ca4104f5252edbca4df1da1f77bb0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.mercury
+        target: graha.mars
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: one will be skilful in the art of writing, in mathematics and in poetry
+- id: SARAVALI.EDUCATION.CH24V56.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v5-6
+    quote: >-
+      Should Mars be in Gemini, the native will be splendorous, be capable of enduring miseries,
+      be very learned, be wellversed with poetical rules, skilful in various kinds of fine
+      arts
+    quote_sha256: 5f25eb1041527fcd7b8df9e37ccbbaf1983f3c47170584379495be13540d8937
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.gemini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be very learned, be wellversed with poetical rules, skilful in various
+      kinds of fine arts
+- id: SARAVALI.EDUCATION.CH25V1314.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v13-14
+    quote: >-
+      If Mercury falls in Libra at the time of one's birth the native wlll possess knowledge
+      of arts
+    quote_sha256: 2a201310f288d015cd5532c463ddfdfe2642b9db53b9c3d95a36755fec1fc46c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.libra
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will possess knowledge of arts
+- id: SARAVALI.EDUCATION.CH25V3136.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v31-36
+    quote: >-
+      Jupiter aspecting Mercury as stated above indicates that the native will be highly learned,
+      will fulfil his promise, will be leader of a country/city/group of men, and be famous.
+    quote_sha256: cae1d728c746040260c20d7374731847f3696eff7113153f1868cbaf1d8a812f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be highly learned
+- id: SARAVALI.EDUCATION.CH25V3742.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v37-42
+    quote: >-
+      If Venus lends his aspect to Mercury as above, the native will be highiy learned be
+      a royal employee, be a, messenger, will honour friendship and will be interested in
+      base women.
+    quote_sha256: 088b03a34b11cf139848d84f125f5558ab57162a657bdba88e908e4feaa5314e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.venus
+        target: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be highiy learned be a royal employee, be a, messenger, will honour
+      friendship and will be interested in base women
+- id: SARAVALI.EDUCATION.CH25V4348.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v43-48
+    quote: >-
+      If Mars lends his aspect to Mercury in Cancer, he will not have much learning, be garrulous,
+      be a great liar, will produce fictitious things, be a thief and will be affectionate
+      in speech.
+    quote_sha256: 4eb018558fbbacadf883cd39fd78f7e715f33a8134296c59842742c1e41f6dc3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: >-
+      he will not have much learning, be garrulous, be a great liar, will produce fictitious
+      things, be a thief and will be affectionate in speech
+- id: SARAVALI.EDUCATION.CH25V4348.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v43-48
+    quote: >-
+      If Jupiter aspects Mercury as above, one will be a great scholar, very dear (to all),
+      be fortunate, dear to the king and will cross the boundaries of learning.
+    quote_sha256: 49e7ae313b4273e79186ce13e424d3a624598123449b5889625d64223db38d2a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      one will be a great scholar, very dear, be fortunate, dear to the king and will cross
+      the boundaries of learning
+- id: SARAVALI.EDUCATION.CH25V78.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v7-8
+    quote: One born with Mercury in Cancer will be learned
+    quote_sha256: 442b9cc6e6f0affcfa3f0947d562d72219fe5cb454de9131d20d55ef82484dd2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.cancer
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: will be learned

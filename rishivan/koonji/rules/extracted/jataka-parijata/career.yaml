@@ -1,0 +1,477 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.CAREER.CH17V79.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v79
+    quote: >-
+      If the Sun, the Moon and Saturn be associated together in the 9th bhava, the effect
+      on the person born will be that he will have to serve as a menial and become obnoxious
+      to good people.
+    quote_sha256: 880ce9d734543eed82cb0e83db95dc7773dd1e9cba1c5e8d808ef3302e777014
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: he will have to serve as a menial and become obnoxious to good people
+- id: JATAKAPARIJATA.CAREER.CH18V112.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v112
+    quote: >-
+      A feeling of aversion, mental anguish, waste of wealth through the sons, failure of
+      business are what a person may have to be prepared for during Saturn's interval in Jupiter's
+      mahadasa.
+    quote_sha256: e0e7f0c61c88c14136428be11848779247f61f89742e534e57d6122bcc143cd5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: moderate
+    text: failure of business
+- id: JATAKAPARIJATA.CAREER.CH18V118.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v118
+    quote: >-
+      Failure in business, wandering, high fever, great risk, loss of wealth and depression
+      of spirits, a person must be prepared for in Kuja's interval in Jupiter's mahadasa.
+    quote_sha256: 9b1ccafbf14c773c08e31299918b1edf5d5a4868c81b75e5575fd55b606e5a4e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: Failure in business
+- id: JATAKAPARIJATA.CAREER.CH18V135.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v135
+    quote: >-
+      Trouble from relatives, mental agony, loss of comfort, dread of an enemy and failure
+      in business are to be expected during Ketu's interval in Budha dasa.
+    quote_sha256: cd86946ce0d1234c55af42f4d9427b5109979779720a11e69017c6738ba95cbf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: failure in business are to be expected
+- id: JATAKAPARIJATA.CAREER.CH18V65.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v65
+    quote: loss of place or mental misery may be expected
+    quote_sha256: f2639ece88866c248e3f28abc2a52e33f8a4e6aaa743d588f3a777f3f821f9cd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: moderate
+    text: loss of place or mental misery may be expected
+- id: JATAKAPARIJATA.CAREER.CH18V67.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v67
+    quote: >-
+      During the bhukti of Saturn in the Sun's dasa, a person should be prepared for hostility
+      from every one, want of energy, an ignoble calling, mental worry, and liability to risk
+      from the rulers or thieves.
+    quote_sha256: 552b76e6c24c6193e3c2b22f84b4d778236358bf46f39b660de9e47fa1149b59
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: an ignoble calling
+- id: JATAKAPARIJATA.CAREER.CH9V144.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v144
+    quote: >-
+      When the lord of the 10th bhava is in the 5th, when Mercury is in a Kendra ; when the
+      Sun is in its own sign and exceedingly powerful ; when Jupiter is in a Kona in respect
+      to the Moon and when Mars occupies a Trikona position with regard to Mercury ; the resulting
+      yoga is called शारदा (Sarada).
+    quote_sha256: bdaec7b0db17bd2070be71dc08e3ae633d699cbf3108cb9bc8325160e6e794d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.05
+    - in_kendra:
+        subject: graha.mercury
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - strength:
+        subject: graha.sun
+        op: '>='
+        value: 500
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.05
+    - in_trikona:
+        subject: graha.mars
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the resulting yoga is called शारदा (Sarada)
+- id: JATAKAPARIJATA.CAREER.CH9V5.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      If Jupiter be in conjunction with Saturn, the effect of the yoga will be that the person
+      born in it will be an artist.
+    quote_sha256: 45d0ccc26f10f2615132d72cda9bb10549a08694ab9178e6d9bbec8926515ff3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.saturn
+  indicates:
+    claim: career.independent_work
+    polarity: positive
+    magnitude: moderate
+    text: an artist
+- id: JATAKAPARIJATA.LIVELIHOOD.CH17V44.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v44
+    quote: >-
+      If the Navamsa referred to in the above belong to the Sun, the person concerned will
+      earn a living by dealing in medicine, wool, grass, water, grain, work in gold, pearls
+      and the like, as also by playing the part of an emissary between people wishing to approach
+      each other.
+    quote_sha256: 940879706caecdc82a75e7c8d4699f67fc126a2b35097ab49967c5b6db27a6fd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.10
+        rashi: rashi.leo
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person concerned will earn a living by dealing in medicine, wool, grass, water,
+      grain, work in gold, pearls and the like
+- id: JATAKAPARIJATA.LIVELIHOOD.CH9V113.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v113
+    quote: if Venus, he will be a hired laborer
+    quote_sha256: 5087c1e8eb89d996bdd633901a8d5dd857d2c4940a485864c5a7e03f2ca3c659
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.inimical
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: he will be a hired laborer
+- id: JATAKAPARIJATA.LIVELIHOOD.CH9V450.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v4-50
+    quote: >-
+      When the Moon in Thula is aspected severally by the benefic planets, Mercury, Jupiter
+      and Venus, the persons born in the several cases will be respectively a king, a mint-master
+      and a merchant.
+    quote_sha256: 5d224d15e6c085964db7d5df108c5ad5c733f918b25acb9a20390db4c71ab6f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: the person born will be a merchant
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V68.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.relationship: 0.75
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      The person born with Mars in the बन्धु (Bandhu 4th) bhava will be bereft of relations,
+      and hen pecked, though valiant.
+    quote_sha256: 6e337fdc3643aac55663cb7f8268b5dc0d1f4ce051fe7168490c245cd5b4dd5a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.04
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born with Mars in the Bandhu 4th bhava will be bereft of relations, and hen
+      pecked, though valiant
+- id: JATAKAPARIJATA.STATUS.CH18V111.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v111
+    quote: >-
+      Royal favor, great diligence, achievement of everything attempted, learning and science
+      are what a person may expect in Jupiter's dasa and bhukti.
+    quote_sha256: f11fdd33ba9f94eabf6bcf7067cf4f426bcdd98c371e7dae9e83f341f032cc8b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Royal favor, great diligence, achievement of everything attempted, learning and science
+      are what a person may expect in Jupiter's dasa and bhukti.
+- id: JATAKAPARIJATA.STATUS.CH9V105.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: if Mars, he will be famed for his agricultural strength
+    quote_sha256: a5f0815f453b307bffddd383b3dd72cb747eeaf1d787baeb5524bc3268b6b433
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.own_sign
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: he will be famed for his agricultural strength

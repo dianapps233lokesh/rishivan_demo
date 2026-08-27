@@ -1,0 +1,769 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.OBSTACLE.CH13V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v5
+    quote: >-
+      There is trouble from thieves, & fire, opposition & clash, wrath of the ruler and travel
+      to other countries.
+    quote_sha256: 5a69eb94cafa1b17ddf02d0f38646b884aee10a84931152aed2cbe4c2a70c9d2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.leo
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.virgo
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: >-
+      trouble from thieves, & fire, opposition & clash, wrath of the ruler and travel to other
+      countries
+- id: SARVARTHACHINTAMANI.TRAVEL.CH13V2.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v2
+    quote: >-
+      During the ruling period of Sun in exaltation one gets cows, increase of cows, grains,
+      wealth, travelling, clash with friends and relatives.
+    quote_sha256: fd5e564228bea4c9c43f7353f1be37b43bccc42c6a8a93ead39f5db8113cc42d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: travelling
+- id: SARVARTHACHINTAMANI.TRAVEL.CH14V16.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v16
+    quote: There is unnecessary discussions of intellectual topics & travel to a foreign land.
+    quote_sha256: f030ebf1430c7df5ebaf14a01a6cb78460ab3854a0a5b01f5fbe4775b18608c7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - any:
+      - conjunct:
+          subject: graha.mars
+          other: graha.jupiter
+      - conjunct:
+          subject: graha.mars
+          other: graha.venus
+      - conjunct:
+          subject: graha.mars
+          other: graha.mercury
+      - conjunct:
+          subject: graha.mars
+          other: graha.moon
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: travel to a foreign land
+- id: SARVARTHACHINTAMANI.TRAVEL.CH14V27.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v27
+    quote: >-
+      During the ruling period of Mars located in the 8th house, there is much sorrow & fear,
+      the native suffers from boils, small pox etc. there is distaste for food, loss of property
+      & foreign travel.
+    quote_sha256: 9440bebbdec842c14c33449b43688dbdcac97c851c8d98d243a7db045b5108f1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: foreign travel
+- id: SARVARTHACHINTAMANI.TRAVEL.CH14V41.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v41
+    quote: One may go to live in jungle and there is also fall from the position held by the
+      native.
+    quote_sha256: e6b9f1a0d815762ebc88aa45f471392507d92df612ad37093749cd114af83b1a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - retrograde:
+        subject: graha.mars
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: One may go to live in jungle
+- id: SARVARTHACHINTAMANI.TRAVEL.CH15V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+    domain.status: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v34
+    quote: >-
+      During the ruling period of Saturn occupying the Navamsha of its sign of exaltation,
+      the native gets comforts of all types, pleasures and enjoyments, with his prospects
+      boosted up. He travels abroad & gets leadership of his village, society, territory etc.
+    quote_sha256: b46dae400a2a87258eaa3d8ad5d626611274b556033d8b382efc8fcd839178ea
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.saturn
+        dignity: dignity.exalted
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: He travels abroad & gets leadership of his village, society, territory etc.
+- id: SARVARTHACHINTAMANI.TRAVEL.CH15V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v41
+    quote: >-
+      During the ruling period of Jupiter, endowed with "Directional" strength, the native
+      gets all luck by the favour of the government & goes to other countries for some time.
+    quote_sha256: c5da8a5de50a50a004ddb23629e8d6a22fe2a35897d4e3066501e0755fa3440e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - strength:
+        subject: graha.jupiter
+        op: '>='
+        value: 1
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: goes to other countries for some time
+- id: SARVARTHACHINTAMANI.TRAVEL.CH15V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v6
+    quote: >-
+      During the ruling period of Saturn located in its Mool trikon sign, the native has to
+      go to other countries & to live in jungles.
+    quote_sha256: 66a81b11c0383a0ba206832719c1956ead48db6a71d83ea4800c1ae20e364b3e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the native has to go to other countries & to live in jungles
+- id: SARVARTHACHINTAMANI.TRAVEL.CH16V1113.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v11-13
+    quote: Also one goes to foreign lands.
+    quote_sha256: 2dcf1abb418e53233cfdb1d96aad743602783ce73fa914602f15f8fe20912c90
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - any:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.11
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: one goes to foreign lands
+- id: SARVARTHACHINTAMANI.TRAVEL.CH16V15.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v15
+    quote: >-
+      During the ruling period of Rahu located in the 9th house, the native gets loss of his
+      father, goes to another country, & has loss of Guru & brothers, takes bath in the sea
+      & loses son & wealth.
+    quote_sha256: 1c20b688611193478cca35caf5c3dc71db8c2fb6dd7cab3eb41057505af77409
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.09
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: goes to another country
+- id: SARVARTHACHINTAMANI.TRAVEL.CH16V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v20
+    quote: >-
+      During the ruling period of Rahu located in the 12th house, the native has to leave
+      his country
+    quote_sha256: 21f62e53f56a935bc47c7ccf15aa568d60c5d7aabad33442d53eab079dacfa50
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the native has to leave his country
+- id: SARVARTHACHINTAMANI.TRAVEL.CH16V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.status: 0.8
+    domain.career: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v21
+    quote: >-
+      During the sub periods of malefic planets in the main ruling period of Mars located
+      in the 10th house, the native goes to foreign land, gets bad name, and defeat.
+    quote_sha256: e14613097c99321303416328f45dd15b018a10d5fe92661a8823a7e50e2da733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the native goes to foreign land
+- id: SARVARTHACHINTAMANI.TRAVEL.CH2V32.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.career: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v32
+    quote: >-
+      During the Main ruling period of the lord of the 9th house and the Sub-ruling period
+      of Saturn, Mars, Rahu or the Sun the native suffers in his career, gets opposition from
+      his brothers, travels to a foreign land & has rift with his brothers.
+    quote_sha256: 242104af75426ff2679ea83e64b9bc6126cc9b3c428eb9cc26498ee730d96806
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.09
+        level: level.maha
+    - any:
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.saturn
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.mars
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.rahu
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.sun
+          level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: travels to a foreign land
+- id: SARVARTHACHINTAMANI.TRAVEL.CH2V90.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v90
+    quote: >-
+      If the sign in the Ascendant is a movable one or if the lord of the Ascendant is located
+      in a movable sign, the native is mostly on the move.
+    quote_sha256: fe2a1240d8469c2720e395da4e1d6f73647ad61bbb1d2dd10f4e0ccf52361d7c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.libra
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.capricorn
+    - varga_occupies:
+        varga: varga.d1
+        subject: lord.bhava.01
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d1
+        subject: lord.bhava.01
+        rashi: rashi.cancer
+    - varga_occupies:
+        varga: varga.d1
+        subject: lord.bhava.01
+        rashi: rashi.libra
+    - varga_occupies:
+        varga: varga.d1
+        subject: lord.bhava.01
+        rashi: rashi.capricorn
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the native is mostly on the move
+- id: SARVARTHACHINTAMANI.TRAVEL.CH2V91.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v91
+    quote: >-
+      In case the Ascendant contains a movable sign or if the Navamsha in the Ascendant belongs
+      to a movable sign the man is on the move mostly in life.
+    quote_sha256: 25b3d62eaf45486026687a8032983f13ad3c740757ba0c2782a535c72d97143f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.libra
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.capricorn
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.cancer
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.libra
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.capricorn
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the man is on the move mostly in life
+- id: SARVARTHACHINTAMANI.TRAVEL.CH7V60.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.longevity: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v60
+    quote: >-
+      If the sign in the 8th house is a movable one, & the lord of the 8th is also in a movable
+      sign the native dies away from his home.
+    quote_sha256: 504faf7ce5dab4901534d235aede14caa72cff394a031f7d6e5f9fcc3e4c224f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.08
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: lord.bhava.08
+        rashi: rashi.aries
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the native dies away from his home
+- id: SARVARTHACHINTAMANI.TRAVEL.CH8V29.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v29
+    quote: >-
+      If the lord of the 10th house is located in the Navamsha of a movable sign & also occupies
+      a movable sign the native goes for hunting.
+    quote_sha256: d11aa8995207af00d7bba9aec027be139664832f04ec9bd8fc4180d7141a99d9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: lord.bhava.10
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.10
+        rashi: rashi.aries
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the native goes for hunting
+- id: SARVARTHACHINTAMANI.TRAVEL.CH9V17.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v17
+    quote: >-
+      If the lord of the lagna is located in the 12th house, the 10th house is occupied by
+      malefics, Mars is with Moon, the native getting underserved bad name, lives away from
+      his home, lives on charity & suffers physically.
+    quote_sha256: c8d355a2435f8f2512fa80d2575240f36f689f31c996c950bda0fffe50f44c90
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+    - occupant_count:
+        bhava: bhava.10
+        op: '>'
+        n: 0
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: lives away from his home
+- id: SARVARTHACHINTAMANI.TRAVEL.CH9V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.status: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v24
+    quote: >-
+      If Saturn is in a kendra & Moon in lagna & Jupiter is in the 12th house, the native,
+      separated from his home, devoid of sons and wife, is without virtues, is foolish and
+      lives on charity.
+    quote_sha256: 141e73d2ee1b4826c7c261ed1f25e7cb5676a0b125dc98ae456fe6c8d06cdb40
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.saturn
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: separated from his home
+- id: SARVARTHACHINTAMANI.TRAVEL.CH9V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v26
+    quote: >-
+      If the malefic planets occupy the 6th, 8th and 12th house from the lord of the lagna,
+      the man has to leave his place of birth. If Jupiter is in the Navamsha of the sign of
+      its debilitation, or in the inimical Navamsha, & Saturn is in the Navamsha of Jupiter,
+      the result follows.
+    quote_sha256: 5905795ab86c495376c9e41fbb133036033a35039367a69befdf687f75ded116
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.06
+        reference: ref.lagna
+    - occupies_bhava_from:
+        subject: graha.saturn
+        bhava: bhava.08
+        reference: ref.lagna
+    - occupies_bhava_from:
+        subject: graha.sun
+        bhava: bhava.12
+        reference: ref.lagna
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.jupiter
+          dignity: dignity.debilitated
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.jupiter
+          dignity: dignity.inimical
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.saturn
+        rashi: rashi.sagittarius
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the man has to leave his place of birth

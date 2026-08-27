@@ -1,0 +1,100 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.FAMILY.CH22V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.longevity: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v15
+    quote: >-
+      Should the Moon be in the first half of Taurus, the mother of the native is not long-lived.
+    quote_sha256: 10a2adacb4ee81d89a794ff56d1ab11a49af8dd114d9043d7892da2b608e674e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: family.mother
+    polarity: negative
+    magnitude: strong
+    text: the mother of the native is not long-lived
+- id: SARAVALI.FAMILY.CH22V15.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.longevity: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v15
+    quote: Similarly, the father is short-lived if the Moon occupies the second half of Taurus.
+    quote_sha256: 6d2ca7436f8447c1df7ad30fe937a1d63588760090d0aeda123f39d29ec70e59
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: the father is short-lived
+- id: SARAVALI.FAMILY.CH9V4546.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v45-46
+    quote: >-
+      If the Sun is aspected by Mars and Saturn in the case of a day birth, it soon leads
+      to death of the father.
+    quote_sha256: ff15c7ee0491118f65cea487febb344cf3b7428644ede19baa2cd3396c574b01
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: extreme
+    text: it soon leads to death of the father

@@ -1,0 +1,382 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.CAREER.CH11V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v5
+    quote: >-
+      If in the Lagna or Ascendant of the Horary Chart there are situated Mars and the Moon
+      and Saturn aspects them, then the king is defeated by his enemy;
+    quote_sha256: 15b745e0da18fbf67d520727c2298de2aebd25535dc95f5574e8a523e42f8154
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: the king is defeated by his enemy
+- id: MUHURTACHINTAMANI.CAREER.CH11V5.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v5
+    quote: If the Sun is posited in the 8th or the 7th House and the Moon is gone in the Ascendant
+    quote_sha256: e324cfb7eedd4b97179ba5d36565c1ff833a0284b5144f7a3304ed7a145529e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - any:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.08
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: the person putting the question (the king) gets defeated
+- id: MUHURTACHINTAMANI.OBSTACLE.CH11V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v15
+    quote: >-
+      If the Sun is in the Nakshtras named as 'Mrita Paksha' and the Moon is situated in those
+      named as 'Jeeva Paksha' then the journey is auspicious.
+    quote_sha256: adbc37cf67aaa4e59bca603727ee1f05fadc3f6a4619d253cf26bce430fb793c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.sun
+        nakshatra: nakshatra.ashwini
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.rohini
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the journey is auspicious
+- id: MUHURTACHINTAMANI.OBSTACLE.CH11V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v5
+    quote: >-
+      or if the Moon is in the 7th or the 8th House from the Ascendant of the Horary Chart,
+      and there is the Sun in the Ascendant, then failure is obtained in the journey.
+    quote_sha256: 0cd0dec1abd99a766c891e426cb3d061f90ed5e37265b2517a418895d26e2f36
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.08
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: failure is obtained in the journey
+- id: MUHURTACHINTAMANI.STATUS.CH11V60.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v60
+    quote: >-
+      If jupiter be in the Ascendant, the Moon be in the 8th House, and the position of the
+      Sun be in the 6th House, even then the king (or the person making a journey) gets victory
+      or success.
+    quote_sha256: 66c7646a09f628808b63d6f37e02facb38526772e87ce7a50b6809fee4688aa6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.06
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: gets victory or success
+- id: MUHURTACHINTAMANI.STATUS.CH11V78.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+    domain.status: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v78
+    quote: >-
+      If the Conscience (of the person undertaking the journey) is pure and there is good
+      omen, then having known the strength of the Ascendant, that is, if the Ascendnat is
+      strong, then the journey made in such a time gives success.
+    quote_sha256: 875904d0118a158740913b5f78c9f6acc0d06b8bd7130be8fc6e5b62a1e96a27
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.01
+        op: '>='
+        value: 5
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the journey made in such a time gives success
+- id: MUHURTACHINTAMANI.TRAVEL.CH11V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+    domain.status: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v4
+    quote: >-
+      if there is a ‘Chara’ or Movable Lagna or Ascendant (1/4/7/10) which is occupied by
+      or aspected by Benefic Planets, even then Journey is the giver of auspicious effects.
+    quote_sha256: e33f44c8af2dfc247de1687f47751f9ee3c5d7dd01b29a15b5f8359a3ae0e20c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: lord.bhava.01
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: Journey is the giver of auspicious effects
+- id: MUHURTACHINTAMANI.TRAVEL.CH11V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v8
+    quote: >-
+      If at the time of the Journey the Sun is in the signs of Sagittarius, Aries, and Leo,
+      the journey is auspicious or beneficial
+    quote_sha256: 9d8c767066f7d2ee614f2db39997c602f0e09bead17ad0a0117b75928f405c1c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the journey is auspicious or beneficial
+- id: MUHURTACHINTAMANI.TRAVEL.CH11V8.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v8
+    quote: >-
+      if he (the Sun) is in those of Capricorn, Aquarius, Gemini, Virgo, Taurus and Libra,
+      it (the journey) gives effects of medium level (that is, it is neither auspicious nor
+      inauspicious)
+    quote_sha256: 3090cd72981c4d78633d0276cc686d6dbb2430ea9f72d2e5f4d96766577e8237
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aquarius
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.gemini
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.virgo
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.taurus
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.libra
+  indicates:
+    claim: travel.relocation
+    polarity: neutral
+    magnitude: moderate
+    text: it gives effects of medium level
+- id: MUHURTACHINTAMANI.TRAVEL.CH11V8.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v8
+    quote: >-
+      and if he is in those of Cancer, Pisces and Scorpio, then the journey undertaken in
+      such times is a long one.
+    quote_sha256: 67cc82c5379697c222a6f5dbb9f01a66353fb2161254fe63f3e0b0c9a5a43e95
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.scorpio
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the journey undertaken in such times is a long one
+- id: MUHURTACHINTAMANI.TRAVELLING.CH3V16.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.travel: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch3.v16
+    quote: if Venus, there should be travelling
+    quote_sha256: 3fcc0c476b767230db1ca0b97a3e8a91ea7922fb3ebede0754a7fdb475114c6e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.venus
+        band: band.strong
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: travelling

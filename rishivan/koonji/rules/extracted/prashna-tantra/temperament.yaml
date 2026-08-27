@@ -1,0 +1,197 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.HEALTH.CH3V148.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.temperament: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v148
+    quote: >-
+      If the Sun is in the ascendant aspected by the Moon or if both the Sun and the Moon
+      are in the ascendant, the querent will have a bad dream
+    quote_sha256: 676efccf2d480f505e03ea1dddde465ac8d01102ac3dde5c485206c550e107e9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.01
+      - aspects:
+          subject: graha.moon
+          target: graha.sun
+    - all:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the querent will have a bad dream
+- id: PRASHNATANTRA.HEALTH.CH4V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v8
+    quote: When the lord of Lagna is in the 6th, the querent's own Atma will be his enemy.
+    quote_sha256: 89e946805629a0acc14fbe2ec59ff7e75d7c6195a56ad8a1e086a467aeceebf6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the querent's own Atma will be his enemy
+- id: PRASHNATANTRA.TEMPERAMENT.CH2V72.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v72
+    quote: >-
+      If the ascendant, the ascendant lord and the Moon are in movable signs, the girl's character
+      will not be pure.
+    quote_sha256: 15bfb371fe4b5073f8817f5e898adf304bfaa43c0eed780e603bc7a53428cc65
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: lord.bhava.01
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the girl's character will not be pure
+- id: PRASHNATANTRA.TEMPERAMENT.CH2V74.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v74
+    quote: If the Moon and Saturn are in Lagna, her sexual impurity will be an open secret.
+    quote_sha256: b5b6e24b79d2fe0aa2910ae7d6782a39933fc85411750aa33e8d2f1d862477dc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: her sexual impurity will be an open secret
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v14
+    quote: If the ascendant is occupied by Venus, the dream will be about bathing in a tank
+      or river
+    quote_sha256: 99086311f52041976af011c4d2098097f77c86bc3f3c12f7c63f925800486734
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the dream will be about bathing in a tank or river
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V14.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v14
+    quote: if by Saturn, climbing elevated places such as hills, tall buildings, etc.
+    quote_sha256: 68bd9bfa874cf90f1ba931cb16dfaac6ca8ad496bcb9f3c02f9b53bdae975a3d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: climbing elevated places such as hills, tall buildings, etc.

@@ -91,12 +91,34 @@ def gate_block(plan) -> str:
         return ""
 
     blocks = [INSTRUCTION, _claims_block(plan)]
+    if plan.stated_facts:
+        # Above the caveats, because this is not one. The reader stated these
+        # about their own life, and an answer that contradicts them has failed
+        # in a way no amount of correct chart work repairs.
+        blocks.append(
+            "WHAT THE SEEKER TOLD YOU\n"
+            + "\n".join(
+                f"  {f.get('text', '')}"
+                + (f" — {f['when']}" if f.get("when") else "")
+                for f in plan.stated_facts
+            )
+            + "\n  Established, not inferred. Do not date something they have "
+              "said already happened, and do not write about a settled fact as "
+              "though it were still ahead of them."
+        )
     if plan.must_say:
         blocks.append(
             "YOU MUST SAY THESE\n"
             + "\n".join(f"  {m}" for m in plan.must_say)
-            + "\n  These are what the reader is owed. A model left to itself "
-              "smooths them over, because they make the answer less satisfying."
+            + "\n  These are what the reader is owed, and a model left to "
+              "itself smooths them over because they make the answer less "
+              "satisfying. Say them inside the sentence they qualify, in the "
+              "reader's own terms — \"one text supports this, not the two this "
+              "kind of claim usually needs\" — not as a paragraph about the "
+              "system at the end. Never name a Rishi, a division code, an "
+              "internal standard or the review status of the corpus as the "
+              "subject of a sentence: the reader came about their life, and a "
+              "caveat they have to decode is one they will discount."
         )
     if plan.must_not_say:
         blocks.append(
@@ -177,6 +199,9 @@ def render_template(plan) -> str:
             line += f" The period this could act in is {claim.window}."
         lines.append(line)
 
+    # The template fallback runs when generation failed, so there is no prose to
+    # fold these into and appending is all that is left. Bounded by
+    # `MUST_SAY_LIMIT` upstream, which is what keeps that acceptable.
     for must in plan.must_say:
         lines.append(must)
 

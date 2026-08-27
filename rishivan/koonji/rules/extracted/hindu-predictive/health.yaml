@@ -1,0 +1,957 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: HINDUPREDICTIVE.FAMILY.CH35V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v16
+    quote: Father died within 9 months; mark Venus in debilitation in the house of father
+    quote_sha256: 0bdb726ea0da1e122ec2d3021925624679e240ee4e3f2d5a1faf105334be49d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.09
+        rashi: rashi.virgo
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - varga_dignity:
+        varga: varga.d1
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: Father died within 9 months
+- id: HINDUPREDICTIVE.HEALTH.CH17V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v12
+    quote: >-
+      If the lord of the birth is in conjunction with an evil planet and occupies the 8th
+      house the health will suffer.
+    quote_sha256: e6cd71728cf545c30284df5b65542b8bdff6992b29f3b61628196af5b0051c1b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.08
+    - any:
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.sun
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.mars
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.saturn
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.ketu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the health will suffer
+- id: HINDUPREDICTIVE.HEALTH.CH20V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v23
+    quote: Brihadbija yoga.—Rahu with Mars and Saturn in the ascendant
+    quote_sha256: ddd711dc668276660e7b964a6c7a000bda99e574611d24db1247f49937b291a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.rahu
+        other: graha.mars
+    - conjunct:
+        subject: graha.rahu
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: Testicles swelling and venereal complaints
+- id: HINDUPREDICTIVE.HEALTH.CH24V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.career: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v1
+    quote: The dasa period of Saturn, if it happens to be the 4th dasa, will be unfavourable.
+    quote_sha256: d1983c06abe755707b1d8a87aba009692ccaab120f6a1f1dbe99ea881293fc0e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: The dasa period of Saturn, if it happens to be the 4th dasa, will be unfavourable.
+- id: HINDUPREDICTIVE.HEALTH.CH24V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.career: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v2
+    quote: The dasa period of Jupiter will be unfavourable if it happens to be the 6th dasa.
+    quote_sha256: 44a822e431f137a8e51afdb8309f5f57b04be8d0ede9fb46ea527f667d3c47a1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The dasa period of Jupiter will be unfavourable
+- id: HINDUPREDICTIVE.HEALTH.CH24V9.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v9
+    quote: >-
+      Lord of the 3rd dusing his dasa gives new friends, help to brothers, leadership, and
+      physical pain (if afflicted).
+    quote_sha256: 5ae755d9141b4f549d56121454078f87e46a34c03d95175611cfb3fff8603fae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.03
+        level: level.maha
+    - any:
+      - in_dusthana:
+          subject: lord.bhava.03
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: physical pain (if afflicted)
+- id: HINDUPREDICTIVE.HEALTH.CH26V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch26.v19
+    quote: >-
+      During such times as the Sun transits over signs containing no bindus (marks), the person
+      suffers from unexpected diseases, misunderstandings and quarrels.
+    quote_sha256: e73927ea871995d0d6678a0e3c8a15efe758a45fc9329193b359667a5b599a37
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - sav_bindu:
+        bhava: bhava.01
+        op: ==
+        n: 0
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the person suffers from unexpected diseases, misunderstandings and quarrels
+- id: HINDUPREDICTIVE.HEALTH.CH26V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch26.v28
+    quote: >-
+      When Saturn transits over signs in the Ashtakavarga of Mars, containing no bindus, the
+      native suffers from blood diseases
+    quote_sha256: 494e027e29dd0e3ba7fd5b45095814a53562b47c340cb5bcf9c3f360d0855a29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - sav_bindu:
+        bhava: bhava.01
+        op: ==
+        n: 0
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from blood diseases
+- id: HINDUPREDICTIVE.HEALTH.CH29V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v12
+    quote: >-
+      The Sun in the 6th aspected by Saturn is sure to bring about loss of vitality by means
+      of unnatural methods like masturbation and sodomy.
+    quote_sha256: 8c443f4db81e2a9862d2af8b146708aee33a74ebb9da407f11e22104fd90184b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.06
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: health.vitality
+    polarity: negative
+    magnitude: extreme
+    text: loss of vitality by means of unnatural methods like masturbation and sodomy
+- id: HINDUPREDICTIVE.HEALTH.CH29V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v13
+    quote: Malefics in the 6th with no beneficial aspects cause continuous illness.
+    quote_sha256: 9b5cc3db811a84dd4ac838bb64aee0e2def0f5d4f23fa178bc6968a7bac3d4ae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: cause continuous illness
+- id: HINDUPREDICTIVE.HEALTH.CH29V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v14
+    quote: >-
+      Abdominal diseases, appendicitis, etc., are caused by the movements of the Sun and the
+      Moon in Virgo.
+    quote_sha256: 388b4e04c74a615b423df16990f4245871206583d3328eccf44422ee35c9fb9b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.virgo
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Abdominal diseases, appendicitis, etc.
+- id: HINDUPREDICTIVE.HEALTH.CH29V14.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v14
+    quote: >-
+      Abdominal diseases, appendicitis, etc., are caused by the movements of the Sun and the
+      Moon in Virgo.
+    quote_sha256: 388b4e04c74a615b423df16990f4245871206583d3328eccf44422ee35c9fb9b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.virgo
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Abdominal diseases, appendicitis, etc.
+- id: HINDUPREDICTIVE.HEALTH.CH29V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v15
+    quote: >-
+      The Sun and the Moon in opposition and in conjunction with or aspected by Mars produce
+      sudden accidents.
+    quote_sha256: 9d300f0455dfc45689f400ece0769f563ad5b0ae142194707a89fc468a05cc8e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.moon
+        distance: dist.07
+    - any:
+      - conjunct:
+          subject: graha.mars
+          other: graha.sun
+      - conjunct:
+          subject: graha.mars
+          other: graha.moon
+      - aspects:
+          subject: graha.mars
+          target: graha.sun
+      - aspects:
+          subject: graha.mars
+          target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: produce sudden accidents
+- id: HINDUPREDICTIVE.HEALTH.CH29V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v16
+    quote: >-
+      Enteric disorders and bowel disorders are brought about by the Sun in the 6th, aspected
+      by Saturn.
+    quote_sha256: 7481db9b2ca0076758c4497a95b45c1482812af44a53acadce69ab2724c1d2cb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.06
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: Enteric disorders and bowel disorders
+- id: HINDUPREDICTIVE.HEALTH.CH29V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v20
+    quote: >-
+      If Mars and Venus are in the 7th and are aspected by malefics, the person suffers from
+      inflammation in the testicles.
+    quote_sha256: a83d797f25a94c9e5a823a779174d5cf594a3eec280cde86ce560fe608d5788f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - any:
+      - aspects:
+          subject: graha.sun
+          target: graha.mars
+      - aspects:
+          subject: graha.mars
+          target: graha.mars
+      - aspects:
+          subject: graha.saturn
+          target: graha.mars
+      - aspects:
+          subject: graha.rahu
+          target: graha.mars
+      - aspects:
+          subject: graha.ketu
+          target: graha.mars
+      - aspects:
+          subject: graha.sun
+          target: graha.venus
+      - aspects:
+          subject: graha.mars
+          target: graha.venus
+      - aspects:
+          subject: graha.saturn
+          target: graha.venus
+      - aspects:
+          subject: graha.rahu
+          target: graha.venus
+      - aspects:
+          subject: graha.ketu
+          target: graha.venus
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the person suffers from inflammation in the testicles
+- id: HINDUPREDICTIVE.HEALTH.CH29V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v22
+    quote: >-
+      Saturn and Mars in the 12th and 2nd, the Moon in the ascendant, the Sun in the 7th,
+      respectively make the native suffer from white leprosy.
+    quote_sha256: cf912525f2a6fd3bf3a44eb0462ecf73e2745956ed10107e6ba989aedf27143d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: make the native suffer from white leprosy
+- id: HINDUPREDICTIVE.HEALTH.CH29V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v23
+    quote: >-
+      If the Moon is in the 10th, Mars in the 7th and Saturn in the 2nd from the Sun, the
+      native becomes crippled.
+    quote_sha256: 39cdf426abb9bbf73cfcc9ecf49ce05836cb26e201677874b08dd70a14a4497e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.moon
+        bhava: bhava.10
+        reference: ref.sun
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.07
+        reference: ref.sun
+    - occupies_bhava_from:
+        subject: graha.saturn
+        bhava: bhava.02
+        reference: ref.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native becomes crippled
+- id: HINDUPREDICTIVE.HEALTH.CH29V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v24
+    quote: >-
+      If the Moon is between Saturn and Mars and the Sun is in Capricorn, the person suffers
+      from asthma and pneumonia.
+    quote_sha256: 3a2314cd231a9d55287eba2dd11ea75155dd4ec132e3431d93160baafcce8a12
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.saturn
+        other: graha.moon
+        distance: dist.12
+    - house_distance:
+        subject: graha.moon
+        other: graha.mars
+        distance: dist.12
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the person suffers from asthma and pneumonia
+- id: HINDUPREDICTIVE.HEALTH.CH29V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v25
+    quote: >-
+      If the Sun and the Moon mutually exchange their houses either in rasi or in the navamsa,
+      the person suffers from consumption.
+    quote_sha256: 7ffb898c7eb60417eff688a29a452cd5f11912a80e8b8b256be98aa17f421e55
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - exchange:
+        subject: graha.sun
+        other: graha.moon
+    - all:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.sun
+          rashi: rashi.cancer
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.leo
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the person suffers from consumption
+- id: HINDUPREDICTIVE.HEALTH.CH29V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v28
+    quote: >-
+      The malefic planets in the 3rd, 5th, 9th and 11th, having no beneficial aspects, produce
+      deafness
+    quote_sha256: 219aa91eeea971af53f402a452ca0c56a24aa50e614e61ac9a8e674b4d39e339
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.ketu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.ketu
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.ketu
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.ketu
+          bhava: bhava.11
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: graha.sun
+        - aspects:
+            subject: graha.venus
+            target: graha.sun
+        - aspects:
+            subject: graha.mercury
+            target: graha.sun
+        - aspects:
+            subject: graha.jupiter
+            target: graha.mars
+        - aspects:
+            subject: graha.venus
+            target: graha.mars
+        - aspects:
+            subject: graha.mercury
+            target: graha.mars
+        - aspects:
+            subject: graha.jupiter
+            target: graha.saturn
+        - aspects:
+            subject: graha.venus
+            target: graha.saturn
+        - aspects:
+            subject: graha.mercury
+            target: graha.saturn
+        - aspects:
+            subject: graha.jupiter
+            target: graha.rahu
+        - aspects:
+            subject: graha.venus
+            target: graha.rahu
+        - aspects:
+            subject: graha.mercury
+            target: graha.rahu
+        - aspects:
+            subject: graha.jupiter
+            target: graha.ketu
+        - aspects:
+            subject: graha.venus
+            target: graha.ketu
+        - aspects:
+            subject: graha.mercury
+            target: graha.ketu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: produce deafness
+- id: HINDUPREDICTIVE.HEALTH.CH29V29.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v29
+    quote: >-
+      If the Moon, Sun and Mars are in the 7th and have no good aspects, the person suffers
+      from tooth-ache.
+    quote_sha256: 288a7f35bdaa7c8af956b757cfa956321c8c33fb2bdcf545f200ae3685337b9a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the person suffers from tooth-ache
+- id: HINDUPREDICTIVE.HEALTH.CH29V32.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v32
+    quote: >-
+      If Saturn is in the 9th or in the 5th and is aspected by malefics, the native suffers
+      from innumerable diseases.
+    quote_sha256: 7bfd217e9c4afb00613ea350421fa11d9e17204eaec5cd83ae7b22999c84e169
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.05
+    - aspects:
+        subject: graha.sun
+        target: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from innumerable diseases
+- id: HINDUPREDICTIVE.HEALTH.CH30V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.relationship: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v4
+    quote: >-
+      If the 7th bhava falls in the navamsa of Mars, and has the aspect of Saturn, the girl
+      367 possesses a diseased sexual organ.
+    quote_sha256: 94074675b648bd6f9c93ac97d446d1bd3bc1921cb88c125fb62604cd63ac9ef5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.07
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.saturn
+        target: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: possesses a diseased sexual organ
+- id: HINDUPREDICTIVE.RECORDAPPLICATION.CH35V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.health: 0.9
+    domain.status: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v9
+    quote: >-
+      Birth Data :- Male, born on 24th March 1883, at 6 a.m., Bangalore. Planetary Positions
+      :- Ascendant and the Sun-Pisces; Kethu-Aries; Saturn-Taurus; Jupiter-Gemini; the Moon-Virgo;
+      Rahu-Libra; Venus-Capricorn; Mercury and Mars-Aquarius. General Remarks :- Two wives,
+      fantastic scrupulous; obstinate; loss of vision in 45th year; mark Mercury and Mars
+      in Aquarius aspected by Saturn which affected optic nerves.
+    quote_sha256: 03a6cc33f2993274dfbab042c0f0444527de0092a5fa6cc0a6651f63e358616f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - occupies_rashi:
+        subject: graha.ketu
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.taurus
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.gemini
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - occupies_rashi:
+        subject: graha.rahu
+        rashi: rashi.libra
+    - occupies_rashi:
+        subject: graha.venus
+        rashi: rashi.capricorn
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.aquarius
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aquarius
+  example:
+    reading: >-
+      Two wives, scrupulous, obstinate, and loss of vision in 45th year due to Mercury and
+      Mars in Aquarius aspected by Saturn affecting optic nerves.

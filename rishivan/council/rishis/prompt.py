@@ -153,6 +153,38 @@ def _indeterminate_block(reading) -> str:
     )
 
 
+def _stated_facts_block(facts) -> str:
+    """What the seeker said about their own life.
+
+    Placed directly under the question because it is part of the question. A
+    reading that tells someone their marriage window opens in 2030, in reply to
+    a message beginning "I got married on 22nd Nov 2025", has not been careful -
+    it has been talking past them, and no amount of correct chart work recovers
+    that.
+
+    These are assertions about the *past and present*, and the chart is being
+    read for what it says about the future. So the instruction is not "agree
+    with these": a chart may perfectly well indicate a difficult marriage for
+    someone who says they are happily married. It is "do not contradict the
+    record" - do not date an event they have told you already happened, and do
+    not describe as prospective something they have told you is done.
+    """
+    if not facts:
+        return ""
+    lines = ["WHAT THE SEEKER HAS TOLD YOU ABOUT THEIR LIFE"]
+    for fact in facts:
+        when = (fact.get("when") or "").strip()
+        lines.append(f"  {fact.get('text', '')}" + (f" — {when}" if when else ""))
+    lines.append(
+        "  These are established, not inferred. Do not contradict them: do not "
+        "put a date on something they have said already happened, and do not "
+        "treat a settled fact as an open question. The chart may still weigh "
+        "against a thing they report - say that as a reading of the thing, not "
+        "as a doubt about whether it occurred."
+    )
+    return "\n".join(lines)
+
+
 def _vargas_block(selection) -> str:
     if selection is None:
         return ""
@@ -235,6 +267,7 @@ def build_rishi_report_prompt(
     timing=None,
     unreviewed: bool = False,
     findings: tuple[str, ...] = (),
+    stated_facts=(),
 ) -> str:
     """One Rishi's whole context. Deterministic given the state."""
     role = ROLES.get(rishi)
@@ -242,6 +275,7 @@ def build_rishi_report_prompt(
         INSTRUCTION,
         f"YOUR REMIT\n  {role.remit if role else 'the classical reading'}",
         f"THE QUESTION\n  {question}",
+        _stated_facts_block(stated_facts),
         _hierarchy_block(hierarchy),
         _chart_block(chart_state, hierarchy),
         _claims_block(reading),

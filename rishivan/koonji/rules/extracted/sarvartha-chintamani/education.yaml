@@ -1,0 +1,690 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.EDUCATION.CH12V44.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.longevity: 0.3
+    domain.status: 0.3
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v44
+    quote: >-
+      If Venus is in the 4th house, Jupiter in lagna, Saturn is with Moon, the 10th house
+      has no malefic planet in it, the native of this yoga gets long life, education and fame.
+    quote_sha256: 1410932e7a62568ece274cb4559bc85920d1ae7f1cdc353e90154f43252fc07e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.saturn
+        other: graha.moon
+    - occupant_count:
+        bhava: bhava.10
+        op: ==
+        n: 0
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native gets education
+- id: SARVARTHACHINTAMANI.EDUCATION.CH14V22.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v22
+    quote: he gets defame & loss of education, son, wife, wealth & honour.
+    quote_sha256: 2447421e059757757374374528fe1158f437715e60c2ffc7fd931b786b386745
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: loss of education
+- id: SARVARTHACHINTAMANI.EDUCATION.CH14V25.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v25
+    quote: >-
+      If Mars occupies the 5th house. it indicates death of the son, confu-sion of intellect,
+      foolishness
+    quote_sha256: 8b1526974e1d4774d0bb9d9cad200e665f17554e9dd4577785e352a8ecea7eb6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: confusion of intellect, foolishness
+- id: SARVARTHACHINTAMANI.EDUCATION.CH16V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v11
+    quote: >-
+      During the ruling period of Rahu located in the 5th house, the native has defective
+      intellect, loss of taste from eating.
+    quote_sha256: 3eaaf49b5c99c0aa0225c1cb82f3abff4569c792625964b278914a8cae6376cd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: defective intellect, loss of taste from eating
+- id: SARVARTHACHINTAMANI.EDUCATION.CH16V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v6
+    quote: During the ruling period of Rahu located in the lagna, the native is devoid of
+      intellect.
+    quote_sha256: a116ae0d2f50fa1044e9fbe4ebac0944ec3d543b5bb9408959604249fb5c9b6d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: the native is devoid of intellect
+- id: SARVARTHACHINTAMANI.EDUCATION.CH3V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v33
+    quote: >-
+      If the lord of the 2nd house is strong and located with a benefic planet or is in its
+      own sign and Navamsha, the native is a good speaker.
+    quote_sha256: 9fd4485b670914afbc1b97b4a7b70b7b0014e23628c5297c7fd574fc79d852b0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.02
+        op: '>'
+        value: 5
+    - any:
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.moon
+      - all:
+        - varga_dignity:
+            varga: varga.d1
+            subject: lord.bhava.02
+            dignity: dignity.own_sign
+        - varga_dignity:
+            varga: varga.d9
+            subject: lord.bhava.02
+            dignity: dignity.own_sign
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native is a good speaker
+- id: SARVARTHACHINTAMANI.EDUCATION.CH3V3639.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v36-39
+    quote: >-
+      If Mars is in the 2nd house along with the Moon aspected by Mercury or with Mercury
+      in kendra, the native understands mathematics.
+    quote_sha256: a25f57c94ab04c27557fb0068330cce7ac3c97c9fb5d71e558c239136141ff40
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.02
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - any:
+      - aspects:
+          subject: graha.mercury
+          target: graha.mars
+      - in_kendra:
+          subject: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native understands mathematics
+- id: SARVARTHACHINTAMANI.EDUCATION.CH3V3639.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v36-39
+    quote: >-
+      If Mercury is the lord of the 2nd house & is in its sign of exaltation, Jupiter is in
+      the Ascendant, and Saturn in the 8th house, the yoga makes the native a mathematician.
+    quote_sha256: 48a67bece7334141b0880bab501535df3335214087595b961a81b1ce87631ce3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.02
+        dignity: dignity.exalted
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the yoga makes the native a mathematician
+- id: SARVARTHACHINTAMANI.EDUCATION.CH3V3639.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v36-39
+    quote: >-
+      If... the lord of the 2nd house & Mercury are in their signs of exaltation, the native
+      becomes a mathematician.
+    quote_sha256: 20fa5ab9938aaf3380cf7292934af9f1318e174b0d4257586d9560c07518283e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.02
+        dignity: dignity.exalted
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.exalted
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native becomes a mathematician
+- id: SARVARTHACHINTAMANI.EDUCATION.CH3V40.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v40
+    quote: if with Mercury he has Satvik intellect
+    quote_sha256: 0f2511b559c2a60fb472415530c337eb4bbc2b43f3181fdc6cc945825a7f194e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he has Satvik intellect
+- id: SARVARTHACHINTAMANI.EDUCATION.CH3V4041.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v40-41
+    quote: >-
+      When the lord of the 2nd house is either Jupiter or Venus & is aspected by Sun & Mars
+      & is located in the Mool trikon (positive) sign or in the sign of exaltation, the native
+      is foremost among the knowers of the science of logic.
+    quote_sha256: 261902a101503b3963f94943a1644c49b02a8908e29623622b8d6ef7b5ddbe51
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - same_bhava:
+          subject: lord.bhava.02
+          other: graha.jupiter
+      - same_bhava:
+          subject: lord.bhava.02
+          other: graha.venus
+    - aspects:
+        subject: graha.sun
+        target: lord.bhava.02
+    - aspects:
+        subject: graha.mars
+        target: lord.bhava.02
+    - any:
+      - dignity:
+          subject: lord.bhava.02
+          dignity: dignity.moolatrikona
+      - dignity:
+          subject: lord.bhava.02
+          dignity: dignity.exalted
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native is foremost among the knowers of the science of logic
+- id: SARVARTHACHINTAMANI.EDUCATION.CH3V4041.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v40-41
+    quote: >-
+      If Jupiter as the lord of the 2nd house is in high strength and is under the aspect
+      of Sun and Venus, the native becomes a grammarian.
+    quote_sha256: ea181213b17b91a91604630c829605c1d8d5dfda670b03227edee3c5035655b9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - same_bhava:
+        subject: lord.bhava.02
+        other: graha.jupiter
+    - strength:
+        subject: graha.jupiter
+        op: '>='
+        value: 1.0
+    - aspects:
+        subject: graha.sun
+        target: graha.jupiter
+    - aspects:
+        subject: graha.venus
+        target: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native becomes a grammarian
+- id: SARVARTHACHINTAMANI.EDUCATION.CH5V32.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v32
+    quote: >-
+      If the lord of the 5th house is a benefic planet and is located with a benefic or is
+      located in the sign of benefic planets the native becomes a man of intelligence & wise.
+    quote_sha256: b59814a129135d09dd69fb8c24d7f98124fd349117362f9409a699dc39309196
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.05
+        dignity: dignity.friendly
+    - any:
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.mercury
+      - occupies_rashi:
+          subject: lord.bhava.05
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: lord.bhava.05
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: lord.bhava.05
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: lord.bhava.05
+          rashi: rashi.virgo
+      - occupies_rashi:
+          subject: lord.bhava.05
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: lord.bhava.05
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: lord.bhava.05
+          rashi: rashi.pisces
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native becomes a man of intelligence & wise
+- id: SARVARTHACHINTAMANI.EDUCATION.CH5V37.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v37
+    quote: >-
+      If the 5th house is located in between benefic planets & the 5th house is occupied by
+      benefic planets, Jupiter is in kendra or trine the native is learned & wise.
+    quote_sha256: f49d902eb8287543a20159c715689b0bc7d04600e1a2ae73aeeaa3c1653a9e2d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.05
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native is learned & wise
+- id: SARVARTHACHINTAMANI.EDUCATION.CH5V42.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v42
+    quote: >-
+      If the lord of the significator of intellect i.e. Mercury is located in a kendra or
+      a trine & is aspected by Mercury the native is quick to understand the least hint thrown
+      by others.
+    quote_sha256: 0830ac385d7f00e46662366ecbb85ea6cf2aba0d6384bcd70ed352f2b48c8625
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_kendra:
+          subject: lord.bhava.05
+      - in_trikona:
+          subject: lord.bhava.05
+    - aspects:
+        subject: graha.mercury
+        target: lord.bhava.05
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native is quick to understand the least hint thrown by others
+- id: SARVARTHACHINTAMANI.EDUCATION.CH5V44.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.95
+    domain.temperament: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v44
+    quote: >-
+      If a malefic planet occupies the 5th house & the lord of the 5th house too is with a
+      malefic planet & is located in a malefic Shashti amsha (1/60th division) the man has
+      very little of intelligence.
+    quote_sha256: 535f1f6e86826115009c7619b644df8f12ad9e17e8b93bb45a2a131717803032
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - conjunct:
+        subject: lord.bhava.05
+        other: graha.saturn
+    - varga_dignity:
+        varga: varga.d60
+        subject: lord.bhava.05
+        dignity: dignity.debilitated
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: strong
+    text: the man has very little of intelligence
+- id: SARVARTHACHINTAMANI.EDUCATION.CH5V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v46
+    quote: >-
+      If Saturn is located in the 5th house, the lord of the lagna is aspected by Saturn &
+      the lord of the 5th house is in association with malefic (other than Mars. See shloka
+      44), the native has very little of intelligence.
+    quote_sha256: 8dcabc0748ee643bba587ba1f2ddda8a573be692e92804132372279ca333c944
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - aspects:
+        subject: graha.saturn
+        target: lord.bhava.01
+    - any:
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.saturn
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.ketu
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native has very little of intelligence
+- id: SARVARTHACHINTAMANI.EDUCATION.CH9V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v2
+    quote: >-
+      Even when Jupiter is located with Rahu, Ketu or Saturn, but is aspected by Venus and
+      Moon, the native even if he be a Shudra, is treated as a Brahmin, effecient in good
+      knowledge.
+    quote_sha256: 0e664935a262348ed9d4c657854fcb1b46e57732dd5b85915e0576e177e86eb9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - conjunct:
+          subject: graha.jupiter
+          other: graha.rahu
+      - conjunct:
+          subject: graha.jupiter
+          other: graha.ketu
+      - conjunct:
+          subject: graha.jupiter
+          other: graha.saturn
+    - aspects:
+        subject: graha.venus
+        target: graha.jupiter
+    - aspects:
+        subject: graha.moon
+        target: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: effecient in good knowledge and treated as a Brahmin

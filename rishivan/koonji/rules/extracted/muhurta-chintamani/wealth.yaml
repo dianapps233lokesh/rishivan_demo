@@ -1,0 +1,418 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.TEMPERAMENT.CH1V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.9
+    domain.temperament: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch1.v47
+    quote: >-
+      The girl married when the Sun is in the sign of Aries or when Jupiter is in the sign
+      of Leo is of an excellent conduct, is truthful and is endowed with jewels, diamonds
+      happiness and fame.
+    quote_sha256: 17dcfd7ff249f07c35e3d13c4576a7714348f31c3201ef2df37d100e46c60c5e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      is of an excellent conduct, is truthful and is endowed with jewels, diamonds happiness
+      and fame
+- id: MUHURTACHINTAMANI.WEALTH.CH10V3.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v3
+    quote: >-
+      if there are Malefic Planets in the 2nd and the 12th House the King will suffer from
+      poverty
+    quote_sha256: a14ee489c3caf6bb763f963acf431a9701f0c43a0ca74801fe5b0b499b53c5a8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.02
+        op: '>='
+        n: 1
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the King will suffer from poverty
+- id: MUHURTACHINTAMANI.WEALTH.CH10V3.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v3
+    quote: >-
+      if there are Malefic Planets in the 2nd and the 12th House the King will suffer from
+      poverty
+    quote_sha256: a14ee489c3caf6bb763f963acf431a9701f0c43a0ca74801fe5b0b499b53c5a8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.12
+        op: '>='
+        n: 1
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the King will suffer from poverty
+- id: MUHURTACHINTAMANI.WEALTH.CH12V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.property: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v24
+    quote: >-
+      If (in the Ascendant at the time of beginning the construction of the house) Venus be
+      exalted in the Ascendant
+    quote_sha256: 2fa1b581dcb9b65295bc7ed0ef9b12b1a118e0f46c708d4241c4f2e4ef0ea72c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the house the construction of which has been begun in these 3 Yogas (in any of these
+      3 yogas) has the blessing of Laxmi, the goddess of wealth for ever or for a very long
+      time
+- id: MUHURTACHINTAMANI.WEALTH.CH12V24.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.property: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v24
+    quote: or Jupiter be in the 4th House of the sign of Cancer
+    quote_sha256: 87570691acbe9a5bc6636bc7e01587a6246e77dc63dcb80618bfe35180f88566
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.cancer
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the house the construction of which has been begun in these 3 Yogas (in any of these
+      3 yogas) has the blessing of Laxmi, the goddess of wealth for ever or for a very long
+      time
+- id: MUHURTACHINTAMANI.WEALTH.CH12V24.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.property: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v24
+    quote: or Saturn be in the 11th House in his exaltation sign
+    quote_sha256: ab55e7f3beca25f626f57aa90be3c55bcb7d5e55961b1a851e4d106462ac63b9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.11
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the house the construction of which has been begun in these 3 Yogas (in any of these
+      3 yogas) has the blessing of Laxmi, the goddess of wealth for ever or for a very long
+      time
+- id: MUHURTACHINTAMANI.WEALTH.CH5V1620.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v16-20
+    quote: >-
+      If Anna Prashana is done when there is the ‘Ksheena Chandra’ or the emaciated Moon in
+      the 9/5/12/1/4/7 Houses from the Natal Ascendant the child becomes a beggar
+    quote_sha256: c53654cdde99d86c948b77577a4d05db1a941411a652d15210f56565ed9e4b3a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the child becomes a beggar
+- id: MUHURTACHINTAMANI.WEALTH.CH5V1620.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v16-20
+    quote: >-
+      and if Venus is there the child, male or female, enjoys various kinds of foods and pleasures.
+    quote_sha256: c5f28305fb99ad0df367a52f598968f4b328ab41a8a4c632c4e2cfad82ae0078
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: enjoys various kinds of foods and pleasures
+- id: MUHURTACHINTAMANI.WEALTH.CH5V46.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.spiritual: 0.7
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v46
+    quote: if of Venus he will be the doer of yagya or yajna and wealthy
+    quote_sha256: 090b7a9241c0af067b3ac19d7cbd9efe04cb4ac13caef7d4040736854380dd5e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.venus
+        rashi: rashi.taurus
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.venus
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will be the doer of yagya or yajna and wealthy
+- id: MUHURTACHINTAMANI.WEALTH.CH5V51.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v51
+    quote: if Venus, wealthy;
+    quote_sha256: 8d509c34d2d0039e1e20ae98e4163d66c8f787a5e838909622e41b295f02aac9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealthy
+- id: MUHURTACHINTAMANI.WEALTH.CH6V45.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v45
+    quote: >-
+      If in the Ascendant at Marriage the Moon is in conjunction with the Sun, then there
+      will be penury
+    quote_sha256: 465a8b85359075e608a475312fd43156705c77192913fbf790e4c18e68e6c4d9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: there will be penury
+- id: MUHURTACHINTAMANI.WEALTH.CH6V83.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v83
+    quote: If a marriage takes place in the Badhira Ascendants, it causes poverty
+    quote_sha256: 6cb6734f4aa790fd3f9b78e355b594190a1d5f20df0f5a2615debd039470d8a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        aspects:
+          subject: graha.jupiter
+          target: bhava.01
+    - not:
+        aspects:
+          subject: graha.jupiter
+          target: lord.bhava.01
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: it causes poverty

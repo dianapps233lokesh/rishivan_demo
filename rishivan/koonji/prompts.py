@@ -89,6 +89,101 @@ rule that fires on the wrong charts forever and never looks wrong, so:
 Never default silently to the Lagna.
 """
 
+CONDITION_COMPLETENESS_NOTE = """\
+CONDITION COMPLETENESS. This is the most common way an extraction goes wrong.
+
+A verse states a condition and then NARROWS it. Every narrowing clause belongs
+in `when`. Dropping one does not make a weaker rule - it makes a DIFFERENT
+rule, usually the opposite one, which then fires on exactly the charts the
+verse was warning about.
+
+Narrowing words to watch for:
+  provided (that) | only if | only when | unless | except | but | so long as
+  | subject to | in the absence of | if ... also | when ... and
+
+  VERSE   "Even if the Moon is in the 8th no danger of Balarishta is indicated
+           PROVIDED she occupies the Drekkanas of Mercury, Jupiter and Venus."
+
+  WRONG   when: all[ occupies_bhava(graha.moon, bhava.08) ]
+          Reads as "the Moon in the 8th is safe". The verse says the reverse:
+          the 8th is the danger and the drekkana is what cancels it. This rule
+          now asserts protection for every chart the verse warns about.
+
+  RIGHT   when: all[
+            occupies_bhava(graha.moon, bhava.08),
+            any[ varga_occupies(varga.d3, graha.moon, rashi.gemini),
+                 varga_occupies(varga.d3, graha.moon, rashi.virgo),
+                 varga_occupies(varga.d3, graha.moon, rashi.sagittarius),
+                 varga_occupies(varga.d3, graha.moon, rashi.pisces),
+                 varga_occupies(varga.d3, graha.moon, rashi.taurus),
+                 varga_occupies(varga.d3, graha.moon, rashi.libra) ] ]
+
+"THE <DIVISION> OF <PLANET>" is a lordship phrase, not a predicate. Vargas are
+indexed by RASHI, never by owner, so expand the phrase yourself: the drekkanas
+of Mercury are the D3 signs Mercury owns. The same applies to navamsa,
+dwadasamsa and every other division.
+
+  Sun       leo                    Moon     cancer
+  Mars      aries, scorpio         Mercury  gemini, virgo
+  Jupiter   sagittarius, pisces    Venus    taurus, libra
+  Saturn    capricorn, aquarius    Rahu/Ketu  own no rashi
+
+If a narrowing clause cannot be expressed with the predicates available, DO NOT
+emit the rule without it. Emit nothing, or emit the rule together with an
+ExtensionProposal naming what is missing. A rule silently broader than its
+verse is worse than no rule, because it is wrong on charts nobody will think
+to check.
+
+DO NOT ADD CONDITIONS EITHER. This is the mirror mistake and it is just as
+wrong. Naming a planet's NATURE for a lagna does not place that planet
+anywhere: "for Sagittarius, Venus is evil" says Venus behaves as a malefic
+WHENEVER the lagna is Sagittarius. It does not say Venus sits in Sagittarius.
+
+  VERSE   "Sagittarius. - Mars is the best planet and in conjunction with
+           Jupiter produces much good."
+
+  WRONG   all[ bhava_in_rashi(bhava.01, rashi.sagittarius),
+               occupies_rashi(graha.mars, rashi.sagittarius),   <- invented
+               conjunct(graha.mars, graha.jupiter) ]
+
+  RIGHT   all[ bhava_in_rashi(bhava.01, rashi.sagittarius),
+               conjunct(graha.mars, graha.jupiter) ]
+
+An over-specified rule is not a cautious rule. It fires on fewer charts than
+the verse covers, so a reading silently loses evidence it was entitled to, and
+nothing anywhere in the output reveals that a rule failed to fire.
+
+The test for both mistakes is the same: read your `when` back as an English
+sentence and compare it to the verse. If they do not cover the same charts,
+one of them is wrong, and it is not the verse.
+
+KEEP THE CONDITION SMALL ENOUGH TO COMPILE. A rule is expanded into every
+combination its `any` groups permit, and past 32 combinations it is REFUSED -
+the rule is dropped and the verse is lost entirely.
+
+One `any` group costs its own size. Groups MULTIPLY when they sit side by side
+in an `all`: two groups of four is sixteen, four groups of four is 256.
+
+  VERSE   "A woman will have great political power if the quadrants are
+           occupied by benefics and the 7th falls in a masculine sign."
+
+  WRONG   all[ any[ Jupiter in 1st, Venus in 1st, Mercury in 1st, Moon in 1st ],
+               any[ ...the same four for the 4th... ],
+               any[ ...the 7th... ],
+               any[ ...the 10th... ] ]
+          256 combinations. Refused, and the verse produces nothing at all.
+
+When a verse quantifies over a CATEGORY - "the quadrants", "a malefic", "the
+trines" - reach for the predicate that names that category rather than
+enumerating its members:
+
+    in_kendra   in_trikona   in_dusthana   in_upachaya   in_nakshatra
+
+If no predicate expresses the category, emit an ExtensionProposal for the one
+that should. Do NOT enumerate it by hand: a 256-combination rule is refused
+outright, so the enumeration loses the verse in exchange for nothing.
+"""
+
 EXTENSION_NOTE = """\
 WHEN THE VOCABULARY FALLS SHORT.
 
@@ -109,9 +204,43 @@ If you find yourself thinking "this is close enough", it is not. Propose.
 """
 
 
+KIND_PREFIX: dict[str, str] = {
+    "band": "band.",
+    "bhava": "bhava.",
+    "dasha_level": "level.",
+    "dasha_system": "dasha_system.",
+    "dignity": "dignity.",
+    "distance": "dist.",
+    "friendship": "friendship.",
+    "graha_ref": "graha.",
+    "nakshatra": "nakshatra.",
+    "nature": "nature.",
+    "rashi": "rashi.",
+    "reference": "ref.",
+    "varga": "varga.",
+}
+"""Argument kind -> the prefix its values actually carry.
+
+Three of these cannot be derived from the kind name, and the model was not
+getting them right: `distance` values are `dist.01`, `reference` values are
+`ref.lagna`, `dasha_level` values are `level.maha`. An argument rendered as
+`distance: distance` named the slot and said nothing about its contents, so
+the model reached for `bhava.01` - a real symbol from the wrong family, which
+the typechecker then rejected after the rule was otherwise built correctly.
+"""
+
+
+def _all_symbols(registry: Registry) -> set[str]:
+    found: set[str] = set()
+    for kind in RegistryKind:
+        found.update(registry.symbols(kind))
+    return found
+
+
 def vocabulary_block(registry: Registry, *, school: str = "school.parashari") -> str:
     """The registry, rendered for a prompt. Nothing outside this may be used."""
     lines = ["AVAILABLE PREDICATES (you may use no others):"]
+    used_kinds: set[str] = set()
     for name, spec in sorted(registry.predicates().items()):
         if spec.schools and school not in spec.schools:
             continue
@@ -120,11 +249,49 @@ def vocabulary_block(registry: Registry, *, school: str = "school.parashari") ->
         args = ", ".join(f"{a.name}: {'|'.join(a.kinds)}" for a in spec.args)
         label = f"  # {spec.label}" if spec.label else ""
         lines.append(f"  {name}({args}){label}")
+        for arg in spec.args:
+            used_kinds.update(arg.kinds)
+
+    # The values, not just the type names. Listing `dignity: dignity` tells a
+    # model the slot exists and leaves it to invent the contents; every
+    # typecheck failure in the Hindu Predictive run was a value borrowed from a
+    # neighbouring family. Rendered from the registry rather than hand-listed
+    # so it cannot drift from what the compiler will actually accept.
+    symbols = _all_symbols(registry)
+    lines.append("\nARGUMENT VALUES (each argument takes ONLY these):")
+    for kind in sorted(used_kinds):
+        prefix = KIND_PREFIX.get(kind)
+        if prefix is None:
+            continue
+        values = sorted(s for s in symbols if s.startswith(prefix))
+        if values:
+            lines.append(f"  {kind:14s} {', '.join(values)}")
+    if "graha_ref" in used_kinds:
+        lines.append(
+            "  graha_ref      also accepts a house lord, written in words: "
+            '"10th lord", "lord of the 2nd"'
+        )
+    if "number" in used_kinds:
+        lines.append("  number         a bare integer")
+    if "operator" in used_kinds:
+        lines.append("  operator       one of: >, >=, ==, <=, <")
+
+    # Domains were never listed at all, so the model inferred them from claim
+    # prefixes - `family.father` is a real claim, and `domain.family` is not a
+    # real domain. Six of eleven compiler drops in one book were that exact
+    # inference, which is a reasonable guess at a closed list nobody showed it.
+    lines.append("\nAVAILABLE DOMAINS (`domains` takes ONLY these):")
+    domains = sorted(s for s in symbols if s.startswith("domain."))
+    lines.append("  " + ", ".join(domains))
 
     lines.append("\nAVAILABLE CLAIMS (you may use no others):")
     for claim in sorted(registry.symbols(RegistryKind.CLAIM)):
         entry = registry.entry(RegistryKind.CLAIM, claim)
         lines.append(f"  {claim}" + (f"  # {entry.label}" if entry and entry.label else ""))
+    lines.append(
+        "\nA claim's prefix is NOT a domain. `family.father` is a claim; there is "
+        "no `domain.family`. Pick the domain from the list above."
+    )
     return "\n".join(lines)
 
 
@@ -286,6 +453,7 @@ def extractor_system(registry: Registry, *, school: str = "school.parashari") ->
 {FRAME_BRIEFING}
 {POLARITY_NOTE}
 {REFERENCE_POINT_NOTE}
+{CONDITION_COMPLETENESS_NOTE}
 {EXTENSION_NOTE}
 
 {vocabulary_block(registry, school=school)}
@@ -326,6 +494,17 @@ def extraction_prompt(passage_text: str, passage_id: str, context: str = "") -> 
             f"\nSURROUNDING CONTEXT (for resolving pronouns only - do NOT extract "
             f"rules from it):\n{context}"
         )
+    # Repeated here, next to the passage, and not left to the system prompt
+    # alone. A smaller model attends to what is adjacent to its input; the
+    # completeness rule sits several thousand tokens earlier and was being
+    # dropped in practice on exactly the verses it was written for. Costs about
+    # thirty tokens per call and is the only part of this prompt that is not
+    # cacheable, which is why it is one line rather than a restatement.
+    parts.append(
+        "\nBEFORE ANSWERING: name every narrowing clause in the passage "
+        "(provided / unless / only if / except / but). Each one must appear in "
+        "`when`, or the rule must not be emitted."
+    )
     return "\n".join(parts)
 
 

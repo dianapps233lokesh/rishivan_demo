@@ -1,0 +1,1111 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.CAREER.CH14V18.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v18
+    quote: >-
+      Should Mercury and Venus be together at birth, the native will be abundantly rich, a
+      politician, an artisan
+    quote_sha256: 7b8c98dd101ca6f51060537d26d0c7bab7cfd23c5f1665e06e335fd7bae33114
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: career.independent_work
+    polarity: positive
+    magnitude: moderate
+    text: an artisan
+- id: SARAVALI.CAREER.CH15V13.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v13
+    quote: >-
+      Should Venus, Jupiter and the Sun be together at birth, the native will be weak-sighted,
+      bold, intelligent, indigent, be a minister and be devoted to others' jobs.
+    quote_sha256: 65e82c20c992d09a5ddbb3736d35276cf5cbf3aa5c43e0e26f34d84ab1b06661
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: be a minister
+- id: SARAVALI.CAREER.CH21V1217.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v12-17
+    quote: >-
+      When the aspect is from Venus to the said Sun, one will be a king or a king’s minister,
+      be endowed with wife, wealth and pleasure galore
+    quote_sha256: e849903c4b5d626408a625ac5f5a26fd6e6884003396123ad79555ae7ec3bb3e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: one will be a king or a king’s minister, be endowed with wife, wealth and pleasure
+      galore
+- id: SARAVALI.CAREER.CH21V3641.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v36-41
+    quote: >-
+      Should it be Mars that aspects the Sun in Leo, the native will be interested in others'
+      wives, be courageous, valorous, revolutionary, formidable and chief.
+    quote_sha256: 559355247e853e836add0310daeb9b44bd07fff0d3394080983b2fe8b98d08d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: chief
+- id: SARAVALI.CAREER.CH22V2426.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+    domain.wealth: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      Should the Moon be in her house at birth and be aspected by the Sun, the native will
+      be in the employ of king, be not rich, be a letter-bearer and will protect forts (i.e
+      will be a security officer in royal service).
+    quote_sha256: d6cc5fec19cafb80cd791c7043dbd8bc2f2d6bdf10fd9a1346b2bac34c175692
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: the native will be in the employ of king
+- id: SARAVALI.CAREER.CH22V3136.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.8
+    domain.relationship: 0.7
+    domain.property: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v31-36
+    quote: >-
+      If Mars aspects the Moon in Leo, he will be an army chief will have excellent wife,
+      sons, wealth and conveyances and be superior among people.
+    quote_sha256: 997e08c5606d6b2b2c9d46f594904418647f8b6f677657b3260e86fe13b6c078
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be an army chief will have excellent wife, sons, wealth and conveyances and
+      be superior among people
+- id: SARAVALI.CAREER.CH22V5964.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+    domain.wealth: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v59-64
+    quote: >-
+      Should Mars aspect the Moon in Sagittarius, the person will be an army chief, will be
+      very rich, fortunate, famous for his valour and will have a large working force.
+    quote_sha256: 0a8166242a30276e56355a6e29c7996af2b7bd504f29a1ea98f403fa4e918ed7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be an army chief, will be very rich, fortunate, famous for his valour
+      and will have a large working force
+- id: SARAVALI.CAREER.CH23V1618.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v16-18
+    quote: if by Mercury, he will be jocular, be dear to the king and be an army chief
+    quote_sha256: 95f7d033d817dd0b2db7fd5799765964a728147e2816d2edadb1efbeb9635cfe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: he will be jocular, be dear to the king and be an army chief
+- id: SARAVALI.CAREER.CH24V1920.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-20
+    quote: be independent
+    quote_sha256: c95665d834de5fba56b97ecd2ee5d763d0d692722781561a9d6140328017828d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.capricorn
+  indicates:
+    claim: career.independent_work
+    polarity: positive
+    magnitude: strong
+    text: be independent
+- id: SARAVALI.CAREER.CH25V1314.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v13-14
+    quote: >-
+      If Mercury falls in Libra at the time of one's birth the native wlll possess knowledge
+      of arts, be intent upon arguments, be an able speaker, will spend money lavishly, will
+      have business in various directions
+    quote_sha256: 28073eac569d1b0ae3a25dee6d56408c2707f12d739496dcd1f1434594572cdd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.libra
+  indicates:
+    claim: career.independent_work
+    polarity: positive
+    magnitude: strong
+    text: will have business in various directions
+- id: SARAVALI.CAREER.CH25V5560.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      If Mars aspects Mercury as above, he will be a leader of townsmen or thieves, will reside
+      in forests, and will be a famous writer.
+    quote_sha256: d27a28fd9f93ff2d20694b825ed50c1ba6e40163b4e0fc53b1f14e3b5b5ebcd1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: he will be a leader of townsmen or thieves
+- id: SARAVALI.CAREER.CH25V5560.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      Should Jupiter aspect Mercury as above, he will be rich by memory, intelligence and
+      descendency, be beautiful, noble and knowledgeable, be a king minsiter, or his trearurer
+      and be a writer.
+    quote_sha256: 3864c8e339a291c706341ea55751606d15c08d363e164cad6434600be758fcc4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: be a king minister, or his treasurer
+- id: SARAVALI.CAREER.CH25V5560.X0013
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      If Saturn aspects Mercury as above, he will be intent upon living in forests, will eat
+      much, be wicked dirty and will be unsuccessful in all his undertakings.
+    quote_sha256: 1887ed1ca99101b9b9295df62dd71780aa73d48e88e4a5cf90421652ba8338b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: will be unsuccessful in all his undertakings
+- id: SARAVALI.EDUCATION.CH14V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.education: 0.7
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v14
+    quote: >-
+      If Mars and Jupiter be together at birth, the native will be an artisan, vedic expert,
+      intelligent, expert in speech, wise and fond of using weapons.
+    quote_sha256: aeb6d2e33763aa1a7f864f9751dcbd609c07f34b92ae424015f59770da310197
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: vedic expert, intelligent, expert in speech, wise
+- id: SARAVALI.EDUCATION.CH23V79.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.education: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v7-9
+    quote: >-
+      If the Moon is in the navamsa of Mercury, (i.e. Gemini/Virgo Navamsa) and is aspected
+      by Mercury, the native will be skilful in mechanical or fine arts (of 64 kinds), and
+      be a poet
+    quote_sha256: 8306cb3f1cb08b32725f287e7a39276107d8cad052537eaa0a332a30cc5d6273
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be skilful in mechanical or fine arts (of 64 kinds), and be a poet
+- id: SARAVALI.EDUCATION.CH23V79.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.education: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v7-9
+    quote: >-
+      If the Moon is in the navamsa of Mercury, (i.e. Gemini/Virgo Navamsa) and is aspected
+      by Mercury, the native will be skilful in mechanical or fine arts (of 64 kinds), and
+      be a poet
+    quote_sha256: 8306cb3f1cb08b32725f287e7a39276107d8cad052537eaa0a332a30cc5d6273
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be skilful in mechanical or fine arts (of 64 kinds), and be a poet
+- id: SARAVALI.LIVELIHOOD.CH13V35.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      Mercurial participation indicates that the native will be a servant (परिकर्मको), will
+      suffer penury, be soft-spoken and be modest.
+    quote_sha256: 4ebb8735b86cfeee1e12dedb6432296810b117858f4fa5454b58424ffc9f1035
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mercury
+        distance: dist.02
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: the native will be a servant
+- id: SARAVALI.LIVELIHOOD.CH14V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v4
+    quote: If the Sun and Mercury are in one house, the native will be in service
+    quote_sha256: 2807add49449520ca1119c01bb02558eaeb37e5599716162cf70682dda27b0f1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: the native will be in service
+- id: SARAVALI.LIVELIHOOD.CH14V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v7
+    quote: If the Sun and Saturn are together, the native will be a metallurgist, be virtuous,
+      mind-
+    quote_sha256: 6a50eaa3c1a5e6b43890fa9463f82d821c6142b63d36be2360f68ae067c0cd69
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: the native will be a metallurgist
+- id: SARAVALI.LIVELIHOOD.CH16V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v8
+    quote: >-
+      Should these planets be in one house at birth, the subject concerned will be head of
+      water, animals and forests (i.e. his livelihood may be through such sources), will be
+      happy, honoured by the king and be an expert.
+    quote_sha256: 85d5dc0acad288596095745a596927280014a1d3100cb7cb7c51918054d99f16
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.venus
+        other: graha.moon
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject concerned will be head of water, animals and forests (i.e. his livelihood
+      may be through such sources)
+- id: SARAVALI.LIVELIHOOD.CH18V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+    domain.status: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v16
+    quote: >-
+      Should there be a conjunction of these five planets, at birth, one will be expert in
+      dealing with equipment and machinery related to water, minerals, mercury and such other
+      chemicals and will achieve some fame in these lines.
+    quote_sha256: 54e386095818a93daef850b0b0c46a029e34ac307b9eb6c190325fbb066098d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be expert in dealing with equipment and machinery related to water, minerals,
+      mercury and such other chemicals
+- id: SARAVALI.LIVELIHOOD.CH23V46.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      lastly if by Saturn, the person will resemble a carpenter in disposition (i.e. he will
+      be a carpenter by profession).
+    quote_sha256: e719af3d0a8440e5f12cb8bc80993fc9ea23541da1ee510cb0381f51ba831f56
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will resemble a carpenter in disposition (i.e. he will be a carpenter by
+      profession)
+- id: SARAVALI.LIVELIHOOD.CH23V46.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      lastly if by Saturn, the person will resemble a carpenter in disposition (i.e. he will
+      be a carpenter by profession).
+    quote_sha256: e719af3d0a8440e5f12cb8bc80993fc9ea23541da1ee510cb0381f51ba831f56
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will resemble a carpenter in disposition (i.e. he will be a carpenter by
+      profession)
+- id: SARAVALI.LIVELIHOOD.CH24V1516.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v15-16
+    quote: If Mars occupies Scorpio at birth, the native will be attached to trade
+    quote_sha256: 778604ab15eceab3333acc15f2e28ba2bcb8cc90e9783eb1966ca91e098a7eff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.scorpio
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: the native will be attached to trade
+- id: SARAVALI.LIVELIHOOD.CH25V4348.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v43-48
+    quote: >-
+      Should Mercury be in Cancer, in aspect to the Sun, one will be a dhoby, or a gardener
+      or a house-builder or gemsmith.
+    quote_sha256: a367f2a2454acb4cf7a717f2d45994bc7f7413c673b0dc4e5ccad9c8e0a00092
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: one will be a dhoby, or a gardener or a house-builder or gemsmith
+- id: SARAVALI.LIVELIHOOD.CH25V6166.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v61-66
+    quote: >-
+      If the Moon aspects Mercury as above, he will derive his livelihood through water, be
+      plentiful, will sell flowers, liquor and bulbs (vegetables), will have fierce appearance
+      and be firm (i. e. not moving much).
+    quote_sha256: 17d40feb56fdc9869b7c377dd50ef8550b0f3a2e569116116eed53fa0e4218bc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will derive his livelihood through water, be plentiful, will sell flowers, liquor
+      and bulbs (vegetables), will have fierce appearance and be firm
+- id: SARAVALI.OBSTACLE.CH13V35.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      If Venus produces this yoga, the person will be timid, will face obstacles in his missions,
+      will have pleasant (or swift) movements¹ and will be defeated.
+    quote_sha256: 112eb779650e77eb51fe2572109df3aa0c250ac1f6f5b9b09bf7c627697ea2f3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.venus
+        distance: dist.02
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: will face obstacles in his missions
+- id: SARAVALI.OBSTACLE.CH23V1012.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v10-12
+    quote: >-
+      if by Saturn, he will indulge in prohibited acts and will incur grief due to imprisonment,
+      litigations and destruction
+    quote_sha256: 9f7273625d814b641a3fda93389223a3d2859e024dcac19333d8ca33afbff447
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will indulge in prohibited acts and will incur grief due to imprisonment, litigations
+      and destruction
+- id: SARAVALI.STATUS.CH15V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.education: 0.85
+    domain.career: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v2
+    quote: >-
+      If the Sun, Moon and Mercury are together, the native will be splendorous, very intelligent,
+      will be fond of arts, assembly and drinks, be in royal service and bold.
+    quote_sha256: 85acc6518a9024ec31291a2fd07928e6b61740ecc3f6594733a002ae0e6462f4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be splendorous, very intelligent, will be fond of arts, assembly and
+      drinks, be in royal service and bold
+- id: SARAVALI.STATUS.CH25V2530.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v25-30
+    quote: >-
+      If Venus aspects Mercury as above, the subject will be in royal service, be fortunate,
+      principal among men or in his town, will speak skilfully, be trustowrthy and will be
+      endowed with a wife.
+    quote_sha256: f5804527f5ffd196f0cde35e151796bd58a742f9ccce81252fd9bcc69a03b550
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.venus
+        target: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject will be in royal service, be fortunate, principal among men or in his town,
+      will speak skilfully, be trustowrthy and will be endowed with a wife
+- id: SARAVALI.STATUS.CH25V5560.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      If Mars aspects Mercury as above, he will be a leader of townsmen or thieves, will reside
+      in forests, and will be a famous writer.
+    quote_sha256: d27a28fd9f93ff2d20694b825ed50c1ba6e40163b4e0fc53b1f14e3b5b5ebcd1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: will be a famous writer
+- id: SARAVALI.WEALTH.CH12V1011.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.9
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v10-11
+    quote: >-
+      If Sunapha yoga is caused by Mars (by being in the 2nd of the Moon), the native will
+      be valorous, wealthy, cruel in speech, be an army chief, will be fierce, torturous,
+      proud and inimical.
+    quote_sha256: 635f0ee1081a9a6e047674bf49bfe4f578816e47647b3910909295bae20bfdef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.02
+        reference: ref.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be wealthy
+- id: SARAVALI.WEALTH.CH21V49.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.7
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v4-9
+    quote: >-
+      If the planet aspecting is Mercury, the subject will be a servant, will do others' jobs,
+      will not have much wealth, be devoid of strength, be subjected to much grief and will
+      prossess a dirty body.
+    quote_sha256: 4591bdba20fcf4b2f9d177e47a1fa88059f610696172083d9735f3dd9e40016b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: will not have much wealth

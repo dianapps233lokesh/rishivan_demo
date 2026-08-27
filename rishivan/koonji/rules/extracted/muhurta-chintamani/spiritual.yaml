@@ -1,0 +1,84 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.OBSTACLE.CH2V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.health: 0.4
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch2.v35
+    quote: The Ahuti of the Havana is inauspicious in the Nakshtra which belongs to a Malefic
+      Planet.
+    quote_sha256: 9a9614b4236001a4a74aa5797055c8ad462488ee99f34236d8be62c895884126
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - in_nakshatra:
+        subject: graha.sun
+        nakshatra: nakshatra.krittika
+    - in_nakshatra:
+        subject: graha.sun
+        nakshatra: nakshatra.uttara_phalguni
+    - in_nakshatra:
+        subject: graha.sun
+        nakshatra: nakshatra.uttara_ashadha
+    - in_nakshatra:
+        subject: graha.mars
+        nakshatra: nakshatra.mrige
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: The Ahuti of the Havana is inauspicious in the Nakshtra which belongs to a Malefic
+      Planet
+- id: MUHURTACHINTAMANI.SPIRITUAL.CH5V46.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.status: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v46
+    quote: if of Jupiter he will be the doer of all the 6 deeds which are worth doing
+    quote_sha256: 90d531f2ed4d61a062cdbc14739f10af374ff9f71d9598bb40d506a06a189777
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.jupiter
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.jupiter
+        rashi: rashi.pisces
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: he will be the doer of all the 6 deeds which are worth doing

@@ -1,0 +1,241 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.CAREER.CH10V3.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v3
+    quote: >-
+      if there is a Malefic Planet in the 10th House, he will be subjected to indolence or
+      laziness
+    quote_sha256: c623b94768d4664459f2c890e40dbab97a4837e1cc2d25de34cb0fe70167ea17
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.10
+        op: '>='
+        n: 1
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: moderate
+    text: he will be subjected to indolence or laziness
+- id: MUHURTACHINTAMANI.CAREER.CH11V171.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v171
+    quote: >-
+      If Mercury being situated in any of the 6/1/10/4 House gets the aspect of Benefic Planets
+      and the 12/1/7 Houses are without any Malefic Planets, even then the king becomes victorious.
+    quote_sha256: 11cff9df6b6e966649842cebae30c30c425b96a997878568caa0cd884eba338b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.04
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.mercury
+      - aspects:
+          subject: graha.venus
+          target: graha.mercury
+    - occupant_count:
+        bhava: bhava.12
+        op: ==
+        n: 0
+    - occupant_count:
+        bhava: bhava.01
+        op: ==
+        n: 0
+    - occupant_count:
+        bhava: bhava.07
+        op: ==
+        n: 0
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the king becomes victorious
+- id: MUHURTACHINTAMANI.CAREER.CH5V51.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+    domain.status: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v51
+    quote: >-
+      If in the Ascendant which is there at the time of doing the ‘Upanayana Samskara’ the
+      Sun is situated in an angle, the child whose Upanayana is done joins royal or government
+      service;
+    quote_sha256: 83f15d9093367293e7fd58b0a1021bdecd0ec920841c258559e96dce183f5ff6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.sun
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: joins royal or government service
+- id: MUHURTACHINTAMANI.HEALTH.CH11V27.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v27
+    quote: >-
+      and of those whose Rashi is Pisces be there in the 12th House; then there occurs the
+      Dosha named 'Ghaata Chandra' (the Pain giving Moon). This 'Ghaata Chandra' should be
+      avoided by a person when he goes to join a king's service (or government service)
+    quote_sha256: b58781012a958e6ca0acc7d99b7af7cf17dcd2cf3e1b938e00c7ec4097a5a196
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.moon
+        bhava: bhava.12
+        reference: ref.moon
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.pisces
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: there occurs the Dosha named 'Ghaata Chandra' (the Pain giving Moon)
+- id: MUHURTACHINTAMANI.LIVELIHOOD.CH5V51.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+    domain.wealth: 0.75
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v51
+    quote: if the Moon is in an angle he becomes a trader or a merchant;
+    quote_sha256: 2d82f30d10143f4408745957b51132268c6fe169335209fef44b1bf641d8a725
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.moon
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: he becomes a trader or a merchant
+- id: MUHURTACHINTAMANI.LIVELIHOOD.CH5V51.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v51
+    quote: if Mars, a trader of arms & weapons (or gets job in the army);
+    quote_sha256: 84088cc62dcc25bdaa659f9db49a6bda82de6c5d19ad411ff5103a07ea4f5530
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.mars
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: a trader of arms & weapons (or gets job in the army)
+- id: MUHURTACHINTAMANI.LIVELIHOOD.CH5V51.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+    domain.education: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v51
+    quote: if Mercury, a teacher;
+    quote_sha256: f27a7bcb74ce9a5e92c2f93bccedaad92fbc583905593aab5ed068aeb4bad8c5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.mercury
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: strong
+    text: a teacher

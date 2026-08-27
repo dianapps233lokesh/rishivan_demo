@@ -1,0 +1,720 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: HINDUPREDICTIVE.CAREER.CH17V11.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v11
+    quote: The combination of Venus and Mars causes Rajayoga.
+    quote_sha256: 0dcd4abd9992bf3fde534f61f049da67704bd796a3dd156188372da79ff15a00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aquarius
+    - conjunct:
+        subject: graha.venus
+        other: graha.mars
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: extreme
+    text: The combination of Venus and Mars causes Rajayoga
+- id: HINDUPREDICTIVE.CAREER.CH17V3.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v3
+    quote: >-
+      Venus alone is most beneficial and in conjunction with Saturn in good signs produces
+      an excellent career of much fame.
+    quote_sha256: 007c7a8d8c8ba21b28ecf8c58ebb93fa19fe6e62b6a885b37d6e1d92f3491c60
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.gemini
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+    - any:
+      - occupies_rashi:
+          subject: graha.venus
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.venus
+          rashi: rashi.libra
+      - occupies_rashi:
+          subject: graha.venus
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.venus
+          rashi: rashi.virgo
+      - occupies_rashi:
+          subject: graha.venus
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.venus
+          rashi: rashi.aquarius
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: produces an excellent career of much fame
+- id: HINDUPREDICTIVE.CAREER.CH20V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v12
+    quote: >-
+      Kahala yoga.—The lord of the 4th and Jupiter in mutual quadrants, and the lord of ascendant
+      powerful—Stubbornness, courageous and adventurous commanding, infantry, cavalry, artillery,
+      elephants and camels and ruling towns and cities.
+    quote_sha256: b061533d59b1c9dc040bdf41a1a873033065b5b481a72cb74f3e388d76893c4c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: lord.bhava.04
+        other: graha.jupiter
+        distance: dist.01
+    - strength:
+        subject: lord.bhava.01
+        op: '>'
+        value: 500
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: commanding, infantry, cavalry, artillery, elephants and camels and ruling towns
+      and cities
+- id: HINDUPREDICTIVE.CAREER.CH24V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v7
+    quote: >-
+      When lagna (ascendant) is powerful, during the dasa of lord of lagna, favourable, results
+      can be expected to occur—such as rise in profession
+    quote_sha256: 6a53afa8808c5250559b369a41f1d8cf2ae37abb3e8a702c55891bb4c5493433
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.01
+        level: level.maha
+    - strength_band:
+        subject: lord.bhava.01
+        band: band.strong
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: rise in profession
+- id: HINDUPREDICTIVE.CAREER.CH24V9.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v9
+    quote: >-
+      Lord of the 3rd dusing his dasa gives new friends, help to brothers, leadership, and
+      physical pain (if afflicted).
+    quote_sha256: 5ae755d9141b4f549d56121454078f87e46a34c03d95175611cfb3fff8603fae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.03
+        level: level.maha
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: leadership
+- id: HINDUPREDICTIVE.HEALTH.CH17V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v3
+    quote: 3 Gemini.—Mars, Jupiter and the Sun are evil.
+    quote_sha256: 4079c2f05b09674db48bc1c10a770e922335aec0761eceb44cde911d8f101733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.gemini
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Mars is evil for Gemini lagna
+- id: HINDUPREDICTIVE.HEALTH.CH17V3.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v3
+    quote: 3 Gemini.—Mars, Jupiter and the Sun are evil.
+    quote_sha256: 4079c2f05b09674db48bc1c10a770e922335aec0761eceb44cde911d8f101733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.gemini
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Jupiter is evil for Gemini lagna
+- id: HINDUPREDICTIVE.HEALTH.CH17V3.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v3
+    quote: 3 Gemini.—Mars, Jupiter and the Sun are evil.
+    quote_sha256: 4079c2f05b09674db48bc1c10a770e922335aec0761eceb44cde911d8f101733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.gemini
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The Sun is evil for Gemini lagna
+- id: HINDUPREDICTIVE.STATUS.CH17V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v10
+    quote: Venus is the most powerful planet and in conjunction with Mercury produces Rajayoga.
+    quote_sha256: 3c3fa68a05845ea7f94c540a9e46807f0979f0c19487b8d6dd383198aff2fe09
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.capricorn
+    - conjunct:
+        subject: graha.venus
+        other: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: produces Rajayoga
+- id: HINDUPREDICTIVE.STATUS.CH17V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v11
+    quote: Aquarius.—Venus alone is auspicious.
+    quote_sha256: 6edf400a575c38ad35493a44630b5d832c01d44f844c73d59857f4177fef7388
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aquarius
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: Venus alone is auspicious
+- id: HINDUPREDICTIVE.STATUS.CH17V4.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v4
+    quote: >-
+      Mars in combination with the Moon or Jupiter in favourable houses especially 1, 5, 9
+      and 10 produces much reputation.
+    quote_sha256: cf9f468f625e99a39e6e613c32fa3912229238b5c5673c0f1bafc8ff4bda6136
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - any:
+      - all:
+        - conjunct:
+            subject: graha.mars
+            other: graha.moon
+        - any:
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.01
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.05
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.09
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.10
+      - all:
+        - conjunct:
+            subject: graha.mars
+            other: graha.jupiter
+        - any:
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.01
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.05
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.09
+          - occupies_bhava:
+              subject: graha.mars
+              bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: produces much reputation
+- id: HINDUPREDICTIVE.STATUS.CH17V9.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v9
+    quote: When the Sun and Mars combine together they produce Rajayoga.
+    quote_sha256: 76dee195179606341ac5040cb8e0b5dae44429904ecdd2aafe0147dcc2488488
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.sagittarius
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: they produce Rajayoga
+- id: HINDUPREDICTIVE.STATUS.CH20V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.temperament: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v19
+    quote: >-
+      Lakshmi yoga.—Lord of the 9th in a quadrant, moolathrikona or in deep exaltation or
+      lord of lagna in conjunction with 9th lord— 180 Extremely handsome appearance, noble
+      qualities and virtues, possessed of high reputation for honesty and honoured by aristocracy.
+    quote_sha256: bc6bd56b78e178d38496a9b7bae5784f94721f0ed4dae0c4d1fbd801c343c9a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - in_kendra:
+        subject: lord.bhava.09
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.moolatrikona
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.exalted
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      Extremely handsome appearance, noble qualities and virtues, possessed of high reputation
+      for honesty and honoured by aristocracy.
+- id: HINDUPREDICTIVE.STATUS.CH20V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v20
+    quote: >-
+      Kusuma.—Venus in a fixed sign, in a quadrant, a weak Moon in a trine and the Sun in
+      the 10th house.—Extremely liberal, war-like and possessed of unsullied reputation and
+      good enjoyment.
+    quote_sha256: ff00315e7b4e8d7a4d2b629608f43b646d13e3bdf0d2cb6c49edeb84801328a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d1
+        subject: graha.venus
+        rashi: rashi.taurus
+    - in_kendra:
+        subject: graha.venus
+    - strength:
+        subject: graha.moon
+        op: <
+        value: 5.0
+    - in_trikona:
+        subject: graha.moon
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: Extremely liberal, war-like and possessed of unsullied reputation and good enjoyment
+- id: HINDUPREDICTIVE.STATUS.CH20V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+    domain.career: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v3
+    quote: >-
+      Sreenatha yoga.--When the exalted lord of the 7th occupies the 10th and the lord of
+      the 10th combines with the lord of the 9th--Great respect, reputation, honourable living,
+      much wealth and nice surroundings.
+    quote_sha256: c5acdbd940c3d779ff4172d999bcfcd3c3a59f36e8ed4847c92192e50679e184
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d1
+        subject: lord.bhava.07
+        dignity: dignity.exalted
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.10
+    - conjunct:
+        subject: lord.bhava.10
+        other: lord.bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: Great respect, reputation, honourable living, much wealth and nice surroundings
+- id: HINDUPREDICTIVE.STATUS.CH20V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v7
+    quote: >-
+      The Moon and Jupiter in quadrants to each other.--Respected by relations and friends,
+      Municipal Commissioner or Manager of a big corporation, name goes to prosperity, possession
+      of all worldly enjoyments.
+    quote_sha256: 13d4ed13ce847c38ae7aa64c0f18b436c5e5d72355effe94fe6061205173e3a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.01
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Respected by relations and friends, Municipal Commissioner or Manager of a big corporation,
+      name goes to prosperity, possession of all worldly enjoyments
+- id: HINDUPREDICTIVE.STATUS.CH20V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+    domain.health: 0.7
+    domain.longevity: 0.6
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v8
+    quote: >-
+      Adhi yoga.—Benefics in the 6th, 7th and 8th from the Moon.--Commander, Minister or a
+      King or equal to him, foeless, long-lived and free from diseases.
+    quote_sha256: 9bdee80b676b8bfef6c371d64aaf9cc3fc442c190989775f98ead3ffc560974c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.06
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.jupiter
+        bhava: bhava.07
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.venus
+        bhava: bhava.08
+        reference: ref.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: Commander, Minister or a King or equal to him, foeless, long-lived and free from
+      diseases.
+- id: HINDUPREDICTIVE.STATUS.CH20V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.temperament: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v9
+    quote: Anapha.—Planets in the 12th from the Moon—Man of commanding and majestic appearance
+    quote_sha256: 15249b0492b240a47d1e312933a352b282b414f3835804992793c9860b3bf008
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: lord.bhava.01
+        bhava: bhava.12
+        reference: ref.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: Man of commanding and majestic appearance
+- id: HINDUPREDICTIVE.STATUS.CH30V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v10
+    quote: >-
+      A powerful Rajayoga is caused if Gemini becomes the ascendant with waxing Moon there,
+      the Sun in the 11th and Mercury in the 10th.
+    quote_sha256: c4c0d815b5517781f52956f07ce6fb14e7ae88d2f322d35c0c79ee466188a96c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.gemini
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: A powerful Rajayoga is caused
+- id: HINDUPREDICTIVE.STATUS.CH30V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v11
+    quote: >-
+      If the Sun possessing beneficial Shadvargas occupies the 3rd and Saturn be in the 6th,
+      a powerful Rajayoga is caused.
+    quote_sha256: 689b8229c4a516fc8e7172f599dfd25c49cc07223e07e3ed2c3b9ec021a869c4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.03
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.06
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: a powerful Rajayoga is caused

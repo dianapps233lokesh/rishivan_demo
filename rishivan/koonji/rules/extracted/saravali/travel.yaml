@@ -1,0 +1,418 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.EDUCATION.CH21V2025.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.5
+    domain.travel: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v20-25
+    quote: >-
+      Jupiter aspecting the Sun in a sign of Mercury foretells that the native will have knowledge
+      of many Sastras, be a king's messenger (or representative), will go to foreign countries,
+      be fierce and be always bewildered.
+    quote_sha256: ae985521d6c40aded50b3ba408551bb42df287bec89d170cfe166970a8b88f0e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will have knowledge of many Sastras
+- id: SARAVALI.FAMILY.CH9V5152.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.travel: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v51-52
+    quote: >-
+      The fathe of the child was away at the time of birth if the Sun is in a movable sign,
+      in case of day birth, and aspected by Mars.
+    quote_sha256: c23bcd14ae4f4a95eeabb461429bbb641d31a1630ea4cb879f8f4dc56316a8aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: moderate
+    text: The father of the child was away at the time of birth
+- id: SARAVALI.TEMPERAMENT.CH23V1012.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.travel: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v10-12
+    quote: if by Mercury, he will be not virtuous, will sleep much and will wander at all
+      times
+    quote_sha256: 00f5d15d6884b15a00fe0d5cfdf94862eb2ad61357899244ae63ee86e657609a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be not virtuous, will sleep much and will wander at all times
+- id: SARAVALI.TRAVEL.CH15V31.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v31
+    quote: >-
+      If Saturn, Mars and Venus are in one house at birth, the native is born to an immoral
+      lady, will marry such a lady will be devoid of happiness, and will be intent on wandering
+      in distant places.
+    quote_sha256: ebf916fc2a91707559788c76b3213bda45ee91bb162f87c10b3fc2ae8523057f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.saturn
+        other: graha.mars
+    - conjunct:
+        subject: graha.saturn
+        other: graha.venus
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: will be intent on wandering in distant places
+- id: SARAVALI.TRAVEL.CH16V11.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v11
+    quote: be undesirable and will wander
+    quote_sha256: b491c1d28c08a90be41a9fc9c72369411112066b88f17c5f7c3e08929202db0b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: be undesirable and will wander
+- id: SARAVALI.TRAVEL.CH18V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.travel: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v6
+    quote: If the said six planets are together, the subject will always wander in shrines
+    quote_sha256: 32a45500166c732f83a15d10a428f0b4d79beb0559b22ba1f18c49b0b8f45efe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the subject will always wander in shrines
+- id: SARAVALI.TRAVEL.CH24V1314.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v13-14
+    quote: If Mars occupies Libra in a nativity, the person will be liable to wandering
+    quote_sha256: 1b651df2195179adad422bb49c8f74098c961ef948f173bb1612f4c61409df91
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.libra
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the person will be liable to wandering
+- id: SARAVALI.TRAVEL.CH24V3136.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v31-36
+    quote: >-
+      If Mars is in Taurus/Libra, with the aspect of the Sun, the person will seek to move
+      in forests and hills, will hate women, will have many enemies, will have fierce appearance
+      and be courageous.
+    quote_sha256: 42612452fbd6ba86617be19ee0b0300fa34701562debd56638c84fedef1cc4ba
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the person will seek to move in forests and hills
+- id: SARAVALI.TRAVEL.CH24V56.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.spiritual: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v5-6
+    quote: fond of going to foreign countries, virtuously disposed, highly intelligent
+    quote_sha256: 5ae780fc5f6de27cb7cd2db0b1fe499c126beaa6c252d85944f0d7985e5b56e7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.gemini
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: fond of going to foreign countries
+- id: SARAVALI.TRAVEL.CH25V5560.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      If Mars aspects Mercury as above, he will be a leader of townsmen or thieves, will reside
+      in forests, and will be a famous writer.
+    quote_sha256: d27a28fd9f93ff2d20694b825ed50c1ba6e40163b4e0fc53b1f14e3b5b5ebcd1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: will reside in forests
+- id: SARAVALI.TRAVEL.CH25V5560.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      If Saturn aspects Mercury as above, he will be intent upon living in forests, will eat
+      much, be wicked dirty and will be unsuccessful in all his undertakings.
+    quote_sha256: 1887ed1ca99101b9b9295df62dd71780aa73d48e88e4a5cf90421652ba8338b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: will be intent upon living in forests
+- id: SARAVALI.WEALTH.CH5V3638.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.85
+    domain.wealth: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v36-38
+    quote: >-
+      A planet with directional strength takes the native to the direction ruled by it and
+      gives clothes, jewels, conveyances etc. And the native is happy in such a direction.
+    quote_sha256: afcde6bcbb0384e64bf40e9e23a3db6599b9b255701b6c002b2a79caae51cabc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+    - not:
+        combust:
+          subject: graha.sun
+    - not:
+        dignity:
+          subject: graha.sun
+          dignity: dignity.debilitated
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: gives clothes, jewels, conveyances etc

@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -230,13 +231,56 @@ def cmd_extract(args) -> int:
     from rishivan.koonji.pipeline import extract_books
 
     budget = Budget(max_calls=args.max_calls)
-    client = VertexClient(budget=budget, default_model=args.fast_model)
+    # The DEEP model, not the fast one. `default_model` is two things at once:
+    # the fallback for a call that names no model, and the value stamped on the
+    # Helicone `model` property when the client is built. Passing the fast model
+    # tagged every extraction request as `gemini-2.5-flash` in the dashboard
+    # whatever actually ran -- so a Pro run and a flash-lite run were
+    # indistinguishable there, and cost attribution was wrong for both. Single
+    # -call mode only ever calls the deep model; the six-call path names its
+    # model per stage anyway, so nothing else changes.
+    client = VertexClient(budget=budget, default_model=args.deep_model)
     if args.record:
         client = RecordingClient(client, args.record)
 
-    def tick(i, total, result):
-        note = result.skipped or f"{len(result.candidates)} candidate(s)"
-        print(f"  [{i}/{total}] {result.passage.passage_id}  {note}")
+    started = time.perf_counter()
+    done = 0
+
+    def tick(i, total, passage, result, error):
+        """One line per model call, printed as it lands.
+
+        Counts completions rather than using `i`, which is the passage's
+        position in the book: under `--workers 16` results arrive in whatever
+        order they finish, so `i` jumps around and cannot measure progress.
+
+        Flushed explicitly because stdout is block-buffered when redirected to
+        a file or a pipe, which is exactly how a long run is watched. Without
+        it `tee` shows nothing for minutes and then a wall of text.
+        """
+        nonlocal done
+        done += 1
+        elapsed = time.perf_counter() - started
+        rate = done / elapsed if elapsed > 0 else 0.0
+        remaining = (total - done) / rate if rate > 0 else 0.0
+
+        if error:
+            status, note = "FAIL", error
+        elif result.skipped:
+            status, note = "none", result.skipped
+        else:
+            bits = [f"{len(result.candidates)} cand"]
+            if result.blocked:
+                bits.append(f"{len(result.blocked)} blocked")
+            if result.unbuildable:
+                bits.append(f"{len(result.unbuildable)} unbuildable")
+            status, note = "ok", " · ".join(bits)
+
+        print(
+            f"  [{done:>4}/{total}] {status:<4} {passage.passage_id:<30.30} "
+            f"{note[:42]:<42} {budget.calls:>4}c "
+            f"{elapsed/60:5.1f}m ~{remaining/60:5.1f}m left",
+            flush=True,
+        )
 
     run = extract_books(
         client, out_dir=args.rules, books=args.book or None, limit=args.limit,

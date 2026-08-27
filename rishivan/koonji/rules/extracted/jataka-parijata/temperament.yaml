@@ -1,0 +1,2244 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.CAREER.CH17V58.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v58
+    quote: >-
+      if Mercury occupy that place with Saturn, the person will be either a copyist of books
+      or betake himself to unbecoming ways.
+    quote_sha256: 19aed1f5823c6db3e34bd2debd5e8ab87ed8c4cb9a7ce732d1b7ab8cd6b885ee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.10
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.saturn
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: career.independent_work
+    polarity: positive
+    magnitude: moderate
+    text: copyist of books or betake himself to unbecoming ways
+- id: JATAKAPARIJATA.EDUCATION.CH17V3537.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: >-
+      if with Jupiter, he will be winning on account of his steady virtues and thoroughly
+      conversant with the truths of all the sciences
+    quote_sha256: a0d266c342b9833162425797a943579bf83eb9b71536dc01a982bba4348af868
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be winning on account of his steady virtues and thoroughly conversant with the
+      truths of all the sciences
+- id: JATAKAPARIJATA.EDUCATION.CH17V3537.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: if with Saturn, he will be stupid
+    quote_sha256: 4f2f98e67056b77fa06b3d4bc90534caee44347d15538a1f6b81966d5088b51a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.saturn
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: he will be stupid
+- id: JATAKAPARIJATA.EDUCATION.CH17V85.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v85
+    quote: >-
+      The same planets combining with Venus in the same bhava will make him conversant with
+      Sastras, but fickle-minded and cowardly.
+    quote_sha256: c29bf67078a10d59251223eaf72c6dfc74c36da2c603f3eed16dbd778b5a44df
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: conversant with Sastras
+- id: JATAKAPARIJATA.HEALTH.CH18V153.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v153
+    quote: Misgiving in the heart mental anguish
+    quote_sha256: 94d4e2014c8f80be70216f4ce4556de2a5605fe1513080ff5e2f39996bc9726f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Misgiving in the heart mental anguish
+- id: JATAKAPARIJATA.HEALTH.CH18V67.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v67
+    quote: >-
+      During the bhukti of Saturn in the Sun's dasa, a person should be prepared for hostility
+      from every one, want of energy, an ignoble calling, mental worry, and liability to risk
+      from the rulers or thieves.
+    quote_sha256: 552b76e6c24c6193e3c2b22f84b4d778236358bf46f39b660de9e47fa1149b59
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: health.vitality
+    polarity: negative
+    magnitude: strong
+    text: want of energy
+- id: JATAKAPARIJATA.HEALTH.CH18V67.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v67
+    quote: >-
+      During the bhukti of Saturn in the Sun's dasa, a person should be prepared for hostility
+      from every one, want of energy, an ignoble calling, mental worry, and liability to risk
+      from the rulers or thieves.
+    quote_sha256: 552b76e6c24c6193e3c2b22f84b4d778236358bf46f39b660de9e47fa1149b59
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: mental worry
+- id: JATAKAPARIJATA.HEALTH.CH9V113.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.temperament: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v113
+    quote: >-
+      if Mars be in a house owned by an enemy, the person born will be defective in some limb,
+      ungrateful and unclean
+    quote_sha256: d611b7142d67ddd1a9ae024829701afbb1acb0074a0b486fd5c380ca9816b758
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.inimical
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: defective in some limb
+- id: JATAKAPARIJATA.PROGENY.CH9V42.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: if Jupiter be in Kataka, the person born will be wise and rich in sons
+    quote_sha256: 8c3972db994614cd19c8c31de9794ff6190a3f85a03423c36967d6008d909693
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.jupiter
+      rashi: rashi.cancer
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the person born will be wise and rich in sons
+- id: JATAKAPARIJATA.PROPERTY.CH9V105.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: >-
+      If the Sun be in स्वक्षेत्र (Swakshetra), the person born will own a fine mansion, lead
+      a de- praved life and will suffer from fierce lust
+    quote_sha256: b9e8eb759b51bca1c558a93e08f4ff5bd3922f95fa588a481f25078eed790adc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.own_sign
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will own a fine mansion
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V3537.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.7
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: >-
+      if with Venus, he will be subject to carnal appetite and will cleverly pursue quarrels
+      and intrigues into which his lustful impulse may lead him
+    quote_sha256: 3957cbd0c7b576c2ddaba2a483305216d67ca729b15ea5c56578ea632d0c1d8d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.venus
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be subject to carnal appetite and will cleverly pursue quarrels and intrigues
+      into which his lustful impulse may lead him
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V282.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.career: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v2-82
+    quote: >-
+      When the lord of the 6th bhava has attained a Gopura or other higher Vaiseshikamsa and
+      is aspected by the Sun and when the lord of the Lagna is in full strength, the person
+      born will be beneficent to his kinsmen.
+    quote_sha256: 748f9813b08946493ea279d7a2a5a814472c42141966d86e37de6421a6885bd1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.06
+        dignity: dignity.exalted
+    - aspects:
+        subject: graha.sun
+        target: lord.bhava.06
+    - strength:
+        subject: lord.bhava.01
+        op: '>='
+        value: 1.0
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the person born will be beneficent to his kinsmen
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V3537.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.career: 0.2
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: If the lord of the 3rd bhava be associated with the Sun, the person born will be
+      valiant
+    quote_sha256: 71a61778f477a61358af7659cddbaadb79b15bbe6945b51c03d5dfca86708160
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be valiant
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V3537.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: if with the Moon, he will be firm-minded
+    quote_sha256: 56395eba26f87a8471f7a391b172fdf1c8c8f9380c1ce4b206301ff3b01c666e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be firm-minded
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V3537.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: if with Mars, he will be depraved, senseless and irritable
+    quote_sha256: eb0bbe65c8d24eeeb87a8696e00de66a748df5b1bae0229b0e52aaa52a5bdc30
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be depraved, senseless and irritable
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V3537.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: if with Rahu, he will be a great coward
+    quote_sha256: ddc18b99c19a2ffb457ef84d419fd5cf2e0ee348b104e9bf70d559fde50d898c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.rahu
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: he will be a great coward
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V56.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v56
+    quote: if Mars, he will be rash and evil-minded
+    quote_sha256: 44e239fac0e03af091f07ad722ff406d0b2768b325ac6f478aeb26b1f16fcd7a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be rash and evil-minded
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V56.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v56
+    quote: if Venus, a voluptuary
+    quote_sha256: 1362369afe1ccc4cf6f3acda20c3053180f3ca87e30f0c61814efe1a16376670
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.venus
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: a voluptuary
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V57.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v57
+    quote: >-
+      If the Sun occupying the 10th place from the Moon be associated with Mars, the person
+      born will be addicted to wine and to females belonging to other people
+    quote_sha256: 3c9978ced79771ed9bdf520ef756454e31e39c09c0df39fcb180785ae322a6d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.sun
+        bhava: bhava.10
+        reference: ref.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the person born will be addicted to wine and to females belonging to other people
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V58.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v58
+    quote: >-
+      If the planet associated with Jupiter in that position be Saturn, the person born will
+      skilfully contrive to trouble every body and will tenaciously adhere to his undertakings.
+    quote_sha256: ff0e2ee737384e92d8dbb6e261507e3c3180ac2025d31237d2e6d748985ddfb7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.jupiter
+        bhava: bhava.10
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.saturn
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: skilfully contrive to trouble every body and will tenaciously adhere to his undertakings
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V76.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      If the planet combining with Mars in the 9th bhava be Saturn, the influence of the yoga
+      on the person born is to make him wicked and addicted to women not his own.
+    quote_sha256: 8883f129a469861ab54ae391b7009f16c268641f907222e939cf9d165f7e5c8a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: make him wicked and addicted to women not his own
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V79.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v79
+    quote: >-
+      If in that bhava the Sun, Mars and Mercury be united, the person born will be lovely,
+      but ill-tempered and quarrelsome.
+    quote_sha256: 0a9962a6b3fafb760a0c56b0e6cdc78efa79989994990a15659b4cedf9d41b8d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be lovely, but ill-tempered and quarrelsome
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V80.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v80
+    quote: >-
+      If the Sun and Mars appear in conjunction with Venus in the 9th bhava, the effect of
+      the yoga on the person born will be to make him disputatious, irritable and rakishly
+      inclined to the seduction of women.
+    quote_sha256: c151166f6bc538b13dfc9a23bcfdeceeb2968bbe039b3caf12fdf2837d0ffecf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: disputatious, irritable and rakishly inclined to the seduction of women
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V80.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v80
+    quote: >-
+      if the planet combining in the 9th bhava with the Sun and Mercury be Saturn, the person
+      born will be wicked and addicted to women not his own.
+    quote_sha256: 3f309e5423cce48e6289d8e23a7c657c8bb80b03270fd3d62a69f91c1a535259
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: wicked and addicted to women not his own
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V81.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v81
+    quote: >-
+      If the same two planets become associated with Saturn in the 9th bhava, the person born
+      will become a notorious libertine.
+    quote_sha256: e8bcc64498a1407c4b491de05208142fd076257d2fc4e0053166012f2868b797
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: notorious libertine
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V81.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v81
+    quote: >-
+      The Moon, Mars and Mercury conjoined in the 9th bhava give birth to one who, though
+      afflicted in childhood, will become happy in later life.
+    quote_sha256: aa8aef2ac8e036c1a317d8d21ea1dc40f6c26c13e83febba2d4d78d9d8f8d161
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: happy in later life
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V85.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v85
+    quote: >-
+      The same planets combining with Venus in the same bhava will make him conversant with
+      Sastras, but fickle-minded and cowardly.
+    quote_sha256: c29bf67078a10d59251223eaf72c6dfc74c36da2c603f3eed16dbd778b5a44df
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: fickle-minded and cowardly
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V85.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v85
+    quote: >-
+      If those two planets again be associated with Saturn in the 9th bhava, the person born
+      will be captious and incompetent.
+    quote_sha256: 71435545be45084b4806020b41aaf869198da8a2efa6b175b175ad6e1e6fa763
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: captious and incompetent
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V87.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v87
+    quote: >-
+      Venus, Mars, Jupiter and the Moon in the 9th bhava make the person born valiant, endowed
+      with every virtue and a critical faculty to appreciate works of art.
+    quote_sha256: 276462c978c73e5e5a228cdd9fd1a771b31bf4c9faccd32f4d529bf8547fa43b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born valiant, endowed with every virtue and a critical faculty to appreciate
+      works of art
+- id: JATAKAPARIJATA.TEMPERAMENT.CH18V112.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v112
+    quote: >-
+      A feeling of aversion, mental anguish, waste of wealth through the sons, failure of
+      business are what a person may have to be prepared for during Saturn's interval in Jupiter's
+      mahadasa.
+    quote_sha256: e0e7f0c61c88c14136428be11848779247f61f89742e534e57d6122bcc143cd5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: A feeling of aversion, mental anguish
+- id: JATAKAPARIJATA.TEMPERAMENT.CH18V118.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v118
+    quote: >-
+      Failure in business, wandering, high fever, great risk, loss of wealth and depression
+      of spirits, a person must be prepared for in Kuja's interval in Jupiter's mahadasa.
+    quote_sha256: 9b1ccafbf14c773c08e31299918b1edf5d5a4868c81b75e5575fd55b606e5a4e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: depression of spirits
+- id: JATAKAPARIJATA.TEMPERAMENT.CH18V155.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.3
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v155
+    quote: Ketu associated with a benefic planet yields happiness in its dasa.
+    quote_sha256: f6e97a1076f8c32e1ce95042486e5ba2a5c994f031268cc72a25ba6854387947
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - any:
+      - conjunct:
+          subject: graha.ketu
+          other: graha.jupiter
+      - conjunct:
+          subject: graha.ketu
+          other: graha.venus
+      - conjunct:
+          subject: graha.ketu
+          other: graha.mercury
+      - conjunct:
+          subject: graha.ketu
+          other: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: yields happiness in its dasa
+- id: JATAKAPARIJATA.TEMPERAMENT.CH18V157.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v157
+    quote: at the end there is happiness.
+    quote_sha256: 9c9ad4ec7cc52ddbf55c190105bb89bd24579dae69634d967da0ffa2c652816a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: there is happiness at the end of Ketu's dasa
+- id: JATAKAPARIJATA.TEMPERAMENT.CH18V96.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v96
+    quote: >-
+      Loss of such things as comfort, happiness, wealth and worldly status, the pang of parting
+      with a wife, children and relatives, illness in the extreme, residence in a strange
+      land, and a disposition to wrangle are what Rahu brings about.
+    quote_sha256: b579e0ed95be5b9d9fadc377d7efc4e311fca282df4052596ab94bcde1232bab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: a disposition to wrangle
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V100109.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v100-109
+    quote: >-
+      When Mars occupies the exaltation sign at the birth of a person, the latter will be
+      valiant
+    quote_sha256: f109b2ca9c66c2811b5e5569a678a80ca9bc310ca1c69fa635c697bdb33f178f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.exalted
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the latter will be valiant
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V104.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: if Mars, wrathful and ruthless
+    quote_sha256: 6a2b239a4ede356d9864c536ac6db0a6f141d08d88603469cba94e67ef2b383a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: wrathful and ruthless
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V104.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: if Jupiter, voluptuous and liked by kings
+    quote_sha256: e493b59cbf606c2c4b039e07d34553a743e6795141e6546a9dc16f07dbd4d039
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: voluptuous and liked by kings
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V104.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: if Saturn, brave
+    quote_sha256: 24a05930913fca25f939b43249d7039a332c1b58826d0e0dccf824807f6c898f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: brave
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V105.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: if Saturn, the person born will be distinguished by fierce prowess but bereft of
+      happiness
+    quote_sha256: 0d65046f996816685df79b72fb116a79fc2e98eae4f6b52b768849e153538816
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.own_sign
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the person born will be distinguished by fierce prowess but bereft of happiness
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V1053.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v10-53
+    quote: >-
+      The Moon in Kumbha, aspected by malefic planets makes the person that has his birth
+      under the influence a libertine.
+    quote_sha256: 1b2a9f3335bdd667d1dd93d15af22f32c9b91492b99149bd1102a55e44b03974
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - any:
+      - aspects:
+          subject: graha.sun
+          target: graha.moon
+      - aspects:
+          subject: graha.mars
+          target: graha.moon
+      - aspects:
+          subject: graha.saturn
+          target: graha.moon
+      - aspects:
+          subject: graha.rahu
+          target: graha.moon
+      - aspects:
+          subject: graha.ketu
+          target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: a libertine
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V107.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: when Mercury is in that position, the person born will be most witty and jovial
+    quote_sha256: 82b058d761d6a51e1c29dc4871c2d70891cec51c4f7154c46fa26bcc9d3e3b18
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.friendly
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be most witty and jovial
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V113.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v113
+    quote: >-
+      if it be Mercury that occupies a hostile house, the person born will be miserable and
+      inclined to evil
+    quote_sha256: ca2aa08d8707dcb4c3f534414afd1530ff9fe20859d1dd5083338644dd157865
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.inimical
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: miserable and inclined to evil
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V118.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v118
+    quote: >-
+      if in a Navamsa owned by Venus, he will delight in the society of women not his own,
+      be liberal, comfortably placed and learned
+    quote_sha256: 358aeb1c5d41a26861c511da93286f4164a7420d8f9a39489fa1e1c50d290449
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.taurus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will delight in the society of women not his own, be liberal, comfortably placed
+      and learned
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V118.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v118
+    quote: >-
+      if in a Navamsa owned by Venus, he will delight in the society of women not his own,
+      be liberal, comfortably placed and learned
+    quote_sha256: 358aeb1c5d41a26861c511da93286f4164a7420d8f9a39489fa1e1c50d290449
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.libra
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will delight in the society of women not his own, be liberal, comfortably placed
+      and learned
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V118.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.health: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v118
+    quote: >-
+      if in a Navamsa belonging to Saturn, he will be evil-minded, indigent, with large teeth,
+      and afflicted with ailments.
+    quote_sha256: f3aeefd624bc241590d47261a5af95603d21274b7ea77f4e3bd194d1d6bcdbac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be evil-minded, indigent, with large teeth, and afflicted with ailments
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V118.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.health: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v118
+    quote: >-
+      if in a Navamsa belonging to Saturn, he will be evil-minded, indigent, with large teeth,
+      and afflicted with ailments.
+    quote_sha256: f3aeefd624bc241590d47261a5af95603d21274b7ea77f4e3bd194d1d6bcdbac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be evil-minded, indigent, with large teeth, and afflicted with ailments
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V119.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.career: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v119
+    quote: >-
+      If a person be born in a द्वादशांश (Dwadasamsa) owned by मेष (Mesha), he will be a mischievous
+      robber and take to the evil ways and practices of such a vicious class of people
+    quote_sha256: aeb363b91f0b243991b3e71d492e395d3bab86650ff59e27186318d6532dac2f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be a mischievous robber and take to the evil ways and practices of such a vicious
+      class of people
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V119.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v119
+    quote: >-
+      if in a द्वादशांश (Dwadasamsa) belonging to मिथुन (Mithuna), he will be a gambler but
+      well-conducted.
+    quote_sha256: dfe06f6f46b35a3c445e21b0de46b388efbd8b704fa18e25fefd0467818ddd0e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be a gambler but well-conducted
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V120.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v120
+    quote: >-
+      If a person be born in a द्वादशांश (Dwadasamsa) of कर्कट (Karkata), he will be addicted
+      to bad practices
+    quote_sha256: fe91d4d004d2873deec106e8a342fb2a8f0ecf85f75422a55d8000318a778d8a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be addicted to bad practices
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V120.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.career: 0.7
+    domain.status: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v120
+    quote: >-
+      if in a द्वादशांश (Dwadasamsa) owned by सिंह (Simha), he will be virtuous, engaged in
+      the business of a king and will be attended by brave men
+    quote_sha256: 42006917eb423c7413d6130acec4345a4ee055006460da2304a4009a728132d8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.sun
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be virtuous, engaged in the business of a king and will be attended by brave
+      men
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V120.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v120
+    quote: if in a कन्या द्वादशांश (Kanyadwadasamsa), he will be a gambler and addicted to
+      women
+    quote_sha256: 6ced8810fcc3f83ee00c6944b697dc388e0ebc55d7428d541fdc0d672f9d71a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.mercury
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be a gambler and addicted to women
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V123.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v123
+    quote: >-
+      If a person be born in a thirtieth portion, owned by Mars in any sign, he will be fickle,
+      stiff-voiced and cruel minded
+    quote_sha256: f8451098c8e40151fc6367b58ca71c5dd031358834f10796657607a590358076
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d30
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be fickle, stiff-voiced and cruel minded
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V1619.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.career: 0.3
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v16-19
+    quote: >-
+      If Saturn, the Moon and the Sun occupy Kendra positions and are not aspected by benefic
+      planets, the person born will be a drunkard.
+    quote_sha256: f3173ffaf7caeddc6e0f0fa26cebbd7857c7cc0b0bb48bfb76a1a0dda60b496a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.saturn
+    - in_kendra:
+        subject: graha.moon
+    - in_kendra:
+        subject: graha.sun
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: graha.saturn
+        - aspects:
+            subject: graha.venus
+            target: graha.saturn
+        - aspects:
+            subject: graha.mercury
+            target: graha.saturn
+        - aspects:
+            subject: graha.moon
+            target: graha.saturn
+        - aspects:
+            subject: graha.jupiter
+            target: graha.moon
+        - aspects:
+            subject: graha.venus
+            target: graha.moon
+        - aspects:
+            subject: graha.mercury
+            target: graha.moon
+        - aspects:
+            subject: graha.jupiter
+            target: graha.sun
+        - aspects:
+            subject: graha.venus
+            target: graha.sun
+        - aspects:
+            subject: graha.mercury
+            target: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the person born will be a drunkard
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V1871.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v18-71
+    quote: >-
+      When the Moon occupies the पुत्रभाव (Puthra bhava, 5th), the person born will be high
+      minded, rich, compassionate and diligently bent on doing what has been determined upon
+      after deep deliberation
+    quote_sha256: 84444d28307490234c1d0c26363455410995c355945e88b1d43b5ac0135cf225
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      high minded, compassionate and diligently bent on doing what has been determined upon
+      after deep deliberation
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3
+    quote: >-
+      When the Moon is in conjunction with Jupiter, the person born will be very intelligent
+      and protect good people.
+    quote_sha256: c382766634137f57f67c6ec93067c008a1e3d5a47bd990312158c8d06afc61e6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the person born will be very intelligent and protect good people
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V3.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3
+    quote: >-
+      When Venus is associated with the Moon, the effect of the yoga on the person born will
+      be that he will be evil-minded and clever in making bargains.
+    quote_sha256: 9a599ffb2c69a9b15cf619ade9fec09ad2bf3e0ce42965724fa165085e6dde1b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be evil-minded and clever in making bargains
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3-4
+    quote: >-
+      The colour on the back of the animal (natural stripes of the animal at its back) should
+      be predicted through the planets placed in the 7th bhava from the Lagna
+    quote_sha256: c59fb051c7bf8c4e237ee261d63b90717258b97c77798a1c85d371135b94173b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the streaks on the animal's back
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V42.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: if in a sign of Venus, the person concerned will be energetic
+    quote_sha256: 0641a7e0d61fe015deaee83bcfbb1849c5d651b4f8438b398dd5b92f79d9e5d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.taurus
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.libra
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will be energetic
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V5.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      The man at whose birth Jupiter and Venus occupy one sign will be energetic, in favor
+      with the king and exceedingly intelligent.
+    quote_sha256: 1b3ef6b35a3b9a7df3ab4ecc224a565eff8fb11f2f07fa4d5303a787452f2b5a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: energetic, in favor with the king and exceedingly intelligent
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V65.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.health: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v65
+    quote: >-
+      when Mercury occupies the 3rd bhava, the person born is bent on the practice of deception,
+      of vagrant habits, excessively vacillating and miserable
+    quote_sha256: 49784ed6f13bb2c4e3d10e499195935357cbfd2db2f20a9b17b8bddd58f486dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.03
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: >-
+      the person born is bent on the practice of deception, of vagrant habits, excessively
+      vacillating and miserable
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V82.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v82
+    quote: >-
+      The person born with the Sun in the 8th bhava will be heart winning, skilled in disputes
+      and discontented
+    quote_sha256: e40a695a4f156ac59659d0669ecb40fc3213d7b3b0d5ad78e71b3aa7d85f5448
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person born with the Sun in the 8th bhava will be heart winning, skilled in disputes
+      and discontented
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V82.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v82
+    quote: >-
+      if the Moon be in the अष्टमभाव (Ashtama bhava), the influence on the person born is
+      that he will be eager for war, liberal, fond of amusement and learning.
+    quote_sha256: 187015d7343d4d74b06a2cd3e772aa7df68d8fdde2a58e3c80bc7bee326de51e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be eager for war, liberal, fond of amusement and learning
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V90.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v90
+    quote: >-
+      If a person be born in पूर्वप्रोष्ठपदा (Purva-prosthapada), he will be bold in his speech,
+      mischievous, cowardly and weak
+    quote_sha256: 90842f6cbc5060698d7fe899d732bb23c7ef8aa15ae1e7e733db210dce265b10
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.purva_bhadrapada
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be bold in his speech, mischievous, cowardly and weak
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V90.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.wealth: 0.8
+    domain.education: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v90
+    quote: >-
+      if in the star उत्तरप्रोष्ठपदा (Uttara-prosthapada), he will be gentle in his nature,
+      liberal, opulent and learned
+    quote_sha256: fc6381a547ca15ead2c6f41ae7a99762f223db2fdd296d7880e938302740fcc1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.uttara_bhadrapada
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be gentle in his nature, liberal, opulent and learned
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V91.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v91
+    quote: >-
+      If at the birth of a person the Moon be in Mesha, he will eat sparingly, long for women
+      and have enterprising elder brothers
+    quote_sha256: 1ec953b868c588ebaeff66c94299f372486aacd6053ff6adcc79daa9c72636c5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will eat sparingly, long for women and have enterprising elder brothers
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V92.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      If a person be born when the Moon is in Simha, he will have broad eyes, a beautiful
+      face, grave looks and will be happy
+    quote_sha256: f766bc6658c999a8d1d3dcd9ec7ad859d0c5fac8b11a44fe927c059efe14e837
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will have broad eyes, a beautiful face, grave looks and will be happy
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V93.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v93
+    quote: >-
+      When Ketu is in the 10th bhava, the person born will be wise, strong, skilled in the
+      arts, self-knowing, loving the people but acting in a contrary wise, phlegmatic, foremost
+      among brave men and continually wandering.
+    quote_sha256: 18e96bcfb1d8721789945415b51666580edee3554a5971a92e8e6a0f90812d7c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.10
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will be wise, strong, skilled in the arts, self-knowing, loving the
+      people but acting in a contrary wise, phlegmatic, foremost among brave men and continually
+      wandering
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V96.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v96
+    quote: >-
+      if in a नवांश (Navamsa) of मकर (Makara), the person born will be covetous, black in
+      personal appearance and will have a wife and sons
+    quote_sha256: d4b259e7cd5af24bc8e376082ebd9cae61729cea4ced3e2f9c0104003a37fa29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_occupies:
+      varga: varga.d9
+      subject: graha.moon
+      rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person born will be covetous, black in personal appearance and will have a wife
+      and sons
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V96.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v96
+    quote: if in a कुम्भनवांश (Kumbha navamsa), the person born will be hypocritical and henpecked
+    quote_sha256: bda465dac3f249a702f31ed99cb489c4d0657dd69449195a71bfa4c78c27077e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_occupies:
+      varga: varga.d9
+      subject: graha.moon
+      rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be hypocritical and henpecked
+- id: JATAKAPARIJATA.WEALTH.CH9V109.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v109
+    quote: >-
+      The person born in the कुम्भ (Kumbha lagna) will be crafty minded, fond of dalliance
+      with women not his own, of miserly habits and master of much wealth.
+    quote_sha256: 9426be258ca6c699e9ec4733e9c0a14b366b462ab2b5fb8a0408311ff8231450
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aquarius
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: master of much wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V1871.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v18-71
+    quote: >-
+      When the Moon occupies the पुत्रभाव (Puthra bhava, 5th), the person born will be high
+      minded, rich, compassionate and diligently bent on doing what has been determined upon
+      after deep deliberation
+    quote_sha256: 84444d28307490234c1d0c26363455410995c355945e88b1d43b5ac0135cf225
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: rich

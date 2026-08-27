@@ -1,0 +1,2927 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.CAREER.CH15V33.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v33
+    quote: >-
+      When Mercury, Saturn and Jupiter are together at birth, it denotes that the native will
+      enjoy honour, wealth and sovereignty, be learned, will have abundant pleasures, be atttached
+      to his wife, be courageous and fortunate.
+    quote_sha256: 92b4b940aa9e623a19dbdfe98fb304e1743b57cd6bd04aa81fa7e781f4c49d00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the native will enjoy... sovereignty
+- id: SARAVALI.CAREER.CH18V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v21
+    quote: >-
+      If these planets are together at birth in a nativity, the subject will be a king's minister,
+      be equal to a king, chief of the people and be worshipped by all people.
+    quote_sha256: d91230b1537452a5f5d526850e973478e8edd2d9421a835584abfba91cb5e041
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject will be a king's minister, be equal to a king, chief of the people and be
+      worshipped by all people
+- id: SARAVALI.CAREER.CH21V23.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v2-3
+    quote: The native will also become a king.
+    quote_sha256: b028f0230a963616839fb297ea3d1aa8a9f89fc81af14472b41ae1598e47a66e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: The native will also become a king
+- id: SARAVALI.CAREER.CH21V5055.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      If Jupiter aspects the Sun in Pisces/Sagittarius, the person will move in royal palaces
+      or be a king himself, will possess elephants, horses and wealth, and be ever after learning.
+    quote_sha256: f625428abee9bcada0edacd88498947ccf9ca4790c7d56a1722f77c3584c2388
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will move in royal palaces or be a king himself, will possess elephants,
+      horses and wealth, and be ever after learning
+- id: SARAVALI.CAREER.CH21V5055.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      If Jupiter aspects the Sun in Pisces/Sagittarius, the person will move in royal palaces
+      or be a king himself, will possess elephants, horses and wealth, and be ever after learning.
+    quote_sha256: f625428abee9bcada0edacd88498947ccf9ca4790c7d56a1722f77c3584c2388
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will move in royal palaces or be a king himself, will possess elephants,
+      horses and wealth, and be ever after learning
+- id: SARAVALI.CAREER.CH22V6671.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v66-71
+    quote: >-
+      Should Jupiter aspect the Moon in Capricorn at birth, the native will be a king, be
+      incomparably brave, will have royal qualities, and will possess many wives, children
+      and friends.
+    quote_sha256: ca6a7253a7a0d816fb858bc05140461923a9a797ebbf9747b29c17e91dcb3f02
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the native will be a king
+- id: SARAVALI.CAREER.CH23V1012.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v10-12
+    quote: if by Jupiter, he will be a king's minister or be a king himself
+    quote_sha256: c29f9a5e93aa1ca354a1a878a3220081c4a2ffdf293c42c15c42a9c498797103
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: he will be a king's minister or be a king himself
+- id: SARAVALI.CAREER.CH23V1315.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v13-15
+    quote: if by Jupiter he will be either an army chief or a king
+    quote_sha256: af6db402cda35bb61bbaf769256476fd523121b81f071fe2a26d7d18a66de3fb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: he will be either an army chief or a king
+- id: SARAVALI.CAREER.CH23V46.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      if by Jupiter, he will be a great poet, be highly skilful in the branch of justice (or
+      politics), be a king's minister, will enjoy sight of other housewives, be libidinous,
+      and will have many a servant
+    quote_sha256: 0b33ab1983d84c7a04016930fdb46a62a45ef0382b84015300f1694915469028
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be a great poet, be highly skilful in the branch of justice (or politics), be
+      a king's minister, will enjoy sight of other housewives, be libidinous, and will have
+      many a servant
+- id: SARAVALI.CAREER.CH23V46.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      if by Jupiter, he will be a great poet, be highly skilful in the branch of justice (or
+      politics), be a king's minister, will enjoy sight of other housewives, be libidinous,
+      and will have many a servant
+    quote_sha256: 0b33ab1983d84c7a04016930fdb46a62a45ef0382b84015300f1694915469028
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be a great poet, be highly skilful in the branch of justice (or politics), be
+      a king's minister, will enjoy sight of other housewives, be libidinous, and will have
+      many a servant
+- id: SARAVALI.CAREER.CH24V1718.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v17-18
+    quote: >-
+      be a warrior endowed with chariots, elephants and armymen, will pass arrows on others'
+      army from his chariot
+    quote_sha256: fe6a444451aa294378d0f57b1f8361af3ea5ad89a28163ddb2088cc171466069
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.sagittarius
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: be a warrior endowed with chariots, elephants and armymen
+- id: SARAVALI.CAREER.CH24V1920.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-20
+    quote: be an army chief or a king
+    quote_sha256: 47735165f55a520923716e574c398445881e4cb9656cf4ffaf1a994539b0f162
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.capricorn
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: be an army chief or a king
+- id: SARAVALI.CAREER.CH24V1921.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.spiritual: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-21
+    quote: and lastly if by Jupiter, he will be devoted to his own work and be great
+    quote_sha256: eae62896bbe268b16f68d49d94fcdafaa1660923d3cd6ea4f14afb9054a193f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.capricorn
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: he will be devoted to his own work and be great
+- id: SARAVALI.CAREER.CH24V3136.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v31-36
+    quote: >-
+      If Venus himself aspect Mars in the above condition, the person will be a king’s minister,
+      be liked by the king, be an army chief, will have famous name (i.e. titles etc.) and
+      will be happy.
+    quote_sha256: 5de3abcf5315b342790d17b77c8aa7b78ebdb2ed97bdb485f596d2e18607ca98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.venus
+        target: graha.mars
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the person will be a king’s minister, be liked by the king, be an army chief
+- id: SARAVALI.CAREER.CH5V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v36
+    quote: A benefic if retrograde is strong and is capable of conferring kingdom.
+    quote_sha256: ba4c4af3b3b1ad96a8a7a5deadef4e6792b4d69e1e03682ac8a75124eb47e2d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - retrograde:
+        subject: lord.bhava.01
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: is capable of conferring kingdom
+- id: SARAVALI.EDUCATION.CH21V2833.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v28-33
+    quote: >-
+      If Mercury aspects the Sun in Cancer, the native will be famous for his learning and
+      honour, be dear to the king, skilful and will destroy enemies.
+    quote_sha256: 8dc409f9b31421cb5fc9122a26098e8bbf047dbbe718e86449f8f4ec626c089c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be famous for his learning and honour
+- id: SARAVALI.EDUCATION.CH21V5055.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Mercury aspecting the said Sun denotes that the native will possess sweet speech, and
+      will have knowledge of writing, literature, arts, assembly, journey and minerals.
+    quote_sha256: 6bf61f1ad86e9309b72552878d445ef588ce0bfe8cfc7eae8649e68ebe44b5c4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will possess sweet speech, and will have knowledge of writing, literature,
+      arts, assembly, journey and minerals
+- id: SARAVALI.EDUCATION.CH21V5055.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Mercury aspecting the said Sun denotes that the native will possess sweet speech, and
+      will have knowledge of writing, literature, arts, assembly, journey and minerals.
+    quote_sha256: 6bf61f1ad86e9309b72552878d445ef588ce0bfe8cfc7eae8649e68ebe44b5c4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will possess sweet speech, and will have knowledge of writing, literature,
+      arts, assembly, journey and minerals
+- id: SARAVALI.FAMILY.CH16V23.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v23
+    quote: >-
+      One who has these four planets together will be bold, be without parents, is from an
+      ignoble race, will have many wives, friends and sons and will have good conduct.
+    quote_sha256: 306d7be9519eab0c1cc3c42c07e16b8ad262d71976aee144ae6f5c95ebb29c09
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: be without parents
+- id: SARAVALI.FAMILY.CH7V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v28
+    quote: >-
+      If the planets denoting father and paternal uncle are in odd Bhavas, their well-being
+      is assured.
+    quote_sha256: d7085defe84bbadfcf3f6742e4a82232117118dff9385fb728f0229429ca0495
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: their well-being is assured
+- id: SARAVALI.FAMILY.CH9V50.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v50
+    quote: >-
+      The Moon, being bright, if be in her exaltation Rasi or in her own Rasi along with Jupiter
+      and Venus in aspect to Mercury
+    quote_sha256: 1b2368c98f575407eea67eadefd8959c098c6fe54c0c6a477c6923c93e6de8ca
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: extreme
+    text: extreme auspiciousness in respect of the native's mother
+- id: SARAVALI.FAMILY.CH9V50.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v50
+    quote: >-
+      the Moon, being bright, if be in her exaltation Rasi or in her own Rasi along with Jupiter
+      and Venus in aspect to Mercury
+    quote_sha256: 96824aae12226a410375b09fedd600c6efe580df4123fcdd4f98e7111ff4dc48
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: extreme
+    text: extreme auspiciousness in respect of the native's mother
+- id: SARAVALI.FAMILY.CH9V50.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v50
+    quote: >-
+      the Moon in 5th is capable of giving extreme auspiciousness in respect of the native's
+      mother.
+    quote_sha256: f716dad37956dce2b2c933ee091da0055e2037c830fee71e5908f2872caa2a00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: extreme
+    text: extreme auspiciousness in respect of the native's mother
+- id: SARAVALI.FAMILY.CH9V50.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v50
+    quote: The Sun so placed proves auspicious for father.
+    quote_sha256: 4ad9c9f6b09b3417d746fe087ceb248e7f79b49b952d01c677e6e03c20271b13
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: moderate
+    text: proves auspicious for father
+- id: SARAVALI.FAMILY.CH9V50.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v50
+    quote: The Sun so placed proves auspicious for father.
+    quote_sha256: 4ad9c9f6b09b3417d746fe087ceb248e7f79b49b952d01c677e6e03c20271b13
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: moderate
+    text: proves auspicious for father
+- id: SARAVALI.FAMILY.CH9V50.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v50
+    quote: The Sun so placed proves auspicious for father.
+    quote_sha256: 4ad9c9f6b09b3417d746fe087ceb248e7f79b49b952d01c677e6e03c20271b13
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: moderate
+    text: proves auspicious for father
+- id: SARAVALI.GENERAL.CH11V1011.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch11.v10-11
+    quote: >-
+      Rahu in the ascendant identical with Aries Taurus or Cancer protects the native from
+      the clutches of all evils
+    quote_sha256: 4cc4e34868398be78eccf3cf4f914b0fec14061e557d2c0267d0e091bc0c0343
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - any:
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.cancer
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: protects the native from the clutches of all evils
+- id: SARAVALI.GENERAL.CH11V35.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch11.v3-5
+    quote: >-
+      Should Rahu be in the 3rd, 6th or 11th from the ascendant and be aspected by benefics
+      all evils are destroyed as though wind carries away a heap of cotton with it.
+    quote_sha256: f42c0a1457197a89bfe1b71f3c19e202f68f6de65737a1d01f6ea68340c586ef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.rahu
+      - aspects:
+          subject: graha.venus
+          target: graha.rahu
+      - aspects:
+          subject: graha.mercury
+          target: graha.rahu
+      - aspects:
+          subject: graha.moon
+          target: graha.rahu
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: all evils are destroyed
+- id: SARAVALI.HEALTH.CH25V4348.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.health: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v43-48
+    quote: >-
+      If Saturn aspects Mercury as above, one will be fond of vanity, be sinful, will face
+      imprisonment, be devoid of virtues and will hate coborn and elders.
+    quote_sha256: 1cdf3896fe784c00b22891c51d991d3c21dc07bb43981f65c135c42a6a17baf9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be fond of vanity, be sinful, will face imprisonment, be devoid of virtues
+      and will hate coborn and elders
+- id: SARAVALI.PROGENY.CH16V23.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v23
+    quote: >-
+      One who has these four planets together will be bold, be without parents, is from an
+      ignoble race, will have many wives, friends and sons and will have good conduct.
+    quote_sha256: 306d7be9519eab0c1cc3c42c07e16b8ad262d71976aee144ae6f5c95ebb29c09
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: will have many wives, friends and sons
+- id: SARAVALI.RECORDAPPLICATION.CH6V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch6.v2
+    quote: >-
+      For example, Saturn in Libra while Cancer ascends containing Jupiter and the Moon, and
+      Mars with the Sun in Aries become mutual Karakas.
+    quote_sha256: 7bbb64b02eae082f75b93fa2270a262d51db22f9134e9fd956c03eb04fbc9241
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.libra
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+  example:
+    reading: These planets become mutual Karakas.
+    chart:
+      ascendant: rashi.cancer
+      placements:
+      - subject: graha.saturn
+        rashi: rashi.libra
+      - subject: graha.jupiter
+        rashi: rashi.cancer
+      - subject: graha.moon
+        rashi: rashi.cancer
+      - subject: graha.mars
+        rashi: rashi.aries
+      - subject: graha.sun
+        rashi: rashi.aries
+- id: SARAVALI.SPIRITUAL.CH21V5863.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v58-63
+    quote: >-
+      Should Jupiter be the aspecting planet, one will undertake to do auspicious deeds, be
+      wise, will patronize all, widely famous, and intelligent.
+    quote_sha256: 87ad9d43a3cd1aac3824597bfea00ce9d36c9fa02f8532c82efb19f3e6763c58
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will undertake to do auspicious deeds, be wise, will patronize all, widely famous,
+      and intelligent
+- id: SARAVALI.STATUS.CH12V1519.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.education: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v15-19
+    quote: >-
+      Should the yoga be caused by Jupiter, the native will be majestic, strong, intelligent,
+      fond of assembly, famous through a king, and will be a poet.
+    quote_sha256: b312af29e54f879b1a29a6cfebc110a778ab9e65a3dad9bba0200ae059107b17
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.jupiter
+        bhava: bhava.12
+        reference: ref.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be majestic, strong, intelligent, fond of assembly, famous through a
+      king, and will be a poet
+- id: SARAVALI.STATUS.CH12V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v21
+    quote: If Durudhura yoga is caused by Mars and Jupiter, one will be famous by his deeds
+    quote_sha256: f1bab0a9c774ef42ea90246cb74e7e26c66a3d71e2e5d938a9672b2ddc230733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.mars
+        distance: dist.12
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.02
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: one will be famous by his deeds
+- id: SARAVALI.STATUS.CH13V79.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v7-9
+    quote: In the case of Venus, the person will be valorous, famous, virtuous and reputed.
+    quote_sha256: 0a2d154109720dbe7046fc413c3656d237ea2e81ed8cfdffc74f17665281eaf7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.venus
+        distance: dist.12
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person will be valorous, famous, virtuous and reputed
+- id: SARAVALI.STATUS.CH14V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v15
+    quote: One who had Mars and Venus together at birth will be worshipped, be chief among
+      his men
+    quote_sha256: 62c3996861360fd2e3418852be8bfce70c4c75aee3041223671a831085509fc4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: will be worshipped, be chief among his men
+- id: SARAVALI.STATUS.CH14V18.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v18
+    quote: >-
+      Should Mercury and Venus be together at birth, the native will be abundantly rich, a
+      politician
+    quote_sha256: 5e1e3265758de67a510a7dff536dff8cc25105fd0cb8f1a138f66c99ec743372
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: a politician
+- id: SARAVALI.STATUS.CH14V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v3
+    quote: >-
+      Should the Sun and Mars be in one house the native will be splendorous, valorous, dull-witted,
+      strong, be a liar, be sinful, disposed to kill (or torture) and be fierce.
+    quote_sha256: 5ada1ce9827dc333a299755421030410ee3960aebb172242f9165c4d54232f85
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native will be splendorous, valorous, strong, and fierce
+- id: SARAVALI.STATUS.CH15V15.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v15
+    quote: >-
+      One who has Venus, Saturn and the Sun together at birth will be emotionally upset due
+      to fear from enemies, will be devoid of honour and knowledge of arts and poetry
+    quote_sha256: c187f6d667fffb1f1e66a742f43ea8a49080a204fdd6b8d791c10e8352862102
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+    - conjunct:
+        subject: graha.saturn
+        other: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: will be devoid of honour and knowledge of arts and poetry
+- id: SARAVALI.STATUS.CH15V21.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v21
+    quote: >-
+      A native who has Jupiter and Saturn together at birth will be heroic, will have plenty
+      of wealth, will be chief of the city (mayor etc.), famous, and will be the head of an
+      assembly, a village or an association.
+    quote_sha256: 64ff7f315b48281291fb5f4433ae71a2a7be4f3b886110c0b6a83080e079d4bd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.saturn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      will be chief of the city (mayor etc.), famous, and will be the head of an assembly,
+      a village or an association
+- id: SARAVALI.STATUS.CH15V30.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v30
+    quote: If Jupiter, Mars and Saturn be together at birth, the native will be honoured by
+      the king
+    quote_sha256: 26ea5b72285b03214ab5ebf98793f3554139ad35237734947e9e45448a75fc9e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.mars
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be honoured by the king
+- id: SARAVALI.STATUS.CH15V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v33
+    quote: >-
+      When Mercury, Saturn and Jupiter are together at birth, it denotes that the native will
+      enjoy honour, wealth and sovereignty, be learned, will have abundant pleasures, be atttached
+      to his wife, be courageous and fortunate.
+    quote_sha256: 92b4b940aa9e623a19dbdfe98fb304e1743b57cd6bd04aa81fa7e781f4c49d00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native will enjoy honour
+- id: SARAVALI.STATUS.CH15V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v35
+    quote: >-
+      Should Jupiter, Venus and Saturn be in one house at birth one will become a king even
+      though he might be of mean natal order, will be very famous and be a respository of
+      virtues.
+    quote_sha256: 9314cfa5c8c548fb89ef64f800491cfac22934a8df907ec80328dd0b8da6fcf2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.venus
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.saturn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      one will become a king even though he might be of mean natal order, will be very famous
+      and be a respository of virtues
+- id: SARAVALI.STATUS.CH16V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v11
+    quote: >-
+      These four planets together at birth indicate that the subject will be brave, be a composer
+      of Sastras (सूत्रकार) or a ruler of province (चक्रधर)
+    quote_sha256: 121235eec7a55a2e1de1891c6376f2893dbbad8c2c5eedbf8a107310b7f7a017
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the subject will be brave, be a composer of Sastras or a ruler of province
+- id: SARAVALI.STATUS.CH16V17.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v17
+    quote: >-
+      SUN-MERCURY-VENUS YOGA : With these planets in one house, one will be wealthy, happy,
+      chief, will have cherished desires, will have relatives and be noble.
+    quote_sha256: b4017ab155d1fd7b9f72c4691754d1ed44b3b6a9b282fcd97fededa3c73a37a9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: chief, will have cherished desires, will have relatives and be noble
+- id: SARAVALI.STATUS.CH17V7.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v7
+    quote: >-
+      MERCURY-MOON-JUPITER-SUN-SATURN YOGA : One with the conjunction of these planets will
+      be a machinist, will enjoy great prosperity be a king's minister, be a judge and be
+      famous.
+    quote_sha256: 7481c0c367762445d6b6d9ef02dcba87318801c202d62701bc52032501c572be
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: be famous
+- id: SARAVALI.STATUS.CH18V16.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v16
+    quote: >-
+      Should there be a conjunction of these five planets, at birth, one will be expert in
+      dealing with equipment and machinery related to water, minerals, mercury and such other
+      chemicals and will achieve some fame in these lines.
+    quote_sha256: 54e386095818a93daef850b0b0c46a029e34ac307b9eb6c190325fbb066098d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: will achieve some fame in these lines
+- id: SARAVALI.STATUS.CH18V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v5
+    quote: One with this six-planetary conjunction will be a king's minister
+    quote_sha256: a3db5e9c96b19bf4cc2e441cb239c290a7684b1f2737c9c8ce79d294f174acb3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 6
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: will be a king's minister
+- id: SARAVALI.STATUS.CH21V2025.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.health: 0.2
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v20-25
+    quote: >-
+      Should Mercury aspect the Sun posited in Gemini or Virgo, the subject will have a history
+      akin to that of a king, will be famous, be endowed with relatives, free from enemies
+      but will encounter eye diseases.
+    quote_sha256: d360b1a168ccfbde5ae653ba294e82677fbefbe2ab52490e4861acc3ad9fc90e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the subject will have a history akin to that of a king, will be famous
+- id: SARAVALI.STATUS.CH21V23.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v2-3
+    quote: be famous in arts
+    quote_sha256: 26caf7b3b218d1187bf426bb85018e4bb00ac691f0c8d53b157b2635da2f3abf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: be famous in arts
+- id: SARAVALI.STATUS.CH21V2833.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v28-33
+    quote: >-
+      Should Jupiter throw his aspect in Cancer occupied by the Sun, the native will be pre-eminent,
+      a king, a minister, or an army chief, be very famous and learned in arts
+    quote_sha256: 054a00b14ff93d61656e36e0d8100423e8625a5763f5f0f9af956e1d7453afe8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native will be pre-eminent, a king, a minister, or an army chief
+- id: SARAVALI.STATUS.CH21V3641.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v36-41
+    quote: >-
+      Venus aspecting the Sun in Leo will make one earn bad name (infamous). Such a person
+      will be troubled by leprosy, be unkind, and shameless.
+    quote_sha256: 773e5e54b62586375c1a2595e0b4038cad7156ab3e9126061f5866154885739d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: earn bad name (infamous)
+- id: SARAVALI.STATUS.CH21V5863.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v58-63
+    quote: >-
+      If Saturn aspects the Sun posited in Capricorn or Aquarius, the person will destroy
+      his enemies and will prosper due to royal honours.
+    quote_sha256: 2e3d21f6fa4626c6613af397bba8803b63bfa6a05b6114daa0bfff7d7106815d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person will destroy his enemies and will prosper due to royal honours
+- id: SARAVALI.STATUS.CH22V2426.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      Jupiter aspecting the Moon in her own house indicates that the person will be a king,
+      be endowed with royal qualities, be happy, will have a good wife, will behave well,
+      be modest and valorous.
+    quote_sha256: ebe9b55b919088eac2e658698f0462d8a215b12b96e9426fd1e9c5df5fcda37a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the person will be a king
+- id: SARAVALI.STATUS.CH22V3136.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v31-36
+    quote: >-
+      Should the Moon be in Leo in aspect to the Sun, the native will be equal to a king,
+      will have excellent qualities and majestic voice, will be valorous, be fond of intoxicants
+      and be widely famous.
+    quote_sha256: bcf9e6d7dd16ebf37abb79195fdc4e41a58e8187891cac30147a379e022e83b2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be equal to a king, will have excellent qualities and majestic voice,
+      will be valorous, be fond of intoxicants and be widely famous
+- id: SARAVALI.STATUS.CH22V3136.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.spiritual: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v31-36
+    quote: >-
+      If Jupiter aspects the Moon in Leo, one will be excellent among his castemen, be wide-famed,
+      highly virtuous and will equal a king
+    quote_sha256: cb3588e6ce4c58830bc5a5064d8364dfb296e0d81ecac46a4ee014e1f67e09f8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be excellent among his castemen, be wide-famed, highly virtuous and will equal
+      a king
+- id: SARAVALI.STATUS.CH22V3843.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      If the Moon occupies Virgo at birth and is aspected by the Sun, the native will be incharge
+      of royal wealth, be famous, will keep up his word, and perform distinguished acts.
+    quote_sha256: bce28740d44efe1f51b7ebed08fc0cdada4f8073fa4941c5bd20d3a36f8fff8f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: be famous, will keep up his word, and perform distinguished acts
+- id: SARAVALI.STATUS.CH22V5964.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v59-64
+    quote: >-
+      If the Moon in Sagittarius is aspected by the Sun, the person will be a king, be affluent,
+      valorous, famous and will have uncomparable happiness and conveyances.
+    quote_sha256: 718b63a82f3617b4be863d225b5daac26ebac51d60733a368976a2a57a6dd443
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be a king, be affluent, valorous, famous and will have uncomparable
+      happiness and conveyances
+- id: SARAVALI.STATUS.CH23V13.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by Jupiter, he will be a king, be famous and honoured by the learned;
+    quote_sha256: 9470cf9aa3803e5745d87496666021f31136f3976411eba28bb6234de051b9da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: he will be a king, be famous and honoured by the learned
+- id: SARAVALI.STATUS.CH23V13.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by Jupiter, he will be a king, be famous and honoured by the learned;
+    quote_sha256: 9470cf9aa3803e5745d87496666021f31136f3976411eba28bb6234de051b9da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: he will be a king, be famous and honoured by the learned
+- id: SARAVALI.STATUS.CH23V1618.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v16-18
+    quote: >-
+      If the Moon is in the navamsa of Sagittarius/Pisces and aspected by Jupiter, the native
+      will be beautiful (or spotless). be liked by the king and be widely famous
+    quote_sha256: ad43d5ea30d84c5e10a5c86aea1e84b477ec4552993fa90999ea72c65905a8b3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be beautiful (or spotless). be liked by the king and be widely famous
+- id: SARAVALI.STATUS.CH23V1618.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v16-18
+    quote: >-
+      If the Moon is in the navamsa of Sagittarius/Pisces and aspected by Jupiter, the native
+      will be beautiful (or spotless). be liked by the king and be widely famous
+    quote_sha256: ad43d5ea30d84c5e10a5c86aea1e84b477ec4552993fa90999ea72c65905a8b3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be beautiful (or spotless). be liked by the king and be widely famous
+- id: SARAVALI.STATUS.CH23V1618.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v16-18
+    quote: if by Mars he will be skilful in use of weapons and be very famous
+    quote_sha256: 4979c400c1467fdb1218af6a941dda4118f072fe9f9afc993890c0033bcdfdaa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: he will be skilful in use of weapons and be very famous
+- id: SARAVALI.STATUS.CH23V1618.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v16-18
+    quote: lastly if by Saturn he will be akin to old men, be neglected by mighty men and
+      be base
+    quote_sha256: 32fef8a67857033b124ac7ef78d747aeacc611b73093eb00d52672b6e00132f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: he will be akin to old men, be neglected by mighty men and be base
+- id: SARAVALI.STATUS.CH23V8085.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.education: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v80-85
+    quote: >-
+      He will be a king if the Moon in Pisces is aspected by Mercury; will be highly intelligent,
+      be happy and will be surrounded by supreme females and be controlled by them.
+    quote_sha256: e84aaeea6cc243ba894f256960109c78257bbe00445b3555ee071712a6bc4114
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: He will be a king
+- id: SARAVALI.STATUS.CH24V3136.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v31-36
+    quote: >-
+      If Jupiter aspects Mars as above, the subject will be skilful in music and in play of
+      musical iustruments, be fortunate, be dear to his relatives, and will be pure.
+    quote_sha256: 3117da84f27f125bdd627cede71deadd4eeea963499c60f56a382b229d230ed5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mars
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: be fortunate
+- id: SARAVALI.STATUS.CH24V3742.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.travel: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v37-42
+    quote: >-
+      Should Jupiter aspect Mars in Taurus/Libra, the native will be a king's representative,
+      be bright, will go to foreign countries as an ambassdor, be skilfull in all doings and
+      be a leader.
+    quote_sha256: 3520945029f8a5d6804cfad766fcb727ee730a2bc7c711d3cd6d472cfc210174
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mars
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be a king's representative, be bright, will go to foreign countries
+      as an ambassador, be skilful in all doings and be a leader
+- id: SARAVALI.STATUS.CH24V4348.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v43-48
+    quote: >-
+      If Mars in Cancer is aspected by Jupiter, the native will be famous, be king's minister,
+      be learned, charitable, wealthy and be bereft of carnal pleasures.
+    quote_sha256: 3500f719700ffe430cb13845e8ab138b9e79b129bd920545cb12c0f4f382151a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mars
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be famous, be king's minister, be learned, charitable, wealthy and be
+      bereft of carnal pleasures
+- id: SARAVALI.STATUS.CH24V5560.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v55-60
+    quote: >-
+      If Mars occupies Sagittarius or Pisces at birth and is aspected by the Sun, the subject
+      will be world-honoured, be fortunate, will live in forests, hills and fortresses, and
+      be cruel.
+    quote_sha256: 7e7432b041af7154de67b5c2b662eb5421b8b34504c2b32763df68202e88fffa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject will be world-honoured, be fortunate, will live in forests, hills and fortresses,
+      and be cruel.
+- id: SARAVALI.STATUS.CH25V1718.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.education: 0.8
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v17-18
+    quote: >-
+      Should Mercury be an Sagittarius, thc native will be famous, liberal, will have knowledge
+      of Vedas and Sastras, be valorous, will practise abstract meditation, be a minister,
+      or a family priest, be chief among his race-men, will be very rich, be interested in
+      performing yagnas and teaching (Vedas etc.), be a skilful speaker, be charitable. and
+      be an expert in writing and fine arts.
+    quote_sha256: bdd1f0affd6aeab92d272514904ab513d26ef1976829e95e8fff9c987b8b2e8e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.sagittarius
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native will be famous
+- id: SARAVALI.STATUS.CH25V3742.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v37-42
+    quote: >-
+      Should Mercury be in Gemini/Virgo and be aspected by the Sun, the native will speak
+      truth, be fortunate, dear to king, be a lord himself, be polite in his a ctivities and
+      be liked by all.
+    quote_sha256: 63cf8b7da09a2746ac7a3a96675beaed78b78bd875f0d59a1646d6f909f2cc3b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will speak truth, be fortunate, dear to king, be a lord himself, be polite
+      in his a ctivities and be liked by all
+- id: SARAVALI.STATUS.CH25V4654.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v46-54
+    quote: >-
+      If Jupiter aspects Mercury as above, one will be beautiful, very learned, be a gifted
+      speaker, be very famous, and be endowed with attendants and conveyances.
+    quote_sha256: be8e5384f142358b3f31f74da2038b2d58e1bec1ab6106cc36111bc985e094a9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: very famous
+- id: SARAVALI.STATUS.CH25V6166.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v61-66
+    quote: >-
+      If Mercury be in a house of Saturn and is as-pected by the Sun, one will be a boxer,
+      be very strong, one will eat abundantly, be censured, will speak sweetly and be famous.
+    quote_sha256: 6b2fe74bd345f821505fe9659d06c8ec97fbdf69ed60e1f4b9577e534e25e703
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be a boxer, be very strong, one will eat abundantly, be censured, will speak
+      sweetly and be famous
+- id: SARAVALI.STATUS.CH3V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch3.v13
+    quote: >-
+      Should the natal Lagna be in such Vargothama Navamsa, the native becomes an important
+      person in his circle.
+    quote_sha256: 10cf6d57eb4d9f007a2039a4fba1124c0a3959b97ac166d68c1d5ed3be83b3cc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - vargottama:
+        subject: lord.bhava.01
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native becomes an important person in his circle
+- id: SARAVALI.STATUS.CH7V47.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v4-7
+    quote: The Sun if aspecting the Moon indicates a king
+    quote_sha256: fd6992d297711634522520f10c551e760719a7bfee945555834c3f99be2f7ce5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: indicates a king
+- id: SARAVALI.STATUS.CH7V47.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v4-7
+    quote: Saturn aspecting denotes a servant.
+    quote_sha256: d72372681e8b956c0941486dcbbfe3c1348245f6a3d9f9229100fc06c81b8066
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: denotes a servant
+- id: SARAVALI.TEMPERAMENT.CH14V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.spiritual: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v5
+    quote: >-
+      If the Sun and Jupiter be together, one will be virtuous, be a minister of king, will
+      gain through friends, be with good mind¹ and be a preceptor.
+    quote_sha256: 1509edbd76f430c18d32757b4f44950e7e434595662c3e13f0acaab4a65d8c1e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be virtuous, be a minister of king, will gain through friends, be with good
+      mind and be a preceptor.
+- id: SARAVALI.TEMPERAMENT.CH18V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.health: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v3
+    quote: >-
+      Should these six planets join in one house, the native will be a thief, be addicted
+      to others' women, subjected to leprosy, discarded by his own men, be a dunce, deprived
+      of position and be issueless.
+    quote_sha256: df32106cb589e4d672372ef049ec3cdbf44de16eae067dfaca1ce42c33c957f3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be a thief
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: >-
+      If the Moon is in the navamsa of Mars aspected by Mars himself, one will win over his
+      enemies and will be valorous;
+    quote_sha256: b7a331832c312742a8a521825e6252353b7cabf9e6925d76080b92fb4738bb69
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: one will win over his enemies and will be valorous
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: >-
+      If the Moon is in the navamsa of Mars aspected by Mars himself, one will win over his
+      enemies and will be valorous;
+    quote_sha256: b7a331832c312742a8a521825e6252353b7cabf9e6925d76080b92fb4738bb69
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: one will win over his enemies and will be valorous
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by Saturn very cunning, deceiving and trifling;
+    quote_sha256: 9e5479668bb75d7a1ebd807aa86873b0e76a8991bd80fceb9ff0746037a31551
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: very cunning, deceiving and trifling
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by Saturn very cunning, deceiving and trifling;
+    quote_sha256: 9e5479668bb75d7a1ebd807aa86873b0e76a8991bd80fceb9ff0746037a31551
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: very cunning, deceiving and trifling
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by the Sun thief, sometimes cruel and sometimes protecting and be courageous;
+    quote_sha256: 11bf8a3dd86b5eb826972cc8160f10f744064b891d1634ee063f5d5fc8eefeee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: thief, sometimes cruel and sometimes protecting and be courageous
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by the Sun thief, sometimes cruel and sometimes protecting and be courageous;
+    quote_sha256: 11bf8a3dd86b5eb826972cc8160f10f744064b891d1634ee063f5d5fc8eefeee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: thief, sometimes cruel and sometimes protecting and be courageous
+- id: SARAVALI.TEMPERAMENT.CH25V56.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v5-6
+    quote: If Mercury occupy Gemini at birth, the subject will have an auspicious appearance
+    quote_sha256: 547fa4520d997263f21bcfe3921c4af9a6facb2b9c51f66f15885031bf58377b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the subject will have an auspicious appearance
+- id: SARAVALI.TEMPERAMENT.CH5V3133.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v31-33
+    quote: A planet in its own decanate confers virtues
+    quote_sha256: f954591b588710463ea4430f63440fbe1da57d8ecadde44ca02a800326d4b9f2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d3
+        subject: graha.sun
+        dignity: dignity.own_sign
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: confers virtues
+- id: SARAVALI.TEMPERAMENT.CH5V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v5
+    quote: >-
+      Should a planet be in Deepta state (radiant) at birth the native burns his enemies with
+      the fire of his valour.
+    quote_sha256: ce69a2e6da4942013430dd07e76097e4a61166343910a7718dbef1b428baf7e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native burns his enemies with the fire of his valour
+- id: SARAVALI.WEALTH.CH12V1214.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v12-14
+    quote: >-
+      Should Jupiter cause Sunapha yoga, a person so born will have high learning, will be
+      famous and himself be a king or dear to a king. He will have a good family and have
+      plenty of wealth.
+    quote_sha256: 911641ba51a784ebe96ea2cac51d28598a96b09a3fc79a8e8ce81a1cb167c89c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: have plenty of wealth

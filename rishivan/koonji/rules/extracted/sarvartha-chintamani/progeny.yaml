@@ -1,0 +1,822 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.FAMILY.CH5V53.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v53
+    quote: >-
+      If the lord of the 6th house is Jupiter who is with benefics and aspected by benefics
+      & located in Mridu amsha etc, the native has many members of his community (sons & daughters
+      of his mother).
+    quote_sha256: bacf8258558e83882f8e809e00a3fe6833a3f4aef6ef7d71536aa2dd1bfa3442
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - same_bhava:
+        subject: lord.bhava.06
+        other: graha.jupiter
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: moderate
+    text: the native has many members of his community (sons & daughters of his mother)
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V50.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v50
+    quote: >-
+      If the lord of the 9th house and its significator i.e. Sun are located in 6th, 8th or
+      12th house, the father does not see a son.
+    quote_sha256: f9c0c73e4b3169b49440138351d44bd28df6d9cb0f9952a70eb36eec351ad12a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.09
+    - in_dusthana:
+        subject: graha.sun
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: the father does not see a son
+- id: SARVARTHACHINTAMANI.PROGENY.CH13V1.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v1
+    quote: >-
+      During the main ruling period of Sun occupying its highest degree of exaltation one
+      gets lands, wealth, wife, son, fame, courage, honour from the king, movements, recreation
+      meetings.
+    quote_sha256: 3b35ba86ffe8f0059ba2dec1f883f5b474451481edbfd52a579319fb5ee225aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: one gets son
+- id: SARVARTHACHINTAMANI.PROGENY.CH14V22.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v22
+    quote: he gets defame & loss of education, son, wife, wealth & honour.
+    quote_sha256: 2447421e059757757374374528fe1158f437715e60c2ffc7fd931b786b386745
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: loss of son
+- id: SARVARTHACHINTAMANI.PROGENY.CH14V25.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v25
+    quote: >-
+      If Mars occupies the 5th house. it indicates death of the son, confu-sion of intellect,
+      foolishness
+    quote_sha256: 8b1526974e1d4774d0bb9d9cad200e665f17554e9dd4577785e352a8ecea7eb6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: death of the son
+- id: SARVARTHACHINTAMANI.PROGENY.CH15V25.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v25
+    quote: >-
+      During the ruling period of Jupiter located in the 5th house, the native engages himself
+      in worship through mantras, gets much happiness, sons...
+    quote_sha256: 9112bf153cfdc630585f1162c4a2b7fd13fce57aed13e59490935e205ad5efb2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: gets much happiness, sons
+- id: SARVARTHACHINTAMANI.PROGENY.CH15V37.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.85
+    domain.status: 0.75
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v37
+    quote: >-
+      During the ruling period of Saturn endowed with "Directional" strength, the native gets
+      sons, & fame in all directions.
+    quote_sha256: 89c69292a0e62c124f343e785ca89e220531206f28dfb05bf14dc57cfce3b6fe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the native gets sons
+- id: SARVARTHACHINTAMANI.PROGENY.CH16V14.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v14
+    quote: He has loss of sons & wealth.
+    quote_sha256: ba6986e19c459c5ede2a02f9d3e8a495623d2b2aff8f348adb45e4f22b8379bf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: He has loss of sons & wealth.
+- id: SARVARTHACHINTAMANI.PROGENY.CH16V15.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v15
+    quote: >-
+      During the ruling period of Rahu located in the 9th house, the native gets loss of his
+      father, goes to another country, & has loss of Guru & brothers, takes bath in the sea
+      & loses son & wealth.
+    quote_sha256: 1c20b688611193478cca35caf5c3dc71db8c2fb6dd7cab3eb41057505af77409
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.09
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: loses son
+- id: SARVARTHACHINTAMANI.PROGENY.CH2V49.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.health: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v49
+    quote: >-
+      If the lords of the first and the 4th houses are located in each others sign & if either
+      the lord of the 1st or of the 4th is situated with 59 Rahu or Ketu, the yoga indicates
+      birth of an animal.
+    quote_sha256: 49a1c0262733551427f2e6428847304401003397c94299a847d72e0950ad5ff2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: lord.bhava.01
+        other: lord.bhava.04
+    - any:
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.ketu
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.ketu
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: birth of an animal
+- id: SARVARTHACHINTAMANI.PROGENY.CH5V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v12
+    quote: >-
+      If the lord of the 7th house and Venus are both located in the 6th house, the yoga indicates
+      that the wife of the native is sterile.
+    quote_sha256: d8cc748cc441efec383e7982924e502bf9d6f60172eaefd09ac0c8d0d54dc505
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.06
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the wife of the native is sterile
+- id: SARVARTHACHINTAMANI.PROGENY.CH5V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v23
+    quote: >-
+      A yoga for the discontinuance of the family tree will be constituted, if Moon is located
+      in the 10th, Venus in 7th and malefics in the 4th house and the lord of the lagna is
+      located with Mercury.
+    quote_sha256: 2ad72650cc91dcfae55923161a35502e513f3ed187552006edf848ceb94ceea4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupant_count:
+        bhava: bhava.04
+        op: '>='
+        n: 1
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.mercury
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: extreme
+    text: discontinuance of the family tree
+- id: SARVARTHACHINTAMANI.PROGENY.CH5V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v24
+    quote: >-
+      If malefic planets are located in the 12th, 5th or the 8th house, the yoga indicates
+      the discontinuace of the family tree & the man becomes bereft of wealth.
+    quote_sha256: 547ba8250e3521d3689bcbe4c29c8a83fa879581f40d7357df69e270fab261b4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: discontinuace of the family tree
+- id: SARVARTHACHINTAMANI.PROGENY.CH5V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v25
+    quote: >-
+      If all malefic planets are located in the 4th house, the yoga indicates the discontinuace
+      of the family tree.
+    quote_sha256: b50478660ed888defe28eeec7b57112f78e8f33ea265fa18a31a0b9ee6df1577
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.04
+        op: '>='
+        n: 1
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: discontinuace of the family tree
+- id: SARVARTHACHINTAMANI.PROGENY.CH5V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v26
+    quote: >-
+      If malefics are situated in the 8th, 1st, or the 12th house and Moon is in the 5th,
+      the yoga leads to the extinction of the family tree.
+    quote_sha256: 5d852408fc7dcd9f7d8445e9d26b3d2245bbab121674c54970dd551f6297da70
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_dusthana:
+          subject: graha.mars
+      - in_dusthana:
+          subject: graha.saturn
+      - in_dusthana:
+          subject: graha.sun
+      - in_dusthana:
+          subject: graha.rahu
+      - in_dusthana:
+          subject: graha.ketu
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.ketu
+          bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: extreme
+    text: the yoga leads to the extinction of the family tree
+- id: SARVARTHACHINTAMANI.PROGENY.CH5V3031.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v30-31
+    quote: It malefics occupy the 5th house, the yoga denies a son.
+    quote_sha256: c15e30a3690f750b9fc636155d6a3b76e1318a25b86667ebb8e4732c9f79e7bb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.05
+        op: '>='
+        n: 1
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: denies a son
+- id: SARVARTHACHINTAMANI.PROGENY.CH5V59.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.career: 0.2
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v59
+    quote: >-
+      If the lords of the first and the 5th houses mutually aspect each other or they are
+      located in the Navamsha of each other, the yoga indicates that the son will serve the
+      father i.e. the native.
+    quote_sha256: ff9d8496b47c25aaab16a8f14858a32d423895a797b184af895d1bc0c983a271
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - aspects:
+          subject: lord.bhava.01
+          target: lord.bhava.05
+      - aspects:
+          subject: lord.bhava.05
+          target: lord.bhava.01
+    - all:
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.01
+          rashi: rashi.aries
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the son will serve the father i.e. the native
+- id: SARVARTHACHINTAMANI.PROGENY.CH6V53.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+    domain.relationship: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v53
+    quote: >-
+      If the lord of the 7th house is Mercury, it is strong, located in its friendly or exaltation
+      varga, or in amsha such as "Gopur", the wife is one who has purified her body through
+      vows & fasting. She will also have good son & will have comforts of life.
+    quote_sha256: 698ef798e975815ca2977b97f4e22f9402a40b860406f7f50ed4d68cc6b155b7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.07
+        rashi: rashi.gemini
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.07
+          dignity: dignity.friendly
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.07
+          dignity: dignity.exalted
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: She will also have good son
+- id: SARVARTHACHINTAMANI.PROGENY.CH6V79.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v79
+    quote: >-
+      In case the lagna thus arrived at for the wife is Taurus, Leo or Virgo, it gives very
+      few sons.
+    quote_sha256: 2ebcde5fa0c9d9e44113c57bb133d6a7b0f42a0fb3e116aa187696e8879a8d97
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.taurus
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.leo
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.virgo
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: it gives very few sons
+- id: SARVARTHACHINTAMANI.PROGENY.CH7V39.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v39
+    quote: >-
+      If the 9th or 10th house from the 1st is occupied by Mars and aspected by malefics,
+      the yoga indicates death of the brother of the mother. If such a Mars is with Saturn
+      it indicates death of the son.
+    quote_sha256: 0dd16e28ba9520a7173863e7c3421b0a15067808aa8854d57b94d5c5afdcc9ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.10
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: death of the son
+- id: SARVARTHACHINTAMANI.PROGENY.CH7V46.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v46
+    quote: >-
+      If Sun is in the 7th & Moon in the 1st house with a malefic, the yoga indicates early
+      death of the son.
+    quote_sha256: ff7c1449f6e29d270f37c3e21c4a8614de375fb34124b538261fe4ec0384d35b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: early death of the son
+- id: SARVARTHACHINTAMANI.PROGENY.CH7V51.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.wealth: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v51
+    quote: >-
+      If the two planets i.e. the lord of the 9th house and Sun are located in a trine, the
+      yoga indicates good comfort from the son.
+    quote_sha256: efd11311361febef4270b283670838bfd15b5b996fdfef48169d0a9c345c4626
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_trikona:
+        subject: lord.bhava.09
+    - in_trikona:
+        subject: graha.sun
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: good comfort from the son
+- id: SARVARTHACHINTAMANI.PROGENY.CH9V47.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v47
+    quote: if Mars is in the 10th house, it denotes the destruction of children.
+    quote_sha256: 48ab25909528cc5c50477432f4c0a71bdfa91b7936c073109df8fb77f326384d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: destruction of children

@@ -208,13 +208,22 @@ def test_withheld_vargas_become_something_that_must_be_said():
 
 
 def test_an_abstention_becomes_something_that_must_be_said():
-    plan = _build(reports=[_report(), _report("vyom", abstained="nothing fired")])
+    """Narrowed to the abstentions that mean something. It used to hold for any
+    Rishi, which put "Dhruvan abstained because matters of children fall outside
+    his focus on career and wealth" into an answer about a child. See
+    `TestOnlyDisclosuresThatChangeTheReading`."""
+    plan = _build(
+        reports=[_report(), _report("vyom", abstained="nothing fired")],
+        primary_rishi="vyom",
+    )
     assert any("abstain" in m.lower() for m in plan.must_say)
 
 
-def test_unreviewed_rules_become_something_that_must_be_said():
-    plan = _build(unreviewed=True)
-    assert any("review" in m.lower() for m in plan.must_say)
+def test_unreviewed_rules_are_disclosed():
+    """Still disclosed, no longer inside the prose. It is true of every rule in
+    the corpus, so it is carried as a standing flag and rendered once beside the
+    answer. See `TestUnreviewedIsStandingNotPerAnswer`."""
+    assert _build(unreviewed=True).unreviewed is True
 
 
 # ==========================================================================
@@ -318,3 +327,102 @@ def test_every_allowed_claim_cites_something():
     thing this gate exists to prevent."""
     for claim in _build().allowed:
         assert claim.citations or claim.rule_ids
+
+
+# ==========================================================================
+# The disclosure budget
+# ==========================================================================
+#
+# Every internal event became a mandatory sentence, and `narrate` heads them
+# "YOU MUST SAY THESE". Four fired at once on a real love-life question -
+# uncorroborated claim, withheld Navamsha, two abstentions, unreviewed rules -
+# and roughly a third of the answer was about the machinery rather than about
+# the querent. The disclosures are right; saying all of them every time is what
+# made them noise.
+
+
+class TestOnlyDisclosuresThatChangeTheReading:
+    """The test is not "is this true", it is "does knowing it change how the
+    reader should take the answer". A Rishi declining a question outside its
+    remit is the routing working, not a finding."""
+
+    def test_a_supporting_rishi_abstaining_is_not_reported(self):
+        plan = _build(
+            reports=[_report("medhan"), _report("dhruvan", abstained="career "
+                             "and wealth are not what this question is about")],
+            primary_rishi="medhan",
+        )
+        assert not any("dhruvan" in m.lower() for m in plan.must_say)
+
+    def test_the_primary_rishi_abstaining_is_reported(self):
+        """The Rishi who was supposed to answer did not. The answer is coming
+        from somebody with a weaker claim to the domain, and that is material."""
+        plan = _build(
+            reports=[_report("medhan"), _report("dhruvan", abstained="no rules fired")],
+            primary_rishi="dhruvan",
+        )
+        assert any("dhruvan" in m.lower() for m in plan.must_say)
+
+    def test_when_nobody_spoke_the_abstentions_are_the_answer(self):
+        plan = _build(
+            reports=[_report("medhan", abstained="silent"),
+                     _report("dhruvan", abstained="silent")],
+            primary_rishi="",
+        )
+        assert any("abstain" in m.lower() for m in plan.must_say)
+
+    def test_an_uncorroborated_claim_is_always_reported(self):
+        """About the content of the answer, not about the machinery."""
+        plan = _build(reading=_Reading([_Claim(met=False, required=2, sources=1)]))
+        assert any("corrobor" in m.lower() for m in plan.must_say)
+
+
+class TestTheBudgetIsBounded:
+    def test_it_never_exceeds_the_limit(self):
+        from rishivan.council.answer_plan import MUST_SAY_LIMIT
+
+        plan = _build(
+            reading=_Reading([
+                _Claim(claim_id=f"wealth.c{i}", met=False, required=2, sources=1)
+                for i in range(6)
+            ]),
+            vargas=_Vargas(),
+            reports=[_report("dhruvan", abstained="no rules fired")],
+            primary_rishi="dhruvan",
+            unreviewed=True,
+        )
+        assert len(plan.must_say) <= MUST_SAY_LIMIT
+
+    def test_content_outranks_machinery_when_the_budget_bites(self):
+        """A claim the reader is about to act on beats a division that was not
+        consulted."""
+        plan = _build(
+            reading=_Reading([
+                _Claim(claim_id=f"wealth.c{i}", met=False, required=2, sources=1)
+                for i in range(3)
+            ]),
+            vargas=_Vargas(),
+        )
+        assert plan.must_say
+        assert "corrobor" in plan.must_say[0].lower()
+        assert not any("D60" in m for m in plan.must_say)
+
+    def test_a_single_withholding_still_gets_said_when_there_is_room(self):
+        """Capped, not suppressed. With nothing competing for the budget the
+        withheld division is still the reader's business."""
+        plan = _build(vargas=_Vargas())
+        assert any("D60" in m for m in plan.must_say)
+
+
+class TestUnreviewedIsStandingNotPerAnswer:
+    """True of every rule in the corpus, so repeating it inside every answer
+    spends the reader's attention on a constant. It is carried as a flag and
+    rendered once, beside the answer, where a standing caveat belongs."""
+
+    def test_it_no_longer_occupies_the_budget(self):
+        plan = _build(unreviewed=True)
+        assert not any("review" in m.lower() for m in plan.must_say)
+
+    def test_but_it_is_still_carried(self):
+        assert _build(unreviewed=True).unreviewed is True
+        assert _build(unreviewed=False).unreviewed is False

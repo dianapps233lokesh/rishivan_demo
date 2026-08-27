@@ -1,0 +1,392 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.CAREER.CH25V4654.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.property: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v46-54
+    quote: >-
+      If Venus be the aspecting planet, one will possess unparalleled beauty, be softly disposed,
+      will have an attractive face, will have many conveyances, be very courageous and be
+      a minister.
+    quote_sha256: 561785da2747b8708df29917983b151b0f1bed1043f31f6215e8e17e4a1cef73
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.venus
+        target: graha.mercury
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: be a minister
+- id: SARAVALI.PROPERTY.CH21V3641.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.spiritual: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v36-41
+    quote: >-
+      If the Sun in Leo is aspected by Jupiter, the person will construct temples, gardens
+      and tanks; will have predominant strength, will like loneliness and be highly intelligent.
+    quote_sha256: 21623496236de920cd5204abc8bb9565dfdf364cf53386823fb28e07fae4e4b0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: will construct temples, gardens and tanks
+- id: SARAVALI.PROPERTY.CH22V1722.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v17-22
+    quote: >-
+      If Venus aspects the Moon in Gemini, the person will be endowed with the company of
+      supreme females, garlands, robes, conveyances, ornaments and jewels, and will be sportive.
+    quote_sha256: ebb7593913615ffb21d9dfc712d62255db847517021d8949b62e1d8dd3ba70c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: endowed with conveyances, ornaments and jewels
+- id: SARAVALI.PROPERTY.CH22V614.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v6-14
+    quote: >-
+      Should Venus aspect the Moon in Taurus, one will be endowed with ornaments, conveyances
+      and houses, and will possess comforts of sleeping and sitting (i.e, will possess luxuries
+      of bed and sitting paraphernalia), scents, robes, garlands etc
+    quote_sha256: aa6407c7db8b315cb649ce0a8e7121efa338fae69ca482dcdce8d2b9d57ed15f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be endowed with ornaments, conveyances and houses, and will possess comforts
+      of sleeping and sitting
+- id: SARAVALI.PROPERTY.CH8V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v12
+    quote: >-
+      Should Jupiter be exalted in 10th (i.e. Lagna being Libra), delivery is in a 2, 3, or
+      4 storeyed building.
+    quote_sha256: 62524097a43f79534352d0bc442403586872beb7119d54abbac04dc2c8d3aacc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.exalted
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.libra
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: delivery is in a 2, 3, or 4 storeyed building
+- id: SARAVALI.PROPERTY.CH8V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v14
+    quote: If Sagittarius ascends with strength, it is 3- storeyed building
+    quote_sha256: cd22e6b93356d629396462579b2192f65a5a0fd3fd3c790622f38349cb64f297
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.sagittarius
+    - strength:
+        subject: graha.jupiter
+        op: '>'
+        value: 0
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is 3- storeyed building
+- id: SARAVALI.PROPERTY.CH8V14.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v14
+    quote: Capricorn denotes a spacious house.
+    quote_sha256: 086839be5983eef8ecf0e7026ad0838718e1e3839eef0dad2099bfdddf61273e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.capricorn
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: Capricorn denotes a spacious house
+- id: SARAVALI.PROPERTY.CH8V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v15
+    quote: If Venus is strong at birth, it is a new and painted house.
+    quote_sha256: c3d6a2ac77f6ccef809986d33e4a8f6c3d5ce6f259d134de19b9f7780984af27
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.venus
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is a new and painted house
+- id: SARAVALI.PROPERTY.CH8V15.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v15
+    quote: Jupiter in strength denotes a strong house
+    quote_sha256: e486027ea7ad4718514e91e9dbcd2ad90c00824fa16a575d2cc62d2007f62dc9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.jupiter
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: denotes a strong house
+- id: SARAVALI.PROPERTY.CH8V15.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v15
+    quote: while Mars indicates a burnt house.
+    quote_sha256: cfdcecce0f1c8c5dc8cb5d840fa7e174cf1196ab9eb8a1713244a24aaa88438c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.mars
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: indicates a burnt house
+- id: SARAVALI.PROPERTY.CH8V15.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v15
+    quote: The Sun stands for house constructed of wood.
+    quote_sha256: a09a7a14213736edf3bbf329cce4c3e723500e5895e4bed943eef14bf6993aa4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: house constructed of wood
+- id: SARAVALI.PROPERTY.CH8V15.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v15
+    quote: It is a new house if the Moon is strong.
+    quote_sha256: 349ac52a7c04527fc9220f0a4865096b71c53e804bfa6f1dab676afc39be39ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.moon
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: It is a new house
+- id: SARAVALI.PROPERTY.CH8V15.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v15
+    quote: Saturn in strength indicates an old house.
+    quote_sha256: 0ff63c6f8b019fc11f798fc5a1fa799a915fba6598bff2df2937e3b7c477f175
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: indicates an old house

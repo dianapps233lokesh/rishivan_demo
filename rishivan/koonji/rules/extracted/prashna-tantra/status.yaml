@@ -1,0 +1,770 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.CAREER.CH2V114.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v114
+    quote: If the lord of Lagna is afflicted and weak, the kingdom will be destroyed.
+    quote_sha256: 3687d356fb1cbcae351f0ea25dba4a03d4be2259b500ed36a1430a177f6229d1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.01
+        band: band.weak
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: the kingdom will be destroyed
+- id: PRASHNATANTRA.CAREER.CH2V129.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v129
+    quote: If the lord of the ascendant is well placed and strong, the querent will succeed.
+    quote_sha256: f0f4cda2ecb1e2b9a1730e9cd5e714ca6e2e43d6d0f02a340a2079623e3183b7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.01
+        band: band.strong
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the querent will succeed
+- id: PRASHNATANTRA.CAREER.CH3V45.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v45
+    quote: >-
+      If Venus, Jupiter, the Moon and Mercury, or at least three of them in strength, occupy
+      the 7th house, the enemy will quickly inflict defeat on the querent king.
+    quote_sha256: 9a747b8460fbd098ff258e21824dfc6e47eaaa91be4c150858908a93e6e01527
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - all:
+        - occupies_bhava:
+            subject: graha.venus
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.mercury
+            bhava: bhava.07
+      - all:
+        - occupies_bhava:
+            subject: graha.venus
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.07
+        - strength_band:
+            subject: graha.venus
+            band: band.strong
+        - strength_band:
+            subject: graha.jupiter
+            band: band.strong
+        - strength_band:
+            subject: graha.moon
+            band: band.strong
+      - all:
+        - occupies_bhava:
+            subject: graha.venus
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.mercury
+            bhava: bhava.07
+        - strength_band:
+            subject: graha.venus
+            band: band.strong
+        - strength_band:
+            subject: graha.jupiter
+            band: band.strong
+        - strength_band:
+            subject: graha.mercury
+            band: band.strong
+      - all:
+        - occupies_bhava:
+            subject: graha.venus
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.mercury
+            bhava: bhava.07
+        - strength_band:
+            subject: graha.venus
+            band: band.strong
+        - strength_band:
+            subject: graha.moon
+            band: band.strong
+        - strength_band:
+            subject: graha.mercury
+            band: band.strong
+      - all:
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.07
+        - occupies_bhava:
+            subject: graha.mercury
+            bhava: bhava.07
+        - strength_band:
+            subject: graha.jupiter
+            band: band.strong
+        - strength_band:
+            subject: graha.moon
+            band: band.strong
+        - strength_band:
+            subject: graha.mercury
+            band: band.strong
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: the enemy will quickly inflict defeat on the querent king
+- id: PRASHNATANTRA.HEALTH.CH2V129.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v129
+    quote: If the lord of the 7th is afflicted. it will have adverse effects on the opponent.
+    quote_sha256: 7d2d4d37bc4895269c798f71256dbec6a97b061bbf11ec3fe7503b47f1dc21b2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: it will have adverse effects on the opponent
+- id: PRASHNATANTRA.HEALTH.CH2V129.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v129
+    quote: If the lord of the 6th is afflicted, the secret foe (especially relatives) will
+      suffer.
+    quote_sha256: 7da034f2bce5db1ab33fb246661d5da3d2103b9f2167f03e91ac0aea3ae7255e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.06
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the secret foe (especially relatives) will suffer
+- id: PRASHNATANTRA.OBSTACLE.CH2V91.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v91
+    quote: >-
+      The enemy will be routed when the lord of the 7th is in the 2nd and is in Muthasila
+      with the lord of the 2nd.
+    quote_sha256: de0034c3d72180c8f07dc5e97711624d56beccb01392792c1bae4a6082b89546
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.02
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: The enemy will be routed
+- id: PRASHNATANTRA.OBSTACLE.CH3V159.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v159
+    quote: If malefics are in the 7th or the 8th, the fugitive will have been beaten and imprisoned.
+    quote_sha256: 26fd0ec37208d6cb5380a466b5102d2ad3196808d6eb9d98f582e074e9d316c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.08
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the fugitive will have been beaten and imprisoned
+- id: PRASHNATANTRA.OBSTACLE.CH3V37.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.status: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v37
+    quote: >-
+      When the fourth house is identical with Pisces, Scorpio, Aquarius or Cancer, the enemy
+      will suffer defeat;
+    quote_sha256: d724329bdfe07167cbf0642c9753269cd338d2fa131e19f441bb7b441c8502ee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - bhava_in_rashi:
+        bhava: bhava.04
+        rashi: rashi.pisces
+    - bhava_in_rashi:
+        bhava: bhava.04
+        rashi: rashi.scorpio
+    - bhava_in_rashi:
+        bhava: bhava.04
+        rashi: rashi.aquarius
+    - bhava_in_rashi:
+        bhava: bhava.04
+        rashi: rashi.cancer
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the enemy will suffer defeat
+- id: PRASHNATANTRA.OBSTACLE.CH3V40.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v40
+    quote: Malefics in the 3rd, 5th and 6th denote conflict with the enemy.
+    quote_sha256: a00e2dd9f94b2dbdba45660876ca37a3a86153dac5d928278c4ac117fb10bb06
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.03
+        op: '>='
+        n: 1
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: conflict with the enemy
+- id: PRASHNATANTRA.OBSTACLE.CH3V48.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v48
+    quote: If malefics are in the 7th and benefics in the ascendant, the enemy is paid a ransom.
+    quote_sha256: 05253c7eed066dc9e80522b9309f58d0acb8bc6be24c3d4b09ec9320320b2843
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.mars
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the enemy is paid a ransom
+- id: PRASHNATANTRA.OBSTACLE.CH3V50.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v50
+    quote: The fortress will be taken if malefics are in Lagna at the time of query.
+    quote_sha256: c3a2b41c9a7a7c9b556d21b31d85dccb40a0641316f6e5897d54fb748cb0f0ae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.mars
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: The fortress will be taken if malefics are in Lagna at the time of query
+- id: PRASHNATANTRA.OBSTACLE.CH3V53.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v53
+    quote: Lord of the 6th or malefics in the 7th denotes war.
+    quote_sha256: 9018155c455638454fb2da1d345b414b77c9af81cb4083973550944884451cfa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.07
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: denotes war
+- id: PRASHNATANTRA.OBSTACLE.CH3V54.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v54
+    quote: Mars and lord of the 8th in conjunction forebodes colossal slaughter.
+    quote_sha256: 6ba949986fb7b9ceaa84fa0f501e7d5b28c93f65fa97e6c0880595fa3f0cff88
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: lord.bhava.08
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: extreme
+    text: colossal slaughter
+- id: PRASHNATANTRA.RELATIONSHIP.CH3V155.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.status: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v155
+    quote: >-
+      If the ascendant and the 7th are occupied by malefics, there will be no peaceful end
+      to the dispute.
+    quote_sha256: 3fe96cef8a956d580cf0a9e77902b5252ed403d995d239caf414649d50fa4870
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 1
+    - occupant_count:
+        bhava: bhava.07
+        op: '>='
+        n: 1
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: there will be no peaceful end to the dispute
+- id: PRASHNATANTRA.STATUS.CH2V110111.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v110-111
+    quote: >-
+      If a slow-moving planet is strongly placed in the 4th in adverse Muthasila (square aspect)
+      the querent's reputation is in jeopardy
+    quote_sha256: 48c2bb2336b09177c2bddfd18596e2d5495f28eef3c4c1507ec415bfe2ac2402
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: the querent's reputation is in jeopardy
+- id: PRASHNATANTRA.STATUS.CH2V129.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v129
+    quote: >-
+      If the query is about war with an enemy, say the enemy is powerful if the lord of the
+      7th is strongly disposed.
+    quote_sha256: 2806ca1de2ccf32ad505142fe2a1e08bc6a44133f668920b11e22cf78a214fa3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.07
+        band: band.strong
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the enemy is powerful
+- id: PRASHNATANTRA.STATUS.CH2V129.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v129
+    quote: >-
+      If the lord of the 12th is powerful, then the person for whom the query is put is more
+      strongly placed.
+    quote_sha256: 5c3d72417f5f67d1498ebf9beaa649fa5d49e3162eb995ae6d88dff486cba39e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.12
+        band: band.strong
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person for whom the query is put is more strongly placed
+- id: PRASHNATANTRA.STATUS.CH2V90.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v90
+    quote: >-
+      If benefics are behind the ascendant and slow-moving planets are forwards of the ascendant,
+      the querent gets the help of a noble person.
+    quote_sha256: e2786d58c078b26756a17dd7c9c2de3523ec059263d2723efe6c88b4c9f09efe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.jupiter
+        other: lord.bhava.01
+        distance: dist.12
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the querent gets the help of a noble person
+- id: PRASHNATANTRA.STATUS.CH3V153.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v153
+    quote: When malefics are in the ascendant, the querent will win in the dispute.
+    quote_sha256: 0c51e6fd8d9075e00d85c551f01b2c12845f5358dcd459dfd639f06f9730289b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the querent will win in the dispute
+- id: PRASHNATANTRA.STATUS.CH3V154.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v154
+    quote: malefics in the ascendant favour the querent
+    quote_sha256: 1f2c461cd204215a363ce3f9750f14d3e1f0dd9f89a4f2a6f4e64ae90b7dd647
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 1
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the querent will win in the dispute
+- id: PRASHNATANTRA.STATUS.CH4V1314.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v13-14
+    quote: If the Lagna is not aspected by a benefic, the benefic effect is one-fourth.
+    quote_sha256: 535616b470154911566e056fa6ff1c2d2c640cfd79074b139deb1bc83464516d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    not:
+      any:
+      - aspects:
+          subject: graha.jupiter
+          target: bhava.01
+      - aspects:
+          subject: graha.venus
+          target: bhava.01
+      - aspects:
+          subject: graha.mercury
+          target: bhava.01
+      - aspects:
+          subject: graha.moon
+          target: bhava.01
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: the result is not favourable
+- id: PRASHNATANTRA.STATUS.CH4V45.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v45
+    quote: >-
+      If the lord of the ascendant at the time of solar ingress into Aries being a benefic
+      planet, occupies his own or exaltation place or a Kendra and is aspected by or in conjunction
+      with benefics and is endowed with strength, then during that year, the world will witness
+      happiness, crops will thrive well and there will be plenty in the land.
+    quote_sha256: 72fb129ed969466560fd30184d0bbe6bd7f2755d1fafe51ebfcd561c499b249a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.own_sign
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the world will witness happiness, crops will thrive well and there will be plenty in
+      the land

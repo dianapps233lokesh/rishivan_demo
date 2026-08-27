@@ -41,7 +41,7 @@ class TestIntake:
         makes every write look like it came from everywhere."""
         out = intake_node(initial_state("q"), classify=FakeClassifier(spec()))
         assert set(out) <= {
-            "classification", "primary_rishi", "rishi_title",
+            "classification", "stated_facts", "primary_rishi", "rishi_title",
             "query_domain", "search_query",
         }
 

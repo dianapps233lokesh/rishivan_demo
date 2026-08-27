@@ -147,6 +147,20 @@ retrieving pages from classical Sanskrit texts in English translation:
 preserve Sanskrit terms (dasha, lagna, yoga), and name the relevant houses,
 planetary significators and timing indicators.
 
+Also extract STATED FACTS: things the seeker asserts about their own life,
+as distinct from what they are asking. "I got married on 22nd Nov 2025. When
+will I have a child" states one fact (the marriage, dated) and asks one
+question (the child). "I am working in an IT company as a Product Owner. Its
+been 5 yrs in the job" states two.
+
+Extract only what the seeker asserts as already true. A hope, a fear, a
+hypothetical or the question itself is not a stated fact. Give "when" as
+YYYY-MM-DD, or YYYY-MM, or YYYY when only the year is known, or "" when the
+fact carries no date. Resolve relative dates ("next month", "5 yrs in the job")
+against the current date where you can, and leave "when" empty where you
+cannot. Keep "text" to a short phrase in the third person. Return [] when the
+seeker states nothing about themselves.
+
 Return ONLY a JSON object (no markdown, no explanation):
 {
   "is_smalltalk_or_gibberish": <true|false>,
@@ -161,7 +175,8 @@ Return ONLY a JSON object (no markdown, no explanation):
   "chart_type": "<varga|numerology|ashtakavarga|dasha — only meaningful when intent is chart>",
   "varga_code": "<D1|D2|D3|D4|D7|D9|D10|D12|D16|D20|D24|D27|D30|D40|D45|D60 — only meaningful when chart_type is varga>",
   "relevant_vargas": ["<codes from D2|D3|D4|D7|D9|D10|D12|D16|D20|D24|D27|D30|D40|D45|D60 — only meaningful when intent is fact; [] if none apply>"],
-  "dasha_level": "<maha|antar|pratyantar|all|none — only meaningful when intent is fact>"
+  "dasha_level": "<maha|antar|pratyantar|all|none — only meaningful when intent is fact>",
+  "stated_facts": [{"text": "<short third-person phrase>", "when": "<YYYY-MM-DD|YYYY-MM|YYYY|>"}]
 }
 """
 
@@ -178,6 +193,27 @@ breaks the illusion of one continuous conversation. Only route to a different
 Rishi if the seeker has clearly moved to a new subject.
 Add the field: "is_followup": <true|false>
 """
+
+
+def _clean_stated_facts(raw) -> list[dict]:
+    """Model output, so shaped rather than trusted.
+
+    A fact with no text is not a fact; anything that is not a dict is not one
+    either. Both are dropped rather than raised on - a malformed entry here must
+    not cost the seeker their answer, and the question is still answerable
+    without the fact that failed to parse.
+    """
+    if not isinstance(raw, list):
+        return []
+    facts: list[dict] = []
+    for entry in raw:
+        if not isinstance(entry, dict):
+            continue
+        text = str(entry.get("text") or "").strip()
+        if not text:
+            continue
+        facts.append({"text": text, "when": str(entry.get("when") or "").strip()})
+    return facts[:6]
 
 
 def classify_query(
@@ -238,6 +274,8 @@ def classify_query(
             if c in _VARGA_CODES and c != "D1"
         ][:4]
 
+        stated_facts = _clean_stated_facts(result.get("stated_facts"))
+
         dasha_level = str(result.get("dasha_level", "none")).lower()
         if dasha_level not in ("maha", "antar", "pratyantar", "all", "none"):
             dasha_level = "none"
@@ -266,6 +304,11 @@ def classify_query(
             "varga_code": varga_code,
             "relevant_vargas": relevant_vargas,
             "dasha_level": dasha_level,
+            # What the seeker said about their own life, as opposed to what they
+            # asked. Answering without it produced a reading that told a man who
+            # had just said he married in November 2025 that his marriage window
+            # opens in 2030.
+            "stated_facts": stated_facts,
         }
     except Exception as exc:  # noqa: BLE001
         logger.warning("Rishi classification failed (%s) — defaulting to Vyom/general", exc)
@@ -296,4 +339,9 @@ def classify_query(
             # add nothing rather than guess.
             "relevant_vargas": [],
             "dasha_level": "none",
+            # Every consumer does a plain lookup on this key. Omitting it on the
+            # error path moves the failure three nodes downstream, into a broad
+            # `except`, where it is indistinguishable from the feature not
+            # existing.
+            "stated_facts": [],
         }

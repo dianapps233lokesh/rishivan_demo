@@ -1,0 +1,152 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.GENERAL.CH9V4175.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.95
+    domain.health: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v41-75
+    quote: >-
+      If a birth takes place during the night in the light half of the month (शुक्लपक्ष-Suklapaksha)
+      or during the day in the dark half of the month (कृष्णपक्ष-Krishnapaksha), the Moon
+      at the time though occupying the 6th or the 8th place from the Lagna, if aspected by
+      benefic as well as malefic planets protects, the new-born infant very like a father
+      under all afflictions.
+    quote_sha256: 80105dc6d4845958728cc5021028f694453cf8387c716710d916014177c27d73
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: protects, the new-born infant very like a father under all afflictions
+- id: JATAKAPARIJATA.GENERAL.CH9V81.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.95
+    domain.health: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v81
+    quote: >-
+      The Moon occupying the varga of a benefic planet and aspected by benefic planets and
+      shining with full radiance, averts completely all ills that threaten the new-born child
+      as the Garuda removes poison
+    quote_sha256: 0c90b1345d4e5483635e9874b07afe1fbe013da0754a138bdef20691d4a1502b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: extreme
+    text: averts completely all ills that threaten the new-born child
+- id: JATAKAPARIJATA.HEALTH.CH18V54.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.longevity: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v54
+    quote: >-
+      During the dasa and bhukti of planets which occupy the 6th or the 8th place from each
+      other, men suffer loss of place or loss of life.
+    quote_sha256: 59956dab9729ba3eb6b675067e7d6df80927d24fa18350625d89c9f7d6cfaff7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: men suffer loss of place or loss of life
+- id: JATAKAPARIJATA.HEALTH.CH9V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v36
+    quote: >-
+      When the Moon with Rahu is in conjunction with another malefic (irrespective of its
+      position) and Mars occupies the 8th, both the mother and the child will die; and the
+      death will ensue from the effect of an operation if the Sun be in the Lagna.
+    quote_sha256: fbdf90347ac6b3ff737f76b5e4ed32696f096f675c04127806140acb6818b369
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.rahu
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      both the mother and the child will die; and the death will ensue from the effect of
+      an operation

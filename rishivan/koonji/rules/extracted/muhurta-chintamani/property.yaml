@@ -1,0 +1,484 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.PROHIBITION.CH1V48.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.property: 0.9
+    domain.career: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch1.v48
+    quote: >-
+      All the deeds that should not be performed when Jupiter is combust (these are described
+      in Shlokas 46 and 47) should also be left out (postponed) when Jupiter is in the sign
+      of Leo or Capricorn.
+    quote_sha256: 346586e28cde58ddc8c3081927e42f56210309e697e8feb92dcf61f8242f21ae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.jupiter
+      rashi: rashi.leo
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: prohibition
+- id: MUHURTACHINTAMANI.PROHIBITION.CH1V48.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.property: 0.9
+    domain.career: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch1.v48
+    quote: >-
+      All the deeds that should not be performed when Jupiter is combust (these are described
+      in Shlokas 46 and 47) should also be left out (postponed) when Jupiter is in the sign
+      of Leo or Capricorn.
+    quote_sha256: 346586e28cde58ddc8c3081927e42f56210309e697e8feb92dcf61f8242f21ae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.jupiter
+      rashi: rashi.capricorn
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: prohibition
+- id: MUHURTACHINTAMANI.PROHIBITION.CH1V48.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.property: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch1.v48
+    quote: >-
+      In the same way all these deeds are to be left out during the period when Jupiter and
+      the Sun remain in the same sign
+    quote_sha256: 9cb520a2e072ecbc0979873396ae3503dc880399fe1d31172b6d583e83a09f52
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.jupiter
+      other: graha.sun
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: prohibition
+- id: MUHURTACHINTAMANI.PROPERTY.CH10V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v4
+    quote: >-
+      If Jupiter is in the Ascendant or in a Trine, Mars in the 6th House and Venus in the
+      10th House, then the king is endowed with Rajya Lakshmi (Royal wealth) and happiness.
+    quote_sha256: 16746caf838d6835edfa8f92cbaec51f936cc051364fa0db443110dd5adc59ff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.01
+      - in_trikona:
+          subject: graha.jupiter
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the king is endowed with Rajya Lakshmi (Royal wealth) and happiness
+- id: MUHURTACHINTAMANI.PROPERTY.CH10V4.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.status: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v4
+    quote: >-
+      And if Saturn is in the 3rd, the Sun in the 11th, and Jupiter, in the 10th or in the
+      4th House, then the King's land (Kingdom) always remains immovable or fixed, that is,
+      there always remains stability in the kingdom of the king.
+    quote_sha256: 787345d252c7ddd9c3b6111bcb097ae3170429d5612ffed565559dc03ba1c369
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+    - any:
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the King's land always remains immovable or fixed, that is, there always remains stability
+      in the kingdom of the king
+- id: MUHURTACHINTAMANI.PROPERTY.CH11V153.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.career: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v1-53
+    quote: >-
+      And if the journey is commenced in any of the Nakshtras of Dhanishtha, Rewati and Pushya
+      and it is resumed after staying in his own territory for one night, then such journey
+      procures the gain of lands in the war.
+    quote_sha256: f1344935450179d9ea157897998305a2eb38e95de826b9f7e7eba9a8ffb86b34
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - in_nakshatra:
+        subject: lord.bhava.01
+        nakshatra: nakshatra.dhanishta
+    - in_nakshatra:
+        subject: lord.bhava.01
+        nakshatra: nakshatra.revati
+    - in_nakshatra:
+        subject: lord.bhava.01
+        nakshatra: nakshatra.pushya
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: procures the gain of lands in the war
+- id: MUHURTACHINTAMANI.PROPERTY.CH12V22.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v22
+    quote: >-
+      And if there is Venus in the Ascendant, the Sun be in the 3rd House, Mars be in the
+      6th House, and Jupiter be in the 5th House, then in such combination of planets the
+      longevity of the house will be 200 years.
+    quote_sha256: 41f572429cedb50a75ed119aa43bdae19311644dc8fa4ea1852082005395effd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: extreme
+    text: the longevity of the house will be 200 years
+- id: MUHURTACHINTAMANI.PROPERTY.CH12V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.longevity: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v23
+    quote: >-
+      If in the Ascendant at the time of beginning the construction of the house there be
+      Venus in the Ascendant, Mercury be in the 10th House, the Sun be in the 11th House and
+      Jupiter be in an Angle except the Ascendant House (that is, he be in 4/7/10 House),
+      then the house has the longevity of 100 years
+    quote_sha256: c9bf66897ba56554df46a45c912d723741eb92206bd38f33de027a917e07592f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+    - any:
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.10
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the house has the longevity of 100 years
+- id: MUHURTACHINTAMANI.PROPERTY.CH12V23.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.longevity: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v23
+    quote: >-
+      And if Jupiter be in the 4th House, the Moon be in the 10th House, and Mars and Saturn
+      be in the 11th House, then the longevity of the house will be of 80 years
+    quote_sha256: c834df21cf77ded442c084b85ff636b70fdb1157f8a823a868c48df78af5375a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.11
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the longevity of the house will be of 80 years
+- id: MUHURTACHINTAMANI.PROPERTY.CH12V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.health: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v27
+    quote: >-
+      If Mars be in any of the Nakshtras of Hasta, Pushya, Rewati, Magha, Poorvashadha and
+      Moola and the day be of Tuesday, the house the construction of which is begun in such
+      yoga, gives to the owner affliction from fire and pain to his son.
+    quote_sha256: c312651717fb6f289198d038b5390793182a289ee2ac2889a678bbf69752fd6b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aries
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: gives to the owner affliction from fire and pain to his son
+- id: MUHURTACHINTAMANI.PROPERTY.CH12V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch12.v28
+    quote: >-
+      If Saturn happens to be in any of the Nakshtras of Poorva bhadrapada, Uttarabhadrapada,
+      Jyeshtha, Anuradha, Swati and Bharani, and the day happens to be of Saturday, then the
+      house the construction of which is begun in such yoga becomes the abode of demons, ghosts
+      and pretas (spirits).
+    quote_sha256: 25e4077603cad9a09693d06ac95a7d176629fc825f3ef2529fd7a212b367b457
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_nakshatra:
+          subject: graha.saturn
+          nakshatra: nakshatra.purva_bhadrapada
+      - in_nakshatra:
+          subject: graha.saturn
+          nakshatra: nakshatra.uttara_bhadrapada
+      - in_nakshatra:
+          subject: graha.saturn
+          nakshatra: nakshatra.jyeshtha
+      - in_nakshatra:
+          subject: graha.saturn
+          nakshatra: nakshatra.anuradha
+      - in_nakshatra:
+          subject: graha.saturn
+          nakshatra: nakshatra.swati
+      - in_nakshatra:
+          subject: graha.saturn
+          nakshatra: nakshatra.bharani
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the house the construction of which is begun in such yoga becomes the abode of demons,
+      ghosts and pretas
+- id: MUHURTACHINTAMANI.PROPERTY.CH2V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch2.v46
+    quote: >-
+      If the collection of wood is made in these Nakshtras then juicy food is prepared in
+      the Kitchen (with that wood).
+    quote_sha256: ba0c0638fc9d832c5622fe1ae85144d535aa2469a7a2381a72a466546c47f4c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.ashwini
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: juicy food is prepared in the Kitchen
+- id: MUHURTACHINTAMANI.WEALTH.CH2V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch2.v28
+    quote: >-
+      There is loss in Agriculturing if ploughing is performed in the Ascendants of Leo, Aquarius,
+      Cancer, Aries, Capricorn and Libra
+    quote_sha256: 255837764cf7c8661d3dedcc73dc434b8eb89fe20abafc3c7c5dfe0f1efe42d9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.leo
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aquarius
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.capricorn
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: There is loss in Agriculturing

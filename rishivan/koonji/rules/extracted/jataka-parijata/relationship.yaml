@@ -1,0 +1,1922 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.CAREER.CH9V751.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v7-51
+    quote: >-
+      When the Moon in Dhanus is aspected by Mars, the Sun or Saturn, the person born under
+      such influence will be an arbitrator in a court and addicted to courtezans.
+    quote_sha256: f2f5bc47a59c58a2816879345d138e2cbd27daf5e128df2f9b8dc31c2cc4cc6f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - any:
+      - aspects:
+          subject: graha.mars
+          target: graha.moon
+      - aspects:
+          subject: graha.sun
+          target: graha.moon
+      - aspects:
+          subject: graha.saturn
+          target: graha.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person born under such influence will be an arbitrator in a court and addicted to
+      courtezans
+- id: JATAKAPARIJATA.EDUCATION.CH17V49.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.education: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v49
+    quote: >-
+      if the planet occupying its own Navamsa in the 7th bhava be Mercury, the husband will
+      be learned
+    quote_sha256: e887f4baeb18ab583738a92039ce06e770a8694e934699562ee935f761a76b2d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mercury
+        dignity: dignity.own_sign
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the husband will be learned
+- id: JATAKAPARIJATA.FAMILY.CH17V7273.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v72-73
+    quote: >-
+      When the Moon, in the position described in sloka 71, is associated with (1) Rahu or
+      Ketu, the mother intrigues with a low-born person
+    quote_sha256: 235aa76e6b867160af099825fd545a831a2946eaaeb780007ae8d32d115d5408
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - conjunct:
+        subject: graha.moon
+        other: graha.rahu
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: the mother intrigues with a low-born person
+- id: JATAKAPARIJATA.FAMILY.CH17V7273.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v72-73
+    quote: >-
+      When the Moon, in the position described in sloka 71, is associated with (1) Rahu or
+      Ketu, the mother intrigues with a low-born person
+    quote_sha256: 235aa76e6b867160af099825fd545a831a2946eaaeb780007ae8d32d115d5408
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - conjunct:
+        subject: graha.moon
+        other: graha.ketu
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: the mother intrigues with a low-born person
+- id: JATAKAPARIJATA.FAMILY.CH17V7273.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v72-73
+    quote: if with Saturn, the intrigue is with a Sudra
+    quote_sha256: a00b663dab9cb490b02f963779efd80d0f99c84cd5a9014aca492c3afe054bc2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: the intrigue is with a Sudra
+- id: JATAKAPARIJATA.FAMILY.CH17V7273.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v72-73
+    quote: if with Mercury, it is with a Vaisya
+    quote_sha256: 7029de9ec32a9cf886cfe76238f46a7dd84cdf177756e42033cb02e0e34b1fad
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: it is with a Vaisya
+- id: JATAKAPARIJATA.FAMILY.CH17V7273.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v72-73
+    quote: if with the Sun, the paramour will be a Kshatriya
+    quote_sha256: 9e5899b02d90c5ee7e47411e2581fe6959fbee44016a75a40aef0f445306a9f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: the paramour will be a Kshatriya
+- id: JATAKAPARIJATA.FAMILY.CH17V7273.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v72-73
+    quote: if with Jupiter or Venus, the lover will be a Brahmin
+    quote_sha256: d490dbf8700de87fb4d26feb9ebae9cab934bd314e563fa3db6118337284c22e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: the lover will be a Brahmin
+- id: JATAKAPARIJATA.FAMILY.CH17V7273.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v72-73
+    quote: if with Jupiter or Venus, the lover will be a Brahmin
+    quote_sha256: d490dbf8700de87fb4d26feb9ebae9cab934bd314e563fa3db6118337284c22e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: the lover will be a Brahmin
+- id: JATAKAPARIJATA.FAMILY.CH18V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v47
+    quote: >-
+      During the dasa of the lord (when malefic) of the 3rd bhava and in the bhukti of Saturn
+      Mars, Rahu, Ketu or the Sun an astrologer may generally predict loss of brothers and
+      sisters, or, at all events, a misunderstanding with them.
+    quote_sha256: b80a6f3139b1029058b5ceef2a19164faad21edb368f8d87b9f131db4e358d19
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.03
+        level: level.maha
+    - any:
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.saturn
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.mars
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.rahu
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.ketu
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.sun
+          level: level.antar
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: moderate
+    text: loss of brothers and sisters, or, at all events, a misunderstanding with them
+- id: JATAKAPARIJATA.HEALTH.CH18V80.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v80
+    quote: >-
+      Illness of a wife, loss of relatives, suffering from diseases of the stomach and loss
+      of property crop up in Ketu's interval in the Moon's dasa.
+    quote_sha256: 4638c9508a0cfa033e6e4a09acb94035ab9b3ee434dc27e76667d7b0f0d0b1c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Illness of a wife
+- id: JATAKAPARIJATA.PROGENY.CH9V96.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.progeny: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v96
+    quote: >-
+      if in a नवांश (Navamsa) of मकर (Makara), the person born will be covetous, black in
+      personal appearance and will have a wife and sons
+    quote_sha256: d4b259e7cd5af24bc8e376082ebd9cae61729cea4ced3e2f9c0104003a37fa29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_occupies:
+      varga: varga.d9
+      subject: graha.moon
+      rashi: rashi.capricorn
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: will have a wife and sons
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v26
+    quote: >-
+      How many weak planets there may be that are in conjunction with the lord of the 7th
+      or of the 2nd bhava and are at the same time the lords of the 6th, the 8th or the 12th
+      bhava ( दुःस्थान - Dustthana ), so many will be the wives to be destroyed by them.
+    quote_sha256: 6454e6a9b141f4b72a53ab1a84456dba052225ad2da8cf948ca37b8f6b43d494
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - conjunct:
+          subject: lord.bhava.06
+          other: lord.bhava.07
+      - conjunct:
+          subject: lord.bhava.08
+          other: lord.bhava.07
+      - conjunct:
+          subject: lord.bhava.12
+          other: lord.bhava.07
+      - conjunct:
+          subject: lord.bhava.06
+          other: lord.bhava.02
+      - conjunct:
+          subject: lord.bhava.08
+          other: lord.bhava.02
+      - conjunct:
+          subject: lord.bhava.12
+          other: lord.bhava.02
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: so many will be the wives to be destroyed by them
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v27
+    quote: >-
+      If the Navamsa occupied by Jupiter belong to a friend, the person concerned will have
+      but one wife.
+    quote_sha256: 51bcb3d16c783deaabef276f5ee61b39a75297817e969858c1b307aa8cf4e430
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_dignity:
+      varga: varga.d9
+      subject: graha.jupiter
+      dignity: dignity.friendly
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will have but one wife
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v27
+    quote: If the amsa in question be Jupiter's own, the number of wives will be 2 or 3.
+    quote_sha256: e5564a5c03c6c582903cffe468ad05d0ec49b1367a3461ba219464b2722f48a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_dignity:
+      varga: varga.d9
+      subject: graha.jupiter
+      dignity: dignity.own_sign
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the number of wives will be 2 or 3
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V27.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v27
+    quote: >-
+      If the amsa be that of Jupiter's exaltation, the person concerned will be the lord of
+      many wives.
+    quote_sha256: 3c936268c089942d6daf0ddf0de5ece357cd6efb77edda64ea9c7cdbb306775b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_dignity:
+      varga: varga.d9
+      subject: graha.jupiter
+      dignity: dignity.exalted
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: extreme
+    text: the person concerned will be the lord of many wives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V38.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v38
+    quote: If the Sun be in the 7th bhava, the wife will have breasts exceedingly strong.
+    quote_sha256: bd1f656b47fa2d961ada780ef2d1cebf648e12f803a866006e11034daae42ccf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the wife will have breasts exceedingly strong
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V38.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v38
+    quote: if Mars appear in the 7th bhava, her bosom will be shrunken.
+    quote_sha256: cf42388b712ffe34c96e51f4186a212bc29743fca3f3d2dae300a6282bf8fef8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: her bosom will be shrunken
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.status: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v4
+    quote: >-
+      If the lord of the 7th bhava occupying a दुःस्थान (Dustthana) be in a malefic house
+      and aspected by or associated with a malefic planet, the effect of the 7th bhava would
+      be but mediocre.
+    quote_sha256: 1844e070e3d0d7e717ae350f6e4610f5eabd87e75efd112771fcced6d6d7d689
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.07
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.aries
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.scorpio
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.leo
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.cancer
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.sagittarius
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.pisces
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.libra
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.gemini
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.virgo
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.capricorn
+      - bhava_in_rashi:
+          bhava: bhava.06
+          rashi: rashi.aquarius
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the effect of the 7th bhava would be but mediocre
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V49.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v49
+    quote: >-
+      When the Sun occupies its own Navamsa in the 7th bhava, the female born will have a
+      husband gentle and diverting by his excessive playfulness.
+    quote_sha256: 2eab86ef2ef77d578667342b25f211ef111129764a2cf892fc1d56a9d26267f5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.sun
+        dignity: dignity.own_sign
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the female born will have a husband gentle and diverting by his excessive playfulness
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V49.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v49
+    quote: When the Moon occupies such a position, she will be happy
+    quote_sha256: cec7b95f8f5c72cd571c605701dc26b4b93841284d7d7983f90c3cc6f695db43
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.moon
+        dignity: dignity.own_sign
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: she will be happy
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V49.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v49
+    quote: >-
+      when Mars is in the same position, the husband will be devoted to his wife though playing
+      the gallant towards other women
+    quote_sha256: e8fe0f1514db7939e8297969b0944e72ddf54a43f3461d12f57cb5feb7d32b0b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mars
+        dignity: dignity.own_sign
+  indicates:
+    claim: relationship.discord
+    polarity: mixed
+    magnitude: moderate
+    text: the husband will be devoted to his wife though playing the gallant towards other
+      women
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V49.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v49
+    quote: if it be Venus, the husband will be handsome and voluptuous
+    quote_sha256: f777d1b14020ebbf0f0d670805552a29df37f90623bee71fb20ab8e1cd3e71e8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.venus
+        dignity: dignity.own_sign
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the husband will be handsome and voluptuous
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v6
+    quote: >-
+      If the lords of the 10th, the 2nd and 7th bhavas occupy the 10th bhava, the person born
+      will have intrigues with women other than his wife.
+    quote_sha256: e4a8a576e7750e6de79c90f4848fc0dc15fe3c4d757545525ca215009f0249a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.10
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the person born will have intrigues with women other than his wife
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V6.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v6
+    quote: >-
+      If Jupiter and Mercury or the Moon and Venus be in the 7th bhava, the person will be
+      addicted to many women.
+    quote_sha256: 3f896ced4f58c469241bcb3a5d679720267b67146a42e3de4c462b853322f90c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.07
+    - all:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the person will be addicted to many women
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V6.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v6
+    quote: If Venus occupying the 7th bhava be strong, the person concerned will have many
+      wives.
+    quote_sha256: 1f122a161012bfa1dc3f3c0fa723be6a3ff044b3fd3e10fce4f43991d525a163
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - strength_band:
+        subject: graha.venus
+        band: band.strong
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will have many wives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V6465.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.status: 0.3
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v64-65
+    quote: >-
+      When the 7th Rasi is benefic and is occupied by a benefic planet, the good effects spoken
+      of will surely follow.
+    quote_sha256: 261fe7f43c9622fafc731395e42ea1ee43c1b2836e7f6fb1b65e191eb502b859
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.friendly
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: marriage may be expected
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v7
+    quote: If Venus and Mars be in the 7th bhava, the person born will be bereft of a wife.
+    quote_sha256: 502ab636d81a587c7dbb52f3a6bd1e931dd401fcbbed62878d7262666e2dc0c1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the person born will be bereft of a wife
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V76.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.travel: 0.8
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      The effect of Mars being associated with Venus in the 9th bhava is that the person born
+      will have two wives and will be an ex- pounder of law in a foreign land.
+    quote_sha256: b5f6f227bf8d5cbfad5c5005925c73a48191fc8b930286fef1e3b6f6c3b53f08
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the person born will have two wives and will be an expounder of law in a foreign
+      land
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V92.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v92
+    quote: >-
+      If the Sun occupying the 7th bhava be aspected by inimical planets, the female born
+      will be cast away
+    quote_sha256: a48e21068f29d906bd397c7ca4d5e387dfc328e0ce4eaf0dd8a2bccc0cae6261
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the female born will be cast away
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V92.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v92
+    quote: >-
+      if Mars occupy a similar position, she will become a widow or her husband and herself
+      will become mutually embittered
+    quote_sha256: 2c37be122758eaefe1d864d58068bae8900e5d0a61ef94a374fb5f50029444ce
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: she will become a widow or her husband and herself will become mutually embittered
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V92.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v92
+    quote: >-
+      when Saturn in the 7th bhava is aspected by an inimical planet, she will attain to a
+      good old age and yet have her husband alive.
+    quote_sha256: 57b0fbb0d2251d16891a667544e11409b5e48afec99aac162e7f45efd97e58b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: she will attain to a good old age and yet have her husband alive
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V93.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v93
+    quote: >-
+      When a malefic sign representing the 7th bhava is occupied by Saturn the female will
+      become afflicted with widowhood.
+    quote_sha256: d34be9b0d86eecf321bdffa7f5e3c21519694d95bd2165100566715b52029648
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.07
+        rashi: rashi.aries
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the female will become afflicted with widowhood
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V94.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v94
+    quote: >-
+      When Mars occupies a Navamsa belonging to the Rasi of the 7th bhava and is aspected
+      by Saturn, the female born will have the bad luck to be disliked by the husband.
+    quote_sha256: fe327f47fc0a6c2b95d98f4dd403f90a81c6b241f963da003272aa416e24f91a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mars
+        rashi: rashi.aries
+    - bhava_in_rashi:
+        bhava: bhava.07
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the female born will have the bad luck to be disliked by the husband
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V94.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v94
+    quote: >-
+      But when Mars is occupying a Navamsa of Venus in the Rasi representing the 7th bhava
+      and is aspected by a benefic planet, she will be the favorite of her husband.
+    quote_sha256: 241a26a74563a6339afb9cbf893bf31a62190278c97ed0b2c34508dea1b7cf63
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.mars
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.mars
+          rashi: rashi.libra
+    - bhava_in_rashi:
+        bhava: bhava.07
+        rashi: rashi.taurus
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.mars
+      - aspects:
+          subject: graha.venus
+          target: graha.mars
+      - aspects:
+          subject: graha.mercury
+          target: graha.mars
+      - aspects:
+          subject: graha.moon
+          target: graha.mars
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: she will be the favorite of her husband
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V107.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.progeny: 0.8
+    domain.property: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v107
+    quote: >-
+      Rahu in Kanya, Meena, or Dhanus gives to the person concerned during its dasa wife and
+      children, lordship of lands and a carriage drawn by men.
+    quote_sha256: 190b8cdeab7b096374edef95f8e9abe889c6b9042e530d579075898b150c6e4d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - any:
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.virgo
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.pisces
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.sagittarius
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: wife and children, lordship of lands and a carriage drawn by men
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V126.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.wealth: 0.8
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v126
+    quote: >-
+      A person experiences the good will of relatives, the approbation of the people, accession
+      of wives, property and wealth, and the joys arising from agriculture and kindred pursuits
+      pending Sukra's interval in Sani-dasa.
+    quote_sha256: fc330b2c8d2b9a3abcdb3c64e24beee04651c77d8cbc3db01c343209d5f2b7c4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.antar
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      A person experiences the good will of relatives, the approbation of the people, accession
+      of wives, property and wealth, and the joys arising from agriculture and kindred pursuits
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V127.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.progeny: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v127
+    quote: >-
+      Loss of wife and children, trouble from the king or robbers, and a sinking of the heart,
+      a person has to experience, during the Sun's bhukti in Saturn's mahadasa.
+    quote_sha256: e95e74178ac4e03f75b69d639610cef3eb2c8c2d2a81ae522d64b8da9d442988
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: Loss of wife and children, trouble from the king or robbers, and a sinking of the
+      heart
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V135.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v135
+    quote: >-
+      Trouble from relatives, mental agony, loss of comfort, dread of an enemy and failure
+      in business are to be expected during Ketu's interval in Budha dasa.
+    quote_sha256: cd86946ce0d1234c55af42f4d9427b5109979779720a11e69017c6738ba95cbf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Trouble from relatives, mental agony, loss of comfort, dread of an enemy and failure
+      in business are to be expected
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V141.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.wealth: 0.5
+    domain.progeny: 0.5
+    domain.health: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v141
+    quote: >-
+      When Jupiter has its bhukti in Budha dasa, a person will incur the hatred of friends,
+      relatives and elders; will have additions to wealth and children, and will be liable
+      to risk from diseases and the like.
+    quote_sha256: 7d51243f64fc6e216aef112964e4014418bef33f7db570cee3a116c8257af21c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: incur the hatred of friends, relatives and elders
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V149.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.wealth: 0.6
+    domain.health: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v149
+    quote: >-
+      Ennui affecting wife, children and attendants, destruction of wealth and corn, and distress
+      of mind are to be looked for in the Moon's bhukti in Ketu dasa.
+    quote_sha256: add90b342fafb2d980ad04c09fafd4ebae5562fee5adccb1404c2d607d658eb4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: Ennui affecting wife, children and attendants
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V150.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v150
+    quote: >-
+      During Kuja's bhukti in Ketu dasa, a person has to incur the odium of his sons, wife
+      and younger brothers, to suffer pain from diseases, foes and bad rulers, and to lose
+      some relatives.
+    quote_sha256: d256f7d2a962eb34ed0ac56bc52048db1d8a1926fb6e9875701d9310c4c454d2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: a person has to incur the odium of his sons, wife and younger brothers
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V153.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v153
+    quote: difference with kith and kin
+    quote_sha256: daea8fbebcc5d09e82809c9c5d899f2bdc63bfa55adb0c3330a583da7407e76e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: difference with kith and kin
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V162.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v162
+    quote: acquisition of wives
+    quote_sha256: e108b54a159e81480afc8f5722a50405072360ecbc375559818a3f6bd1720bd1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: moderate
+    text: acquisition of wives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V163.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v163
+    quote: dislike of relatives
+    quote_sha256: 4af4f293b25dacfe43f7f43152d13befc59ef47808089d0b3b09faf691dc8369
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: dislike of relatives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V163.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v163
+    quote: evil from friends
+    quote_sha256: 9a51032d50074e53bcb941f5149dbc2aa7a5454a7d20612b14f718dee7036333
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: evil from friends
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V167.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v167
+    quote: >-
+      Discord, death of relatives, injury inflicted by enemies, misgiving in the heart and
+      deprivation of wealth are what a person should be prepared for in Ketu's bhukti in the
+      mahadasa of Venus.
+    quote_sha256: 75d8888e08b0837f5276175d03d0485c8b1c0571c56bb690d9a25249f7a8d17f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: Discord
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V43.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.wealth: 0.3
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v43
+    quote: >-
+      At the time the dasa of the lord of the 2nd bhava is in progress and in the bhukti of
+      Saturn, loss of wealth, and quarrel with friends and relations will undoubtedly crop
+      up.
+    quote_sha256: 362742f171216ae349a4efc0bd77bb183f21dd692c1e29957ff068dc6e5bd538
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.02
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: quarrel with friends and relations will undoubtedly crop up
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V65.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.career: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v65
+    quote: trouble from relatives as also from enemies,
+    quote_sha256: 167ec6a01216cba56fda6d36957bb43ad9baa22599253cb955d54b331a5cc624
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: trouble from relatives as also from enemies
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V84.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.temperament: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v84
+    quote: >-
+      there will be seen a propensity on the part of the person concerned to resort continually
+      to the society of low women and a crop of hatred emanating from sons, wife, relatives
+      and reverend seniors.
+    quote_sha256: 89332b89371b788900d52471dda229651cde96588e30f0ed7a838cb8531ffae7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: a crop of hatred emanating from sons, wife, relatives and reverend seniors
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V96.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v96
+    quote: >-
+      Loss of such things as comfort, happiness, wealth and worldly status, the pang of parting
+      with a wife, children and relatives, illness in the extreme, residence in a strange
+      land, and a disposition to wrangle are what Rahu brings about.
+    quote_sha256: b579e0ed95be5b9d9fadc377d7efc4e311fca282df4052596ab94bcde1232bab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the pang of parting with a wife, children and relatives
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V3.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3
+    quote: >-
+      If the Moon be in conjunction with Saturn, the person born will have a bad wife, abuse
+      his parents and will be without wealth.
+    quote_sha256: 04cf9a46a0410de7162f3fc8f6d420f8e7dad5def64080230a349f7f26541d98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the person born will have a bad wife
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V42.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: if in a sign of Mercury, he will have a large following of friends
+    quote_sha256: 7e3ce1d6cad592305305a96e15eb60ee91e8ac4af499fd7cd93fbf31da1fd20e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.gemini
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.virgo
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: he will have a large following of friends
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V99.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v99
+    quote: >-
+      When the Sun and the Moon occupy, one of them the 12th, and the other the 6th house
+      from the Lagna, the person born will be one eyed and will have the unique fortune of
+      possessing an one-eyed wife as well.
+    quote_sha256: 1a9620783906e009f78f1743b8e8ae9b82be92377ef2e69fa5d1d0a3b0cbe91e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.12
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.06
+    - all:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.12
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: possessing an one-eyed wife as well
+- id: JATAKAPARIJATA.RELATIONSHIP.CH9V99.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v99
+    quote: >-
+      When Venus and the Sun conjointly occupy the 7th, the 9th or the 5th bhava, the person
+      born under this yoga will have a wife defective in some limb.
+    quote_sha256: 515f2ce51b978c28ee6fe862b17940791d7f50d20c3d360ea713192ab288cf16
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+    - any:
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.05
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the person born under this yoga will have a wife defective in some limb
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V49.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v49
+    quote: >-
+      if Jupiter be in that bhava, the female concerned will get a spouse who will have all
+      his senses under control
+    quote_sha256: db64c0c92413eaca94b93b57049852c3ce1e4c07f09516d29db223c08d8ba470
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.jupiter
+        dignity: dignity.own_sign
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the female concerned will get a spouse who will have all his senses under control
+- id: JATAKAPARIJATA.TEMPERAMENT.CH17V49.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v49
+    quote: lastly, if it be Saturn, he will be an old dolt.
+    quote_sha256: 843657e6a3282fb1f0c95afaae917fad3040ea052f475c1261cfbdbe6026f654
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.saturn
+        dignity: dignity.own_sign
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: he will be an old dolt

@@ -139,6 +139,55 @@ class TestDNF:
         with pytest.raises(ValueError, match="variants"):
             dnf_variants(big, limit=32)
 
+    def test_the_exploding_rule_is_named_and_the_others_still_index(self, registry):
+        """One unindexable rule must not cost the whole corpus.
+
+        `_dnf` raises without naming a rule, and the compiler attributed that to
+        `<corpus>`. `gate` can only drop errors that name a rule, so the
+        offending rule was written to disk with a warning and `Engine.from_rules`
+        then refused to start -- the second time a single bad rule took the whole
+        engine down. A Hindu Predictive verse expanded "the quadrants are
+        occupied by benefics" into four houses times four benefics, 1,536
+        variants, and nothing loaded.
+        """
+        big = BoolExpr(op="all", operands=[
+            BoolExpr(op="any", operands=[
+                leaf("occupies_bhava", subject="graha.sun", bhava=f"bhava.{n:02d}")
+                for n in range(1, 5)
+            ])
+            for _ in range(4)
+        ])
+        fine = BoolExpr(op="all", operands=[
+            leaf("occupies_bhava", subject="graha.moon", bhava="bhava.07")
+        ])
+
+        seen: list[tuple[str, str]] = []
+        index = RuleIndex.build(
+            [rule("BOOM", big), rule("FINE", fine)],
+            registry,
+            on_error=lambda rule_id, exc: seen.append((rule_id, str(exc))),
+        )
+
+        assert [rule_id for rule_id, _ in seen] == ["BOOM"], seen
+        assert "variants" in seen[0][1]
+        # The healthy rule is still indexed - aborting at the first failure is
+        # what turned one bad rule into an empty index.
+        assert {v.rule_id for v in index.variants} == {"FINE"}
+
+    def test_without_a_handler_it_still_raises(self, registry):
+        """Existing callers get the old behaviour. `on_error` is opt-in so a
+        caller that has no way to report a per-rule failure still fails loudly
+        rather than silently indexing a subset."""
+        big = BoolExpr(op="all", operands=[
+            BoolExpr(op="any", operands=[
+                leaf("occupies_bhava", subject="graha.sun", bhava=f"bhava.{n:02d}")
+                for n in range(1, 5)
+            ])
+            for _ in range(4)
+        ])
+        with pytest.raises(ValueError, match="variants"):
+            RuleIndex.build([rule("BOOM", big)], registry)
+
     def test_not_of_a_disjunction_is_kept_whole(self):
         """De Morgan would turn this into a conjunction of negations, none of
         which are indexable anyway. Keeping it whole and deferring it to the VM

@@ -116,6 +116,51 @@ class TestGate:
         _, report, _ = gate([_doc("OK")], registry)
         assert "documents" in str(report)
 
+    def test_an_unindexable_rule_is_dropped_rather_than_written(self, registry):
+        """A rule that cannot be indexed must not reach disk.
+
+        `gate` used to compile without indexing whenever anything else had
+        failed, so a rule normalising past the variant limit was written with
+        only a warning and `Engine.from_rules` refused to start on the next run.
+        """
+        boom = _doc("BOOM")
+        boom["when"] = {"all": [
+            {"any": [
+                {"occupies_bhava": {"subject": "graha.sun", "bhava": f"bhava.{n:02d}"}}
+                for n in range(1, 5)
+            ]}
+            for _ in range(4)
+        ]}
+        rules, report, _ = gate([_doc("OK"), boom], registry)
+        assert [r.rule_id for r in rules] == ["OK"]
+        assert "variants" in report.dropped["BOOM"]
+
+    def test_the_count_matches_what_was_actually_written(self, registry):
+        """`compiled` was derived by subtracting `fatal` from `result.rules`,
+        and a rule failing an early pass is named in a diagnostic without ever
+        becoming a `Rule` - subtracted having never been added. Hindu Predictive
+        reported 111 written with 112 on disk, and an all-failing document set
+        reported a negative count."""
+        # No `indicates` block, so it is named in a diagnostic and never becomes
+        # a `Rule` - the exact shape the subtraction got wrong. A rule that
+        # merely fails a later pass IS in `result.rules`, so it cannot show this.
+        never_built = _doc("NEVER_BUILT")
+        never_built.pop("indicates")
+
+        failed_late = _doc("FAILED_LATE")
+        failed_late["when"] = {"combust": {"subject": "graha.sun"}}
+
+        for docs in (
+            [never_built],
+            [_doc("OK"), never_built],
+            [_doc("OK"), never_built, failed_late],
+            [_doc("OK")],
+        ):
+            rules, report, _ = gate(docs, registry)
+            ids = [d["id"] for d in docs]
+            assert report.kept == len(rules), (ids, report.kept, len(rules))
+            assert report.compiled >= 0, (ids, report.compiled)
+
 
 class TestConvertRun:
     def test_a_dry_run_writes_nothing(self, tmp_path):

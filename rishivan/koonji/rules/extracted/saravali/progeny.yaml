@@ -1,0 +1,269 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.HEALTH.CH24V1921.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.wealth: 0.5
+    domain.progeny: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-21
+    quote: >-
+      If the Moon is in Capricorn/Aquarius Navamsa and is aspected by Saturn, the native will
+      be miserly, sickly and will have dead children
+    quote_sha256: 03ec7f4e5fb3bd5b0aa2ae4832ff4be5cd289fd32591828bc8b06a9b212d61d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native will be miserly, sickly and will have dead children
+- id: SARAVALI.PROGENY.CH15V2021.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v20-21
+    quote: >-
+      He will either lose his mother or he will end the dynasty, i.e. he is the last of his
+      descent and will not have any children.
+    quote_sha256: e76191aa90c7c7bbaf3b9af3208eaec0154174c54ba925eec73a930e136ffb33
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.scorpio
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.pisces
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: he will end the dynasty, i.e. he is the last of his descent and will not have any
+      children
+- id: SARAVALI.PROGENY.CH18V3.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v3
+    quote: >-
+      Should these six planets join in one house, the native will be a thief, be addicted
+      to others' women, subjected to leprosy, discarded by his own men, be a dunce, deprived
+      of position and be issueless.
+    quote_sha256: df32106cb589e4d672372ef049ec3cdbf44de16eae067dfaca1ce42c33c957f3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: be issueless
+- id: SARAVALI.PROGENY.CH21V1011.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v10-11
+    quote: will not have many sons
+    quote_sha256: 2060f4afcfeaef3606d636e66057d720150e8f7d10bb7488e0c084370e84bf7a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.taurus
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: will not have many sons
+- id: SARAVALI.PROGENY.CH22V5257.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      If Mercury aspects the Moon in Scorpio, the person will not be skilful, be hard in speech,
+      will obtain twins, be tricky, will produce fictitious things and be an expert singer.
+    quote_sha256: d9ad86bb418f3ea31f512a4859da8578fc07bd23e6c89b5011af53ddb0dd3d30
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: will obtain twins
+- id: SARAVALI.PROGENY.CH23V1315.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v13-15
+    quote: >-
+      if by Venus, he will (only) desire to have children and will have (only) dead children
+      (i.e. will have no living children)
+    quote_sha256: 677bbcc6c21e22e958591fa3d08fd29d8916cb8cb789b4db4731b5481e4d2c84
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: extreme
+    text: >-
+      he will (only) desire to have children and will have (only) dead children (i.e. will
+      have no living children)
+- id: SARAVALI.PROGENY.CH7V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v17
+    quote: If Saturn is in odd house other than Lagna, a male child will be born.
+    quote_sha256: 400c803cc68c81536e313fc6e75e5500ae04dc85a1d78e6252739f2130f9d2e3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.03
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: a male child will be born
+- id: SARAVALI.PROGENY.CH7V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v4-7
+    quote: >-
+      If the Moon is in upachaya (i. e. 3, 6, 10 and 11), it makes the menses defunct for
+      conception.
+    quote_sha256: c8afb994ce5a9e51858263b58db0bdb63d23de2ab593a7606b66e4affffd2573
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_upachaya:
+        subject: graha.moon
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: it makes the menses defunct for conception

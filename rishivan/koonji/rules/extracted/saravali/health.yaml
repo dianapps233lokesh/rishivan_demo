@@ -1,0 +1,2064 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.FAMILY.CH15V2021.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v20-21
+    quote: >-
+      He will either lose his mother or he will end the dynasty, i.e. he is the last of his
+      descent and will not have any children.
+    quote_sha256: e76191aa90c7c7bbaf3b9af3208eaec0154174c54ba925eec73a930e136ffb33
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.scorpio
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.pisces
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: strong
+    text: he will lose his mother
+- id: SARAVALI.FAMILY.CH22V3843.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      If Mars aspects the Moon posited in Virgo, the subject will be skilful in mechanical
+      or fine arts (of 64 kinds), be famous, affluent, disciplined, courageous and will be
+      inauspicious for mother.
+    quote_sha256: 13672207329481b737b61707463481175a1967fbbd17114d201535e774d6d9bf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: family.mother
+    polarity: negative
+    magnitude: strong
+    text: will be inauspicious for mother
+- id: SARAVALI.FAMILY.CH8V3740.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v37-40
+    quote: >-
+      If Mars and Saturn join in the 5th or the 9th from Ascandant, while the Moon is in the
+      7th, the child is forsaken by the mother.
+    quote_sha256: e8b49e9d8ee4acf132fa5c5ec70df209e5f1a3658587b7a3cc423f962485ac63
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+    - any:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: strong
+    text: the child is forsaken by the mother
+- id: SARAVALI.FAMILY.CH9V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v46
+    quote: If weak Moon be with malefics, mother's death takes place
+    quote_sha256: 3da0af44c18614a4503f9514c1df4f9984935fe9e3d5115309b21db5236667b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.debilitated
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: strong
+    text: mother's death takes place
+- id: SARAVALI.GENERAL.CH10V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch10.v3-4
+    quote: >-
+      If the Moon is Full and is aspected by all heavenly bodies, all evils are countered
+      just as lawbreakers are destroyed by the king.
+    quote_sha256: afe6edf6f7339df1df7931a21a2ed9cede9d4fdafebb5dd6e9d51c4e26c64286
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.exalted
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: extreme
+    text: all evils are countered just as lawbreakers are destroyed by the king
+- id: SARAVALI.GENERAL.CH10V910.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch10.v9-10
+    quote: >-
+      Should the full Moon be in a benefic's Dvadasamsa, all evils are removed just as butter-milk
+      checks piles.
+    quote_sha256: 044bbe0819ac698d14225767f7b0efd297d6dd45b078de4027d76b22a0fe0aa2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: all evils are removed
+- id: SARAVALI.GENERAL.CH8V2627.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v26-27
+    quote: There were many lights (in the delivery chamber) if the Sun is aspected by Mars.
+    quote_sha256: a16f978282945fc7460f87c4d0dc34dbc37464c6f6f5924707ee66e90df75178
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: There were many lights (in the delivery chamber)
+- id: SARAVALI.HEALTH.CH13V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v2
+    quote: One born in Vesi Yoga will be weak-sighted
+    quote_sha256: 82bf133586704452d62889a874b130842b35523b7659c3cc9df97c40d4706ea1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mercury
+        distance: dist.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: weak-sighted
+- id: SARAVALI.HEALTH.CH15V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v10
+    quote: >-
+      If Jupiter, Mercury and the Sun be together at birth, the native will be subjected to
+      eye-diseases
+    quote_sha256: b00e7f0b2848e3d643e7c78431b4edbb9577f86ef818022c60453f0f2ea9253a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.mercury
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will be subjected to eye-diseases
+- id: SARAVALI.HEALTH.CH15V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v13
+    quote: >-
+      Should Venus, Jupiter and the Sun be together at birth, the native will be weak-sighted,
+      bold, intelligent, indigent, be a minister and be devoted to others' jobs.
+    quote_sha256: 65e82c20c992d09a5ddbb3736d35276cf5cbf3aa5c43e0e26f34d84ab1b06661
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will be weak-sighted
+- id: SARAVALI.HEALTH.CH15V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v14
+    quote: >-
+      If Jupiter, Saturn and the Sun be together at birth, the native will not have a prominent
+      physique
+    quote_sha256: 132b52471039a6f2495835898a484f803082d4071905f494d45f399ac1ac35fa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.saturn
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.sun
+  indicates:
+    claim: health.vitality
+    polarity: negative
+    magnitude: moderate
+    text: the native will not have a prominent physique
+- id: SARAVALI.HEALTH.CH15V15.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v15
+    quote: >-
+      One who has Venus, Saturn and the Sun together at birth will be emotionally upset due
+      to fear from enemies, will be devoid of honour and knowledge of arts and poetry, will
+      have a mean history and will suffer from leprosy.
+    quote_sha256: 9df9ba1890d78ae33f9005ad74585598bdb7c62c19552040baa4e0e65031775f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+    - conjunct:
+        subject: graha.saturn
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: will suffer from leprosy
+- id: SARAVALI.HEALTH.CH15V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v17
+    quote: A native who has Mars, the Moon and Jupiter together at birth will have an even
+      body
+    quote_sha256: 68e0e6f783dc590428ed5a9bc1093500ad63b1e7bd6d137722a0babe18e43b92
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: will have an even body
+- id: SARAVALI.HEALTH.CH15V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v6
+    quote: Should Mars, Saturn and the Sun be together, the native will have deformed limbs
+    quote_sha256: ee014c73e52f436ac6dacc8eab0d818acb8fe494ffef35c8e60ec49124d8bdda
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mars
+        other: graha.sun
+    - conjunct:
+        subject: graha.saturn
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native will have deformed limbs
+- id: SARAVALI.HEALTH.CH15V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v8
+    quote: >-
+      One who has Venus, Mars and the Sun in one house, will be subjected to eye diseases,
+      belongs to a good race, will be fortunate, harsh and wealthy.
+    quote_sha256: 7a4d69493fb855eedf422f102db2374dcf86e82130ea3f879a340b49c51a208b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.mars
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: will be subjected to eye diseases
+- id: SARAVALI.HEALTH.CH16V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v24
+    quote: If these four planets are together at birth, one will be deformed
+    quote_sha256: 5dd6e9cc156cc90f66e7a6c24e4e4c2bb9f1b2a0c9ec24867ac5924492bd113e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: one will be deformed
+- id: SARAVALI.HEALTH.CH16V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v4
+    quote: One who has these four planets together at birth, will have uneven physique
+    quote_sha256: 1a561227bcbd17dbe028227c8da9f8d8151ed8053953b4dc6fce46641296b451
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: will have uneven physique, be short in stature
+- id: SARAVALI.HEALTH.CH17V1.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v1
+    quote: >-
+      If these five planets are together at birth, the native will be subjected to grief,
+      will be cunning, be bereaved of wife, and will experience physical distresses.
+    quote_sha256: ffeb978c0c1e7727853a0533a05489b6c776aff859d73cfa89d6c8b745c59cef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: and will experience physical distresses.
+- id: SARAVALI.HEALTH.CH17V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v4
+    quote: Should these five planets join at birth, the native will be blind by birth
+    quote_sha256: f2cf2e8f95b9bd50d048664798c5b714c09c15d1c77e6eac582acda5c1055597
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+    - conjunct:
+        subject: graha.mars
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native will be blind by birth
+- id: SARAVALI.HEALTH.CH18V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v12
+    quote: >-
+      Should a native have these planets conjunct, he will be emotional, sick, will earn food
+      by begging going from house to house and will live in dilapidated houses.
+    quote_sha256: f7b444af4da72f1e64098eb3a42f4118f8e7cc7ecfca86f7a822bf88e778dc4f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: sick
+- id: SARAVALI.HEALTH.CH18V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v13
+    quote: >-
+      One with these five planets together at birth will be troubled by wounds, imprisonment
+      and diseases, be learned, honoured by the people, be poor and deformed.
+    quote_sha256: 489bf98f779622990b5905ac98bef89502937baa285735452bf1cc5d21a13967
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: troubled by wounds, imprisonment and diseases
+- id: SARAVALI.HEALTH.CH18V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v14
+    quote: >-
+      One with the said five planets together will be troubled by diseases and enemies, be
+      deprived of position, subjected to much grief and will roam out of agony.
+    quote_sha256: 6ad0635ad16e13aa7da15947489795c918ec5623edff3388f00c798038d9c88e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mars
+        other: graha.sun
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: will be troubled by diseases and enemies
+- id: SARAVALI.HEALTH.CH18V3.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v3
+    quote: >-
+      Should these six planets join in one house, the native will be a thief, be addicted
+      to others' women, subjected to leprosy, discarded by his own men, be a dunce, deprived
+      of position and be issueless.
+    quote_sha256: df32106cb589e4d672372ef049ec3cdbf44de16eae067dfaca1ce42c33c957f3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: subjected to leprosy
+- id: SARAVALI.HEALTH.CH21V1011.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v10-11
+    quote: >-
+      The position of the Sun in the sign Taurus indicates that the native will have troubles
+      from disease of face and eyes
+    quote_sha256: e33219bb9fec2618e0d1513ec5de2ccd9c1492224a47404d375c2f5075aa2e80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.taurus
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will have troubles from disease of face and eyes
+- id: SARAVALI.HEALTH.CH21V2025.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v20-25
+    quote: >-
+      Should the Sun be in Gemini or Virgo be aspected by the Moon, the native will be put
+      to troubles by enemies and relatives, will be distressed by visits to foreign countries,
+      and will in general be wailing.
+    quote_sha256: e1ca08c9ea7b796b416fd342180a58661991d35c277ce17f8d90b77a1e750a11
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be put to troubles by enemies and relatives, will be distressed by visits
+      to foreign countries, and will in general be wailing
+- id: SARAVALI.HEALTH.CH21V23.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v2-3
+    quote: be subjected to bilious and bloody disorders
+    quote_sha256: 0415ea1c4d19b434168760e393a616597f2edcca65efb72a272b00f506bb8f7b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: be subjected to bilious and bloody disorders
+- id: SARAVALI.HEALTH.CH21V2833.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v28-33
+    quote: >-
+      Should Mars throw his aspect on the Sun in Cancer, one will contract pulmonary consumption
+      and fistula in the anus or pudendum, be dejected on account of his relatives and be
+      a slanderer.
+    quote_sha256: 5d308a95895036e4195e273c73845543258f779ff761ee9a8af743ce78d28baf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: one will contract pulmonary consumption and fistula in the anus or pudendum
+- id: SARAVALI.HEALTH.CH21V2833.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v28-33
+    quote: >-
+      Saturn's aspect on the Sun in Cancer denotes that the person will suffer from phlegmatic
+      and windy disorders, be wicked and be a tale-bearer.
+    quote_sha256: 0109eaa7c805746d5ffe6e2f13b4f9b9de894c697f7460e298cec61b1a2c1ead
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the person will suffer from phlegmatic and windy disorders
+- id: SARAVALI.HEALTH.CH21V5863.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v58-63
+    quote: >-
+      Mars aspecting the Sun in Capricorn or Aquarius denotes that the native will be troubled
+      by diseases and enemies, will be wounded by weapons on account of quarrelling with others,
+      and be deformed.
+    quote_sha256: 27661604b4db2e291852566519f6bc33d8b297fd659fd37546a404e2b8d6b889
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be troubled by diseases and enemies, will be wounded by weapons on account
+      of quarrelling with others, and be deformed
+- id: SARAVALI.HEALTH.CH21V6465.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v64-65
+    quote: If the Sun is in Aquarius at birth, one will suffer from heart diseases
+    quote_sha256: 19bb81205dbe04b8986e9c0bc98169f7549b1bc469c450805977f61c4fd667b9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+    - bhava_in_rashi:
+        bhava: bhava.11
+        rashi: rashi.aquarius
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: one will suffer from heart diseases
+- id: SARAVALI.HEALTH.CH22V2426.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      If the Moon in Cancer is aspected by Mars, the subject will be valorous, be deformed,
+      will prove ominous to his mother and be skilful in his jobs.
+    quote_sha256: fd7526215e9c08047339e149ccb23d2dfadcd3f05995bd9fd2eb0fe905a4ff21
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: be deformed
+- id: SARAVALI.HEALTH.CH22V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v2-7
+    quote: >-
+      If the Moon in Aries is aspected by Mars, the person will suffer from diseases of eyes
+      and teeth, will have wounds caused by arrows (or horse/cow etc.) and will suffer windy
+      diseases and urinary disorders.
+    quote_sha256: 2f37fbd39dd88b9e370ebccd21134ef1c900ba0554367cdf0a1c7269a75725ca
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will suffer from diseases of eyes and teeth, will have wounds caused by arrows
+      (or horse/cow etc.) and will suffer windy diseases and urinary disorders
+- id: SARAVALI.HEALTH.CH22V30.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v30
+    quote: >-
+      If the Moon is in Leo, one will have sturdy bones, sparse hair, wide face, small and
+      yellowish eyes, will hate women, will suffer from hunger and thirst, will incur stomachial
+      disorders and tooth-decay, will eat flesh, be charitable, harsh, will have few sons,
+      will seek sexual union in forests and hills, be respectfully disposed to his mother,
+      will have broad chest, be valorous, dutiful and will have majestic looks.
+    quote_sha256: ec4232981cfa8bf3818fbfa0d634ae537bdae896cf6fff20f52fe2a547217527
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: one will have sturdy bones
+- id: SARAVALI.HEALTH.CH22V30.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v30
+    quote: >-
+      If the Moon is in Leo, one will have sturdy bones, sparse hair, wide face, small and
+      yellowish eyes, will hate women, will suffer from hunger and thirst, will incur stomachial
+      disorders and tooth-decay, will eat flesh, be charitable, harsh, will have few sons,
+      will seek sexual union in forests and hills, be respectfully disposed to his mother,
+      will have broad chest, be valorous, dutiful and will have majestic looks.
+    quote_sha256: ec4232981cfa8bf3818fbfa0d634ae537bdae896cf6fff20f52fe2a547217527
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: will incur stomachial disorders and tooth-decay
+- id: SARAVALI.HEALTH.CH22V4550.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v45-50
+    quote: >-
+      If Venus lends his aspect to the Moon in Libra, one will be beautiful, be free from
+      sickness, fortunate, strongbodied, be learned, and will have knowledge of many means.
+    quote_sha256: bd16fb34a326fa05b337fc920176979d4bcf9092c06636a212e8ae5e778072cb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: one will be beautiful, be free from sickness, fortunate, strongbodied
+- id: SARAVALI.HEALTH.CH22V5257.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      If Saturn aspects the Moon in Scorpio, the native will have base sons, be a talebearer,
+      be sick, poor and untruthful.
+    quote_sha256: 974e47474efba0f1d373c1e0fe44162c05fe0ff9ddb96198cd777ad10632fd47
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: be sick
+- id: SARAVALI.HEALTH.CH23V1012.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v10-12
+    quote: >-
+      If the Moon is in her own Navamsa at birth and is aspected by the Sun, the subject will
+      have an emaciated body but be free from diseases
+    quote_sha256: efb1284c6aa3be69ae72f2040ece57e7ac9cdc9e93af5705ea645486783f548e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: the subject will have an emaciated body but be free from diseases
+- id: SARAVALI.HEALTH.CH23V1618.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v16-18
+    quote: >-
+      If by the Sun he will have many blemishes, be famous and be subjected to accidents/calamities
+    quote_sha256: 28bef8c5d6ebfa5937afbb72db51e7e0eb9514b864c8efbc4c46ea459fde68c1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: he will have many blemishes, be famous and be subjected to accidents/calamities
+- id: SARAVALI.HEALTH.CH24V1921.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.progeny: 0.7
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-21
+    quote: >-
+      If the Moon is in Capricorn/Aquarius Navamsa and is aspected by Saturn, the native will
+      be miserly, sickly and will have dead children
+    quote_sha256: 03ec7f4e5fb3bd5b0aa2ae4832ff4be5cd289fd32591828bc8b06a9b212d61d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native will be miserly, sickly and will have dead children
+- id: SARAVALI.HEALTH.CH24V1921.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.progeny: 0.7
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-21
+    quote: if by the Sun, he will have a few children, be miserable with disseases and be
+      ugly
+    quote_sha256: 200a04f4a28ca0201614e0752761ba17a6b9b52d5de11ff040ba2401ac76a814
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.capricorn
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: he will have a few children, be miserable with disseases and be ugly
+- id: SARAVALI.HEALTH.CH24V2324.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v23-24
+    quote: >-
+      Should Mars be in Pisces at the time of one's birth, the person will be troubled by
+      diseases
+    quote_sha256: fdd708d5f973e85e02191731bea2e207aacd8ace23a1ff3f481077a93497d3a1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.pisces
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the person will be troubled by diseases
+- id: SARAVALI.HEALTH.CH24V4348.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v43-48
+    quote: >-
+      If Mars be in Cancer at birth and is aspected by the Sun, the native will be subjected
+      to bilious diseases
+    quote_sha256: aaedbe7e53607e44146970ccdecb9a3c24c3ada2ccccde3d5a533e9101b05f1d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native will be subjected to bilious diseases
+- id: SARAVALI.HEALTH.CH24V4348.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v43-48
+    quote: If the Moon aspects Mars in Cancer, the person will be troubled by various diseases
+    quote_sha256: b7f51fbf360b7604bbadb857680d28855791be721a854bff325b6e90b7ae88b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.moon
+        target: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the person will be troubled by various diseases
+- id: SARAVALI.HEALTH.CH25V3136.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v31-36
+    quote: >-
+      If Saturn throws his aspect on Mercury in a house of Venus, the subject will be devoid
+      of happiness, be dirty, will experience many diseases and evils, will be subjected to
+      grief on account of his relatives and be distressed.
+    quote_sha256: 48a0e3ba9451f6268a8b8f9094113ea3e4b5da6f1a38e318c501df66c26dda1a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: will experience many diseases and evils
+- id: SARAVALI.HEALTH.CH25V3742.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v37-42
+    quote: >-
+      If the aspect is from Mars, the person will have an ijnured body, be dirty, be a genius,
+      will serve the king and be dear to him.
+    quote_sha256: 7a0bfc6b8cd6ff035b43126caab1db8a140160fbf5d9ae31f6cab4da2dec05cf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person will have an ijnured body, be dirty, be a genius, will serve the king and
+      be dear to him
+- id: SARAVALI.HEALTH.CH25V5560.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      Should Mercury be in Sagittarius/Pisces, and aspected by the Sun, one will suffer from
+      urinary diseases and epilepsy, and be peaceful in disposition.
+    quote_sha256: 9f06241ba1f5000a9a2411fb7f036ef50bb56cd25caba84799d92fda7ed2b9c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: one will suffer from urinary diseases and epilepsy
+- id: SARAVALI.HEALTH.CH7V5355.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v53-55
+    quote: >-
+      If at the time of Adhana (or at birth), the Sun and Moon are in Leo identical with Lagna,
+      the child born will be blind; there should be aspect of Mars and Saturn on Leo.
+    quote_sha256: 08016d6c520092eb37cfad3b2c3b6c1e8154f1d10a4ee0a18d1457cb45532c64
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.leo
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - aspects:
+        subject: graha.mars
+        target: bhava.01
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the child born will be blind
+- id: SARAVALI.HEALTH.CH7V5355.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch7.v53-55
+    quote: >-
+      A bubble on the eye should be predicted if Mars and Mercury aspect the said Sun and
+      Moon in Leo Lagna.
+    quote_sha256: ab2a2b2d345375baabdcafd1465e60463ba653a30ed0946ba0709eb7c4055039
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.leo
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - aspects:
+        subject: graha.mars
+        target: bhava.01
+    - aspects:
+        subject: graha.mercury
+        target: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: A bubble on the eye should be predicted
+- id: SARAVALI.HEALTH.CH8V42.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v42
+    quote: >-
+      When Leo, Aries or Taurus rises with Mars or Saturn, there will be coil around the limb
+      as indicated by the Navamsa Lagna Rasi.
+    quote_sha256: 9aeec8798af67c511f32ce333c8356064279b429198ad6fa135203b9b3a43ab8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.leo
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.aries
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.taurus
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there will be coil around the limb
+- id: SARAVALI.HEALTH.CH8V56.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v56
+    quote: >-
+      If the last portion of Capricorn rises with aspect from Saturn and the luminaries (i.e.
+      the Sun and the Moon), the native is short-statured.
+    quote_sha256: 87ce7f463bdbce2e8d634f324977e6e66ed1e2535fb6546035ad34fb5f2b66ad
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+    - aspects:
+        subject: graha.sun
+        target: bhava.01
+    - aspects:
+        subject: graha.moon
+        target: bhava.01
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: the native is short-statured
+- id: SARAVALI.HEALTH.CH8V56.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v56
+    quote: >-
+      The same effect prevails if the Moon is in Cancer identical with ascendant and aspected
+      by Mars and Saturn.
+    quote_sha256: 3af5450317e9700c7d73b8d3334e8509ec9c809c468979d7e0f8b058296e38a7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - aspects:
+        subject: graha.mars
+        target: bhava.01
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: the native is short-statured
+- id: SARAVALI.HEALTH.CH8V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v58
+    quote: >-
+      Should Mercury be in the 5th or the 9th from the ascendant while all other planets are
+      devoid of strength, the child has 2 faces, 4 hands and 4 legs.
+    quote_sha256: 1d0ab0d05bab2ac354fbfd2b55a7566dd8950ef452e05133e968ed316a8ff493
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.09
+    - strength:
+        subject: graha.sun
+        op: <=
+        value: 1
+    - strength:
+        subject: graha.moon
+        op: <=
+        value: 1
+    - strength:
+        subject: graha.mars
+        op: <=
+        value: 1
+    - strength:
+        subject: graha.jupiter
+        op: <=
+        value: 1
+    - strength:
+        subject: graha.venus
+        op: <=
+        value: 1
+    - strength:
+        subject: graha.saturn
+        op: <=
+        value: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the child has 2 faces, 4 hands and 4 legs
+- id: SARAVALI.HEALTH.CH8V60.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v60
+    quote: >-
+      If Pisces rises at birth with aspect from Mars, Saturn and the Moon, the child born
+      is lame.
+    quote_sha256: c322590986633c04887d0e526c991301321d6aad2ea0a61adf668086b79ee2a9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.mars
+        target: bhava.01
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+    - aspects:
+        subject: graha.moon
+        target: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the child born is lame
+- id: SARAVALI.HEALTH.CH9V5767.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v57-67
+    quote: >-
+      Mars or Saturn in 12th can deprive the native of his eyes—Saturn right eye and Mars
+      left eye.
+    quote_sha256: 2ea7333f1bb41f1e28dff2e595fab21cfad1ee0c093b80d10547fdc9302c6f49
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: Mars in 12th can deprive the native of his eyes
+- id: SARAVALI.HEALTH.CH9V5767.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v57-67
+    quote: >-
+      Mars or Saturn in 12th can deprive the native of his eyes—Saturn right eye and Mars
+      left eye.
+    quote_sha256: 2ea7333f1bb41f1e28dff2e595fab21cfad1ee0c093b80d10547fdc9302c6f49
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.12
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: Saturn in 12th can deprive the native of his eyes
+- id: SARAVALI.HEALTH.CH9V6870.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v68-70
+    quote: The Moon in 11th, 3rd or the ascendant along with malefics causes defects of the
+      ears.
+    quote_sha256: 72046a7dbe34f4b1a01387bb872c8182c1530a6e2fc89cd7de37b0b3977ccac9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: causes defects of the ears
+- id: SARAVALI.HEALTH.CH9V8990.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v89-90
+    quote: >-
+      Saturn in the rising decanate while a malefic is in the 5th and another in the 9th—the
+      latter two should be exactly on trinal decanates as Saturn is—indicates disease.
+    quote_sha256: 271b77e73d01917a5798df81e9dfd681da36ba28152a7f7c67870e9efbe69c21
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupant_count:
+        bhava: bhava.05
+        op: '>='
+        n: 1
+    - occupant_count:
+        bhava: bhava.09
+        op: '>='
+        n: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: indicates disease
+- id: SARAVALI.HEALTH.CH9V8990.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v89-90
+    quote: Mars in the place of Śaturn in the said combnation denotes (infant) death
+    quote_sha256: 6f4e5a75c435e4b27485487a174bb26cb8db62e803be2da140cf9c9486f04f61
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+    - occupant_count:
+        bhava: bhava.05
+        op: '>='
+        n: 1
+    - occupant_count:
+        bhava: bhava.09
+        op: '>='
+        n: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: denotes (infant) death
+- id: SARAVALI.HEALTH.CH9V8990.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch9.v89-90
+    quote: the Sun so placed indicates disease, deformity or death.
+    quote_sha256: ddc3868b997ad3d286cec9df5bf26de9bf7e41cb35c75634279b933a27e2c1be
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - occupant_count:
+        bhava: bhava.05
+        op: '>='
+        n: 1
+    - occupant_count:
+        bhava: bhava.09
+        op: '>='
+        n: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: indicates disease, deformity or death
+- id: SARAVALI.TEMPERAMENT.CH22V2426.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.career: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      If the Moon in Cancer is aspected by Mars, the subject will be valorous, be deformed,
+      will prove ominous to his mother and be skilful in his jobs.
+    quote_sha256: fd7526215e9c08047339e149ccb23d2dfadcd3f05995bd9fd2eb0fe905a4ff21
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the subject will be valorous

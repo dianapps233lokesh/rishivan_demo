@@ -1,0 +1,613 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: HINDUPREDICTIVE.HEALTH.CH17V11.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+    domain.wealth: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v11
+    quote: Jupiter and the Moon are evil.
+    quote_sha256: 49b71e8213667526842bd89688478a4fa99f600f2fc7fe883fd5521b780a1569
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aquarius
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Jupiter is evil
+- id: HINDUPREDICTIVE.HEALTH.CH17V11.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+    domain.wealth: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v11
+    quote: Jupiter and the Moon are evil.
+    quote_sha256: 49b71e8213667526842bd89688478a4fa99f600f2fc7fe883fd5521b780a1569
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aquarius
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the Moon is evil
+- id: HINDUPREDICTIVE.RECORDAPPLICATION.CH35V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.wealth: 1.0
+    domain.status: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v14
+    quote: >-
+      World's richest man : restless, active and energetic ; conflicting traits ; anti-semitic
+      prejudice, mechanistic monster.
+    quote_sha256: 339b810e5e33cdcd1cf6443b0b75fb6790fde52f3eb3431c5b8114e26b6b5ed8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.scorpio
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+  example:
+    reading: >-
+      World's richest man : restless, active and energetic ; conflicting traits ; anti-semitic
+      prejudice, mechanistic monster.
+- id: HINDUPREDICTIVE.STATUS.CH17V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v9
+    quote: Mars is the best planet and in conjunction with Jupiter produces much good.
+    quote_sha256: 2be8fcb52fb0cfbcb7a5c60f09efa672a8490143ce1e7ed70bf1bad33e802165
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.sagittarius
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: produces much good
+- id: HINDUPREDICTIVE.STATUS.CH17V9.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v9
+    quote: The Sun and Mars also produce good.
+    quote_sha256: 1118c4b27fdd43c80bda320eb36f36f0a489c27da4e3fc1039532bb436ac56ab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.sagittarius
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: produce good
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH26V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch26.v43
+    quote: >-
+      The general disposition of such houses or bhavas as contain a great number of bindus
+      will be favourable or prosperous. This rule does not hold good with reference to 6th,
+      8th and 12th houses.
+    quote_sha256: 9b384bf15f1dca927a37246cbedf470ccab2f57110a5866c03c2a46953326c33
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - sav_bindu:
+        bhava: bhava.01
+        op: '>'
+        n: 28
+    - not:
+        any:
+        - bhava_in_rashi:
+            bhava: bhava.06
+            rashi: rashi.aries
+        - bhava_in_rashi:
+            bhava: bhava.08
+            rashi: rashi.aries
+        - bhava_in_rashi:
+            bhava: bhava.12
+            rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      The general disposition of such houses or bhavas as contain a great number of bindus
+      will be favourable or prosperous
+- id: HINDUPREDICTIVE.WEALTH.CH20V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.6
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v11
+    quote: >-
+      Planets in the 2nd and 12th from the Moon—Enjoyment of all pleasures, conveyances, liberal
+      and generous and commanding dutiful and faithful children.
+    quote_sha256: f506854af2dfe11721fe1197b842a2e8c1e1dcf76386e6cb093280bfa57ed49b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.02
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.12
+        reference: ref.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Enjoyment of all pleasures, conveyances, liberal and generous and commanding dutiful
+      and faithful children.
+- id: HINDUPREDICTIVE.WEALTH.CH20V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v14
+    quote: >-
+      Vesi yoga.—Beneficial planets in the 2nd from the Sun—Good conversationalist, fluent
+      179 speaker, wealthy, courageous and extremely charitable.
+    quote_sha256: fe42a64918fdfcf12cc8853872897ed4f93c72ca818752ac3da1a7e56721c1bb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.02
+        reference: ref.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealthy
+- id: HINDUPREDICTIVE.WEALTH.CH20V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v24
+    quote: Lord of the ascendant in the 12th
+    quote_sha256: 98f3f0ffd5528d4f3b02823c4faa0f35e3d0e10e4d4eb42779f56bef503093d7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: Daridra yoga, always poor and mean motives
+- id: HINDUPREDICTIVE.WEALTH.CH20V24.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v24
+    quote: and vice versa.—Lord of wealth
+    quote_sha256: aad3ef9fe0659859a8701fe33ce2c4aabbdd494cc794e78dae56b7d2dd86e01d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.01
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: Daridra yoga, always poor and mean motives
+- id: HINDUPREDICTIVE.WEALTH.CH20V24.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v24
+    quote: Lord of wealth, always poor and mean motives.
+    quote_sha256: b4f61231b768d35a210165436fd2d8df4e8a842d4186cdc6577d4ade4f83cff2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.12
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: Daridra yoga, always poor and mean motives
+- id: HINDUPREDICTIVE.WEALTH.CH20V24.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v24
+    quote: Lord of wealth, always poor and mean motives.
+    quote_sha256: b4f61231b768d35a210165436fd2d8df4e8a842d4186cdc6577d4ade4f83cff2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.02
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: Daridra yoga, always poor and mean motives
+- id: HINDUPREDICTIVE.WEALTH.CH24V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v5
+    quote: favourable position of the lord of the 2nd will give wealth during his dasa
+    quote_sha256: 23de9e1ca85cfef204206a220fc482ff98fbb8ab26d0b13344c8183d7f705d46
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.02
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: favourable position of the lord of the 2nd will give wealth
+- id: HINDUPREDICTIVE.WEALTH.CH24V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v8
+    quote: Lord of the 2nd in his dasa gives wealth.
+    quote_sha256: bd2e704054c9f61b613e041b8fee13911a0a4fca0a5795018eee7e780057ffae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.02
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: gives wealth
+- id: HINDUPREDICTIVE.WEALTH.CH26V44.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.status: 0.65
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch26.v44
+    quote: >-
+      The person will have general happiness and prosperity if the numbers of bindus in the
+      11th house (representing gain from the ascendant) is greater than that in the 10th (representing
+      labour and karma) and if the number of bindus in the 12th (representing loss) is smaller
+      than that in the 11th and if the number of bindus in the ascendant be greater than that
+      in the 12th.
+    quote_sha256: c5a9acd7fd6ba907a25523a7899c3505ec30007690a28c67f632e378a10c7cf6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - sav_bindu:
+        bhava: bhava.11
+        op: '>'
+        n: 0
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: The person will have general happiness and prosperity
+- id: HINDUPREDICTIVE.WEALTH.CH27V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v8
+    quote: Success in speculation, etc., should be predicted when benefics are in 3, 5, 7
+      and 11
+    quote_sha256: a86b8c8cb7ebbb43b190f25b3589d613835d324df1e022b9b8bb2aba4103aca1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava_from:
+          subject: graha.jupiter
+          bhava: bhava.03
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: graha.mercury
+          bhava: bhava.03
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: graha.venus
+          bhava: bhava.03
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: graha.moon
+          bhava: bhava.03
+          reference: ref.lagna
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: Success in speculation
+- id: HINDUPREDICTIVE.WEALTH.CH30V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.status: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v6
+    quote: >-
+      If Jupiter is in the ascendant, the Moon in the 7th and Venus in the 10th, the woman
+      becomes the wife of a very rich man, even if she is born in humble surroundings.
+    quote_sha256: d903743757479f1cd7232c5e7446d91eb8bf30132699ba6931ba6d8261143cc5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the woman becomes the wife of a very rich man
+- id: HINDUPREDICTIVE.WEALTH.CH36V13.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.temperament: 0.3
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v13
+    quote: Hasta.-Enterprising, intelligent, shameless, polite, cruel, pilfering habits.
+    quote_sha256: 082a72b9edbb2e935f5a7fb1aab0b4292eac82c4301eaebb29bca8b35b406f29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.hasta
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: pilfering habits
+- id: HINDUPREDICTIVE.WEALTH.CH36V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v23
+    quote: Dhanishta.-Wealthy, courageous, greedy fond of mutic.
+    quote_sha256: 2257ff5b8c362cd8bf36ae3dae7a840a442fa5ed6d5fe7521aecbb95ae22ba11
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.dhanishta
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: Wealthy

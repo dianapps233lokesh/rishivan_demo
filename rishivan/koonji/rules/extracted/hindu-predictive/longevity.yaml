@@ -1,0 +1,381 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: HINDUPREDICTIVE.GENERAL.CH14V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch14.v10
+    quote: >-
+      Malefics in beneficial Shadvargas aspected by benefics posited in auspicious navamsas,
+      overcome Balarishta.
+    quote_sha256: d0b553e2d7370f150c30c2010ec6c3c706ba41f495e79250e2498f49539b6f4f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.moon
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: overcome Balarishta
+- id: HINDUPREDICTIVE.GENERAL.CH14V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.longevity: 0.95
+    domain.health: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch14.v3
+    quote: >-
+      Even if the Moon is in the 8th sign no danger of Balarishta is indicated provided she
+      occupies the Drekkanas of Mercury, Jupiter and Venus.
+    quote_sha256: 2128de2850847b715d0c542fb2cac6ed1b154f79c346acd1476f09c905df83a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - any:
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.gemini
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.virgo
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.pisces
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d3
+          subject: graha.moon
+          rashi: rashi.libra
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: no danger of Balarishta is indicated
+- id: HINDUPREDICTIVE.HEALTH.CH14V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch14.v23
+    quote: >-
+      The Sun in the ascendant with Saturn, and Rahu and Mars in the 8th produce the death
+      of the child and the mother after surgical treatment.
+    quote_sha256: 42487adcd257ebe55f4c8d91546768f2e0b1a0416315d18aceb0c9046f98a68f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: produce the death of the child and the mother after surgical treatment
+- id: HINDUPREDICTIVE.HEALTH.CH24V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v15
+    quote: >-
+      If the Sun, the Moon, Mars, Mercury, Jupiter, Venus or Saturn is in the 8th house death
+      will be due to fire, water, weapons, fever, chronic diseases, thieves or starvation
+      respectively.
+    quote_sha256: 7adaa83b1f92d21c5cdf5f8e2988ad742c4b759e81a23fa73bdb77da8e925641
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death will be due to fire
+- id: HINDUPREDICTIVE.HEALTH.CH24V15.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v15
+    quote: >-
+      If the Sun, the Moon, Mars, Mercury, Jupiter, Venus or Saturn is in the 8th house death
+      will be due to fire, water, weapons, fever, chronic diseases, thieves or starvation
+      respectively.
+    quote_sha256: 7adaa83b1f92d21c5cdf5f8e2988ad742c4b759e81a23fa73bdb77da8e925641
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death will be due to water
+- id: HINDUPREDICTIVE.HEALTH.CH24V15.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v15
+    quote: >-
+      If the Sun, the Moon, Mars, Mercury, Jupiter, Venus or Saturn is in the 8th house death
+      will be due to fire, water, weapons, fever, chronic diseases, thieves or starvation
+      respectively.
+    quote_sha256: 7adaa83b1f92d21c5cdf5f8e2988ad742c4b759e81a23fa73bdb77da8e925641
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death will be due to weapons
+- id: HINDUPREDICTIVE.HEALTH.CH24V15.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v15
+    quote: >-
+      If the Sun, the Moon, Mars, Mercury, Jupiter, Venus or Saturn is in the 8th house death
+      will be due to fire, water, weapons, fever, chronic diseases, thieves or starvation
+      respectively.
+    quote_sha256: 7adaa83b1f92d21c5cdf5f8e2988ad742c4b759e81a23fa73bdb77da8e925641
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death will be due to fever
+- id: HINDUPREDICTIVE.HEALTH.CH24V15.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v15
+    quote: >-
+      If the Sun, the Moon, Mars, Mercury, Jupiter, Venus or Saturn is in the 8th house death
+      will be due to fire, water, weapons, fever, chronic diseases, thieves or starvation
+      respectively.
+    quote_sha256: 7adaa83b1f92d21c5cdf5f8e2988ad742c4b759e81a23fa73bdb77da8e925641
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death will be due to chronic diseases
+- id: HINDUPREDICTIVE.HEALTH.CH24V15.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v15
+    quote: >-
+      If the Sun, the Moon, Mars, Mercury, Jupiter, Venus or Saturn is in the 8th house death
+      will be due to fire, water, weapons, fever, chronic diseases, thieves or starvation
+      respectively.
+    quote_sha256: 7adaa83b1f92d21c5cdf5f8e2988ad742c4b759e81a23fa73bdb77da8e925641
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.venus
+      bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death will be due to thieves
+- id: HINDUPREDICTIVE.HEALTH.CH24V15.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v15
+    quote: >-
+      If the Sun, the Moon, Mars, Mercury, Jupiter, Venus or Saturn is in the 8th house death
+      will be due to fire, water, weapons, fever, chronic diseases, thieves or starvation
+      respectively.
+    quote_sha256: 7adaa83b1f92d21c5cdf5f8e2988ad742c4b759e81a23fa73bdb77da8e925641
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.saturn
+      bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: death will be due to starvation
+- id: HINDUPREDICTIVE.RECORDAPPLICATION.CH35V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.health: 1.0
+    domain.longevity: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v4
+    quote: >-
+      Mark the aspect of Saturn on the Ascendant and the Moon, and the conjunction of malefics
+      in Libra; suffered seriously from small-pox in the 8th year and also from dropsy; hot
+      constitution; superior airs, died in her 14th year.
+    quote_sha256: 214dd94f8e16e207797342e20c3f61a4a9ac4ba0733d917cd17ed7840e30d470
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.taurus
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.libra
+    - occupies_rashi:
+        subject: graha.rahu
+        rashi: rashi.libra
+  example:
+    reading: >-
+      suffered seriously from small-pox in the 8th year and also from dropsy; hot constitution;
+      superior airs, died in her 14th year.

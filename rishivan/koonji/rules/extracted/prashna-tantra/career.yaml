@@ -1,0 +1,835 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.CAREER.CH2V109.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v109
+    quote: >-
+      The lords of the ascendant and the 10th in mutual interchange of houses and unafflicted
+      confer gain (of kingdom) without effort.
+    quote_sha256: 730628f093a4cfebdb7d7a08cd139cb39abe2a2c1b608baeb67d8cac710c231e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: lord.bhava.01
+        other: lord.bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: confer gain (of kingdom) without effort
+- id: PRASHNATANTRA.CAREER.CH2V5658.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v56-58
+    quote: >-
+      If the lord of the ascendant is in a quadrant having no Muthaseela with the lord of
+      the 6th or 12th, there will be no change of service.
+    quote_sha256: 7258e0bd908d76039feed0049e2064d8063fe1a6145702155c3304a126ca70b8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: lord.bhava.01
+    - not:
+        any:
+        - house_distance:
+            subject: lord.bhava.01
+            other: lord.bhava.06
+            distance: dist.01
+        - house_distance:
+            subject: lord.bhava.01
+            other: lord.bhava.12
+            distance: dist.01
+  indicates:
+    claim: career.disruption
+    polarity: negative
+    magnitude: strong
+    text: there will be no change of service
+- id: PRASHNATANTRA.CAREER.CH2V92.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v92
+    quote: Lords of the 4th and 7th in conjunction denotes victory to the enemy.
+    quote_sha256: 966aabfaccf607abc6a47a16c0aff92e010dd38ab77540afe253930504c6821f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.07
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: victory to the enemy
+- id: PRASHNATANTRA.CAREER.CH3V5152.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v51-52
+    quote: >-
+      If the ascendant lord associated with malefics is retrograde and occupies a Kendra,
+      war is inevitable.
+    quote_sha256: 8688380a008be0bd04560b9757899bba13a7261d26c4d165b3b08f6ec6192064
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - retrograde:
+        subject: lord.bhava.01
+    - in_kendra:
+        subject: lord.bhava.01
+    - any:
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.sun
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.mars
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.saturn
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.ketu
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: war is inevitable
+- id: PRASHNATANTRA.CAREER.CH3V70.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v70
+    quote: >-
+      It will be to the detriment to the interests of both the employer and the employee if
+      malefics occupy the ascendant, 2nd, 7th and 8th.
+    quote_sha256: 6f86ec425f962558d65634cd519dc7bc428d3205bec9be73190ce2c424f0e3c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupant_count:
+          bhava: bhava.01
+          op: '>='
+          n: 1
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: it will be to the detriment to the interests of both the employer and the employee
+- id: PRASHNATANTRA.OBSTACLE.CH2V128.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v128
+    quote: >-
+      In disputes with opponents, if the lord of the 6th is strong, the enemy should be considered
+      as powerful.
+    quote_sha256: 47214c7a665f2004370061e5730b17dca821b5fe56245599e8f72b70e5f379a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    strength:
+      subject: lord.bhava.06
+      op: '>='
+      value: 1
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the enemy should be considered as powerful
+- id: PRASHNATANTRA.OBSTACLE.CH3V39.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v39
+    quote: The enemy will not arrive if the 4th is occupied by the Sun and the Moon.
+    quote_sha256: 95524d1464074f9a12d2faf1f824788516440395b0291af7019f7bbf5e7f208f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+  indicates:
+    claim: obstacle.general
+    polarity: negative
+    magnitude: strong
+    text: The enemy will not arrive
+- id: PRASHNATANTRA.OBSTACLE.CH3V39.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v39
+    quote: Jupiter, Venus and Mercury in the 4th denote early invasion by the enemy.
+    quote_sha256: d4d420a889748f6a0b3d4671d38b72be0412a3bdd6c4ecedb26f62e8580d9e7c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: early invasion by the enemy
+- id: PRASHNATANTRA.OBSTACLE.CH3V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+    domain.status: 0.75
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v43
+    quote: >-
+      If strong Venus, Jupiter and Mercury or if at least two of these, or if Jupiter or Venus
+      be in Lagna, the enemy ruler will be killed in the battle-field.
+    quote_sha256: e3630a105a6ab9477edd99f618424dbe1952c1f4fc70e9c7d28908d91a773855
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.01
+      - strength_band:
+          subject: graha.venus
+          band: band.strong
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.01
+      - strength_band:
+          subject: graha.jupiter
+          band: band.strong
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.01
+      - strength_band:
+          subject: graha.mercury
+          band: band.strong
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the enemy ruler will be killed in the battle-field
+- id: PRASHNATANTRA.OBSTACLE.CH3V93.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v93
+    quote: >-
+      If in the above combination, there is no aspect of the lord of Lagna, the thief will
+      have come just for committing the theft.
+    quote_sha256: 04812bc774d9c057dbd3f07a68ea1ce3bb41193753b954fbd95f317455094a1e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    not:
+      aspects:
+        subject: lord.bhava.01
+        target: lord.bhava.07
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the thief will have come just for committing the theft
+- id: PRASHNATANTRA.OBSTACLE.CH3V93.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v93
+    quote: If the lord of the 7th is combust, the thief will be caught.
+    quote_sha256: 3a08f73eafa6c735c3fc4eb803a9fb2481549264bcf7bb2cb7a32e2f14647dc9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    combust:
+      subject: lord.bhava.07
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the thief will be caught
+- id: PRASHNATANTRA.REJECTEMPLOYMENT.CH3V69.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.8
+    domain.health: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v69
+    quote: >-
+      According as malefics occupy the ascendant, the 2nd, the 7th or 8th, the servant will
+      suffer from loss of money, mental affliction, difficulties and death respectively in
+      the hands of the ruler (or employer). Hence he should reject such a master.
+    quote_sha256: 19d4896b74dd0b247943b16ddab8ab4d1c09ba810b8210b45290756caf9bd3e6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.01
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: reject_employment
+- id: PRASHNATANTRA.STATUS.CH2V102.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.travel: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v102
+    quote: Benefics in the 10th confer success
+    quote_sha256: 1c8019666c43e12dc89dedbaa71f01b5ce45ea1d2a4be7cac38d09f4c0d37432
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: Benefics in the 10th confer success
+- id: PRASHNATANTRA.STATUS.CH2V128.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v128
+    quote: If the 12th lord is powerful, then the querent will be powerful.
+    quote_sha256: 2d1f50c58e7e2d8a552b51c15c7185088c78bf4f0503f512c8e82f0ce073299a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    strength:
+      subject: lord.bhava.12
+      op: '>='
+      value: 1
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the querent will be powerful
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: If the Sun is in the 12th or 2nd, the thief is a young person.
+    quote_sha256: d1122879f2a9a98423851b76ca5f7ad8b5a61e342fd58b7aaada73609eea7a12
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.02
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the thief is a young person
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: If the sign is Leo, the thief is of middle age.
+    quote_sha256: 4d2f59fe7fa531e53f36d2d7a5b89fc4f9c20d7950b9d3c6e9174eb912864f50
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the thief is of middle age
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: If the Sun is in the 7th, he is old
+    quote_sha256: 6db45daddeacd7fa637e4c467166b66bd6e08cb93655b5f4d47921ed27cc77a5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.07
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he is old
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: if in the 4th, very old.
+    quote_sha256: fa3e95f867630f3a21a713383fa37bf2c97f032d05a0719a8c8bd6caa2846554
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.04
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: very old
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: Venus—a youth or teen-ager
+    quote_sha256: acc68a9119c090823644fc0e63db5f247414a8434210d607584fd428df9f33d4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: a youth or teen-ager
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: Mercury—a boy
+    quote_sha256: 3743a45953f4210bd61f73848c0214c331a8bacfb9f49c55ce72434c55b119de
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: a boy
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: Jupiter—a middle-aged person
+    quote_sha256: 9b6bb772bcf0fd334b4242ff3ec0d02c5174eab965fee4197b3ec07eefa7ebff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: a middle-aged person
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: Mars—a well-built young person
+    quote_sha256: f359faf1c095e971bd2035e4fc16eda65c29b2abc34ac1244672936b79719a7b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: a well-built young person
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: Saturn—an old man
+    quote_sha256: a6309580931181d20bd514c27b0525a13056dcc3069d8512c5d63df34e28a4c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: an old man
+- id: PRASHNATANTRA.TEMPERAMENT.CH3V107.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v107
+    quote: the Sun—a very old man.
+    quote_sha256: 520bc73436cfa95d19b43aee818bfd3c172fe6cd5b7a857903ad6142908b41fc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: lord.bhava.07
+      bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: a very old man
+- id: PRASHNATANTRA.WEALTH.CH2V93.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v93
+    quote: If the lord of the ascendant is in the 12th, the querent's army suffers losses.
+    quote_sha256: 5f25bdbe9a91f8f750999212e196ca3db8463836c94195bc21819edd9f8dcec7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the querent's army suffers losses
+- id: PRASHNATANTRA.WEALTH.CH2V93.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v93
+    quote: If the lord of the 7th is in the 6th, the enemy's army will suffer losses.
+    quote_sha256: 2c9c018eea380f3bfe79ab1135e79f3c9d99adcf74ebf87ab2feb29eb35579ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.06
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the enemy's army will suffer losses
+- id: PRASHNATANTRA.WEALTH.CH3V73.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v73
+    quote: >-
+      When the lord of the ascendant occupying a quadrant has an Ithasala with the lord of
+      the 6th or 12th, the querent will benefit from another master.
+    quote_sha256: 103a6f5359a86f9e5594bb2d0b5f726e5704f30b5bf5a273c3a620c7defdeb44
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: lord.bhava.01
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the querent will benefit from another master
+- id: PRASHNATANTRA.WEALTH.CH3V74.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v74
+    quote: >-
+      If the lord of the 7th is situated in a Kendra identical with his exaltation or own
+      house and has Ithasala with the Moon and forti- fied by benefic aspects and association,
+      the querent will immensely benefit under his new employer.
+    quote_sha256: c656358218181024d9d51966d5af43e2c0d2a5da5f1d76f2bb5723226e85f453
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+    - any:
+      - varga_dignity:
+          varga: varga.d1
+          subject: lord.bhava.07
+          dignity: dignity.exalted
+      - varga_dignity:
+          varga: varga.d1
+          subject: lord.bhava.07
+          dignity: dignity.own_sign
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the querent will immensely benefit under his new employer

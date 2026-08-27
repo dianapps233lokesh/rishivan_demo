@@ -1,0 +1,442 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.GENERAL.CH1V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.7
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch1.v41
+    quote: >-
+      Mrityu yoga Krakacha yoga, Dagdha yoga, and Vishhutashan yoga etc. are good-effect giving
+      due to Moon's auspiciousness arising out of her motion in various Houses (Gochara).
+    quote_sha256: 989ed1ddaf57f4214c49a1f425b6b6ab02a47b147e0b711193b4092c5fb7869e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.moon
+        bhava: bhava.03
+        reference: ref.moon
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      Mrityu yoga Krakacha yoga, Dagdha yoga, and Vishhutashan yoga etc. are good-effect giving
+      due to Moon's auspiciousness
+- id: MUHURTACHINTAMANI.GENERAL.CH5V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v10
+    quote: >-
+      and when the 8th House from the Natal Ascendant is auspicious and is without any Malefic
+      Planet, the worship of Lord Vishnu should be performed (for the protection of conception).
+    quote_sha256: a0dfdec71c7651c1d632e8d577c5cbeb07479f8cdb0c0b044dc35bb0856d2e52
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.08
+        op: ==
+        n: 0
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: protection of conception and successful performance of worship in the 8th month
+- id: MUHURTACHINTAMANI.HEALTH.CH10V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v3
+    quote: >-
+      If there are Malefic Planets in the Ascendant at the time of the Rajyabhisheka the king
+      will be affected by diseases
+    quote_sha256: 096d456dba61d6e0f539265e127cb4078a7ec142b6255596aacd75cff0a2ff52
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the king will be affected by diseases
+- id: MUHURTACHINTAMANI.HEALTH.CH5V1620.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v16-20
+    quote: >-
+      if Mars is there he becomes a patient of the humour of Pitta or Bile (or he becomes
+      bilious)
+    quote_sha256: 928b24021f338ceb0c0578ef90f0266677e6c00296811a785451ac80df26185d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: he becomes a patient of the humour of Pitta or Bile
+- id: MUHURTACHINTAMANI.HEALTH.CH5V1620.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v16-20
+    quote: if the Sun is there he becomes a patient of the Kushtha disease (Leucoderma)
+    quote_sha256: d65d0afaf13febf8f246b1c9ccdb6fcd6486014fa49cf17f8f7a556231beb615
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: he becomes a patient of the Kushtha disease (Leucoderma)
+- id: MUHURTACHINTAMANI.HEALTH.CH5V1620.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v16-20
+    quote: if Saturn is there he becomes a patient of some windy diseases
+    quote_sha256: cc375c7a0dd71c9b8fd67ad2a40a0e11f847b97916b26c1d11e325810b5cb890
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: he becomes a patient of some windy diseases
+- id: MUHURTACHINTAMANI.HEALTH.CH5V30.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v30
+    quote: if Mars is there then the child is attacked with a weapon
+    quote_sha256: f4f8027936e133b1fd5d587d6a87f2ac00f351e4720e7dcc1f1776a5220182c3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the child is attacked with a weapon
+- id: MUHURTACHINTAMANI.HEALTH.CH5V30.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v30
+    quote: if Saturn is there then it becomes lame
+    quote_sha256: 25c5bf4bb14181e10021d1a4845c56145eb91fa45444bff9bf562d1d0bbd2b79
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: it becomes lame
+- id: MUHURTACHINTAMANI.HEALTH.CH5V30.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v30
+    quote: if the Sun is there then it suffers from fever
+    quote_sha256: 9062db0ff6d07bf582feadce2a8e2250035c12f10243dd11a7e5f2825ce7a877
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: it suffers from fever
+- id: MUHURTACHINTAMANI.HEALTH.CH6V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v19
+    quote: >-
+      The daughter and the son born in the Nakshtra of Ashlesha destroy (cause the death of)
+      their mother-in-law
+    quote_sha256: 89fea1e19e13ec352cc9e9b5bcc79624539ba2f6176103764acf9ba9c96457aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.ashlesha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: destroy (cause the death of) their mother-in-law
+- id: MUHURTACHINTAMANI.HEALTH.CH6V19.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v19
+    quote: those born in that of Moola, their father-in-law
+    quote_sha256: e6383fe49b0919757279bdf19f4aabfc5cdc0b39c3995daf634efb64546ff005
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.mula
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: destroy (cause the death of) their father-in-law
+- id: MUHURTACHINTAMANI.HEALTH.CH6V19.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v19
+    quote: the daughter born in the Nakshtra of Jyestha destroys the elder brother of her
+      husband
+    quote_sha256: ed2d7a1f3fee437453ceae1cb7b5f6b7d13a1a66f188cc2723000684eff89c3d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.jyeshtha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: destroys the elder brother of her husband
+- id: MUHURTACHINTAMANI.HEALTH.CH6V19.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v19
+    quote: that born in the Nakshtra of Vishakha destroys the younger brother of her husband
+    quote_sha256: 6947506dd443fe0ed615db23e98f3603aa8a51adc92f9bb13bfabd9372e2902c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.vishakha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: destroys the younger brother of her husband
+- id: MUHURTACHINTAMANI.PROHIBITION.CH5V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.health: 0.8
+    domain.status: 0.6
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v34
+    quote: >-
+      ‘Kshora-Karma’ etc. should be left and should not be done on the days of Saturday, Tuesday
+      and Sunday
+    quote_sha256: 3924a9ed6c70e410418feaec6ec132fe75d09642e5d265e83d52ee008207c52a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    not:
+      any:
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.saturn
+          level: level.maha
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: prohibition

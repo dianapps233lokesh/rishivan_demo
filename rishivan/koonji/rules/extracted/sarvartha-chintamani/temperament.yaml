@@ -1,0 +1,987 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v9
+    quote: >-
+      If the 3rd house is aspected by malefic planets, the lord of the 3rd is in the 3rd house
+      in malefic Shashti amsha (1/60th division) there is the destruction of brothers.
+    quote_sha256: 5bd0803dbaebe5e43f4ed21eb381604cfc834b964858fb6ffc0b60fd1d703dbb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.saturn
+        target: bhava.03
+    - occupies_bhava:
+        subject: lord.bhava.03
+        bhava: bhava.03
+  indicates:
+    claim: family.siblings
+    polarity: negative
+    magnitude: strong
+    text: destruction of brothers
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.temperament: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v10
+    quote: If Saturn is in lagna & Mars in the 7th or in a trine the yoga gives mental derangement
+    quote_sha256: 81fc10b7b8a1e2231c9e4c83e0329e77350a4940fa2d219f46d811e774fa6320
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.07
+      - in_trikona:
+          subject: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the yoga gives mental derangement
+- id: SARVARTHACHINTAMANI.OBSTACLE.CH16V6.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v6
+    quote: The native suffers sorrow & defeat in battle.
+    quote_sha256: 87a694b74673593371900aa313c4e7bce95ad9e3e81c4d973558f2749d57efb8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+  indicates:
+    claim: obstacle.general
+    polarity: negative
+    magnitude: strong
+    text: the native suffers sorrow & defeat in battle
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH13V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.wealth: 0.8
+    domain.health: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v11
+    quote: >-
+      Sun located in an inimical sign makes the native sorrowful, troubled from son, wife,
+      also financially, he gets into danger from 273 the ruler, fire, thieves, quarrels, opposition
+      from father during its ruling period.
+    quote_sha256: 79ed26c31130289f950e86d3bd3d35e2c18180777736de21669d5215967aaf12
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.inimical
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: makes the native sorrowful
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH14V22.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v22
+    quote: He gets sorrow, frustration in efforts
+    quote_sha256: 03c775a2579c78915a8bf8d2b29bbf23638c21379ed0ab34d38a693afdfd3ca2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: He gets sorrow, frustration in efforts
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH14V32.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v32
+    quote: >-
+      During the ruling period of Mars located in the Navamsha of its sign of debilitation,
+      there is detrioration in the qualities of one's karmas, loss of wealth, punishment from
+      the government. The man becomes characterless & engaged in selfish earnings.
+    quote_sha256: 8bf858362dc9f289aac09676e2bf6cf2dc2d870559fc24e0e71a7032a2d9ba82
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mars
+        rashi: rashi.cancer
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: The man becomes characterless & engaged in selfish earnings
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH14V40.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.education: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v40
+    quote: >-
+      During the ruling period of Mercury endowed with natural strength, the native performs
+      with natural ease the works of good nature. He also has intellectual wranglings
+    quote_sha256: 399012d2d818622e940ee7564e1f8492f01d15eaff2169154acb8abdf839890f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - strength:
+        subject: graha.mercury
+        op: '>'
+        value: 0
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: performs with natural ease the works of good nature and has intellectual wranglings
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH15V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v5
+    quote: >-
+      During the ruling period of Venus located in the highest degree of its sign of debilitation,
+      the native, has much passion
+    quote_sha256: 614d50a696c4e54660242aea4a6a5c11db949cb234a32fd7c61547b2ca74662d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native has much passion
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH16V10.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v10
+    quote: His mind is defiled.
+    quote_sha256: c04d894b6a95ae24aa791e4b9b1b6ba2d5e514c0e2265b9025c68aeef035a0dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: His mind is defiled.
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V126.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v126
+    quote: >-
+      One is an illegitimate child if the lord of the Ascendant, the lord of 4th house and
+      that of the 6th are located together.
+    quote_sha256: cac82886a912762424515379e9566d51e387f4617407e6dafe23569305c49a32
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.04
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.06
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: One is an illegitimate child
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V141.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v141
+    quote: >-
+      If the lord of the 10th house is a malefic planet located in the 4th house, associated
+      with or aspected by malefics the man is deceitful.
+    quote_sha256: d94ebc9c01d38cced21247e3248b57e066e98b058043735aeecb55d48d283243
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the man is deceitful
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V141.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v141
+    quote: >-
+      If the lord of the 4th house is located in the 4th house with a malefic, then also one
+      is deceitful.
+    quote_sha256: 7e2951a7fd86d8af8c92f96ebb0f6015118bfa9043aa98c13871e7689119d768
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.04
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: one is deceitful
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V143.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v143
+    quote: >-
+      If the 4th house is occupied by a benefic planet or by a planet in exaltation, or one
+      in a friendly sign & the sign in the 4th belongs to a benefic, the man has a mind without
+      deceit or hypocrisy.
+    quote_sha256: e8726c889b4b0386e763f0843f676223fef2eb48a7a6f418b2a30d141a59d453
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupant_count:
+          bhava: bhava.04
+          op: ==
+          n: 1
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the man has a mind without deceit or hypocrisy
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V146.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v146
+    quote: If Jupiter and Venus are located in the Ascendant the native has a pure mind.
+    quote_sha256: 6ca3ac649263ebeb47bbef6fefb11c1a2b3a8e102ea2845782d3da28dfcf89ec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native has a pure mind
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V146.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v146
+    quote: >-
+      If the lord of the 4th house is in the 4th along with a malefic the mind of the native
+      is not pure (it is deceitful).
+    quote_sha256: 1eb1bf2bdadba79ce65020e3fb3e4d8ebc16a16c9669ad39c2ef53fe0b7e8499
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: the mind of the native is not pure (it is deceitful)
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V40.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v40
+    quote: If the lord of the 3rd house is located with Sun, the man is brave
+    quote_sha256: 86b022e102144d658553b97ee5b245a0339dd8c03de830ec046527301379b011
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the man is brave
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V40.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v40
+    quote: if with Moon he has mental patience
+    quote_sha256: 138733b3ee840d14924c3e253e85d72b331ec42a54a118c36a6d2ff9ee8a8f07
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he has mental patience
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V40.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v40
+    quote: if with Mars he is dark coloured, fool & full of wrath
+    quote_sha256: 3676dc986ef5eba3eb5a2e60c51ed70b7b2045563b19bfbb15dc0b3db4601265
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he is dark coloured, fool & full of wrath
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.education: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v41
+    quote: If it is with Jupiter he is brave, and efficient in understanding the Shastras
+    quote_sha256: 8509d1fffff9857d1dd1bf23c05ab306048d67e187b6bf5a3cc3650397ecaf05
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.jupiter
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he is brave, and efficient in understanding the Shastras
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V41.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v41
+    quote: if with Venus is given to sex and gets enraged as a result of his sexual disposition.
+    quote_sha256: 3c0ebc6fb13871ccc3be250276864cec751f08bc6521e51304ef8129def60da6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: given to sex and gets enraged as a result of his sexual disposition
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V42.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v42
+    quote: If the lord of the 3rd house is with Saturn, he is fool
+    quote_sha256: e2e0e0d02eef8c4134a3cef0fc56b9c39f93fdd551982ff12f926dee9d652f1a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he is fool
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH3V42.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v42
+    quote: if with Rahu, he is brave only outwardly.
+    quote_sha256: 3e1c1d884f54d9e3d0920dd454db07bf25a2cb7efab21c519940b452650287e7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.rahu
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he is brave only outwardly
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH5V62.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v62
+    quote: >-
+      If Mercury is in the 6th house aspected by a malefic planet, the native does not like
+      sweet things.
+    quote_sha256: ea6b6ed1ccae1edb96ca3bd24834bbef907f20e739ed5629a7d7d4f5892776ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.06
+    - aspects:
+        subject: lord.bhava.10
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: the native does not like sweet things
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH7V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v11
+    quote: >-
+      If the 9th house is occupied by a malefic planet, & if the lord of the 9th house is
+      located with a malefic, is in between malefics or is located in malefic Shashti amsha,
+      the native becomes sinful.
+    quote_sha256: ce7f8e905d7a9ae7b2e646c8dd46cf29bcda4e41d3916f233bfc885cf223c658
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.09
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native becomes sinful
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH7V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v27
+    quote: >-
+      If the lords of the 9th & the 3rd houses are located in the 3rd or the 9th house, and
+      are in strength by being in their exaltation signs, the natives (father & the native)
+      are good moral people.
+    quote_sha256: 91abb18d1e876b5a1dce9815332279164b2fb833c48464e5d17eafa86ba2a8d9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.09
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.03
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: lord.bhava.03
+          bhava: bhava.09
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.exalted
+    - dignity:
+        subject: lord.bhava.03
+        dignity: dignity.exalted
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the natives (father & the native) are good moral people
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH9V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v1
+    quote: >-
+      If Jupiter is with Rahu or Ketu & is aspected by a malefic planet, it creates "Chandal"
+      yoga i.e. a yoga denoting bad character of the native.
+    quote_sha256: a78b9c42690f13e52452974c618dc7ca78d14764170750ef9fd5a5cbe7fefeb1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - conjunct:
+          subject: graha.jupiter
+          other: graha.rahu
+      - conjunct:
+          subject: graha.jupiter
+          other: graha.ketu
+    - aspects:
+        subject: graha.mars
+        target: graha.jupiter
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: bad character of the native
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH9V1.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v1
+    quote: >-
+      Similarly, if Jupiter is located with a planet in its sign of debilitation and is located
+      in the Navamsha of its sign of debilitation, the same result follows even if the man
+      is a Brahmin.
+    quote_sha256: 6c6fe8cf8cf7ec67328560d8ad10bb7f4d69ca61257448cb7f075309c1b3d4f3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.jupiter
+        dignity: dignity.debilitated
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: bad character of the native
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH9V10.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.temperament: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v10
+    quote: >-
+      also when Saturn is in the lagna and Sun in the 12th, Moon or Mars in a trine. Such
+      a man may be defective in speech & naughty in nature.
+    quote_sha256: f3f9b822a9e06b1cb0ff1d38a2c90c28268b9b374904c5bab963964fc43704fc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.12
+    - any:
+      - in_trikona:
+          subject: graha.moon
+      - in_trikona:
+          subject: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: Such a man may be defective in speech & naughty in nature.
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH9V1314.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v13-14
+    quote: >-
+      If the lord of the 9th occupies the 12th house, and the lord of the 12th is in the 2nd
+      house and there are many malefic planets in the 3rd house. the yoga thus created is
+      Kemadrum i.e. one of poverty. The native takes bad food, is engaged in bad deeds and
+      is adultrous.
+    quote_sha256: 5901d637ae5d05f8e31669fe26a7d95f2e73f2b1d76cf2cf4c098eb501b5f6e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.02
+    - occupant_count:
+        bhava: bhava.03
+        op: '>'
+        n: 1
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: The native takes bad food, is engaged in bad deeds and is adultrous
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH9V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v20
+    quote: >-
+      If Mercury, Moon and Venus are in kendras and Rahu in the first house, the yoga formed
+      is called "Chandal" yoga. The native of this yoga becomes devoid of character and morality.
+    quote_sha256: fba567674affd93d5cc57c8d03ecd30a6b0b00ef6654d7707bad37dfd2d4a79b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.mercury
+    - in_kendra:
+        subject: graha.moon
+    - in_kendra:
+        subject: graha.venus
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native of this yoga becomes devoid of character and morality
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH9V3.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v3
+    quote: >-
+      If Saturn influences by association or aspect the lagna & the Moon, the native is very
+      greedy.
+    quote_sha256: 434c8e35568b2c5013bd14d60385b9af5094bde285b7cf202a56ab7ab993db99
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - aspects:
+          subject: graha.saturn
+          target: bhava.01
+      - conjunct:
+          subject: graha.saturn
+          other: lord.bhava.01
+    - any:
+      - aspects:
+          subject: graha.saturn
+          target: graha.moon
+      - conjunct:
+          subject: graha.saturn
+          other: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native is very greedy

@@ -1,0 +1,2402 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V66.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.5
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v66
+    quote: >-
+      If the lord of the 4th house is in kendra or trine, & in "Vaisheshikh" Amsha & not under
+      the influence of any malefic either by association or by aspect, the native helps his
+      relatives.
+    quote_sha256: 42356913b1b474cf12debe8abf893fd6ccd5db1d28f64d4200ad3ef6808681b5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_kendra:
+          subject: lord.bhava.04
+      - in_trikona:
+          subject: lord.bhava.04
+    - varga_dignity:
+        varga: varga.d30
+        subject: lord.bhava.04
+        dignity: dignity.exalted
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: the native helps his relatives
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V103.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.health: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v103
+    quote: >-
+      If the lord of the 4th house is associated with Sun and Mars, is located in a malefic
+      Navamsha without the aspect of a benefic planet & is located in signs away from the
+      exaltation sign, the native leads a sorrowful life.
+    quote_sha256: 586e19ae1859509d00c8b3b2d8078ae2a4755336a271c9990f7c3c42af68e44b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.sun
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native leads a sorrowful life
+- id: SARVARTHACHINTAMANI.PROPERTY.CH13V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v1
+    quote: >-
+      During the main ruling period of Sun occupying its highest degree of exaltation one
+      gets lands, wealth, wife, son, fame, courage, honour from the king, movements, recreation
+      meetings.
+    quote_sha256: 3b35ba86ffe8f0059ba2dec1f883f5b474451481edbfd52a579319fb5ee225aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: one gets lands
+- id: SARVARTHACHINTAMANI.PROPERTY.CH13V22.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v22
+    quote: >-
+      He gets comforts, conveyance, land, agriculture, wealth, house hold affairs, fame, &
+      fame through writing.
+    quote_sha256: a87d2aef97e891fa975f16dbf768e1052aaf8dda06de7f4b6ded67bbe388ed7a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      He gets comforts, conveyance, land, agriculture, wealth, house hold affairs, fame, &
+      fame through writing
+- id: SARVARTHACHINTAMANI.PROPERTY.CH13V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v8
+    quote: >-
+      During the ruling period of Sun occupying its Mool Trikon i.e. positive sign (see shloka
+      51, chapter 1) the native gets lands, wealth, wife, son, friends, comforts, support
+      of government, cattle wealth, gain from friends, appropriate status & ruling powers.
+    quote_sha256: 48a7f42b3e4fbd8ff6ccbb4795833cc8c38129b4fd2835f5c1884a714bf89e6e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets lands
+- id: SARVARTHACHINTAMANI.PROPERTY.CH14V10.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v10
+    quote: loss of lands & agriculture
+    quote_sha256: 15babc41c9d2c196dab08b5494da2e2776eb43965ac124f608eaddc3cf89cf9f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.friendly
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: loss of lands & agriculture
+- id: SARVARTHACHINTAMANI.PROPERTY.CH14V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v23
+    quote: 'During the ruling period of Mercury located in the 4th house,
+
+      there is loss of house, grains and comforts.'
+    quote_sha256: 28c838bbeda70cde71584222fe7fa7dfd6a8ba023b85f6c456f4e22f6199e30a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: loss of house, grains and comforts
+- id: SARVARTHACHINTAMANI.PROPERTY.CH14V25.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v25
+    quote: >-
+      & if it is in inimical sign the native gets trouble from property & brothers and severe
+      disease.
+    quote_sha256: a4dde7b7d663429ae5f21ba0888168263863daac37921d5630e396bc32c89231
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.inimical
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: trouble from property
+- id: SARVARTHACHINTAMANI.PROPERTY.CH14V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.85
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v7
+    quote: >-
+      During the ruling period of Mars located in its own sign, the native gets property,
+      wealth, position, comforts & conveyance.
+    quote_sha256: d2a0c40dea7c740aa940d71579db87ef2ccf161678dc9be43a10da642600d3da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.own_sign
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets property, wealth, position, comforts & conveyance
+- id: SARVARTHACHINTAMANI.PROPERTY.CH15V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.status: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v22
+    quote: >-
+      During the ruling period of Jupiter located in the 4th house, the native has all types
+      of conveyances, friendship with rulers & if there is yoga for rulership in his horoscope,
+      he gets ruling power.
+    quote_sha256: 898b8dbfecb55ea6b5b03c638c8008a3c15a811da74eaa6a6a94b19fc993774a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native has all types of conveyances, friendship with rulers
+- id: SARVARTHACHINTAMANI.PROPERTY.CH15V32.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v32
+    quote: >-
+      During the ruling period of Jupiter in 3rd house, the native gets much honour from government,
+      lands from brothers, or lands & wealth given by other ladies.
+    quote_sha256: 519457e19f45ba58e38a6dc60ba4bc35806131782d01db5c4a855d9e57c02340
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.03
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: lands from brothers, or lands & wealth given by other ladies
+- id: SARVARTHACHINTAMANI.PROPERTY.CH15V36.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.7
+    domain.career: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v36
+    quote: '& gets grains, lands, agriculture & conveyance.'
+    quote_sha256: 52c0086248ceab655c9bcc46a0ea505069ebec418487476d170fd3186eccbc47
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: gets grains, lands, agriculture & conveyance
+- id: SARVARTHACHINTAMANI.PROPERTY.CH16V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.7
+    domain.progeny: 0.7
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v5-8
+    quote: >-
+      During the main ruling period of the Sun located in the Ascendant and in the sub periods
+      of Jupiter, Venus, Moon or Mercury, the native gets benefitted from agriculture, cows,
+      sons, wife and lands.
+    quote_sha256: d0b4c37a46483682c241d7f586dba41ac8f47cb8715bfddd2e0a8f3280a0817d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets benefitted from agriculture, cows, sons, wife and lands
+- id: SARVARTHACHINTAMANI.PROPERTY.CH16V58.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.7
+    domain.progeny: 0.7
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v5-8
+    quote: >-
+      During the main ruling period of the Sun located in the Ascendant and in the sub periods
+      of Jupiter, Venus, Moon or Mercury, the native gets benefitted from agriculture, cows,
+      sons, wife and lands.
+    quote_sha256: d0b4c37a46483682c241d7f586dba41ac8f47cb8715bfddd2e0a8f3280a0817d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.antar
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets benefitted from agriculture, cows, sons, wife and lands
+- id: SARVARTHACHINTAMANI.PROPERTY.CH16V58.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.7
+    domain.progeny: 0.7
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v5-8
+    quote: >-
+      During the main ruling period of the Sun located in the Ascendant and in the sub periods
+      of Jupiter, Venus, Moon or Mercury, the native gets benefitted from agriculture, cows,
+      sons, wife and lands.
+    quote_sha256: d0b4c37a46483682c241d7f586dba41ac8f47cb8715bfddd2e0a8f3280a0817d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets benefitted from agriculture, cows, sons, wife and lands
+- id: SARVARTHACHINTAMANI.PROPERTY.CH16V58.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.7
+    domain.progeny: 0.7
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v5-8
+    quote: >-
+      During the main ruling period of the Sun located in the Ascendant and in the sub periods
+      of Jupiter, Venus, Moon or Mercury, the native gets benefitted from agriculture, cows,
+      sons, wife and lands.
+    quote_sha256: d0b4c37a46483682c241d7f586dba41ac8f47cb8715bfddd2e0a8f3280a0817d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets benefitted from agriculture, cows, sons, wife and lands
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V101.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v101
+    quote: >-
+      If malefics occupy the 4th house. Jupiter is weak. & the lord of the 4th house is weak
+      and with malefic planet, the native leads an uncomfortable life even when he is rich.
+    quote_sha256: 86ddd81adbd0cf342c5728172b0196768683d73bf38dfc9d6dff4b156e063e55
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.04
+        op: '>='
+        n: 1
+    - strength_band:
+        subject: graha.jupiter
+        band: band.weak
+    - strength_band:
+        subject: lord.bhava.04
+        band: band.weak
+    - occupant_count:
+        bhava: bhava.04
+        op: '>='
+        n: 1
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: the native leads an uncomfortable life even when he is rich
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V102.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v102
+    quote: >-
+      If the lord of the 4th house is with a malefic planet & the 4th house is occupied by
+      a planet in its debilitation sign. then the native though possessing son, wealth and
+      relatives is yet uncomfortable.
+    quote_sha256: cb5191a48bca054c0f943ba3c9c14e0cfc38a6cb3cc32aded8b64cda7b962e04
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.saturn
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: the native though possessing son, wealth and relatives is yet uncomfortable
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V153.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v153
+    quote: >-
+      If the lord of the 4th house is in the Ascendant with the lord of the Ascendant and
+      Moon, the yoga indicates the acquisition of horse.
+    quote_sha256: eceab99579ffd3c98b7dc580b1005b2bf6f396f7d6e8331d5d0903a6c0be286f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.moon
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the acquisition of horse
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V154.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v154
+    quote: >-
+      If Venus is in the lagna along with the lord of the 4th house the native gets conveyance
+      driven by men.
+    quote_sha256: 9c4292e7328b2ea83f5321f4710628edcef808b5adf5d14114046eddd6c06135
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.venus
+        other: lord.bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the native gets conveyance driven by men
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V155.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.status: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v155
+    quote: >-
+      If the lord of the 4th house is in lagna alongwith Moon, Jupiter and Venus. the native
+      gets 3 types of conveyance. (Horse, men. elephants) provided the planets involved are
+      not located in their debilitation sign, or inimical sign & are not eclipsed.
+    quote_sha256: 33c787e941290fc865531afe799eb3b2c75b04fa5a24448d5b2d5703fbfc5e54
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.moon
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.venus
+    - not:
+        dignity:
+          subject: lord.bhava.04
+          dignity: dignity.debilitated
+    - not:
+        dignity:
+          subject: lord.bhava.04
+          dignity: dignity.inimical
+    - not:
+        combust:
+          subject: lord.bhava.04
+    - not:
+        dignity:
+          subject: graha.moon
+          dignity: dignity.debilitated
+    - not:
+        dignity:
+          subject: graha.moon
+          dignity: dignity.inimical
+    - not:
+        combust:
+          subject: graha.moon
+    - not:
+        dignity:
+          subject: graha.jupiter
+          dignity: dignity.debilitated
+    - not:
+        dignity:
+          subject: graha.jupiter
+          dignity: dignity.inimical
+    - not:
+        combust:
+          subject: graha.jupiter
+    - not:
+        dignity:
+          subject: graha.venus
+          dignity: dignity.debilitated
+    - not:
+        dignity:
+          subject: graha.venus
+          dignity: dignity.inimical
+    - not:
+        combust:
+          subject: graha.venus
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets 3 types of conveyance. (Horse, men. elephants)
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V157.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v157
+    quote: >-
+      If the lord of the 4th house is in the 9th house. the 4th house is occupied by Jupiter
+      and Venus & the lord of the 9th is in kendra or trine. the native owns valuable territory.
+      ornaments, wealth & conveyances.
+    quote_sha256: f644f9baf6b72a1c9ede82d91e19cd96ca31076ed385d69391cbc6a8001c997b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - any:
+      - in_kendra:
+          subject: lord.bhava.09
+      - in_trikona:
+          subject: lord.bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native owns valuable territory. ornaments, wealth & conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V160.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v160
+    quote: >-
+      If the lord of the 4th house is aspected by the lord of the 9th house. but is in a bad
+      house (6th, 8th or 12th) or is eclipsed. the native has a low type of conveyance or
+      a conveyance that he does not possess for long.
+    quote_sha256: ab9898375f322c2d1c0bb8d939b26d4a9b7ec2ab1934b8f2093e3730e2028cf5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: lord.bhava.09
+        target: lord.bhava.04
+    - in_dusthana:
+        subject: lord.bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: the native has a low type of conveyance or a conveyance that he does not possess
+      for long
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V161.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v161
+    quote: >-
+      If the lord of the 4th house is located with a benefic & with the lord of the 9th house,
+      the man gets much army also much land, ornaments & conveyances.
+    quote_sha256: f7de7a70727cf22c16be1542d7a795f11f51abe46a970181df978d5fa564c2ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the man gets much army also much land, ornaments & conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V163.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v163
+    quote: >-
+      If the lord of the 4th house is located in kendra or in the lagna, the man possesses
+      many conveyances.
+    quote_sha256: 712a71230ba6870d4d1eb5d2afb137e489475c0ba8153c375f1799782323d0c1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - in_kendra:
+        subject: lord.bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the man possesses many conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V163.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v163
+    quote: >-
+      If the lord of the 10th house is in the lagna or is in the 10th house, the man has many
+      conveyances.
+    quote_sha256: cdd98b0ff5fdf92123f79bc57922dacc9afa2ba9319a75a0d85e0c509296c830
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.10
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the man has many conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V164.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.status: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v164
+    quote: >-
+      If the lord of the 4th house is in the 4th with a benefic planet, the native becomes
+      the owner of weapons, horses. & treasury.
+    quote_sha256: 12af26a1642cd907996bbaefe7aac0fbaad7d7116e772e40bcd6df88f2498fae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.04
+    - any:
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.mercury
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native becomes the owner of weapons, horses. & treasury
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V164.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.status: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v164
+    quote: If the lord of the 4th house is located in the 11th house & is strong
+    quote_sha256: 40ebd095f94660d14bb57d6a850bd23523f362fa242d1e97e84d17e8d8224932
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.11
+    - strength_band:
+        subject: lord.bhava.04
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the same result follows
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V168.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.travel: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v168
+    quote: >-
+      If the lord of the 4th house is in the 12th house the native has another house (other
+      than that of his father) in a foreign country.
+    quote_sha256: 9b10a975d81dbf1e1d9e16d74bf37c563609d38ca23e793480faddf56bffb0e5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the native has another house (other than that of his father) in a foreign country
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V168.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.travel: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v168
+    quote: Or if the lord of the 4th is in 8th he himself makes a house in a foreign land.
+    quote_sha256: edbc2f404fccbefc672406825562a77f050c7cad4f59d1e9d1895fda8440bbb4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.08
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: he himself makes a house in a foreign land
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V170.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v170
+    quote: >-
+      If there is mutual exchange between the lords of the 2nd and the 9th house & the lord
+      of the 1st house is strong, the native owns conveyance.
+    quote_sha256: 7be8016216d22abb1d3f5a08d5d8aea069735a08dabf352006a68af9360164bc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: lord.bhava.02
+        other: lord.bhava.09
+    - strength:
+        subject: lord.bhava.01
+        op: '>='
+        value: 350
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the native owns conveyance
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V171.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v171
+    quote: >-
+      If the lord of the 4th house is strong and located in "Gopur" etc. Amsha & aspected
+      by the lord of the 11th. 10th and the 9th house, the native gets conveyance.
+    quote_sha256: 39c16eb51115c729100b47a874f50ae9e78e2c0f4c100ea30b345dfe16eac498
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.04
+        band: band.strong
+    - aspects:
+        subject: lord.bhava.11
+        target: lord.bhava.04
+    - aspects:
+        subject: lord.bhava.10
+        target: lord.bhava.04
+    - aspects:
+        subject: lord.bhava.09
+        target: lord.bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets conveyance
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V172.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v172
+    quote: >-
+      If the lord of the 9th house is in kendra in its sign of exaltation & two other planets
+      are also in exaltation, the native possesses conveyance.
+    quote_sha256: 24f6e3283b354f5ced01613237b06ef931d64e7a7d87722f44d48027364e7964
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.01
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.exalted
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native possesses conveyance
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V173.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v173
+    quote: >-
+      If the lord of the 12th house is in its sign of exaltation and is located with the lord
+      of the 2nd house & is aspected by the lord of the 9th house the man becomes the owner
+      of conveyances.
+    quote_sha256: c6319c0886fe3ee099aa6bfa3cfd537308ff637d6a55ec4354185feb57628f87
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.12
+        dignity: dignity.exalted
+    - conjunct:
+        subject: lord.bhava.12
+        other: lord.bhava.02
+    - aspects:
+        subject: lord.bhava.09
+        target: lord.bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the man becomes the owner of conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V174.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v174
+    quote: >-
+      If the lord of the 10th house is located in the 4th house with the lord of the 11th
+      house or with the lord of the 9th, the native possesses many lands & conveyances.
+    quote_sha256: 32e01b56ca88c6eb516a5f759235f4807f3057ffcd57238f806057a7b5c8d011
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+    - conjunct:
+        subject: lord.bhava.10
+        other: lord.bhava.11
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native possesses many lands & conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V174.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v174
+    quote: >-
+      If the lord of the 10th house is located in the 4th house with the lord of the 11th
+      house or with the lord of the 9th, the native possesses many lands & conveyances.
+    quote_sha256: 32e01b56ca88c6eb516a5f759235f4807f3057ffcd57238f806057a7b5c8d011
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+    - conjunct:
+        subject: lord.bhava.10
+        other: lord.bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native possesses many lands & conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V175.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v175
+    quote: >-
+      If the lord of the 10th house is located in the 10th house and is aspected by the lord
+      of the 1st or the 9th house the native owns conveyance.
+    quote_sha256: 083555756b29bceb206fcf1a3082bf33e4cb68f908b9b4206a2f946cfcd59692
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.10
+    - any:
+      - aspects:
+          subject: lord.bhava.01
+          target: lord.bhava.10
+      - aspects:
+          subject: lord.bhava.09
+          target: lord.bhava.10
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the native owns conveyance
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V177178.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v177-178
+    quote: >-
+      or the lord of the 4th house is exalted the lord of the 10th house is located in kendra
+      or a trine & a planet in exaltation occupies the 4th house, the 12th house has no planets
+      in it. the native owns 3 conveyances.
+    quote_sha256: c02963cf00474c85e734644695566b69b67d7621501e6db1f58e977c83dae067
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.04
+        dignity: dignity.exalted
+    - any:
+      - in_kendra:
+          subject: lord.bhava.10
+      - in_trikona:
+          subject: lord.bhava.10
+    - occupant_count:
+        bhava: bhava.12
+        op: ==
+        n: 0
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native owns 3 conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V179.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v179
+    quote: >-
+      If Venus is in its high exaltation sign & the lord of the 10th house is located in the
+      4th, the native is owner of conveyance fitted with instruments of music.
+    quote_sha256: eeba61761b6eac8faf4633f899ebd8b0de054b28224eb7e950778b91fc82b7f4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.exalted
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native is owner of conveyance fitted with instruments of music
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V180.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v180
+    quote: >-
+      If the lord of the 9th house is located in the 4th house and the lord of the 10th house
+      occupies kendra or trine house in his sign of exaltation, the native owns a conveyance
+      with instruments of vocal & other music.
+    quote_sha256: 246d7697118ed8c48de149c63281c0c4e4c97a365f89d858e9285cb85377f38f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.04
+    - dignity:
+        subject: lord.bhava.10
+        dignity: dignity.exalted
+    - any:
+      - in_kendra:
+          subject: lord.bhava.10
+      - in_trikona:
+          subject: lord.bhava.10
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native owns a conveyance with instruments of vocal & other music
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V181.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v181
+    quote: >-
+      If the lord of the 10th house, in association with Saturn is located in a kendra along
+      with a benefic planet & the lord of the lagna is located in the 4th house, the native
+      owns a conveyance with musical instruments like panav.
+    quote_sha256: 029765e055f5981a2f758216a13b9439fd7dce77ccfed6860cda39e2aa0b5b35
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: lord.bhava.10
+        other: graha.saturn
+        distance: dist.01
+    - in_kendra:
+        subject: lord.bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native owns a conveyance with musical instruments like panav
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V184.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v184
+    quote: >-
+      If the 4th house is occupied by a benefic planet and the lord of the 4th house is located
+      in kendra or trine in his sign of exaltation & the lord of the 9th house is in his highest
+      degree of exaltation, the native gets comforts and conveyances.
+    quote_sha256: 71d7c1b9a76e93b62bbed77252ee0ee7bad5a65e67781f44be4a77041bb0e34a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.04
+        op: '>='
+        n: 1
+    - dignity:
+        subject: lord.bhava.04
+        dignity: dignity.exalted
+    - any:
+      - in_kendra:
+          subject: lord.bhava.04
+      - in_trikona:
+          subject: lord.bhava.04
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.exalted
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets comforts and conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V185.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v185
+    quote: >-
+      If the lord of the 10th house is located in the 4th house. & the lord of the 4th house
+      is in the 11th, & the Ascendant is aspected by a benefic, the native gains many conveyances.
+    quote_sha256: 5904326cae38c2329cd63a22884942cb37ba094acb14c9632fa55a4de0271bb1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.11
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: bhava.01
+      - aspects:
+          subject: graha.venus
+          target: bhava.01
+      - aspects:
+          subject: graha.mercury
+          target: bhava.01
+      - aspects:
+          subject: graha.moon
+          target: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gains many conveyances
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V55.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v55
+    quote: >-
+      If the lord of the lagna is in lagna with the lord of the 4th house, the yoga shows
+      the acquisition of a house.
+    quote_sha256: b3a83edbac2d3ca288045b7e068a35b8d40c2a153dd0dc211e55fbc9291a6811
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the acquisition of a house
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V69.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v69
+    quote: >-
+      That is why we hold that in such a case Venus in Taurus in the 4th house aspected by
+      a strong Jupiter would bestow on the native much landed property and many valuable vehicles.
+    quote_sha256: 75b119e98b6c8fc5bb60b5034bbb62ba097ca7c8a3f4516bf7474e9dd3f8d498
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aquarius
+    - occupies_rashi:
+        subject: graha.venus
+        rashi: rashi.taurus
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - aspects:
+        subject: graha.jupiter
+        target: graha.venus
+    - strength:
+        subject: graha.jupiter
+        op: '>='
+        value: 1
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: would bestow on the native much landed property and many valuable vehicles
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V80.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.career: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v80
+    quote: >-
+      If the lord of the 10th house is strong & so is the lord of the 4th house & they are
+      mutual friends, the native has much property.
+    quote_sha256: 52b6d224e56234ab3788b44aefd9675ecc33094e8668ac5276ad701652a4b0ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.10
+        op: '>='
+        value: 1
+    - strength:
+        subject: lord.bhava.04
+        op: '>='
+        value: 1
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native has much property
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V82.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v82
+    quote: >-
+      If the lord of the 4th house is located in the 5th house in Gopur etc. Amsa or Mridu
+      Amsa the man possesses much property.
+    quote_sha256: 4ac88f2b9ab81b569e229791b21257fca7fc88c9dde2f80037edf5770f2d2b16
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.05
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the man possesses much property
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V83.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v83
+    quote: >-
+      If there are in the 4th house or with the lord of the 4th the lord of the 3rd house
+      & the significator of the 3rd house i.e. Mars, the native gets property from his brother.
+    quote_sha256: ef1d821b8bd2aa4d5a42a6fec050c34d49c9ba4360a2984007728bfc60377cae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mars
+    - occupies_bhava:
+        subject: lord.bhava.03
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the native gets property from his brother
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V83.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v83
+    quote: >-
+      If there are in the 4th house or with the lord of the 4th the lord of the 3rd house
+      & the significator of the 3rd house i.e. Mars, the native gets property from his brother.
+    quote_sha256: ef1d821b8bd2aa4d5a42a6fec050c34d49c9ba4360a2984007728bfc60377cae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mars
+    - house_distance:
+        subject: lord.bhava.04
+        other: lord.bhava.03
+        distance: dist.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the native gets property from his brother
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V86.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.relationship: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v86
+    quote: >-
+      If Venus is in the 4th house, & the lord of the 4th house is in the 7th house, & if
+      there is friendship between the lords of the 4th and the 7th houses, the native gets
+      property from or through his wife.
+    quote_sha256: 6f3c4157d46608d21930dd5d84c5d88bc3566cdfd5c135a3eef7dfcece1d24ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.07
+    - exchange:
+        subject: lord.bhava.04
+        other: lord.bhava.07
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets property from or through his wife
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V87.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v87
+    quote: >-
+      If the lord of the 6th house is in the 4th house and is strong & the lord of the 4th
+      is in the 6th house & if the lord of 4th is stronger than the lord of the 6th, the native
+      gets land etc. from the enemy.
+    quote_sha256: 8780f553914fbdc8e9d16ad4704b9c9416634a0be3ae456a05ab559ac5760d42
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.04
+    - strength:
+        subject: lord.bhava.06
+        op: '>='
+        value: 1
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.06
+    - stronger_than:
+        subject: lord.bhava.04
+        other: lord.bhava.06
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the native gets land etc. from the enemy
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V93.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.35
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v93
+    quote: >-
+      If the lord of the 4th house is with a malefic planet in the 2nd house, in its sign
+      of debilitation or inimical sign. the yoga indicates loss of the landed property.
+    quote_sha256: 4ce5f0807f54e42273092fdf116b250a5dee8516239bcafc14d20420b7dce945
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.02
+    - any:
+      - dignity:
+          subject: lord.bhava.04
+          dignity: dignity.debilitated
+      - dignity:
+          subject: lord.bhava.04
+          dignity: dignity.inimical
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: loss of the landed property
+- id: SARVARTHACHINTAMANI.PROPERTY.CH3V93.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.35
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v93
+    quote: >-
+      If however, the lord of the 4th house is located in its sign of exaltation but is with
+      malefic planets the property has to be sold.
+    quote_sha256: ff817dcf2c2896ee37fb58fd5211aa3a7a61e6cc8d08eb4032f313d65d08aa7d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.04
+        dignity: dignity.exalted
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the property has to be sold
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: If Sun is in 4th, the residence is in a jungle
+    quote_sha256: 0272ac48a58f0451aedb5b758acedbeffd277fd1ded6d3475f2f5ef2499ff7a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the residence is in a jungle
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: If Moon, it is in places of habitation.
+    quote_sha256: 2700dcfd0ee75aa30a8e07c0fd930475fcdc3c5a3f6e1bdc8a8e24d3085e8d5a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is in places of habitation
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: if Mars, it is a cottage
+    quote_sha256: 549ceae005217bb7808ed0495c8d9dc2daf0b932af3fc76a2936db23cba319b7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is a cottage
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: if Mercury, it is a pleasure resort
+    quote_sha256: e8ca1a0f75b9f05c91613ed473209ebd6ec11b5a21d0c1e11579f6e97002a543
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is a pleasure resort
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: if Jupiter, it is temple
+    quote_sha256: 61c45ede4e7e3c4b7a1bff5feca28aed66454c7c6039b57d38672a22ec67b27a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is temple
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: if Venus, it is a watery place
+    quote_sha256: 15bd52aa84481043dd5f1d0af5445d538fd47cfae01c15872e68f74fb948447d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is a watery place
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: if Saturn, it is a place infested with lions
+    quote_sha256: 7e21504ac2aefbfcba14ea8ca47990f66aba2a6673247f8b377863dbd2b46eaa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is a place infested with lions
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: if it is Rahu or Ketu, it is a place infested with elephants.
+    quote_sha256: 2034e5761a982311573394890390f8ead6114abfdd7fc482564f091fb0bcce89
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is a place infested with elephants
+- id: SARVARTHACHINTAMANI.PROPERTY.CH6V84.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v84
+    quote: if it is Rahu or Ketu, it is a place infested with elephants.
+    quote_sha256: 2034e5761a982311573394890390f8ead6114abfdd7fc482564f091fb0bcce89
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: it is a place infested with elephants
+- id: SARVARTHACHINTAMANI.PROPERTY.CH9V51.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v51
+    quote: If Moon is in a trine with Sun the native's house is infested with poisonous insects.
+    quote_sha256: 3fa1a09b626dd028af3bc268e008404485d24f15684a7ac39319014f4164f7ba
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.sun
+        distance: dist.05
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the native's house is infested with poisonous insects
+- id: SARVARTHACHINTAMANI.PROPERTY.CH9V51.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v51
+    quote: >-
+      If Moon is in a trine with Sun the native's house is infested with poisonous insects.
+      If in this place there is Saturn and Ketu then there is falling of many lizards.
+    quote_sha256: d1c1123cbbc88d1d492d646a3f018cf8c6740a6236f6edcb2d8544993367bd77
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.sun
+        distance: dist.05
+    - conjunct:
+        subject: graha.saturn
+        other: graha.ketu
+    - same_bhava:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: falling of many lizards
+- id: SARVARTHACHINTAMANI.TRAVEL.CH2V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.travel: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v27
+    quote: >-
+      During the Main ruling period of the lord of the 4th house and the Sub-ruling period
+      of malefics, there is relinquishment of residence
+    quote_sha256: ba86968f995d5abfe76ed442309ae99ce1d4f82ee7928b373c9f039580f45ced
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.04
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: there is relinquishment of residence
+- id: SARVARTHACHINTAMANI.TRAVEL.CH2V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.travel: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v27
+    quote: >-
+      During the Main ruling period of the lord of the 4th house and the Sub-ruling period
+      of malefics, there is relinquishment of residence
+    quote_sha256: ba86968f995d5abfe76ed442309ae99ce1d4f82ee7928b373c9f039580f45ced
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.04
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: there is relinquishment of residence
+- id: SARVARTHACHINTAMANI.TRAVEL.CH2V27.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.travel: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v27
+    quote: >-
+      During the Main ruling period of the lord of the 4th house and the Sub-ruling period
+      of malefics, there is relinquishment of residence
+    quote_sha256: ba86968f995d5abfe76ed442309ae99ce1d4f82ee7928b373c9f039580f45ced
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.04
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: there is relinquishment of residence
+- id: SARVARTHACHINTAMANI.TRAVEL.CH2V27.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.travel: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v27
+    quote: >-
+      During the Main ruling period of the lord of the 4th house and the Sub-ruling period
+      of malefics, there is relinquishment of residence
+    quote_sha256: ba86968f995d5abfe76ed442309ae99ce1d4f82ee7928b373c9f039580f45ced
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.04
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: there is relinquishment of residence
+- id: SARVARTHACHINTAMANI.WEALTH.CH13V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.85
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v36
+    quote: >-
+      When the Sun is strong by possessing the strength arising out of the place (see shloka
+      99 to 100 of chapter 1) it gives in its ruling period agricultural wealth, cows, land,
+      conveyance, clothes, comforts, honour from the government, wealth from others, lustre
+      of the body.
+    quote_sha256: d8e6e6d78864332d98e98e8761678c5c340516b549e988ff77969cc65e5f04a7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      it gives in its ruling period agricultural wealth, cows, land, conveyance, clothes,
+      comforts, honour from the government, wealth from others, lustre of the body
+- id: SARVARTHACHINTAMANI.WEALTH.CH15V37.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v37
+    quote: >-
+      He also gets loss of land, wife kept in secrecy, son, brothers & gets opposition from
+      his relatives.
+    quote_sha256: 41f578877ba5bf254066b545001c169d0a27b112ae873851f6ac7a183b793329
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss of land

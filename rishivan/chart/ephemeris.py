@@ -79,6 +79,15 @@ class PlanetPosition:
     nakshatra: str
     pada: int                 # 1-4
     retrograde: bool
+    speed_deg_per_day: float = 0.0
+    """Signed daily motion, negative when retrograde.
+
+    Kept rather than reduced to the `retrograde` flag because how *fast* a body
+    moves decides how much a coarse birth time can move it, and that is what
+    `varga.select` needs to tell a division it can still trust from one it
+    cannot. The Moon covers 12 degrees a day and Saturn a tenth of one; judging
+    both against a single figure withholds evidence from one or over-trusts the
+    other. Defaulted so a hand-built position in a test stays legal."""
 
 
 @dataclass
@@ -141,7 +150,7 @@ def compute_chart(birth: BirthData) -> Chart:
         chart.planets[name] = PlanetPosition(
             name=name, longitude=lon, rashi=RASHIS[idx], rashi_index=idx,
             degree_in_rashi=deg, house=house, nakshatra=nak, pada=pada,
-            retrograde=speed < 0,
+            retrograde=speed < 0, speed_deg_per_day=speed,
         )
 
     for name, pid in _PLANETS.items():
@@ -149,9 +158,12 @@ def compute_chart(birth: BirthData) -> Chart:
         add_planet(name, pos[0], pos[3])
 
     # Ketu is exactly opposite Rahu; nodes are always retrograde by convention.
+    # The speed mirrors Rahu's rather than the -1.0 that used to stand in for
+    # "retrograde", which was only ever read for its sign. It is read for its
+    # magnitude now, and -1.0 overstates a node's motion about twentyfold.
     rahu = chart.planets["Rahu"]
     ketu_lon = (rahu.longitude + 180.0) % 360.0
-    add_planet("Ketu", ketu_lon, -1.0)
+    add_planet("Ketu", ketu_lon, -abs(rahu.speed_deg_per_day) or -1.0)
 
     # Whole-sign house lords: house n's sign is (lagna_idx + n - 1)
     for h in range(1, 13):

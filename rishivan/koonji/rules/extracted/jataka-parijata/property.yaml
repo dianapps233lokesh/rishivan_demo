@@ -1,0 +1,1313 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.PROPERTY.CH17V102.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.career: 0.4
+    domain.status: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v102
+    quote: >-
+      A person will get a palanquin or a horse to convey him when Venus, the Moon and the
+      lord of the 4th bhava are associated with the lord of the first.
+    quote_sha256: bfad0ebdee49388875773c95eb637659db0ec3a00d70e08936ce36f0607f6286
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: lord.bhava.01
+    - conjunct:
+        subject: graha.moon
+        other: lord.bhava.01
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: A person will get a palanquin or a horse to convey him
+- id: JATAKAPARIJATA.PROPERTY.CH17V103.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v103
+    quote: >-
+      When the lord of the 4th bhava is associated with Jupiter, the person born will have
+      a vehicle bordered on all the four sides.
+    quote_sha256: 1db0d2b095260a62de001bf060ac3e160903bd631e8842372cf240259580cf6c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.jupiter
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will have a vehicle bordered on all the four sides
+- id: JATAKAPARIJATA.PROPERTY.CH17V104.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v104
+    quote: >-
+      When the lord of the 4th bhava occupies a Kendra the lord of which is in the Lagna,
+      the persons born will have facilities for keeping a conveyance.
+    quote_sha256: d5ffe38a87b410402ea767d0e48d67fe9c92a3256ac940fd95fd4191cb9e175b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the persons born will have facilities for keeping a conveyance
+- id: JATAKAPARIJATA.PROPERTY.CH17V104.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v104
+    quote: >-
+      When the lord of the 10th bhava is in the 11th, and the lord of this again in the 10th,
+      the person born under the yoga will have ornaments and vehicles.
+    quote_sha256: e5b61353217ef0060cc7e0848b2d8f75f36d54cd08e75a094b846ee47ec1f882
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.11
+    - occupies_bhava:
+        subject: lord.bhava.11
+        bhava: bhava.10
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born under the yoga will have ornaments and vehicles
+- id: JATAKAPARIJATA.PROPERTY.CH17V119.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v119
+    quote: >-
+      When the lord of the 4th bhava being in an inimical or depression sign, occupies a दुःस्थान
+      (Dusthana) and is aspected by the lord of the 9th bhava, there will be acquisition of
+      a vehicle which will be either unsteady or prove a very bad specimen of its kind.
+    quote_sha256: 27a7affe293a4edddc956e62a16ecd367203a72676d167f85df490af9644ee12
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - dignity:
+          subject: lord.bhava.04
+          dignity: dignity.inimical
+      - dignity:
+          subject: lord.bhava.04
+          dignity: dignity.debilitated
+    - in_dusthana:
+        subject: lord.bhava.04
+    - aspects:
+        subject: lord.bhava.09
+        target: lord.bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      acquisition of a vehicle which will be either unsteady or prove a very bad specimen
+      of its kind
+- id: JATAKAPARIJATA.PROPERTY.CH17V121.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.status: 0.75
+    domain.travel: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v121
+    quote: >-
+      If Jupiter or the lord of the 4th bhava associated with a benefic planet occupy a benefic
+      Rasi identical with the 9th bhava from the Lagna, the person concerned will move about
+      in royal splendour in a vehicle borne by men during the greater portion of his life.
+    quote_sha256: f0a5b344f4e8f0b9439660cc9ef3e42e2e9549592d137c87bfe942fed88d9fc7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will move about in royal splendour in a vehicle borne by men
+- id: JATAKAPARIJATA.PROPERTY.CH17V123.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.travel: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v123
+    quote: >-
+      If the lord of the 4th bhava in conjunction with Jupiter and Venus, occupy the 9th bhava
+      and if the lord of the latter be in the 4th or in any of the other Kendras or in a Trikona
+      position, the person born will possess many vehicles and lands.
+    quote_sha256: b6bb144f8fe051ce6e412336e9a37034cb59da0699dd76412e1837d5a83b6f71
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.09
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.venus
+    - any:
+      - occupies_bhava_from:
+          subject: lord.bhava.09
+          bhava: bhava.01
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: lord.bhava.09
+          bhava: bhava.04
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: lord.bhava.09
+          bhava: bhava.07
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: lord.bhava.09
+          bhava: bhava.10
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: lord.bhava.09
+          bhava: bhava.05
+          reference: ref.lagna
+      - occupies_bhava_from:
+          subject: lord.bhava.09
+          bhava: bhava.09
+          reference: ref.lagna
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will possess many vehicles and lands
+- id: JATAKAPARIJATA.PROPERTY.CH17V128.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v128
+    quote: >-
+      If Jupiter, Venus and the lord of the 9th bhava be in a Kendra or Kona position, or
+      in the 11th bhava, the person born will have an abundance of vehicles and become a monarch.
+    quote_sha256: a8d1fc9e0faee7801d945812be919ef5526f0111f93d7e391b23e0f6f24098dc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_kendra:
+          subject: graha.jupiter
+      - in_trikona:
+          subject: graha.jupiter
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.11
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will have an abundance of vehicles and become a monarch
+- id: JATAKAPARIJATA.PROPERTY.CH17V128.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v128
+    quote: >-
+      If Jupiter, Venus and the lord of the 9th bhava be in a Kendra or Kona position, or
+      in the 11th bhava, the person born will have an abundance of vehicles and become a monarch.
+    quote_sha256: a8d1fc9e0faee7801d945812be919ef5526f0111f93d7e391b23e0f6f24098dc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_kendra:
+          subject: graha.venus
+      - in_trikona:
+          subject: graha.venus
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.11
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will have an abundance of vehicles and become a monarch
+- id: JATAKAPARIJATA.PROPERTY.CH17V128.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v128
+    quote: >-
+      If Jupiter, Venus and the lord of the 9th bhava be in a Kendra or Kona position, or
+      in the 11th bhava, the person born will have an abundance of vehicles and become a monarch.
+    quote_sha256: a8d1fc9e0faee7801d945812be919ef5526f0111f93d7e391b23e0f6f24098dc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_kendra:
+          subject: lord.bhava.09
+      - in_trikona:
+          subject: lord.bhava.09
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.11
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will have an abundance of vehicles and become a monarch
+- id: JATAKAPARIJATA.PROPERTY.CH17V134.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v134
+    quote: >-
+      If the 4th bhava be a benefic Rasi and its lord be in conjunction with a benefic planet
+      and the Karaka of the bhava also holds a similar position, the person born will have
+      much land and wealth.
+    quote_sha256: 2ebfcd627c8edd7797c9dbfd43fac0bd8bc5a69602de3b107f74c4dc2248721e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.04
+        rashi: rashi.taurus
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.jupiter
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will have much land and wealth
+- id: JATAKAPARIJATA.PROPERTY.CH17V139.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.relationship: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v139
+    quote: >-
+      If a malefic planet or Rahu in the 4th bhava be aspected by an evil planet, the person
+      born will be a sufferer in the matter of domestic comforts.
+    quote_sha256: 87b96a855c30291e3046a2ed3c9682ff72571000acb84d632c6dde65f5751e98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be a sufferer in the matter of domestic comforts
+- id: JATAKAPARIJATA.PROPERTY.CH17V140.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v140
+    quote: If Saturn occupy it, there will be loss of comfort and happiness.
+    quote_sha256: a733dc2729522e2e6a4ae4565a7456b6c26e9fca35540ef4ea8ecc9b162fb6c7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: there will be loss of comfort and happiness
+- id: JATAKAPARIJATA.PROPERTY.CH17V145.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v145
+    quote: >-
+      If the lord of the 4th bhava occupy the 12th from the Lagna, the person born will have
+      a dilapidated house
+    quote_sha256: ff7803cc3e6b9a15d978821ddaec3f17682a516098439e514c8352ce1cf81297
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.12
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: moderate
+    text: the person born will have a dilapidated house
+- id: JATAKAPARIJATA.PROPERTY.CH17V145.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v145
+    quote: >-
+      if the planet be in a Trikona or a Kendra and possess great strength, the house would
+      be lovely and of many hues.
+    quote_sha256: aa5addd22732eba97ad3e77d2d4673d39c657fb2f0a60d544f36bce9f60bf5e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.12
+    - any:
+      - in_trikona:
+          subject: lord.bhava.04
+      - in_kendra:
+          subject: lord.bhava.04
+    - strength:
+        subject: lord.bhava.04
+        op: '>='
+        value: 1
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the house would be lovely and of many hues
+- id: JATAKAPARIJATA.PROPERTY.CH17V147.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v147
+    quote: >-
+      If the lord of the 10th bhava associated with a malefic planet occupy the 4th, the astrologers
+      say the person born will become bereft of lands and obedient service.
+    quote_sha256: 29fb1129b532e1f4aa88d0f0d11b37220f7946422075f9406a11d8d72d343f10
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+    - any:
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.sun
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.mars
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.saturn
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.ketu
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: the person born will become bereft of lands and obedient service
+- id: JATAKAPARIJATA.PROPERTY.CH17V148.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v148
+    quote: >-
+      When the 3rd bhava is occupied by a benefic planet and when the lords of the 4th and
+      the 1st bhavas are in strength, the person born will be in possession of a mansion with
+      encircling walls.
+    quote_sha256: 620c27cfdcc415209cfab7380db328c30cd02d15709c501e0b064db6bf44f3b3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.03
+        op: '>='
+        n: 1
+    - strength:
+        subject: lord.bhava.04
+        op: '>='
+        value: 1
+    - strength:
+        subject: lord.bhava.01
+        op: '>='
+        value: 1
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the person born will be in possession of a mansion with encircling walls
+- id: JATAKAPARIJATA.PROPERTY.CH17V161.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v161
+    quote: if it occupy the 8th bhava, there will be no house etc., owned or tenanted by him
+    quote_sha256: cfb14c7dba1dec9738337ce7391bc67d72db27822bf147a7ce79a20636941e65
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.08
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: there will be no house etc., owned or tenanted by him
+- id: JATAKAPARIJATA.PROPERTY.CH17V161.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v161
+    quote: >-
+      if the planet be in the 6th bhava, he will lodge in a house of which the master is a
+      paternal relation, such as an uncle, a cousin, etc.
+    quote_sha256: 1af664fcaa81a1dbe8bf7a50ad831d2f1f8dcb473239afb68b25a998d6d9e3d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.06
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      he will lodge in a house of which the master is a paternal relation, such as an uncle,
+      a cousin, etc.
+- id: JATAKAPARIJATA.PROPERTY.CH17V210.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v210
+    quote: >-
+      If the lord of the 4th house occupy singly and in strength one of the three positions
+      mentioned in sloka 108, supra (i.e. 1st, 4th and 9th bhavas) and be associated with
+      the Lagna or its lord, the dasa period of the planet in question will lead to the acquisition
+      of vehicles.
+    quote_sha256: 18c71a4de484629a60a6e17da63b09c69f42cea0a08cce09baeebf47a2b90fc4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: ==
+        n: 1
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+    - strength:
+        subject: lord.bhava.04
+        op: '>='
+        value: 1
+    - any:
+      - conjunct:
+          subject: lord.bhava.04
+          other: lord.bhava.01
+      - aspects:
+          subject: lord.bhava.01
+          target: lord.bhava.04
+      - aspects:
+          subject: lord.bhava.04
+          target: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the dasa period of the planet in question will lead to the acquisition of vehicles
+- id: JATAKAPARIJATA.PROPERTY.CH17V50.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v50
+    quote: If a benefic planet be in the 3rd bhava, his wearing apparel will be of a superior
+      kind.
+    quote_sha256: 3e22579715be037e253c0742fd5bcdc6d4ecde6020059f7d764e723b5eab250f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.03
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: his wearing apparel will be of a superior kind
+- id: JATAKAPARIJATA.PROPERTY.CH17V50.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v50
+    quote: >-
+      Venus and the lord of the 3rd bhava when possessed of abundant strength produce abundant
+      clothing and decoration
+    quote_sha256: dc8ac3b6ea0b3bd2847368af69607808fc93bb5c71a8e9e554d2d112733d9ef8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.venus
+        band: band.strong
+    - strength_band:
+        subject: lord.bhava.03
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: produce abundant clothing and decoration
+- id: JATAKAPARIJATA.PROPERTY.CH17V88.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v88
+    quote: >-
+      If the lord of the 4th bhava occupying a benefic sign be either aspected by or in conjunction
+      with Venus, and at the same time free from the aspect of an inimical or depressed planet,
+      the person born will enjoy the pleasure due to ungents, odoriferous flowers and similar
+      appliances.
+    quote_sha256: bce1458906f8775a99ebb57881b645e60a668db91f77d53ede28077df26935b0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d1
+        subject: lord.bhava.04
+        dignity: dignity.friendly
+    - any:
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.04
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.venus
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person born will enjoy the pleasure due to ungents, odoriferous flowers and similar
+      appliances
+- id: JATAKAPARIJATA.PROPERTY.CH18V115.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v115
+    quote: >-
+      Acquisition of vehicles and other valuable property, the glory of umbrellas and chowries,
+      trouble from females and public odium are to be looked for in Sukra's interval in Jupiter's
+      mahadasa.
+    quote_sha256: 08c89ea05de474f9ea4fc48256080ca519b82d5e947ad497ce5485ad64060620
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.antar
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: Acquisition of vehicles and other valuable property
+- id: JATAKAPARIJATA.PROPERTY.CH18V163.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v163
+    quote: Acquisition of black substances forming a valuable property
+    quote_sha256: 1034754edd07c2b989f57bdda1083d7e82069668d83d06ef97d3944d75e4f860
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: Acquisition of black substances forming a valuable property
+- id: JATAKAPARIJATA.PROPERTY.CH18V77.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v77
+    quote: >-
+      In the Moon's mahadasa and in Jupiter's apahara, a person will get vehicles and the
+      like articles abundance of clothing and ornaments
+    quote_sha256: d80840448e9c99ccf31a7132e048cffb5aebc24f5abb9be1d2ea6bb733913b1e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: a person will get vehicles and the like articles abundance of clothing and ornaments
+- id: JATAKAPARIJATA.PROPERTY.CH18V95.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v95
+    quote: >-
+      If it be in the house of depression and occupy the exaltation Navamsa, the effect will
+      appear in the success of agriculture and other operations and in the accession to lands,
+      wealth, grain and material comforts.
+    quote_sha256: 5b2880b39065e93290bd512fc54748199c96eff8afb6b29b00c83d33b41eb036
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.cancer
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mars
+        dignity: dignity.exalted
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      success of agriculture and other operations and in the accession to lands, wealth, grain
+      and material comforts
+- id: JATAKAPARIJATA.PROPERTY.CH9V72.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v72
+    quote: The lying-in chamber will happen to be old but repaired when Saturn is strong.
+    quote_sha256: fa883131e91b972334d183f822d7beeacafb677f987cff7c95be2a820e748e22
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: The lying-in chamber will happen to be old but repaired
+- id: JATAKAPARIJATA.PROPERTY.CH9V72.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v72
+    quote: It will be a building spoiled by fire when Mars is powerful
+    quote_sha256: a66d0ad20dc573fb4811c143ccd938b70ade5473eca0304cf79f5aa53cb1893e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.mars
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: a building spoiled by fire
+- id: JATAKAPARIJATA.PROPERTY.CH9V72.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v72
+    quote: a new building when the Moon is in strength
+    quote_sha256: 4b3c5cd9fc0265b8295869ca2378daac6b62d2bf84303b8222ff27e4ab589b65
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.moon
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: a new building
+- id: JATAKAPARIJATA.PROPERTY.CH9V72.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v72
+    quote: a structure abounding in timber, but flimsy, when the Sun is powerful
+    quote_sha256: 55b4cfcfc48ef2a88085b2dee19a7df12866261f8c64f6b8dec796dfbe430b02
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: a structure abounding in timber, but flimsy
+- id: JATAKAPARIJATA.PROPERTY.CH9V72.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v72
+    quote: an edifice built by the combination of several artisans when Mercury is strong
+    quote_sha256: c04d5215b8164e489de744f1a0ec5a107de9e3517f86b897281239715d39872f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.mercury
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: moderate
+    text: an edifice built by the combination of several artisans
+- id: JATAKAPARIJATA.PROPERTY.CH9V72.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v72
+    quote: >-
+      When Venus is predominant, the chamber will be lovely, possessing works of art and quite
+      new.
+    quote_sha256: 9e97f40072c89187fe3983359e7a83b3e7922b498f790bd370aeedbe551d82b0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.venus
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: the chamber will be lovely, possessing works of art and quite new
+- id: JATAKAPARIJATA.PROPERTY.CH9V72.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v72
+    quote: It will be strong and durable when Jupiter is powerful.
+    quote_sha256: 1754bdd6e6a01f1b4b406c961921ec2ca216f45db129d54cb21906047d832293
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.jupiter
+        band: band.strong
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: It will be strong and durable
+- id: JATAKAPARIJATA.TRAVEL.CH17V161.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.travel: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v161
+    quote: >-
+      If the lord of the 4th bhava from the Lagna occupy the 12th, the person born will lodge
+      in a stranger's house in a foreign land
+    quote_sha256: a666a011b48cc7a560e682dc7c0a25a28139d0b80ff4201400ba9144057530ce
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the person born will lodge in a stranger's house in a foreign land
+- id: JATAKAPARIJATA.WEALTH.CH17V135.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v135
+    quote: >-
+      If the lord of the 4th bhava occupying a depression or an inimical varga has attained
+      any one of the malefic 60th portions of a sign, viz. Kalagni, Sula, or Antaka (kala)
+      and if it be also in conjunction with or aspected by malefic planets, the yoga will
+      lead to the loss of lands and other such sources of livelihood, say the astrologers.
+    quote_sha256: 714cd2846ccbcb29af23b1003057b841c429c22806b84b8d1f3a711e6e3b8e1b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_dignity:
+          varga: varga.d60
+          subject: lord.bhava.04
+          dignity: dignity.debilitated
+      - varga_dignity:
+          varga: varga.d60
+          subject: lord.bhava.04
+          dignity: dignity.inimical
+    - any:
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.mars
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.sun
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.saturn
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.ketu
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.04
+      - aspects:
+          subject: graha.sun
+          target: lord.bhava.04
+      - aspects:
+          subject: graha.saturn
+          target: lord.bhava.04
+      - aspects:
+          subject: graha.rahu
+          target: lord.bhava.04
+      - aspects:
+          subject: graha.ketu
+          target: lord.bhava.04
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the yoga will lead to the loss of lands and other such sources of livelihood
+- id: JATAKAPARIJATA.WEALTH.CH18V160.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v160
+    quote: he sustains damage in respect to agriculture, cattle and property
+    quote_sha256: 9d70e676d869090547cd7d49f3bba0370e555e2de8c192dbc86fea5853d57161
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: he sustains damage in respect to agriculture, cattle and property
+- id: JATAKAPARIJATA.WEALTH.CH18V48.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.wealth: 0.75
+    domain.career: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v48
+    quote: >-
+      At the ripening of the dasa of the lord of the 4th bhava, when other than benefic, and
+      during the bhukti of a malefic planet, astrologers say there will be loss of place,
+      quarrel with relatives, damage to agriculture and kindred pursuits, to cattle and to
+      wealth.
+    quote_sha256: 41f13c9c81a97f7ffc90790ea4c9ffd64043068d6d523f890fe358a2a75c653b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.04
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: >-
+      loss of place, quarrel with relatives, damage to agriculture and kindred pursuits, to
+      cattle and to wealth

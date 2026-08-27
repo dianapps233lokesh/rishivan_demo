@@ -1,0 +1,459 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.HEALTH.CH18V62.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.travel: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v62
+    quote: >-
+      he may at the same time have much mental suffering and lead a wandering life through
+      a foreign wild country.
+    quote_sha256: 422853872870ab4a89dba9ea0f901e1806b20012712f04d135209f4a6343554a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      he may at the same time have much mental suffering and lead a wandering life through
+      a foreign wild country
+- id: JATAKAPARIJATA.SPIRITUAL.CH9V96.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.progeny: 0.8
+    domain.travel: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v96
+    quote: >-
+      if the Moon be in a मीननवांश (Meena navamsa), the person born will have a soft voice,
+      but speak spiritedly, will visit holy places and be blessed with sons
+    quote_sha256: 9288a6836e360fb5b93461e7a406eae2789b7e44033e64740bbedec8d4db3127
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_occupies:
+      varga: varga.d9
+      subject: graha.moon
+      rashi: rashi.pisces
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: will visit holy places
+- id: JATAKAPARIJATA.SPIRITUAL.CH9V98.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.temperament: 0.8
+    domain.travel: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v98
+    quote: >-
+      if Jupiter be in the last bhava, the person born will be sceptical in regard to religion,
+      irresolute, of wandering habits and evil minded
+    quote_sha256: bab36044e19c253ca9ce6490228c7ab0da786baad19dd5364317358a5c70da51
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.12
+  indicates:
+    claim: spiritual.inclination
+    polarity: negative
+    magnitude: moderate
+    text: sceptical in regard to religion
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V42.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: >-
+      If in the depression sign Makara the person concerned will be a wanderer and have a
+      careworn mind
+    quote_sha256: a7045f902c829937ad14a5ff8196b1762299a81b541d7ac17df98317e43c17d1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.jupiter
+      dignity: dignity.debilitated
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will be a wanderer and have a careworn mind
+- id: JATAKAPARIJATA.TRAVEL.CH18V118.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v118
+    quote: >-
+      Failure in business, wandering, high fever, great risk, loss of wealth and depression
+      of spirits, a person must be prepared for in Kuja's interval in Jupiter's mahadasa.
+    quote_sha256: 9b1ccafbf14c773c08e31299918b1edf5d5a4868c81b75e5575fd55b606e5a4e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: wandering
+- id: JATAKAPARIJATA.TRAVEL.CH18V148.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.health: 0.8
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v148
+    quote: >-
+      Disappointment, physical pain, exile in a foreign country, peril and obstruction in
+      every business are likely to crop up during the Sun's interval in Ketu's dasa.
+    quote_sha256: 9843e4990d5f6eb3abed48624378130f55489656d2fa498759c970b4c010763c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: exile in a foreign country
+- id: JATAKAPARIJATA.TRAVEL.CH18V153.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v153
+    quote: abandonment of native country
+    quote_sha256: 9bfeb91bfbb80ec57d210a18cab8349fcf7a4d92cf980a1598e6780e0c09afb4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: abandonment of native country
+- id: JATAKAPARIJATA.TRAVEL.CH18V96.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v96
+    quote: >-
+      Loss of such things as comfort, happiness, wealth and worldly status, the pang of parting
+      with a wife, children and relatives, illness in the extreme, residence in a strange
+      land, and a disposition to wrangle are what Rahu brings about.
+    quote_sha256: b579e0ed95be5b9d9fadc377d7efc4e311fca282df4052596ab94bcde1232bab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: residence in a strange land
+- id: JATAKAPARIJATA.TRAVEL.CH18V97.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v97
+    quote: >-
+      Illness of a wife, a controversy, failure of the intellect, waste of wealth, roaming
+      in a far-off land and distress will be the characteristic features of Rahu's bhukti
+      in Rahu's dasa.
+    quote_sha256: 1493d16cc71582a06fe1d1539880949a419ebc8da98beac5df8f1de6a72c6f98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: roaming in a far-off land
+- id: JATAKAPARIJATA.TRAVEL.CH18V99.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v99
+    quote: >-
+      A disease due to wind and bile, the distress of relatives, friends and well wishers,
+      and residence in a remote foreign land are what may crop up during Saturn's interval
+      in Rahu's dasa.
+    quote_sha256: eb80909fcef9ce06c080c25f3e4a5e05776ea9ae9b69281ef66446467df37289
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: residence in a remote foreign land
+- id: JATAKAPARIJATA.TRAVEL.CH9V113.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v113
+    quote: >-
+      if Saturn be in a house owned by an enemy at a person's birth, the latter will have
+      to be way-faring and suffer sorrows therein
+    quote_sha256: 9a21b53a2dafe3772910a58889c91a98d3ff61f6ab459335b63f4ed61e7cc33c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.inimical
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: will have to be way-faring and suffer sorrows therein
+- id: JATAKAPARIJATA.TRAVEL.CH9V1871.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v18-71
+    quote: >-
+      A person born with the Sun in the 5th bhava will be a courtier with an unsteady mind
+      and will sojourn abroad.
+    quote_sha256: 1c6acbde29f59247d97e4d5ecc00b4d1f37ec909b736b283ba8472f859ca82c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: sojourn abroad
+- id: JATAKAPARIJATA.TRAVEL.CH9V69.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v69
+    quote: >-
+      It will happen in an exposed place such as a grave a rampart or a river bank, if the
+      benefic planets be in their depression houses
+    quote_sha256: e499bca4130f11a7f99265d681dd95d7f4aff722b338ac762a298fccdd377902
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - dignity:
+          subject: graha.jupiter
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.moon
+          dignity: dignity.debilitated
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: The delivery will take place in an exposed place such as a grave a rampart or a
+      river bank
+- id: JATAKAPARIJATA.TRAVEL.CH9V91.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v91
+    quote: >-
+      if the Moon be in Kataka at a person's birth, the latter's heart will be impassioned
+      with love, he will lead a wandering life and will speak eloquently.
+    quote_sha256: 822d0f227a6544bbac9a92cd71b442fb0ad85e59d28d5774b72a850449234d67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: he will lead a wandering life

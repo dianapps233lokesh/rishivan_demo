@@ -1,0 +1,463 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: HINDUPREDICTIVE.RECORDAPPLICATION.CH35V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.relationship: 0.9
+    domain.longevity: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v5
+    quote: >-
+      mark the position of Mars in the 12th from the Moon--a strong combination for widowhood
+      which took away her husband in her 14 year.
+    quote_sha256: b3aa0baa58ceb39afcba4b2471cd47da91043c0c4ae64835442c6da9cd09de5b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.12
+        reference: ref.moon
+  example:
+    reading: widowhood in the 14th year
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH15V6.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch15.v6
+    quote: >-
+      In hundreds of horoscopes, it has been observed that Venus when afflicted has given
+      rise to more than one legal wife.
+    quote_sha256: 9311d010c250615f30b7da29ac59289e9fc8e2cacaeb7d3d02186c46de0d3f16
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - any:
+      - in_dusthana:
+          subject: graha.venus
+      - conjunct:
+          subject: graha.venus
+          other: graha.saturn
+      - conjunct:
+          subject: graha.venus
+          other: graha.mars
+      - conjunct:
+          subject: graha.venus
+          other: graha.rahu
+      - conjunct:
+          subject: graha.venus
+          other: graha.ketu
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: more than one legal wife
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH24V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch24.v9
+    quote: >-
+      Lord of the 3rd dusing his dasa gives new friends, help to brothers, leadership, and
+      physical pain (if afflicted).
+    quote_sha256: 5ae755d9141b4f549d56121454078f87e46a34c03d95175611cfb3fff8603fae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.03
+        level: level.maha
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: gives new friends, help to brothers
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v4
+    quote: >-
+      If Saturn is in the 7th house the querist will be married within 3 months from the date
+      of question.
+    quote_sha256: 97a9371cfea37fabbcc9a75dcd2f6f3110e83f1cea6e204f6c4a177d72723d7a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: the querist will be married within 3 months from the date of question
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V4.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v4
+    quote: >-
+      If the Moon in 3, 5, 6, 7 or 11 is aspected by Jupiter, the Sun and Mercury and if benefics
+      occupy quadrants or trines, the querist will have marriage very early.
+    quote_sha256: 9c8102d423c3347bd6ebedf05a2e083fd7c6ee9da2d0f75980350e39768bb8c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.11
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: the querist will have marriage very early
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v5
+    quote: >-
+      If at the time of query it is found that the Sun, Venus or Mars joins the 7th house,
+      it means the querist has committed adultery with another man's wife.
+    quote_sha256: 22c84591e827fb7377f135df3f42c51797e3d04b2f7c3a43bbab6d97a54de8aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the querist has committed adultery with another man's wife
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v5
+    quote: >-
+      If at the time of query it is found that the Sun, Venus or Mars joins the 7th house,
+      it means the querist has committed adultery with another man's wife.
+    quote_sha256: 22c84591e827fb7377f135df3f42c51797e3d04b2f7c3a43bbab6d97a54de8aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the querist has committed adultery with another man's wife
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V5.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v5
+    quote: >-
+      If at the time of query it is found that the Sun, Venus or Mars joins the 7th house,
+      it means the querist has committed adultery with another man's wife.
+    quote_sha256: 22c84591e827fb7377f135df3f42c51797e3d04b2f7c3a43bbab6d97a54de8aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the querist has committed adultery with another man's wife
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V5.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v5
+    quote: Jupiter in the 7th indicates his own wife
+    quote_sha256: 75104a5f6ebd65d07210315599946267b1973fd8d3efb8438dcb95c0c61d1e94
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: his own wife
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V5.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v5
+    quote: Mercury a prostitute
+    quote_sha256: bf243612cc0892fb74ba4e55bf9280f23977086e981d0bfeece58ca67ac94ca3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: a prostitute
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH27V5.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch27.v5
+    quote: Saturn a very low caste woman.
+    quote_sha256: c9deeb37620042f593cc2f7bcf8c37bda00a7b7998bcfb989a81fbc6f67bde97
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: a very low caste woman
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH30V2.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.temperament: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v2
+    quote: If the ascendant falls in the Thrimsamsa of Venus, she becomes adulterous
+    quote_sha256: 7eced4b6724ee7bd647e075e0ea6128c329deac5f3344d40a08875c3aa0468d7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.taurus
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.libra
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: she becomes adulterous
+- id: HINDUPREDICTIVE.RELATIONSHIP.CH31V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch31.v10
+    quote: The 7th house from the marriage ascendant must be free and without any planet.
+    quote_sha256: 4063d9e10beb49318d9b60f21ec5a5e2c51ea81d3fbdc73d2600b69f59bd3f8d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupant_count:
+      bhava: bhava.12
+      op: ==
+      n: 0
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: The 7th house from the marriage ascendant must be free and without any planet
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH30V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.temperament: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v2
+    quote: >-
+      If the ascendant or the Moon falls in the Thrimsamsa of Aries or Scorpio and if Mars
+      is not well situated the girl becomes a prostitute before puberty.
+    quote_sha256: c66f0a7a691707f58e347dd6e4cca56e43c9a797c9b993bc27eef16af6f4c8ba
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d30
+          subject: lord.bhava.01
+          rashi: rashi.aries
+      - varga_occupies:
+          varga: varga.d30
+          subject: lord.bhava.01
+          rashi: rashi.scorpio
+      - varga_occupies:
+          varga: varga.d30
+          subject: graha.moon
+          rashi: rashi.aries
+      - varga_occupies:
+          varga: varga.d30
+          subject: graha.moon
+          rashi: rashi.scorpio
+    - any:
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.inimical
+      - in_dusthana:
+          subject: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the girl becomes a prostitute before puberty

@@ -1,0 +1,4891 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.CAREER.CH24V2122.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v21-22
+    quote: >-
+      will be ugly, will have (abundant) hair on the body, will lose money in gambling, will
+      be unsightly, will have miserable profession, be fond of liquor and be unfortunate.
+    quote_sha256: 3000e22e1c85d5382e01bc82c0ed1f170edc7c9670ad4cd517364e3556e685a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aquarius
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: will have miserable profession
+- id: SARAVALI.CAREER.CH24V6166.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v61-66
+    quote: >-
+      If Mercury aspects Mars in Capricorn or Aquarius, the subject will walk very slowly,
+      be not rich, will not have any profession, be not strong, be not outspoken, and be not
+      virtuous.
+    quote_sha256: 5f7b35c788043e7ee5a45a8f18eb9df10a7117f128838f4b649d2720f3298374
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.mercury
+        target: graha.mars
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: will not have any profession
+- id: SARAVALI.CAREER.CH25V5560.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.9
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      If the Moon aspects Mercury as above, he will be a writer, be beautiful par excellence,
+      be very affluent, trustworthy, amiable and happy
+    quote_sha256: b2be2d283d4b42a983be299ffd6eefeb026704bc25d37feb7cc5ea565c07d202
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: career.independent_work
+    polarity: positive
+    magnitude: strong
+    text: he will be a writer
+- id: SARAVALI.EDUCATION.CH23V1315.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.7
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v13-15
+    quote: >-
+      if by Mercury, he will be an astrologer, be fond of heroic history (such as Mahabharata),
+      and will be very affluent.
+    quote_sha256: 38d4743cfadec3bfeadbc827ac7734795b06673222a96fba5ba13818ec41c5f1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he will be an astrologer, be fond of heroic history, and will be very affluent
+- id: SARAVALI.GENERAL.CH11V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.wealth: 0.8
+    domain.spiritual: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch11.v1
+    quote: >-
+      A very brilliant Jupiter (i.e. not being devoid of rays) is capable of counteracting
+      all evils if he is in the ascendant
+    quote_sha256: 40c5b1a103156362df8adaa95b9cd3318a81a2d647a324006d7c40f0d528b911
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: extreme
+    text: is capable of counteracting all evils
+- id: SARAVALI.LIVELIHOOD.CH24V1314.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.7
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v13-14
+    quote: will deal in liquors
+    quote_sha256: 4d3195bdcc664085415c8d1fde82aff59ce518dbeb25f683d93c6bdb4508055c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.libra
+  indicates:
+    claim: livelihood.means
+    polarity: positive
+    magnitude: moderate
+    text: will deal in liquors
+- id: SARAVALI.OBSTACLE.CH24V2530.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v25-30
+    quote: >-
+      If Saturn aspects Mars as mentioned above, the native will be capable of hindering thieves
+      in spite of his being not valorous, will be devoid of his men and will maintain another
+      woman.
+    quote_sha256: 33477bbdb161733da3e1950bfa884c902c959b25ad2389f0275491543899cded
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be capable of hindering thieves in spite of his being not valorous,
+      will be devoid of his men and will maintain another woman
+- id: SARAVALI.PROPERTY.CH12V1214.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v12-14
+    quote: Venus will give wife, lands, wealth, prowess, quadrupeds and valour.
+    quote_sha256: 1fc7c0c1272712371bebbb08255951c5c2fa48f8bde801b9b3e29dcbc469c30b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.venus
+        distance: dist.02
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: will give lands
+- id: SARAVALI.PROPERTY.CH18V12.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.wealth: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v12
+    quote: >-
+      Should a native have these planets conjunct, he will be emotional, sick, will earn food
+      by begging going from house to house and will live in dilapidated houses.
+    quote_sha256: f7b444af4da72f1e64098eb3a42f4118f8e7cc7ecfca86f7a822bf88e778dc4f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: will live in dilapidated houses
+- id: SARAVALI.PROPERTY.CH22V7378.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v73-78
+    quote: >-
+      Should Jupiter aspect the Moon in Aquarius, the native will own villages, agriculture
+      lands and trees, be endowed with superior castles and superior ladies, and will be devoted
+      to (sensual) enjoyments
+    quote_sha256: 9c14022610bf228e05ba70e2b42dd8df5ab47bd0c9c721bbd6d2254ccf8dd186
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will own villages, agriculture lands and trees, be endowed with superior
+      castles and superior ladies, and will be devoted to (sensual) enjoyments
+- id: SARAVALI.RELATIONSHIP.CH12V1214.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.property: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v12-14
+    quote: Venus will give wife, lands, wealth, prowess, quadrupeds and valour.
+    quote_sha256: 1fc7c0c1272712371bebbb08255951c5c2fa48f8bde801b9b3e29dcbc469c30b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.venus
+        distance: dist.02
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: will give wife
+- id: SARAVALI.RELATIONSHIP.CH25V3136.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.relationship: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v31-36
+    quote: >-
+      If Venus aspects Mercury as mentioned above, the person will be fortunate, soft in disposition,
+      be happy, will enjoy good robes make up etc., and will steal the hearts of the fair
+      sex.
+    quote_sha256: bc86114eaadf32ba813ec375bcc7da07c0d5d2754562cdca3e0e88d38c78075c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.venus
+        target: graha.mercury
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: will steal the hearts of the fair sex
+- id: SARAVALI.STATUS.CH21V2833.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v28-33
+    quote: >-
+      If the Sun in Cancer is aspected by the Moon, the person will be a king or equal to
+      a king, will become rich by business through water, and be cruel.
+    quote_sha256: bcd74ceb80d3ca632ac62e5b78bfb39a8982078003a2f9d66ced697f03a5d071
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person will be a king or equal to a king
+- id: SARAVALI.STATUS.CH21V5055.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Should Mars lend aspect to the Sun in a Rasi of Jupiter, the subject will earn fame
+      through battle, be endowed with clarity of speech, money and happiness
+    quote_sha256: f2548d1f84ff2b0248fb708a03f6563395dfb0a84ed6e1037c292dcf75d185e7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject will earn fame through battle, be endowed with clarity of speech, money
+      and happiness
+- id: SARAVALI.STATUS.CH21V5055.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Should Mars lend aspect to the Sun in a Rasi of Jupiter, the subject will earn fame
+      through battle, be endowed with clarity of speech, money and happiness
+    quote_sha256: f2548d1f84ff2b0248fb708a03f6563395dfb0a84ed6e1037c292dcf75d185e7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject will earn fame through battle, be endowed with clarity of speech, money
+      and happiness
+- id: SARAVALI.STATUS.CH22V4550.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v45-50
+    quote: >-
+      Should Jupiter aspect the Moon in Libra, the person will be always worshipped, and be
+      skilful in sales and purchases of gems etc.
+    quote_sha256: 910ee2db8d222b676d611662aa09b411c5b27331fd70a37227cce8493aaf4796
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person will be always worshipped, and be skilful in sales and purchases of gems
+      etc.
+- id: SARAVALI.TEMPERAMENT.CH23V1315.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.5
+    domain.status: 0.5
+    domain.wealth: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v13-15
+    quote: >-
+      If the Moon is in Leo Navamsa at birth and is aspected by the Sun himself, the native
+      will be short-tempered, famous and wealthy
+    quote_sha256: de16b024c6a1de1dbec6e8ed3609e18a469a87890cf637b480c850b6d860dfef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be short-tempered, famous and wealthy
+- id: SARAVALI.WEALTH.CH12V1214.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v12-14
+    quote: >-
+      Should Saturn be in the 2nd of the Moon causing Sunapha yoga, the native will be skilful,
+      be worshipped by the people in his village and city and will have wealth galore.
+    quote_sha256: 9fd9ca8c27b8bd1e75d7077b99bbf7ba68b2a2a95151c0cd7a60a42346847ef0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.saturn
+        distance: dist.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will have wealth galore
+- id: SARAVALI.WEALTH.CH12V1519.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v15-19
+    quote: >-
+      Venus causing this yoga gives an exceedingly great liking for women. The native will
+      be dear to the king and will enjoy pleasures He will be splendorous, famous and will
+      have abundant gold.
+    quote_sha256: 7f973885eb3835fe558693e049f10cbc861cea249cd42abf2d9d749857c31246
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.venus
+        bhava: bhava.12
+        reference: ref.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will have abundant gold
+- id: SARAVALI.WEALTH.CH12V1519.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v15-19
+    quote: >-
+      If Saturn causes this yoga, the subject will be broad-shouldered, be a leader, be inclined
+      to keep up his commitments, be rich with quadrupeds, devoted to an infamous lady and
+      be virtuous.
+    quote_sha256: f41827aa2665a9ea36ead6ac2ea13cba8f549ad2d2a8ce2b8f8ef1259068692c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.saturn
+        bhava: bhava.12
+        reference: ref.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be rich with quadrupeds
+- id: SARAVALI.WEALTH.CH12V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v20
+    quote: >-
+      If Durudhura yoga is caused by the pair of Mars and Mercury, the native will be a liar,
+      be very wealthy, expert, very wicked, greatly miserly, addicted to an old lady, and
+      be chief in his race.
+    quote_sha256: 67be67c39a0b551357aaec99a2d4074ae8ab8ff0a66d427122147397baf6eca5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.mars
+        other: graha.moon
+        distance: dist.12
+    - house_distance:
+        subject: graha.mercury
+        other: graha.moon
+        distance: dist.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be very wealthy
+- id: SARAVALI.WEALTH.CH12V26.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v26
+    quote: He will be honoured by the king and gather abundant wealth.
+    quote_sha256: f9cd5cd2b9f92ff054c42e30b1dcca2e39460be1f66a1738f6e3665f8258d8ad
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.venus
+        other: graha.moon
+        distance: dist.02
+    - house_distance:
+        subject: graha.saturn
+        other: graha.moon
+        distance: dist.12
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: gather abundant wealth
+- id: SARAVALI.WEALTH.CH12V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v27
+    quote: >-
+      Should Jupiter and Venus cause this yoga, by being on either sides of the Moon, the
+      native will be courageous, intelligent, will have political wisdom, will possess gold
+      and gems, will be famous and be in the employ of a king.
+    quote_sha256: 4502d753c5ae021b361925330548d32104951e7f5b33cd98f68d3308b2b5e93b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.02
+    - house_distance:
+        subject: graha.moon
+        other: graha.venus
+        distance: dist.12
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will possess gold and gems
+- id: SARAVALI.WEALTH.CH12V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v27
+    quote: >-
+      Should Jupiter and Venus cause this yoga, by being on either sides of the Moon, the
+      native will be courageous, intelligent, will have political wisdom, will possess gold
+      and gems, will be famous and be in the employ of a king.
+    quote_sha256: 4502d753c5ae021b361925330548d32104951e7f5b33cd98f68d3308b2b5e93b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.12
+    - house_distance:
+        subject: graha.moon
+        other: graha.venus
+        distance: dist.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will possess gold and gems
+- id: SARAVALI.WEALTH.CH12V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.7
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v28
+    quote: >-
+      If Jupiter and Saturn be such planets as to cause Durudhura Yoga the native will be
+      happy, will have knowledge of politics, will be sweet in speech, learned, peaceful,
+      wealthy and good looking.
+    quote_sha256: 36b7388014ee965c7eb7277c2b3bdf424985ded8ec18300096b365633cbb5fa3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.02
+    - house_distance:
+        subject: graha.moon
+        other: graha.saturn
+        distance: dist.12
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be... wealthy
+- id: SARAVALI.WEALTH.CH12V28.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.7
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v28
+    quote: >-
+      If Jupiter and Saturn be such planets as to cause Durudhura Yoga the native will be
+      happy, will have knowledge of politics, will be sweet in speech, learned, peaceful,
+      wealthy and good looking.
+    quote_sha256: 36b7388014ee965c7eb7277c2b3bdf424985ded8ec18300096b365633cbb5fa3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.moon
+        other: graha.jupiter
+        distance: dist.12
+    - house_distance:
+        subject: graha.moon
+        other: graha.saturn
+        distance: dist.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be... wealthy
+- id: SARAVALI.WEALTH.CH13V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.education: 0.8
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      Should Jupiter cause Vesi Yoga, the native will accumulate money, be learned and be
+      good-hearted.
+    quote_sha256: b3729b4ee301fa8afbe251baad15cc5dce3202526ca0726268544e3272229f80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.jupiter
+        distance: dist.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the native will accumulate money
+- id: SARAVALI.WEALTH.CH13V35.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      Mercurial participation indicates that the native will be a servant (परिकर्मको), will
+      suffer penury, be soft-spoken and be modest.
+    quote_sha256: 4ebb8735b86cfeee1e12dedb6432296810b117858f4fa5454b58424ffc9f1035
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mercury
+        distance: dist.02
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: will suffer penury
+- id: SARAVALI.WEALTH.CH13V35.X0013
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: He will, however, have wealth.
+    quote_sha256: 04ee1b2fe3ca46495a3ebdfcdde8e406bcec68db655e056043189f1eecff3c7f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.saturn
+        distance: dist.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: He will, however, have wealth.
+- id: SARAVALI.WEALTH.CH13V79.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v7-9
+    quote: >-
+      The Vasi yoga caused by Mars indicates that the subject will be victorious in war, famous
+      and will live with his own fortunes.
+    quote_sha256: 00e5be7050b71e79d9f5b503fb761774461fd2b56c8e4d9bd637c397cde5782c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mars
+        distance: dist.12
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the subject will be victorious in war, famous and will live with his own fortunes
+- id: SARAVALI.WEALTH.CH14V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v10
+    quote: >-
+      One with Jupiter and the Moon together will be firm in friendship, modest, respectful
+      towards his relatives, wealthy, virtuous and regardful of Gods and the wise.
+    quote_sha256: 74ef78456c1d563b29043328c5307d33acb46c387a056ed5db8d135d8d9c86f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: wealthy
+- id: SARAVALI.WEALTH.CH14V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v11
+    quote: >-
+      Should the Moon and Venus be together, the native will be endowed with flowers, incense
+      and clothes, will know to perform duties (क्रिया also means rites), be dear to his race,
+      very lazy and expert in buying and selling.
+    quote_sha256: 339e2d67ee967c083667adfaea4a1b3cf5272acf6d8ef99da8e4fa7a016011e0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the native will be endowed with flowers, incense and clothes
+- id: SARAVALI.WEALTH.CH14V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v18
+    quote: Should Mercury and Venus be together at birth, the native will be abundantly rich
+    quote_sha256: ccdfe7d1d6dc792d5af3d417b4405be2af1903e84a4a02b7a0857916dbdec567
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be abundantly rich
+- id: SARAVALI.WEALTH.CH14V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v6
+    quote: >-
+      If the Sun and Venus be together, one will be skilful in use of weapons, be mighty,
+      weak-sighted in old age, will be able to amuse the public and will have abundant money
+      earned through women.
+    quote_sha256: d4cfe8347157cc4a6900caf8c3671525fc5c2db8ff35e0366166c733b6404764
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will have abundant money earned through women
+- id: SARAVALI.WEALTH.CH15V13.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v13
+    quote: >-
+      Should Venus, Jupiter and the Sun be together at birth, the native will be weak-sighted,
+      bold, intelligent, indigent, be a minister and be devoted to others' jobs.
+    quote_sha256: 65e82c20c992d09a5ddbb3736d35276cf5cbf3aa5c43e0e26f34d84ab1b06661
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the native will be indigent
+- id: SARAVALI.WEALTH.CH15V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.4
+    domain.progeny: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v20
+    quote: >-
+      Should Mercury, Moon and Jupiter be together, the native will be wealthy, skilful, eloquent
+      in speech, bright, famous and will have many sons and brothers.
+    quote_sha256: 7150d41cf6caf1725728c37221a2941cc6430aefac1c637f58acf3020b31b7df
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be wealthy
+- id: SARAVALI.WEALTH.CH15V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v21
+    quote: >-
+      A native who has Jupiter and Saturn together at birth will be heroic, will have plenty
+      of wealth, will be chief of the city (mayor etc.), famous, and will be the head of an
+      assembly, a village or an association.
+    quote_sha256: 64ff7f315b48281291fb5f4433ae71a2a7be4f3b886110c0b6a83080e079d4bd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.saturn
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will have plenty of wealth
+- id: SARAVALI.WEALTH.CH15V33.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v33
+    quote: >-
+      When Mercury, Saturn and Jupiter are together at birth, it denotes that the native will
+      enjoy honour, wealth and sovereignty, be learned, will have abundant pleasures, be atttached
+      to his wife, be courageous and fortunate.
+    quote_sha256: 92b4b940aa9e623a19dbdfe98fb304e1743b57cd6bd04aa81fa7e781f4c49d00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will enjoy... wealth
+- id: SARAVALI.WEALTH.CH15V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v4
+    quote: >-
+      Should the Sun, Moon and Venus be in one house at birth, the native will steal others'
+      money
+    quote_sha256: 3b50c3ed8c547c302f2d36ac71b7eb4b7d9942f66710e70390fa93b31d65db78
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the native will steal others' money
+- id: SARAVALI.WEALTH.CH15V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v7
+    quote: >-
+      Should Mars, Jupiter and the Sun be together at birth, the native will be an expert
+      speaker, very wealthy, either a king's minister or even a king himself, be truthful
+      and fierce.
+    quote_sha256: 460542e1a0814f305e75ac4b63b0c1a4d648ee6b58056415b393c318cbbc6746
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mars
+        other: graha.sun
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: very wealthy
+- id: SARAVALI.WEALTH.CH15V8.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v8
+    quote: >-
+      One who has Venus, Mars and the Sun in one house, will be subjected to eye diseases,
+      belongs to a good race, will be fortunate, harsh and wealthy.
+    quote_sha256: 7a4d69493fb855eedf422f102db2374dcf86e82130ea3f879a340b49c51a208b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.mars
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: wealthy
+- id: SARAVALI.WEALTH.CH16V11.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v11
+    quote: will lose his wife and money
+    quote_sha256: fd2ad3a7843a81abe7d5c7a1c81df04df5ee9578aaddc2e02e841792acbdd6b3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: will lose his wife and money
+- id: SARAVALI.WEALTH.CH16V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v14
+    quote: >-
+      With the conjunction of these four planets, one will be fortunate, worth worship by
+      the people, be wealthy, dear to king and famous.
+    quote_sha256: 17cc55251be2cc4175ba26209d945973475b401998fdc98d3ce049cb466a72c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: one will be wealthy
+- id: SARAVALI.WEALTH.CH16V16.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v16
+    quote: >-
+      Should these four planets be in conjunction at birth, one will be scurrilous in speech,
+      fortunate, learned, soft spoken, happy, energetic, pure, wealthy, bold and helpful to
+      friends.
+    quote_sha256: 359113bf0a0a9c360b0ec199e762dbd56c1f8a99cdc7d6f86ec32c67056fe00b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealthy
+- id: SARAVALI.WEALTH.CH16V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v17
+    quote: >-
+      SUN-MERCURY-VENUS YOGA : With these planets in one house, one will be wealthy, happy,
+      chief, will have cherished desires, will have relatives and be noble.
+    quote_sha256: b4017ab155d1fd7b9f72c4691754d1ed44b3b6a9b282fcd97fededa3c73a37a9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: one will be wealthy
+- id: SARAVALI.WEALTH.CH16V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v2
+    quote: >-
+      One who has these four planets in one house at birth, will be wealthy, dear to women,
+      splendorous, will maintain decorum, be free from grief and expert in work.
+    quote_sha256: c5fcb3c713bd1da38d5e5ed6d830d4fb883ab210beb5206f3675f424d2463754
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will be wealthy
+- id: SARAVALI.WEALTH.CH16V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v25
+    quote: >-
+      One who has these four planets conjunct at birth will be deaf, wealthy, bold, mad, able
+      in speech, firm in nature, wise, and liberal.
+    quote_sha256: a1b186b6875def3ad244534ed7835c68e5b6e03e1a0a356ab6dd2127719b2ef0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealthy
+- id: SARAVALI.WEALTH.CH16V3738.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v37-38
+    quote: >-
+      If benefics are in conjunction at birth, the native will enjoy wealth, sovereignty and
+      fame.
+    quote_sha256: a41241728db06f65ce369eece1db3b4cf7fd1d8dfecbd7562a2f936b57ee7e3e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will enjoy wealth, sovereignty and fame
+- id: SARAVALI.WEALTH.CH16V3738.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v37-38
+    quote: >-
+      Should three malefics join at birth, the native will be unlucky, indigent, grief-stricken,
+      ugly and immodest.
+    quote_sha256: a78a70bc5b129bca7cfd20c1765502a6d6e7a57fdb2dd6640fa697fb0cfa34fa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.saturn
+        other: graha.mars
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the native will be unlucky, indigent, grief-stricken, ugly and immodest
+- id: SARAVALI.WEALTH.CH16V4.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v4
+    quote: >-
+      One who has these four planets together at birth, will have uneven physique, be short
+      in stature, be unwealthy and will collect food by begging
+    quote_sha256: 4d25e81cfa6c83a8f14e7a197dc1eb31b992a1bd550a8984beb4df20bce6bd11
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: extreme
+    text: be unwealthy and will collect food by begging
+- id: SARAVALI.WEALTH.CH16V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.career: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v5
+    quote: >-
+      If these four planets are in one house, the native will be a goldsmith (or a gold dealer
+      etc.), be long eyed, be a sculptor, be very wealthy, bold, and beautiful bodied.
+    quote_sha256: f6342839bbb3e61105a68424ae9d83fa6d51760ff9e11535535db05cb8a0fb0a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be very wealthy
+- id: SARAVALI.WEALTH.CH16V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v6
+    quote: >-
+      If the said planets join at birth, the native will be dark-eyed, fierce, will have many
+      sons, be wealthy, and fortunate through women.
+    quote_sha256: e04d667babfeddbaff5fee45ecb8cc1bbbefcfe4e38482548b23f2bd31dd5034
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be wealthy
+- id: SARAVALI.WEALTH.CH17V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v27
+    quote: >-
+      One who has these four planets together will be learned, be devoid of parents, good
+      looking, wealthy, very lucky and be without enemies.
+    quote_sha256: 742b932798e2e345a139cfa4734f4c685455412a06ce4e927b72eeb2c6d316a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealthy
+- id: SARAVALI.WEALTH.CH17V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v34
+    quote: >-
+      If these four planets are together at birth, the native will be splendous, wealthy,
+      addicted to other women, fond of bravery, fickle-minded, and ill-disposed.
+    quote_sha256: 35583b54ed13f070877074e0ff7af51f991976c9b7e4866a25e87d8a207437be
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be splendous, wealthy
+- id: SARAVALI.WEALTH.CH17V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v7
+    quote: >-
+      MERCURY-MOON-JUPITER-SUN-SATURN YOGA : One with the conjunction of these planets will
+      be a machinist, will enjoy great prosperity be a king's minister, be a judge and be
+      famous.
+    quote_sha256: 7481c0c367762445d6b6d9ef02dcba87318801c202d62701bc52032501c572be
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will enjoy great prosperity
+- id: SARAVALI.WEALTH.CH18V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.9
+    domain.health: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v15
+    quote: >-
+      If these five planets are together, one will be a messenger, a dunce, a neuter, will
+      possess dirty habits, be very unfortunate, deformed and bereft of money.
+    quote_sha256: 48ad504d13e6754dc50aaa180c9e52aa4adb6ea0f377d440868c5fb26bf0d473
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: bereft of money
+- id: SARAVALI.WEALTH.CH18V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v5
+    quote: He will have no wife and wealth.
+    quote_sha256: 7a8464fb1a5b3395adebad4b2ba454433461e1238086b011f548c9ab71919441
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 6
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: He will have no wife and wealth.
+- id: SARAVALI.WEALTH.CH19V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.spiritual: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v27
+    quote: >-
+      If waxing Moon, with superior strength, aspects the ascendant lord, the latter being
+      bereft of strength and being alone (in that Rasi), the native will be devoid of wealth
+      and own men, be miserable, sorrowful, will take to asceticism and will obtain his food
+      with great inconvenience.
+    quote_sha256: 353cc3f603e9f9c4279920fa3ee945a567521cd11f8d0c9ef0c33bee849e73e6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.debilitated
+    - aspects:
+        subject: graha.moon
+        target: lord.bhava.01
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: the native will be devoid of wealth
+- id: SARAVALI.WEALTH.CH21V1819.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v18-19
+    quote: be exceedingly affluent
+    quote_sha256: 216a8c1811be3ea7b052bfc24021de8c774ac156a7df32bc61fe56eb47442d86
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.gemini
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be exceedingly affluent
+- id: SARAVALI.WEALTH.CH21V2025.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.5
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v20-25
+    quote: >-
+      The Sun in a house of Mercury and in aspect to Mars denotes that the subject will have
+      fear from enemies, will be encountered by quarrels, will be grieved on account of loss
+      in war, be poor, and bashful.
+    quote_sha256: 7845a52b134a273bfe0a26841053e7495a2818f4d95667f7e6b9d4e976545a7e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: be poor, and bashful
+- id: SARAVALI.WEALTH.CH21V2025.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.6
+    domain.relationship: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v20-25
+    quote: >-
+      If Venus aspects the Sun, posited as above, the native will be endowed with money, wife
+      and sons, will make less friends, be free from sickness, be happy, and fickle minded.
+    quote_sha256: db84321208732ee9504a5858c10f93bed098e1d4c5608050ba3b6577c11bdda8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the native will be endowed with money
+- id: SARAVALI.WEALTH.CH21V3435.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v34-35
+    quote: >-
+      If the Sun occupies Leo, the native will destroy his enemies, be given to anger, will
+      perform notable acts, will wander in forests, hills and fortresses, be enthusiastic,
+      valorous, bright in appearance, will eat meat, flesh etc; and will be formidable. He
+      will be restive, strong in a lasting measure, talkative, be a king, be plentiful in
+      wealth and be famous.
+    quote_sha256: 959792be28a1794987c5346adf3454aa7038b315bf7ee23cc45f418f37411357
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.leo
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: plentiful in wealth
+- id: SARAVALI.WEALTH.CH21V4445.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v44-45
+    quote: >-
+      If the Sun is in Libra at birth, the native will face frustration, destruction and heavy
+      expenditure
+    quote_sha256: dc13acac59c2ae350d0585042b4abe0d06f2cd163d0d1153d437522ea22e88d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the native will face frustration, destruction and heavy expenditure
+- id: SARAVALI.WEALTH.CH21V4849.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v48-49
+    quote: If the Sun at birth is in Sagittarius, one will be endowed with wealth
+    quote_sha256: cbdf805f9869fda8c02c61a5840830befb5ac16534be9c2ac9773af4227986d4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: one will be endowed with wealth
+- id: SARAVALI.WEALTH.CH21V49.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v4-9
+    quote: >-
+      Jupiter aspecting the said Sun denotes that the native will have plenty of money, will
+      donate, be a king's minister, a judge and a supreme person.
+    quote_sha256: 7806bc623c4731fc54ce708b2316ab9cf74c5f83bd403a6ea8d95c32a68b6cae
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will have plenty of money, will donate, be a king's minister, a judge and
+      a supreme person
+- id: SARAVALI.WEALTH.CH21V5055.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.progeny: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Should the Sun at birth be in a Rasi of Jupiter and be aspected by the Moon, the native
+      will be endowed with (eloquent) speech, wisdom, wealth and sons.
+    quote_sha256: 8cbeb2c390df4c8723ded3a5f0f3b9df1201fe7aa938aab45961d8c8a030072d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be endowed with (eloquent) speech, wisdom, wealth and sons
+- id: SARAVALI.WEALTH.CH21V5055.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.progeny: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Should the Sun at birth be in a Rasi of Jupiter and be aspected by the Moon, the native
+      will be endowed with (eloquent) speech, wisdom, wealth and sons.
+    quote_sha256: 8cbeb2c390df4c8723ded3a5f0f3b9df1201fe7aa938aab45961d8c8a030072d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be endowed with (eloquent) speech, wisdom, wealth and sons
+- id: SARAVALI.WEALTH.CH21V5863.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v58-63
+    quote: >-
+      If the Moon aspects the Sun in a Rasi of Saturn, the native will be highly cunning in
+      disposition, and will lose his wealth and happiness on account of his befriending females.
+    quote_sha256: d7e0fff506fc92e3d6bdf5189acdb01a92eb2f5e1410bd2626a5631e31cd2bec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: will lose his wealth and happiness on account of his befriending females
+- id: SARAVALI.WEALTH.CH21V5863.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v58-63
+    quote: >-
+      If Venus aspects the Sun in a Rasi of Saturn, the native will deal with conch, coral
+      and ruby, will derive abundant wealth through prostitutes and females and be happy.
+    quote_sha256: 070426b5571bcb020d844b9647896b493d4264026f9471dc3a3746cced30d6e5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will deal with conch, coral and ruby, will derive abundant wealth through
+      prostitutes and females and be happy
+- id: SARAVALI.WEALTH.CH22V1722.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v17-22
+    quote: >-
+      If the Moon is in Gemini at birth and is aspected by the Sun, the native will be quite
+      learned, be splendorous, very beautiful, be charitable, be very miserable and be not
+      rich.
+    quote_sha256: 207cc040dc68d580e7c9da5cf5f3f6483e9cbb6b678801a37ea514afcd2a6179
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: be not rich
+- id: SARAVALI.WEALTH.CH22V1722.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.property: 0.7
+    domain.career: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v17-22
+    quote: >-
+      If Mars lends aspect to the Moon in Gemini, the person will be very valorous, very learned,
+      be endowed with happiness, conveyances, wealth and beauty.
+    quote_sha256: 332c2dedb7a7f425e02b62f6b2ad5ca0bd9876df21f5d2314b9dc72617316256
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: endowed with wealth
+- id: SARAVALI.WEALTH.CH22V1722.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v17-22
+    quote: >-
+      The Moon in Gemini aspected by Mercury makes one skilful in producing money, always
+      successful and inviolable king.
+    quote_sha256: 9e0799a7628733ab9d7c6d14cab17ab78e676279d8607e682aed4deee3e7510f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: strong
+    text: skilful in producing money
+- id: SARAVALI.WEALTH.CH22V1722.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v17-22
+    quote: >-
+      Should Saturn aspect the Moon in Gemini, the subject will be devoid of relatives, wife,
+      happiness and wealth, and will be inimical to the public.
+    quote_sha256: 922e0bb22bcc035d297c58ab9602c9f904f0af0b0efb15afbd5bf9f6822e03eb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: devoid of wealth
+- id: SARAVALI.WEALTH.CH22V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v23
+    quote: >-
+      If the Moon is in Cancer at birth, the native will be fortunate, valorous, be endowed
+      with residence, friends, journeys and astrological knowledge, be sensuous, grateful,
+      be a minister, be truthful, will live abroad, be passionate, hairy bodied, fond of water
+      and flowers, interested in construction of houses, wells etc. and will have a prominent
+      neck.
+    quote_sha256: 084ce71a9502ac4faac52051127793a1d99e0ca0fc11ee32791c47fb65fbce05
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be fortunate, valorous, be endowed with residence, friends, journeys
+      and astrological knowledge, be sensuous, grateful, be a minister, be truthful, will
+      live abroad, be passionate, hairy bodied, fond of water and flowers, interested in construction
+      of houses, wells etc. and will have a prominent neck
+- id: SARAVALI.WEALTH.CH22V2426.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      Should the Moon be in her house at birth and be aspected by the Sun, the native will
+      be in the employ of king, be not rich, be a letter-bearer and will protect forts (i.e
+      will be a security officer in royal service).
+    quote_sha256: d6cc5fec19cafb80cd791c7043dbd8bc2f2d6bdf10fd9a1346b2bac34c175692
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: be not rich
+- id: SARAVALI.WEALTH.CH22V2426.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.career: 0.8
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      Should Mercury lend his aspect to the Moon in Cancer, he will be spirited in disposition,
+      be endowed with political wisdom, wealth, wife and sons, will be a king's minister and
+      be happy.
+    quote_sha256: c5b75a200bcab3472e0ccaad3c6d490754a081c085ea19f8161b0866ee6722ef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealth, wife and sons
+- id: SARAVALI.WEALTH.CH22V2426.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      If Venus aspects the Moon in Cancer, the subject will be endowed with money, gold, wife,
+      robes and jewels, be head of prostitutes and be splendorous.
+    quote_sha256: 13aed75766db7d1312967d4b0d955863d21bd1fb4ee66597e52dff6886d5dd90
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: money, gold, wife, robes and jewels
+- id: SARAVALI.WEALTH.CH22V2426.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.spiritual: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v24-26
+    quote: >-
+      Should Saturn aspect the Cancer-posited Moon, he will be of wandering disposition, be
+      miserable, very poor, be a liar, a sinner and be mean.
+    quote_sha256: efa5ca5c19e319080d9a621fc2a4c722fff36a360bac7241d0276d8543fe6ab1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: extreme
+    text: very poor
+- id: SARAVALI.WEALTH.CH22V27.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v2-7
+    quote: >-
+      If Jupiter aspects the Moon in Aries, the person will be endowed with servants and abundant
+      riches, and be a king or a king's minister
+    quote_sha256: 6de2687aae527423b12447153326e68c87192e1c90b04fe3e7fe8cd52b4bed33
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be endowed with servants and abundant riches, and be a king or a king's
+      minister
+- id: SARAVALI.WEALTH.CH22V27.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v2-7
+    quote: >-
+      Venus aspecting the Moon in Aries denotes that the subject will be lucky, be endowed
+      with sons and wealth, will own (i.e. marry) a supreme lady and costly ornaments and
+      will not eat much.
+    quote_sha256: 9630a6bd2f077b6df36304623eddfd68d5e312ad8550e8a7bdb84142209ece06
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject will be lucky, be endowed with sons and wealth, will own (i.e. marry) a
+      supreme lady and costly ornaments and will not eat much
+- id: SARAVALI.WEALTH.CH22V27.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v2-7
+    quote: >-
+      The Moon in Aries aspected by Saturn indicates that the native will be jealous, miserable
+      to a great extent, be very poor, dirty and untruthful.
+    quote_sha256: 4eae1eec2ae80f87cfcc59ba69d31f6b3f521ec7570bc6c6c75e7b26394edd89
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.income_flow
+    polarity: negative
+    magnitude: strong
+    text: >-
+      the native will be jealous, miserable to a great extent, be very poor, dirty and untruthful
+- id: SARAVALI.WEALTH.CH22V3136.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.education: 0.8
+    domain.health: 0.7
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v31-36
+    quote: >-
+      Should Venus aspect the Moon in Leo, one will possess a wife, wealth, and high knowledge,
+      be sickly disposed, will be a female's servant, and be skilful in sexual union.
+    quote_sha256: 3e842246514957a86f9deb224e310a46019034b7049bed2a24e5fe913e063c9a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      one will possess a wife, wealth, and high knowledge, be sickly disposed, will be a female's
+      servant, and be skilful in sexual union
+- id: SARAVALI.WEALTH.CH22V3136.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.8
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v31-36
+    quote: >-
+      If the Moon in Leo is aspected by Saturn, the person will be an agriculturist, be not
+      wealthy, be a liar, will protect forts, be devoid of happiness from wife and be mean.
+    quote_sha256: 7b30cb931a9aa3386721cd7962bdfabfee8daf0865f9127fbbcf8c341050e559
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: >-
+      the person will be an agriculturist, be not wealthy, be a liar, will protect forts,
+      be devoid of happiness from wife and be mean
+- id: SARAVALI.WEALTH.CH22V3843.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      If the Moon occupies Virgo at birth and is aspected by the Sun, the native will be incharge
+      of royal wealth, be famous, will keep up his word, and perform distinguished acts.
+    quote_sha256: bce28740d44efe1f51b7ebed08fc0cdada4f8073fa4941c5bd20d3a36f8fff8f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be incharge of royal wealth
+- id: SARAVALI.WEALTH.CH22V3843.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      If Mars aspects the Moon posited in Virgo, the subject will be skilful in mechanical
+      or fine arts (of 64 kinds), be famous, affluent, disciplined, courageous and will be
+      inauspicious for mother.
+    quote_sha256: 13672207329481b737b61707463481175a1967fbbd17114d201535e774d6d9bf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be famous, affluent, disciplined, courageous
+- id: SARAVALI.WEALTH.CH22V3843.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      Jupiter aspecting the Moon in Virgo indicates that the native will be supreme among
+      his relatives, be happy, will carry out royal duties, will keep up his word and will
+      be endowed wealth.
+    quote_sha256: 5da143ac98636cc07743a644ba46dad91d87d63b826d64f158b31fd55c848ff3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will be endowed wealth
+- id: SARAVALI.WEALTH.CH22V3843.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      If Venus aspects the Moon in Virgo, the person will have many wives, be endowed with
+      many kinds of makeups, pleasures and wealth and will always be blessed with fortunes.
+    quote_sha256: f7ef73b7843f80fecb18329706a29f7a76bf812964108d81750e608d2273e1fd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      be endowed with many kinds of makeups, pleasures and wealth and will always be blessed
+      with fortunes
+- id: SARAVALI.WEALTH.CH22V3843.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v38-43
+    quote: >-
+      The Moon in Virgo aspected by Saturn indicates that the native will not have firm memory,
+      will suffer from poverty, will not have happiness, will be bereft of mother, will be
+      at the disposal of women (or be controlled by them) and will derive wealth through females.
+    quote_sha256: d7041c427ede804abeef7b1ed93577802e9dc3df32fb442e0e9570dbb7d53c9f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: will suffer from poverty
+- id: SARAVALI.WEALTH.CH22V4550.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v45-50
+    quote: >-
+      If the Moon is in Libra and is aspected by the Sun, the person will be bereft of wealth,
+      be diseased
+    quote_sha256: 23f269ab95ab217f1948fab0f3b9c1d3786112864e2413b2a33769f8a324b07e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the person will be bereft of wealth, be diseased
+- id: SARAVALI.WEALTH.CH22V4550.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v45-50
+    quote: >-
+      If Mercury aspects the Moon in Libra, the subject will be skilful in arts, will have
+      abundant riches and grains, will be an auspicious speaker, be highly learned, and be
+      famous in his country.
+    quote_sha256: 59c15bdc9cd42176bfbbe1f06ee5b6212c821dd77aefd59ee7dda67f21db84a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will have abundant riches and grains
+- id: SARAVALI.WEALTH.CH22V4550.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.property: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v45-50
+    quote: >-
+      Should Saturn aspect the Moon in Libra, the native will be very affluent, be sweet in
+      speach, be endowed with conveyances, be very much interested in sexual affairs, be devoid
+      of happiness and be favourable to his mother.
+    quote_sha256: f6aa7571386c20d9e3c72ada2812e10f0dfd7e82c0402ccc9230f4e27f8cc533
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be very affluent, be sweet in speach, be endowed with conveyances
+- id: SARAVALI.WEALTH.CH22V5257.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      If the Moon at birth is in Scorpio and aspected by the Sun, the native will hate people
+      (i.e. will not be friendly with others), be learned, wandering natured, and rich but
+      be not happy.
+    quote_sha256: 85527913a7152e7ecbd651e37ee50e285ce0c0424f04e4f6dcfe8372aef28b83
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: rich
+- id: SARAVALI.WEALTH.CH22V5257.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      Should Mars aspect the Moon in Scorpio, the native will have incomparable courage, be
+      equal to a king, be endowed with wealth, be valorous, inconquerable in battle, and be
+      a voracious eater.
+    quote_sha256: afa0fb6f747d835a888eb3dd9a1733a8fd51b73a31cea996e68a6bb938747de5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be endowed with wealth
+- id: SARAVALI.WEALTH.CH22V5257.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      If Jupiter lends aspect to the Moon in Scorpio, the native will be interested in performing
+      his duties, will be biassed towards people, be wealthy and be beautiful.
+    quote_sha256: 86e8cfed56f7e9b55e227889c6de0be5362163e3914bc0ac5a786750b2a6e235
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: be wealthy
+- id: SARAVALI.WEALTH.CH22V5257.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.property: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      If Venus aspects the Moon in Scorpio, the native will be highly intelligent, be fortunate,
+      be endowed with riches, conveyances and beauty, and will lose strength on account of
+      women.
+    quote_sha256: 471db9fd17024834512501b1aeb6e33d96a16d2cbaaca65fa095163cc128da7c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be endowed with riches, conveyances and beauty
+- id: SARAVALI.WEALTH.CH22V5257.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      If Saturn aspects the Moon in Scorpio, the native will have base sons, be a talebearer,
+      be sick, poor and untruthful.
+    quote_sha256: 974e47474efba0f1d373c1e0fe44162c05fe0ff9ddb96198cd777ad10632fd47
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: poor
+- id: SARAVALI.WEALTH.CH22V5964.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v59-64
+    quote: >-
+      If Jupiter aspects the Moon in Sagittarius, one will possess very attractive physique,
+      be a king's minister, and will be endowed with wealth, virtues and happiness.
+    quote_sha256: fe27a438101b9dd3b6c8940b22bb522967674c7e836d646a5fd42b2d23f23d54
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will possess very attractive physique, be a king's minister, and will be endowed
+      with wealth, virtues and happiness
+- id: SARAVALI.WEALTH.CH22V614.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v6-14
+    quote: >-
+      Should the Moon be in Taurus, and be in aspect to the Sun, the native will be a farmer,
+      be very industrious, be very rich with servants and quadrupeds, and will lend money
+      on usury.
+    quote_sha256: 5dae357673e4cad883423c23bfd5747947aaaec7ad2594a87fc048f08971ae3f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be a farmer, be very industrious, be very rich with servants and quadrupeds,
+      and will lend money on usury
+- id: SARAVALI.WEALTH.CH22V614.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v6-14
+    quote: >-
+      If Jupiter aspects the Moon in Taurus, the native will have long-living wife and children
+      and lasting wealth, be respectfully disposed to his parents, be virtuous and very famous.
+    quote_sha256: 0e4510465f916d96e9379870e6264140ed285fca24cf404e9361b4506abc05b7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will have long-living wife and children and lasting wealth, be respectfully
+      disposed to his parents, be virtuous and very famous
+- id: SARAVALI.WEALTH.CH22V614.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v6-14
+    quote: >-
+      If it is Saturn that aspects the Moon in Taurus, one will be devoid of wealth, be inauspicious
+      for mother and wife and will be endowed with sons, friends and relatives.
+    quote_sha256: 731c425491f640aa5ec2f039ebe248af1f6ec0e28984e3197958f2590b87d557
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be devoid of wealth, be inauspicious for mother and wife and will be endowed
+      with sons, friends and relatives
+- id: SARAVALI.WEALTH.CH22V6671.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v66-71
+    quote: >-
+      Should the Moon in Capricorn be aspected by the Sun at birth, one will be penniless,
+      miserable
+    quote_sha256: 4152ab76c31c4fd3c9a6232ddc34863ff440c98ac787fe5bb2fca14fc5a2ece4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: one will be penniless
+- id: SARAVALI.WEALTH.CH22V6671.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.property: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v66-71
+    quote: >-
+      If Mars aspects the Moon in Capricorn, one will enjoy abundant riches, be highly liberal,
+      be fortunate, wealthy, will have conveyances and be brave
+    quote_sha256: 0a25d5e3762b9473049c59dcead4ce48d1d136cae9d61177d26b83d9e051c33b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: one will enjoy abundant riches
+- id: SARAVALI.WEALTH.CH22V6671.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v66-71
+    quote: >-
+      If Mercury aspects the Moon in Capricorn, one will be dunce, be intersted in living
+      in other places, be bereft of wife, be fickleminded and be devoid of happiness and money.
+    quote_sha256: 84c502a00dc38216090cdfabc066a047161c5e5e60d8076147f7562f1699c940
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: devoid of happiness and money
+- id: SARAVALI.WEALTH.CH22V6671.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v66-71
+    quote: >-
+      If Venus aspects the Moon in Capricorn, one will join others' wives, be endowed with
+      wealth, ornaments, conveyances, garlands etc., be blameworthy and be issueless
+    quote_sha256: ad6b496f0e84d73e807a2979f67c8b2d8645d3928dc4361e833b19854cea52e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be endowed with wealth, ornaments, conveyances
+- id: SARAVALI.WEALTH.CH22V7378.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.property: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v73-78
+    quote: >-
+      Should the Moon in Aquarius have Saturn’s aspect, the native will have (prominent) nails
+      and hair, be dirty, will seek union with other women, be a dunce, be irreligious and
+      be rich possessing many immovables.
+    quote_sha256: 1790a854a8e4c1a383da0e4a9a484cdabc2154941a6ed10179f4272507a24b80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be rich possessing many immovables
+- id: SARAVALI.WEALTH.CH23V1012.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v10-12
+    quote: if by Mars, he will be skilful in stealing others' money and be a miser
+    quote_sha256: dca1fdada4ef3952ad43b9bc5d8573b4973bce935e0877f2b99a0199b7d4a0da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: he will be skilful in stealing others' money and be a miser
+- id: SARAVALI.WEALTH.CH23V13.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by Venus, he will be a king's minister, be wealthy and be fond of women and
+      cosmetics
+    quote_sha256: f8c95664fdf29f5e4a7137ea2018405adf306596a86ea78b15f529e232835769
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will be a king's minister, be wealthy and be fond of women and cosmetics
+- id: SARAVALI.WEALTH.CH23V13.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: if by Venus, he will be a king's minister, be wealthy and be fond of women and
+      cosmetics
+    quote_sha256: f8c95664fdf29f5e4a7137ea2018405adf306596a86ea78b15f529e232835769
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will be a king's minister, be wealthy and be fond of women and cosmetics
+- id: SARAVALI.WEALTH.CH23V1315.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.status: 0.6
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v13-15
+    quote: >-
+      if by Mars, he will possess gold, wealth and fame, will be honoured by the king and
+      be quite valorous
+    quote_sha256: 3639d48317ec92a3dfb8a4023d6ae411f53b8e16bdb14ae0d8cca4d3b0a30175
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will possess gold, wealth and fame, will be honoured by the king and be quite
+      valorous
+- id: SARAVALI.WEALTH.CH23V8085.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.relationship: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v80-85
+    quote: >-
+      If the Moon posited in Pisces is aspected by the Sun, the native will be highly libidinous,
+      be happy, be an army chief, be very affluent and will have delighted wife
+    quote_sha256: 703a5888faa3a14630d3357fbecfd2df8ef9179c61d8bf0d861ee521bbf3e923
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be very affluent
+- id: SARAVALI.WEALTH.CH23V8085.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v80-85
+    quote: >-
+      If Jupiter aspects the Moon in Pisces, he will be beautiful, fierce, head of a district,
+      be very affluent, beautiful and will be surrounded by many women.
+    quote_sha256: 55ef4fea76efb190f6c8dd8e32c0df4eb42e58ceb34cd33fb124f659964b6937
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be very affluent
+- id: SARAVALI.WEALTH.CH24V1112.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v11-12
+    quote: Should Mars occupy Virgo at birth, the subject will be worthy of honour, be ever
+      rich
+    quote_sha256: 988d4cd10e3017e339981bcee8423ae6c775db979167cadbd8a14646c0097942
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.virgo
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the subject will be worthy of honour, be ever rich
+- id: SARAVALI.WEALTH.CH24V1314.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v13-14
+    quote: will earn through prostitutes to only lose
+    quote_sha256: 466af7bc7c3cdb7cd5a2bdeae2c8d860b0257009da5b5e8c83de3487f87c4d61
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: will earn through prostitutes to only lose
+- id: SARAVALI.WEALTH.CH24V1718.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v17-18
+    quote: will lose his happiness and money due to anger
+    quote_sha256: de0ab8476952137380de6a6af3bf648d6e995c7b3e50243b0d9feeef4e26d205
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.sagittarius
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: will lose his happiness and money due to anger
+- id: SARAVALI.WEALTH.CH24V1920.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-20
+    quote: If Mars is posited in Capricorn at birth, one will be wealthy (or fortunate)
+    quote_sha256: aa4e90ee99d8cc12f24f1c1b4a255ef2f5690a501090ab2a2b139172df867693
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.capricorn
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: one will be wealthy (or fortunate)
+- id: SARAVALI.WEALTH.CH24V1921.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-21
+    quote: >-
+      if by Mars, he will be equal to a king, be very rich, happy but unfortunate in regard
+      to wife
+    quote_sha256: 61f1cc69ea75782d5a6f9a7df590e0737b4b86d627fc692007ec66d7ded3c89e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.capricorn
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will be equal to a king, be very rich, happy but unfortunate in regard to wife
+- id: SARAVALI.WEALTH.CH24V2122.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v21-22
+    quote: >-
+      If Mars is posited in Aquarius at the time of one's birth, he will be devoid of both
+      affection and purity, will look like an old person, will die a bad death, will have
+      spite, jealousy, untruthful disposition, afflicted speech and lost wealth
+    quote_sha256: ce6510a78c11d0fdb5952ad9278426657e16bcaa8c6a979d5e99293d9350ab1b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aquarius
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: will have lost wealth
+- id: SARAVALI.WEALTH.CH24V2530.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v25-30
+    quote: >-
+      Should Mars at birth be in Aries/Scorpio and be aspected by the Sun, the person will
+      possess wealth, wife and children, be a king's minister, be a justice, be famous and
+      be a charitable king.
+    quote_sha256: 288a44a0bde8e3f3e5a97fca6671f2ce82aaf9ac51c1341c435d910140e79c92
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will possess wealth, wife and children, be a king's minister, be a justice,
+      be famous and be a charitable king
+- id: SARAVALI.WEALTH.CH24V2530.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v25-30
+    quote: >-
+      If Jupiter lends his aspect to Mars as above, the native will be learned, sweet-spoken,
+      fortunate, dear to parents, be very affluent, and will be a king par excellence.
+    quote_sha256: 0d960f79461d09da5eabd80016085e35f3d922b8a6a67016331f964fc480ed4b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be learned, sweet-spoken, fortunate, dear to parents, be very affluent,
+      and will be a king par excellence
+- id: SARAVALI.WEALTH.CH24V2530.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v25-30
+    quote: >-
+      Venus aspecting Mars as above denotes that the native will be imprisoned due to females,
+      and will be deprived of his money on account of females, more than once.
+    quote_sha256: 00fa658e6fa4c6e0b3127490f4606af3c896389422a1992207406591ba03e4e0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.venus
+        target: graha.mars
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be imprisoned due to females, and will be deprived of his money on account
+      of females, more than once
+- id: SARAVALI.WEALTH.CH24V3136.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.education: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v31-36
+    quote: >-
+      If Mercury aspects the said Mars, the native will promote quarrels, will speak much,
+      will have a soft body, will possess (indifferent or) few sons and little wealth and
+      will be learned in Sastras.
+    quote_sha256: 207044ce236bc0b869233b3817114eaeef4de3363b0118fa755878eb5ae7410e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.mercury
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: will possess little wealth
+- id: SARAVALI.WEALTH.CH24V3136.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v31-36
+    quote: >-
+      Saturn aspecting Mars as above indicates that the native will be happy, famous, wealthy,
+      be endowed with friends and own men, be learned, and will be head of a group of villages/towns,
+      or group of men.
+    quote_sha256: 9a474e3be514c5cbd1f55c8ff729a0cf796569badeae8acdde82abce21ea6781
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: wealthy
+- id: SARAVALI.WEALTH.CH24V3742.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v37-42
+    quote: >-
+      If the Moon lends aspect to Mars as above, the person will be happy, wealthy, splendorous,
+      will guard women's apartments, will be endowed with women and will manage the king's
+      residence.
+    quote_sha256: 890f7064ce420efa133a55deb47932c4e28aa2a700729de994e8de8a213a57ca
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.moon
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person will be happy, wealthy, splendorous
+- id: SARAVALI.WEALTH.CH24V3742.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v37-42
+    quote: >-
+      If Venus aspects Mars in above position, the person will do the jobs of famales, be
+      very fortunate and will enjoy food and robes.
+    quote_sha256: 8bf93b70b2aacde0c04930ef434438c3a7364c9aad8b213cd9b4e2907a88d9af
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.venus
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person will do the jobs of females, be very fortunate and will enjoy food and
+      robes
+- id: SARAVALI.WEALTH.CH24V3742.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.health: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v37-42
+    quote: >-
+      If Saturn aspects Mars as above, the person will be interested in wandering in mines
+      (i.e. places beneath surface), hills and forests will have husbandry as his livelihood,
+      be highly miserable, be very valorous, dirty and be devoid of wealth.
+    quote_sha256: 1b2c8061ff598f21ec2f7a0ff9cb16d038ea6cfb8bebb931dde0c5c18d882d0f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the person will be... devoid of wealth
+- id: SARAVALI.WEALTH.CH24V4348.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.travel: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v43-48
+    quote: >-
+      Should Saturn aspect Mars in Cancer, the native will aquire money through journey in
+      water, be equal to a king, be sportive in his acts and be always bright.
+    quote_sha256: 7a743fc700d6213f953be1faba4b1431cf15d20d3718a872eec54b5f692631db
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will aquire money through journey in water, be equal to a king, be sportive
+      in his acts and be always bright
+- id: SARAVALI.WEALTH.CH24V6166.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.temperament: 0.75
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v61-66
+    quote: >-
+      Should Mars be in Capricorn or Aquarius and be aspected by the Sun, the subject will
+      have very dark body, be courageous, will have many wives, sons and abundant wealth and
+      be very sharp.
+    quote_sha256: fbbdea62ba69ab06cb4351eea1266b6998d10e231e0f08ce8042cdf84d97863b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: abundant wealth
+- id: SARAVALI.WEALTH.CH24V6166.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.status: 0.85
+    domain.health: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v61-66
+    quote: >-
+      Should Saturn aspect Mars, the latter being in the former's house, the person will be
+      a king, be very affluent, will hate women, will possess many children, be learned, be
+      devoid, of happiness and be timid in war.
+    quote_sha256: 2b5673be0f358ca092e672f0a4b13433551ca75c882effc5207029d83acbb4fd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: be very affluent
+- id: SARAVALI.WEALTH.CH25V1314.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v13-14
+    quote: >-
+      If Mercury falls in Libra at the time of one's birth the native wlll possess knowledge
+      of arts, be intent upon arguments, be an able speaker, will spend money lavishly
+    quote_sha256: 1cf9e60e22f500551e59829a80f3031c5262fa3da1ba82c6e8f2b937943052c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: will spend money lavishly
+- id: SARAVALI.WEALTH.CH25V2530.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v25-30
+    quote: >-
+      If Mars aspects Mercury as above, one will be a liar, a sweet speaker, will promote
+      quarrels, be learned, affluent, dear to king and valorous.
+    quote_sha256: eb4c7861471ea01c6c19f0356b9b97e43ef7e3e07f5c2005178990a861b5e8c7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be a liar, a sweet speaker, will promote quarrels, be learned, affluent, dear
+      to king and valorous
+- id: SARAVALI.WEALTH.CH25V2530.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v25-30
+    quote: >-
+      Should it be Jupiter that aspects Mercury as above, one will be happy, will possess
+      a glossy and hairy physique, wiil have attractive hair, will be very rich, will command
+      others and be sinful.
+    quote_sha256: d618138ed95f76f8ed22d07058b5e8253d300ada69ccbbe694dcad28a6ac54e4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be happy, will possess a glossy and hairy physique, wiil have attractive hair,
+      will be very rich, will command others and be sinful
+- id: SARAVALI.WEALTH.CH25V3136.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v31-36
+    quote: >-
+      Should Mercury be in a house of Venus and be aspected by the Sun, the subject will suffer
+      from penury and accute grief
+    quote_sha256: 3be82416ba00a89ab9fc4eeff47f8951e49b9e32bd4ebe47f432fd42f4f96520
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the subject will suffer from penury
+- id: SARAVALI.WEALTH.CH25V3136.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v31-36
+    quote: >-
+      If the Moon aspects Mercury as above, the native will be trustworthy, affluent, firmly
+      pious, devoid of sickness, will have lasting family ties, be famous, and be a king's
+      minister.
+    quote_sha256: fb62d3778744a0a397a505577943cf68b4009efd3c938c96c909f882f1010726
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native will be affluent
+- id: SARAVALI.WEALTH.CH25V3136.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.health: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v31-36
+    quote: >-
+      Should Mars lend his aspect to Mercury as above, the native will be troubled by diseases
+      and enemies, be distressed, will incur royal insult and will be deprived of all worldly
+      objects.
+    quote_sha256: 5f5909ddb2c2009c289cae25c0e98a906a5ab8d74ebc6a2d26b776f19885f828
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.libra
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: will be deprived of all worldly objects
+- id: SARAVALI.WEALTH.CH25V34.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v3-4
+    quote: >-
+      Should Mercury be in Taurus, the native will be skilful, eminently liberal, be famous,
+      will have knowledg of Vedas and sastras, be fond of exercises, robes, ornaments and
+      garlands, be firm in disposition, will have sincerely earned wealth, will possess a
+      chaste wife, will be a soft and sweet speaker, and be after sexual satisfaction.
+    quote_sha256: 2412cd9039bfe68e2e9e63bf293dfdee73b3e108e87d49843bfeebb0c21c0406
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mercury
+      rashi: rashi.taurus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will have sincerely earned wealth, will possess a chaste wife
+- id: SARAVALI.WEALTH.CH25V3742.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v37-42
+    quote: >-
+      If Jupiter be the aspecting planet, one will be a king's minister, be excellent, be
+      beautiful, charitable, rich, be endowed with his own men and be courageous.
+    quote_sha256: d5a61a18c6088d4d9c4cebfc7875b978af7fc3c9e44e0c2eaaedd5879899bf6a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be a king's minister, be excellent, be beautiful, charitable, rich, be endowed
+      with his own men and be courageous
+- id: SARAVALI.WEALTH.CH25V3742.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v37-42
+    quote: >-
+      If Saturn aspects Mercury as above, one will be progressive-minded, be modest, will
+      achieve success in undertakings started by him, and will be wealthy with money and clothes.
+    quote_sha256: 3601e4a54da1916bb2a143591f5b7a2054010936546fd318fdfc7e25acc7ee40
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be progressive-minded, be modest, will achieve success in undertakings started
+      by him, and will be wealthy with money and clothes
+- id: SARAVALI.WEALTH.CH25V4348.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v43-48
+    quote: >-
+      If the Moon aspects Mercury as above, one will be deprived of wealth (or energy of the
+      physique) on account of women and will be miserable for the same reason.
+    quote_sha256: f24734f3ef0f0638be0a409b92a718b42b3706fd901009bd9db4dcf97320107d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be deprived of wealth on account of women and will be miserable for the same
+      reason
+- id: SARAVALI.WEALTH.CH25V4654.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v46-54
+    quote: >-
+      If Mercuy occupies Leo at birth and is aspected by the Sun, the native will be jealous,
+      rich, virtuous, cruel, mean, fickle-minded and shameless.
+    quote_sha256: 42269d09f93dd299fea6b1c8bbe3b9eee1d3a729ae73554baa6ced5266bfff48
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: rich
+- id: SARAVALI.WEALTH.CH25V4654.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v46-54
+    quote: >-
+      If the Moon aspects Mercury as above, one will be very beautiful, very skilful, be interested
+      in poetry, fine arts, music and dance, be wealthy, and virtuous.
+    quote_sha256: c691f987af1aea64fb64651c629b7da2630c1298e5f2b67712e6b3338fe8aacb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: wealthy
+- id: SARAVALI.WEALTH.CH25V5560.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      If the Moon aspects Mercury as above, he will be a writer, be beautiful par excellence,
+      be very affluent, trustworthy, amiable and happy
+    quote_sha256: b2be2d283d4b42a983be299ffd6eefeb026704bc25d37feb7cc5ea565c07d202
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: be very affluent
+- id: SARAVALI.WEALTH.CH25V5560.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.education: 0.9
+    domain.career: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      Should Jupiter aspect Mercury as above, he will be rich by memory, intelligence and
+      descendency, be beautiful, noble and knowledgeable, be a king minsiter, or his trearurer
+      and be a writer.
+    quote_sha256: 3864c8e339a291c706341ea55751606d15c08d363e164cad6434600be758fcc4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will be rich by memory, intelligence and descendency
+- id: SARAVALI.WEALTH.CH25V6166.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v61-66
+    quote: >-
+      If Jupiter aspects Mercury as stated above, he will be endowed with abundant money and
+      grains, be honoured in his village/town and by his men, be happy and be famous.
+    quote_sha256: 93d2c1db6bcea9392509aed5bc33dead04befd798177ce2954125596eeb9c011
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.jupiter
+        target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be endowed with abundant money and grains, be honoured in his village/town and
+      by his men, be happy and be famous
+- id: SARAVALI.WEALTH.CH25V6166.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.health: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v61-66
+    quote: If Saturn aspects Mercury as above, he will be sinful, very poor, miserable and
+      mean.
+    quote_sha256: aed1b87b8b79cd73b8178bde964fa7dccb001f33a2362bbe6f44501456b40ce5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: he will be sinful, very poor, miserable and mean
+- id: SARAVALI.WEALTH.CH5V2830.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v28-30
+    quote: A planet in exaltation gives all kinds of wealth.
+    quote_sha256: 90cbece1170fa31db8b7d03e7dc778c8bea9934b9150042c1c49a977f7308c70
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: gives all kinds of wealth
+- id: SARAVALI.WEALTH.CH5V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v5
+    quote: He gathers all kinds of wealth.
+    quote_sha256: e80079871f1e70fc4987995dca14dc5abb73d1240aa387b608dca61dc34cba6b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: He gathers all kinds of wealth.
+- id: SARAVALI.WEALTH.CH5V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.property: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v6
+    quote: >-
+      Should a planet be in Svastha (confident) state at birth, the native acquires gold,
+      family etc.
+    quote_sha256: 6b5fa065ddc25618cdc5fb8730ad0137018fd86be081e70ed1977867bd7c6718
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.friendly
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the native acquires gold, family etc.

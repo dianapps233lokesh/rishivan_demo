@@ -1,0 +1,1715 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.CAREER.CH17V56.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v56
+    quote: >-
+      If the planet occupying the 10th place from the Moon be the Sun, the person concerned
+      will succeed in all that he undertakes
+    quote_sha256: f990b7e4b03ce1ec0e6120a609a2bbb8676ebda3598a3ab28e59e1ed32ea4f7f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.sun
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will succeed in all that he undertakes
+- id: JATAKAPARIJATA.CAREER.CH17V85.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v85
+    quote: >-
+      Mars and Mercury combining with Jupiter in the 9th bhava make the person born a ruler
+      of a province.
+    quote_sha256: 738105f3311af1efbff15386e181e066c48a37e5d79e10c034ef9bfb8212d7a8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: make the person born a ruler of a province
+- id: JATAKAPARIJATA.CAREER.CH9V104.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.property: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: if Venus, ruling villages and towns
+    quote_sha256: 52052aefefec48c90e181d934b2306052367d882a32c6012a81913d1f74e5765
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: moderate
+    text: ruling villages and towns
+- id: JATAKAPARIJATA.CAREER.CH9V84.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v84
+    quote: if in the star कृत्तिका (Krittika), he will be energetic, lord-like in status
+    quote_sha256: 7f492c48af8295d751eabc4d08326c022db9c6a832c61a4431df603502972b40
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.krittika
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: lord-like in status
+- id: JATAKAPARIJATA.EDUCATION.CH17V58.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.status: 0.9
+    domain.spiritual: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v58
+    quote: >-
+      If Jupiter be combined with Venus in the 10th bhava from the Moon, the person born will
+      be a protector of the Brahminical community, esteemed by his sovereign and possessed
+      of great learning.
+    quote_sha256: 00d59a0134481a15813ebfdb09ae922ad73dce06dee6ab92f489f3612f933889
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.jupiter
+        bhava: bhava.10
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.venus
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      protector of the Brahminical community, esteemed by his sovereign and possessed of great
+      learning
+- id: JATAKAPARIJATA.FAMILY.CH18V109.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v109
+    quote: in the end, he may become bereaved of his parents and even lose his status.
+    quote_sha256: 6a91fef1f444737b65553619874f611ea6528635d551875b58086858b8ff80ec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: he may become bereaved of his parents and even lose his status
+- id: JATAKAPARIJATA.FAMILY.CH9V50.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v50
+    quote: >-
+      If the rising sign is unaspected by the Moon and the Sun is either in the 8th or 9th
+      bhava, then the father is not present at the place of birth of the child.
+    quote_sha256: 597a2eeebf2beca9ba44f55510eae905eb1837455de4e9f488b2d6fe5854465b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        aspects:
+          subject: graha.moon
+          target: bhava.01
+    - any:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.09
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: the father is not present at the place of birth of the child
+- id: JATAKAPARIJATA.FAMILY.CH9V51.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.status: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v51
+    quote: >-
+      If a person be born in the 1st quarter of the star Moola, he will occasion the death
+      of the father
+    quote_sha256: b416f96bb2cef459dbc87d1da7e7151b773e506d7b834205a8e85edbfa6d52e7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.mula
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: extreme
+    text: he will occasion the death of the father
+- id: JATAKAPARIJATA.FAMILY.CH9V51.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.status: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v51
+    quote: if in the 2nd quarter, the death of the mother very soon
+    quote_sha256: b245d65dcb7d63a229fb87f642e98074c9b9402a4d0ec294d8de8ba8370ef590
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.mula
+  indicates:
+    claim: family.mother
+    polarity: negative
+    magnitude: extreme
+    text: the death of the mother very soon
+- id: JATAKAPARIJATA.HEALTH.CH9V7580.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v75-80
+    quote: >-
+      If, at a person's birth, Mars and the Sun occupy houses owned by each other and are
+      in Kendra positions with respect to the planet that is the lord of the 8th bhava, the
+      person will at his latter end incur the displeasure of the sovereign and suffer death
+      by being impaled at the stake or by some other instrument of execution.
+    quote_sha256: 3d9b45af0665690b69e54505dff22373eb77b35780d9f97f8e9c85b5a3f1f8aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: graha.mars
+        other: graha.sun
+    - house_distance:
+        subject: lord.bhava.08
+        other: graha.mars
+        distance: dist.01
+    - house_distance:
+        subject: lord.bhava.08
+        other: graha.sun
+        distance: dist.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the person will at his latter end incur the displeasure of the sovereign and suffer
+      death by being impaled at the stake or by some other instrument of execution
+- id: JATAKAPARIJATA.OBSTACLE.CH17V131.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.status: 0.8
+    domain.health: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v131
+    quote: >-
+      But if the lord of the 4th bhava happen to be in the 6th and the other conditions obtain
+      as in the above yoga, he will be overtaken by misfortune—a fate that usually befalls
+      an enemy or a hostile person.
+    quote_sha256: ebcb0401d461ec745e2418266501cf6baf62637d621dfe2c8ade8e510be02df7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.06
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.gemini
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.virgo
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.sagittarius
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.pisces
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.libra
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.cancer
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: he will be overtaken by misfortune
+- id: JATAKAPARIJATA.OBSTACLE.CH18V114.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v114
+    quote: >-
+      suffering for the sake of reverend seniors and the king will mark Ketu's interval in
+      Jupiter's mahadasa.
+    quote_sha256: 286834f50e738e253a455c1ddeb4897c1c8f6ad01ac5734f8036541303495538
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      suffering for the sake of reverend seniors and the king will mark Ketu's interval in
+      Jupiter's mahadasa
+- id: JATAKAPARIJATA.RELATIONSHIP.CH17V131.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v131
+    quote: >-
+      If the lords of the 9th and the 1st bhavas occupy the 4th and the lord of the latter
+      be in the Lagna identical with a benefic Rasi, the person born will always enjoy happiness.
+    quote_sha256: 58c5a1f1a6dcfd49293d1810f7ad90b4ce5c41e76d38a2de17329789f90cf473
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.gemini
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.virgo
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.sagittarius
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.pisces
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.libra
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.cancer
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the person born will always enjoy happiness
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V67.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.health: 0.5
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v67
+    quote: >-
+      During the bhukti of Saturn in the Sun's dasa, a person should be prepared for hostility
+      from every one, want of energy, an ignoble calling, mental worry, and liability to risk
+      from the rulers or thieves.
+    quote_sha256: 552b76e6c24c6193e3c2b22f84b4d778236358bf46f39b660de9e47fa1149b59
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: hostility from every one
+- id: JATAKAPARIJATA.SPIRITUAL.CH18V131.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v131
+    quote: >-
+      Devotion to Gods and Brahmanas, royal favor, great happiness and attainment of rank,
+      a person will have, during Jupiter's bhukti in Saturn's dasa.
+    quote_sha256: e1d5d2bad607b65e2dbbfce8051dcd780defea9e4f7624c198e1598150321667
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: Devotion to Gods and Brahmanas
+- id: JATAKAPARIJATA.STATUS.CH17V103.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v103
+    quote: >-
+      When the lord of the 4th bhava occupies the 10th place in conjunction with a benefic
+      planet, the person born will have the appendages of a chowrie and an umbrella.
+    quote_sha256: f7fa48c7c3c848bea08cf92a280ccc06829f9f3394a092957246af02b41535c5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.10
+    - any:
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.04
+          other: graha.mercury
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person born will have the appendages of a chowrie and an umbrella
+- id: JATAKAPARIJATA.STATUS.CH17V105.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v105
+    quote: >-
+      When the lord of the 4th bhava is in the 11th or the 4th, and when Mars is in स्वक्षेत्र
+      (Swakshetra) or in the 11th bhava, the yoga will undoubtedly lead to the acquisition
+      of a kingdom.
+    quote_sha256: 3e690bb508812b740a3da9f3fe63cc04c5eb2e2eee353b4917496bf8469bced6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.04
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: lord.bhava.04
+          bhava: bhava.04
+    - any:
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.own_sign
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.11
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the acquisition of a kingdom
+- id: JATAKAPARIJATA.STATUS.CH17V126.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v126
+    quote: >-
+      If the lords of the 1st, 4th and the 9th bhavas be in the 10th, and the lord of the
+      latter occupy or aspect the Lagna, the effect of the yoga will be a throne.
+    quote_sha256: 5748a6cf344d43e24ab8f625711c2826d9a179c8adeb9335933b0ff17567c37b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.10
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.10
+          bhava: bhava.01
+      - aspects:
+          subject: lord.bhava.10
+          target: bhava.01
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the effect of the yoga will be a throne
+- id: JATAKAPARIJATA.STATUS.CH17V129.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v129
+    quote: >-
+      If the lord of the 4th bhava and the planet occupying the 10th possess most strength
+      and be aspected by or in conjunction with the lord of the 9th bhava
+    quote_sha256: 8e01bb2e4681d0549cbb18b3858aac2e90160d9c4b7ea71cc95f94dff88974eb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.04
+        op: '>='
+        value: 1.0
+    - strength:
+        subject: lord.bhava.10
+        op: '>='
+        value: 1.0
+    - any:
+      - aspects:
+          subject: lord.bhava.09
+          target: lord.bhava.04
+      - conjunct:
+          subject: lord.bhava.04
+          other: lord.bhava.09
+    - any:
+      - aspects:
+          subject: lord.bhava.09
+          target: lord.bhava.10
+      - conjunct:
+          subject: lord.bhava.10
+          other: lord.bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: they will pave the way to the attainment of a throne
+- id: JATAKAPARIJATA.STATUS.CH17V2634.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v26-34
+    quote: >-
+      If, at a person's birth, the Sun occupies a house which in the Ashtakavarga of Jupiter
+      gets the least number of benefic dots, the person born will be luckless in that every
+      undertaking for his benefit will fail.
+    quote_sha256: cc21a4a377a56450b727f125e14521a61971e28e9fb452173b5b7495bb4f3f7d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - sav_bindu:
+        bhava: bhava.01
+        op: <=
+        n: 1
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: the person born will be luckless in that every undertaking for his benefit will
+      fail
+- id: JATAKAPARIJATA.STATUS.CH17V56.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v56
+    quote: if Jupiter, he will be a king's peer
+    quote_sha256: 533562f62b654bbde0002d8ebcee7cdf73274ec747e92476a26d7ffe949d8c36
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.jupiter
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: he will be a king's peer
+- id: JATAKAPARIJATA.STATUS.CH17V80.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v80
+    quote: >-
+      If the Sun, Mercury and Venus be together in that bhava, they will make the person born
+      equal to a king
+    quote_sha256: b9726912d8f09eea0fd05976e7c7a47b4c1cf624c0f41f4573eb347ca28d6f36
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: equal to a king
+- id: JATAKAPARIJATA.STATUS.CH17V81.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.health: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v81
+    quote: >-
+      When the Sun, Venus and Saturn appear together in the 9th bhava, the person born will
+      become a vile convict.
+    quote_sha256: a8ff29781f366727bb2d9f08107aa5b944402ce37786cc04635d1e4b2d199770
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: vile convict
+- id: JATAKAPARIJATA.STATUS.CH18V116.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v116
+    quote: >-
+      Flight of enemies, victory, ease, great diligence, coming in of wealth, royal favor
+      and sound health are what a person may expect in the Sun's interval in Jupiter's mahadasa.
+    quote_sha256: b26ce7cc6f38dfdf4a40f5fabd87ae5e54291b1630b1e5c44d722010129310a9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: royal favor
+- id: JATAKAPARIJATA.STATUS.CH18V131.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v131
+    quote: >-
+      Devotion to Gods and Brahmanas, royal favor, great happiness and attainment of rank,
+      a person will have, during Jupiter's bhukti in Saturn's dasa.
+    quote_sha256: e1d5d2bad607b65e2dbbfce8051dcd780defea9e4f7624c198e1598150321667
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: royal favor, great happiness and attainment of rank
+- id: JATAKAPARIJATA.STATUS.CH18V160.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v160
+    quote: incurs the displeasure of the rulers.
+    quote_sha256: 77d653efbf73c404a7c010ef9befe18de25e679156ea53f698ec33b09c7c24d0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: incurs the displeasure of the rulers
+- id: JATAKAPARIJATA.STATUS.CH18V168.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.3
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v168
+    quote: >-
+      Venus in its exaltation sign but in the depression Navamsa causes loss of wealth and
+      loss of status in its dasa.
+    quote_sha256: 887728df0b48a2cb397b1febcb74d9498a6e9caa8e23309ad1d13e833e598954
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.exalted
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.venus
+        dignity: dignity.debilitated
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: loss of status
+- id: JATAKAPARIJATA.STATUS.CH18V82.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.health: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v82
+    quote: >-
+      Power almost regal, exemption from ailments, decadence of enemies, happiness and prosperity
+      are what may be expected in the Sun's bhukti in the Moon's mahadasa.
+    quote_sha256: 6e44aef4a7b84e9b625c8d6ba2d4148178c1a0e5d5a72b4441b33b9e755ce462
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Power almost regal, exemption from ailments, decadence of enemies, happiness and prosperity
+- id: JATAKAPARIJATA.STATUS.CH18V98.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v98
+    quote: >-
+      Total disappearance of ailments and enemies, royal favor, accession of wealth, acquisition
+      of children and great perseverence will mark Jupiter's bhukti in Rahu's dasa.
+    quote_sha256: 9650cc0eab4c3ea6356c272b81e25f6e0bca474be244fbe6373e7e1fbc3b1ae9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: royal favor
+- id: JATAKAPARIJATA.STATUS.CH9V100109.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v100-109
+    quote: >-
+      If Mercury occupy the position of exaltation, the person born will raise the status
+      of (advance) his family will rule over men will be talented, victorious over his foes
+      and live in happiness
+    quote_sha256: cfc46aa31eb96486316d805a8e064d8c10458bb424434a8e766f36d83e7358bc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will raise the status of (advance) his family will rule over men will
+      be talented, victorious over his foes and live in happiness
+- id: JATAKAPARIJATA.STATUS.CH9V100109.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.spiritual: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v100-109
+    quote: >-
+      If the planet in exaltation be Jupiter, the person born will be the founder of a long
+      enduring family, will possess moral worth, will be clever, learned and in royal favor.
+    quote_sha256: 7d6f0a4670190b2d70e7631efec529ade8db485fc3abd13107c9469ec9323996
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will be the founder of a long enduring family, will possess moral worth,
+      will be clever, learned and in royal favor.
+- id: JATAKAPARIJATA.STATUS.CH9V102.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v102
+    quote: >-
+      Even one planet occupying its exaltation and aspected by friendly planets can make the
+      person born under its influence a lord of the earth, eminent and honorable, and secure
+      to him allies.
+    quote_sha256: f9dcec8f71ef5f31ec81b296c3195538623aa54e2357c368065c82bebfe36b8d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: can make the person born under its influence a lord of the earth, eminent and honorable
+- id: JATAKAPARIJATA.STATUS.CH9V1053.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.wealth: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v10-53
+    quote: >-
+      The effect on the person born of the Moon in Kumbha being aspected by benefic planets
+      is that he will be rich in fame
+    quote_sha256: 83883a2bff9ced2c830cc0cd4c8689b3b0525f067c03bab9bd21734edfada1c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.moon
+      - aspects:
+          subject: graha.venus
+          target: graha.moon
+      - aspects:
+          subject: graha.mercury
+          target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: rich in fame
+- id: JATAKAPARIJATA.STATUS.CH9V107.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.relationship: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: >-
+      When the Sun is in the house of a friendly planet, the person born will have firm friends
+      and will be liberal and famous
+    quote_sha256: f9190dfd6ea4e5057d7403147f0a36222279c62b52183554bce29f1aed365e8a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.friendly
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the person born will have firm friends and will be liberal and famous
+- id: JATAKAPARIJATA.STATUS.CH9V108.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.temperament: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v108
+    quote: >-
+      A person is famous, happy, pleased with his friend, witty and jovial, wise, voluptuous
+      or fed by the bounty of another according as the planet in a friendly house at his birth
+      is the Sun
+    quote_sha256: 8f8f700835b9b6cc730bbb5c0a01c308289d7352b9fac55c3bb7ae320e5f3bf4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.friendly
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: A person is famous
+- id: JATAKAPARIJATA.STATUS.CH9V115.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v115
+    quote: >-
+      With the benefic planets occupying the 6th, the 7th and the 8th houses from the Moon
+      there results what is called the Moon's अधियोग (Adhiyoga) wherein takes place the birth
+      of a commander (Police Superintendent or head), a minister or a ruler (of a district
+      or Province).
+    quote_sha256: 071d7ea1c4464a889949a258090158e8c0cfc4fdac997429cd1f85f944b34616
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.06
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.jupiter
+        bhava: bhava.07
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.venus
+        bhava: bhava.08
+        reference: ref.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: birth of a commander, a minister or a ruler
+- id: JATAKAPARIJATA.STATUS.CH9V143.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+    domain.wealth: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v143
+    quote: >-
+      When the lord of the 7th bhava is in the 10th bhava and when the lord of the 10th is
+      in the exaltation sign and also in conjunction with the lord of the 9th, the auspicious
+      yoga called श्रीनाथ (Srinatha lord of Fortune) is produced. The person born therein
+      will be like Indra, the king of the celestials.
+    quote_sha256: 19fcb2ce6b0ae3fe1c164219f52eee8e67f3037ee333a7824ed6c8a59dd1b152
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.10
+    - dignity:
+        subject: lord.bhava.10
+        dignity: dignity.exalted
+    - conjunct:
+        subject: lord.bhava.10
+        other: lord.bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: The person born therein will be like Indra, the king of the celestials.
+- id: JATAKAPARIJATA.STATUS.CH9V155.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v155
+    quote: >-
+      The person born in the कुसुमयोग (Kusuma yoga) will be a powerful sovereign of wide celebrity
+      in the world, foremost among kings who trace their descent from illustrious royal houses,
+      of great enjoyments, bowed to by rulers of the earth and bountifully bestowing gifts.
+    quote_sha256: 9e810e007f5b93cae8ba450227ccc435ee52ddfb74dfef00200705fedc74ce81
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d1
+        subject: graha.venus
+        rashi: rashi.taurus
+    - in_kendra:
+        subject: graha.venus
+    - in_trikona:
+        subject: graha.moon
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the person born in the Kusumayoga will be a powerful sovereign of wide celebrity in
+      the world
+- id: JATAKAPARIJATA.STATUS.CH9V32.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v32
+    quote: >-
+      The person whose birth is in the yoga formed by Mars, Mercury, Jupiter, Venus and Saturn
+      being in one bhava will be honorable, proficient in the arts, have to do greatly with
+      the infliction of punish-
+    quote_sha256: a24d939a211bf961fe60435beb7891db816ba9d317b53ebbd83eeb2b5195079d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      will be honorable, proficient in the arts, have to do greatly with the infliction of
+      punishment
+- id: JATAKAPARIJATA.STATUS.CH9V42.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: if the planet be in Simha, the person affected will become famous
+    quote_sha256: 0efdea9f6b7b921e584d2f7bc21fdb3c46bfffd59ad9d49744fcebc7dbbba918
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.jupiter
+      rashi: rashi.leo
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person affected will become famous
+- id: JATAKAPARIJATA.STATUS.CH9V42.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: >-
+      if Jupiter occupy a स्वक्षेत्र (Swakshetra), the person born will be a king or on a
+      par with a king
+    quote_sha256: 158fe71447147edb43efa213b451ca0157496686bf849bfe3f13bf8ea42e415c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: graha.jupiter
+      dignity: dignity.own_sign
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the person born will be a king or on a par with a king
+- id: JATAKAPARIJATA.STATUS.CH9V450.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v4-50
+    quote: >-
+      When the Moon in Thula is aspected severally by the benefic planets, Mercury, Jupiter
+      and Venus, the persons born in the several cases will be respectively a king, a mint-master
+      and a merchant.
+    quote_sha256: 5d224d15e6c085964db7d5df108c5ad5c733f918b25acb9a20390db4c71ab6f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person born will be a king
+- id: JATAKAPARIJATA.STATUS.CH9V65.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v65
+    quote: >-
+      With Mars in the 3rd bhava, the person born becomes famous, of immense prowess, and
+      of upright (uncrooked) views,
+    quote_sha256: 583e08c0255961c22a3f76e40cc5503768b96b911eb1728e4f73c2f0920a3783
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.03
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person born becomes famous, of immense prowess, and of upright (uncrooked) views
+- id: JATAKAPARIJATA.STATUS.CH9V751.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v7-51
+    quote: >-
+      When the Moon occupies Dhanus and has the aspect of benefic planets upon it, the person
+      born will have plenty of learning, wealth, wisdom, fame and strength.
+    quote_sha256: 865130ab76b7e5312c055b19d9478bafd599eac084fa8675f2272188ae8db800
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.moon
+      - aspects:
+          subject: graha.venus
+          target: graha.moon
+      - aspects:
+          subject: graha.mercury
+          target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person born will have plenty of learning, wealth, wisdom, fame and strength
+- id: JATAKAPARIJATA.STATUS.CH9V84.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v84
+    quote: >-
+      The person born under the star अश्विनी (Aswini) will have a great deal of intelligence,
+      wealth, modesty, sagacity and fame and will be happy
+    quote_sha256: ae03405269b424ef156679d813aa6045350c0d05f3c8e3ea499004d80ecbedfc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.ashwini
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: fame
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V114.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v114
+    quote: >-
+      If the birth be at night time and the Moon be aspected by Venus, the person born becomes
+      happy.
+    quote_sha256: 6e3f822195c4b2eecadfeb55e96fb6ec26b68a15175982e9f13e34c188cebe6e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person born becomes happy
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V114.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v114
+    quote: >-
+      If the Moon should be in the Navamsa of a very friendly planet and aspected by Venus,
+      then the person born will be happy.
+    quote_sha256: 64da36097c2607f46b87b70d8bc9139ba8b4eb1fbad09788d99b8a4289ec4448
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: then the person born will be happy
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V1871.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.7
+    domain.temperament: 0.6
+    domain.travel: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v18-71
+    quote: >-
+      A person born with the Sun in the 5th bhava will be a courtier with an unsteady mind
+      and will sojourn abroad.
+    quote_sha256: 1c6acbde29f59247d97e4d5ecc00b4d1f37ec909b736b283ba8472f859ca82c6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: a courtier with an unsteady mind
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V51.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 1.0
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v51
+    quote: if in the 4th quarter, he will be happy
+    quote_sha256: 6454ccf18eb0bf8fd1f3000d7643d8376d18418a336c29e7d1e1e01656805bf3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.mula
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be happy

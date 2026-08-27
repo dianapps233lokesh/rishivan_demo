@@ -1,0 +1,6224 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.CAREER.CH18V143.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v143
+    quote: >-
+      Mercury occupying the depression Navamsa in its exaltation sign, produces incompetency
+      for work in the person concerned and makes him indigent in its dasa.
+    quote_sha256: 37a52c391cf2e99f331df3d4896b34efd38ff92d585d8cf2ce17642483c05188
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.virgo
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mercury
+        dignity: dignity.debilitated
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: produces incompetency for work in the person concerned
+- id: JATAKAPARIJATA.CAREER.CH18V45.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v45
+    quote: >-
+      When a malefic planet occupies the 2nd bhava, the person concerned will have to suffer
+      during the antardasa of that planet through the ill-will of the ruler of the land
+    quote_sha256: 9eb1a1d660216ab3bfab7fa022fad348f717372b36b2488214b29cbe240e3bce
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: suffer during the antardasa of that planet through the ill-will of the ruler of
+      the land
+- id: JATAKAPARIJATA.EDUCATION.CH17V107.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v107
+    quote: >-
+      Mercury in exaltation or in Swakshetra (स्वक्षेत्र) identical with a Kendra or a Trikona
+      place from the Lagna, leads to the acquisition of abundant knowledge and vast wealth.
+    quote_sha256: cb8e41224e3f015a9b2d6fed91d2849e5a34bb97ede87769339ffdb7b5a4b620
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - any:
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.exalted
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.own_sign
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: acquisition of abundant knowledge
+- id: JATAKAPARIJATA.EDUCATION.CH17V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.relationship: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v58
+    quote: >-
+      If Mercury and Venus occupy the 10th place from the Moon, the person born will be blessed
+      with learning, wife and wealth
+    quote_sha256: 93a16a75dc9341cf669e2ef8b6c67155d8dbb08e784c597844d3926b95b88bd4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.10
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.venus
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: blessed with learning, wife and wealth
+- id: JATAKAPARIJATA.EDUCATION.CH9V5.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      If Saturn be associated with Mercury, the person born will be learned, wealthy and distinguished
+      for his moral worth.
+    quote_sha256: bd7aa705bd9702dbb22b63b799ca0050d1fd50123694428e8313e4a78fe98d0c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.saturn
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: learned, wealthy and distinguished for his moral worth
+- id: JATAKAPARIJATA.EDUCATION.CH9V751.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v7-51
+    quote: >-
+      When the Moon occupies Dhanus and has the aspect of benefic planets upon it, the person
+      born will have plenty of learning, wealth, wisdom, fame and strength.
+    quote_sha256: 865130ab76b7e5312c055b19d9478bafd599eac084fa8675f2272188ae8db800
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.moon
+      - aspects:
+          subject: graha.venus
+          target: graha.moon
+      - aspects:
+          subject: graha.mercury
+          target: graha.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the person born will have plenty of learning, wealth, wisdom, fame and strength
+- id: JATAKAPARIJATA.EDUCATION.CH9V84.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v84
+    quote: >-
+      The person born under the star अश्विनी (Aswini) will have a great deal of intelligence,
+      wealth, modesty, sagacity and fame and will be happy
+    quote_sha256: ae03405269b424ef156679d813aa6045350c0d05f3c8e3ea499004d80ecbedfc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.ashwini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will have a great deal of intelligence
+- id: JATAKAPARIJATA.FAMILY.CH18V128.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v128
+    quote: >-
+      Death of a revered matronly female, sorrow, dislike of relatives, coming in of money
+      and wind disease may be expected during the Moon's bhukti in the dasa of Saturn.
+    quote_sha256: be2d4d838a1b4242d117007d3987788cc7a57c7993aa010fc494ff2285184aff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: strong
+    text: Death of a revered matronly female
+- id: JATAKAPARIJATA.GENERAL.CH18V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v18
+    quote: >-
+      The dasa of a planet will be very auspicious when it is in conjunction with a benefic
+      planet..
+    quote_sha256: 0d87f367ae24ac407124e27fb6ce571f101222bf9cfb60d5e271508e4b9e953b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.01
+        level: level.maha
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: >-
+      The dasa of a planet will be very auspicious when it is in conjunction with a benefic
+      planet.
+- id: JATAKAPARIJATA.HEALTH.CH17V8081.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.8
+    domain.health: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v80-81
+    quote: >-
+      If the lord of the Rasi be without strength, the person concerned will suffer the evil
+      effects.
+    quote_sha256: 6f3174d80c2169926b807f6413bba496a3d376793c44a9bb53c0764b8b6e8564
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.01
+        op: <
+        value: 1.0
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will suffer the evil effects
+- id: JATAKAPARIJATA.HEALTH.CH18V120.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.health: 0.8
+    domain.relationship: 0.7
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v120
+    quote: >-
+      Jupiter occupying a depression Navamsa in its exaltation sign brings on during the progress
+      of its dasa danger through robbers, foes and rulers, the hatred of wife and sons and
+      bad luck generally
+    quote_sha256: 9b40a38fcb0dcc6356f093e7e834f51dae954f6ed6b0204eed31795086aa1edc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.jupiter
+        dignity: dignity.debilitated
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.exalted
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      danger through robbers, foes and rulers, the hatred of wife and sons and bad luck generally
+- id: JATAKAPARIJATA.HEALTH.CH18V132.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v132
+    quote: towards the end, it is fraught with woe to the creatures concerned.
+    quote_sha256: 29d7f6546f5db5ab967dd18f675c53d951d5587bd86bd1f4c05ffec845eb89d4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.libra
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.saturn
+        rashi: rashi.aries
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: it is fraught with woe to the creatures concerned
+- id: JATAKAPARIJATA.HEALTH.CH18V51.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v51
+    quote: >-
+      During the dasa of the lord of the 8th bhava and in the apahara of a malefic planet,
+      the astrologer may predict risk from foes, loss of life, of wealth, of fame, rambling
+      about or ejection from a place of honor.
+    quote_sha256: 7b6325b8676a9e3b00b56e8515a02a1e393e2bab18dfb78ae4c5f3347f5dfc6c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.08
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      risk from foes, loss of life, of wealth, of fame, rambling about or ejection from a
+      place of honor
+- id: JATAKAPARIJATA.HEALTH.CH18V72.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+    domain.health: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v72
+    quote: >-
+      During the progress of the Sun's maha-dasa occupying the depression Navamsa in its exaltation
+      house, a person has to apprehend ill-fame, danger, the death of a son, a wife or some
+      paternal relation and loss of property in connection with agriculture and other pursuits.
+    quote_sha256: 5cd56ddf7db5652dba53c2032875cd8cc36e2ad3a87f8d05d130e7a299bd2e63
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.sun
+        rashi: rashi.libra
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      a person has to apprehend ill-fame, danger, the death of a son, a wife or some paternal
+      relation and loss of property in connection with agriculture and other pursuits
+- id: JATAKAPARIJATA.OBSTACLE.CH18V151.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v151
+    quote: >-
+      Fear of kings and robbers, sorrow, ruin of every business and altercation with bad people
+      are to be expected in Rahu's bhukti in Ketu dasa.
+    quote_sha256: d46b1b3a608f8b55c520aa883d5f35f96b8f3d0f65b6a8cac7fd8c62d9717d39
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Fear of kings and robbers, sorrow, ruin of every business and altercation with bad people
+      are to be expected
+- id: JATAKAPARIJATA.OBSTACLE.CH18V86.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v86
+    quote: >-
+      During Rahu's bhukti in Mars' dasa there is peril to be apprehended from rulers, robbers
+      and the like ; destruction of wealth and corn and success in evil pursuits.
+    quote_sha256: 3ab63fd5a167c28f0c810e99fc9b20496b7c187d09496b11973603f72290ff1d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: peril to be apprehended from rulers, robbers and the like
+- id: JATAKAPARIJATA.PROGENY.CH17V79.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v79
+    quote: >-
+      If the combination in the 9th bhava consist of the Sun, Mars and Jupiter, the person
+      concerned will evince love to Gods and the Manes and will be blessed with children,
+      wife and wealth.
+    quote_sha256: f3cf8b771e911fca6c0b477a3c35058c562292a4a677f4802a0334da57a1a448
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: will be blessed with children, wife and wealth
+- id: JATAKAPARIJATA.PROGENY.CH17V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.progeny: 0.8
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v8
+    quote: >-
+      A person can have prosperity (sons, wife, etc.), according as the 5th or the 7th house
+      calculated from the Lagna or the Moon at the time of his birth is occupied or aspected
+      by a benefic planet or by its lord
+    quote_sha256: dd46d6dc49986ad14ed41545f262fb1c0d25264c97b314bbc96e326a10d506ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      A person can have prosperity (sons, wife, etc.), according as the 5th or the 7th house
+      calculated from the Lagna or the Moon at the time of his birth is occupied or aspected
+      by a benefic planet or by its lord
+- id: JATAKAPARIJATA.PROGENY.CH9V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v47
+    quote: >-
+      A person born under the influence of a planet aspected by a propitious one will have
+      children, riches and enjoyments, will be handsome, honored by his sovereign and exempt
+      from humiliation or disgrace.
+    quote_sha256: b13fc4a231f797318251a13739cc73e5488e922c97945996472a1deee54db066
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: will have children
+- id: JATAKAPARIJATA.PROGENY.CH9V91.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.progeny: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v91
+    quote: >-
+      if in Vrishabha, the person born will be liberal, lovely, rich in fame, of excellent
+      behaviour, and have his children all daughters
+    quote_sha256: cbe5a403a1c05086bca98631e3b3724436e15b080733f52cb2d82deadd973657
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: have his children all daughters
+- id: JATAKAPARIJATA.PROPERTY.CH17V5557.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v55-57
+    quote: >-
+      When the चक्रदशा (Chakradasa) of the 4th Rasi begins to ripen, the person concerned
+      will get vehicles, ornaments, new lands in the frontier; make pilgrimages to sacred
+      shrines and the like; obtain conspicuous honor from his own community; enjoy purity
+      of the heart; engage in some great enterprise; be blessed with wife and children; engage
+      in agriculture; acquire new friends and new landed property, new houses; derive much
+      happiness, command good health, resources and articles of the toilette such as perfumes,
+      wearing apparel and ornaments. The good things the astrologer is to divine when the
+      Rasi is good;
+    quote_sha256: 9bcff4ddb264bb9082301d3e1364d932c5e892d51326543fea4ba5f7b1ea2d3a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.chara
+        subject: lord.bhava.04
+        level: level.maha
+    - dignity:
+        subject: lord.bhava.04
+        dignity: dignity.exalted
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person concerned will get vehicles, ornaments, new lands in the frontier... acquire
+      new landed property, new houses
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V53.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+    domain.wealth: 0.85
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v53
+    quote: >-
+      When the dasa of the lord of the 12th bhava is in progress and when the bhukti of the
+      Sun, Saturn or Mars has set in, the person concerned, say the astrologers, will be at
+      variance with his wife, sons and relations, and will suffer loss of strength, of honor
+      and of wealth.
+    quote_sha256: b3ee55d543518fefda7e681bd2ba2a0b1c4aa4d86ac300d759406c845f3ee240
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.12
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person concerned, say the astrologers, will be at variance with his wife, sons and
+      relations, and will suffer loss of strength, of honor and of wealth.
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V53.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+    domain.wealth: 0.85
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v53
+    quote: >-
+      When the dasa of the lord of the 12th bhava is in progress and when the bhukti of the
+      Sun, Saturn or Mars has set in, the person concerned, say the astrologers, will be at
+      variance with his wife, sons and relations, and will suffer loss of strength, of honor
+      and of wealth.
+    quote_sha256: b3ee55d543518fefda7e681bd2ba2a0b1c4aa4d86ac300d759406c845f3ee240
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.12
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person concerned, say the astrologers, will be at variance with his wife, sons and
+      relations, and will suffer loss of strength, of honor and of wealth.
+- id: JATAKAPARIJATA.RELATIONSHIP.CH18V53.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+    domain.wealth: 0.85
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v53
+    quote: >-
+      When the dasa of the lord of the 12th bhava is in progress and when the bhukti of the
+      Sun, Saturn or Mars has set in, the person concerned, say the astrologers, will be at
+      variance with his wife, sons and relations, and will suffer loss of strength, of honor
+      and of wealth.
+    quote_sha256: b3ee55d543518fefda7e681bd2ba2a0b1c4aa4d86ac300d759406c845f3ee240
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.12
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person concerned, say the astrologers, will be at variance with his wife, sons and
+      relations, and will suffer loss of strength, of honor and of wealth.
+- id: JATAKAPARIJATA.SPIRITUAL.CH17V69.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v69
+    quote: >-
+      When the 9th bhava is occupied or aspected by its lord or a benefic planet, the person
+      born does assuredly become possessed of good fortune.
+    quote_sha256: b776c50ec24673e72337e7d2a68700267e7c70e75c867fab03a7e8a481368785
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - aspects:
+        subject: lord.bhava.09
+        target: bhava.09
+    - aspects:
+        subject: graha.jupiter
+        target: bhava.09
+    - aspects:
+        subject: graha.mercury
+        target: bhava.09
+    - aspects:
+        subject: graha.venus
+        target: bhava.09
+    - aspects:
+        subject: graha.moon
+        target: bhava.09
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the person born does assuredly become possessed of good fortune
+- id: JATAKAPARIJATA.SPIRITUAL.CH17V79.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.progeny: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v79
+    quote: >-
+      If the combination in the 9th bhava consist of the Sun, Mars and Jupiter, the person
+      concerned will evince love to Gods and the Manes and will be blessed with children,
+      wife and wealth.
+    quote_sha256: f3cf8b771e911fca6c0b477a3c35058c562292a4a677f4802a0334da57a1a448
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will evince love to Gods and the Manes
+- id: JATAKAPARIJATA.SPIRITUAL.CH9V96.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+    domain.spiritual: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v96
+    quote: >-
+      If the Moon be in a नवांश (Navamsa) owned by धनुम् (Dhanus), the person born will be
+      lean and long armed, liberal, devout and wealthy
+    quote_sha256: 03d86d072da5179decabed630ff48b2541f498651da551b0247837baea7ad5ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_occupies:
+      varga: varga.d9
+      subject: graha.moon
+      rashi: rashi.sagittarius
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: devout
+- id: JATAKAPARIJATA.STATUS.CH17V57.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v57
+    quote: >-
+      if Venus be in conjunction with the Sun in the 10th bhava from the Moon, he will enjoy
+      royal favor and will have a wife with increasing wealth
+    quote_sha256: 4be29b1f46838b9d6e449260de59237b260a07f086b2f0ebaf2f67b6afef4924
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.sun
+        bhava: bhava.10
+        reference: ref.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: he will enjoy royal favor and will have a wife with increasing wealth
+- id: JATAKAPARIJATA.STATUS.CH17V79.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v79
+    quote: >-
+      When the 3 planets in the 9th bhava are the Sun, the Moon and Venus, the person born
+      will be a royal favourite and lose his wealth by engaging in quarrels for women.
+    quote_sha256: e42f6ca3e0c210a4f966436704d857f3e0c3d7bb245d04709cc6a239cbfd9738
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the person born will be a royal favourite
+- id: JATAKAPARIJATA.STATUS.CH18V132.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.wealth: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v132
+    quote: >-
+      Saturn occupying the depression Navamsa in its exaltation house produces happiness at
+      the commencement of its dasa
+    quote_sha256: 4ac288a502bb824db7d45bb7d3e1b537bd0d20d01a0037c57faf6bc9c4833894
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.libra
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.saturn
+        rashi: rashi.aries
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: produces happiness at the commencement of its dasa
+- id: JATAKAPARIJATA.STATUS.CH9V42.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+    domain.progeny: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: >-
+      If Jupiter be in a sign of Mars at the birth of a person, the latter will be superior
+      to others in his army, wealth and sons, highly virtuous and bountiful
+    quote_sha256: 72edb26f4eb2b6d7cdb87d1298adb7376b904e7d5750c11fcc01ebe4f4dacce4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.scorpio
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the latter will be superior to others in his army, wealth and sons, highly virtuous
+      and bountiful
+- id: JATAKAPARIJATA.STATUS.CH9V47.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.progeny: 0.8
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v47
+    quote: >-
+      A person born under the influence of a planet aspected by a propitious one will have
+      children, riches and enjoyments, will be handsome, honored by his sovereign and exempt
+      from humiliation or disgrace.
+    quote_sha256: b13fc4a231f797318251a13739cc73e5488e922c97945996472a1deee54db066
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: honored by his sovereign
+- id: JATAKAPARIJATA.TEMPERAMENT.CH9V112.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.75
+    domain.wealth: 0.75
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v112
+    quote: if it be aspected by Venus, he will be happy
+    quote_sha256: 769de79aba81cd616466dc34e37f31b59885c8d3e5a4c912f5351ecd2e0aa5d5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.own_sign
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.friendly
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be happy
+- id: JATAKAPARIJATA.WEALTH.CH17V107.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.education: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v107
+    quote: >-
+      Mercury in exaltation or in Swakshetra (स्वक्षेत्र) identical with a Kendra or a Trikona
+      place from the Lagna, leads to the acquisition of abundant knowledge and vast wealth.
+    quote_sha256: cb8e41224e3f015a9b2d6fed91d2849e5a34bb97ede87769339ffdb7b5a4b620
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - any:
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.exalted
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.own_sign
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: vast wealth
+- id: JATAKAPARIJATA.WEALTH.CH17V127.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.property: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v127
+    quote: >-
+      If the lord of the 4th bhava be in the 9th, identical with a sign owned by a benefic
+      planet, and in conjunction with Jupiter and Venus, and if the lord of the 9th bhava
+      be in a Kona or a Kendra position, the person born will have ornaments, wealth and vehicles
+      collected from many countries.
+    quote_sha256: 8f4e7315903c0fe06b1b4611a2ab7f5cecaff3ae70ebf92156e21cea020e9e38
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.09
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.09
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.09
+          rashi: rashi.gemini
+      - bhava_in_rashi:
+          bhava: bhava.09
+          rashi: rashi.cancer
+      - bhava_in_rashi:
+          bhava: bhava.09
+          rashi: rashi.virgo
+      - bhava_in_rashi:
+          bhava: bhava.09
+          rashi: rashi.libra
+      - bhava_in_rashi:
+          bhava: bhava.09
+          rashi: rashi.sagittarius
+      - bhava_in_rashi:
+          bhava: bhava.09
+          rashi: rashi.pisces
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.venus
+    - any:
+      - in_trikona:
+          subject: lord.bhava.09
+      - in_kendra:
+          subject: lord.bhava.09
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will have ornaments, wealth and vehicles collected from many countries
+- id: JATAKAPARIJATA.WEALTH.CH17V137.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v137
+    quote: >-
+      If the lords of the 2nd and the 4th bhavas occupy, in conjunction with a benefic planet,
+      the 9th bhava identical with a benefic Rasi, the person born will come by a treasure
+      laid under-ground.
+    quote_sha256: 97aa52b057f4fe09201bf59c5143dc539bcb4672a81a2b17d0a2b95448860914
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.09
+    - bhava_in_rashi:
+        bhava: bhava.09
+        rashi: rashi.gemini
+    - any:
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will come by a treasure laid under-ground
+- id: JATAKAPARIJATA.WEALTH.CH17V137.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v137
+    quote: >-
+      Again, if the lords of the 11th and the 2nd bhavas be in the 4th, and the lord of the
+      last-mentioned bhava be in a benefic sign in conjunction with a benefic planet, the
+      acquisition of hidden treasure will be the result.
+    quote_sha256: c5f4dd1c602d873a44c561d28b9900aad7297153c9c218f4930c5e8d4b0a3ff5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.11
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.04
+    - any:
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.02
+          rashi: rashi.gemini
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.02
+          rashi: rashi.virgo
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.02
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.02
+          rashi: rashi.pisces
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.02
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.02
+          rashi: rashi.libra
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.02
+          rashi: rashi.cancer
+    - any:
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the acquisition of hidden treasure will be the result
+- id: JATAKAPARIJATA.WEALTH.CH17V137.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v137
+    quote: >-
+      Thirdly, the lord of the 11th bhava occupying the 4th in conjunction with a benefic
+      planet is a giver of wealth concealed underground.
+    quote_sha256: 836c52e060c9210ddb98e1ba02c12f1807db3a48e83a3c3e1997240563844492
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.11
+        bhava: bhava.04
+    - any:
+      - conjunct:
+          subject: lord.bhava.11
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.11
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.11
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.11
+          other: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: is a giver of wealth concealed underground
+- id: JATAKAPARIJATA.WEALTH.CH17V2596.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.health: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v25-96
+    quote: >-
+      When the lord of the 2nd bhava is Saturn or in conjunction with Saturn, or is aspected
+      in depression by Saturn, the person born will be continually eating in Sraddhas.
+    quote_sha256: cbad316599dd7f548b81068bdc349c6a8b9e11753b6a9901e689739f460d42d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - same_bhava:
+        subject: lord.bhava.02
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.saturn
+    - all:
+      - aspects:
+          subject: graha.saturn
+          target: lord.bhava.02
+      - dignity:
+          subject: lord.bhava.02
+          dignity: dignity.debilitated
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be continually eating in Sraddhas
+- id: JATAKAPARIJATA.WEALTH.CH17V31.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.health: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v31
+    quote: >-
+      When Saturn with abundant strength occupies the 1st bhava and is associated with 6 or
+      5 benefic dots, the person born will sustain loss of wealth accompanied by much suffering
+      from his very birth.
+    quote_sha256: df6ae5081fd23a8fd6c2ade607d5c2c6d5568fcaab65309835e5794ddd14cdb0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+    - any:
+      - sav_bindu:
+          bhava: bhava.01
+          op: ==
+          n: 6
+      - sav_bindu:
+          bhava: bhava.01
+          op: ==
+          n: 5
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will sustain loss of wealth accompanied by much suffering from his very
+      birth
+- id: JATAKAPARIJATA.WEALTH.CH17V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35
+    quote: If a planet be associated with benefic dots, it produces its full beneficial effect
+    quote_sha256: bc153f954fb2304e790f67bfdbb517f8e02f6d3ed9da4154e99e0766c2ccded2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - sav_bindu:
+        bhava: bhava.01
+        op: '>'
+        n: 0
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: it produces its full beneficial effect
+- id: JATAKAPARIJATA.WEALTH.CH17V45.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v45
+    quote: If the planets be bad, there will be maximum labor and minimum income
+    quote_sha256: c8e52ea2d7cb56ae3d6297eb2a8b11c2bf6f82a4156251774b612c04326661b6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.saturn
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: strong
+    text: maximum labor and minimum income
+- id: JATAKAPARIJATA.WEALTH.CH17V4750.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.wealth: 0.8
+    domain.status: 0.8
+    domain.progeny: 0.8
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v47-50
+    quote: >-
+      At the time the चक्रदशा (Chakradasa) of the Lagna is in progress, health of body, much
+      happiness, acquisition of fame, ornaments, dominion, wealth, children, wives and apparel
+      may be announced.
+    quote_sha256: 745ee8ea327140120da1c16750db41d75683aabc7e980d79b4b5dfe8b5f675df
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    dasha_active:
+      system: dasha_system.chara
+      subject: lord.bhava.01
+      level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      health of body, much happiness, acquisition of fame, ornaments, dominion, wealth, children,
+      wives and apparel may be announced
+- id: JATAKAPARIJATA.WEALTH.CH17V57.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v57
+    quote: >-
+      if Saturn be together with the Sun in the position adverted to above, the person born
+      will be poor and dejected.
+    quote_sha256: d48a262913070c6a48e23e2af2021852f10c130d1ec3632fc87d8db3a8336d3d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.sun
+        bhava: bhava.10
+        reference: ref.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the person born will be poor and dejected
+- id: JATAKAPARIJATA.WEALTH.CH17V6667.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.8
+    domain.health: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v66-67
+    quote: >-
+      During the चक्रदशा (Chakradasa) of the 8th Rasi there will be much misery, waste of
+      wealth, loss of place, loss of relations, griping pain in the privities and the stomach,
+      poverty, famine and danger from an enemy. These effects the astrologer may announce
+      when the Rasi is malefic and occupied by a malefic planet.
+    quote_sha256: 23e3c5b5e5c4a933f934540abafd3c51765ee8f40cf729c70bc0a69e15d82a28
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.chara
+        subject: lord.bhava.08
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: waste of wealth and poverty
+- id: JATAKAPARIJATA.WEALTH.CH17V67.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.career: 0.3
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v67
+    quote: >-
+      the planet in the 11th bhava when possessed of full strength is capable of giving wealth.
+      If the Sun be such a planet, much wealth is derived by the person concerned from paternal
+      kinsfolk
+    quote_sha256: 80831029a66f3e08bbb47c9b17a978f50d73f5a4d462f07297c0ffa53eee5076
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+    - strength_band:
+        subject: graha.sun
+        band: band.very_strong
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: much wealth is derived by the person concerned from paternal kinsfolk
+- id: JATAKAPARIJATA.WEALTH.CH17V67.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v67
+    quote: >-
+      if Mercury be the planet occupying the 11th bhava in full strength, wealth comes to
+      the person concerned from a dear master, a discerning friend or a maternal uncle.
+    quote_sha256: fc6a78958ea536598ecf967d7b3645c001f71b394bc63b883d1adf70b49cd2d8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+    - strength_band:
+        subject: graha.mercury
+        band: band.very_strong
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      wealth comes to the person concerned from a dear master, a discerning friend or a maternal
+      uncle
+- id: JATAKAPARIJATA.WEALTH.CH17V6869.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.progeny: 0.8
+    domain.relationship: 0.8
+    domain.property: 0.8
+    domain.status: 0.8
+    domain.spiritual: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v68-69
+    quote: >-
+      When the चक्रदशा (Chakradasa) of the 8th Rasi sets in, good will certainly result—viz.
+      children, friends, wives, wealth, agriculture, cattle, houses, ornaments, accomplishment
+      of good works and charity ; the securing of adherents among men connected with the great
+      men in power. All this will accrue when the Rasi is propitious.
+    quote_sha256: 00cd5017e184bfeebb668532bf4b813e21a31068d487e9600588f41fe45b40ab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.chara
+        subject: lord.bhava.08
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      good will certainly result—viz. children, friends, wives, wealth, agriculture, cattle,
+      houses, ornaments, accomplishment of good works and charity
+- id: JATAKAPARIJATA.WEALTH.CH17V75.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v75
+    quote: >-
+      When the planet in the 12th bhava is benefic and is associated with as well as aspected
+      by a benefic planet, and when the lord of that bhava is weak and occupies its inimical
+      or depression sign, the person born will not have to spend his wealth.
+    quote_sha256: bee6fa95575f8d3d55c137f13957cb789e1fa74c75ae7116493cdfcb83904731
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.12
+    - strength:
+        subject: lord.bhava.12
+        op: <
+        value: 300
+    - any:
+      - dignity:
+          subject: lord.bhava.12
+          dignity: dignity.inimical
+      - dignity:
+          subject: lord.bhava.12
+          dignity: dignity.debilitated
+  indicates:
+    claim: wealth.loss
+    polarity: negative
+    magnitude: strong
+    text: the person born will not have to spend his wealth
+- id: JATAKAPARIJATA.WEALTH.CH17V76.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      if Mars combine with Jupiter in that bhava, the person concerned will be wealthy and
+      respected
+    quote_sha256: 68acf54aabb433577cd1d7705cdf4d93f96bc6963840e33cd33bb38798829639
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will be wealthy and respected
+- id: JATAKAPARIJATA.WEALTH.CH17V79.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v79
+    quote: >-
+      When the 3 planets in the 9th bhava are the Sun, the Moon and Venus, the person born
+      will be a royal favourite and lose his wealth by engaging in quarrels for women.
+    quote_sha256: e42f6ca3e0c210a4f966436704d857f3e0c3d7bb245d04709cc6a239cbfd9738
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: lose his wealth by engaging in quarrels for women
+- id: JATAKAPARIJATA.WEALTH.CH17V80.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.7
+    domain.temperament: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v80
+    quote: >-
+      If the Sun and Mars be associated with Saturn, the person born will be friendless indigent
+      and will become a parricide.
+    quote_sha256: 3fa8dd3bd5327b4061c45e45b0dec6da7ae7a05fc9e526da013258de305c9bd1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: friendless indigent and will become a parricide
+- id: JATAKAPARIJATA.WEALTH.CH17V80.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v80
+    quote: >-
+      If the planets in the 9th bhava be the Sun, Mercury and Jupiter, the person born will
+      be a royal favourite and own large wealth.
+    quote_sha256: 9eefa888eb91be58c1a0e54ef38bc01d4ca580378ef35b040683b8513b51355f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: a royal favourite and own large wealth
+- id: JATAKAPARIJATA.WEALTH.CH17V81.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.8
+    domain.education: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v81
+    quote: >-
+      The Sun and Jupiter combining with Venus in the 9th bhava make the person born rakish,
+      wealthy and learned.
+    quote_sha256: 6a4fed4d0f6cdd977c8c1bf850b97a2fbf359b60bd4a39bb16c77a61ac775a09
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealthy
+- id: JATAKAPARIJATA.WEALTH.CH17V84.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.5
+    domain.career: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v84
+    quote: >-
+      If a planet owning a malefic house occupy a दुःस्थान (Dustthana) in strength, the bhava
+      represented by the malefic house is said to be advanced.
+    quote_sha256: afef05c4a3d888c951b11a08cd44eacfa853c17c860a98947fe95f14a6b2c97b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.06
+    - strength:
+        subject: lord.bhava.06
+        op: '>='
+        value: 1
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the bhava represented by the malefic house is said to be advanced
+- id: JATAKAPARIJATA.WEALTH.CH17V86.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v86
+    quote: >-
+      If the lord of the 9th bhava occupying the 4th in conjunction with Venus possess predominant
+      strength, the person born will live in pleasure and opulence for a long time
+    quote_sha256: e4ba543d6409ab3a867e76f508905b32b7641f4d58749df4a11d953cc4b28aeb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.04
+    - conjunct:
+        subject: lord.bhava.09
+        other: graha.venus
+    - strength_band:
+        subject: lord.bhava.09
+        band: band.very_strong
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will live in pleasure and opulence for a long time
+- id: JATAKAPARIJATA.WEALTH.CH17V86.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.status: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v86
+    quote: >-
+      if the aforesaid lord of the 9th bhava occupying the 6th, 8th, or the 12th place from
+      the Lagna, be associated with a benefic planet, the happiness of the person concerned
+      will be but short-lived.
+    quote_sha256: 654d8aff513dc6eef0f33bded3bfa844b121c519d59655258d4f75f74c950f38
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.12
+    - any:
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.moon
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the happiness of the person concerned will be but short-lived
+- id: JATAKAPARIJATA.WEALTH.CH17V87.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v87
+    quote: >-
+      If the Sun, Mars, Jupiter and Saturn be together in the 9th bhava, the person born acquires
+      wealth by his daring and prowess.
+    quote_sha256: ab353e12fb563103178262259e6f49d45176057555ae82e2c5e86857bbaddb2a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born acquires wealth by his daring and prowess
+- id: JATAKAPARIJATA.WEALTH.CH17V90.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v90
+    quote: >-
+      If the lord of the 2nd bhava occupy the Lagna or other Kendra in conjunction with Venus
+      and the Moon, the person born will have a silver plate to eat out of.
+    quote_sha256: 3808dea434433c9ba57cf827298703123dd6ffe1144c0490f546d9c2ca861745
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.01
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.venus
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will have a silver plate to eat out of
+- id: JATAKAPARIJATA.WEALTH.CH17V98.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v98
+    quote: >-
+      Every planet when in its own house or exaltation in the 9th bhava, produces most efficiently
+      a superabundance of wealth and gold to the person concerned.
+    quote_sha256: b86213efeb616c80108499d2ecca27046291d5f7ea645df50ba944d49cac162a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - any:
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.own_sign
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: produces most efficiently a superabundance of wealth and gold
+- id: JATAKAPARIJATA.WEALTH.CH17V98.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v98
+    quote: >-
+      Every planet when in its own house or exaltation in the 9th bhava, produces most efficiently
+      a superabundance of wealth and gold to the person concerned.
+    quote_sha256: b86213efeb616c80108499d2ecca27046291d5f7ea645df50ba944d49cac162a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - any:
+      - dignity:
+          subject: graha.moon
+          dignity: dignity.own_sign
+      - dignity:
+          subject: graha.moon
+          dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: produces most efficiently a superabundance of wealth and gold
+- id: JATAKAPARIJATA.WEALTH.CH17V98.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v98
+    quote: >-
+      Every planet when in its own house or exaltation in the 9th bhava, produces most efficiently
+      a superabundance of wealth and gold to the person concerned.
+    quote_sha256: b86213efeb616c80108499d2ecca27046291d5f7ea645df50ba944d49cac162a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - any:
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.own_sign
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: produces most efficiently a superabundance of wealth and gold
+- id: JATAKAPARIJATA.WEALTH.CH17V98.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v98
+    quote: >-
+      Every planet when in its own house or exaltation in the 9th bhava, produces most efficiently
+      a superabundance of wealth and gold to the person concerned.
+    quote_sha256: b86213efeb616c80108499d2ecca27046291d5f7ea645df50ba944d49cac162a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - any:
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.own_sign
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: produces most efficiently a superabundance of wealth and gold
+- id: JATAKAPARIJATA.WEALTH.CH17V98.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v98
+    quote: >-
+      Every planet when in its own house or exaltation in the 9th bhava, produces most efficiently
+      a superabundance of wealth and gold to the person concerned.
+    quote_sha256: b86213efeb616c80108499d2ecca27046291d5f7ea645df50ba944d49cac162a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - any:
+      - dignity:
+          subject: graha.jupiter
+          dignity: dignity.own_sign
+      - dignity:
+          subject: graha.jupiter
+          dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: produces most efficiently a superabundance of wealth and gold
+- id: JATAKAPARIJATA.WEALTH.CH17V98.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v98
+    quote: >-
+      Every planet when in its own house or exaltation in the 9th bhava, produces most efficiently
+      a superabundance of wealth and gold to the person concerned.
+    quote_sha256: b86213efeb616c80108499d2ecca27046291d5f7ea645df50ba944d49cac162a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - any:
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.own_sign
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: produces most efficiently a superabundance of wealth and gold
+- id: JATAKAPARIJATA.WEALTH.CH17V98.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v98
+    quote: >-
+      Every planet when in its own house or exaltation in the 9th bhava, produces most efficiently
+      a superabundance of wealth and gold to the person concerned.
+    quote_sha256: b86213efeb616c80108499d2ecca27046291d5f7ea645df50ba944d49cac162a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+    - any:
+      - dignity:
+          subject: graha.saturn
+          dignity: dignity.own_sign
+      - dignity:
+          subject: graha.saturn
+          dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: produces most efficiently a superabundance of wealth and gold
+- id: JATAKAPARIJATA.WEALTH.CH18V100.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.8
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v100
+    quote: >-
+      The society of friends, relatives, wife and children, accession of wealth and royal
+      favor can be enjoyed during Mercury's bhukti in Rahu's dasa.
+    quote_sha256: 8e4a8c89b3a5fe1197379b3e31ecb0cde3dac55eea655c088765302ccb9ee575
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: accession of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V101.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v101
+    quote: >-
+      Brigandage, loss of wealth and honor, loss of children, death among cattle, misfortunes
+      of all kinds await a person in Ketu's bhukti in Rahu dasa.
+    quote_sha256: 7a41cc3f8745a0127e6acd25ed0b4e0f74899fa2d9be1d9244d9fd73720470a4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: loss of wealth and honor
+- id: JATAKAPARIJATA.WEALTH.CH18V102.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.8
+    domain.travel: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v102
+    quote: >-
+      When Venus has its bhukti in Rahu dasa, there will be accession of vehicles, umbrellas,
+      chowries and wealth of various sorts from foreign lands
+    quote_sha256: a48ab2dea0a6e48149097c1778d4ae163723b6467b9b93f128b0fe722731b133
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: accession of vehicles, umbrellas, chowries and wealth of various sorts from foreign
+      lands
+- id: JATAKAPARIJATA.WEALTH.CH18V104.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v104
+    quote: >-
+      When the Moon has its bhukti in Rahu dasa, there will be an abundance of enjoyments,
+      good crops, coming in of money and communion with kith and kin.
+    quote_sha256: 4816a0ee66fe20fe2ff3acb93520c69ad3fe2190a294e3ac4580fdb6076f7954
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      there will be an abundance of enjoyments, good crops, coming in of money and communion
+      with kith and kin
+- id: JATAKAPARIJATA.WEALTH.CH18V106.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v106
+    quote: >-
+      Rahu occupying Cancer, Taurus or Aries, say the astrologers, will secure to the person
+      concerned during the ripening of its dasa wealth and corn, edification and amusement,
+      honor from the sovereign, wives, servants and dependants happy and well-off.
+    quote_sha256: e961b8e37882a701b0aa061474e0736a96db535212f61575eae9749980f91fd7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - any:
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.aries
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      wealth and corn, edification and amusement, honor from the sovereign, wives, servants
+      and dependants happy and well-off
+- id: JATAKAPARIJATA.WEALTH.CH18V109.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v109
+    quote: in the middle of it, he may have much enjoyment
+    quote_sha256: 8f5489620469b1d18cace9370df0ea06537092a517b6d47e94f3087e0ef2d88f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he may have much enjoyment
+- id: JATAKAPARIJATA.WEALTH.CH18V110.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.progeny: 0.8
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v110
+    quote: >-
+      Jupiter secures to the person concerned, during its dasa, rank, wealth, vehicle, apparel,
+      royal good will, purity of heart, power, knowledge, practice corresponding thereto,
+      wife, children and all else connected therewith.
+    quote_sha256: 6df3ac75e066ba6d51b37e721c13b2baa2f23b0aa9710369bd28fe6750d9df74
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Jupiter secures to the person concerned, during its dasa, rank, wealth, vehicle, apparel,
+      royal good will, purity of heart, power, knowledge, practice corresponding thereto,
+      wife, children and all else connected therewith.
+- id: JATAKAPARIJATA.WEALTH.CH18V112.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.progeny: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v112
+    quote: >-
+      A feeling of aversion, mental anguish, waste of wealth through the sons, failure of
+      business are what a person may have to be prepared for during Saturn's interval in Jupiter's
+      mahadasa.
+    quote_sha256: e0e7f0c61c88c14136428be11848779247f61f89742e534e57d6122bcc143cd5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: waste of wealth through the sons
+- id: JATAKAPARIJATA.WEALTH.CH18V113.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v113
+    quote: >-
+      Acquisition of wealth by means of the trading community, royal favor leading to material
+      comforts and perfect practice of hospitality will mark Mercury's bhukti in Jupiter's
+      mahadasa.
+    quote_sha256: 3ae530b7418f839a6b409b5a707d35673e8f41c5a682a66c03036d38ecb6af5f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Acquisition of wealth by means of the trading community, royal favor leading to material
+      comforts and perfect practice of hospitality will mark Mercury's bhukti in Jupiter's
+      mahadasa.
+- id: JATAKAPARIJATA.WEALTH.CH18V116.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v116
+    quote: >-
+      Flight of enemies, victory, ease, great diligence, coming in of wealth, royal favor
+      and sound health are what a person may expect in the Sun's interval in Jupiter's mahadasa.
+    quote_sha256: b26ce7cc6f38dfdf4a40f5fabd87ae5e54291b1630b1e5c44d722010129310a9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: coming in of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V117.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v117
+    quote: >-
+      Power acquired under female impulse, royal favor leading to material comforts, acquisition
+      of fine apparel and ornaments, are what a person may look for in the Moon's interval
+      in Jupiter's mahadasa.
+    quote_sha256: ccda209235e414fffe8b0452a5f09b5f7eb7966f3e5f1fba5d545dd8ed943532
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: acquisition of fine apparel and ornaments, and royal favor leading to material comforts
+- id: JATAKAPARIJATA.WEALTH.CH18V118.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v118
+    quote: >-
+      Failure in business, wandering, high fever, great risk, loss of wealth and depression
+      of spirits, a person must be prepared for in Kuja's interval in Jupiter's mahadasa.
+    quote_sha256: 9b1ccafbf14c773c08e31299918b1edf5d5a4868c81b75e5575fd55b606e5a4e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: loss of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V119.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v119
+    quote: >-
+      Apprehension of every trouble, disease, occasion for every possible calamity, and deprivation
+      of income---this falls to the lot of a person in Rahu's bhukti in Jupiter's mahadasa.
+    quote_sha256: 5f643f06bbdaef7afc56d1765636f9238f3abcd380e8fc35ab7688832918720f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: deprivation of income
+- id: JATAKAPARIJATA.WEALTH.CH18V120.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.9
+    domain.education: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v120
+    quote: >-
+      when the planet is in the exaltation Navamsa in its depression sign, it secures during
+      its dasa to the person concerned, royal favor, material comforts, learning, wisdom,
+      fame, wealth and the influence which such things carry; and it may even be the lordship
+      of the whole country.
+    quote_sha256: ac63411d744f1546becf5c730f4c84c1dbeb2f0f652beb993a8d2e83c40aa2b6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.jupiter
+        dignity: dignity.exalted
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.debilitated
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      royal favor, material comforts, learning, wisdom, fame, wealth and the influence which
+      such things carry; and it may even be the lordship of the whole country
+- id: JATAKAPARIJATA.WEALTH.CH18V121.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.career: 0.65
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v121
+    quote: >-
+      Astrologers declare that during the dasa of Saturn, a person may come into possession
+      of goats, asses, camels, old women, birds and coarse grain and get wealth by the administration
+      of a guild, township or village community and become the ruler of a low tribe.
+    quote_sha256: 7472f047dbe6753081f2b2ed28663bc88c966b01e6d7ea7e36cec89099ecf99d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: get wealth by the administration of a guild, township or village community
+- id: JATAKAPARIJATA.WEALTH.CH18V124.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.7
+    domain.status: 0.5
+    domain.spiritual: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v124
+    quote: >-
+      Increase of happiness, wealth and fame, the benefits accruing from acts of piety and
+      customary religious observances, agriculture and commerce, a person may expect to have
+      in Mercury's interval in Saturn's dasa.
+    quote_sha256: cc513524dd4075a96b3ae92a988a70c3b53f1805cefcd055eec1fa67624ee5f4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      Increase of happiness, wealth and fame, the benefits accruing from acts of piety and
+      customary religious observances, agriculture and commerce, a person may expect to have
+- id: JATAKAPARIJATA.WEALTH.CH18V128.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v128
+    quote: >-
+      Death of a revered matronly female, sorrow, dislike of relatives, coming in of money
+      and wind disease may be expected during the Moon's bhukti in the dasa of Saturn.
+    quote_sha256: be2d4d838a1b4242d117007d3987788cc7a57c7993aa010fc494ff2285184aff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: coming in of money
+- id: JATAKAPARIJATA.WEALTH.CH18V132.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.5
+    domain.travel: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v132
+    quote: >-
+      If the planet occupy the exaltation Navamsa in its depression house, the end of the
+      dasa is happy while in the initial portion there may be evil to be feared from robbers
+      and enemies, much misery and roaming in foreign lands.
+    quote_sha256: 0d398d501d45d5dfe21804ece39fc7ab8aad923827e736e99421ee15307892e0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.saturn
+        rashi: rashi.libra
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: >-
+      in the initial portion there may be evil to be feared from robbers and enemies, much
+      misery and roaming in foreign lands
+- id: JATAKAPARIJATA.WEALTH.CH18V136.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.spiritual: 0.5
+    domain.status: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v136
+    quote: >-
+      Offering of acceptable presents to reverend seniors, gods, fire and the Brahmanas, observance
+      of duty conformable to religion and morality, acquisition of wealth, clothing and ornaments
+      will mark Sukra's interval in the dasa of Mercury.
+    quote_sha256: e597d0b584ab98f8ade61fe7f5d5ecb9634b6a2c862ace5879388e379b134f7a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      acquisition of wealth, clothing and ornaments will mark Sukra's interval in the dasa
+      of Mercury
+- id: JATAKAPARIJATA.WEALTH.CH18V140.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+    domain.education: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v140
+    quote: >-
+      During Rahu's bhukti in Budha dasa, a person gets wealth from friends and relatives
+      and secures to himself happiness, learning, ornaments and royal favor.
+    quote_sha256: e4b8dbe71433b329dcf8c15d211a8ce84ebfce8888bb1ed2204613586ca7ce62
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      a person gets wealth from friends and relatives and secures to himself happiness, learning,
+      ornaments and royal favor
+- id: JATAKAPARIJATA.WEALTH.CH18V141.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v141
+    quote: >-
+      When Jupiter has its bhukti in Budha dasa, a person will incur the hatred of friends,
+      relatives and elders; will have additions to wealth and children, and will be liable
+      to risk from diseases and the like.
+    quote_sha256: 7d51243f64fc6e216aef112964e4014418bef33f7db570cee3a116c8257af21c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: additions to wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V142.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v142
+    quote: >-
+      Acts of charity and beneficence, acquisition of wealth, material comforts secured through
+      the instrumentality of petty chiefs, loss in agriculture and the like will mark Saturn's
+      bhukti in Budha dasa.
+    quote_sha256: 0b2008424fdbcdb1dbd83bf31a2b298453a471e1d8036a0a8afcf85e584eef7c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: acquisition of wealth, material comforts
+- id: JATAKAPARIJATA.WEALTH.CH18V142.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.property: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v142
+    quote: >-
+      Acts of charity and beneficence, acquisition of wealth, material comforts secured through
+      the instrumentality of petty chiefs, loss in agriculture and the like will mark Saturn's
+      bhukti in Budha dasa.
+    quote_sha256: 0b2008424fdbcdb1dbd83bf31a2b298453a471e1d8036a0a8afcf85e584eef7c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss in agriculture
+- id: JATAKAPARIJATA.WEALTH.CH18V143.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.career: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v143
+    quote: >-
+      Mercury occupying the depression Navamsa in its exaltation sign, produces incompetency
+      for work in the person concerned and makes him indigent in its dasa.
+    quote_sha256: 37a52c391cf2e99f331df3d4896b34efd38ff92d585d8cf2ce17642483c05188
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.virgo
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mercury
+        dignity: dignity.debilitated
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: makes him indigent in its dasa
+- id: JATAKAPARIJATA.WEALTH.CH18V144.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.career: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v144
+    quote: >-
+      Mercury in depression but in the exaltation Navamsa ordains prosperity in the end of
+      its dasa though in the beginning thereof all be barren of effect.
+    quote_sha256: 9e5354b53a94e66ec102e2efdf4b8a2159f024a5983609b97872fee348dfa705
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mercury
+        dignity: dignity.exalted
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: ordains prosperity in the end of its dasa
+- id: JATAKAPARIJATA.WEALTH.CH18V149.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v149
+    quote: >-
+      Ennui affecting wife, children and attendants, destruction of wealth and corn, and distress
+      of mind are to be looked for in the Moon's bhukti in Ketu dasa.
+    quote_sha256: add90b342fafb2d980ad04c09fafd4ebae5562fee5adccb1404c2d607d658eb4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: destruction of wealth and corn
+- id: JATAKAPARIJATA.WEALTH.CH18V154.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.5
+    domain.education: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v154
+    quote: >-
+      The society of relatives, friends and the like, accession of wealth to sons and wife,
+      and happiness derivable from knowledge accrue in Mercury's bhukti in Ketu dasa.
+    quote_sha256: 40d004bb21bebcd7f8deb408f0a6bcd205247f9e2f940e8527710b501c61ae23
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: accession of wealth to sons and wife
+- id: JATAKAPARIJATA.WEALTH.CH18V155.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v155
+    quote: If aspected by a benefic planet, it leads to the acquisition of abundant wealth.
+    quote_sha256: 1ecc9a221de84a86042ba41dad69b9f766ce7d7825076c2401e0bfb178a3a92c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.ketu
+      - aspects:
+          subject: graha.venus
+          target: graha.ketu
+      - aspects:
+          subject: graha.mercury
+          target: graha.ketu
+      - aspects:
+          subject: graha.moon
+          target: graha.ketu
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: leads to the acquisition of abundant wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V157.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v157
+    quote: in the middle of it, there is money coming in
+    quote_sha256: 5e762a81fa662adff90e2da93f8f2bd66e30e6cbb47bff395e5d6b9f3ab0431f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: moderate
+    text: there is money coming in in the middle of Ketu's dasa
+- id: JATAKAPARIJATA.WEALTH.CH18V158.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.9
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v158
+    quote: >-
+      Venus in its dasa leads to the acquisition of wife, children, wealth, exceeding comfort,
+      fragrant wreaths, apparel, ornaments, vehicles and other means of locomotion, fortune
+      and fame equal to a king's.
+    quote_sha256: dce4d6b44c9c86a9a762627bdad22882474a53a8e99fd74da782f3dcb63d0528
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Venus in its dasa leads to the acquisition of wife, children, wealth, exceeding comfort,
+      fragrant wreaths, apparel, ornaments, vehicles and other means of locomotion, fortune
+      and fame equal to a king's.
+- id: JATAKAPARIJATA.WEALTH.CH18V159.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v159
+    quote: >-
+      Acquisition of conches, females, wealth and apparel, good work and other such means
+      of securing perfect happiness, disappearance of enemies and attainment of fame will
+      mark Sukra's bhukti in its mahadasa.
+    quote_sha256: ffc03288f96033965fa3ce18569ab8878d473f768300047d3f106c1dad111524
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Acquisition of conches, females, wealth and apparel, good work and other such means
+      of securing perfect happiness, disappearance of enemies and attainment of fame will
+      mark Sukra's bhukti in its mahadasa.
+- id: JATAKAPARIJATA.WEALTH.CH18V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.career: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v16
+    quote: >-
+      If two planets be mutually friendly and have six-fold strength, there will be prosperity
+      during their dasa and bhukti.
+    quote_sha256: 3dbc6601dc41cb1670418e2c16f552bc18e01175eff6a2467f9484c21100acec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.10
+        level: level.maha
+    - strength:
+        subject: lord.bhava.10
+        op: '>='
+        value: 6
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: there will be prosperity during their dasa and bhukti
+- id: JATAKAPARIJATA.WEALTH.CH18V162.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v162
+    quote: coming in of money
+    quote_sha256: a3c41201c4cc8f9ada48edcc4461cbd67e0c885d91a37daaf7cdd51ae44e7e5a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: moderate
+    text: coming in of money
+- id: JATAKAPARIJATA.WEALTH.CH18V164.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.spiritual: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v164
+    quote: >-
+      During the bhukti of Jupiter in Sukra's mahadasa, a person gets wealth, apparel and
+      ornaments, performs his religious duties leading him to ultimate happiness;
+    quote_sha256: 9c98d5345c2acbba67a5226e25e640432ff23947cc2f0f6d22494fd5094a7d69
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: a person gets wealth, apparel and ornaments
+- id: JATAKAPARIJATA.WEALTH.CH18V165.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.9
+    domain.career: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v165
+    quote: >-
+      accession of houses, lands and wealth and the disappearance of enemies will mark Saturn's
+      bhukti in Sukradasa
+    quote_sha256: f1fe120bc817cabe4f2a77151a1b030bb31ee3f5c408cb36cc71b9d8a0471277
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      accession of houses, lands and wealth and the disappearance of enemies will mark Saturn's
+      bhukti in Sukradasa
+- id: JATAKAPARIJATA.WEALTH.CH18V166.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.progeny: 0.8
+    domain.health: 0.7
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v166
+    quote: >-
+      During Mercury's interval in the dasa of Venus a person secures the comfort of his sons,
+      friends, wealth, royal favor, happiness on a large scale, prosperity and sound health.
+    quote_sha256: 3776e6fad2c61618013803b07de3014ca5ba2685aa5682da615b567c546548cc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      a person secures the comfort of his sons, friends, wealth, royal favor, happiness on
+      a large scale, prosperity and sound health
+- id: JATAKAPARIJATA.WEALTH.CH18V167.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v167
+    quote: >-
+      Discord, death of relatives, injury inflicted by enemies, misgiving in the heart and
+      deprivation of wealth are what a person should be prepared for in Ketu's bhukti in the
+      mahadasa of Venus.
+    quote_sha256: 75d8888e08b0837f5276175d03d0485c8b1c0571c56bb690d9a25249f7a8d17f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: deprivation of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V168.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v168
+    quote: >-
+      Venus in its exaltation sign but in the depression Navamsa causes loss of wealth and
+      loss of status in its dasa.
+    quote_sha256: 887728df0b48a2cb397b1febcb74d9498a6e9caa8e23309ad1d13e833e598954
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.exalted
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.venus
+        dignity: dignity.debilitated
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: causes loss of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V169.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.7
+    domain.property: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v169
+    quote: >-
+      Venus in its depression sign but in the exaltation Navamsa gives to the person concerned
+      during the ripening of its dasa, (success in) agriculture and trade and accession to
+      his wealth.
+    quote_sha256: a662323fd9ba74e77ae4f732657f8ca1c42cea8bafeec45860ea8667733ed58b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.venus
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: accession to his wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v43
+    quote: >-
+      At the time the dasa of the lord of the 2nd bhava is in progress and in the bhukti of
+      Saturn, loss of wealth, and quarrel with friends and relations will undoubtedly crop
+      up.
+    quote_sha256: 362742f171216ae349a4efc0bd77bb183f21dd692c1e29957ff068dc6e5bd538
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.02
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: loss of wealth will undoubtedly crop up
+- id: JATAKAPARIJATA.WEALTH.CH18V44.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v44
+    quote: >-
+      If the lord of the 2nd bhava be malefic, astrologers declare that there will be loss
+      of wealth during the antardasas of Saturn, Mars, Rahu and the Sun.
+    quote_sha256: 7f3593af0653267b277b84088227e3fdd5ddf667dc17fd045efd716d12d26e4e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.02
+        level: level.maha
+    - any:
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.saturn
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.mars
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.rahu
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.sun
+          level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss of wealth during the antardasas of Saturn, Mars, Rahu and the Sun
+- id: JATAKAPARIJATA.WEALTH.CH18V44.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v44
+    quote: The same holds good when a malefic planet occupies that bhava.
+    quote_sha256: 6aea9be90ce9ae5e4040ffc6c9f2a476fddcd4f6478d48f946f0d23e501104d4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.02
+        level: level.maha
+    - occupant_count:
+        bhava: bhava.02
+        op: '>='
+        n: 1
+    - any:
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.saturn
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.mars
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.rahu
+          level: level.antar
+      - dasha_active:
+          system: dasha_system.vimshottari
+          subject: graha.sun
+          level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V52.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.career: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v52
+    quote: >-
+      Whenever the dasa of the lord of the 10th bhava in the खल (Khala) state ripens, there
+      will crop up, during the भुक्ति (bhukti) of malefic planets, sickness to those that
+      are dearly loved, removal from office, loss of comfort and fame, and waste of money.
+    quote_sha256: ebcaa2c5e1a7e9a42ae23788b4e8115ef575df48dbd099a707ce18cfdc162836
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.10
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: waste of money
+- id: JATAKAPARIJATA.WEALTH.CH18V52.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v52
+    quote: >-
+      In the dasa of the lord of the 11th bhava and during the bhukti of Saturn, Mars, the
+      Sun or Rahu, there may be affliction, ruin of agricultural and other operations, danger
+      from the sovereign and loss of wealth.
+    quote_sha256: 84e89b0b6314e2166ff4b81d7279d7695794a7c740909912d70ea9b87d9d3231
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.11
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: loss of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V62.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.status: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v62
+    quote: >-
+      During the dasa and bhukti of the Sun, a person may acquire wealth through Brahmins
+      or Kshatriyas, or by a resort to arms or other ways
+    quote_sha256: 188d7e8dda8f82c6d69d2da8886fd22c28e40bbef9b5217fe17178fb2c4878ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      a person may acquire wealth through Brahmins or Kshatriyas, or by a resort to arms or
+      other ways
+- id: JATAKAPARIJATA.WEALTH.CH18V63.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v63
+    quote: >-
+      When the Moon has its bhukti during the progress of the Sun's dasa, a person will have
+      acces- sion of wealth through the instrumentality of relatives and friends
+    quote_sha256: 464ed9af6d5e7d2a196b0c5334de432ccdcda3b77e86989db344a6fcb52eed4a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: accession of wealth through the instrumentality of relatives and friends
+- id: JATAKAPARIJATA.WEALTH.CH18V64.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v64
+    quote: >-
+      When Mars has its apahara in the Sun's dasa, an astrologer may foretell to the person
+      concerned acquisition of wealth in the form of gems and gold, royal favor leading to
+      prosperity
+    quote_sha256: cfaaff363800a26a84525af5a72cff66315293b6a990f4f9438ba378b9b5aed6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: acquisition of wealth in the form of gems and gold, royal favor leading to prosperity
+- id: JATAKAPARIJATA.WEALTH.CH18V66.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.6
+    domain.spiritual: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v66
+    quote: >-
+      What is all-worthy-wealth got through a worthy son, honor to Gods and Brahmanas, virtuous
+      acts, good traditional observances, good society and good conversation will distinguish
+      the antardasa of Jupiter during the Sun's mahadasa.
+    quote_sha256: d1510a97aceea4ed8ea082eeaac114d275c61c5de3c2a5eb730c4d13a5d4ec4a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      all-worthy-wealth got through a worthy son, honor to Gods and Brahmanas, virtuous acts,
+      good traditional observances, good society and good conversation
+- id: JATAKAPARIJATA.WEALTH.CH18V67.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v67
+    quote: >-
+      During the bhukti of Saturn in the Sun's dasa, a person should be prepared for hostility
+      from every one, want of energy, an ignoble calling, mental worry, and liability to risk
+      from the rulers or thieves.
+    quote_sha256: 552b76e6c24c6193e3c2b22f84b4d778236358bf46f39b660de9e47fa1149b59
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: liability to risk from the rulers or thieves
+- id: JATAKAPARIJATA.WEALTH.CH18V68.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v68
+    quote: >-
+      Trouble from relatives, mental distress, depression of spirits, waste of money and slight
+      comfort are what may be expected in the apahara of Mercury during the progress of the
+      Sun's dasa.
+    quote_sha256: 42b862b94e8eeac2dfeed607a71d8d962195ff2503bdb8ec022c113754955b82
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: waste of money and slight comfort
+- id: JATAKAPARIJATA.WEALTH.CH18V71.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v71
+    quote: >-
+      In the initial portion of the Sun's dasa, the father of the person concerned will fall
+      ill, and there will be much expense.
+    quote_sha256: 7528aabbc0efb038024dd4b5be57dfe19f8e5f449aefb84a76f51c793cd4d913
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: there will be much expense
+- id: JATAKAPARIJATA.WEALTH.CH18V72.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v72
+    quote: >-
+      But in the dasa of the same planet occupying the exaltation Navamsa in the depression
+      house, the person concerned will attain regal prosperity, happiness
+    quote_sha256: dc9891eefd128b22c424b1774229e2234b9b3c5be669cb85cf83e78626b3ddb0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.libra
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.sun
+        rashi: rashi.aries
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will attain regal prosperity, happiness
+- id: JATAKAPARIJATA.WEALTH.CH18V73.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.property: 0.8
+    domain.spiritual: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v73
+    quote: >-
+      During the progress of the Moon's mahadasa, a person will have access to sacred prayers,
+      scripture and Brahmanas ; he will exert fascination over young females, and secure to
+      himself women, wealth and lands ; he will have a profusion of flowers, cloths, ornaments,
+      perfumes and various valuable objects of enjoyment
+    quote_sha256: eae6e6dab086e726d981b559e4860f85fffdfd788c90f61346f6c8b1006615bb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: secure to himself women, wealth and lands
+- id: JATAKAPARIJATA.WEALTH.CH18V74.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.wealth: 0.9
+    domain.status: 0.9
+    domain.property: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v74
+    quote: these are what the Moon will give in the ripening of its own dasa and bhukti.
+    quote_sha256: c5d394dde96999c65e188e600de8b8b3ab108655dcc5f3175e1fcd299c8690e3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      abundant wealth and power—these are what the Moon will give in the ripening of its own
+      dasa and bhukti.
+- id: JATAKAPARIJATA.WEALTH.CH18V75.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v75
+    quote: >-
+      Disease, petulance, loss of place, waste of wealth, trouble from friends and brothers
+      may be expected to crop up in the bhukti of Mars in the Moon's mahadasa.
+    quote_sha256: fe731d60b663af367988d14c6e8ab43a3231eaba72c11703bde54f1fb2c33b9f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: waste of wealth may be expected
+- id: JATAKAPARIJATA.WEALTH.CH18V76.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v76
+    quote: >-
+      During the antara of Rahu in the Moon's mahadasa, a person has to suffer distress on
+      account of risks from foes and dangerous diseases, loss of relatives and waste of wealth
+      ; he has no ease in fact.
+    quote_sha256: c5fbb5faff23ac381530866fb099b90339dbe25e514f3b5b50132ac7cb51e5c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: loss of relatives and waste of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V79.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v79
+    quote: >-
+      Accession of wealth from relations on the mother's side, learned men seeking asylum
+      and acquisition of clothing and ornaments will mark the bhukti of Mercury in the Moon's
+      dasa.
+    quote_sha256: 424bf42d603f9a6c1b5f50b8fc5a9097fef8fe38921ddefab1c7184673f81113
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      Accession of wealth from relations on the mother's side, learned men seeking asylum
+      and acquisition of clothing and ornaments
+- id: JATAKAPARIJATA.WEALTH.CH18V80.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v80
+    quote: >-
+      Illness of a wife, loss of relatives, suffering from diseases of the stomach and loss
+      of property crop up in Ketu's interval in the Moon's dasa.
+    quote_sha256: 4638c9508a0cfa033e6e4a09acb94035ab9b3ee434dc27e76667d7b0f0d0b1c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: loss of property
+- id: JATAKAPARIJATA.WEALTH.CH18V81.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.property: 0.8
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v81
+    quote: >-
+      During the period of time allotted to Venus in the Moon's dasa, a person may get a dowry
+      on behalf of his wife and enjoy the comforts derivable from agriculture, cattle and
+      the like, water-products and clothing
+    quote_sha256: 922b5f5f553f9bb8cb442bbe22d14856c2378da7dfc8e9e9ab33b728afafc176
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      a person may get a dowry on behalf of his wife and enjoy the comforts derivable from
+      agriculture, cattle and the like, water-products and clothing
+- id: JATAKAPARIJATA.WEALTH.CH18V84.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.career: 0.65
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v84
+    quote: >-
+      in the ripening of Mars' mahadasa there may be attempts at money-making by taking to
+      fire arms and by engaging in wars among rival kings and by other ways; there may be
+      coming in of money also by medicine, by trickery, by fraud, and by diverse cruel acts
+    quote_sha256: f810c312f0216474cb30092d3196eaa58932252da29d33196d812311d1e8f7bd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: strong
+    text: >-
+      attempts at money-making by taking to fire arms and by engaging in wars... coming in
+      of money also by medicine, by trickery, by fraud, and by diverse cruel acts
+- id: JATAKAPARIJATA.WEALTH.CH18V86.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v86
+    quote: >-
+      During Rahu's bhukti in Mars' dasa there is peril to be apprehended from rulers, robbers
+      and the like ; destruction of wealth and corn and success in evil pursuits.
+    quote_sha256: 3ab63fd5a167c28f0c810e99fc9b20496b7c187d09496b11973603f72290ff1d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: destruction of wealth and corn
+- id: JATAKAPARIJATA.WEALTH.CH18V87.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.property: 0.6
+    domain.status: 0.5
+    domain.health: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v87
+    quote: >-
+      Acquisition of wealth and lands through Brahmanas, freedom from illness, public esteem,
+      ascendancy and happiness will mark Jupiter's interval in Mars' mahadasa.
+    quote_sha256: 8a387074cc94324ef4c83c10a60973ef38f9459723c2dc0ad650e35ba5770b26
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Acquisition of wealth and lands through Brahmanas, freedom from illness, public esteem,
+      ascendancy and happiness will mark Jupiter's interval in Mars' mahadasa.
+- id: JATAKAPARIJATA.WEALTH.CH18V88.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v88
+    quote: >-
+      Illness leading to much misery, evil threatened by enemies, robbers and kings and loss
+      of wealth are what a person has to put up with in the bhukti of Saturn in Mars' mahadasa.
+    quote_sha256: a292df7a20bd1b226fd73559331fad259d6c7ed1963bbf24d68ce08d5c36976c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: loss of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V89.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.property: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v89
+    quote: Accession of wealth from the trading community, abundance of houses, cows and grain
+    quote_sha256: 89796cf7a5533d5d26ef5bb901ce7f8891d74b1629c372990abc5b6365c08d9a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: Accession of wealth from the trading community, abundance of houses, cows and grain
+- id: JATAKAPARIJATA.WEALTH.CH18V93.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.3
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v93
+    quote: >-
+      Various comforts that wealth affords, cloths, pearls, precious stones, ornaments, heavy
+      sleep and ardent passion may mark the Moon's bhukti in Mars' mahadasa.
+    quote_sha256: 40cedd722e3ceab72aed18db2a8f593a09529493d8feedeb74af2fc9754b7939
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: Various comforts that wealth affords, cloths, pearls, precious stones, ornaments
+- id: JATAKAPARIJATA.WEALTH.CH18V94.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v94
+    quote: At the outset of Mars' dasa, there will be humiliation and waste of wealth
+    quote_sha256: e7297422e6c4b6d5829178a50343d0b36f35c273475b0013f5e4d8057cd8cdcb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: humiliation and waste of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V96.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v96
+    quote: >-
+      Loss of such things as comfort, happiness, wealth and worldly status, the pang of parting
+      with a wife, children and relatives, illness in the extreme, residence in a strange
+      land, and a disposition to wrangle are what Rahu brings about.
+    quote_sha256: b579e0ed95be5b9d9fadc377d7efc4e311fca282df4052596ab94bcde1232bab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: Loss of such things as comfort, happiness, wealth and worldly status
+- id: JATAKAPARIJATA.WEALTH.CH18V97.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v97
+    quote: >-
+      Illness of a wife, a controversy, failure of the intellect, waste of wealth, roaming
+      in a far-off land and distress will be the characteristic features of Rahu's bhukti
+      in Rahu's dasa.
+    quote_sha256: 1493d16cc71582a06fe1d1539880949a419ebc8da98beac5df8f1de6a72c6f98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.antar
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: waste of wealth
+- id: JATAKAPARIJATA.WEALTH.CH18V98.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v98
+    quote: >-
+      Total disappearance of ailments and enemies, royal favor, accession of wealth, acquisition
+      of children and great perseverence will mark Jupiter's bhukti in Rahu's dasa.
+    quote_sha256: 9650cc0eab4c3ea6356c272b81e25f6e0bca474be244fbe6373e7e1fbc3b1ae9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: accession of wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V100109.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v100-109
+    quote: When the Sun is in exaltation, the person born will possess wealth and command
+      an army
+    quote_sha256: b3e4743680d10c76e29bc28ebeec16d2a009a8a59ab674f083681d6297a13352
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will possess wealth and command an army
+- id: JATAKAPARIJATA.WEALTH.CH9V100109.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v100-109
+    quote: >-
+      if the Moon be in the position of exaltation the person born will have rich food clothing
+      and ornaments in abundance
+    quote_sha256: 4ebae67b9ceee7d20493068b3f70e15c9f13c1c112fbcaf0c6786a2c6b2bbcd0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will have rich food clothing and ornaments in abundance
+- id: JATAKAPARIJATA.WEALTH.CH9V104.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: If the planet in the मूलत्रिकोण (Moola th- Sun, the person born will be wealthy
+      e people;
+    quote_sha256: 1105c77813bb0e04d0065574307e7ae9d557c6ecb2bdc2d5c10afcd686288209
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V104.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: if it be the Moon, the person born will be rich and happy
+    quote_sha256: 396ac392fd664eb1ec39fc76baac19035d921896b4c233fbf1cbe72b963b12dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be rich and happy
+- id: JATAKAPARIJATA.WEALTH.CH9V104.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: if Rahu, the person born will be possessed of wealth.
+    quote_sha256: cc38d3008e2c6fe8fecdb4b30d9626543b9ed6c3aa537d7a0231f4e28d719075
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be possessed of wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V105.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: >-
+      if it be the Moon that is in स्वक्षेत्र (Swakshetra), the person born will have power,
+      beauty and wealth
+    quote_sha256: 8fa2fa56358155ad9603a4e6e09405b836b47b5805b856e48fc3f6d5d089b59d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.own_sign
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will have power, beauty and wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V105.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.education: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: if Venus, he will be intellectual and wealthy
+    quote_sha256: c0d7b153c421476d2802cc1d12a769c641ceac732461f13b631b54682e7390ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.own_sign
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will be intellectual and wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V105.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: >-
+      if Rahu be the planet in स्वक्षेत्र (Swakshetra), the person born will possess fame
+      and wealth
+    quote_sha256: a291aedbbffa89922fc1e62079cfaa19348104ca2fb4fbf58f815407b3b5c6ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.own_sign
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will possess fame and wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V107.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: >-
+      when the Moon is in such a position, the person born will be esteemed, live in comfort
+      and have wealth
+    quote_sha256: 50ffec7f71bb8707e230f915c1e261732f590120cc615ed8c69e760b28fd160e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.friendly
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be esteemed, live in comfort and have wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V107.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: when Mars is in a friendly house the person born will enjoy the favor of rich friends
+    quote_sha256: 8405d0d3c40ed9ebca6cb5352d118d8412f00ffb411800deadd619230d326ad2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.friendly
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: moderate
+    text: the person born will enjoy the favor of rich friends
+- id: JATAKAPARIJATA.WEALTH.CH9V107.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: >-
+      If Saturn be in a friendly house at a person's birth, the latter will be fed by another
+      as he will have no wealth.
+    quote_sha256: 3a8e51465721230122748bf5c97fec3063926f95ffc2ee5961dfeb4bef32ecc0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.friendly
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the latter will be fed by another as he will have no wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V109.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v109
+    quote: >-
+      When मीन (Meena) is the rising sign at a person's birth, he will be learned, sparing
+      in his enjoyments, kind to his friends and endowed with spirit and strength, while possessing
+      much corn and wealth
+    quote_sha256: 931b57360350c1d54689a150eacc341feb50e385ada2f0bf1cbf42b9f50df530
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.pisces
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: possessing much corn and wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V112.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v112
+    quote: >-
+      If the Moon be in its own Navamsa or in that of a very friendly planet and if it be
+      aspected by Jupiter, the person born will be wealthy
+    quote_sha256: 03d63067ec4b7e3283cc317f9572929e9c14c767e34225b6fc8a513450e217c7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.own_sign
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.friendly
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V114.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v114
+    quote: >-
+      If the birth be in day time and the Moon be aspected by Jupiter, the person becomes
+      wealthy.
+    quote_sha256: 0e9a142d690db3431d00b83bc762b06a57973d69cf801b60d00d99e673ddc4e4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person becomes wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V114.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v114
+    quote: If the Moon be in his own Navamsa and aspected by Jupiter, the native will be wealthy.
+    quote_sha256: 486d00ace74a51fd2cbf21f97dac502ca7c16e7fc7343282dfe71d245f3b8c37
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.cancer
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the native will be wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V119.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.7
+    domain.health: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v119
+    quote: >-
+      if in a twelfth portion of a sign owned by वृषभ (Vrishabha), he will have plenty of
+      women and wealth and will suffer from diseases
+    quote_sha256: c8f3f8dd1fba538d81b973a01a4c827ba2f4103aa59a970aa02ec9f85ea2eba6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.moon
+        rashi: rashi.taurus
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will have plenty of women and wealth and will suffer from diseases
+- id: JATAKAPARIJATA.WEALTH.CH9V120.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v120
+    quote: if in a Thula dwadasamsa, he will be engaged in trade and have abundance of money
+    quote_sha256: 437f9c2e41d0ad2ca63278774e431e9816311220dbde17a9d3b8aa2ff9aa328a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d12
+        subject: graha.venus
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will be engaged in trade and have abundance of money
+- id: JATAKAPARIJATA.WEALTH.CH9V152.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.status: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v152
+    quote: >-
+      When the lord of the 9th bhava is in a Kendra identical with the planet's Moolatrikona
+      and when the lord of the Lagna occupies the exaltation sign and is possessed of abundant
+      strength, the resulting yoga is declared to be लक्ष्मीयोग (Lakshmi yoga).
+    quote_sha256: cbaf57aa455d2146fca44fbf7ef129eb3453bed266f36755d3bafa3fea9a8038
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: lord.bhava.09
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.moolatrikona
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.exalted
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the resulting yoga is declared to be Lakshmi yoga
+- id: JATAKAPARIJATA.WEALTH.CH9V3.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3
+    quote: >-
+      If the Moon be in conjunction with Saturn, the person born will have a bad wife, abuse
+      his parents and will be without wealth.
+    quote_sha256: 04cf9a46a0410de7162f3fc8f6d420f8e7dad5def64080230a349f7f26541d98
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: strong
+    text: will be without wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V31.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v31
+    quote: >-
+      In the first yoga, the lords of the 10th and the 9th bhavas counted from the Lagna are
+      in conjunction and associated with the lord of the 2nd bhava
+    quote_sha256: 37fa22cc3218d5fc96d2895686f736c75a5f448d88eb26716ca0eb1257b4b703
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.10
+        other: lord.bhava.09
+    - conjunct:
+        subject: lord.bhava.10
+        other: lord.bhava.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: a person born becomes wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V31.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v31
+    quote: >-
+      in the 2nd yoga, the lords of the 10th and the 9th, reckoned from शुभ (Subha), i e.
+      the lords of the 6th and the 5th bhavas from the Lagna occupy each a sign owned by the
+      other and are associated with धनपति (Dhanapathi) i e. the lord of the 2nd bhava
+    quote_sha256: f80722a3c5baab2c9e2ab53ddbf5b71d4d1d1dfa76e7d6ff7f7c8658b3dd4cd1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: lord.bhava.06
+        other: lord.bhava.05
+    - conjunct:
+        subject: lord.bhava.06
+        other: lord.bhava.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: a person born becomes wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V31.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v31
+    quote: >-
+      in the 3rd yoga, the lords of the 10th, and the 9th bhava calculated from the 10th,
+      i e. the lords of the 7th and the 6th bhavas from the Lagna occupy mutually aspecting
+      Kendras and are associated with धनपति (Dhanapati).
+    quote_sha256: ef6857581bb782d860c10fb2298653ed0d6fb3b96794356b4e505c292c19c546
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: lord.bhava.07
+    - in_kendra:
+        subject: lord.bhava.06
+    - aspects:
+        subject: lord.bhava.07
+        target: lord.bhava.06
+    - conjunct:
+        subject: lord.bhava.07
+        other: lord.bhava.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: a person born becomes wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V42.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v42
+    quote: if in Kumbha, the person concerned will enjoy pleasures
+    quote_sha256: c71f4870b55d3a1e016a5b0901047067342bf5c5fc2409685c36db1e046a3e63
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.jupiter
+      rashi: rashi.aquarius
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person concerned will enjoy pleasures
+- id: JATAKAPARIJATA.WEALTH.CH9V450.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v4-50
+    quote: >-
+      When the Moon in Thula is aspected severally by the benefic planets, Mercury, Jupiter
+      and Venus, the persons born in the several cases will be respectively a king, a mint-master
+      and a merchant.
+    quote_sha256: 5d224d15e6c085964db7d5df108c5ad5c733f918b25acb9a20390db4c71ab6f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will be a mint-master
+- id: JATAKAPARIJATA.WEALTH.CH9V47.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.progeny: 0.8
+    domain.status: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v47
+    quote: >-
+      A person born under the influence of a planet aspected by a propitious one will have
+      children, riches and enjoyments, will be handsome, honored by his sovereign and exempt
+      from humiliation or disgrace.
+    quote_sha256: b13fc4a231f797318251a13739cc73e5488e922c97945996472a1deee54db066
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: riches and enjoyments
+- id: JATAKAPARIJATA.WEALTH.CH9V5.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.health: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      If Venus and Saturn be together at a birth the person affected by the yoga will own
+      large herds of cattle and be an athlete.
+    quote_sha256: eecbf9381636aa9a7d0298d8645c1df2efec049e521c7ba5bca8018c81444733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: own large herds of cattle and be an athlete
+- id: JATAKAPARIJATA.WEALTH.CH9V51.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 1.0
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v51
+    quote: if in the 3rd quarter, he will occasion the loss of wealth
+    quote_sha256: ce0b666e48d0e69568ac13e4030adddf55cbfac91c5bdadf3c422a57a99c5f97
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.mula
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: he will occasion the loss of wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V56.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.status: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v56
+    quote: >-
+      A single planet occupying his highest exaltation point and aspected by friendly planets
+      produces a king (or a leader of men) Such a planet though single will make the person
+      immensely wealthy if he be also associated with another friendly planet
+    quote_sha256: f97c428fd0fc84f191902e39b502a05949ff24dd7c3966f8ae92db38771d7238
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: makes the person immensely wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V65.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v65
+    quote: >-
+      When the Sun is in the 3rd bhava, the person born will be brave, served by bad men,
+      very wealthy and liberal;
+    quote_sha256: 67f31ccac4195b8f03ee4a19fc747d6ce728ca7f766cafb20a518f16c15c162e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.03
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will be brave, served by bad men, very wealthy and liberal
+- id: JATAKAPARIJATA.WEALTH.CH9V65.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.6
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v65
+    quote: >-
+      when the Moon occupies the bhava representing younger brothers, the person born will
+      have insignificant wealth, be kind to relatives and virtuous
+    quote_sha256: 39fdf49dfff85daeb933474bed3447975d6b0cf3cbd83f10f7cefd8cbadc0847
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.03
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: the person born will have insignificant wealth, be kind to relatives and virtuous
+- id: JATAKAPARIJATA.WEALTH.CH9V68.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.education: 0.8
+    domain.relationship: 0.75
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      If the Moon be in that bhava, the effect thereof is that the person born will possess
+      learning, good nature and prosperity, but will hanker after other people's wives.
+    quote_sha256: ef320c0582a9e6668077de43d41a6025b2ba5766441df8128179954661651b24
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will possess learning, good nature and prosperity, but will hanker after
+      other people's wives
+- id: JATAKAPARIJATA.WEALTH.CH9V751.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v7-51
+    quote: >-
+      When the Moon occupies Dhanus and has the aspect of benefic planets upon it, the person
+      born will have plenty of learning, wealth, wisdom, fame and strength.
+    quote_sha256: 865130ab76b7e5312c055b19d9478bafd599eac084fa8675f2272188ae8db800
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.moon
+      - aspects:
+          subject: graha.venus
+          target: graha.moon
+      - aspects:
+          subject: graha.mercury
+          target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the person born will have plenty of learning, wealth, wisdom, fame and strength
+- id: JATAKAPARIJATA.WEALTH.CH9V84.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v84
+    quote: >-
+      The person born under the star अश्विनी (Aswini) will have a great deal of intelligence,
+      wealth, modesty, sagacity and fame and will be happy
+    quote_sha256: ae03405269b424ef156679d813aa6045350c0d05f3c8e3ea499004d80ecbedfc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.ashwini
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V84.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v84
+    quote: >-
+      he will have a defective limb, be addicted to another's wife, cruel, ungrateful and
+      will possess wealth, if in the star कृत्तिका (Krittika)
+    quote_sha256: 63e20e48424572b9c325848f6c6a85a4bd1c65037fb6897a9c1976f379bdc171
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.krittika
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: will possess wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V90.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.progeny: 0.8
+    domain.relationship: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v90
+    quote: >-
+      if in रेवती (Revati), he will have a broad mark in his person, will be love sick, lovely,
+      clever in counsel, will have sons, family and friends and will enjoy steady continuous
+      prosperity.
+    quote_sha256: 6140e86207277b6174d591160628daa2e4c5abf02ee86ce2b8537d51d9c01eef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.revati
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will enjoy steady continuous prosperity
+- id: JATAKAPARIJATA.WEALTH.CH9V92.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      if the Moon be in Kanya at a person's birth, the latter will be afflicted with a craving
+      for sensual enjoyment, of graceful address, eminent in learning and prosperous
+    quote_sha256: cd2d7ae83a84f0408dc09a3cfbcac11e8424f08c00b172937810e7d5f25676ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: prosperous
+- id: JATAKAPARIJATA.WEALTH.CH9V92.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.spiritual: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      if in Tula, the person will view with reverence Gods and Brahmanas, show affection...
+      towards his relatives and will be opulent
+    quote_sha256: 7f50c18261d328f63532339ac7a722ce9c10ce092b55b5f0c5a21e96aad13ae9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will be opulent
+- id: JATAKAPARIJATA.WEALTH.CH9V94.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v94
+    quote: >-
+      The person at whose birth the Sun is in the 11th bhava, will have extensive wealth,
+      wife, children and slaves and will be happy
+    quote_sha256: 25c96296863a3be139a7458ca6a569b56d277592af7d2d686cb731b0f5271692
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: will have extensive wealth
+- id: JATAKAPARIJATA.WEALTH.CH9V94.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v94
+    quote: >-
+      when the Moon is in that bhava, the person born will be of a pensive disposition and
+      wealthy
+    quote_sha256: a1b9efd77e975908e5617dc2a4affdcce14b2080aef66da6267442d2673b100d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.11
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V94.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v94
+    quote: >-
+      when Mars occupies the आय (Aya, 11th) bhava at a person's birth, he will be clever in
+      speech, lustful, wealthy and valiant
+    quote_sha256: eb769d26a48033e06c81716b43c0dcec8d842ce6f7ca8b6bb473a7f902a4b2f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.11
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V96.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+    domain.spiritual: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v96
+    quote: >-
+      If the Moon be in a नवांश (Navamsa) owned by धनुम् (Dhanus), the person born will be
+      lean and long armed, liberal, devout and wealthy
+    quote_sha256: 03d86d072da5179decabed630ff48b2541f498651da551b0247837baea7ad5ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_occupies:
+      varga: varga.d9
+      subject: graha.moon
+      rashi: rashi.sagittarius
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be lean and long armed, liberal, devout and wealthy
+- id: JATAKAPARIJATA.WEALTH.CH9V98.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v98
+    quote: >-
+      The person at whose birth Mercury occupies the 12th bhava will be odious to relatives,
+      poor and senseless
+    quote_sha256: 714fdcbb59e53278033ba7b9326e933ea7a2fd4f33667f05233ab37aacbe73d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.12
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: poor
+- id: JATAKAPARIJATA.WEALTH.CH9V98.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.relationship: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v98
+    quote: >-
+      When Venus occupies the last bhava the effect on the person born is that he will lose
+      his relations become a professed rake and grow penurious
+    quote_sha256: 752c4a6acc183d02be835d049a23f39255075a0fd93e72849500bf40724c1192
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.12
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: grow penurious
+- id: JATAKAPARIJATA.WEALTH.CH9V98.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.education: 0.8
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v98
+    quote: >-
+      if the planet occupying the व्यय (Vyaya, 12th) bhava be Saturn, the person born will
+      be deficient in intellect and turn out a dolt, a pauper and a cheat
+    quote_sha256: f3f4f73f6663e11d429c170f45be6a19022aac8628cfdecdcd7b58e3702cd21c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.12
+  indicates:
+    claim: wealth.accumulation
+    polarity: negative
+    magnitude: moderate
+    text: a pauper

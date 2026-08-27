@@ -1,0 +1,3406 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.FAMILY.CH14V7.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v7
+    quote: He also gets fame or titles, comfort to & from brothers & general happiness.
+    quote_sha256: e9914f9cbe57c627b19c81bef0619e547ce3563488f72ca14d08da9c9e9b09e6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.own_sign
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: comfort to & from brothers
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v24
+    quote: >-
+      If the lord of the Ascendant is a friend of the lord of the 3rd house, the native is
+      friendly to his brother.
+    quote_sha256: 43a3cf8b67d12fd7588f3cda11a43f91ca23d9f6e544bc387758628dcf2d3c80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.friendly
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: moderate
+    text: the native is friendly to his brother
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V24.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v24
+    quote: If it is enemy there is enmity.
+    quote_sha256: 655f8b755b42490e753ea053e7d07599cc82f057fcdf6581f430c571a9179bd4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.inimical
+  indicates:
+    claim: family.siblings
+    polarity: negative
+    magnitude: moderate
+    text: there is enmity with his brother
+- id: SARVARTHACHINTAMANI.HEALTH.CH13V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.9
+    domain.wealth: 0.8
+    domain.property: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v34
+    quote: >-
+      During the ruling period of Moon eclipsed by the Sun, the native gets trouble, opposition
+      from his own people, loss of wife, fear from the ruler, fire & thieves, separation from
+      mother & loss of agriculture & grains.
+    quote_sha256: 81631c9a5a7075fe16c2325ef962c25eb1d4dc4d3bb9b41f1d2e43cfa6be6b3f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - combust:
+        subject: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets trouble, opposition from his own people, loss of wife, fear from the
+      ruler, fire & thieves, separation from mother & loss of agriculture & grains
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V10.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v10
+    quote: There is disease to his wife & son.
+    quote_sha256: 493cd8d609cc55e3f28e03f1cced19f61d718d000a0974dbbf66a9ef81872375
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: There is disease to his wife & son.
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH13V1.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v1
+    quote: >-
+      During the main ruling period of Sun occupying its highest degree of exaltation one
+      gets lands, wealth, wife, son, fame, courage, honour from the king, movements, recreation
+      meetings.
+    quote_sha256: 3b35ba86ffe8f0059ba2dec1f883f5b474451481edbfd52a579319fb5ee225aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: one gets wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH13V2.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v2
+    quote: >-
+      During the ruling period of Sun in exaltation one gets cows, increase of cows, grains,
+      wealth, travelling, clash with friends and relatives.
+    quote_sha256: fd5e564228bea4c9c43f7353f1be37b43bccc42c6a8a93ead39f5db8113cc42d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: clash with friends and relatives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH14V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v10
+    quote: >-
+      During the ruling period of Mars occupying the sign of its friend, the native gets friendship
+      even with his enemies.
+    quote_sha256: fe684a9f7189a043477c9e3ef2861628c4d88cbf8fb7801d1793f040d80bdba4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.friendly
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native gets friendship even with his enemies
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH14V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v21
+    quote: >-
+      During the ruling period of Mars located in the 7th house, the native gets loss of wife,
+      trouble in rectum & the urinary tract. This is when Mars is an "Agochar" planet.
+    quote_sha256: 57c99d527c1c67354b2896f891b25f4d1eb7ac4af56bad3b87a4e28a26d0c741
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: loss of wife, trouble in rectum & the urinary tract
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH14V22.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v22
+    quote: he gets defame & loss of education, son, wife, wealth & honour.
+    quote_sha256: 2447421e059757757374374528fe1158f437715e60c2ffc7fd931b786b386745
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: loss of wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH14V39.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v39
+    quote: >-
+      He gets wife, son, & honour from the ruler & gets himself purified by bath etc in the
+      waters of the Ganges.
+    quote_sha256: 4a5c2655a21d61e9984507ca10916ed2202018e6763eefb1af9f7a9e89f93ec7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - strength:
+        subject: graha.mercury
+        op: '>='
+        value: 1.0
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: He gets wife, son, & honour from the ruler
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH15V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.health: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v4
+    quote: >-
+      During the ruling period of Venus located in the sign previous to that of its sign of
+      debilitation, the native has much contact with prostitutes, trouble to wife, son, relatives,
+      his mind gets immoral, he has pain in stomach & trouble from sexual affairs.
+    quote_sha256: 031e41d80f0b2d74712d72c8a8de380271c379fac8e43bffb7112236ca6c2e20
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - occupies_rashi:
+        subject: graha.venus
+        rashi: rashi.leo
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native has much contact with prostitutes, trouble to wife, son, relatives, his mind
+      gets immoral, he has pain in stomach & trouble from sexual affairs
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH15V6.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v6
+    quote: '& meets hatred from son, wife etc'
+    quote_sha256: ee0105c4d2cfd4454cb054827daea54bf3f2cb3137689508352115846d54ecf7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: meets hatred from son, wife etc
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH16V10.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v10
+    quote: He loses happiness from people, wife & sons.
+    quote_sha256: 64c94770eb0916b9f4da372c97b0954d596c50572c1bfad6d4e847b92df07c02
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: He loses happiness from people, wife & sons.
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH16V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v13
+    quote: >-
+      During the ruling period of Rahu located in the 7th house, the native soon gets destruction
+      of his wife
+    quote_sha256: 1c57c53180e0a5fb3e369094819ce255f76e80bde07878c632cd317c7b2f43fe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: soon gets destruction of his wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH16V1821.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v18-21
+    quote: >-
+      During the main ruling period of Sun located in the 9th house and in the sub periods
+      of malefic planets, the native gets much sorrow and trouble from elders and friends.
+    quote_sha256: 66c95a806e7e6e24a15de494b91bda90fd727f96d2610910fa83f25b9bdcc87e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native gets much sorrow and trouble from elders and friends
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH3V72.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.5
+    domain.relationship: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v72
+    quote: >-
+      If the lord of the 4th house is located in the 2nd, 11th, 5th or 9th house and is aspected
+      by benefic planets & is located in the Navamsha of benefic planets, the native helps
+      his relatives.
+    quote_sha256: b7493227d5b3dafe3ecd5955ecc4fefa05cd7b96a6c92c219aaffbfc37842e88
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.04
+          bhava: bhava.02
+      - occupies_bhava:
+          subject: lord.bhava.04
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: lord.bhava.04
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: lord.bhava.04
+          bhava: bhava.09
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.04
+          rashi: rashi.gemini
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.04
+          rashi: rashi.virgo
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.04
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.04
+          rashi: rashi.pisces
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.04
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.04
+          rashi: rashi.libra
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.04
+          rashi: rashi.cancer
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native helps his relatives.
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH3V73.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v73
+    quote: >-
+      If the lord of the 4th house is afflicted by malefic planets and is in association with
+      planets who are in their debilitation sign or are eclipsed and is without the association
+      or aspect of benefic planets the native always hates his relatives.
+    quote_sha256: d4705294fba76e05ed29af2defcecc02ace594c837beb8cfc55dfaae059a17c4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: lord.bhava.04
+        - aspects:
+            subject: graha.venus
+            target: lord.bhava.04
+        - aspects:
+            subject: graha.mercury
+            target: lord.bhava.04
+        - conjunct:
+            subject: lord.bhava.04
+            other: graha.jupiter
+        - conjunct:
+            subject: lord.bhava.04
+            other: graha.venus
+        - conjunct:
+            subject: lord.bhava.04
+            other: graha.mercury
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native always hates his relatives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH3V74.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v74
+    quote: >-
+      If any planet is located in his sign of exaltation or a friendly sign in the 4th house,
+      under the aspect of Jupiter the native gets respect from his relatives.
+    quote_sha256: d2625e7677dafadd3fc538a562d5bbc604d76bfae3ab048171168d757cb440b7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - any:
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.exalted
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.friendly
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native gets respect from his relatives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH5V10.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.health: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v10
+    quote: if the two are associated with Venus trouble comes from wife
+    quote_sha256: 96bb2253553c24713d3b313e3a91f3e1d1b3163236739a6be8dde530db117aff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.venus
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.venus
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: trouble comes from wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH5V52.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v52
+    quote: >-
+      If the lord of the first house is with benefics & there is in the 6th house Moon or
+      other benefic planet & if a benefic occupies kendra or the trine, the native lives in
+      cordiality with his community.
+    quote_sha256: 2b5fed452e85af7f15baef9f94a09e694f8ca949b910c83506ced8b510af65f4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.jupiter
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - in_kendra:
+        subject: graha.jupiter
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the native lives in cordiality with his community
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH5V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v58
+    quote: >-
+      If the lords of the 5th and the lagna are mutual friends, there is friendship between
+      the native and his son.
+    quote_sha256: 733a37d41f2fab3e9b840c821aaf244f45b144a3ba40bd3f6fe8c787e531749a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: lord.bhava.05
+        other: lord.bhava.01
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: there is friendship between the native and his son
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH5V61.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v61
+    quote: >-
+      If the lord of the 5th house is located in 6th, 8th or 12th house and is aspected by
+      the lord of the lagna & also by Mars & Rahu, the son is always opposed to the father
+      i.e. to the native.
+    quote_sha256: 4542cba409f7c828c31cfea21d8fd48765bd1e8e38c0149f83145a940012b3b8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.05
+    - aspects:
+        subject: lord.bhava.01
+        target: lord.bhava.05
+    - aspects:
+        subject: graha.mars
+        target: lord.bhava.05
+    - aspects:
+        subject: graha.rahu
+        target: lord.bhava.05
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the son is always opposed to the father i.e. to the native
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.health: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v11
+    quote: >-
+      If the lord of the 5th house is located in the 7th, and the lord of the 7th house is
+      with a malefic and Venus is weak, the wife of the native dies as a result of (loss etc
+      of) pregnancy.
+    quote_sha256: 37c1e21145eafb8378535fb3a243180c473bbab541704eee8a29e4ebef97a1aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.07
+    - conjunct:
+        subject: lord.bhava.07
+        other: graha.mars
+    - strength_band:
+        subject: graha.venus
+        band: band.weak
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the wife of the native dies as a result of (loss etc of) pregnancy
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V12.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v12
+    quote: if Moon is in its sign of debilitation in the 7th house, the wife dies by drowning.
+    quote_sha256: 63c0f0ef3a2d4080d646f835f1f42168e778368c287ea5b88a7336aca076f3cb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.debilitated
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: extreme
+    text: the wife dies by drowning
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V1314.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v13-14
+    quote: >-
+      If the lord of the 7th house is with Rahu and Mandi and is in decante going by the name
+      of Bhujanga i.e. serpent, the wife dies by taking poison.
+    quote_sha256: 5e5992bc43a0767704f8bed37901ceaedcccf66526dce4e16cd0d17d81673f07
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.07
+        other: graha.rahu
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the wife dies by taking poison
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V1314.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v13-14
+    quote: >-
+      If the lord of the 2nd house is located in the 2nd house itself & the lord of the 7th
+      is also in its own sign in the 7th, the man has only one wife.
+    quote_sha256: 5f894d157ccbffc9791a5f32769ca8f5f3d02ce96d4d5989afe5404093c31c88
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.own_sign
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the man has only one wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v15
+    quote: >-
+      If the lord of the 7th house is very nice by virtue of being in retrogradation, exaltation
+      etc., the man gets many wives
+    quote_sha256: d8b679e3771e74c35c06d4f9a316577ac855da7d6a2ca8df8e7a2e7d4e07b1c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.exalted
+    - retrograde:
+        subject: lord.bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the man gets many wives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V15.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v15
+    quote: so also is the case when a strong Venus is in the Ascendant.
+    quote_sha256: aab5e6683598f7218a74ab9c3f57b8dae05e3a9e049466c0cd2b935e80b69ec7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - strength_band:
+        subject: graha.venus
+        band: band.strong
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the man gets many wives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v16
+    quote: >-
+      Two marriages should be predicted if the lord of the lagna is located in the 8th house,
+      the 7th house is occupied by a malefic & the lord of the 2nd is with a malefic.
+    quote_sha256: 2d247c0ef72b9f339e37bf5d72bf0e88920f8681e6abb859c708357aabf2a464
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.08
+    - occupant_count:
+        bhava: bhava.07
+        op: '>'
+        n: 0
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.saturn
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: Two marriages should be predicted
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v17
+    quote: >-
+      Early death of wife should be predicted if the lord of the 7th house is with Saturn,
+      Mars and Rahu & is located in a malefic Shashti amsha.
+    quote_sha256: fdeeb2baecdab6204044a1f990645e349be14df2266eee69cda7d7c48fb53c35
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.07
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.07
+        other: graha.mars
+    - conjunct:
+        subject: lord.bhava.07
+        other: graha.rahu
+    - varga_dignity:
+        varga: varga.d60
+        subject: lord.bhava.07
+        dignity: dignity.inimical
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: Early death of wife should be predicted
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v19
+    quote: >-
+      If the significator of wife i.e. Venus is situated with a malefic planet & is located
+      in its sign of debilitation or in its debilitation Navamsha & is aspected by a malefic
+      planet the native marries twice.
+    quote_sha256: e52366369a970fbd0a8269236e900bf4c1d32c40fdf44cdc2b8f9295511f1557
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+    - any:
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.debilitated
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.venus
+          dignity: dignity.debilitated
+    - aspects:
+        subject: graha.saturn
+        target: graha.venus
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: the native marries twice
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v2
+    quote: If Venus is located in the 7th house, the native is overridden with sex
+    quote_sha256: 874eba564a88aa1cc4fe6dc7c951a521ed16d548ee3c3061aa3f304c4aa946d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native is overridden with sex
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V2.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v2
+    quote: if it be Mercury there then he has affairs with another woman.
+    quote_sha256: 82e075925df2475c4bc9d6e93aee1e8e7c420ac7cc296dd88f9ee13c706268d1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: he has affairs with another woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V2.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v2
+    quote: If it be Jupiter he lives only with his wife
+    quote_sha256: b9f36dd9384c402f5a46b5a198e06aea7d1796247e14fbede35accf01375e14c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: he lives only with his wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V2.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v2
+    quote: if Saturn he has affairs with a bad woman.
+    quote_sha256: 692f8eb22e37db9cf8d383d1160a5557b5f083aa11f76fc33904d9069074a83a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: he has affairs with a bad woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v21
+    quote: >-
+      If there are malefic planets in the 7th and 2nd houses and their lords are weak, the
+      native loses his first wife & has to marry another lady.
+    quote_sha256: 83c3790d2dfa7fad8cd421fb0ff958fd8012654a592577766de9ef1643ef1321
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.07
+        op: '>'
+        n: 0
+    - occupant_count:
+        bhava: bhava.02
+        op: '>'
+        n: 0
+    - strength:
+        subject: lord.bhava.07
+        op: <
+        value: 300
+    - strength:
+        subject: lord.bhava.02
+        op: <
+        value: 300
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native loses his first wife & has to marry another lady
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v22
+    quote: >-
+      If malefics occupy the 7th and 8th houses and Mars is located in the 12th house & if
+      the 7th house is not aspected by its own lord, the native loses his first wife and has
+      to marry a second time.
+    quote_sha256: fafdcafe2a0a29960810a7d0f036b2b2997eba1499be7d737cad0b6245a7c2a8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.07
+        op: '>='
+        n: 1
+    - occupant_count:
+        bhava: bhava.08
+        op: '>='
+        n: 1
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+    - not:
+        aspects:
+          subject: lord.bhava.07
+          target: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native loses his first wife and has to marry a second time
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v23
+    quote: >-
+      If both the 2nd & the 7th are occupied by many malefic planets & the lord of the 7th
+      house is aspected by a malefic the native has to marry thrice, one after another, as
+      a result of death of wives.
+    quote_sha256: 16d153f37982f78c93c0823fd9b13622e564f100fbfd25ba4e84aef61a29ae82
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.02
+        op: '>='
+        n: 2
+    - occupant_count:
+        bhava: bhava.07
+        op: '>='
+        n: 2
+    - aspects:
+        subject: lord.bhava.07
+        target: lord.bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: extreme
+    text: the native has to marry thrice, one after another, as a result of death of wives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v24
+    quote: >-
+      If there are malefic planets in the Ascendant, the 2nd house or in the 7th and the lord
+      of the 7th house is weak by being eclipsed or being in its sign of debilitation, the
+      man has to marry thrice.
+    quote_sha256: a44d76d7cbb5db10ebaeb7add877e61c86997fa2a92f6af956f51fbc87465ae1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupant_count:
+          bhava: bhava.01
+          op: '>='
+          n: 1
+      - occupant_count:
+          bhava: bhava.02
+          op: '>='
+          n: 1
+      - occupant_count:
+          bhava: bhava.07
+          op: '>='
+          n: 1
+    - any:
+      - combust:
+          subject: lord.bhava.07
+      - dignity:
+          subject: lord.bhava.07
+          dignity: dignity.debilitated
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the man has to marry thrice
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.status: 0.2
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v28
+    quote: >-
+      If a strong Mercury is located in the 10th house from the lord of the 1st house and
+      Moon is located (in strength) in the 3rd from the lord of the 7th house, the native
+      lives with many wives.
+    quote_sha256: 0ba71e8f04e817df625b832737e59e2ff4069adb427f472a3a3737bfd9b077ab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: graha.mercury
+        op: '>='
+        value: 500
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.10
+        reference: ref.lagna
+    - strength:
+        subject: graha.moon
+        op: '>='
+        value: 500
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native lives with many wives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V29.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v29
+    quote: >-
+      If the lord of the 12th and the 2nd houses are located in the 3rd house and are aspected
+      by Jupiter or by the lord of the 9th house, the native has many wives.
+    quote_sha256: b3759845944be36d26d118a1d1301395e88a63479bd1866ca694075ddeddf079
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.03
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.12
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.02
+      - aspects:
+          subject: lord.bhava.09
+          target: lord.bhava.12
+      - aspects:
+          subject: lord.bhava.09
+          target: lord.bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native has many wives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V31.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v31
+    quote: >-
+      If the lords of the 7th and the 11th houses are located together or they aspect each
+      other & are located in a trine in strength, the yoga indicates that the native has many
+      wives at a time.
+    quote_sha256: 995aafd9bc99586935d3687a964f7dcb73ae072d903477bc81af941089aa7f45
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - conjunct:
+          subject: lord.bhava.07
+          other: lord.bhava.11
+      - aspects:
+          subject: lord.bhava.07
+          target: lord.bhava.11
+    - any:
+      - in_trikona:
+          subject: lord.bhava.07
+      - in_trikona:
+          subject: lord.bhava.11
+    - strength:
+        subject: lord.bhava.07
+        op: '>='
+        value: 1
+    - strength:
+        subject: lord.bhava.11
+        op: '>='
+        value: 1
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native has many wives at a time
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v3-4
+    quote: >-
+      If Mars is located in the 7th house, the native even though having many wives has affairs
+      with other women and thereby destroys his family (brings bad name to it).
+    quote_sha256: 7effc451173e9add56c9cac04b05322ba35c15d046e88770bc0585731e6512de
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native has affairs with other women and thereby destroys his family
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V34.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v3-4
+    quote: If it is Sun the native has a family but is attached to many women.
+    quote_sha256: 039b3d00504a102e656fc88bb49063181fa4debcb5d6e785a071b3647d75deb2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the native has a family but is attached to many women
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v36
+    quote: >-
+      If the lord of the 7th house is situated in "Gopur" amsha & the lord of the 10th house
+      is in the 7th & the lord of the 2nd is also strong & in 2nd house the native has 10
+      wives.
+    quote_sha256: 3cf3d9bfd12bee17a274c600085862609c49c0f7ca2d43d00046e9dac5d10d93
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.07
+        dignity: dignity.exalted
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.07
+    - strength:
+        subject: lord.bhava.02
+        op: '>='
+        value: 1
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.02
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: extreme
+    text: the native has 10 wives
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V39.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v39
+    quote: >-
+      If both the lord of the 7th house, and its significator are located in their sign of
+      debilitation & in Navamsha of their debilitation sign and are devoid of benefic influence
+      the native gets a bad wife.
+    quote_sha256: a58e23e073d09fd1cfa42c27767adfeb19e64cb154b203aa2ee944db437e7f67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native gets a bad wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V40.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v40
+    quote: If the lord of the 7th house is with a benefic planet & also aspected by a benefic
+    quote_sha256: f551ac46159e9e6e42572f5e7f5ba3427f91d23e29cf6dcf7999e8da633cc698
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.moon
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.mercury
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.moon
+          target: lord.bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the yoga indicates a chaste wife to the native
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v41
+    quote: >-
+      If the lord of the 7th house is located in the Navamsha of a benefic planet & so also
+      is the signifier of the 7th house & the lord of the 10th house is strong, the native
+      has a chaste wife.
+    quote_sha256: 25d8d3fccf861f8890fd66d7c2ed062eeba5e8a02654a33edc9c3f520b91b548
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.07
+        rashi: rashi.gemini
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.venus
+        rashi: rashi.gemini
+    - strength:
+        subject: lord.bhava.10
+        op: '>='
+        value: 1
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native has a chaste wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V42.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v42
+    quote: >-
+      If Venus is in its sign of exaltation in a friendly sign, in the varga belonging to
+      its own sign, in amsha such as "Gopur", in benefic Shashti amsha, & in Mridu amsha,
+      the native's wife is chaste.
+    quote_sha256: 35a396c1b9ed13fd46c4fe07c2b57e408e1da1d88dc5ead039d2f9393d0e4912
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.exalted
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the native's wife is chaste
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V44.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.spiritual: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v44
+    quote: >-
+      or if Venus lord of the 7th is aspected by benefics and the 7th is occupied by Jupiter,
+      the wife of the native is religious and loyal to the husband.
+    quote_sha256: 3109c592f49e1b863078225fa9634289d3dc7ef447ffa29ceaa3e2efbf571634
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.07
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.07
+          rashi: rashi.libra
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.mercury
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.moon
+          target: lord.bhava.07
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the wife of the native is religious and loyal to the husband
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V45.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v45
+    quote: >-
+      If the lord of the 7th house is located in kendra and is aspected by a benefic planet,
+      & is located in a benefic Navamsha & a benefic sign, the wife of the native is chaste
+      & loyal to the husband.
+    quote_sha256: db487683f8f92128a860a346a599a7d15bab9ac334d39cbc4cbb32dac118345d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.07
+        dignity: dignity.friendly
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the wife of the native is chaste & loyal to the husband
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v47
+    quote: >-
+      If Sun as the lord of the 7th house is strong, with benefics and located in the Navamsha
+      sign of a benefic & is aspected by a benefic planet & is the friend of the lord of the
+      lagna the wife is devoted to the husband.
+    quote_sha256: 663446ae3bb8e36829cb3dfcfd48cadde15cd88f02689425fa6819001562228a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.07
+        rashi: rashi.aquarius
+    - strength:
+        subject: lord.bhava.07
+        op: '>='
+        value: 1
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the wife is devoted to the husband
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V48.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.temperament: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v48
+    quote: >-
+      If the lord of the 7th house is located in the Navamsha of a malefic planet & is located
+      in between malefic planets, the wife is adament, faulty, & adultrous.
+    quote_sha256: 2f2e5268c97294ca10cdd5df33a478d6c9c2d257ef1bd8fd173a04fadb0de5d5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.07
+        dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: strong
+    text: the wife is adament, faulty, & adultrous
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V49.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v49
+    quote: >-
+      If Moon or Venus is the lord of the 7th house, & is located in a benefic Navamsha, or
+      with a benefic planet or in its sign of exaltation, in its friends sign, or in Mridu
+      amsha, the wife is virtuous & of good character.
+    quote_sha256: 83efdb248e84e64205ed6cd2f9d3cc89ac3872b9ca009a9312db8d1d84f3ad71
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.moon
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.venus
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.07
+        rashi: rashi.taurus
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the wife is virtuous & of good character
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V52.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v52
+    quote: >-
+      If the lord of the 7th house is Mercury (who easily takes upon itself the influence
+      of others) associated with a malefic planet, is eclipsed i.e. located in the 8th house,
+      is in between malefics, & is under the aspect of malefic planets, the wife of the native
+      will act towards the destruction of her husband and will destroy the whole family (through
+      opposition to family traditions).
+    quote_sha256: 9929c1c6f7ac12f2ee263af65ed7204817a6e74d3e0d8b6d4b804f1bdbfe64c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - same_bhava:
+        subject: lord.bhava.07
+        other: graha.mercury
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.08
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the wife of the native will act towards the destruction of her husband and will destroy
+      the whole family
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V53.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.progeny: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v53
+    quote: >-
+      If the lord of the 7th house is Mercury, it is strong, located in its friendly or exaltation
+      varga, or in amsha such as "Gopur", the wife is one who has purified her body through
+      vows & fasting.
+    quote_sha256: c16c86f3a36ed3b1e242fe3ed74dad56963bfdc0aadd8f843ebf87946a65c289
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.07
+        rashi: rashi.gemini
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.07
+          dignity: dignity.friendly
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.07
+          dignity: dignity.exalted
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the wife is one who has purified her body through vows & fasting
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V57.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.spiritual: 0.8
+    domain.status: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v57
+    quote: >-
+      If Saturn owns the 7th house, is strong, under aspect of benefics, particularly under
+      aspect of benefics, particularly under aspect of Jupiter, the wife will be engaged in
+      the unselfish service of others, she will be devoted to brahmins & gods, follower of
+      Vedanta, religious, dutiful, & of good moral character.
+    quote_sha256: 26a88ac616bb1cf08786096da41b62451ce71efc3a4efd85cf22c7bd03fab8b0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.07
+        rashi: rashi.capricorn
+    - strength_band:
+        subject: lord.bhava.07
+        band: band.strong
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the wife will be engaged in the unselfish service of others, she will be devoted to
+      brahmins & gods, follower of Vedanta, religious, dutiful, & of good moral character
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v58
+    quote: >-
+      If Rahu or Ketu is in the 7th house, under the aspect of malefics, in malefic Navamsha,
+      the wife will be adultrous, sinful, of bad character, defamed by people, curt & even
+      administering poison to her husband.
+    quote_sha256: b42fe1d213559d5957b9c60e5a525809b791f67af68037a3aacb584dea8e779e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.ketu
+          bhava: bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: extreme
+    text: >-
+      the wife will be adultrous, sinful, of bad character, defamed by people, curt & even
+      administering poison to her husband
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V59.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.status: 0.2
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v59
+    quote: >-
+      If the lord of the 7th house and of the first house are located in the lagna close to
+      each other in degreecal position, the native gets married early in boyhood.
+    quote_sha256: 1e4b20b3041647f4de97e52a4aa95de89c753337312cad4b3e6cafe1f651d62d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: the native gets married early in boyhood
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v6
+    quote: >-
+      If the lord of the 7th house is located with Rahu or Ketu & is aspected by malefics,
+      the yoga is one of adultry.
+    quote_sha256: 0fa82f516f861744b70c68c7253b2e5f7e454c02ba8e8160531eaee9942aae61
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.ketu
+    - any:
+      - aspects:
+          subject: graha.sun
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.saturn
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.rahu
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.ketu
+          target: lord.bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the yoga is one of adultry
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V6.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v6
+    quote: >-
+      If the lords of the 10th. 2nd and 7th houses are located in the 10th, the yoga is again
+      one of adultry.
+    quote_sha256: be56c33f082caba198730f58df0b037341c38946e9e852c6b3acaa75e8028979
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.10
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the yoga is again one of adultry
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V61.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v61
+    quote: >-
+      If the lord of the 7th house is located in the amsha "Paravat" & the lord of the 2nd
+      house is strong & Mridu amsha is occupied by the lord of the lagna, the sages say, marriage
+      takes place in early boyhood.
+    quote_sha256: 658c0af730a1fac292d5389cad92325fe477db7a2cd78235d002be47633a71ac
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.07
+        dignity: dignity.exalted
+    - strength:
+        subject: lord.bhava.02
+        op: '>='
+        value: 1
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.taurus
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: marriage takes place in early boyhood
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V62.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v62
+    quote: If Venus is in the 7th house
+    quote_sha256: b4034d003f228f07abc4ad2b0be7c2c71682bacf7e49d3af84ea799e4114bd89
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: moderate
+    text: the luck of the native shines after his marriage
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V68.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v68
+    quote: >-
+      If the lord of the 7th house is weaker than the lord of the lagna & is located in the
+      Navamsha of its inimical sign or is eclipsed, is in the Navamsha of its sign of debilitation
+      or is with a planet in debilitation, the wife comes from a low family.
+    quote_sha256: 73015c0d569cdb6f6ac9c79c373f479631d16e96d8eb5d5761942640f233e363
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.07
+        dignity: dignity.inimical
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the wife comes from a low family
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V68.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v68
+    quote: >-
+      If the lord of the 7th house is weaker than the lord of the lagna & is located in the
+      Navamsha of its inimical sign or is eclipsed, is in the Navamsha of its sign of debilitation
+      or is with a planet in debilitation, the wife comes from a low family.
+    quote_sha256: 73015c0d569cdb6f6ac9c79c373f479631d16e96d8eb5d5761942640f233e363
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+    - combust:
+        subject: lord.bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the wife comes from a low family
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V68.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v68
+    quote: >-
+      If the lord of the 7th house is weaker than the lord of the lagna & is located in the
+      Navamsha of its inimical sign or is eclipsed, is in the Navamsha of its sign of debilitation
+      or is with a planet in debilitation, the wife comes from a low family.
+    quote_sha256: 73015c0d569cdb6f6ac9c79c373f479631d16e96d8eb5d5761942640f233e363
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the wife comes from a low family
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V72.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v72
+    quote: >-
+      If the two sides are equally balanced the status of the wife and the husband is equal.
+      It denotes a wife of good character and devoted to the husband.
+    quote_sha256: 3fd65c6d78fd3bb612744f6c32ac94aa8a2850759854c20b44d803360dd0297a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: It denotes a wife of good character and devoted to the husband.
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V73.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v73
+    quote: >-
+      If the lord of the 7th house is enemy to the lord of the lagna, the relation of wife
+      will be inimically disposed towards the native.
+    quote_sha256: 2ddd985287ea84627c1fb813549343c277e80f66df49881a88b3c0d606a12b06
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.inimical
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the relation of wife will be inimically disposed towards the native
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V73.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v73
+    quote: >-
+      If they are friends the other members of the family of wife will be friendly towards
+      the native.
+    quote_sha256: 7964e88308df763752a002f7dc7ced9ef2f1305dc76ee77dbc1bcdbd6343778f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.friendly
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the other members of the family of wife will be friendly towards the native
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V74.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v74
+    quote: >-
+      If the lord of the lagna is inimical to the lord of the 7th, the members of the family
+      of the native too will be inimical.
+    quote_sha256: 03eb4466823fbf47e72cbd0863c2ea4cae0c949047ba8a4816b2c26942845fb4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.inimical
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the members of the family of the native too will be inimical
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V74.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v74
+    quote: If friend, the result will be the reverse.
+    quote_sha256: 579ccfdf672947bca4fc19f093378231deadddf019105eed2982a8e603635063
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.friendly
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the members of the family of the native will be friendly
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V78.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v7-8
+    quote: >-
+      Even if one of the three planets i.e. lords of the tenth, 2nd, 7th is located in the
+      4th house the native resorts to adultery.
+    quote_sha256: 209bf561db2631b521fe63437ebf03e36d22b1d9d7dfa409b8662216b60109fd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.04
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: the native resorts to adultery
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V80.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v80
+    quote: If Sun occupies the 7th house, the man cohabits with a stirile woman
+    quote_sha256: 18192ff57523516a5ecba0b1743fe8f564a2424f5ac2f18e3aec666a8d544a5f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the man cohabits with a stirile woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V80.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v80
+    quote: if Moon is there he cohabits with a maid servant
+    quote_sha256: f5886cbcf2e9ca860d48f03c97a32060fc25fc91907fa29f2e6df1d345c612f6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: neutral
+    magnitude: moderate
+    text: he cohabits with a maid servant
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V80.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v80
+    quote: If it is Mars cohabitation is with a woman in monthly course or a stirile woman.
+    quote_sha256: f31b8c921319d3761f4518ddc7486b1fe577a1383325632d9b8fafcb4908fc47
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: cohabitation is with a woman in monthly course or a stirile woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V81.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v81
+    quote: If it is Jupiter it is with a Brahmin woman
+    quote_sha256: 53ad59b09471b875e9e6cea513c572676f308c594625620d13c3e094859fda06
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: cohabitation is with a Brahmin woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V81.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v81
+    quote: if it is Venus the cohabita- tion is with a pregnant woman.
+    quote_sha256: 424eb4698d62c37d75736e4cfbf9f4bfa1c5e2a8c8e0f9d61dfb9d66e7478dec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: cohabitation is with a pregnant woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V82.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v82
+    quote: >-
+      If the 7th house is occupied by Saturn, Rahu or Ketu the cohabitation is with a lowcaste
+      woman or one in monthly course. In the case of occupation by Rahu it is with a pregnant
+      woman & in the case of Saturn it is with a black woman with hunch back.
+    quote_sha256: 863bce73238f573cec7065cd2c1c8a2dc4c31bdbf1846c4f75891e62dc1eb474
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the cohabitation is with a lowcaste woman or one in monthly course... with a black woman
+      with hunch back
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V82.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v82
+    quote: >-
+      If the 7th house is occupied by Saturn, Rahu or Ketu the cohabitation is with a lowcaste
+      woman or one in monthly course. In the case of occupation by Rahu it is with a pregnant
+      woman
+    quote_sha256: 86704f7b35bbb8887e0bd55fe7cfe38acb8c3cba794bc0ab6dc86201cdab760a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the cohabitation is with a lowcaste woman or one in monthly course... with a pregnant
+      woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V82.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v82
+    quote: >-
+      If the 7th house is occupied by Saturn, Rahu or Ketu the cohabitation is with a lowcaste
+      woman or one in monthly course.
+    quote_sha256: 051ca2d4cf01f12b6e9d072cfa6de14dbb5cbeef21a2b8284c47d87e4f2db942
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the cohabitation is with a lowcaste woman or one in monthly course
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V94.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v94
+    quote: The wife has normal sized breasts if the lord of the 7th house is with two benefics.
+    quote_sha256: 2b2bc4b87ab16e6919e46b625bc50181fba0e9d09b4d54ebbe8def0e7d50a127
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.07
+        op: ==
+        n: 2
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: The wife has normal sized breasts
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V96.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v96
+    quote: >-
+      If Sun or Mars is the lord of the 7th house and is situated with Saturn, Mandi or Rahu
+      in the Navamsha of a malefic planet it is an indication of the private part of the wife
+      being long in size.
+    quote_sha256: 169b3be6909f2bb61526075c15907b6bb9ce7481f107d9d0fce07fe74d2e9bc2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.sun
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.mars
+    - any:
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.saturn
+      - conjunct:
+          subject: lord.bhava.07
+          other: graha.rahu
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the private part of the wife being long in size
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V97.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v97
+    quote: >-
+      If the lord of the 7th house is Jupiter or Venus & is located in the Navamsha sign of
+      a benefic, the wife has a normal sized private part
+    quote_sha256: 34419459edbcac50fff25679cfd71268504d866e642b46969907434738c3934f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.jupiter
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.venus
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.gemini
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.virgo
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.pisces
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.libra
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the wife has a normal sized private part
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V97.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v97
+    quote: >-
+      If the lord of the 7th house is Jupiter or Venus & is located in the Navamsha sign of
+      a benefic, the wife has a normal sized private part, if in the Navamsha of a malefic
+      it is long sized.
+    quote_sha256: 41e850644f926e71b6adab048820a07b6a20de3d6213a9ddee8ea18c6d0b7220
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.jupiter
+      - same_bhava:
+          subject: lord.bhava.07
+          other: graha.venus
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.aries
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.scorpio
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.leo
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.cancer
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.capricorn
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.aquarius
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: it is long sized
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH6V98.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v98
+    quote: >-
+      If Saturn, Moon or Mercury is the lord of the 7th house, the private part of wife is
+      short sized.
+    quote_sha256: 443458a46e37a46f9812c519c7612388a2800ed89f0418df0ccd01c6a1b5782c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+    - same_bhava:
+        subject: lord.bhava.07
+        other: graha.saturn
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the private part of wife is short sized
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V24.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.relationship: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v24
+    quote: >-
+      If Saturn is in a kendra & Moon in lagna & Jupiter is in the 12th house, the native,
+      separated from his home, devoid of sons and wife, is without virtues, is foolish and
+      lives on charity.
+    quote_sha256: 141e73d2ee1b4826c7c261ed1f25e7cb5676a0b125dc98ae456fe6c8d06cdb40
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.saturn
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.12
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: devoid of sons and wife
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If Sun is in the 7th house one cohabits with a stirile woman
+    quote_sha256: 423915108e459fd7011dd1a1c1a0ea1f2ca1ab1c773729921b5f42518b07e9b2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: one cohabits with a sterile woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: >-
+      if Sun is there in the sign of Moon, the cohabitation is with a woman of equal qualification.
+    quote_sha256: 7d5f5dfa2103c432ef10299636ee0d8101295416a4982237486c9f5696258b6f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.cancer
+    - any:
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the cohabitation is with a woman of equal qualification
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If it is Mars the sexual act is with a woman in menses or with a stirile woman.
+    quote_sha256: e96bbb86c2f0de275fc2c959dc4470d1fa4fd9743a2e4123b0b590d5ad384d99
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the sexual act is with a woman in menses or with a sterile woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: >-
+      If Mercury is there in the 7th house it indicates prostitution or with a woman of low
+      status or one belonging to the trader class.
+    quote_sha256: 3cc40e9eedde5cee7c16d020a8df31669cc95de28b109bac4047cbedfe6de847
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.mercury
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: indicates prostitution or with a woman of low status or one belonging to the trader
+      class
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If Jupiter is in the 7th the act is with a Brahmin woman.
+    quote_sha256: 507cab9eac882b51893fa16ae0400f36d1e8969c35a9629bdff6fc14ff55e8b5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.jupiter
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.jupiter
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: moderate
+    text: the act is with a Brahmin woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If it is Venus the act is with a pregnant woman.
+    quote_sha256: 1d48ba5be87ef49a1ec3266134ef2a4f67a6566eba06446c3382145257558d51
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.venus
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the act is with a pregnant woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If it is Saturn, Ketu etc the act is with a pregnant woman or a woman of low caste.
+    quote_sha256: a5a93dd4be177a7c3b16c96150998036ddcb293985a6e4834365fa3a99fd581a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.saturn
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.saturn
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the act is with a pregnant woman or a woman of low caste
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If it is Saturn, Ketu etc the act is with a pregnant woman or a woman of low caste.
+    quote_sha256: a5a93dd4be177a7c3b16c96150998036ddcb293985a6e4834365fa3a99fd581a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.ketu
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.ketu
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the act is with a pregnant woman or a woman of low caste
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If it is Rahu in the 7th house the sexual act is with a pregnant woman.
+    quote_sha256: cd60bfe46e9ec02f8c43d71aaa8da407778884ff3e0cb8b75eaa4c59f142c86b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.rahu
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.rahu
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the sexual act is with a pregnant woman
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH9V5456.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v54-56
+    quote: If it is Moon the act is with a dark & bent up woman.
+    quote_sha256: fb45f69a485237df6377cbe0eacc06feb9759d6e47da62e7ea9d23885e702776
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - any:
+      - dignity:
+          subject: graha.moon
+          dignity: dignity.debilitated
+      - dignity:
+          subject: graha.moon
+          dignity: dignity.inimical
+  indicates:
+    claim: relationship.harmony
+    polarity: negative
+    magnitude: moderate
+    text: the act is with a dark & bent up woman
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH6V87.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v87
+    quote: >-
+      The native engages himself in the sexual act like an animal, if Sun, Saturn and Mars
+      occupy the 4th house.
+    quote_sha256: 2f52122b50cc0dd7856c340ff014b2a012330e571f9ad0424bf304210f48f86d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.04
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: The native engages himself in the sexual act like an animal
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH6V87.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v87
+    quote: The same result should be there if Rahu is in the 7th house and Mars in 4th.
+    quote_sha256: a8cc17c04fc6b6db5e716c8b16876915646c2cbdf82915d14a3d2fdbf03662fe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.04
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: The native engages himself in the sexual act like an animal

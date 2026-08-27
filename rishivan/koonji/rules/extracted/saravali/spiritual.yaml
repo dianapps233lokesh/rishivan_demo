@@ -1,0 +1,436 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.SPIRITUAL.CH19V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v13
+    quote: >-
+      The native will become an ascetic with bark-garments if Mars, the Sun, Mercury and Venus
+      are found together at birth.
+    quote_sha256: 5c9d8a2f2b752ce44894175dff6303d07d267cd01f28088c829e134601b2ad39
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.sun
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: The native will become an ascetic with bark-garments
+- id: SARAVALI.SPIRITUAL.CH19V13.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v13
+    quote: The same effect follows the conjunction of Mars, the Moon, Jupiter and Mercury.
+    quote_sha256: 2f01b406def7e09db0abfd8e665ab72219cdc946b1533fc531724e09bf495efb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: The native will become an ascetic with bark-garments
+- id: SARAVALI.SPIRITUAL.CH19V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v14
+    quote: >-
+      A patient ascetic (awaiting the blessings of the Supreme) is indicated by either the
+      combination of the Moon, Mercury, Mars and Saturn
+    quote_sha256: 1da7b2d5ec6dd8d7ae158d5cc7f4ce7108fa86d8638747a30a2b8f1cc123cea8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: A patient ascetic (awaiting the blessings of the Supreme)
+- id: SARAVALI.SPIRITUAL.CH19V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v22
+    quote: >-
+      The native will attain religious order if the Moon, posited in a decanate of Saturn,
+      is aspected by Mars and Saturn.
+    quote_sha256: d215970c6efb6e6ba65739457e849667e447cd616a1ebc5346e4991ad48f4fd0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - varga_occupies:
+        varga: varga.d3
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: The native will attain religious order
+- id: SARAVALI.SPIRITUAL.CH19V22.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v22
+    quote: >-
+      The native will attain religious order if the Moon, posited in a decanate of Saturn,
+      is aspected by Mars and Saturn.
+    quote_sha256: d215970c6efb6e6ba65739457e849667e447cd616a1ebc5346e4991ad48f4fd0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - varga_occupies:
+        varga: varga.d3
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: The native will attain religious order
+- id: SARAVALI.SPIRITUAL.CH19V22.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v22
+    quote: >-
+      The same effect is produced if ihe Moon occupies the Navamsa of Aries/Scorpio in aspect
+      to Saturn.
+    quote_sha256: c844400695fea3273eb9f11ea6045a96c5d4bf4bb1086b3a05d1be93b5c64c73
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: The native will attain religious order
+- id: SARAVALI.SPIRITUAL.CH19V22.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v22
+    quote: >-
+      The same effect is produced if ihe Moon occupies the Navamsa of Aries/Scorpio in aspect
+      to Saturn.
+    quote_sha256: c844400695fea3273eb9f11ea6045a96c5d4bf4bb1086b3a05d1be93b5c64c73
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: The native will attain religious order
+- id: SARAVALI.SPIRITUAL.CH19V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+    domain.temperament: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v25
+    quote: >-
+      If one among the Sun, the Moon and Jupiter be devoid of strength, and occupy the ascendant
+      or the 10th or the 12th in aspect to strong Saturn, the native will become distressed
+      ascetic.
+    quote_sha256: aacdc24f4f576ef1af884b46c76de8354b5a2d525969207b9962585ca637e34c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - all:
+        - occupies_bhava:
+            subject: graha.sun
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.sun
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.sun
+            bhava: bhava.10
+        - strength_band:
+            subject: graha.sun
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.sun
+            bhava: bhava.12
+        - strength_band:
+            subject: graha.sun
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.moon
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.10
+        - strength_band:
+            subject: graha.moon
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.12
+        - strength_band:
+            subject: graha.moon
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.01
+        - strength_band:
+            subject: graha.jupiter
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.10
+        - strength_band:
+            subject: graha.jupiter
+            band: band.very_weak
+      - all:
+        - occupies_bhava:
+            subject: graha.jupiter
+            bhava: bhava.12
+        - strength_band:
+            subject: graha.jupiter
+            band: band.very_weak
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native will become distressed ascetic
+- id: SARAVALI.SPIRITUAL.CH19V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.spiritual: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v26
+    quote: >-
+      Should the Moon with strength be in the 10th, falling in a benefic's Navamsa while others
+      occupy their exaltation marks and all being in aspect to strong Saturn, the native will
+      become the lord of the earth to only become an ascetic.
+    quote_sha256: 7c72936146a9ad3755a119eb810440c49f1b5f1713562567f799a9043317075b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - strength:
+        subject: graha.moon
+        op: '>'
+        value: 0
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: extreme
+    text: the native will become the lord of the earth to only become an ascetic
+- id: SARAVALI.SPIRITUAL.CH19V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch19.v4
+    quote: >-
+      The Sun, Jupiter, Saturn and Mercury being together or Mars, the Sun, Mercury and Jupiter
+      joining denotes a mendicant.
+    quote_sha256: f29b92d0d809bbca93d3d989a6bab5f08b8ed33bf969ee757146d0afb56c5395
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - conjunct:
+          subject: graha.sun
+          other: graha.jupiter
+      - conjunct:
+          subject: graha.sun
+          other: graha.saturn
+      - conjunct:
+          subject: graha.sun
+          other: graha.mercury
+    - all:
+      - conjunct:
+          subject: graha.mars
+          other: graha.sun
+      - conjunct:
+          subject: graha.mars
+          other: graha.mercury
+      - conjunct:
+          subject: graha.mars
+          other: graha.jupiter
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: denotes a mendicant

@@ -1,0 +1,829 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.HEALTH.CH3V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.health: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v28
+    quote: When he is in the 9th, the traveller suffers sickness.
+    quote_sha256: 7584eb11d7fc37cbfb3f4e59f0f82cbe27c50a0d7095ebeeffb498924afa1c56
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.09
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the traveller suffers from illness
+- id: PRASHNATANTRA.OBSTACLE.CH2V98.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v98
+    quote: Malefics in the 7th indicate failure in the object of the journey.
+    quote_sha256: 41b336ea8fb5c67d95bdc19110be78dbed3414e609b3aff234d78c98a69660de
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.07
+        op: '>='
+        n: 1
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: failure in the object of the journey
+- id: PRASHNATANTRA.OBSTACLE.CH2V98.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v98
+    quote: >-
+      Malefics in the 10th indicate that the object of the journey will fail due to the Government
+      or elders in the family.
+    quote_sha256: c336c0c4f50ad9f6dce8a7fe4b40b68274fa6bde4c459917ad98c57185119d97
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.10
+        op: '>='
+        n: 1
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the object of the journey will fail due to the Government or elders in the family
+- id: PRASHNATANTRA.OBSTACLE.CH3V150.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v150
+    quote: If the lord of the 7th is in the 4th or 10th, it will not result in any catch.
+    quote_sha256: a671bbd379a053dae1e923a4311caa8f10bf866471ec2fe505ba471598e6b33e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.10
+  indicates:
+    claim: obstacle.general
+    polarity: negative
+    magnitude: strong
+    text: it will not result in any catch
+- id: PRASHNATANTRA.OBSTACLE.CH3V163.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v163
+    quote: >-
+      If the ascendant lord is retrograde, then the news, whether good or bad, will be unreliable.
+    quote_sha256: 73e478cc00c56c789926421ac8e080d826f140f939a2f987979809afd7127b03
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - retrograde:
+        subject: lord.bhava.01
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the news, whether good or bad, will be unreliable
+- id: PRASHNATANTRA.STATUS.CH2V107.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v107
+    quote: >-
+      The lord of 2nd joining the ascendant, the 10th or 11th, indicates smooth fulfilment
+      of the object of the visit.
+    quote_sha256: 67464989e218b8603422161fc71252defee812a76bfc89f24b7e1aebe09e45cf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.02
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: lord.bhava.02
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: lord.bhava.02
+          bhava: bhava.11
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: smooth fulfilment of the object of the visit
+- id: PRASHNATANTRA.STATUS.CH3V150.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v150
+    quote: >-
+      When the lord of the ascendant is in the 7th and vice versa, the hunting will be successful.
+    quote_sha256: c9a94e30895124c7939f7e499d0862c63b9aba5ac034fbe77fc0e836aeefbdf5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+        distance: dist.07
+    - house_distance:
+        subject: lord.bhava.07
+        other: lord.bhava.01
+        distance: dist.07
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the hunting will be successful
+- id: PRASHNATANTRA.TRAVEL.CH2V106.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.wealth: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v106
+    quote: >-
+      If the second lord occupies the 9th or 3rd, the querent finishes his job quickly and
+      returns back to his native place.
+    quote_sha256: b2c7348f64b2aa74a31bec8d21eccb5bae7e652364c17870153e400d4c983068
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.03
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the querent finishes his job quickly and returns back to his native place
+- id: PRASHNATANTRA.TRAVEL.CH2V96.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v96
+    quote: >-
+      If the lord of the 9th is in the ascendant and has Muthasila with the ascendant lord,
+      there will be no journey.
+    quote_sha256: 2d76bed0e969ad4189dc35ffdd3798b3a7236b7a043f4e12209b043c03a07425
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.01
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: strong
+    text: there will be no journey
+- id: PRASHNATANTRA.TRAVEL.CH2V96.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v96
+    quote: If there is a trinal aspect the querent will undertake a journey.
+    quote_sha256: 7f875390a2244f0f8e5354abc77037d796c4dd104200806c55e2b8f30829c291
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.01
+    - aspects:
+        subject: lord.bhava.09
+        target: lord.bhava.01
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the querent will undertake a journey
+- id: PRASHNATANTRA.TRAVEL.CH3V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v17
+    quote: If the Lagna is a fixed sign, then the traveller will remain where he is
+    quote_sha256: a443db87ef8c5314ffd868cbbe460486ed2028f34d6240ae3fb5e71152f84d96
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.taurus
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: strong
+    text: the traveller will remain where he is
+- id: PRASHNATANTRA.TRAVEL.CH3V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+    domain.status: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v2
+    quote: >-
+      If the lord of Lagna occupies the 3rd or 9th and has Muthasila with a planet in the
+      ascendant, the traveller is already on his way back.
+    quote_sha256: cd60af953d7e2b9cf42b56b0430b300d819cbf5ac47e02c4bb6f970579905ae4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.09
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: the traveller is already on his way back
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: >-
+      If Venus, the Sun, Jupiter or Mercury is in the 4th or 11th, then return of the missing
+      person should be expected soon.
+    quote_sha256: c67f16bec3a80fb81f76e8d1a3094c7c1c92d13dbdea8ac2dc7ec19a60f493dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: return of the missing person should be expected soon
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: >-
+      If Venus, the Sun, Jupiter or Mercury is in the 4th or 11th, then return of the missing
+      person should be expected soon.
+    quote_sha256: c67f16bec3a80fb81f76e8d1a3094c7c1c92d13dbdea8ac2dc7ec19a60f493dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.11
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: return of the missing person should be expected soon
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: >-
+      If Venus, the Sun, Jupiter or Mercury is in the 4th or 11th, then return of the missing
+      person should be expected soon.
+    quote_sha256: c67f16bec3a80fb81f76e8d1a3094c7c1c92d13dbdea8ac2dc7ec19a60f493dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.11
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: return of the missing person should be expected soon
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: >-
+      If Venus, the Sun, Jupiter or Mercury is in the 4th or 11th, then return of the missing
+      person should be expected soon.
+    quote_sha256: c67f16bec3a80fb81f76e8d1a3094c7c1c92d13dbdea8ac2dc7ec19a60f493dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: return of the missing person should be expected soon
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: If any one of these planets is in the 12th, the person will not return.
+    quote_sha256: 15eb4d594bd9f8e9d078e398f02d4ec39ebbd8ed8d8be96b5f65bf2690b78264
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.venus
+      bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: the person will not return
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: If any one of these planets is in the 12th, the person will not return.
+    quote_sha256: 15eb4d594bd9f8e9d078e398f02d4ec39ebbd8ed8d8be96b5f65bf2690b78264
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.sun
+      bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: the person will not return
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: If any one of these planets is in the 12th, the person will not return.
+    quote_sha256: 15eb4d594bd9f8e9d078e398f02d4ec39ebbd8ed8d8be96b5f65bf2690b78264
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.jupiter
+      bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: the person will not return
+- id: PRASHNATANTRA.TRAVEL.CH3V21.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.status: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v21
+    quote: If any one of these planets is in the 12th, the person will not return.
+    quote_sha256: 15eb4d594bd9f8e9d078e398f02d4ec39ebbd8ed8d8be96b5f65bf2690b78264
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: moderate
+    text: the person will not return
+- id: PRASHNATANTRA.TRAVEL.CH3V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v24
+    quote: >-
+      The missing person will return in 30 days' time, provided the lord of the 7th is in
+      a movable sign.
+    quote_sha256: b82485b294b27d73a07726b822b0c8649b998e2c68797a3b8919a626e1a9cb6c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - retrograde:
+        subject: lord.bhava.07
+    - any:
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.07
+          rashi: rashi.aries
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.07
+          rashi: rashi.cancer
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.07
+          rashi: rashi.libra
+      - varga_occupies:
+          varga: varga.d1
+          subject: lord.bhava.07
+          rashi: rashi.capricorn
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: The missing person will return in 30 days' time
+- id: PRASHNATANTRA.TRAVEL.CH3V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v25
+    quote: If benefic planets occupy the 4th and 10th, the traveller will not return.
+    quote_sha256: 6f3ab8bdf3b74455f745cfd706fdbb32a53f39be49ddaa6855460e1ddf8c17fa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.jupiter
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+  indicates:
+    claim: travel.relocation
+    polarity: negative
+    magnitude: strong
+    text: the traveller will not return
+- id: PRASHNATANTRA.TRAVEL.CH3V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v5
+    quote: >-
+      The traveller will return early if the Moon is in Muthasila with the lord of Lagna occupying
+      the 12th.
+    quote_sha256: dddf2b07f115ee8bffa44bd758ae4ccc56a46631fca51a744e8d60fa56b9080d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: The traveller will return early
+- id: PRASHNATANTRA.TRAVEL.CH3V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v6
+    quote: >-
+      The missing person will return if any planet occupies the 6th or 7th, Jupiter is in
+      a quadrant and Mercury and Venus are in trines.
+    quote_sha256: 5083fa27a2349d863c23c72d62f46848c4f8580e3d441489fb56f1590e4ed9cb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupant_count:
+          bhava: bhava.06
+          op: '>'
+          n: 0
+      - occupant_count:
+          bhava: bhava.07
+          op: '>'
+          n: 0
+    - in_kendra:
+        subject: graha.jupiter
+    - in_trikona:
+        subject: graha.mercury
+    - in_trikona:
+        subject: graha.venus
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: strong
+    text: The missing person will return
+- id: PRASHNATANTRA.TRAVEL.CH3V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v8
+    quote: The person will have gone from one place to another if malefics occupy the third.
+    quote_sha256: 5d17218633eb441baf7f25b96e46ac36db3326f631afe7639d21a37896d1d51e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.mars
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: The person will have gone from one place to another
+- id: PRASHNATANTRA.TRAVEL.CH4V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v34
+    quote: >-
+      If the ascendant is a movable sign and the rising Navamsa also being mavoble is the
+      6th, 7th, 8th or 9th, the query will be about a person who has gone to a far-off place.
+    quote_sha256: c7720a2efd1516062ac5d3b092c1e574f0f452e366f31ed2e748a0fc0a55bade
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.01
+        dignity: dignity.friendly
+  indicates:
+    claim: travel.relocation
+    polarity: positive
+    magnitude: moderate
+    text: the query will be about a person who has gone to a far-off place
+- id: PRASHNATANTRA.WEALTH.CH2V105.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.travel: 0.9
+    domain.wealth: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v105
+    quote: >-
+      If the lord of the 2nd is in the ascendant, retrograde, the querent's planned visit
+      to the place will not be useful.
+    quote_sha256: 7d039db7c7ac9e4b1e8499a8a08040f77257dc4c891b5b3c249bc3ad0fdf4b93
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.01
+    - retrograde:
+        subject: lord.bhava.02
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the querent's planned visit to the place will not be useful

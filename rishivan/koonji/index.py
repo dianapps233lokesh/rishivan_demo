@@ -38,7 +38,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass, field
-from typing import Iterable, Optional
+from typing import Callable, Iterable, Optional
 
 from rishivan.koonji.facts import AtomTable, FactSet, atom_name
 from rishivan.koonji.registry import Registry
@@ -275,6 +275,7 @@ class RuleIndex:
         registry: Registry,
         *,
         table: Optional[AtomTable] = None,
+        on_error: Optional[Callable[[str, Exception], None]] = None,
     ) -> "RuleIndex":
         index = cls(table=table if table is not None else AtomTable())
         index.postings = defaultdict(set)
@@ -283,12 +284,34 @@ class RuleIndex:
             if rule.assertion not in RETRIEVABLE:
                 continue
 
-            variants = dnf_variants(rule.antecedent.expr)
-            if not variants:
-                raise EmptyCore(
-                    f"{rule.rule_id}: no antecedent - it would fire on every "
-                    f"chart ever cast"
-                )
+            try:
+                variants = dnf_variants(rule.antecedent.expr)
+                if not variants:
+                    raise EmptyCore(
+                        f"{rule.rule_id}: no antecedent - it would fire on every "
+                        f"chart ever cast"
+                    )
+            except (EmptyCore, ValueError) as exc:
+                # Named, and every one of them reported rather than the first.
+                #
+                # `_dnf` raises a bare "rule normalises to more than 32
+                # variants" with no rule id in it, and the compiler attributed
+                # that to `<corpus>`. `gate` cannot drop a corpus-level error --
+                # it has no rule to drop -- so it logged a warning and wrote the
+                # offending rule to disk anyway, and `Engine.from_rules` then
+                # refused to start. One Hindu Predictive rule expanded
+                # "quadrants occupied by benefics" to four houses times four
+                # benefics, 1,536 variants, and took the whole engine down.
+                #
+                # Naming the rule is the entire fix: gate drops it, it never
+                # reaches disk, and the corpus stays loadable. Collecting rather
+                # than raising matters for the same reason -- aborting at the
+                # first bad rule hides the second, which then breaks the next
+                # run.
+                if on_error is None:
+                    raise
+                on_error(rule.rule_id, exc)
+                continue
 
             for variant in variants:
                 names, always = extract_core(variant, registry)

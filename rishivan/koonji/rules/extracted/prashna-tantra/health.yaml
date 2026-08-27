@@ -1,0 +1,730 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.FAMILY.CH2V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v15
+    quote: >-
+      One's brother will be suffering from a dangerous disease if the lord of the 3rd is combust.
+    quote_sha256: 59ea66a97e7f15d8d8dbe16e9090b370880eca4356f2ef1eca8c93e0b8a4352c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - combust:
+        subject: lord.bhava.03
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: One's brother will be suffering from a dangerous disease
+- id: PRASHNATANTRA.FAMILY.CH2V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v16
+    quote: >-
+      If the third is occupied by malefics, especially Mars or Rahu, there will be discord
+      between the querent and his brothers.
+    quote_sha256: 012b41e12ab96757f7988cef38ff46da84e294659d6cd2579abe17e79d169ba2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.03
+  indicates:
+    claim: family.siblings
+    polarity: negative
+    magnitude: moderate
+    text: there will be discord between the querent and his brothers
+- id: PRASHNATANTRA.GENERAL.CH3V60.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v60
+    quote: >-
+      If there is friendship between the lords of the 1st and 10th houses, the treatment being
+      appropriate to the disease, the illness will be cured.
+    quote_sha256: fc920c72e7490ce425e01c5f955b7b984bd9d9caa5789a06a94355ad683ef076
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: lord.bhava.01
+        other: lord.bhava.10
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: the illness will be cured
+- id: PRASHNATANTRA.GENERAL.CH3V62.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v62
+    quote: >-
+      A single planet, which should be powerful and a benefic occupying the Lagna, protects
+      the sick man.
+    quote_sha256: 11ead23784d8ebbde093a9ade084582796a26acd1240aee633f7eec9ebb84462
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: protects the sick man
+- id: PRASHNATANTRA.GENERAL.CH3V6466.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v64-66
+    quote: >-
+      When the Moon is strongly disposed in exaltation or own house, the disease can be cured;
+      otherwise, the disease cannot be cured.
+    quote_sha256: a5baa8b84f3a3bad06c23258c35ab0f4665f9a72b83e5d4679904be68ac2724e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.exalted
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.own_sign
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: the disease can be cured
+- id: PRASHNATANTRA.HEALTH.CH2V113.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+    domain.career: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v113
+    quote: Immense difficulties have to be faced if the ascendant lord is combust.
+    quote_sha256: b9b845a1fc45f44baf9d8c87afcb6d22dfa9e59b73077ac0f63cedd8dbf6c8db
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - combust:
+        subject: lord.bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: Immense difficulties have to be faced
+- id: PRASHNATANTRA.HEALTH.CH2V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v14
+    quote: If the lord of the third is in the sixth and is in Muthaseela with the lord of
+      the 6th
+    quote_sha256: 192c8345ef7a5c9db037958b4f8d946221a8044233c748a876d93c26f4136e32
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.03
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the querent's brothers will be in bad health
+- id: PRASHNATANTRA.HEALTH.CH2V14.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v14
+    quote: or if the lord of the 6th is in the 3rd
+    quote_sha256: 89b92fd165b915a59d6a73eea3793b5f2121e3a34d686f8e0af105e6ca95a083
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.03
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the querent's brothers will be in bad health
+- id: PRASHNATANTRA.HEALTH.CH2V14.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v14
+    quote: or the lord of the 3rd is afflicted
+    quote_sha256: 143ec4685a7fda271169e801f36d7ee3174e022dc897695228c1fac698760501
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.03
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the querent's brothers will be in bad health
+- id: PRASHNATANTRA.HEALTH.CH2V37.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v37
+    quote: If they are in Sagittarius, the delivery will not take place.
+    quote_sha256: df80a23642c89cee9ba68507bb0c3aaf59bfb6e15839e8fd5dd37bcee5957146
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.sagittarius
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.sagittarius
+    - occupies_rashi:
+        subject: graha.venus
+        rashi: rashi.sagittarius
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: health.affliction
+    polarity: negative
+    magnitude: strong
+    text: the delivery will not take place
+- id: PRASHNATANTRA.HEALTH.CH2V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.temperament: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v4
+    quote: >-
+      If the lord of the ascendant is in the ascendant or in conjunction with benefics, the
+      querist will become free from worry and ill-health.
+    quote_sha256: 35f6176ad45aa1e5303d7be92ef670643e6cef41f65d6fd0cbd5921717899bd8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - any:
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.moon
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: the querist will become free from worry and ill-health
+- id: PRASHNATANTRA.HEALTH.CH2V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v46
+    quote: If malefics are in the 10th, due to the querent's own fault, the treatment will
+      not work.
+    quote_sha256: 68c26f3fdbea8c2a91b438cf3f7773007cc910528ee2409d313980387c4ccea1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the disease will be intensified
+- id: PRASHNATANTRA.HEALTH.CH2V48.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v48
+    quote: >-
+      If the lord of the ascendant is in the 6th and the lord of the 6th in the ascendant,
+      the patient has to suffer a lot and for a long time too.
+    quote_sha256: 6c8a6400c2a08db6b38f603bc12308152c36ed4a16a714d3d1a9cb4cc6fda33a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the patient has to suffer a lot and for a long time too
+- id: PRASHNATANTRA.HEALTH.CH2V53.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v53
+    quote: If the ascendant is a common sign, the disease will be other than the suspected
+      one.
+    quote_sha256: be52d9179068c9d9a608caf576a5a1ecf3fe3102c012587408c92b30ad0b703b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.gemini
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.virgo
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.sagittarius
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.pisces
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the disease will be other than the suspected one
+- id: PRASHNATANTRA.HEALTH.CH2V53.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v53
+    quote: If the ascendant is in a fixed sign, the disease is as suspected.
+    quote_sha256: e9d281b466955dc0583ec537095e2f41b49615c2a20afd43a4c7df930b99e1a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.leo
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.scorpio
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.aquarius
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the disease is as suspected
+- id: PRASHNATANTRA.HEALTH.CH2V5455.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v54-55
+    quote: Benefics in the 6th show speedy recovery.
+    quote_sha256: 5802ac90eeb174e2bb8dfa1a53239808a2e80b965f9c3c128eff8c3b82441b5f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.jupiter
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: Benefics in the 6th show speedy recovery.
+- id: PRASHNATANTRA.HEALTH.CH2V68.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v6-8
+    quote: >-
+      If malefics are in the 2nd, the querist gains money from a distant land and also suffers
+      affliction.
+    quote_sha256: 4732fea1c8a59daaec54d74d69705f3382e23f428e42872aa1cd2bc6887ab4d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: suffers affliction
+- id: PRASHNATANTRA.HEALTH.CH3V140.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v140
+    quote: >-
+      If Saturn or Rahu is in the ascendant aspected by the Sun, he will be invited by enemies
+      and be attacked.
+    quote_sha256: d4f39a6bd7dc9e5510117440bd7ea37f9d066679c7d7faaf728d49148d8b5206
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+    - aspects:
+        subject: graha.sun
+        target: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: he will be invited by enemies and be attacked
+- id: PRASHNATANTRA.HEALTH.CH3V140.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v140
+    quote: If the Moon and Mars are in Lagna aspected by Saturn, the querent will be assaulted.
+    quote_sha256: e55670d270d988987f70a1f54835cded72c1bde7ec79c2513fcef8c58b8e218c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the querent will be assaulted
+- id: PRASHNATANTRA.HEALTH.CH3V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v46
+    quote: >-
+      If the Moon occupying Lagna has Ithasala with Mars, the querent will be captured or
+      killed.
+    quote_sha256: f3999e8e39336eebbe7830e38206b02a1ce2fe3c930f68b276a4424bce174d0b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the querent will be captured or killed
+- id: PRASHNATANTRA.HEALTH.CH3V6466.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v64-66
+    quote: >-
+      When strong malefics are in quadrants, even when the deities are propitiated relief
+      is not possible.
+    quote_sha256: 777f1da492966b32403f8dd03a8642c0bf7e63caad9160b6a5f78dd6dc48f895
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.saturn
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: relief is not possible
+- id: PRASHNATANTRA.HEALTH.CH4V4748.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v47-48
+    quote: In the first house, body comforts and physical happiness
+    quote_sha256: 807af7baf5a4518fc5fefbe49fbe78f27b530f54388ce0c3e9d529870e30a468
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: lord.bhava.10
+        bhava: bhava.01
+        reference: ref.lagna
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: body comforts and physical happiness
+- id: PRASHNATANTRA.HEALTH.CH4V9.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v9
+    quote: >-
+      When Mercury occupying the ascendant is aspected by the Moon or other malefics, there
+      will be early gain of money. But the querent will also have troubles.
+    quote_sha256: 76087dccde7aa911ed0a690f9317d397d62f8a5e82d31b3f69bb63c201647f05
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - any:
+      - aspects:
+          subject: graha.moon
+          target: graha.mercury
+      - aspects:
+          subject: graha.mars
+          target: graha.mercury
+      - aspects:
+          subject: graha.saturn
+          target: graha.mercury
+      - aspects:
+          subject: graha.sun
+          target: graha.mercury
+      - aspects:
+          subject: graha.rahu
+          target: graha.mercury
+      - aspects:
+          subject: graha.ketu
+          target: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the querent will also have troubles

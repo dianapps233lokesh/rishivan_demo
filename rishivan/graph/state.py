@@ -41,6 +41,16 @@ class RishivanState(TypedDict, total=False):
 
     # -- intake ------------------------------------------------------------
     classification: dict
+    stated_facts: list
+    """What the seeker asserted about their own life, as opposed to asked.
+
+    `[{"text": ..., "when": "YYYY-MM-DD|YYYY-MM|YYYY|"}]`. Extracted by the
+    classifier, which already makes one structured pass over the question, so
+    they cost no extra call. Read by the Rishi prompt and the narrative gate;
+    before they existed, a reading answered "I got married on 22nd Nov 2025.
+    When will I have a child" by dating the marriage to 2030.
+    """
+
     routing: dict
     primary_rishi: str
     rishi_title: str

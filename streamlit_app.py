@@ -762,6 +762,17 @@ if ask_btn and question.strip():
             st.session_state.turns = _convo.to_state()
 
             if not is_warmth:
+                # The corpus notice stands beside the answer rather than inside
+                # it. It is true of every rule we hold, so repeating it in the
+                # prose of every reading spent the disclosure budget on a
+                # constant and crowded out the caveats specific to the question.
+                _plan = result.get("answer_plan")
+                if _plan is not None and getattr(_plan, "unreviewed", False):
+                    st.caption(
+                        "The classical rules behind this reading were extracted "
+                        "from the source texts automatically and have not yet "
+                        "been checked by a human reader."
+                    )
                 st.caption(
                     "Rishivan shares traditional Vedic interpretation for reflection "
                     "and guidance. It is not medical, legal, or financial advice — "

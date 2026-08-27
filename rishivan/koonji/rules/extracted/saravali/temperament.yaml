@@ -1,0 +1,3585 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARAVALI.EDUCATION.CH16V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v1
+    quote: >-
+      Should these four planets be together at birth, the native will be a writer, a thief
+      and be scurrilous in speech.
+    quote_sha256: de395078f4355ac7810319f5bac7101b680e5a2b7d34907afd04f2c010deec55
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native will be a writer
+- id: SARAVALI.EDUCATION.CH17V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v35
+    quote: >-
+      Should these be together at birth, the native will be intelligent, interested in sastras,
+      be a debaucher and an obedient servant.
+    quote_sha256: 44d3a8d2f725c051696254373f12dd47662bd2a9e9185ff0b8e794f5b02b777b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be intelligent, interested in sastras
+- id: SARAVALI.EDUCATION.CH22V65.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v65
+    quote: If the Moon at birth be in Capricorn, the native will be a singer
+    quote_sha256: 34e1d18d4b01bbe22ea78cc77f6007b48c1676867dba167780bc9105f898637d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the native will be a singer
+- id: SARAVALI.EDUCATION.CH25V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v3-4
+    quote: >-
+      Should Mercury be in Taurus, the native will be skilful, eminently liberal, be famous,
+      will have knowledg of Vedas and sastras, be fond of exercises, robes, ornaments and
+      garlands, be firm in disposition, will have sincerely earned wealth, will possess a
+      chaste wife, will be a soft and sweet speaker, and be after sexual satisfaction.
+    quote_sha256: 2412cd9039bfe68e2e9e63bf293dfdee73b3e108e87d49843bfeebb0c21c0406
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.mercury
+      rashi: rashi.taurus
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be skilful, eminently liberal, be famous, will have knowledg of Vedas
+      and sastras
+- id: SARAVALI.EDUCATION.CH8V57.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v57
+    quote: >-
+      If malefic planets are in Rasi Sandhis (i.e. at the junctions of Rasis) while there
+      is no benefic aspect on the Moon, the native born is dullwitted.
+    quote_sha256: 2a56c4c1cf7d6eb08c0fabb70c87ba07e218337f8656c76ed66af18b3503809c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+  indicates:
+    claim: education.learning
+    polarity: negative
+    magnitude: moderate
+    text: the native born is dullwitted
+- id: SARAVALI.FAMILY.CH8V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.temperament: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v41
+    quote: Should the Sun be strong, it resembles the father
+    quote_sha256: 854b699984b742b0768efedfd04cc97f3407f13b7fe1871a0b86908e9daee763
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: moderate
+    text: it resembles the father
+- id: SARAVALI.FAMILY.CH8V41.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.temperament: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch8.v41
+    quote: If the Moon be so, resemblance is that of the mother.
+    quote_sha256: fbbd85375ecb54bd8003c1d22d5b48b63d4aa8077e25265403751a958f452089
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.moon
+        band: band.strong
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: moderate
+    text: resemblance is that of the mother
+- id: SARAVALI.HEALTH.CH21V49.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v4-9
+    quote: >-
+      In case Saturn aspects the Sun in the said condition, the native will be subjected to
+      grief on account of physical ailments, will have intense passion in his undertaking,
+      be dull-witted and a dunce.
+    quote_sha256: b0683ab2087776d519c6b093b2c853e3a6a653e1aed50c43a772354b8eca1066
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be subjected to grief on account of physical ailments, will have intense
+      passion in his undertaking, be dull-witted and a dunce
+- id: SARAVALI.HEALTH.CH21V5055.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      If Saturn aspects the Sun in Pisces or Sagittarius, the native will be unclean, will
+      eat others' food, will join bad men and will breed animals.
+    quote_sha256: 0f486feb555beb5defce3bd0631cd3f754786d1fb8f5213741648438bdd9934f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be unclean, will eat others' food, will join bad men and will breed
+      animals
+- id: SARAVALI.HEALTH.CH21V5055.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      If Saturn aspects the Sun in Pisces or Sagittarius, the native will be unclean, will
+      eat others' food, will join bad men and will breed animals.
+    quote_sha256: 0f486feb555beb5defce3bd0631cd3f754786d1fb8f5213741648438bdd9934f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be unclean, will eat others' food, will join bad men and will breed
+      animals
+- id: SARAVALI.HEALTH.CH24V1718.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v17-18
+    quote: >-
+      Should Mars be in Sagittarius, the native will have many wounds, be emaciated, be harsh
+      in speach
+    quote_sha256: c91973ea0a94e08fea5b8bd8881057c1f26ffca03d80e4c4158efd6638ec6a6a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.sagittarius
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native will have many wounds, be emaciated
+- id: SARAVALI.HEALTH.CH25V4654.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v46-54
+    quote: >-
+      If Mars lends his aspect to Mercury as above, one will be base, miserable, physically
+      injured, unskilful and impotent.
+    quote_sha256: efeff4c99bf3d900e23ca8f2f79b065d9485db8879b18e97e6d047cd464179bc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: physically injured
+- id: SARAVALI.HEALTH.CH25V4654.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v46-54
+    quote: >-
+      If Saturn aspects Mercury as above, one will be tall in stature, be splendourless, be
+      ugly, will emanate bad smell from body out of sweat and be miserable.
+    quote_sha256: 583a109335545db23f2ce0333518e39169ffd5b909003abeacdb47755cc726df
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: be miserable
+- id: SARAVALI.OBSTACLE.CH21V3641.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v36-41
+    quote: >-
+      Should Saturn aspect the Sun in Leo, the person will be skilful in creating obstacles,
+      will be a eunuch, and will cause grief to others.
+    quote_sha256: 60badb89deb39375efc132c6a41d2d73a8754da5eab67308ea392f978d37399f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: skylful in creating obstacles
+- id: SARAVALI.RELATIONSHIP.CH13V35.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      If it is Saturn that causes Vesi yoga, one will join others' wives, be wicked, will
+      resemble an old person in appearance, be fraudulent in disposition and be contemptuous.
+    quote_sha256: c028d93eb1ef0358c56c681613744317e7a8a3aa188769cb1d578775a4d0a0c1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.saturn
+        distance: dist.02
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: one will join others' wives
+- id: SARAVALI.RELATIONSHIP.CH14V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v2
+    quote: >-
+      One who has the Sun and Moon together will be at the disposal of his wife (or females),
+      immodest
+    quote_sha256: 5c4a945ebd71d2b12dff1e5c1841c1f71cbc328906c4ef00669a18c71e48aa62
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: will be at the disposal of his wife (or females), immodest
+- id: SARAVALI.RELATIONSHIP.CH21V5055.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Should Venus aspect the Sun in Jupiter's house, one will enjoy women of superior class,
+      be endowed with scents and garlands and be peaceful.
+    quote_sha256: cf495652f38601f817bba40e7d8321a57c0599afd7f59d152a90a5501a8321e6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will enjoy women of superior class, be endowed with scents and garlands and be peaceful
+- id: SARAVALI.RELATIONSHIP.CH21V5055.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v50-55
+    quote: >-
+      Should Venus aspect the Sun in Jupiter's house, one will enjoy women of superior class,
+      be endowed with scents and garlands and be peaceful.
+    quote_sha256: cf495652f38601f817bba40e7d8321a57c0599afd7f59d152a90a5501a8321e6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.pisces
+    - aspects:
+        subject: graha.venus
+        target: graha.sun
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will enjoy women of superior class, be endowed with scents and garlands and be peaceful
+- id: SARAVALI.STATUS.CH16V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v3
+    quote: If these four planets join at birth, one will speak and conduct himself as a great
+      person
+    quote_sha256: 5fca1d7a7eb1f9b55cd1cb0adeb540d16047bb913a8b1cabcee76e2bba610236
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: one will speak and conduct himself as a great person
+- id: SARAVALI.STATUS.CH18V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.status: 0.7
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v20
+    quote: >-
+      With these planets in conjunction, one will have a number of enemies and friends as
+      well, be helpful to others, wicked and highly regarded.
+    quote_sha256: 5c780ce135f15c15794563c94cf3696a612f1e5d55f5ab7eeae997d386d2f322
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: one will be highly regarded
+- id: SARAVALI.TEMPERAMENT.CH12V1519.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v15-19
+    quote: >-
+      If Anapha yoga is caused by Mars-being in the 12th from the Moon-the native will head
+      a band of thieves, will be arrogant in disposition, be honoured, fond of war, given
+      to anger, good, praiseworthy, good-bodied, and proud.
+    quote_sha256: 0c59d74c850ea9c2481439077bcd908f80ab873a987c50e60401cc5548c4d686
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.12
+        reference: ref.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will head a band of thieves, will be arrogant in disposition, be honoured,
+      fond of war, given to anger, good, praiseworthy, good-bodied, and proud
+- id: SARAVALI.TEMPERAMENT.CH12V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch12.v26
+    quote: >-
+      One who has Durudhura yoga caused by Venus and Saturn will conduct himself like an old
+      man (i.e. so mature), be chief in his race, skilful, dear to women and will have plenty
+      of money.
+    quote_sha256: 3c61718a2291a69faca1f4171426d667e2fba3e72e15c6086454f194dfd78570
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.venus
+        other: graha.moon
+        distance: dist.02
+    - house_distance:
+        subject: graha.saturn
+        other: graha.moon
+        distance: dist.12
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      conduct himself like an old man (i.e. so mature), be chief in his race, skilful, dear
+      to women and will have plenty of money
+- id: SARAVALI.TEMPERAMENT.CH13V35.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      Should Jupiter cause Vesi Yoga, the native will accumulate money, be learned and be
+      good-hearted.
+    quote_sha256: b3729b4ee301fa8afbe251baad15cc5dce3202526ca0726268544e3272229f80
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.jupiter
+        distance: dist.02
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: be good-hearted
+- id: SARAVALI.TEMPERAMENT.CH13V35.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.career: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      If Venus produces this yoga, the person will be timid, will face obstacles in his missions,
+      will have pleasant (or swift) movements¹ and will be defeated.
+    quote_sha256: 112eb779650e77eb51fe2572109df3aa0c250ac1f6f5b9b09bf7c627697ea2f3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.venus
+        distance: dist.02
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the person will be timid
+- id: SARAVALI.TEMPERAMENT.CH13V35.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      Mercurial participation indicates that the native will be a servant (परिकर्मको), will
+      suffer penury, be soft-spoken and be modest.
+    quote_sha256: 4ebb8735b86cfeee1e12dedb6432296810b117858f4fa5454b58424ffc9f1035
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mercury
+        distance: dist.02
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: be soft-spoken and be modest
+- id: SARAVALI.TEMPERAMENT.CH13V35.X0009
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: He will be bashful.
+    quote_sha256: 6bb5368df091bc3082ea334d5dbf2cfa329da6dbbc8bc731e5adedfc9d7ac763
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mercury
+        distance: dist.02
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: He will be bashful.
+- id: SARAVALI.TEMPERAMENT.CH13V35.X0010
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      Mars denotes that the native will resort to base means (मार्गलघु), but be helpful to
+      others.
+    quote_sha256: 67f22cbc13ca803901ed4af1104d7e22b34e1bade09e55a06c69ff5869fde1b2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mars
+        distance: dist.02
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will resort to base means, but be helpful to others
+- id: SARAVALI.TEMPERAMENT.CH13V35.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v3-5
+    quote: >-
+      If it is Saturn that causes Vesi yoga, one will join others' wives, be wicked, will
+      resemble an old person in appearance, be fraudulent in disposition and be contemptuous.
+    quote_sha256: c028d93eb1ef0358c56c681613744317e7a8a3aa188769cb1d578775a4d0a0c1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.saturn
+        distance: dist.02
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      be wicked, will resemble an old person in appearance, be fraudulent in disposition and
+      be contemptuous
+- id: SARAVALI.TEMPERAMENT.CH13V79.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v7-9
+    quote: If Jupiter should cause Vasi yoga, the native will possess courage, strength and
+      wisdom.
+    quote_sha256: 3558866b0ab711ee0dceef509f47a82067c5a729a12e68ecf951f237866749a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.jupiter
+        distance: dist.12
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will possess courage, strength and wisdom
+- id: SARAVALI.TEMPERAMENT.CH13V79.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v7-9
+    quote: >-
+      Mercury emanating this yoga will make one speak sweetly, beautiful and obey others'
+      orders.
+    quote_sha256: b3b309f250cc88cd2dd835f8524e4a9c4982ab81b0f16dc86b7eecf1153ff069
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.mercury
+        distance: dist.12
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: make one speak sweetly, beautiful and obey others' orders
+- id: SARAVALI.TEMPERAMENT.CH13V79.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch13.v7-9
+    quote: >-
+      If by Saturn, the native will be a business-man, wicked, will steal others' money, will
+      hate elders and will be the husband of a pious lady.
+    quote_sha256: dcb94cbe3cdf1fd26ae70abfaac7305f649e577b2d9dafa8e980840100977070
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.saturn
+        distance: dist.12
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: >-
+      the native will be a business-man, wicked, will steal others' money, will hate elders
+      and will be the husband of a pious lady
+- id: SARAVALI.TEMPERAMENT.CH14V10.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.spiritual: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v10
+    quote: >-
+      One with Jupiter and the Moon together will be firm in friendship, modest, respectful
+      towards his relatives, wealthy, virtuous and regardful of Gods and the wise.
+    quote_sha256: 74ef78456c1d563b29043328c5307d33acb46c387a056ed5db8d135d8d9c86f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      firm in friendship, modest, respectful towards his relatives, virtuous and regardful
+      of Gods and the wise
+- id: SARAVALI.TEMPERAMENT.CH14V18.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v18
+    quote: >-
+      Should Mercury and Venus be together at birth, the native will be abundantly rich, a
+      politician, an artisan, will study Vedas, be good in speech, will know to sing, make
+      fun and like scents and flowers.
+    quote_sha256: 9e1b4afb01d089540d3b9b5cd70fa88fce86f73496937468bbecde25f75d78ef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: be good in speech, will know to sing, make fun and like scents and flowers
+- id: SARAVALI.TEMPERAMENT.CH14V7.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v7
+    quote: If the Sun and Saturn are together, the native will be a metallurgist, be virtuous,
+      mind-
+    quote_sha256: 6a50eaa3c1a5e6b43890fa9463f82d821c6142b63d36be2360f68ae067c0cd69
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: be virtuous
+- id: SARAVALI.TEMPERAMENT.CH14V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch14.v8
+    quote: One who has the Moon and Mars together, will be valorous, brave in war, be a boxer
+    quote_sha256: 54a5182244cc2e9dc02dfc3bce8563037a5b44473699deabbec1e1aa5b931789
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will be valorous, brave in war, be a boxer
+- id: SARAVALI.TEMPERAMENT.CH15V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v11
+    quote: >-
+      If Mercury, Sun and Venus be together, the native will be insatiable, talkative, intent
+      on wandering, and subjected to grief on account of women.
+    quote_sha256: 219f3b7fae530a82f3062734a73137206d3a28af0ab16cad1c37e8a3eedfa37f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.sun
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be insatiable, talkative, intent on wandering, and subjected to grief
+      on account of women
+- id: SARAVALI.TEMPERAMENT.CH15V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v12
+    quote: >-
+      One who has Saturn, the Sun and Mercury in one house will be a neuter, will hate others,
+      and will be given up by his relatives.
+    quote_sha256: b4326f42f0c7096ef8b4e0980b83cc38d68d176fec238cb88c38e5339d1bf0d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.saturn
+        other: graha.sun
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will be a neuter, will hate others
+- id: SARAVALI.TEMPERAMENT.CH15V13.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v13
+    quote: >-
+      Should Venus, Jupiter and the Sun be together at birth, the native will be weak-sighted,
+      bold, intelligent, indigent, be a minister and be devoted to others' jobs.
+    quote_sha256: 65e82c20c992d09a5ddbb3736d35276cf5cbf3aa5c43e0e26f34d84ab1b06661
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be bold
+- id: SARAVALI.TEMPERAMENT.CH15V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.health: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v15
+    quote: >-
+      One who has Venus, Saturn and the Sun together at birth will be emotionally upset due
+      to fear from enemies
+    quote_sha256: 531bd264687870d27ac0590d7d32a3f0021be1da1147c73ed2b4f1da4d597d93
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+    - conjunct:
+        subject: graha.saturn
+        other: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be emotionally upset due to fear from enemies
+- id: SARAVALI.TEMPERAMENT.CH15V21.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v21
+    quote: >-
+      A native who has Jupiter and Saturn together at birth will be heroic, will have plenty
+      of wealth, will be chief of the city (mayor etc.), famous, and will be the head of an
+      assembly, a village or an association.
+    quote_sha256: 64ff7f315b48281291fb5f4433ae71a2a7be4f3b886110c0b6a83080e079d4bd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will be heroic
+- id: SARAVALI.TEMPERAMENT.CH15V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v27
+    quote: >-
+      Should Mars, Mercury and Venus be together at birth, the native will give up his caste,
+      be deformed, fickle-minded, wicked, and garrulous.
+    quote_sha256: 23c1bc9e42b17a39a45066e91c9c1f3177cbfe49909e9425118e01684427fdaf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will give up his caste, be deformed, fickle-minded, wicked, and garrulous
+- id: SARAVALI.TEMPERAMENT.CH15V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v3
+    quote: >-
+      Should the Sun, Moon and Jupiter be in one house, the native will be given to anger,
+      be cunning, expert in service, intent on going to foreign places, be intelligent and
+      fickleminded.
+    quote_sha256: 371b31b67fd4d87f5405c5ed678ac466d71a36a08a57ba0f1dc79b57be3fdac1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be given to anger, be cunning, expert in service, intent on going to
+      foreign places, be intelligent and fickleminded
+- id: SARAVALI.TEMPERAMENT.CH15V33.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v33
+    quote: >-
+      When Mercury, Saturn and Jupiter are together at birth, it denotes that the native will
+      enjoy honour, wealth and sovereignty, be learned, will have abundant pleasures, be atttached
+      to his wife, be courageous and fortunate.
+    quote_sha256: 92b4b940aa9e623a19dbdfe98fb304e1743b57cd6bd04aa81fa7e781f4c49d00
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be courageous and fortunate
+- id: SARAVALI.TEMPERAMENT.CH15V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v34
+    quote: >-
+      One who has Mercury, Venus and Saturn together at birth will be scurrilous in speech,
+      fraudulent, be a liar, addicted to other women, vehement
+    quote_sha256: c185292da36b31029b3b5d7612dc655d991144cadcf87744586bc320c7c85e29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+    - conjunct:
+        subject: graha.mercury
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will be scurrilous in speech, fraudulent, be a liar, addicted to other women, vehement
+- id: SARAVALI.TEMPERAMENT.CH15V4.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v4
+    quote: >-
+      Should the Sun, Moon and Venus be in one house at birth, the native will steal others'
+      money, will be a debaucher
+    quote_sha256: a46d9cc28d079b2ec0b5771a5fbe4c0f7ee4d48a317ec578bcd43d2374b555d7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: will be a debaucher
+- id: SARAVALI.TEMPERAMENT.CH15V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch15.v5
+    quote: If the Sun, Moon and Saturn be together in one house, the native will be lustful
+    quote_sha256: d61fa23f2eb26e3de241ab10e0a76e234b17b6a817068364d59651cce8b9cada
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be lustful
+- id: SARAVALI.TEMPERAMENT.CH16V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.health: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v10
+    quote: >-
+      Should one have a combination of these planets in one house at birth, the native will
+      have habits like a female, be very weak, desirous of coming up and timid at all times.
+    quote_sha256: 5dd07ac222369bde491175bcfbc625f37fc32837d0050e768f5e134560bb38b6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will have habits like a female, be very weak, desirous of coming up and timid
+      at all times
+- id: SARAVALI.TEMPERAMENT.CH16V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v12
+    quote: If these four planets be together at birth, the native will be addicted to other
+      women
+    quote_sha256: fa8fb6bf8b0a709fe76fad84331172e80e3c2c4608cfd9ecfceee80ee3c0389c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be addicted to other women
+- id: SARAVALI.TEMPERAMENT.CH16V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v16
+    quote: >-
+      Should these four planets be in conjunction at birth, one will be scurrilous in speech,
+      fortunate, learned, soft spoken, happy, energetic, pure, wealthy, bold and helpful to
+      friends.
+    quote_sha256: 359113bf0a0a9c360b0ec199e762dbd56c1f8a99cdc7d6f86ec32c67056fe00b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be scurrilous in speech, fortunate, learned, soft spoken, happy, energetic,
+      pure, wealthy, bold and helpful to friends
+- id: SARAVALI.TEMPERAMENT.CH16V2.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v2
+    quote: >-
+      One who has these four planets in one house at birth, will be wealthy, dear to women,
+      splendorous, will maintain decorum, be free from grief and expert in work.
+    quote_sha256: c5fcb3c713bd1da38d5e5ed6d830d4fb883ab210beb5206f3675f424d2463754
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: expert in work
+- id: SARAVALI.TEMPERAMENT.CH16V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v22
+    quote: >-
+      If these four planets are together at birth, one will be fond of quarrels, will sleep
+      much, be mean, will marry an unchaste lady, be fortunate, will hate his relatives, and
+      be not happy.
+    quote_sha256: e53d89ad59fe2fc86217220a543004b767fea5d6facb6ae0cc29859c18b60523
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      one will be fond of quarrels, will sleep much, be mean, will marry an unchaste lady,
+      be fortunate, will hate his relatives, and be not happy
+- id: SARAVALI.TEMPERAMENT.CH16V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v23
+    quote: >-
+      One who has these four planets together will be bold, be without parents, is from an
+      ignoble race, will have many wives, friends and sons and will have good conduct.
+    quote_sha256: 306d7be9519eab0c1cc3c42c07e16b8ad262d71976aee144ae6f5c95ebb29c09
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will be bold
+- id: SARAVALI.TEMPERAMENT.CH16V23.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch16.v23
+    quote: >-
+      One who has these four planets together will be bold, be without parents, is from an
+      ignoble race, will have many wives, friends and sons and will have good conduct.
+    quote_sha256: 306d7be9519eab0c1cc3c42c07e16b8ad262d71976aee144ae6f5c95ebb29c09
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mercury
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will have good conduct
+- id: SARAVALI.TEMPERAMENT.CH17V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.health: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v1
+    quote: >-
+      If these five planets are together at birth, the native will be subjected to grief,
+      will be cunning, be bereaved of wife, and will experience physical distresses.
+    quote_sha256: ffeb978c0c1e7727853a0533a05489b6c776aff859d73cfa89d6c8b745c59cef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be subjected to grief, will be cunning
+- id: SARAVALI.TEMPERAMENT.CH17V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v6
+    quote: One who has the said five planets together at birth will be tall in stature
+    quote_sha256: 6060c901d6cc70fcc6222b3f9462133c48a811e771843e8df0b8bbb720fade6a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+    - conjunct:
+        subject: graha.sun
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: will be tall in stature
+- id: SARAVALI.TEMPERAMENT.CH17V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch17.v8
+    quote: With these five planets in one house, the native will be timid
+    quote_sha256: 544cbf6956454b7c4ed0d523f54dadcfcaf46b1b603a66733e7341505dc92ff7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be timid
+- id: SARAVALI.TEMPERAMENT.CH18V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.health: 0.7
+    domain.education: 0.7
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v18
+    quote: >-
+      Should these planets be in conjunction at birth, one will be humble, free from sickness,
+      endowed with learning, wealth, truth and happiness, be helpful to relatives and will
+      have many friends.
+    quote_sha256: 1c6953bf7812ac54fa444777d8653f7d152d1f6fcda1e2f7e2f438c064fa3544
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mercury
+        other: graha.moon
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mercury
+        other: graha.mars
+    - conjunct:
+        subject: graha.mercury
+        other: graha.venus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be humble, free from sickness, endowed with learning, wealth, truth and happiness,
+      be helpful to relatives and will have many friends
+- id: SARAVALI.TEMPERAMENT.CH18V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v2
+    quote: >-
+      Should these planets be together, the native will be liberal, helpful to others, fickleminded,
+      of satwic disposition and will gratify his sexual desires in lonely places.
+    quote_sha256: d590e5d0d2018a70463bc9a558063237f8a06dffcc0c801fd970a352dfb39524
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.sun
+        other: graha.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mars
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - conjunct:
+        subject: graha.sun
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.sun
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be liberal, helpful to others, fickleminded, of satwic disposition and
+      will gratify his sexual desires in lonely places
+- id: SARAVALI.TEMPERAMENT.CH18V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v22
+    quote: If these five planets be conjunct, the native will be good-hearted
+    quote_sha256: 5457f176fb63b0ec7e5c338f013cad5b8510a1103f7fa2c23dab9b1dbac8e30b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+    - conjunct:
+        subject: graha.mars
+        other: graha.venus
+    - conjunct:
+        subject: graha.mars
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be good-hearted
+- id: SARAVALI.TEMPERAMENT.CH18V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.career: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch18.v4
+    quote: If these six planets are together, the native will be mean, will do others' jobs
+    quote_sha256: 541d3a8399a67a2104501bd063c68604278e7d6c9cbaec3556f898295830d219
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.moon
+    - conjunct:
+        subject: graha.venus
+        other: graha.sun
+    - conjunct:
+        subject: graha.venus
+        other: graha.mars
+    - conjunct:
+        subject: graha.venus
+        other: graha.jupiter
+    - conjunct:
+        subject: graha.venus
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be mean, will do others' jobs
+- id: SARAVALI.TEMPERAMENT.CH21V1819.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v18-19
+    quote: will be sweet in speech
+    quote_sha256: 5376f8d410ed146960380e9d5bed365eba372f74f1cc616e2249f30819634bbb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.sun
+      rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: will be sweet in speech
+- id: SARAVALI.TEMPERAMENT.CH21V2025.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.temperament: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v20-25
+    quote: >-
+      Should Saturn aspect the Sun in Gemini or Virgo, the native will have many servants,
+      be anxious (as for an absent lover)1, will maintain many relatives, will remain delighted
+      and will be crafty.
+    quote_sha256: 12aa40d019d7c921b47ed264e7f4054d13945bcb2019ad6f74f2e59372bd4e9a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: will remain delighted and will be crafty
+- id: SARAVALI.TEMPERAMENT.CH21V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.career: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v27
+    quote: >-
+      The Sun in Cancer indicates that the native will not be steady in mind in respect of
+      his undertakings
+    quote_sha256: 3ec2849b22f1d8a59d251ac09e6684fa1dc994d69670aa3c1f9ca9ae28417b64
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - bhava_in_rashi:
+        bhava: bhava.04
+        rashi: rashi.cancer
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: moderate
+    text: the native will not be steady in mind in respect of his undertakings
+- id: SARAVALI.TEMPERAMENT.CH21V4647.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v46-47
+    quote: >-
+      The native with the Sun in Scorpio will have an incombatile lust for war, be away from
+      Vedic (or religious) path, be a liar, a dunce, will have a base and wicked wife
+    quote_sha256: d6d0135c4baff19359c2e50c81c5682ae85618e972ffbd186185650099506d2d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.scorpio
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      will have an incombatile lust for war, be away from Vedic (or religious) path, be a
+      liar, a dunce, will have a base and wicked wife
+- id: SARAVALI.TEMPERAMENT.CH21V49.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.5
+    domain.status: 0.5
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v4-9
+    quote: >-
+      Should the Sun be in a sign of Mars (i. e. either in Aries or in Scorpio) and be aspected
+      by the Moon, the native will be interested in giving away gifts, will have many servants,
+      be charming, be dear to fair sex, and will have a soft physique.
+    quote_sha256: 8e3e7ef988ab647828f48dbc4ac92b56b8a54fabfa5929ae98373a8362c7eb55
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be interested in giving away gifts, will have many servants, be charming,
+      be dear to fair sex, and will have a soft physique
+- id: SARAVALI.TEMPERAMENT.CH21V49.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.6
+    domain.health: 0.5
+    domain.temperament: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v4-9
+    quote: >-
+      If the said Sun is aspected by Mars, he will display his courage in battle, be cruel,
+      will possess eyes, hands and legs of blood-red colour, be splendorous and strong.
+    quote_sha256: f0dd62999b069ab48c0ff854c2402b4526512311f9f732c89512b5004f4e9037
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      he will display his courage in battle, be cruel, will possess eyes, hands and legs of
+      blood-red colour, be splendorous and strong
+- id: SARAVALI.TEMPERAMENT.CH21V5657.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v56-57
+    quote: One who has the Sun in Capricorn will be base
+    quote_sha256: ff1ec6fcc0d51c94c3f1a552bb40ab6640f0373af81a019d65548bf5d709a7a9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.10
+    - bhava_in_rashi:
+        bhava: bhava.10
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be base
+- id: SARAVALI.TEMPERAMENT.CH21V5863.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v58-63
+    quote: >-
+      If the Moon aspects the Sun in a Rasi of Saturn, the native will be highly cunning in
+      disposition, and will lose his wealth and happiness on account of his befriending females.
+    quote_sha256: d7e0fff506fc92e3d6bdf5189acdb01a92eb2f5e1410bd2626a5631e31cd2bec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be highly cunning in disposition
+- id: SARAVALI.TEMPERAMENT.CH21V5863.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.7
+    domain.health: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch21.v58-63
+    quote: >-
+      If Mercury aspects the Sun in Capricorn or Aquarius, the person will be brave, will
+      have a eunuch's nature, will steal other's wealth, and will have all limbs devoid of
+      strength.
+    quote_sha256: cc4a395a4cdf4f66cd902cbc747d72249c4775c1a392e6ba04dd16d90b037b53
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.mercury
+        target: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be brave, will have a eunuch's nature, will steal other's wealth, and
+      will have all limbs devoid of strength
+- id: SARAVALI.TEMPERAMENT.CH22V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.education: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v16
+    quote: >-
+      If the Moon is in Gemini at birth, one will have prominent nose and dark eyes, will
+      be skilful in the art of love, poetry etc.
+    quote_sha256: cce686dce5536732c3b1cd3217657380b7249b0d4a504e68d2df7f373ddc8627
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.gemini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will have prominent nose and dark eyes, will be skilful in the art of love, poetry
+      etc.
+- id: SARAVALI.TEMPERAMENT.CH22V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v2-7
+    quote: >-
+      If the Moon is in Aries at birth, and be in aspect to the Sun, the native will he quite
+      irascible, be honoured by the king, be soft, be valorous, and fond of war.
+    quote_sha256: 83009f8f7768281d905cfdf840af3419ecb91330aee2d99ee481b3a2e2b356d7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will he quite irascible, be honoured by the king, be soft, be valorous, and
+      fond of war
+- id: SARAVALI.TEMPERAMENT.CH22V3136.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v31-36
+    quote: >-
+      Should Mercury aspect the Moon in Leo one will be endowed with the characteristics of
+      a female, and also the grace akin to that of a female; will be in the custody of females,
+      will serve females and will enjoy money, happiness and pleasures.
+    quote_sha256: 6c9601a4edab1e417560376317d0a490e3f576582f64ae9514aa43f8590cdf70
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      one will be endowed with the characteristics of a female, and also the grace akin to
+      that of a female; will be in the custody of females, will serve females and will enjoy
+      money, happiness and pleasures
+- id: SARAVALI.TEMPERAMENT.CH22V37.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v37
+    quote: >-
+      If the Moon occupies Virgo at birth, one will be addicted to women, will have long hands,
+      attractive body and face, beautiful teeth, eyes and ears, be learned, be a religious
+      preceptor (teaching vedas etc.), be an eloquent speaker, be truthful and pure, valorous,
+      be kind to living beings, be interested in others' affairs, be of forgiving disposition
+    quote_sha256: 9bd58bb21772129741480627be0bf89b8eb3b571f89ea41f73655821165f631a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      be truthful and pure, valorous, be kind to living beings, be interested in others' affairs,
+      be of forgiving disposition
+- id: SARAVALI.TEMPERAMENT.CH22V4550.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v45-50
+    quote: >-
+      If Mars aspects the Moon in Libra, the person will be sharp, be a thief, be mean, adulterous,
+      will enjoy scents and garlands, be wise, and will suffer from eye diseases.
+    quote_sha256: 1465bd1a00227b15867ab33408937202b0ec31699c448fd22e5f3b9cfa9da66e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be sharp, be a thief, be mean, adulterous, will enjoy scents and garlands,
+      be wise, and will suffer from eye diseases
+- id: SARAVALI.TEMPERAMENT.CH22V51.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v51
+    quote: Should the Moon be in Scorpio at birth, one will be a miser
+    quote_sha256: 98cd0db12be34dbd30b02f8fd65c9479481a68db3d0131b8960f2a896c67a779
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: one will be a miser
+- id: SARAVALI.TEMPERAMENT.CH22V5257.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.wealth: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v52-57
+    quote: >-
+      If the Moon at birth is in Scorpio and aspected by the Sun, the native will hate people
+      (i.e. will not be friendly with others), be learned, wandering natured, and rich but
+      be not happy.
+    quote_sha256: 85527913a7152e7ecbd651e37ee50e285ce0c0424f04e4f6dcfe8372aef28b83
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will hate people
+- id: SARAVALI.TEMPERAMENT.CH22V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.health: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v58
+    quote: >-
+      If the Moon is in Sagittarius at birth, the native will be dwarfish, will have round
+      eyes, big heart, waist and hands, be a good speaker, will have prominent shoulders and
+      neck, will live near watery zone, will have knowledge of arts and secret affairs, be
+      courageous, wili possess strong bones, be very strong. will have strong neck and lips,
+      be attached to his relatives, be grateful and distinguished.
+    quote_sha256: 1f4c382555811dbbd97195c6d007cf5b68c6adde1720b562abcee88cb6767ca6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be dwarfish, will have round eyes, big heart, waist and hands, be a
+      good speaker, will have prominent shoulders and neck, will live near watery zone, will
+      have knowledge of arts and secret affairs, be courageous, wili possess strong bones,
+      be very strong. will have strong neck and lips, be attached to his relatives, be grateful
+      and distinguished
+- id: SARAVALI.TEMPERAMENT.CH22V5964.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.75
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v59-64
+    quote: >-
+      If Saturn aspects the Moon in Sagittarius, the person will be sweet in speech, will
+      speak good words, will have wide knowledge of Sastras, be truthful, soft and be a king's
+      man.
+    quote_sha256: 00577961f099ae93ca45e44ffc5cabf4d8ae41d2fb70a1b3b17389df557482b2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person will be sweet in speech, will speak good words, will have wide knowledge
+      of Sastras, be truthful, soft and be a king's man
+- id: SARAVALI.TEMPERAMENT.CH22V7378.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v73-78
+    quote: >-
+      Should the Moon at birth be in Aquarius and be aspected by the Sun, one will be very
+      dirty in disposition
+    quote_sha256: 7b7dbbe14cb24a954cf96d6313e5a7ee2d5670eaa642803e2504397be45c125e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.aquarius
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: one will be very dirty in disposition
+- id: SARAVALI.TEMPERAMENT.CH22V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v8
+    quote: If the Moon be in Taurus at birth, the native will be large-hearted
+    quote_sha256: 110d653272efd4e1eaf41b88b7ef90e2f3f4c8f599d254787af3f84c0069b8ec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_rashi:
+      subject: graha.moon
+      rashi: rashi.taurus
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be large-hearted
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0011
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: and lastly if by Mercury, he will be a fast speaker and be fickle-minded.
+    quote_sha256: 4f96a834a480972b3b68cf25db641f364ca8dde7b64e93d0f8f3f936787151de
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be a fast speaker and be fickle-minded
+- id: SARAVALI.TEMPERAMENT.CH23V13.X0012
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v1-3
+    quote: and lastly if by Mercury, he will be a fast speaker and be fickle-minded.
+    quote_sha256: 4f96a834a480972b3b68cf25db641f364ca8dde7b64e93d0f8f3f936787151de
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be a fast speaker and be fickle-minded
+- id: SARAVALI.TEMPERAMENT.CH23V1315.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v13-15
+    quote: if by Saturn, he will be sinful, unkind and will kill living beings
+    quote_sha256: 2b52d2f4925fcde3192a08025c3e712b8373082c48804a0cf1d136a304b5c5d1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: he will be sinful, unkind and will kill living beings
+- id: SARAVALI.TEMPERAMENT.CH23V46.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      if by the Sun, he will be a great stupid, will possess a beautiful face and will always
+      enjoy food and drinks
+    quote_sha256: 27a1a59271558818a279777c299f4ffb1b557dc7a60a2016f3fb27dae799293a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be a great stupid, will possess a beautiful face and will always enjoy food
+      and drinks
+- id: SARAVALI.TEMPERAMENT.CH23V46.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch23.v4-6
+    quote: >-
+      if by the Sun, he will be a great stupid, will possess a beautiful face and will always
+      enjoy food and drinks
+    quote_sha256: 27a1a59271558818a279777c299f4ffb1b557dc7a60a2016f3fb27dae799293a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.libra
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      he will be a great stupid, will possess a beautiful face and will always enjoy food
+      and drinks
+- id: SARAVALI.TEMPERAMENT.CH24V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v1-2
+    quote: >-
+      If Mars at birth occupies Aries, the native will be splendorous, truthful, valorous,
+      be a king, be fond of war, interested in adventurous acts, be an army chief, or head
+      of a village or a band; be delighted, charitable be endowed with a number of cows, goats
+      etc. and grains, be fierce and will join many women.
+    quote_sha256: beae2147361ea5f8d6cd8d5fecc4ebd60b40f4d8f16a36efa24926b005c31079
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be splendorous, truthful, valorous, be a king, be fond of war, interested
+      in adventurous acts, be an army chief, or head of a village or a band; be delighted,
+      charitable be endowed with a number of cows, goats etc. and grains, be fierce and will
+      join many women.
+- id: SARAVALI.TEMPERAMENT.CH24V1921.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-21
+    quote: if by Venus, he will be of crooked disposition, be attached to women and be valorous
+    quote_sha256: fd460395c5c5f2d10f9f569f5d8691f624461a9f79727bb6fae0cb82985c1cd2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.capricorn
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be of crooked disposition, be attached to women and be valorous
+- id: SARAVALI.TEMPERAMENT.CH24V1921.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.career: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v19-21
+    quote: if by Mercury, he will be interested in liquors, and will have bad history
+    quote_sha256: 6a7ae702fd160e115cbe91f8713c239d6fc6026825637e5aef64444102a8ff92
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.capricorn
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.mercury
+        target: graha.moon
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: he will be interested in liquors, and will have bad history
+- id: SARAVALI.TEMPERAMENT.CH24V2122.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v21-22
+    quote: >-
+      If Mars is posited in Aquarius at the time of one's birth, he will be devoid of both
+      affection and purity, will look like an old person, will die a bad death, will have
+      spite, jealousy, untruthful disposition, afflicted speech and lost wealth
+    quote_sha256: ce6510a78c11d0fdb5952ad9278426657e16bcaa8c6a979d5e99293d9350ab1b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      will be devoid of both affection and purity, will have spite, jealousy, untruthful disposition,
+      afflicted speech
+- id: SARAVALI.TEMPERAMENT.CH24V2530.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v25-30
+    quote: >-
+      If Mercury aspects the said Mars, the subject will be an expert in stealing others'
+      money, be a liar, be devoted to Manmatha (i.e. highly libidinous), be hostile and will
+      frequently visit prostitutes.
+    quote_sha256: b2f97dc671027bab92925db14799d85a32442ea12f266e7a7f32974c5074cd4b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mars
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.mercury
+        target: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the subject will be an expert in stealing others' money, be a liar, be devoted to Manmatha
+      (i.e. highly libidinous), be hostile and will frequently visit prostitutes
+- id: SARAVALI.TEMPERAMENT.CH24V4348.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v43-48
+    quote: >-
+      Mercury aspects Mars in Cancer, the person will be dirty, sinful, will possess a mean
+      family, will be rejected by his own men and be shameless.
+    quote_sha256: 6d71512b28ce3c10620063fbe6d57371c4cab07d30ef97879fdecc6d8a75362a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.mercury
+        target: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be dirty, sinful, will possess a mean family, will be rejected by his
+      own men and be shameless
+- id: SARAVALI.TEMPERAMENT.CH24V4954.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.5
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v49-54
+    quote: >-
+      If Mars is in Leo at the time of one's birth, and aspected by the Sun, the native will
+      be humble, helpful to friends, be endowed with own men, and be fond of wandering in
+      cow-houses, forests
+    quote_sha256: 351481cd8c5c2a113424eb5e64c6765018c69d63eef6df0b86d46527dfce00eb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will be humble, helpful to friends, be endowed with own men, and be fond
+      of wandering in cow-houses, forests
+- id: SARAVALI.TEMPERAMENT.CH24V610.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch24.v6-10
+    quote: If Mars is in Leo in a nativity, the native will be impatient
+    quote_sha256: a3dd0b650ab27f172fdc6778e75a47e19cd7c94aca75ec336f86563f96a3129b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.leo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native will be impatient
+- id: SARAVALI.TEMPERAMENT.CH25V1112.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v11-12
+    quote: >-
+      If Mercury occupies his exaltation sign (Virgo) at the time of one's birth, the native
+      will be quite virtuous
+    quote_sha256: 9f295fdbfcb2f2d500f716e216de92caa9cc7472ce659ad909bf0f0f35cb9a9d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native will be quite virtuous
+- id: SARAVALI.TEMPERAMENT.CH25V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v1-2
+    quote: >-
+      If Mercury is in Aries at the time of one's birth, the native will be fond of battles
+      (be uncompromising)
+    quote_sha256: 886befbf0f57ed6e5860581c87f433bbe205970fe48b59040aa5ebfe8d96ce43
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.aries
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: fond of battles (be uncompromising)
+- id: SARAVALI.TEMPERAMENT.CH25V1516.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.4
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v15-16
+    quote: >-
+      If Mercury is posited in Scorpio, one will experience troubles, grief and evils, will
+      hate the virtuous, will be devoid of truth, religion and shame, be a dunce, be not virtuous,
+      be a miser, will cohabit with wicked women, be fond of giving cruel punishments, be
+      not out spoken, be interested in blameworthy jobs, will incur debts, will join base
+      men, and will steel other’s properties.
+    quote_sha256: dc41a7be107bb7f23e811c17b0c16f09d6a3093eb7b9aebe3f347bc1e2b88078
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.scorpio
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will experience troubles, grief and evils, will hate the virtuous, will be devoid
+      of truth, religion and shame, be a dunce, be not virtuous, be a miser, will cohabit
+      with wicked women, be fond of giving cruel punishments, be not out spoken, be interested
+      in blameworthy jobs, will incur debts, will join base men, and will steel other’s properties.
+- id: SARAVALI.TEMPERAMENT.CH25V1620.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.status: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v16-20
+    quote: >-
+      If Mercury is in Capricorn at birth, the native will be mean, dull, impotent, will do
+      others' work, be devoid of virtues, be subjected to various kinds of miseries, will
+      dream, wander etc. be a tale-bearer, be untruthful, devoid of relatives, dirty and timid.
+    quote_sha256: 3cdbbf17888de21202b01ae2b767571d5c25776d4261019b8a1adb4ee26ffd51
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.capricorn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be mean, dull, impotent, will do others' work, be devoid of virtues,
+      be subjected to various kinds of miseries, will dream, wander etc. be a tale-bearer,
+      be untruthful, devoid of relatives, dirty and timid
+- id: SARAVALI.TEMPERAMENT.CH25V2122.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.relationship: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v21-22
+    quote: >-
+      Should Mercury be in Aquarius at birth, the subject will be bereft of good disposi-
+      tion and good deeds
+    quote_sha256: dcdbe5f09b20ef6db279a91e1d9c3cd99a340d464955f1c1b4e718cad7c6ad6f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: negative
+    magnitude: strong
+    text: the subject will be bereft of good disposition and good deeds
+- id: SARAVALI.TEMPERAMENT.CH25V2530.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.status: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v25-30
+    quote: >-
+      Should Mercury occupy a sign of Mars at birth and be aspected by the Sun, the person
+      will be truthful, be very happy, be honoured by the king, and be patiently disposed.
+    quote_sha256: 2c47a8f5b2649e4e2fe05ff893bdadc8a9c24e735642d6ffdcdff3453723dac9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be truthful, be very happy, be honoured by the king, and be patiently
+      disposed
+- id: SARAVALI.TEMPERAMENT.CH25V2530.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.7
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v25-30
+    quote: >-
+      If the aspecting planet be the Moon, the native will steal the hearts of the fair sex,
+      will serve others, be dirty and be berft of virtues.
+    quote_sha256: 087327aee1e06bfd81a6989b69712855d723b515e46e4707da09fce10541d27d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will steal the hearts of the fair sex, will serve others, be dirty and be
+      berft of virtues
+- id: SARAVALI.TEMPERAMENT.CH25V2530.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v25-30
+    quote: >-
+      Saturn aspecting Mercury in a house of Mars denotes that the person will experience
+      miseries, be fierce, be intent upon doing cruel activities, and be devoid of his own
+      men.
+    quote_sha256: b2cee81aaf5c869f958233243fd478c816704a0d048d66108a418dda108bc8d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aries
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.scorpio
+    - aspects:
+        subject: graha.saturn
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will experience miseries, be fierce, be intent upon doing cruel activities,
+      and be devoid of his own men
+- id: SARAVALI.TEMPERAMENT.CH25V3742.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.education: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v37-42
+    quote: >-
+      Should the planet Mercury be in his own house and recive the aspect of the Moon, the
+      person will be sweet in disposition, garrulous, will promote quarrels, be intrested
+      in acquiring sastraic knowledge, firm and will succeed in all his undertakings.
+    quote_sha256: 4d31f588bc98af5a12d4e00b4536286a6a1411d1074e192ee2dc071d0bc4c455
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.gemini
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.moon
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person will be sweet in disposition, garrulous, will promote quarrels, be intrested
+      in acquiring sastraic knowledge, firm and will succeed in all his undertakings
+- id: SARAVALI.TEMPERAMENT.CH25V4348.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+    domain.relationship: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v43-48
+    quote: >-
+      Should Venus aspect Mercury as above one will be equal to Cupid in appearance, will
+      possess attractive physicque, be well-versed in the art of singing and in playing musical
+      instruments, be fortunate and softly disposed.
+    quote_sha256: cf398d3e9f3319dbc719d05bbfe335c4284b5c23a8b2859aef61f31b07b02261
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.venus
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one will be equal to Cupid in appearance, will possess attractive physique, be well-versed
+      in the art of singing and in playing musical instruments, be fortunate and softly disposed
+- id: SARAVALI.TEMPERAMENT.CH25V5560.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v55-60
+    quote: >-
+      Should Mercury be in Sagittarius/Pisces, and aspected by the Sun, one will suffer from
+      urinary diseases and epilepsy, and be peaceful in disposition.
+    quote_sha256: 9f06241ba1f5000a9a2411fb7f036ef50bb56cd25caba84799d92fda7ed2b9c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.sagittarius
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.sun
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: be peaceful in disposition
+- id: SARAVALI.TEMPERAMENT.CH25V6166.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch25.v61-66
+    quote: >-
+      If Mars aspects Mercury as above, one will be infirm in speech, be calm in disposition,
+      bashful and happy.
+    quote_sha256: 1d0756afd34f57eadabd88888dfce6a36d16dfb10c708b1892772108416967ee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.capricorn
+      - occupies_rashi:
+          subject: graha.mercury
+          rashi: rashi.aquarius
+    - aspects:
+        subject: graha.mars
+        target: graha.mercury
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: one will be infirm in speech, be calm in disposition, bashful and happy
+- id: SARAVALI.TEMPERAMENT.CH5V36.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.85
+    domain.travel: 0.6
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v36
+    quote: If a malefic is retrograde, it causes grief and purposeless wandering.
+    quote_sha256: 3a553f47e46b64a6ab346baab206279cb796bb42177d95c360e94899fb6e1282
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - retrograde:
+        subject: lord.bhava.06
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: causes grief and purposeless wandering
+- id: SARAVALI.TEMPERAMENT.CH5V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v46
+    quote: >-
+      Should malefics be with such all-round strength at birth, the native will be a miser,
+      will do bad acts, be selfish, jealous of virtuous people, intent on promoting quarrels,
+      wicked, torturous, dirty, ungrateful, slanderous and ugly.
+    quote_sha256: ad1007ed9a72abf5808bbbb66938e3cd38cf898ae30e4161b3d3b7640b809093
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.mars
+        band: band.very_strong
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native will be a miser, will do bad acts, be selfish, jealous of virtuous people,
+      intent on promoting quarrels, wicked, torturous, dirty, ungrateful, slanderous and ugly
+- id: SARAVALI.TEMPERAMENT.CH5V5152.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.9
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch5.v51-52
+    quote: A planet in odd Rasi with strength makes the native courageous and a warrior.
+    quote_sha256: 67c9012f151b21d43adf93325713f1f34eaad2b8327f36b1d4961168692f672e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: makes the native courageous and a warrior
+- id: SARAVALI.WEALTH.CH22V6671.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.temperament: 0.8
+  source:
+    book: saravali
+    edition: saravali-santhanam-en
+    locator: ch22.v66-71
+    quote: >-
+      If Saturn aspects the Moon in Capricorn one will be indolent, dirty, be endowed with
+      money, be troubled by sexual feelings, will join other housewives, and be untruthful.
+    quote_sha256: be8d8604e0eb5fb40e989a45f32985089dc5a4ce316407414f35de5f7d50aa34
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.capricorn
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: be endowed with money

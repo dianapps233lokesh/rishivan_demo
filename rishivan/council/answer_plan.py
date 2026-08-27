@@ -41,6 +41,30 @@ AGREEMENT_BAND = 0.15
 """Below this a Rishi's score is neither for nor against. Rounding an undecided
 council into a direction manufactures a verdict nobody reached."""
 
+MUST_SAY_LIMIT = 2
+"""How many disclosures may enter one answer.
+
+Not a style preference. Every internal event used to become a mandatory
+sentence, and on a real question four fired together - an uncorroborated claim,
+a withheld Navamsha, two abstentions and the unreviewed-corpus notice - so about
+a third of the answer was the machinery describing itself. Past two, a reader
+stops reading caveats and starts discounting the whole answer, which costs more
+honesty than the third caveat buys.
+
+The budget is spent in priority order, so what gets dropped is always the least
+consequential thing rather than whatever happened to be appended last.
+"""
+
+_SAY_CLAIM, _SAY_COUNCIL, _SAY_EVIDENCE = 0, 1, 2
+"""Disclosure priorities, most consequential first.
+
+The ordering asks one question: does knowing this change how the reader should
+take the answer? A claim resting on one source where the domain wants two
+changes what they should do with it. A division that was not consulted changes
+what the answer is built on. Which Rishi spoke is, for most questions, the
+routing working correctly.
+"""
+
 
 @dataclass(frozen=True, slots=True)
 class AllowedClaim:
@@ -79,6 +103,15 @@ class AnswerPlan:
     question: str
     domain: str
     allowed: tuple[AllowedClaim, ...] = ()
+
+    stated_facts: tuple[dict, ...] = ()
+    """What the seeker told us about their own life.
+
+    Deliberately not part of `must_say`. A disclosure is something the reader is
+    owed about the answer's limits and competes for a bounded budget; a stated
+    fact is part of the question, and letting a withheld division push it out of
+    the prompt is how the answer ends up contradicting the person asking.
+    """
 
     must_say: tuple[str, ...] = ()
     """Withheld vargas, unmet corroboration, abstentions, unreviewed rules.
@@ -136,6 +169,8 @@ def build_answer_plan(
     timing=None,
     vargas=None,
     unreviewed: bool = False,
+    primary_rishi: str = "",
+    stated_facts=(),
 ) -> AnswerPlan:
     """Assemble the gate. Deterministic - no client, no clock."""
     reports = list(reports)
@@ -144,7 +179,10 @@ def build_answer_plan(
 
     window = _active_window(timing)
     allowed: list[AllowedClaim] = []
-    must_say: list[str] = []
+    # (priority, sentence). Sorted and trimmed at the end rather than appended
+    # straight to the plan, so the budget drops the least consequential
+    # disclosure instead of whichever one was computed last.
+    say: list[tuple[int, str]] = []
 
     claims = list(getattr(reading, "claims", []) or [])
     for claim in sorted(claims, key=lambda c: -c.confidence):
@@ -166,28 +204,38 @@ def build_answer_plan(
             window=window if (window and claim.band in DATED_BANDS) else "",
         ))
         if not corroborated:
-            must_say.append(
+            say.append((_SAY_CLAIM,
                 f"{claim.claim_id} is not corroborated to this domain's "
                 f"standard: {claim.independent_sources} independent source(s) "
                 f"where it asks for {claim.corroboration_required}. Say it as "
                 f"an indication, not as a finding."
-            )
+            ))
 
     if vargas is not None:
         for withheld in getattr(vargas, "withheld", ()):
-            must_say.append(withheld.reason)
+            say.append((_SAY_EVIDENCE, withheld.reason))
 
+    # An abstention is reportable when the Rishi who was supposed to answer
+    # declined, or when nobody spoke at all. A supporting Rishi declining a
+    # question outside its remit is the routing working as designed, and
+    # reporting it put "Dhruvan abstained because matters of children fall
+    # outside his focus on career and wealth" into an answer about a child.
     for report in abstained:
-        must_say.append(
+        if speaking and report.rishi != primary_rishi:
+            continue
+        say.append((_SAY_COUNCIL,
             f"{report.rishi} abstained — {report.abstained}. An abstention is "
             f"a real contribution and belongs in the answer."
-        )
+        ))
 
-    if unreviewed:
-        must_say.append(
-            "These rules were extracted from the classical texts and have not "
-            "been through human review. Do not present them as verified."
-        )
+    # `unreviewed` is deliberately NOT here. It is true of every rule in the
+    # corpus, so it is a standing property of the product rather than news about
+    # this answer, and it is carried on the plan for the caller to render once
+    # beside the answer. Spending a third of the disclosure budget restating a
+    # constant is what buried the disclosures that were specific to the question.
+
+    must_say = [text for _, text in sorted(say, key=lambda row: row[0])]
+    must_say = must_say[:MUST_SAY_LIMIT]
 
     must_not_say: list[str] = []
     if not window:
@@ -221,6 +269,7 @@ def build_answer_plan(
     return AnswerPlan(
         question=question,
         domain=domain,
+        stated_facts=tuple(stated_facts or ()),
         allowed=tuple(allowed),
         must_say=tuple(must_say),
         must_not_say=tuple(must_not_say),

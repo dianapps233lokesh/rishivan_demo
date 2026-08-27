@@ -1,0 +1,1550 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.FAMILY.CH3V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.temperament: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v10
+    quote: >-
+      If such a planet happens to be debilitated Sun, the father of the house-owner will be
+      the thief.
+    quote_sha256: 8d0fd9fb0fefc87d1606bd9d1901b11a7cffd2e21b61f2cff5299ccbeb9eb43c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - conjunct:
+        subject: lord.bhava.07
+        other: graha.sun
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: the father of the house-owner will be the thief
+- id: PRASHNATANTRA.OBSTACLE.CH2V9.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.5
+    domain.health: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v9
+    quote: >-
+      If Mercury occupying the ascendant is aspected by the Moon or a malefic, there will
+      be gain of wealth but also untoward happenings.
+    quote_sha256: 2caf075f5cbc51b4375f96e27fa56b910fdec1c518f7f1449b0c39ed859a8805
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - any:
+      - aspects:
+          subject: graha.moon
+          target: graha.mercury
+      - aspects:
+          subject: graha.mars
+          target: graha.mercury
+      - aspects:
+          subject: graha.saturn
+          target: graha.mercury
+      - aspects:
+          subject: graha.sun
+          target: graha.mercury
+      - aspects:
+          subject: graha.rahu
+          target: graha.mercury
+      - aspects:
+          subject: graha.ketu
+          target: graha.mercury
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: untoward happenings
+- id: PRASHNATANTRA.OBSTACLE.CH3V82.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v82
+    quote: The thief is in the place of theft if the lord of the 7th is in a quadrant.
+    quote_sha256: 12b413719ff98a92dfd7d3321c05a47c20f32c4aea0a8f91a1bb96f365412762
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    in_kendra:
+      subject: lord.bhava.07
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: The thief is in the place of theft
+- id: PRASHNATANTRA.OBSTACLE.CH3V98.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v98
+    quote: >-
+      If the query is "who is the thief", say he is a member in the household of the querent
+      if the ascendant is aspected by the Sun or the Moon.
+    quote_sha256: c8b6f3876432e4f7b7da46ff82615e5d158e559cccf18bffe2a215e6afb21e5d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - aspects:
+        subject: graha.sun
+        target: bhava.01
+    - aspects:
+        subject: graha.moon
+        target: bhava.01
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the thief is a member in the household of the querent
+- id: PRASHNATANTRA.OBSTACLE.CH3V98.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v98
+    quote: >-
+      If both the Sun and the Moon aspect the Lagna, then say the thief lives near the querent's
+      house.
+    quote_sha256: 4e8cb2ada79fe30aba0d88f8ccadc2b4a5340995854acdac8d90dd3b23b7b501
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.sun
+        target: bhava.01
+    - aspects:
+        subject: graha.moon
+        target: bhava.01
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the thief lives near the querent's house
+- id: PRASHNATANTRA.OBSTACLE.CH3V99.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v99
+    quote: If the lord of the 7th is in the 12th or the 3rd, the thief is the querent's own
+      servant.
+    quote_sha256: 2b66fc16cfb16059c391497c718f4185e80a1d2b9e0f25ca4f9ca6cf6fdf4041
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.03
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the thief is the querent's own servant
+- id: PRASHNATANTRA.STATUS.CH2V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.wealth: 0.5
+    domain.relationship: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v3-4
+    quote: >-
+      The ascendant lord aspects the ascendant and the significator aspects the (appropriate)
+      house
+    quote_sha256: 6977b42505b9268a0feece8073a706384d50d4c1c8d2b32a8c6b57d0aa1c0282
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: lord.bhava.01
+        target: bhava.01
+    - aspects:
+        subject: lord.bhava.10
+        target: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the object of the query will be completely fulfilled
+- id: PRASHNATANTRA.STATUS.CH3V100.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v100
+    quote: >-
+      The thief is a well-known person if the lord of the 7th occupies his own or exaltation
+      place.
+    quote_sha256: d36b457cf187391e4d3cdbd4c6365a98956cf345c4b7079e69ac6b971b7d17bf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_dignity:
+        varga: varga.d1
+        subject: lord.bhava.07
+        dignity: dignity.own_sign
+    - varga_dignity:
+        varga: varga.d1
+        subject: lord.bhava.07
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: The thief is a well-known person
+- id: PRASHNATANTRA.WEALTH.CH2V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v10
+    quote: >-
+      When the Moon, lord of the ascendant and the lord of the 2nd house are in conjunction
+      or in mutual aspect occupying the 2nd or a kendra (quadrant) or a thrikona (trine) there
+      will be immediate gain to the querist.
+    quote_sha256: 701045e6c5cb2e26fcfd260e2d44961f92d8f0bedc0aac35915cab9209e97171
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: lord.bhava.01
+    - conjunct:
+        subject: graha.moon
+        other: lord.bhava.02
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.02
+      - in_kendra:
+          subject: graha.moon
+      - in_trikona:
+          subject: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: there will be immediate gain to the querist
+- id: PRASHNATANTRA.WEALTH.CH2V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v11
+    quote: >-
+      If the lord of the ascendant has benefic Shadvargas and the Lagna is aspected by or
+      associated with benefics, the querist secures immediate gains.
+    quote_sha256: 71580c17cc6ac3b25e46215abd7c767349948b611a53a1a73b838f6dbcf84f23
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d6
+        subject: lord.bhava.01
+        dignity: dignity.friendly
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: bhava.01
+      - aspects:
+          subject: graha.venus
+          target: bhava.01
+      - aspects:
+          subject: graha.mercury
+          target: bhava.01
+      - aspects:
+          subject: graha.moon
+          target: bhava.01
+      - conjunct:
+          subject: graha.jupiter
+          other: lord.bhava.01
+      - conjunct:
+          subject: graha.venus
+          other: lord.bhava.01
+      - conjunct:
+          subject: graha.mercury
+          other: lord.bhava.01
+      - conjunct:
+          subject: graha.moon
+          other: lord.bhava.01
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the querist secures immediate gains
+- id: PRASHNATANTRA.WEALTH.CH2V114116.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v114-116
+    quote: If the lord of the 2nd being Mars is debilitated, money will be spent on others'
+      wives.
+    quote_sha256: c1a784b727c298ea235ecd564f994733187bc3772020ed70a65e3b1339919f47
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.02
+        dignity: dignity.debilitated
+    - same_bhava:
+        subject: lord.bhava.02
+        other: graha.mars
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: money will be spent on others' wives
+- id: PRASHNATANTRA.WEALTH.CH2V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v12
+    quote: >-
+      The Moon in the 4th or the 7th, the Sun in the 10th, a benefic in the ascendant, confer
+      immediate gain of money.
+    quote_sha256: 951d674a21f4ef1229a0271ab551bc81f033f2d2938d5f02924c470e0de01fe8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: confer immediate gain of money
+- id: PRASHNATANTRA.WEALTH.CH2V130.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v130
+    quote: >-
+      If the 12th house is well aspected and conjoined, the querent will spend money on deserving
+      causes.
+    quote_sha256: 14a0e00acfad40a4ef29f1eac2842aa335540ae4c90e94da6316f843ee5f2937
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.12
+        op: '>'
+        n: 0
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the querent will spend money on deserving causes
+- id: PRASHNATANTRA.WEALTH.CH2V1719.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.property: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v17-19
+    quote: If the Lagna is occupied by a malefic, the farmer loses by theft.
+    quote_sha256: d72730dde506fbf5f555a4fcca95760db9e2656429667695b6bf586d3f7136df
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 1
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the farmer loses by theft
+- id: PRASHNATANTRA.WEALTH.CH2V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v20
+    quote: >-
+      If the malefic in Lagna is free from retrogression or acceleration, the beneficiary
+      will be the thief.
+    quote_sha256: a9d5eef710d86edfef5b723887872ebc0ad44de203e3deb7e08a1535d2b1e580
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 1
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: moderate
+    text: the beneficiary will be the thief
+- id: PRASHNATANTRA.WEALTH.CH2V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v28
+    quote: >-
+      Rahu and Saturn in the 2nd are indicators of poverty or complications in financial matters.
+    quote_sha256: 686aa846fedb6298aa2d3a3be57f0b7f2fabb819a7714aefb2f0b1794fdb6311
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: indicators of poverty or complications in financial matters
+- id: PRASHNATANTRA.WEALTH.CH2V54.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v54
+    quote: >-
+      and the Moon are in the 6th or the Lagna lord has Ithasala with the lord of the 6th,
+      or if the lord of the 6th is in the ascendant, the querent will get servants and cattle.
+    quote_sha256: 7b714b862f18750c30ce4fdd050720f099d45b81d77f68e93d49993f2aacd863
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.06
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get servants and cattle
+- id: PRASHNATANTRA.WEALTH.CH2V68.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v6-8
+    quote: >-
+      In a query about finance, predict gain of money if the lord of the 2nd is in Ithasala
+      with the lord of Lagna or the Moon
+    quote_sha256: c50dcb0d3b4a6f2e5c71e78ceeb9096e111eae8c460e556bccaede3d49106171
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - conjunct:
+        subject: lord.bhava.02
+        other: lord.bhava.01
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: gain of money
+- id: PRASHNATANTRA.WEALTH.CH2V68.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v6-8
+    quote: or is in conjunction with or aspected by benefics.
+    quote_sha256: ac5667708d6adaf53f11aa8634f5b4be7171981d16d9a2073b8811ba1af69c02
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.venus
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.mercury
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.moon
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.02
+    - aspects:
+        subject: graha.venus
+        target: lord.bhava.02
+    - aspects:
+        subject: graha.mercury
+        target: lord.bhava.02
+    - aspects:
+        subject: graha.moon
+        target: lord.bhava.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: gain of money
+- id: PRASHNATANTRA.WEALTH.CH2V68.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.travel: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v6-8
+    quote: >-
+      If malefics are in the 2nd, the querist gains money from a distant land and also suffers
+      affliction.
+    quote_sha256: 4732fea1c8a59daaec54d74d69705f3382e23f428e42872aa1cd2bc6887ab4d6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: gains money from a distant land
+- id: PRASHNATANTRA.WEALTH.CH2V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v9
+    quote: >-
+      If Mercury occupying the ascendant is aspected by the Moon or a malefic, there will
+      be gain of wealth but also untoward happenings.
+    quote_sha256: 2caf075f5cbc51b4375f96e27fa56b910fdec1c518f7f1449b0c39ed859a8805
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - any:
+      - aspects:
+          subject: graha.moon
+          target: graha.mercury
+      - aspects:
+          subject: graha.mars
+          target: graha.mercury
+      - aspects:
+          subject: graha.saturn
+          target: graha.mercury
+      - aspects:
+          subject: graha.sun
+          target: graha.mercury
+      - aspects:
+          subject: graha.rahu
+          target: graha.mercury
+      - aspects:
+          subject: graha.ketu
+          target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: there will be gain of wealth
+- id: PRASHNATANTRA.WEALTH.CH3V129.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.85
+    domain.health: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v129
+    quote: >-
+      The person will have to be starving if Rahu or Saturn is in the ascendant aspected by
+      the Sun.
+    quote_sha256: d15f85821dd141f70cff185de4b47efe526f9d613a312851be40d4f6f4f5efa8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.01
+    - aspects:
+        subject: graha.sun
+        target: bhava.01
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: The person will have to be starving for want of financial convenience
+- id: PRASHNATANTRA.WEALTH.CH3V145.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v145
+    quote: >-
+      If the question is "shall I sell the article", say that it can be sold for profit if
+      the 11th house is occupied by powerful planets.
+    quote_sha256: 4d1b38208519640a6b404eb52fac7b15767a0154fdcda3b08ab9e7f5e06a3964
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.11
+        op: '>'
+        n: 0
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: it can be sold for profit
+- id: PRASHNATANTRA.WEALTH.CH3V151152.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v151-152
+    quote: If Mercury and Mars are strong, the catch will be good.
+    quote_sha256: 9f2aa88d253df792b44076155da5e71acebd39a7df936953d5ba56877d90b4eb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.mercury
+        band: band.strong
+    - strength_band:
+        subject: graha.mars
+        band: band.strong
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the catch will be good
+- id: PRASHNATANTRA.WEALTH.CH3V17.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v17
+    quote: lost money will not be recovered
+    quote_sha256: b2ce9fea370182d203a12a8adcc8986d4a779ca0b240bab4ee485a10aa490e52
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.taurus
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: lost money will not be recovered
+- id: PRASHNATANTRA.WEALTH.CH3V170.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v170
+    quote: >-
+      It will be to the advantage of the querent to purchase the article if the ascendant
+      and its lord are strongly disposed.
+    quote_sha256: b4c7b143e25473ab2a29a59688fa5711e1492e8cc66f982c8cdaf088fa5b16f1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: lord.bhava.01
+        band: band.strong
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: It will be to the advantage of the querent to purchase the article
+- id: PRASHNATANTRA.WEALTH.CH3V175.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v175
+    quote: >-
+      If the lords of Lagna and the 8th are in their respective signs, gain will accrue in
+      the transaction.
+    quote_sha256: ffadce817a40ab7a43849884b561672705093593c5c680ab939aaba30af14a93
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.own_sign
+    - dignity:
+        subject: lord.bhava.08
+        dignity: dignity.own_sign
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: gain will accrue in the transaction
+- id: PRASHNATANTRA.WEALTH.CH3V175.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v175
+    quote: A strong benefic in the 8th indicates gain and other beneficial results.
+    quote_sha256: 200963b3045e910faf79266108bc78465aa88cfdacab491252f4de69c0049125
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: gain and other beneficial results
+- id: PRASHNATANTRA.WEALTH.CH3V179.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.travel: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v179
+    quote: If the lords of the ascendant or the 8th are in the 7th, the merchandise will be
+      lost
+    quote_sha256: 38c1b0b25cc29582c6abdc187d9e55dcfcc57c69eefd54961f4e8237802343b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.07
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the merchandise will be lost
+- id: PRASHNATANTRA.WEALTH.CH3V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v36
+    quote: >-
+      If the lord of the 4th is in the ascendant or the Moon is in the ascendant, aspected
+      by the lord of the 4th, the lost money is to be found in the expected place.
+    quote_sha256: a677b6cbd65a71718bd8f562040e85ccd0e471f95c4e598ec6be05de6a475102
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.01
+    - all:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.01
+      - aspects:
+          subject: lord.bhava.04
+          target: graha.moon
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the lost money is to be found in the expected place
+- id: PRASHNATANTRA.WEALTH.CH3V57.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.travel: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v57
+    quote: >-
+      If ''will I profit from the ship'' is the question, say that it brings gain and benefit
+      to the querent if benefics are in quadrants and malefics are weak and occupy the 3rd,
+      6th or 11th houses.
+    quote_sha256: 56ff61740d8f169fdec06c2d4cc86d7adcb9405c7d077c64d1f357d1541c3894
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.jupiter
+    - in_upachaya:
+        subject: graha.mars
+    - strength_band:
+        subject: graha.mars
+        band: band.weak
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: it brings gain and benefit to the querent
+- id: PRASHNATANTRA.WEALTH.CH3V77.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v77
+    quote: If the lord of the 2nd is in the 2nd or 4th, he will have access to much wealth.
+    quote_sha256: 920d51f7a7d7e0ba8ca8172ef42325a75b1998a3f7080cf6fc3a881985a1a797
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.04
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: he will have access to much wealth
+- id: PRASHNATANTRA.WEALTH.CH3V78.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v78
+    quote: >-
+      When Mars is in the 7th or 8th, the wealth will not be secured by the querent as it
+      will be in the protection of another person.
+    quote_sha256: 209171d67f612a26a5c41a5f95fd2ebffb2d9d8c7d8efee26eed6fc2e87486fb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the wealth will not be secured by the querent as it will be in the protection of another
+      person
+- id: PRASHNATANTRA.WEALTH.CH3V78.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.property: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v78
+    quote: >-
+      If Rahu is in the ascendant and the Sun is in the 8th, the wealth or property will not
+      be secured.
+    quote_sha256: 703998b1f1cf42d44bc78a2410a694e66807f469a2ce88dd9b4d56dbc06c828b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the wealth or property will not be secured
+- id: PRASHNATANTRA.WEALTH.CH3V79.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v79
+    quote: >-
+      The lost wealth will be got back if the lords of Lagna and the 7th are in the 7th and
+      Lagna respectively.
+    quote_sha256: 669cf4aefc5adfd33a2ab13482c38e5d3e9919f74f28bcfe2923d68b01c4a453
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: The lost wealth will be got back
+- id: PRASHNATANTRA.WEALTH.CH3V80.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v80
+    quote: >-
+      When the Sun is in the ascendant and the Moon is in the 7th, the lost wealth will not
+      be recovered.
+    quote_sha256: a0c7afa968a72f25fdc4372a07526aedf05f996e495cc4b9ec24d6c830a9b11c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the lost wealth will not be recovered
+- id: PRASHNATANTRA.WEALTH.CH3V92.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.career: 0.3
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v92
+    quote: If the lord of the 2nd is combust the thief will be caught.
+    quote_sha256: 2fd552f8a7d075378542625f3532f361841fe14b2c7fbb7ff3e6a4a45c2a9484
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - combust:
+        subject: lord.bhava.02
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: the thief will be caught
+- id: PRASHNATANTRA.WEALTH.CH3V9495.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v94-95
+    quote: >-
+      When there is Ithasala between the lords of the ascendant and the 7th, the money will
+      be returned by the thief due to the fear of the police.
+    quote_sha256: 2e056c554c3ee37c0e6da8bdfd44eddfdab4aacce1fcb1b70dd6d77f13943ae8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - exchange:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: the money will be returned by the thief due to the fear of the police
+- id: PRASHNATANTRA.WEALTH.CH3V96.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v96
+    quote: If the lord of the 2nd is in the 7th or 8th, the stolen property will not be recovered.
+    quote_sha256: 2c8ddf7dd54e672d5bbcb2715bbeb7552333d5d28c7db0568eed1eb64f0d725e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.08
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the stolen property will not be recovered
+- id: PRASHNATANTRA.WEALTH.CH3V97.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v97
+    quote: >-
+      When there is Muthasila between the lords of the 8th and the 10th, the authority will
+      favour the thief's point of view.
+    quote_sha256: 622041d76723db037d82bb5856b9d0d69c9f5ef7f1c3c9ee42b27ab6ee354edc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: lord.bhava.08
+        target: lord.bhava.10
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the authority will favour the thief's point of view
+- id: PRASHNATANTRA.WEALTH.CH3V97.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v97
+    quote: >-
+      When there is no mutual aspect between the lords of the ascendant and the 2nd, the querent
+      will get news about lost property, but he will not recover it.
+    quote_sha256: aa691d93794c773f051b6a33fcad26970cefba8e0e5e007390d6d35f8fc2d9c8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    not:
+      any:
+      - aspects:
+          subject: lord.bhava.01
+          target: lord.bhava.02
+      - aspects:
+          subject: lord.bhava.02
+          target: lord.bhava.01
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: news may come about the theif but the money will not be recovered
+- id: PRASHNATANTRA.WEALTH.CH4V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+    domain.status: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v4
+    quote: >-
+      The benefit-giving planets are the lords of the ascendant and the 11th. It should be
+      noted that a combination of the lords of the ascendant and the 11th is always beneficial
+      and confer good results.
+    quote_sha256: ee25eb09e20a4a66637d03bc84f76f9ef1b97ca3043328270a0acfe91f14c959
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: lord.bhava.01
+        other: lord.bhava.11
+        distance: dist.01
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: confer good results
+- id: PRASHNATANTRA.WEALTH.CH4V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v5
+    quote: >-
+      The beneficial capacity of the lords of the ascendant and the 11th becomes intensified
+      if they have the aspect of the Moon.
+    quote_sha256: bfa931b50a3f5ea0c07c86e70716694e96cc727cb5320bafecfbb7941ef31bc9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: lord.bhava.01
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      The beneficial capacity of the lords of the ascendant and the 11th becomes intensified
+      if they have the aspect of the Moon.
+- id: PRASHNATANTRA.WEALTH.CH4V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v5
+    quote: >-
+      The beneficial capacity of the lords of the ascendant and the 11th becomes intensified
+      if they have the aspect of the Moon.
+    quote_sha256: bfa931b50a3f5ea0c07c86e70716694e96cc727cb5320bafecfbb7941ef31bc9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: lord.bhava.11
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: strong
+    text: >-
+      The beneficial capacity of the lords of the ascendant and the 11th becomes intensified
+      if they have the aspect of the Moon.
+- id: PRASHNATANTRA.WEALTH.CH4V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.95
+    domain.career: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v6
+    quote: >-
+      There will be immense gain if the 9th is aspected by or conjoined with the lord of the
+      10th
+    quote_sha256: 7b5461506a5b49518b84f90f14b0f68d4a91be4386c5e909e828d7a8634f0903
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - aspects:
+        subject: lord.bhava.10
+        target: bhava.09
+    - conjunct:
+        subject: lord.bhava.10
+        other: lord.bhava.10
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: extreme
+    text: There will be immense gain
+- id: PRASHNATANTRA.WEALTH.CH4V8.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v8
+    quote: When the lord of Lagna is in the 12th, the querent will always have losses.
+    quote_sha256: 1777d5c663666e089b96c84d5fde57a529f8f48ede5c819ba3477d48090d85ba
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the querent will always have losses
+- id: PRASHNATANTRA.WEALTH.CH4V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v9
+    quote: >-
+      When Mercury occupying the ascendant is aspected by the Moon or other malefics, there
+      will be early gain of money.
+    quote_sha256: dbf0110fec1cbf5973d1eeb0a1540ea151695fda8d40133fd1e79e2e33ed7e5e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - any:
+      - aspects:
+          subject: graha.moon
+          target: graha.mercury
+      - aspects:
+          subject: graha.mars
+          target: graha.mercury
+      - aspects:
+          subject: graha.saturn
+          target: graha.mercury
+      - aspects:
+          subject: graha.sun
+          target: graha.mercury
+      - aspects:
+          subject: graha.rahu
+          target: graha.mercury
+      - aspects:
+          subject: graha.ketu
+          target: graha.mercury
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: there will be early gain of money

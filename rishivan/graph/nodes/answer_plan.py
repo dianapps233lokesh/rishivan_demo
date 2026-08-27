@@ -35,5 +35,11 @@ def answer_plan_node(state: RishivanState) -> dict:
             timing=state.get("timing"),
             vargas=state.get("vargas"),
             unreviewed=bool(state.get("reading_is_unreviewed")),
+            # Which Rishi was *supposed* to answer. Without it every abstention
+            # reads alike, and a supporting Rishi declining a question outside
+            # its remit - the routing working correctly - was reported to the
+            # reader as though the council had faltered.
+            primary_rishi=state.get("primary_rishi") or "",
+            stated_facts=state.get("stated_facts") or (),
         )
     }

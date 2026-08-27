@@ -22,6 +22,9 @@ OUT=rishivan/koonji/rules/extracted
 STAGE=${STAGE:-.koonji-staging}
 LOGS=logs
 WORKERS=${WORKERS:-16}
+# Overridable so a whole-corpus run can change model without editing this file.
+# gemini-2.5-pro is ~23x the cost of flash-lite for the same passage count.
+MODEL=${MODEL:-gemini-3.5-flash-lite}
 
 BOOKS=(
   prasna-marga           # 37 passages
@@ -45,7 +48,7 @@ for book in "${BOOKS[@]}"; do
     continue
   fi
   log="$LOGS/extract-$book-$(date +%Y%m%d-%H%M).log"
-  echo "== $book  (workers=$WORKERS)  -> $log"
+  echo "== $book  (workers=$WORKERS, model=$MODEL)  -> $log"
 
   # max-calls is a safety net, not a target: single-call mode spends one call
   # per passage, so a ceiling well above the passage count only catches a bug
@@ -56,12 +59,18 @@ for book in "${BOOKS[@]}"; do
   # `--limit 0` means the whole book. The CLI default is 20 and deliberately
   # low, which is right for a proving run and wrong here -- without this every
   # book silently stops after twenty passages and reports success.
+  # `tee`, not `>`: redirecting sent every per-call line to the file and left
+  # the terminal silent for the whole book, so a run that was failing every
+  # passage looked identical to one that was working. `-v` prints one line per
+  # model call; the file keeps the same text for later.
   $PY -m rishivan.koonji --rules "$STAGE/$book" extract \
       --book "$book" \
       --single-call \
       --limit 0 \
+      --verbose \
       --workers "$WORKERS" \
-      --max-calls 4000 >"$log" 2>&1
+      --deep-model "$MODEL" \
+      --max-calls 4000 2>&1 | tee "$log"
 
   if [ -d "$STAGE/$book/extracted" ]; then
     mkdir -p "$OUT/$book"
@@ -70,7 +79,6 @@ for book in "${BOOKS[@]}"; do
   else
     echo "   no rules written; see $log"
   fi
-  tail -4 "$log" | sed 's/^/   /'
 done
 
 echo

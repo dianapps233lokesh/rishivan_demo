@@ -1,0 +1,3817 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.CAREER.CH13V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v27
+    quote: >-
+      During the ruling period of Sun in the 8th house, there is trouble to the body or trouble
+      from fire, intermittant fever, trouble to eyes, cough or asthma, loose motions, & fall
+      from position or office.
+    quote_sha256: e8f75cb35258d10607335c603847412a46d7262e644be750a71432e94635826e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: fall from position or office
+- id: SARVARTHACHINTAMANI.CAREER.CH13V49.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v49
+    quote: >-
+      During the ruling period of Sun located in the Navamsha of its exaltation sign but in
+      its sign of debilitation, the native has much happiness and exercise of ruling powers.
+    quote_sha256: abc5a06adb14a145fabc5cd7d4ff07b2f3b0156c828691e3b3049f815c000751
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.libra
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.sun
+        rashi: rashi.aries
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the native has much happiness and exercise of ruling powers
+- id: SARVARTHACHINTAMANI.CAREER.CH14V23.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v23
+    quote: 'There is frustration of
+
+      efforts—even death. There is fall from the position held.'
+    quote_sha256: 46f7734b0b39ad8a33bfa754eb739a8d9cf6bd00cb0aea1496c48a23186f04eb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: extreme
+    text: There is frustration of efforts—even death. There is fall from the position held.
+- id: SARVARTHACHINTAMANI.CAREER.CH14V30.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+    domain.spiritual: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v30
+    quote: >-
+      During the ruling period of Mercury located in the 10th house, the native worships the
+      Diety & the Brahmins, gets ruling powers, name in the public, adopts a course of writing
+      poetry, he is particularly engaged in religious acts such as the yagyas, initiation
+      & doing good to his relatives.
+    quote_sha256: 5f0ec1a9a68af1516ba9b58e0f2f73c0e2503a028e521108252d2c376b86aac9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: gets ruling powers, name in the public
+- id: SARVARTHACHINTAMANI.CAREER.CH14V41.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v41
+    quote: One may go to live in jungle and there is also fall from the position held by the
+      native.
+    quote_sha256: e6b9f1a0d815762ebc88aa45f471392507d92df612ad37093749cd114af83b1a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - retrograde:
+        subject: graha.mars
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: fall from the position held by the native
+- id: SARVARTHACHINTAMANI.CAREER.CH14V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.travel: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v5
+    quote: >-
+      During the ruling period of Mercury located in its sign of debilitation, the native
+      is without power of discrimination, is separated from one's relatives, falls from the
+      position held, gets opposition from relatives, goes abroad
+    quote_sha256: 181c081b6bc2c287f3c1ae3b5e93540e6995c29ba10445d33d02f79cb5e194c9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.debilitated
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: falls from the position held
+- id: SARVARTHACHINTAMANI.CAREER.CH14V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v6
+    quote: >-
+      During the ruling period of Mercury located in its Mool trikon (positive) sign, the
+      native gets ruling powers, much comfort, fame
+    quote_sha256: 00831b29516d27ada45d9bf3551d2fef041c0f1d02e53f6e3384f51e3eec3e88
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the native gets ruling powers, much comfort, fame
+- id: SARVARTHACHINTAMANI.CAREER.CH15V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.9
+    domain.wealth: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v1
+    quote: >-
+      During the ruling period of Jupiter located in its highest degree of exaltation, the
+      native gets ruling powers, much happiness & fame, comforts, elephants & horses, honour
+      from the ruler & ruling over ones own people.
+    quote_sha256: eb4885bd8d5b966bc61ba61af064c8b49503c9e12dfe2da2c9d68f5e8d5181b4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.exalted
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets ruling powers, much happiness & fame, comforts, elephants & horses,
+      honour from the ruler & ruling over ones own people
+- id: SARVARTHACHINTAMANI.CAREER.CH15V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v24
+    quote: >-
+      During the ruling period of Jupiter located in the 10th house, the native gets ruling
+      powers, if there is yoga for kingship
+    quote_sha256: 81e9f48b2149c29961e6ccb7b27380f16a3f7c328d3616e302de39d6c571e5b5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the native gets ruling powers
+- id: SARVARTHACHINTAMANI.CAREER.CH15V28.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v28
+    quote: >-
+      During the ruling period of Jupiter, located in the Navamsha of its sign of debilitation,
+      the native gets threat from the ruler, colic pains, dyspepsia, etc. fall from the position
+      held, opposition from friends, fear of ruler, fire & thieves & fear from his own community.
+    quote_sha256: e486310fc8177c4ff312b7e09e901d5605e02df76935571e2ab0c607c7277f47
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.jupiter
+        dignity: dignity.debilitated
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: fall from the position held
+- id: SARVARTHACHINTAMANI.CAREER.CH15V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.health: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v43
+    quote: >-
+      During the ruling period of Venus located in the sign of its exaltation, but in the
+      Navamsha of its sign of debilitation, the native gets much suffering, there is loss
+      of ruling powers & loss of the position held in life.
+    quote_sha256: 1ae21388d964d20e24d1f98c16f43da2278ed6c1e9f4df95d3a54fab71cac876
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.exalted
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets much suffering, there is loss of ruling powers & loss of the position
+      held in life
+- id: SARVARTHACHINTAMANI.CAREER.CH16V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.travel: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v1-3
+    quote: >-
+      During the sub period of malefic planets in the main dasa of Saturn located in kendra
+      the native falls from his position in life. He has to live in a different place and
+      suffer through government, thieves and fire.
+    quote_sha256: dfd1b258b996c49a54c73c06ab7f0903b679130cbb93889b2d2eaf0752eca781
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.01
+        level: level.antar
+    - in_kendra:
+        subject: graha.saturn
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native falls from his position in life. He has to live in a different place and
+      suffer through government, thieves and fire
+- id: SARVARTHACHINTAMANI.CAREER.CH16V1720.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v17-20
+    quote: >-
+      If the sub period is of malefic planets in the main period of Moon located in the 10th
+      house one is frustrated in his actions, gets defame, & great fear.
+    quote_sha256: 2683cc7ee2fed582db244b10d71ec02a79a06e935e7b17b61ebf3119e26c0720
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: moderate
+    text: one is frustrated in his actions, gets defame, & great fear
+- id: SARVARTHACHINTAMANI.CAREER.CH16V21.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v21
+    quote: >-
+      At the end of the sub period however, there is anger from the government, fall from
+      position and mental worry.
+    quote_sha256: 8d737e2a26c6d466d82639e17b4ce52d368fcccb8fed39151a3238208952934e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: >-
+      At the end of the sub period however, there is anger from the government, fall from
+      position and mental worry.
+- id: SARVARTHACHINTAMANI.CAREER.CH16V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v25
+    quote: >-
+      During the ruling period of Rahu under the aspect of malefic planets, the native loses
+      the fruits of actions.
+    quote_sha256: 56db8527bf4c2d64da7760d9c6bbe88a11d2133743e9a859202bd7fbec174f06
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - aspects:
+        subject: lord.bhava.10
+        target: graha.rahu
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: the native loses the fruits of actions
+- id: SARVARTHACHINTAMANI.CAREER.CH16V710.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+    domain.temperament: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v7-10
+    quote: >-
+      Loss of position, mental worry, loss of character, sudden quarrels & trouble from government,
+      thieves and fire, take place.
+    quote_sha256: 68861e41139bbde7dc116e9f043e1e083ffe2b80c8c60e2a1e9648873522b923
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.12
+        level: level.antar
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Loss of position, mental worry, loss of character, sudden quarrels & trouble from government,
+      thieves and fire, take place
+- id: SARVARTHACHINTAMANI.CAREER.CH2V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.9
+    domain.health: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v33
+    quote: >-
+      During the Main ruling period of the lord of the 10th house and the Sub-period of malefics
+      there is likelihood of getting imprisonment, sorrow, bad dreams, and great mental worry.
+    quote_sha256: 43a9674648360e9d1ec3a4377a01e8bbf909683294e57bfefebdd5d996cfc0b4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.10
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: getting imprisonment, sorrow, bad dreams, and great mental worry
+- id: SARVARTHACHINTAMANI.CAREER.CH3V156.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v156
+    quote: >-
+      If the lords of the 9th, 1st & 4th houses are all located in the 10th house and the
+      lord of the 10th house is in the lagna. the native gets ruling powers provided none
+      of these planets is weak in sign of its debilitation or eclipsed.
+    quote_sha256: 0882ab7efb8acbb90d84909c5bf38357480394e56c66cc056c1c9cb5b02a1710
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.01
+    - not:
+        dignity:
+          subject: lord.bhava.09
+          dignity: dignity.debilitated
+    - not:
+        dignity:
+          subject: lord.bhava.01
+          dignity: dignity.debilitated
+    - not:
+        dignity:
+          subject: lord.bhava.04
+          dignity: dignity.debilitated
+    - not:
+        dignity:
+          subject: lord.bhava.10
+          dignity: dignity.debilitated
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: the native gets ruling powers
+- id: SARVARTHACHINTAMANI.CAREER.CH5V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v13
+    quote: >-
+      If the lords of the 6th house and that of the Ascendant are located with Saturn in a
+      kendra or a trine, the yoga indicates that the native would be imprisoned.
+    quote_sha256: 2266575b6e0256a67e90a6071a93a60c92df140f3029dd16b646db212354e10a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.06
+        other: lord.bhava.01
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.saturn
+    - any:
+      - in_kendra:
+          subject: lord.bhava.06
+      - in_trikona:
+          subject: lord.bhava.06
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: the native would be imprisoned
+- id: SARVARTHACHINTAMANI.CAREER.CH5V13.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.5
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v13
+    quote: >-
+      If the lord of the 6th house & that of the lagna Saturn and Rahu are in a kendra or
+      trine it also denotes the same thing.
+    quote_sha256: 7db62c6c787e049d0a36fa6b83e1d6b09d4308e5fc667502c663f13d796c2113
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.06
+        other: lord.bhava.01
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.rahu
+    - any:
+      - in_kendra:
+          subject: lord.bhava.06
+      - in_trikona:
+          subject: lord.bhava.06
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: the native would be imprisoned
+- id: SARVARTHACHINTAMANI.EDUCATION.CH13V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.8
+    domain.relationship: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v19
+    quote: >-
+      During the ruling period of Sun when it is aspected by a benefic planet, the native
+      gets education, fame, wife, son, good speech, a lustrous body, influence over others,
+      enjoyment of amorous & playful acts, help from father & honour from the government.
+    quote_sha256: 26b887ef6fc0d09eb1faf36e6b3f47ae84a14b01d7b66410a752f84761bfeed7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.sun
+      - aspects:
+          subject: graha.venus
+          target: graha.sun
+      - aspects:
+          subject: graha.mercury
+          target: graha.sun
+      - aspects:
+          subject: graha.moon
+          target: graha.sun
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets education, fame, wife, son, good speech, a lustrous body, influence
+      over others, enjoyment of amorous & playful acts, help from father & honour from the
+      government
+- id: SARVARTHACHINTAMANI.EDUCATION.CH15V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v23
+    quote: >-
+      During the ruling period of Venus located in the 10th house, the native gets education,
+      wealth, honour from the ruler, betterment of prospects, increase in personal charm,
+      & prowess & fame from all directions.
+    quote_sha256: ef4867344266a2d2a6bc2a0c7bebd702eb29a85367427174060e10eb704c7175
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native gets education
+- id: SARVARTHACHINTAMANI.EDUCATION.CH15V30.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v30
+    quote: He gets name through his writings.
+    quote_sha256: ec1a352f06723b137b2f183414d85b3a26b8a1a1e175c1e7bce62a9682698f40
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.11
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: He gets name through his writings
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V1214.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v12-14
+    quote: >-
+      If the lord of the 2nd house is a natural benefic planet, situated in kendra or in its
+      sign of exaltation or in a friendly sign or in a sign of a benefic, the native protects
+      or rears up his family and many others & has a very nice speech.
+    quote_sha256: 7873e5c1a28b462edb47aea98434bd8dca97801b366c52e661a1b1bb645259c8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_kendra:
+          subject: lord.bhava.02
+      - dignity:
+          subject: lord.bhava.02
+          dignity: dignity.exalted
+      - dignity:
+          subject: lord.bhava.02
+          dignity: dignity.friendly
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: the native protects or rears up his family and many others & has a very nice speech
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V1214.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v12-14
+    quote: >-
+      If the lord of the lagna is strong and in its sign of exaltation and if there is a benefic
+      in his exaltation sign in the 2nd house, aspected by a benefic, then also the native
+      supports many persons.
+    quote_sha256: 77c309465418c7122ba3bebc35b4b4427c5b8dd609e02140a06d4cce7e62bd05
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.exalted
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: the native supports many persons
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v15
+    quote: >-
+      If benefic planets are located in the 3rd house which is also aspected by benefic planets
+      and the lord of the 3rd house is also in strength, the yoga indicates the acquisition
+      of brothers.
+    quote_sha256: 3ee990d91a00f9edc630fa81a8b05e590883df08b7a415e7d7c7d1b52883e8ce
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.03
+        op: '>='
+        n: 1
+    - strength:
+        subject: lord.bhava.03
+        op: '>='
+        value: 1.0
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: the acquisition of brothers
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v16
+    quote: >-
+      If the lord of the 3rd house and Mars are with benefic planets and aspected too by such
+      planets and the 3rd house too is full of strength the yoga indicates the rise of brothers.
+    quote_sha256: c2c60404d08bc3713e94329f8afb0a95d200c75b8c6afdf89e4b3efaa6d712d9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.venus
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mercury
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: the rise of brothers
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v21
+    quote: >-
+      The acquisition of brothers is indicated, if the lord of the 3rd house is located in
+      the 3rd house, in its sign of exaltation, its Mooltrikon (positive) sign, and is in
+      strength.
+    quote_sha256: f46dcc0c1fb9ed2bdcf276bb1017c57cda9a555c38e41132fec213b0389f8bfa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.03
+        bhava: bhava.03
+    - any:
+      - dignity:
+          subject: lord.bhava.03
+          dignity: dignity.exalted
+      - dignity:
+          subject: lord.bhava.03
+          dignity: dignity.moolatrikona
+    - strength:
+        subject: lord.bhava.03
+        op: '>'
+        value: 0
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: The acquisition of brothers is indicated
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v22
+    quote: >-
+      If the lord of the 3rd house is located in Mridu amsha etc. & is in association of benefic
+      planets & is aspected by benefics, the yoga indicates the birth of brothers.
+    quote_sha256: d179d5d93267107396c82fd887b5687f9331519df7563134c868689426b8e5a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.03
+        dignity: dignity.friendly
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: moderate
+    text: the birth of brothers
+- id: SARVARTHACHINTAMANI.FAMILY.CH3V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v25
+    quote: >-
+      If the lord of the 3rd house and Mars are located in the Navamsha of an odd sign and
+      are aspected by Jupiter, Sun, or Mars located in the 3rd house, in this condition the
+      native gets male coborns.
+    quote_sha256: 08207ba88541908b1566508d21145cc7fc97513c316a792d24a1a84595d256ab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.03
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mars
+        rashi: rashi.aries
+    - house_distance:
+        subject: graha.jupiter
+        other: lord.bhava.03
+        distance: dist.03
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: the native gets male coborns
+- id: SARVARTHACHINTAMANI.FAMILY.CH5V63.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.5
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v63
+    quote: >-
+      If the lord of the 3rd house occupies the 3rd house itself, the lord of the 5th is in
+      the 4th house with a benefic planet in exaltation, the son feeds the father very well.
+    quote_sha256: 553d2609cab122b6f2cbf9691117e21ced6f7a790e53373b4a61cbde26f825f8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.03
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.04
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: the son feeds the father very well
+- id: SARVARTHACHINTAMANI.FAMILY.CH6V69.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v69
+    quote: >-
+      If the lord of the 7th house is stronger than the lord of the 1st house & is located
+      in the Navamsha of a benefic planet, is under the aspect of a benefic planet, or is
+      located in "Vaisheshik" amsha or in the highest degree of its exaltation, the wife comes
+      from a very high family.
+    quote_sha256: 6031ac17743838ddcc3cda5537d75dadf9638ffee156b3a922a177059cfe4c60
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.07
+        other: lord.bhava.01
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.gemini
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.virgo
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.pisces
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.07
+          rashi: rashi.libra
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.mercury
+          target: lord.bhava.07
+      - aspects:
+          subject: graha.moon
+          target: lord.bhava.07
+      - dignity:
+          subject: lord.bhava.07
+          dignity: dignity.exalted
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: the wife comes from a very high family
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v19
+    quote: >-
+      If a natural beneflc planet located in the 9th house and the lord of the 9th house are
+      located with enemies or are occupying their signs of debilitations or if these are located
+      in malefic Shashti amshas (1/60th division) the yoga indicates throuble to father.
+    quote_sha256: 41b0f1a2cca2187875dc83b68c99d3330fab76f5fa61e1d866b49440efdcb7c1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.inimical
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: strong
+    text: trouble to father
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v21
+    quote: >-
+      If the lord of the 9th house is much stronger than the lord of the Ascendant and the
+      significator i.e. the Sun is aspected by benefics, the native lives under the control
+      of his father.
+    quote_sha256: bb0e50465fd476e706daed6afd23e1c95dc2b9223fcea1fffb5338cd4c1a7c51
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.09
+        other: lord.bhava.01
+    - aspects:
+        subject: graha.jupiter
+        target: graha.sun
+  indicates:
+    claim: family.father
+    polarity: positive
+    magnitude: moderate
+    text: the native lives under the control of his father
+- id: SARVARTHACHINTAMANI.FAMILY.CH9V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.3
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v43
+    quote: >-
+      If Jupiter is in kendra devoid of any association or aspect of benefic planets, neither
+      the father of the native performed the prescribed samskaras relating to the birth of
+      the native, nor will the native perform the last rites of his father.
+    quote_sha256: 4dd3f8c93bdf6808ae969352f92861d292d60181c145af18f11bea836735303e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.jupiter
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: >-
+      neither the father of the native performed the prescribed samskaras relating to the
+      birth of the native, nor will the native perform the last rites of his father.
+- id: SARVARTHACHINTAMANI.GENERAL.CH1V50.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch1.v50
+    quote: a vargottam planet gives good results
+    quote_sha256: 099d8a1c0da074d0c4d171f9b7cba6afd5b7c140d66290988a646b34d9a48426
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - vargottama:
+        subject: graha.sun
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: a vargottam planet gives good results
+- id: SARVARTHACHINTAMANI.HEALTH.CH15V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v28
+    quote: >-
+      During the ruling period of Jupiter, located in the Navamsha of its sign of debilitation,
+      the native gets threat from the ruler, colic pains, dyspepsia, etc. fall from the position
+      held, opposition from friends, fear of ruler, fire & thieves & fear from his own community.
+    quote_sha256: e486310fc8177c4ff312b7e09e901d5605e02df76935571e2ab0c607c7277f47
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.jupiter
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: colic pains, dyspepsia
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V21.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v21
+    quote: >-
+      During the sub periods of malefic planets in the main ruling period of Mars located
+      in the 12th house, there is much sorrow and fear of imprisonment.
+    quote_sha256: 2aa438d6043567fc580896856387c699352b9b978e9f4fc3479c39cf340c791f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: there is much sorrow and fear of imprisonment
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v4
+    quote: >-
+      During the ruling period of Rahu located in its sign of debilitation, the native gets
+      fear from thieves, fire & the ruler. He faces being hanged or poisoned.
+    quote_sha256: 378531b9738c64825373a2f81a41955bd50bf7feb569d6cf0c7f78e389dc062a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dignity:
+        subject: graha.rahu
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native gets fear from thieves, fire & the ruler. He faces being hanged or poisoned.
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.8
+    domain.temperament: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v25
+    quote: >-
+      During the main ruling period of a malefic lord of the 3rd house there is trouble from
+      fire, thieves and Government. There is also inertia of mind; but, if it is aspected
+      by a benefic planet, there is no such trouble.
+    quote_sha256: 4afc44675451ef123a9a905669a45e2fa819d62f3ee8313c208146ec4947a444
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.03
+        level: level.maha
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: lord.bhava.03
+        - aspects:
+            subject: graha.venus
+            target: lord.bhava.03
+        - aspects:
+            subject: graha.mercury
+            target: lord.bhava.03
+        - aspects:
+            subject: graha.moon
+            target: lord.bhava.03
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: there is trouble from fire, thieves and Government. There is also inertia of mind
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.health: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v4
+    quote: The Traits of a house suffer, if its lord is located in the 6th, 8th or the 12th
+      house.
+    quote_sha256: 262193d070ed5733cc6fe1c66b383cf95927aa6970d0ef16c7bd9a471b8f1bb3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The Traits of a house suffer
+- id: SARVARTHACHINTAMANI.OBSTACLE.CH14V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v8
+    quote: >-
+      During the ruling period of Mercury located in its inimical sign, the native is in fear
+      of the enemy & that of the ruler
+    quote_sha256: 7abc4c5d550e2ac8b798151bd06aeef807afa2e2450a12c368f56edc15bb9bdf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.inimical
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the native is in fear of the enemy & that of the ruler
+- id: SARVARTHACHINTAMANI.OBSTACLE.CH2V58.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.spiritual: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v58
+    quote: >-
+      If the lords of the 10th & 9th houses are located in one of the bad houses, 6th, 8th
+      or 12th and the lord of the Ascendant is strong, the boy even if born in a high family
+      is without the ceremonies such as 'seemant' (a sanskara i.e. ceremony performed during
+      the pregnancy of a woman).
+    quote_sha256: 3525da060f144dd73ea62771af040811c598c1f062e17229a678abd27de6ac06
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - in_dusthana:
+          subject: lord.bhava.10
+    - any:
+      - in_dusthana:
+          subject: lord.bhava.09
+    - strength:
+        subject: lord.bhava.01
+        op: '>='
+        value: 1
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: moderate
+    text: the boy even if born in a high family is without the ceremonies such as 'seemant'
+- id: SARVARTHACHINTAMANI.PROGENY.CH16V11.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v11
+    quote: >-
+      He has quarrels in intellectual matters, suffering and rift, wrath from the government,
+      & loss of son.
+    quote_sha256: 618beeb366c151bcf3ec0e3f9ac4a843374c52d6b4f081f5c4600f59633ec300
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: loss of son
+- id: SARVARTHACHINTAMANI.PROGENY.CH16V913.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v9-13
+    quote: >-
+      During the main ruling period of the Sun located in the 5th house and in the sub period
+      of Saturn, Mars, Rahu and Ketu there is trouble to the son of the native, and trouble
+      through thieves, fire and government.
+    quote_sha256: e6064c1f08808914bf4954d772ce23ef3643034d13ffa630b9f379cfc99c635e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: trouble to the son of the native, and trouble through thieves, fire and government
+- id: SARVARTHACHINTAMANI.PROGENY.CH16V913.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+    domain.property: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v9-13
+    quote: >-
+      During the main ruling period of Sun located in the 5th house and in the sub period
+      of benefic planets the native gets sons, ruling powers, conveyances & ornaments.
+    quote_sha256: cc72b1208e02ddc135c8ced91d9be2ca20106a24b4bbb4a285885b2b146121e7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.05
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the native gets sons, ruling powers, conveyances & ornaments
+- id: SARVARTHACHINTAMANI.PROPERTY.CH16V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.8
+    domain.status: 0.8
+    domain.relationship: 0.8
+    domain.progeny: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v22
+    quote: >-
+      During the ruling period of Rahu located in Virgo or Pisces, the native gets son, wife,
+      rules over a territory, conveyance driven by men
+    quote_sha256: 3da27028d26e4406fdeefcb18db03d43e5c1ba8362a18ee18dfa52a4a2777944
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - any:
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.virgo
+      - occupies_rashi:
+          subject: graha.rahu
+          rashi: rashi.pisces
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: gets son, wife, rules over a territory, conveyance driven by men
+- id: SARVARTHACHINTAMANI.STATUS.CH12V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.longevity: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v16
+    quote: >-
+      If Saturn is in lagna, Moon in the 4th house, Mars in the 7th & Sun is in the 10th with
+      any of the three planets, Mercury, Jupiter & Venus, the native becomes a king and lives
+      for 60 years.
+    quote_sha256: 827cff0c3438108e91f97cae9a6776a299df5ac3d96949b8c046916b8ffcd5a3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.10
+    - any:
+      - conjunct:
+          subject: graha.sun
+          other: graha.mercury
+      - conjunct:
+          subject: graha.sun
+          other: graha.jupiter
+      - conjunct:
+          subject: graha.sun
+          other: graha.venus
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the native becomes a king and lives for 60 years
+- id: SARVARTHACHINTAMANI.STATUS.CH12V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v20
+    quote: >-
+      If Sun & Moon are in the 10th house, Saturn is in lagna, Jupiter in the 4th, the native
+      becomes a king
+    quote_sha256: dbf850bed646538feae3961432d355189a5812790e5d010a3a492c9bdfa827ec
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the native becomes a king
+- id: SARVARTHACHINTAMANI.STATUS.CH12V44.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.longevity: 0.3
+    domain.education: 0.3
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v44
+    quote: >-
+      If Venus is in the 4th house, Jupiter in lagna, Saturn is with Moon, the 10th house
+      has no malefic planet in it, the native of this yoga gets long life, education and fame.
+    quote_sha256: 1410932e7a62568ece274cb4559bc85920d1ae7f1cdc353e90154f43252fc07e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.saturn
+        other: graha.moon
+    - occupant_count:
+        bhava: bhava.10
+        op: ==
+        n: 0
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native gets fame
+- id: SARVARTHACHINTAMANI.STATUS.CH13V1.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v1
+    quote: >-
+      During the main ruling period of Sun occupying its highest degree of exaltation one
+      gets lands, wealth, wife, son, fame, courage, honour from the king, movements, recreation
+      meetings.
+    quote_sha256: 3b35ba86ffe8f0059ba2dec1f883f5b474451481edbfd52a579319fb5ee225aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: one gets fame, honour from the king
+- id: SARVARTHACHINTAMANI.STATUS.CH13V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+    domain.property: 0.7
+    domain.wealth: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v12
+    quote: >-
+      Sun located in a friendly sign, gives in its ruling period servants, favour from the
+      government, the father and the son, abode in ones house, association of one's own people,
+      honour, ornaments, clothes, copper etc.
+    quote_sha256: 8f5853780a5fb5d5dfdd5650aff3518cdb2f05360e9536a6274c67c6dfca4bc1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.friendly
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      gives in its ruling period servants, favour from the government, the father and the
+      son, abode in ones house, association of one's own people, honour, ornaments, clothes,
+      copper etc.
+- id: SARVARTHACHINTAMANI.STATUS.CH13V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v20
+    quote: >-
+      During the ruling period of Moon under the aspect of a benefic planet, the native does
+      good to others, gets much fame, also desired objects, friends & relatives, honour from
+      the ruler, activity relating to water, & clothes & happiness of mind.
+    quote_sha256: 8b123ad888da8498dc8fe0824839661f37214bdb12dd688cc723c10a0a29efcc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: graha.moon
+      - aspects:
+          subject: graha.venus
+          target: graha.moon
+      - aspects:
+          subject: graha.mercury
+          target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: gets much fame, honour from the ruler
+- id: SARVARTHACHINTAMANI.STATUS.CH13V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.8
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v21
+    quote: >-
+      During the ruling period of the Sun, when, it is located in kendra, one gets severe
+      punishment at the hands of the king (i.e. the government), loss of position, separation
+      from friends, loss in agriculture, & roaming.
+    quote_sha256: 81f83ce57beb529eb8ef02728eb48b80aa20ecc59f6091f66fc2bb1919512ee0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - in_kendra:
+        subject: graha.sun
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: >-
+      one gets severe punishment at the hands of the king (i.e. the government), loss of position
+- id: SARVARTHACHINTAMANI.STATUS.CH13V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v33
+    quote: >-
+      During the ruling period of Sun located in the 10th house, one gets ruling powers, wealth,
+      gains, patience, success in undertakings, along with fame, success in litigation, &
+      honour from the king (government).
+    quote_sha256: 7838d87d64729a110b9baaeb788f1a8de1e6ae0d612592399d735fd35d5e8304
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one gets ruling powers, wealth, gains, patience, success in undertakings, along with
+      fame, success in litigation, & honour from the king
+- id: SARVARTHACHINTAMANI.STATUS.CH13V8.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v8
+    quote: >-
+      During the ruling period of Sun occupying its Mool Trikon i.e. positive sign (see shloka
+      51, chapter 1) the native gets lands, wealth, wife, son, friends, comforts, support
+      of government, cattle wealth, gain from friends, appropriate status & ruling powers.
+    quote_sha256: 48a7f42b3e4fbd8ff6ccbb4795833cc8c38129b4fd2835f5c1884a714bf89e6e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native gets appropriate status & ruling powers
+- id: SARVARTHACHINTAMANI.STATUS.CH14V16.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v16
+    quote: There is clash with rulers & success in battle.
+    quote_sha256: beb6ceac4de7c8eb62e51b3a95a6a9d8e75d6cc8b2db474cf9ea1d79b86c649b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - any:
+      - conjunct:
+          subject: graha.mars
+          other: graha.jupiter
+      - conjunct:
+          subject: graha.mars
+          other: graha.venus
+      - conjunct:
+          subject: graha.mars
+          other: graha.mercury
+      - conjunct:
+          subject: graha.mars
+          other: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: mixed
+    magnitude: moderate
+    text: There is clash with rulers & success in battle.
+- id: SARVARTHACHINTAMANI.STATUS.CH14V22.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v22
+    quote: he gets defame & loss of education, son, wife, wealth & honour.
+    quote_sha256: 2447421e059757757374374528fe1158f437715e60c2ffc7fd931b786b386745
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: he gets defame & loss of education, son, wife, wealth & honour
+- id: SARVARTHACHINTAMANI.STATUS.CH14V25.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v25
+    quote: >-
+      During the ruling period of Mars located in the 3rd house. the native gets happiness.
+      The native gets rid of enemies. The native has patience, wealth, sons, wife, brothers,
+      respect from the ruler.
+    quote_sha256: 54a399893ceb627f109784b2d84b98e8fe08b27d84f86ecc6a7fee136d7f35af
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.03
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: respect from the ruler
+- id: SARVARTHACHINTAMANI.STATUS.CH14V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v28
+    quote: >-
+      During the ruling period of Mercury located in the 9th house, the native's prospects
+      in life are boosted.
+    quote_sha256: f08fbad0b9836804917a6067b8b947ee40f8079b2394754b615aeb71fbe89948
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native's prospects in life are boosted
+- id: SARVARTHACHINTAMANI.STATUS.CH14V29.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+    domain.relationship: 0.7
+    domain.progeny: 0.7
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v29
+    quote: >-
+      During the ruling period of Mercury located in the 10th house. one becomes equal in
+      status to a king, he gets comforts, writes under his name verse and prose & gains wife,
+      son and wealth.
+    quote_sha256: 4d72b34fca6e49e6401450616ea9581af4e85112de0c22a57a2df82a4f638b85
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      one becomes equal in status to a king, he gets comforts, writes under his name verse
+      and prose & gains wife, son and wealth.
+- id: SARVARTHACHINTAMANI.STATUS.CH14V32.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v32
+    quote: >-
+      During the ruling period of Mars located in the Navamsha of its sign of debilitation,
+      there is detrioration in the qualities of one's karmas, loss of wealth, punishment from
+      the government. The man becomes characterless & engaged in selfish earnings.
+    quote_sha256: 8bf858362dc9f289aac09676e2bf6cf2dc2d870559fc24e0e71a7032a2d9ba82
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mars
+        rashi: rashi.cancer
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: punishment from the government
+- id: SARVARTHACHINTAMANI.STATUS.CH14V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.spiritual: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v36
+    quote: >-
+      During the ruling period of Mercury when it is endowed with "Sthan" strength, the native
+      gets fame & ruling powers, mental firmness, zeal, & religious acts like yagya initiation
+      etc.
+    quote_sha256: 164f61edaa2abb50e307ec58b8fae97c6029102fd69e9f6d84805160719ee6da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - strength_band:
+        subject: graha.mercury
+        band: band.strong
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets fame & ruling powers, mental firmness, zeal, & religious acts like yagya
+      initiation etc.
+- id: SARVARTHACHINTAMANI.STATUS.CH14V7.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v7
+    quote: >-
+      During the ruling period of Mars located in its own sign, the native gets property,
+      wealth, position, comforts & conveyance.
+    quote_sha256: d2a0c40dea7c740aa940d71579db87ef2ccf161678dc9be43a10da642600d3da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.own_sign
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native gets property, wealth, position, comforts & conveyance
+- id: SARVARTHACHINTAMANI.STATUS.CH14V7.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v7
+    quote: He also gets fame or titles, comfort to & from brothers & general happiness.
+    quote_sha256: e9914f9cbe57c627b19c81bef0619e547ce3563488f72ca14d08da9c9e9b09e6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.own_sign
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: He also gets fame or titles, comfort to & from brothers & general happiness.
+- id: SARVARTHACHINTAMANI.STATUS.CH15V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.property: 0.5
+    domain.wealth: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v11
+    quote: >-
+      During the ruling period of Jupiter located in the sign of its bosom friend, the native
+      gets honour from the ruler. He gets conveyance fitted with instruments of music such
+      as Bheri & Mridang & luck from all directions.
+    quote_sha256: c580f7ddc1d2e34ad31d3f70f7809b8be46ebd081682c6093dad4bd2a9f57a89
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.friendly
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native gets honour from the ruler and luck from all directions
+- id: SARVARTHACHINTAMANI.STATUS.CH15V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.travel: 0.6
+    domain.career: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v2
+    quote: >-
+      During the ruling period of Jupiter located in Cancer, the native gets up in prospects,
+      & is honoured by the government. He goes abroad, & gets ruling powers
+    quote_sha256: cee4ca1719e2a8fe372917923834b7f410589f064f18b12d452781c702e22c99
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.cancer
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets up in prospects, & is honoured by the government. He goes abroad, &
+      gets ruling powers
+- id: SARVARTHACHINTAMANI.STATUS.CH15V23.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v23
+    quote: >-
+      During the ruling period of Venus located in the 10th house, the native gets education,
+      wealth, honour from the ruler, betterment of prospects, increase in personal charm,
+      & prowess & fame from all directions.
+    quote_sha256: ef4867344266a2d2a6bc2a0c7bebd702eb29a85367427174060e10eb704c7175
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      honour from the ruler, betterment of prospects, increase in personal charm, & prowess
+      & fame from all directions
+- id: SARVARTHACHINTAMANI.STATUS.CH15V25.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v25
+    quote: >-
+      During the ruling period of Jupiter located in the 5th house, the native engages himself
+      in worship through mantras, gets much happiness, sons, honour from rulers...
+    quote_sha256: d035443b1c15bd4cd30578e158ad5c8adfd2a7e7cd5df33b63466b9570f2b1f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: honour from rulers
+- id: SARVARTHACHINTAMANI.STATUS.CH15V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v27
+    quote: >-
+      During the ruling period of Jupiter located in the Navamsha of its sign of exaltation,
+      the native gets a boost in his prospects, honour from the ruler, coral, pearls, ruby
+      & the jewels, friendship with all & comforts.
+    quote_sha256: 68320bf117751d90e740dfbd83513240b9a7c26f566d75f566a8c63cbe8bff49
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.jupiter
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets a boost in his prospects, honour from the ruler, coral, pearls, ruby
+      & the jewels, friendship with all & comforts
+- id: SARVARTHACHINTAMANI.STATUS.CH15V3.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+    domain.status: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v3
+    quote: >-
+      During the ruling period of Jupiter located in the sign previous to its sign of exaltation,
+      the native rises in the eyes of the public
+    quote_sha256: 4bccffc1d58d2470b58760af17de626d55a1a762cb8930f6f0adb0781466ce68
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.aries
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native rises in the eyes of the public
+- id: SARVARTHACHINTAMANI.STATUS.CH15V32.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.career: 0.65
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v32
+    quote: >-
+      During the ruling period of Jupiter in 3rd house, the native gets much honour from government
+    quote_sha256: 4e2c0bd791c74c8107a37578277e5ff7eb5cee7ded0c8d6ba6c82198a24c2069
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.03
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native gets much honour from government
+- id: SARVARTHACHINTAMANI.STATUS.CH15V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.7
+    domain.wealth: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v35
+    quote: >-
+      During the ruling period of Venus endowed with "Sthan" strength, the native gets honour
+      from the ruler, ornaments, engages himself in discussion of educational subjects, gets
+      titles & name.
+    quote_sha256: f7458c6af54c80c20a46d7f9311a4246fe097dfd0374f3842a7fa356c787003c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - strength_band:
+        subject: graha.venus
+        band: band.strong
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets honour from the ruler, ornaments, engages himself in discussion of educational
+      subjects, gets titles & name
+- id: SARVARTHACHINTAMANI.STATUS.CH15V37.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v37
+    quote: >-
+      During the ruling period of Saturn endowed with "Directional" strength, the native gets
+      sons, & fame in all directions.
+    quote_sha256: 89c69292a0e62c124f343e785ca89e220531206f28dfb05bf14dc57cfce3b6fe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: fame in all directions
+- id: SARVARTHACHINTAMANI.STATUS.CH15V39.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.9
+    domain.education: 0.7
+    domain.spiritual: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v39
+    quote: >-
+      During the ruling period of Jupiter endowed with "Natural" strength, the native gets
+      comfort & much prominence, happiness from education, amorous enjoyments, comforts and
+      dip in the sacred waters of the Ganges.
+    quote_sha256: 2d9f68e8cfcb1a1e06196fb3046ef94ca057610866ce27e8cf59bf877ee5d1a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - strength_band:
+        subject: graha.jupiter
+        band: band.strong
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets comfort & much prominence, happiness from education, amorous enjoyments,
+      comforts and dip in the sacred waters of the Ganges
+- id: SARVARTHACHINTAMANI.STATUS.CH15V6.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v6
+    quote: He also gets name or titles, leadership in city, society.
+    quote_sha256: 19ee5f55334ea9af724be341e674773a99442f47cd78f204d22165e99a49599e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: He also gets name or titles, leadership in city, society.
+- id: SARVARTHACHINTAMANI.STATUS.CH15V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v7
+    quote: >-
+      During the ruling period of Jupiter occupying its Mool trikon (positive) sign, the native
+      gets particularly ruling powers, wealth, lands, son, wife, comforts, conveyance, money
+      earned through self effort. He performs acts of religion such as yagyas & is respected
+      and honoured by the people.
+    quote_sha256: 7c4cc1a17ca5fdb0e416c1c562a58e2659be3a1f9c339cef4fee2ddf3ebc633d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native gets particularly ruling powers, wealth, lands, son, wife, comforts, conveyance,
+      money earned through self effort. He performs acts of religion such as yagyas & is respected
+      and honoured by the people
+- id: SARVARTHACHINTAMANI.STATUS.CH16V1417.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v14-17
+    quote: >-
+      During the sub periods of malefic planets in the main period of Saturn located in the
+      2nd house, the native undergoes punishment from the government. There are great obstacles,
+      & confinement in prison.
+    quote_sha256: 1f3b38bd538b38103358e370fa872a83f52bcdf35e3eb39b193d137b19411154
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: >-
+      undergoes punishment from the government. There are great obstacles, & confinement in
+      prison.
+- id: SARVARTHACHINTAMANI.STATUS.CH16V1519.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v15-19
+    quote: >-
+      During the sub periods of malefic planets in the main period of Rahu located in the
+      3rd or 11th house, one gets favour from the government.
+    quote_sha256: f8333daafb9b8eafd3d8cc7ed94ffd23f1eeb1e01f1a1d6ab106539ed99952d3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.06
+        level: level.antar
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.11
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: one gets favour from the government.
+- id: SARVARTHACHINTAMANI.STATUS.CH16V21.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v21
+    quote: >-
+      During the sub periods of malefic planets in the main ruling period of Mars located
+      in the 10th house, the native goes to foreign land, gets bad name, and defeat.
+    quote_sha256: e14613097c99321303416328f45dd15b018a10d5fe92661a8823a7e50e2da733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: gets bad name, and defeat
+- id: SARVARTHACHINTAMANI.STATUS.CH16V710.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.7
+    domain.spiritual: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v7-10
+    quote: >-
+      During the main period of Rahu located in a kendra (cardinal house) & in the sub period
+      of a benefic planet the native has some times comforts, some times fame, some times
+      moral acts and some times the opposite of these.
+    quote_sha256: 5f66f7f45a48ef16f7563ddf2da4b3b2fa420324ad507661d7e8ec7f43f35aa1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.05
+        level: level.antar
+    - in_kendra:
+        subject: graha.rahu
+  indicates:
+    claim: status.recognition
+    polarity: mixed
+    magnitude: moderate
+    text: >-
+      the native has some times comforts, some times fame, some times moral acts and some
+      times the opposite of these
+- id: SARVARTHACHINTAMANI.STATUS.CH16V912.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.progeny: 0.85
+    domain.spiritual: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v9-12
+    quote: >-
+      With Mars located in the 5th house and having its main period and during the sub period
+      of benefics, the native gets honour from the government, acquisition of son & Mantra.
+    quote_sha256: 2f1ffcd883fc3b88f4e3331fbe40e7fc3e632bbcff4f87910208c1f51883c813
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: honour from the government, acquisition of son & Mantra
+- id: SARVARTHACHINTAMANI.STATUS.CH16V912.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.wealth: 0.8
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v9-12
+    quote: >-
+      During the sub periods of benefics in the main ruling period of Mars located in the
+      6th house, the native gets favour from the govt, loss of relatives, mental worry but
+      he is happy at the end.
+    quote_sha256: 35f3fad3ea8bdb84df6578547b3d33d8479cba6521f63287afeef75d837a61b9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: favour from the govt
+- id: SARVARTHACHINTAMANI.STATUS.CH1V2831.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch1.v28-31
+    quote: In the case of "Airaavat" division one becomes emperor
+    quote_sha256: 293cc249a35d75b56f0f922734ffd465f4c1c9966088f663829b78ab1f823e5b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d30
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: one becomes emperor
+- id: SARVARTHACHINTAMANI.STATUS.CH2V201.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v201
+    quote: >-
+      In case the Ascendant is occupied by a natural malefic planet, the second and the 9th
+      house by a benefic and the lord of the Ascendant is located in the "Devlok" Amsha (see
+      shloka 25 etc chapter 1) the native is comfortable in his early life.
+    quote_sha256: 31ae518aab7742d661a65fe7eccd72af4931be02644da71c1d9320705f1d1109
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 1
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the native is comfortable in his early life
+- id: SARVARTHACHINTAMANI.STATUS.CH3V162.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.85
+    domain.property: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v162
+    quote: >-
+      If the lord of the lagna is in the 4th or the 11th house or the lord of the lagna is
+      located in 11th to the lord of the 9th house & the lord of the 4th house is in the 9th,
+      the native becomes famous and possesses innumerable conveyances.
+    quote_sha256: a7cf85f7dd3f3478a6a7d75203ef9dd004fb42e4a3e8944e02063c9904342175
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.11
+    - all:
+      - house_distance:
+          subject: lord.bhava.09
+          other: lord.bhava.01
+          distance: dist.11
+      - occupies_bhava:
+          subject: lord.bhava.04
+          bhava: bhava.09
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native becomes famous and possesses innumerable conveyances
+- id: SARVARTHACHINTAMANI.STATUS.CH3V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v17
+    quote: >-
+      In case the lord of the 2nd house is located in the 3rd house & is aspected there by
+      male planets (Sun, Mars & Jupiter) & is in occupation of a friendly sign or is in exaltation,.
+      the native is the ruler of all men.
+    quote_sha256: c92265f0c814cfd185d05acc01c2cbead65f15e5c6dca89defeec814f15a1ef2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.03
+    - any:
+      - aspects:
+          subject: graha.sun
+          target: lord.bhava.02
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.02
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.02
+    - any:
+      - dignity:
+          subject: lord.bhava.02
+          dignity: dignity.friendly
+      - dignity:
+          subject: lord.bhava.02
+          dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native is the ruler of all men
+- id: SARVARTHACHINTAMANI.STATUS.CH6V70.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v70
+    quote: >-
+      If the lord of the lagna is weaker than the lord of the 7th house & is with malefics
+      or in the Navamsha of its sign of debilitation, or located in the 8th house or is going
+      to the Navamsha sign of its sign of debilitation. the native himself is of an inferior
+      status than that of his wife.
+    quote_sha256: 98f6fdd0430389fa48e341d334ba39f8c2953070d15fb81f8d4449c982ebf1a7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.07
+        other: lord.bhava.01
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.01
+          dignity: dignity.debilitated
+      - occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.08
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: moderate
+    text: the native himself is of an inferior status than that of his wife
+- id: SARVARTHACHINTAMANI.STATUS.CH6V71.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch6.v71
+    quote: >-
+      If the lord of the lagna is stronger than the lord of the 7th house, & is located in
+      the Navamsha of a sign that constitutes one leading to the exaltation sign, or is in
+      the highest degree of exaltation, is in a kendra, or trine, or is with benefics the
+      native himself is superior in status to that of his wife.
+    quote_sha256: 146cbdf9ae153477997308c1fb32faea46cf96f88151d4bafd8b703d5217f213
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - stronger_than:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.01
+          dignity: dignity.exalted
+      - in_kendra:
+          subject: lord.bhava.01
+      - in_trikona:
+          subject: lord.bhava.01
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native himself is superior in status to that of his wife
+- id: SARVARTHACHINTAMANI.STATUS.CH8V2021.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v20-21
+    quote: >-
+      If Moon occupies Cancer & is aspected by Jupiter and Venus & is located in "Paravat"
+      etc amsha, the native gets fame in life.
+    quote_sha256: d2ee66fb4320315d01309fbe499226e4f1bdd552461a9f31e33b8bcb9f322917
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.04
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+    - aspects:
+        subject: graha.venus
+        target: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native gets fame in life
+- id: SARVARTHACHINTAMANI.STATUS.CH8V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.education: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v27
+    quote: >-
+      If Jupiter or a benefic planet occupies the 10th house & the lord of the 10th house
+      is in association with or under the aspect of benefics or is situated in between benefics
+      the native is of quick understanding and honoured in life.
+    quote_sha256: 69a77b7ead6d41b038032c06e69f24bc510974fdf88d477d9991f1cfb674b95e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.jupiter
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.10
+    - any:
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.10
+          other: graha.moon
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.10
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.10
+      - aspects:
+          subject: graha.mercury
+          target: lord.bhava.10
+      - aspects:
+          subject: graha.moon
+          target: lord.bhava.10
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the native is of quick understanding and honoured in life
+- id: SARVARTHACHINTAMANI.STATUS.CH9V112.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v112
+    quote: If Jupiter is associated with or aspected by Mercury, even the kings obey the native.
+    quote_sha256: 60c80b0919a278c6af4c567afc7b0f7009322c3809e1b72aaf150118936b052a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - conjunct:
+        subject: graha.jupiter
+        other: graha.mercury
+    - aspects:
+        subject: graha.mercury
+        target: graha.jupiter
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: even the kings obey the native
+- id: SARVARTHACHINTAMANI.STATUS.CH9V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v1-2
+    quote: >-
+      If in any birth chart there are planets occupying their sign of exaltation, the native
+      becomes a king of kings, ruler over many territories.
+    quote_sha256: d8a8d87e162290f4610e16ccab6a348696536029840137ce7d821aa637ad40b7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the native becomes a king of kings, ruler over many territories
+- id: SARVARTHACHINTAMANI.STATUS.CH9V15.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v15
+    quote: >-
+      Planets which occupy the sign of their debilitation but the Navamsha of their sign of
+      exaltation give fortune as that of a king.
+    quote_sha256: 62f5acf809e921c7f9f05d9c152a413a8de41ea88ed6f51d650e029fbaed533f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.sun
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: give fortune as that of a king
+- id: SARVARTHACHINTAMANI.STATUS.CH9V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v16
+    quote: >-
+      If strong planets in their sign of exaltation are located in the 1st 6 houses of the
+      horoscope they boost luck in the first half period of life.
+    quote_sha256: 01793b389649e2fd8e98ff6cd8ea8f899cdf9f1cac274b72eeb78806f99092e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: graha.sun
+        op: '>='
+        value: 5
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.exalted
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: they boost luck in the first half period of life
+- id: SARVARTHACHINTAMANI.STATUS.CH9V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v17
+    quote: >-
+      If the lord of the lagna is located in the 12th house, the 10th house is occupied by
+      malefics, Mars is with Moon, the native getting underserved bad name, lives away from
+      his home, lives on charity & suffers physically.
+    quote_sha256: c8d355a2435f8f2512fa80d2575240f36f689f31c996c950bda0fffe50f44c90
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+    - occupant_count:
+        bhava: bhava.10
+        op: '>'
+        n: 0
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: moderate
+    text: the native getting underserved bad name
+- id: SARVARTHACHINTAMANI.STATUS.CH9V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.career: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v23
+    quote: >-
+      If the 10th house lord is in the 8th, but in its Navamsha of exaltation or that of its
+      friend or in the Paravat amsha, the man is king of kings.
+    quote_sha256: a3a8a34cb6c4b4209bd5e4b7d0fe622c823507ae6e608f099cffcc806f5a665c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.08
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.10
+          dignity: dignity.exalted
+      - varga_dignity:
+          varga: varga.d9
+          subject: lord.bhava.10
+          dignity: dignity.friendly
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the man is king of kings
+- id: SARVARTHACHINTAMANI.STATUS.CH9V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v27
+    quote: >-
+      If a native has all the planets in houses 1 to 6, and the lord of the 9th house is in
+      the 2nd with Moon, the native becomes a king.
+    quote_sha256: 5d8202e078a9a8dcfc23f104b640cb360cf36c7579e268483cf01a93ee9b4186
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.02
+    - conjunct:
+        subject: lord.bhava.09
+        other: graha.moon
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the native becomes a king
+- id: SARVARTHACHINTAMANI.STATUS.CH9V30.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v30
+    quote: Venus located in its sign of debilitation destroys Raj yoga.
+    quote_sha256: 495c49c770219262c995817bcf916be61a95d95da660bf09d862b6b7a3033bf5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: status.recognition
+    polarity: negative
+    magnitude: strong
+    text: destroys Raj yoga
+- id: SARVARTHACHINTAMANI.STATUS.CH9V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v3-5
+    quote: >-
+      If Moon occupies its sign of exaltation in the Ascendant and there are in all 6 planets
+      in exaltation, the native becomes a king.
+    quote_sha256: 3840360e5ddd15653b5c34f5258136ccff1debeaa4d0846f54697acd46f6b1c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.exalted
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: the native becomes a king
+- id: SARVARTHACHINTAMANI.STATUS.CH9V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.wealth: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v9
+    quote: >-
+      The native becomes equal to a king, if Moon occupies the lagna; Jupiter, the 4th house;
+      Venus, the 10th & if Saturn is in its sign of exaltation or its own sign.
+    quote_sha256: 981b44dc3eb12db31a8c5c163ffa15909e4907caad05d119645cd85f5f17ed07
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.10
+    - any:
+      - dignity:
+          subject: graha.saturn
+          dignity: dignity.exalted
+      - dignity:
+          subject: graha.saturn
+          dignity: dignity.own_sign
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: extreme
+    text: The native becomes equal to a king
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH2V105.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v105
+    quote: If Venus is in the lagna, the native is happy in the first half of his life.
+    quote_sha256: 6d6106d22654d4fa4aaf4b73b1adb5ba762c5814f90e25eb70142fca2b31c1a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: the native is happy in the first half of his life
+- id: SARVARTHACHINTAMANI.TEMPERAMENT.CH8V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v19
+    quote: >-
+      If Rahu and Mandi occupy the 10th house, or Rahu or Ketu is in 8th & the lord of the
+      9th house is occupying its sign of debilitation, the native passes cruel orders.
+    quote_sha256: 3a9cdfb92b9fc5cff171f807499cbaf4734fc226963c5c9a31301494888f2cd4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.10
+    - all:
+      - any:
+        - occupies_bhava:
+            subject: graha.rahu
+            bhava: bhava.08
+        - occupies_bhava:
+            subject: graha.ketu
+            bhava: bhava.08
+      - dignity:
+          subject: lord.bhava.09
+          dignity: dignity.debilitated
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: the native passes cruel orders
+- id: SARVARTHACHINTAMANI.WEALTH.CH7V38.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.status: 0.9
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v38
+    quote: >-
+      If Sun is in 6th or 8th house in its sign of debilitation and aspected by malefics the
+      man dies as a result of punishment by government and so does his father. He also suffers
+      financial loss as a result of the said punishment.
+    quote_sha256: c2e64aa13fc1821cb11cce8b8acb9f409d20af2ba8ef2a248efb7ab9ae5c05c1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.06
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.debilitated
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: He also suffers financial loss as a result of the said punishment.
+- id: SARVARTHACHINTAMANI.WEALTH.CH7V52.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.8
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v52
+    quote: >-
+      If the lord of the Ascendant is in the 11th house, the lord of the 10th is strong, and
+      aspected by the lord of the Ascendant, the native gets charity from others.
+    quote_sha256: 206dd208526592a5ffe438909c9006042e99d5071f7eb79410a55157f49504b4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.11
+    - strength:
+        subject: lord.bhava.10
+        op: '>='
+        value: 300
+    - aspects:
+        subject: lord.bhava.01
+        target: lord.bhava.10
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: moderate
+    text: the native gets charity from others

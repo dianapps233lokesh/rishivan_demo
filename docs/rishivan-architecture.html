@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rishivan — Rule Extraction &amp; Retrieval Architecture</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Charter", "Palatino", "Georgia", serif;
+    font-size: 10.2pt;
+    line-height: 1.45;
+    color: #16181d;
+    margin: 0;
+  }
+
+  /* ---- title page ---- */
+  .cover { text-align: left; padding-top: 34mm; page-break-after: always; }
+  .cover .eyebrow { font-family: ui-sans-serif, "Helvetica Neue", sans-serif;
+    font-size: 8.5pt; letter-spacing: .16em; text-transform: uppercase;
+    color: #6b7280; margin-bottom: 10mm; }
+  .cover h1 { font-size: 26pt; line-height: 1.15; margin: 0 0 4mm 0;
+    font-weight: 600; letter-spacing: -0.015em; }
+  .cover .sub { font-size: 13pt; color: #4b5563; margin: 0 0 16mm 0; }
+  .cover dl { display: grid; grid-template-columns: 34mm 1fr; gap: 2.2mm 0;
+    font-family: ui-sans-serif, "Helvetica Neue", sans-serif; font-size: 9.2pt;
+    border-top: 1.5px solid #16181d; padding-top: 5mm; max-width: 120mm; }
+  .cover dt { color: #6b7280; }
+  .cover dd { margin: 0; }
+  .cover .note { margin-top: 14mm; max-width: 128mm; font-size: 9.4pt;
+    color: #4b5563; border-left: 2.5px solid #d1d5db; padding-left: 4mm; }
+
+  /* ---- headings ---- */
+  h2 { font-family: ui-sans-serif, "Helvetica Neue", sans-serif;
+    font-size: 14pt; font-weight: 600; letter-spacing: -0.01em;
+    margin: 9mm 0 3mm 0; padding-bottom: 1.6mm;
+    border-bottom: 1.2px solid #16181d; page-break-after: avoid; }
+  h3 { font-family: ui-sans-serif, "Helvetica Neue", sans-serif;
+    font-size: 10.8pt; font-weight: 600; margin: 6mm 0 2mm 0;
+    page-break-after: avoid; }
+  h4 { font-family: ui-sans-serif, "Helvetica Neue", sans-serif;
+    font-size: 9.8pt; font-weight: 600; margin: 4.5mm 0 1.5mm 0;
+    color: #374151; page-break-after: avoid; }
+  p { margin: 0 0 2.6mm 0; }
+  ul, ol { margin: 0 0 2.8mm 0; padding-left: 5.5mm; }
+  li { margin-bottom: 1.2mm; }
+
+  /* ---- tables ---- */
+  table { border-collapse: collapse; width: 100%; margin: 3mm 0 4mm 0;
+    font-family: ui-sans-serif, "Helvetica Neue", sans-serif; font-size: 8.7pt;
+    page-break-inside: avoid; }
+  th { text-align: left; background: #f3f4f6; font-weight: 600;
+    border-bottom: 1.2px solid #9ca3af; padding: 1.7mm 2.2mm; }
+  td { border-bottom: 0.6px solid #e5e7eb; padding: 1.6mm 2.2mm;
+    vertical-align: top; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.total td { font-weight: 600; border-top: 1.2px solid #9ca3af;
+    border-bottom: none; background: #fafafa; }
+
+  /* ---- code & diagrams ---- */
+  code { font-family: "SF Mono", "Menlo", monospace; font-size: 8.6pt;
+    background: #f3f4f6; padding: 0.3mm 1mm; border-radius: 2px; }
+  pre { font-family: "SF Mono", "Menlo", monospace; font-size: 7.7pt;
+    line-height: 1.38; background: #f8f9fb; border: 0.6px solid #e5e7eb;
+    border-left: 2.5px solid #9ca3af; padding: 3mm 3.5mm; margin: 3mm 0 4mm 0;
+    overflow-x: hidden; white-space: pre; page-break-inside: avoid; }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  /* ---- callouts ---- */
+  .box { border: 0.8px solid #d1d5db; background: #fbfbfc; padding: 3mm 4mm;
+    margin: 3.5mm 0; page-break-inside: avoid; }
+  .box.decide { border-left: 3px solid #b45309; background: #fffbf3; }
+  .box.key    { border-left: 3px solid #1d4ed8; background: #f5f8ff; }
+  .box.risk   { border-left: 3px solid #b91c1c; background: #fff6f6; }
+  .box p:last-child { margin-bottom: 0; }
+  .box .lbl { font-family: ui-sans-serif, "Helvetica Neue", sans-serif;
+    font-size: 7.8pt; letter-spacing: .12em; text-transform: uppercase;
+    color: #6b7280; display: block; margin-bottom: 1.6mm; }
+
+  .lede { font-size: 10.6pt; color: #374151; }
+  .verified { font-family: ui-sans-serif, "Helvetica Neue", sans-serif;
+    font-size: 8.2pt; color: #6b7280; margin-top: -1mm; margin-bottom: 3mm; }
+  .pagebreak { page-break-before: always; }
+  strong { font-weight: 600; }
+  .muted { color: #6b7280; }
+
+  /* ---- toc ---- */
+  .toc { font-family: ui-sans-serif, "Helvetica Neue", sans-serif;
+    font-size: 9.3pt; page-break-after: always; }
+  .toc h2 { margin-top: 0; }
+  .toc ol { list-style: none; padding-left: 0; counter-reset: s; }
+  .toc ol li { counter-increment: s; margin-bottom: 1.6mm;
+    border-bottom: 0.5px dotted #d1d5db; padding-bottom: 1.3mm; }
+  .toc ol li::before { content: counter(s) ".  "; color: #6b7280;
+    font-variant-numeric: tabular-nums; }
+  .toc .flag { float: right; font-size: 8pt; color: #b45309; }
+</style>
+</head>
+<body>
+
+<!-- ============================ COVER ============================ -->
+<div class="cover">
+  <div class="eyebrow">Architecture Review · Internal</div>
+  <h1>Rishivan<br>Rule Extraction &amp; Retrieval Architecture</h1>
+  <p class="sub">How classical Jyotish texts become executable, cited rules —<br>and how those rules produce an answer.</p>
+  <dl>
+    <dt>Prepared for</dt><dd>Lead Architect review &amp; approval</dd>
+    <dt>Prepared by</dt><dd>Lokesh Kumar Saini · DianApps Development Team</dd>
+    <dt>Date</dt><dd>26 August 2026</dd>
+    <dt>Branch</dt><dd><code>claude-ui-implement</code> @ <code>4134778</code></dd>
+    <dt>Engine state</dt><dd>1,503 rules loading · 2,000 tests passing</dd>
+    <dt>Status</dt><dd>Describes the system as built. Section 10 lists decisions requested.</dd>
+  </dl>
+  <p class="note">Every figure in this document was measured against the working tree
+  on the date above, not estimated. Where a number could not be re-verified at
+  writing time (Qdrant and Postgres row counts, which need live services) it is
+  marked <span class="muted">last measured</span>.</p>
+</div>
+
+<!-- ============================ TOC ============================ -->
+<div class="toc">
+<h2>Contents</h2>
+<ol>
+  <li>Purpose and scope</li>
+  <li>System overview — two pipelines, one artefact</li>
+  <li>Storage layers and what actually reads them</li>
+  <li>Build-time pipeline</li>
+  <li>Serve-time pipeline</li>
+  <li>Architectural change this cycle — one rule system, not two</li>
+  <li>Current state <span class="flag">verified</span></li>
+  <li>Model selection, cost and concurrency</li>
+  <li>Quality controls and what they have caught</li>
+  <li>Risks and decisions requested <span class="flag">needs sign-off</span></li>
+  <li>Roadmap</li>
+  <li>Summary for the reviewer</li>
+</ol>
+</div>
+
+<!-- ============================ 1 ============================ -->
+<h2>1. Purpose and scope</h2>
+
+<p class="lede">Rishivan answers questions about a birth chart using classical
+Jyotish texts, and grounds every statement it makes in a specific verse rather
+than in model recall.</p>
+
+<p>One constraint shapes every decision in this document:</p>
+
+<div class="box key">
+<span class="lbl">Design invariant</span>
+<p><strong>A claim that cannot be traced to a source verse must not be made.</strong>
+Not "should be cited where possible" — a claim without a resolvable citation is
+withheld, and the system says so rather than paraphrasing plausibly.</p>
+</div>
+
+<p>This document covers the system as it currently exists: the offline pipeline
+that turns scanned books into executable rules, and the request-time pipeline
+that turns a chart and a question into a cited answer. It is descriptive, not
+aspirational — where something is incomplete or unresolved, Section 10 says so
+plainly rather than presenting an intended end state as the current one.</p>
+
+<p><strong>Out of scope:</strong> UI implementation detail, ephemeris and chart
+mathematics (treated here as a trusted dependency), deployment and
+infrastructure.</p>
+
+<!-- ============================ 2 ============================ -->
+<h2>2. System overview — two pipelines, one artefact</h2>
+
+<p>The system is two pipelines that meet at a single artefact: a directory of
+compiled YAML rules. Keeping them separate is deliberate, and it is the reason
+serving is cheap and predictable.</p>
+
+<table>
+<tr><th style="width:20%"></th><th>Build-time (offline)</th><th>Serve-time (per question)</th></tr>
+<tr><td><strong>Job</strong></td><td>Books → executable rules</td><td>Chart + question → cited answer</td></tr>
+<tr><td><strong>Cost</strong></td><td>LLM spend; once per book</td><td>Fixed; no extraction, ever</td></tr>
+<tr><td><strong>Reads</strong></td><td>Postgres, JSONL on disk</td><td>YAML on disk, Qdrant</td></tr>
+<tr><td><strong>Trigger</strong></td><td>Operator runs a CLI</td><td>User asks a question</td></tr>
+<tr><td><strong>Worst failure</strong></td><td>A wrong rule reaches disk</td><td>A wrong answer, or a needless refusal</td></tr>
+</table>
+
+<p>Rules are <em>compiled artefacts</em>. Nothing at request time calls a model
+to interpret a verse; that work is already done, checked, and frozen. The
+practical consequence is that answer latency and answer cost are independent of
+corpus size, and that a bad rule is a build-time defect we can find with tests
+rather than a runtime surprise.</p>
+
+<pre><code>          BUILD-TIME (offline, LLM spend)                SERVE-TIME (per request)
+     ┌────────────────────────────────────────┐     ┌──────────────────────────────┐
+     │  PDF → OCR → bridge → triage           │     │  question → intake           │
+     │        → export → EXTRACT (model)      │     │     → chart → koonji_read    │
+     │        → gate → compile                │     │     → retrieve → council     │
+     └──────────────────┬─────────────────────┘     └───────────┬──────────────────┘
+                        │                                       │
+                        └────────►  rules/**/*.yaml  ◄──────────┘
+                                   (the shared artefact)</code></pre>
+
+<!-- ============================ 3 ============================ -->
+<h2>3. Storage layers and what actually reads them</h2>
+
+<p>Four stores exist. Only two are on the request path, and that distinction has
+been a recurring source of confusion, so it is stated explicitly.</p>
+
+<table>
+<tr><th style="width:26%">Store</th><th>Holds</th><th class="num" style="width:12%">Size</th><th style="width:16%">Read at serve time?</th></tr>
+<tr><td>Postgres <code>document</code>, <code>corpus_page_element</code></td><td>Uploaded books and their OCR text, page by page</td><td class="num">23 books</td><td>No</td></tr>
+<tr><td>Postgres <code>sutra_unit</code></td><td>One verse each: shloka, translation, chapter, verse, page span</td><td class="num">5,881</td><td>No</td></tr>
+<tr><td>Postgres <code>rule</code></td><td>Extracted rules, archival copy</td><td class="num muted">1,515 *</td><td>No</td></tr>
+<tr><td>Qdrant <code>rishivan_docs</code></td><td>Passage vectors — the source pages shown to the user</td><td class="num muted">52,958 *</td><td><strong>Yes</strong></td></tr>
+<tr><td>Qdrant <code>rishivan_docs_rules</code></td><td>Rule vectors, old format</td><td class="num muted">1,046 *</td><td>No — superseded (§6)</td></tr>
+<tr><td><code>rishivan/koonji/rules/**.yaml</code></td><td>Compiled rules — the live rule base</td><td class="num">1,503</td><td><strong>Yes</strong></td></tr>
+</table>
+<p class="verified">* last measured; requires live Qdrant / Postgres to re-verify. All other figures verified 26 Aug 2026.</p>
+
+<div class="box">
+<span class="lbl">Frequently misread</span>
+<p><strong>Postgres is essential, but not on the request path.</strong> It is the
+corpus store — the extraction pipeline cannot run without it, because that is
+where bridged verses live. But no graph node queries it. The separation is
+enforced deliberately: <code>council/domains.py</code> duplicates a constant
+rather than importing the knowledge layer, specifically so SQLAlchemy stays off
+the Streamlit request path.</p>
+</div>
+
+<!-- ============================ 4 ============================ -->
+<h2 class="pagebreak">4. Build-time pipeline</h2>
+
+<pre><code>  PDF ──► OCR ──► corpus_page_element
+                        │
+                        ▼
+                 prepare_corpus                      deterministic · free
+                 ├── bridge   pair shloka ↔ translation; derive ch/verse/page
+                 └── triage   destination: rule | item | ambiguous
+                        │
+                        ▼
+                   sutra_unit   (Postgres)
+                        │
+                 export_corpus                       deterministic · free
+                        ▼
+                 koonji/&lt;slug&gt;.jsonl                 one row per verse
+                        │
+                 to_passages                         + 2 preceding verses
+                        ▼
+                     Passage
+                        │
+                 extract                             ★ the only paid step
+                        ▼
+                 rule documents (URF)
+                        │
+                 gate + compile                      deterministic · free
+                        ▼
+                 rules/extracted/&lt;book&gt;/&lt;domain&gt;.yaml
+                        │
+                        ├──► Engine.from_rules()      serving
+                        └──► load_extracted           Postgres (archival)</code></pre>
+
+<h3>4.1 Bridge and triage</h3>
+
+<p><strong>Bridging</strong> pairs each Sanskrit shloka with its English
+translation and derives the locator — <code>chapter</code>,
+<code>verse_ref_local</code>, <code>page_from</code>, <code>page_to</code>. Each
+book carries an <code>EditionProfile</code>: data, not code, describing how that
+particular edition prints its chapter headings.</p>
+
+<p><strong>Triage</strong> then routes each unit to a destination —
+<code>rule</code> (states a rule), <code>item</code> (a definition, destined for
+the knowledge base), or <code>ambiguous</code>. Both steps are deterministic and
+free, and triage is the cost gate: it decides which units are worth spending
+model calls on.</p>
+
+<h4>Five books are refused, by design</h4>
+
+<table>
+<tr><th style="width:30%">Book</th><th>Why the bridge refuses it</th></tr>
+<tr><td>vivaha-patalam</td><td>Entirely Devanagari; no Latin headings, no numbered divisions. 383 shlokas, zero English prose elements.</td></tr>
+<tr><td>laghu-parashari</td><td>Sections are <em>named</em>, not numbered.</td></tr>
+<tr><td>dharma-sindhu</td><td>No chapter headings survive in the OCR at all.</td></tr>
+<tr><td>devakeralam vol 1 &amp; 2</td><td>Prints "BOOK I (Containing 2718 Slokas)" — no chapter structure.</td></tr>
+</table>
+
+<p>Filing these verses under an invented chapter number would fabricate the
+locator for an entire book, so the bridge skips rather than guesses. The cost is
+real and worth naming: <em>vivaha-patalam</em> is the marriage-timing text, and
+therefore the single most relevant source for the marriage question that
+originally exposed thin coverage.</p>
+
+<p>The four numerology books are excluded for a different reason. The rule
+vocabulary is planet/sign/house-shaped and has no representation for a
+<em>mulank</em>; across all four books triage found 12 rule-bearing units.
+Extracting them would be spend with nowhere to land.</p>
+
+<h3>4.2 Extraction — and why it is now one call</h3>
+
+<p>Two modes exist and share all validation and compilation downstream.</p>
+
+<p><strong>Six-call mode</strong> (original): <code>classify → extract ×2 →
+reconcile → verify → back-translate</code>. Double extraction at differing
+temperatures surfaces disagreement; <code>verify</code> is adversarial, seeing
+the source and the JSON but not the extractor's reasoning;
+<code>back-translate</code> renders the JSON to prose <em>without</em> the verse,
+so divergence signals lost meaning.</p>
+
+<p><strong>Single-call mode</strong> (current): one call, extracting and
+classifying together. Adopted because <strong>review is manual and
+external</strong> — a verifier verdict the human reviewer will overrule is five
+calls spent pre-empting a judgement that was never the pipeline's to make. An
+empty <code>rules</code> array <em>is</em> the classification.</p>
+
+<p>The switch was measured on the same 24 passages, not assumed:</p>
+
+<table>
+<tr><th style="width:34%">Mode</th><th class="num">Model calls</th><th class="num">Rules produced</th></tr>
+<tr><td>Six-call</td><td class="num">58</td><td class="num">2</td></tr>
+<tr><td>Single-call</td><td class="num">24</td><td class="num">6</td></tr>
+</table>
+
+<p>Fewer calls <em>and</em> more rules — the reconcile round was discarding rules
+the single pass keeps.</p>
+
+<p>Everything free and deterministic is retained: verbatim-quote checking,
+<code>validate_candidate</code>, the full compiler pass sequence, and the review
+queue ordered by impact × uncertainty. What is lost is <em>recorded</em>, not
+implied: <code>verification_skipped</code> states why no verifier ran, and the
+generated YAML header repeats it, so a rule nothing examined can never be
+mistaken for one that passed a verifier.</p>
+
+<h3>4.3 The closed vocabulary</h3>
+
+<p>The model may only emit symbols the registry defines. This is the mechanism
+that makes extraction checkable rather than merely plausible.</p>
+
+<table>
+<tr><th class="num" style="width:12%">Count</th><th style="width:22%">Kind</th><th>Examples</th></tr>
+<tr><td class="num">34</td><td>predicates</td><td><code>occupies_bhava(subject, bhava)</code>, <code>varga_occupies(varga, subject, rashi)</code>, <code>dasha_active(system, subject, level)</code></td></tr>
+<tr><td class="num">25</td><td>claims</td><td><code>relationship.harmony</code>, <code>wealth.accumulation</code>, <code>career.disruption</code></td></tr>
+<tr><td class="num">12</td><td>domains</td><td>career, education, health, longevity, progeny, property, relationship, spiritual, status, temperament, travel, wealth</td></tr>
+<tr><td class="num">6</td><td>schools</td><td>parashari, jaimini, prashna, lalkitab, tajika, muhurta</td></tr>
+<tr><td class="num">153</td><td>entity symbols</td><td><code>graha.*</code>, <code>rashi.*</code>, <code>bhava.*</code>, <code>dignity.*</code>, <code>band.*</code>, <code>dist.*</code>, <code>ref.*</code>, <code>varga.*</code>, <code>nakshatra.*</code></td></tr>
+</table>
+
+<p>Three things are forbidden — approximating into the nearest predicate,
+dropping content, and inventing a symbol. One thing is required: where the
+vocabulary falls short the model must emit an <strong>ExtensionProposal</strong>.
+That is a correct and expected outcome, not a failure. The corpus is supposed to
+tell us what the vocabulary is missing.</p>
+
+<div class="box">
+<span class="lbl">Why schools are namespaced, not merged</span>
+<p>The traditions genuinely disagree. Jaimini uses rashi drishti where Parashari
+uses graha drishti — the same chart yields different aspects. Lal Kitab remedies
+contradict Parashari outright. Muhurta was given its own school this cycle for
+the same reason: a muhurta rule reasons about an <em>elected moment</em>, and
+filing it under Parashari would let it fire on a birth chart it was never
+about.</p>
+</div>
+
+<h3>4.4 Identity is stamped by the caller, never authored by the model</h3>
+
+<p>Rule IDs and provenance are derived from the citation:</p>
+
+<pre><code>{BOOK}.{TOPIC}.{LOCATOR}.X{nnnn}      extracted   e.g. HINDUPREDICTIVE.LONGEVITY.CH14V5.X0001
+{BOOK}.{TOPIC}.{LOCATOR}.{nnnn}       converted   (the X makes collision structurally impossible)</code></pre>
+
+<p>This was learned expensively, and it is worth the architect knowing both
+incidents because they characterise the failure class:</p>
+
+<ul>
+<li><strong>The engine stopped starting.</strong> A model mistyped a verse number
+into an ID, two different Phaladeepika rules shared
+<code>PD.28.63.0002</code>, and the compiler refused the whole bundle —
+correctly, since a duplicate ID fires twice and counts as two independent
+sources under noisy-OR. One wrong digit in 274 rules took the application
+down.</li>
+<li><strong>One book appeared as three.</strong> <code>source.book</code> used
+<code>setdefault</code>, so the model's guess won:
+<code>phaladeepika</code>, <code>Phaladeepika</code> and
+<code>phaladeepika-sastri-1950</code> all appeared. This one fails
+<em>silently</em> — an unrecognised book scores neutral in the
+source-authority matrix and drops out of weighting without ever raising.</li>
+</ul>
+
+<p>Both are now overwritten from the passage, with mutation-verified regression
+tests — reverting to <code>setdefault</code> fails four of the five.</p>
+
+<h3>4.5 Gate and compile</h3>
+
+<p>Candidate documents pass through the compiler: symbol resolution, typecheck,
+closure, DNF expansion, core extraction, contradiction and realizability checks,
+duplicate-ID and claim-polarity passes. Failures are dropped with their
+diagnostic attached; only survivors reach disk, and every one lands as
+<code>status: candidate</code>.</p>
+
+<div class="box">
+<span class="lbl">A limit worth knowing before reading the numbers</span>
+<p>A rule is expanded into every combination its <code>any</code> groups permit,
+capped at <strong>32 variants</strong>. Groups <em>multiply</em> when they sit
+side by side inside an <code>all</code>. One verse — "the quadrants are occupied
+by benefics" — expanded to four houses × four benefics = <strong>1,536
+variants</strong> and was refused. The engine's own diagnostic now names the
+offending rule, so the gate drops it before it reaches disk instead of the
+failure surfacing at next startup.</p>
+</div>
+
+<!-- ============================ 5 ============================ -->
+<h2 class="pagebreak">5. Serve-time pipeline</h2>
+
+<p>A LangGraph state machine of 27 nodes. Topology lives in
+<code>NODE_NAMES</code>, <code>EDGE_MAPS</code> and <code>STATIC_EDGES</code> as
+module-level data rather than inline arguments, specifically so tests can walk it
+— a mistyped destination is otherwise a runtime <code>KeyError</code> on a branch
+nobody exercises until a user takes it.</p>
+
+<pre><code>  question ──► intake ──┬─► warmth                        (smalltalk, short-circuit)
+                        └─► chart_natal / chart_moment / panchang
+                                    │
+                              chart_state ──► hierarchy ──► varga_select
+                                    │
+                              koonji_read          ★ rules fire here
+                                    │
+                              dasha_windows ──► chart_render (+ varga/dasha/AV)
+                                    │
+                              ground ──► council_routing ──► retrieve
+                                    │
+                              fan_out ──► rishi ──► sakshi ──► re_examine
+                                    │
+                              synthesis ──► answer_plan ──► persist
+                                    │
+                                 (or) insufficient</code></pre>
+
+<h3>5.1 Rule retrieval is not similarity search</h3>
+
+<p>This is the central design decision, and it inverts conventional RAG.</p>
+
+<p>A conventional RAG asks <em>"which rules look like this question?"</em> Koonji
+asks <em>"which rules are <strong>true</strong> of this chart?"</em> — exact
+boolean evaluation against interned chart atoms. Similarity enters only
+afterwards, to rank which of the true rules to display.</p>
+
+<div class="box key">
+<span class="lbl">Measured, not assumed</span>
+<p>Nominating by similarity first lost <strong>11 to 14 of the 21 rules</strong>
+genuinely true of a test chart. A similarity window cannot prefer what it has no
+way of knowing is true. Recall is therefore total by construction, and the
+failure mode conventional RAG has here — the rule is in the corpus, the embedding
+does not match, it never fires, and nobody finds out because you cannot compute
+recall against an unknown denominator — is eliminated rather than mitigated.</p>
+</div>
+
+<p>Mechanically, inside <code>Engine.read()</code>:</p>
+
+<ol>
+<li><code>all_chart_tokens(chart, when=query_time)</code> produces interned
+atoms. Dated by the <em>reading</em>, not the wall clock — matching dasha
+tokens against today while every other token came from a stated moment would
+evaluate a Prashna cast for the wrong time.</li>
+<li>A <code>retrieval_plan</code> narrows candidates by status, school and
+domain.</li>
+<li>The <code>RuleIndex</code> matches by <strong>set containment</strong> over
+an inverted index (<code>atom → variants requiring it</code>). There is not a
+single vector reference in <code>engine.py</code> or <code>index.py</code>.</li>
+<li>Surviving rules fire, honouring exceptions.</li>
+<li>Results enter an evidence graph: noisy-OR combination, plus
+<strong>restatement clustering</strong> so three paraphrases of one verse count
+as one piece of evidence rather than three.</li>
+</ol>
+
+<p>The no-false-negatives invariant is maintained by <em>excluding</em> from the
+index core anything set membership cannot decide — negated leaves, numeric
+comparisons, unbound variables, and the undecidable. Each exclusion can only
+widen the candidate set; the VM then prunes with exact arithmetic. False
+positives are free; a false negative would be invisible forever.</p>
+
+<h3>5.2 Passage retrieval — the other half, still Qdrant</h3>
+
+<p>Runs alongside rule matching and answers a different question: which pages
+should the user be shown. When a chart exists,
+<code>collect_chart_context</code> deliberately does <em>not</em> search the
+question. It embeds each of roughly 30 chart facts as its own query, ranks pages
+by how many distinct facts landed on them × source authority × the Book×Rishi
+matrix, takes the top 20, and widens each by ±1 page so a shloka spanning a page
+break arrives intact. These become the "DRAWN FROM" chips.</p>
+
+<div class="box">
+<span class="lbl">Division of labour</span>
+<p><strong>Pages come from Qdrant. Rules come from Koonji.</strong> Conflating
+the two is what produced a screen that could truthfully report "20 sources, 10
+classical rules" while simultaneously refusing to answer — see §6.</p>
+</div>
+
+<h3>5.3 Answer gating</h3>
+
+<p><code>build_answer_plan()</code> decides what may be said. A claim must clear
+a 0.35 confidence floor. The plan is <code>insufficient</code> if nothing cleared
+it, or if every Rishi abstained. <code>sakshi_node</code> audits the plan before
+narration, and <code>re_examine</code> exists to send it back rather than let a
+weak plan through.</p>
+
+<!-- ============================ 6 ============================ -->
+<h2>6. Architectural change this cycle — one rule system, not two</h2>
+
+<p><strong>Before.</strong> The rules panel ("N classical rules match this
+chart") was filled by the older system reading Qdrant, while the Koonji engine
+ran separately and fed the written answer. The two held rules in incompatible
+formats and counted different corpora.</p>
+
+<p><strong>The consequence</strong> was worse than untidiness. Every rule
+extracted since the format changed — 274 at the time — fired correctly in the
+reading while being <em>invisible</em> in the panel. The counts on screen and the
+refusal underneath them were reporting on different indexes, so both could be
+true at once and the screen was still misleading.</p>
+
+<p><strong>After.</strong> <code>retrieve_node</code> builds the panel from the
+Koonji reading. <code>koonji_read</code> runs before it in
+<code>STATIC_EDGES</code>, so nothing is re-evaluated. Two new modules:</p>
+
+<ul>
+<li><code>koonji/panel.py</code> — a reading, in the shape the panel reads.</li>
+<li><code>koonji/describe.py</code> — a URF condition rendered in English, so
+the panel can state <em>why</em> a rule fired
+(<code>occupies_rashi(graha.moon, rashi.aries)</code> → "the Moon is in
+Aries").</li>
+</ul>
+
+<p>The switch surfaced three real bugs, which is the argument for having made
+it: every rule was cited as "BPHS" (a hardcoded string, harmless while BPHS was
+the only sourced book); the panel came back silently empty because a bare
+attribute access raised inside the node's catch-all; and 39 rules carried no
+domain tag, making them uncitable by any Rishi.</p>
+
+<!-- ============================ 7 ============================ -->
+<h2 class="pagebreak">7. Current state</h2>
+<p class="verified">Verified against the working tree, 26 August 2026.</p>
+
+<h3>7.1 Rule base — 1,503 rules loading</h3>
+
+<table>
+<tr><th style="width:32%">Directory</th><th class="num">Rules</th><th>Provenance</th></tr>
+<tr><td><code>rules/parashari/</code></td><td class="num">8</td><td>Hand-written, human-reviewed</td></tr>
+<tr><td><code>rules/converted/</code></td><td class="num">1,109</td><td>Deterministic converter (BPHS bulk)</td></tr>
+<tr><td><code>rules/extracted/</code></td><td class="num">386</td><td>Single-call extraction, 5 books</td></tr>
+<tr class="total"><td>Engine total</td><td class="num">1,503</td><td>Loads clean; 2,000 tests passing</td></tr>
+</table>
+
+<h3>7.2 Extraction progress — 12 target books</h3>
+
+<table>
+<tr><th style="width:24%">Book</th><th class="num">Passages</th><th class="num">Rules</th><th style="width:18%">Model</th><th style="width:16%">State</th></tr>
+<tr><td>phaladeepika</td><td class="num">141</td><td class="num">169</td><td>2.5-pro</td><td>Installed</td></tr>
+<tr><td>hindu-predictive</td><td class="num">304</td><td class="num">112</td><td>3.5-flash-lite</td><td>Installed</td></tr>
+<tr><td>brihat-jataka</td><td class="num">13</td><td class="num">98</td><td>2.5-pro</td><td>Installed</td></tr>
+<tr><td>bhavartha-ratnakara</td><td class="num">7</td><td class="num">4</td><td>2.5-pro</td><td>Installed</td></tr>
+<tr><td>prasna-marga</td><td class="num">37</td><td class="num">3</td><td>2.5-pro</td><td>Installed</td></tr>
+<tr><td>muhurta-chintamani</td><td class="num">412</td><td class="num">56</td><td>3.5-flash-lite</td><td>Staged</td></tr>
+<tr><td>prashna-tantra</td><td class="num">339</td><td class="num">—</td><td>—</td><td>Queued</td></tr>
+<tr><td>saravali</td><td class="num">557</td><td class="num">—</td><td>—</td><td>Queued</td></tr>
+<tr><td>jataka-parijata</td><td class="num">687</td><td class="num">—</td><td>—</td><td>Queued</td></tr>
+<tr><td>sarvartha-chintamani</td><td class="num">1,112</td><td class="num">—</td><td>—</td><td>Queued</td></tr>
+</table>
+
+<p>Corpus currently bridged and exported: <strong>16 books · 5,587 units ·
+5,563 extractable passages</strong>. Remaining spend to finish the queue is
+2,695 calls, roughly <strong>$0.85</strong> and about fifteen minutes
+(§8).</p>
+
+<p><strong>Rule-bearing density matters when reading yield.</strong> For
+<em>hindu-predictive</em>, triage marks only 74 of 304 passages as rule-bearing;
+the other 230 are definitions, worked examples or front matter. 112 rules from
+74 rule-bearing passages is the number to judge, not 112 from 304.</p>
+
+<h3>7.3 Working tree</h3>
+
+<p>Nine files modified and one directory untracked, all part of this cycle's
+work and not yet committed: <code>koonji/prompts.py</code>,
+<code>koonji/index.py</code>, <code>koonji/pipeline.py</code>,
+<code>koonji/compiler.py</code>, <code>koonji/extract.py</code>,
+<code>koonji/__main__.py</code>, <code>scripts/extract_all.sh</code>,
+<code>tests/koonji/test_index.py</code>, <code>context.md</code>, and
+<code>rules/extracted/hindu-predictive/</code>.</p>
+
+<!-- ============================ 8 ============================ -->
+<h2>8. Model selection, cost and concurrency</h2>
+
+<p>Single-call mode uses the <strong>deep model</strong> only;
+<code>--fast-model</code> is inert, having served the classify and back-translate
+stages that single-call skips.</p>
+
+<table>
+<tr><th style="width:30%">Model</th><th class="num" style="width:22%">Remaining 2,695 calls</th><th>Notes</th></tr>
+<tr><td>gemini-2.5-pro</td><td class="num">~$114</td><td>Output is 91% of the bill</td></tr>
+<tr><td><strong>gemini-3.5-flash-lite</strong></td><td class="num"><strong>~$0.85</strong></td><td>Current choice — 23× cheaper</td></tr>
+</table>
+
+<p>Measured on a real run: 304 calls in 33 seconds at 16 workers. The cost
+figures derive from measured token counts on completed books, not from list
+prices applied to estimates.</p>
+
+<h3>8.1 Prompt caching — now viable, worth doing later</h3>
+
+<p>Explicit context caching on flash-lite has a hard <strong>4,096-token
+minimum</strong>; implicit caching reported no hits at all. The system prompt was
+2,641 tokens and did not qualify. After this cycle's prompt work it is
+<strong>4,509 tokens and now qualifies</strong> — reached by adding content that
+fixed real defects, not by padding to clear a threshold.</p>
+
+<p>Enabling it requires client work (create the cache, pass
+<code>cached_content</code>, manage TTL) and would take input cost from roughly
+$0.98 to $0.31 across the remaining corpus. Real, but bounded by the input bill
+— it cannot compound, and it is not the constraint worth optimising first.</p>
+
+<h3>8.2 Concurrency required four thread-safety fixes</h3>
+
+<p>Three of these appear only under load, which is why they are listed: they are
+the class of defect a sequential proving run cannot find.</p>
+
+<ul>
+<li><strong>Client lazy-init race.</strong> Two threads each built a Vertex
+client; the second assignment won, the first was garbage-collected and closed
+its transport mid-request. Symptom: <em>"client has been closed"</em> raised
+against perfectly good input, seven times in sixteen passages. Fixed with
+double-checked locking.</li>
+<li><strong><code>Budget.spend</code> unlocked <code>calls += 1</code>.</strong>
+The class exists to be a hard ceiling; an unlocked counter undercounts,
+defeating its only guarantee.</li>
+<li><strong>Bare JSON array.</strong> The contract says "not a bare array" and
+models return one anyway. The six-call path normalised it in
+<code>reconcile</code>; single-call lost whole passages until the parser
+accepted both shapes.</li>
+<li><strong>Bare <code>KeyError</code> for missing blocks and fields.</strong>
+Now content errors that name the rule, the assertion kind and what was
+expected.</li>
+</ul>
+
+<div class="box risk">
+<span class="lbl">Correction to prior reporting</span>
+<p>Helicone was tagging every extraction call <code>gemini-2.5-flash</code>
+regardless of which model actually ran, because the dashboard property was
+stamped from <code>--fast-model</code> while the request used
+<code>--deep-model</code>. <strong>All historical cost attribution in that
+dashboard is wrong.</strong> Fixed. Authoritative sources are the CLI
+<code>budget:</code> line and GCP billing.</p>
+</div>
+
+<!-- ============================ 9 ============================ -->
+<h2 class="pagebreak">9. Quality controls and what they have caught</h2>
+
+<table>
+<tr><th style="width:30%">Control</th><th style="width:12%">Cost</th><th>Catches</th></tr>
+<tr><td>Verbatim quote + SHA-256</td><td>Free</td><td>Fabricated text; silent post-hoc edits</td></tr>
+<tr><td>Closed vocabulary</td><td>Free</td><td>Invented predicates, claims, domains</td></tr>
+<tr><td>Stamped identity</td><td>Free</td><td>Duplicate IDs; book-name drift</td></tr>
+<tr><td>Compiler passes</td><td>Free</td><td>Type errors, contradictions, unsatisfiable rules</td></tr>
+<tr><td>Round-trip check</td><td>Free</td><td>Rules that cannot be re-read after writing</td></tr>
+<tr><td>Variant limit (32)</td><td>Free</td><td>Index bloat; combinatorial blow-ups</td></tr>
+<tr><td>Review queue</td><td>Free</td><td>Prioritises by impact × uncertainty</td></tr>
+<tr><td>Manual review</td><td>Human</td><td>Everything above is necessary, none of it sufficient</td></tr>
+</table>
+
+<h3>9.1 The fabrication tripwire earns its strictness</h3>
+
+<p>The clearest catch: a passage consisting only of the chapter heading
+<em>"Certain self-evident Rajayogas."</em> produced a complete, confident Raja
+Yoga rule — ellipses and all — invented entirely from model knowledge. Blocked,
+because the quote did not appear in the passage.</p>
+
+<h3>9.2 Two extraction defects found and fixed this cycle</h3>
+
+<p>Both were found by inspecting output against source verses, not by any
+automated check — and that is the point: both produced rules that passed every
+automated control.</p>
+
+<h4>Dropped narrowing clauses</h4>
+<pre><code>VERSE    "Even if the Moon is in the 8th no danger of Balarishta is indicated
+          PROVIDED she occupies the Drekkanas of Mercury, Jupiter and Venus."
+
+EXTRACTED  all[ occupies_bhava(graha.moon, bhava.08) ]        ← proviso gone</code></pre>
+<p>The rule now asserts <em>protection</em> for exactly the charts the verse
+warns about. This is worse than producing nothing: it is well-formed, correctly
+cited, quote-verbatim, and passes every check. Only reading the logic against the
+verse reveals it is backwards.</p>
+
+<h4>Invented conditions — the mirror error</h4>
+<pre><code>VERSE      "Sagittarius. — Mars is the best planet and in conjunction with
+            Jupiter produces much good."
+
+EXTRACTED  all[ bhava_in_rashi(bhava.01, rashi.sagittarius),
+                occupies_rashi(graha.mars, rashi.sagittarius),   ← invented
+                conjunct(graha.mars, graha.jupiter) ]</code></pre>
+<p>An over-specified rule is not a cautious rule. It fires on fewer charts than
+the verse covers, so a reading silently loses evidence it was entitled to — and
+nothing in the output ever reveals that a rule failed to fire.</p>
+
+<p>Both were fixed by adding a condition-completeness block to the prompt,
+covering both directions, and by teaching the non-obvious expansions the
+vocabulary requires (<code>varga_occupies</code> is indexed by <em>rashi</em>, so
+"the drekkanas of Mercury" must become the D3 signs Mercury owns). Also added:
+the value families for every argument kind, and the domain list — neither had
+ever been shown to the model, which is why it substituted
+<code>bhava.01</code> into a <code>distance</code> slot and inferred
+<code>domain.family</code> from the claim <code>family.father</code>.</p>
+
+<p><strong>Verified on held-out verses</strong> — not the prompt's own examples.
+Yield on <em>hindu-predictive</em> went from 47 to 112 rules over the same 304
+passages, and the two defect classes did not recur.</p>
+
+<!-- ============================ 10 ============================ -->
+<h2 class="pagebreak">10. Risks and decisions requested</h2>
+
+<h3>10.1 Unreviewed rules are being served <span class="muted">— decision needed</span></h3>
+
+<div class="box decide">
+<span class="lbl">Decision 1 · the one I would not ship past</span>
+<p><code>SERVED_STATUSES = {"candidate", "production"}</code>, and
+<strong>every rule in the engine is <code>candidate</code></strong> — including
+the eight hand-written ones. Nothing is <code>production</code>, so that filter
+admits everything.</p>
+<p>The approval gate lives in Postgres (<code>approved_at IS NOT NULL</code>,
+enforced by <code>MATCHABLE_PREDICATE</code>) and gates
+<code>embed_rules.py</code> → Qdrant. Since the §6 panel switch, nothing at serve
+time reads Postgres. <strong>Approving a rule therefore has no effect, and
+neither does declining to.</strong></p>
+</div>
+
+<p>To be precise about the history, because it is not a regression introduced
+carelessly: the <em>written answer</em> was never gated on approval — Koonji has
+always read YAML directly. The <em>panel</em> was gated, because it came from
+Qdrant and <code>embed_rules.py</code> publishes only approved rules. The panel
+switch removed the last place approval mattered.</p>
+
+<p><strong>Recommendation.</strong> Move the gate to where the rules live:
+approval flips YAML <code>status</code> from <code>candidate</code> to
+<code>production</code>, and serving accepts only <code>production</code>. The
+Postgres <code>rule</code> table then drops out cleanly and there is one rule
+system end to end.</p>
+
+<p><strong>The caveat that makes this a decision rather than a task.</strong>
+Flipping that switch today serves <strong>8 rules instead of 1,503</strong>,
+because nothing has ever been marked production. It needs a deliberate first
+pass — either bulk-promote the 1,109 converted BPHS rules (they came from the
+older reviewed pipeline), or accept <code>candidate</code> for now and record it
+as a known, signed-off gap.</p>
+
+<h3>10.2 One bad rule can still stop the engine <span class="muted">— policy to re-affirm</span></h3>
+
+<div class="box decide">
+<span class="lbl">Decision 2</span>
+<p><code>Engine.from_rules()</code> calls <code>raise_for_errors()</code>, so a
+single unindexable or duplicate-ID rule prevents startup. This has happened
+twice — once from a duplicate ID, once from the 1,536-variant explosion.</p>
+<p>Both root causes are now addressed (IDs stamped from the citation; index
+failures named per-rule so the gate drops them before they reach disk). But the
+underlying policy — <em>refuse to start rather than serve a corpus with a known
+error</em> — is a deliberate choice, and I would rather it were re-affirmed
+explicitly than left as an accident of where the check sits.</p>
+</div>
+
+<h3>10.3 The legacy matcher cannot fire current-format rules</h3>
+
+<p><code>satisfies()</code> returns <code>False</code> for an unrecognised atom
+type rather than raising — inert by design, <em>"not explosive"</em> as the code
+puts it. Rules loaded into Postgres and embedded to Qdrant therefore sit
+permanently silent there.</p>
+
+<p>Harmless today, since Koonji feeds the answer. But it means the older system
+is dead weight rather than a fallback, and a fallback is what its presence
+implies. <strong>Recommendation: retire it deliberately.</strong> Maintaining two
+matchers by default is precisely how the counts diverged in §6.</p>
+
+<h3>10.4 Five books remain unreachable</h3>
+
+<p>They yield nothing and always will under the verse-unit model.
+<strong>Page-level extraction is the only path.</strong> Since citations are
+internal reference rather than user-facing prose, page granularity is acceptable
+— and the UI already displays page numbers.</p>
+
+<p>Proposed as a <strong>second, explicitly-labelled tier</strong>
+(<code>citation_granularity: page</code>) so a page-cited rule can never be
+presented as equal in precision to a verse-cited one. Two trade-offs to accept
+going in: it loses the triage cost gate, since every page contains something; and
+it risks under-enumeration on dense pages, because a model given a batch tends to
+return a stable three to five items regardless of the true count.</p>
+
+<h3>10.5 Observability gaps</h3>
+
+<ul>
+<li><strong>Helicone stores empty request and response bodies</strong> for the
+Vertex passthrough. Its own error names the cause — <em>"Body has already been
+used"</em>: the gateway reads the stream to forward it and finds nothing left to
+log. Token counts and latency are accurate; bodies are not. Use
+<code>--record</code> to capture exchanges for inspection.</li>
+<li><strong>Helicone shows $0.00</strong> for flash-lite — no price entry for the
+model, so it computes zero.</li>
+</ul>
+
+<h3>10.6 Smaller items, recorded so they are not rediscovered</h3>
+
+<ul>
+<li>Roughly 151 rules corpus-wide carry no domain tag, including 100
+pre-existing BPHS rules. An untagged rule derives no Rishi affinity and can be
+cited by nobody — it is in the base and permanently silent.</li>
+<li>The bridge admits front matter and chapter headings as citable units — about
+5% of spend, and <em>prasna-marga</em> is 68% table-of-contents. A deterministic
+filter is free and removes a fabrication vector, since a heading is exactly the
+input that makes a model invent what should follow.</li>
+<li>Classifier fields <code>needs_birth_data</code> and <code>is_followup</code>
+are computed on every request and read by nothing.</li>
+<li>The smalltalk decision is an unchecked single point of failure: misclassify a
+real question and the entire analytic path is skipped, returning a greeting.
+The deterministic router already scores 11 of 12 on this and could veto.</li>
+</ul>
+
+<!-- ============================ 11 ============================ -->
+<h2>11. Roadmap</h2>
+
+<h4>Immediate — completes the current corpus</h4>
+<ol>
+<li>Install staged <em>muhurta-chintamani</em> (56 rules); verify engine load.</li>
+<li>Extract the remaining four books — 2,695 calls, ~$0.85, ~15 minutes.</li>
+<li>Commit this cycle's nine modified files.</li>
+</ol>
+
+<h4>Next — blocking for any external use</h4>
+<ol start="4">
+<li><strong>Decide the approval-gate model (§10.1).</strong></li>
+<li>Re-affirm or revise the fail-to-start policy (§10.2).</li>
+<li>Retire or repair the legacy Qdrant matcher (§10.3).</li>
+<li>Register missing domains; add the deterministic front-matter filter.</li>
+</ol>
+
+<h4>Later</h4>
+<ol start="8">
+<li>Page-level tier for the five unbridgeable books (§10.4).</li>
+<li>Explicit prompt caching — ~$0.65 saving, needs client work (§8.1).</li>
+<li>Rashi and graha alias table, built from observed extraction failures.</li>
+<li>Retire the dead classifier fields.</li>
+</ol>
+
+<!-- ============================ 12 ============================ -->
+<h2>12. Summary for the reviewer</h2>
+
+<h4>What I believe is sound</h4>
+<p>Rule matching is exhaustive by construction rather than best-effort, and that
+choice was measured against the alternative rather than assumed. Provenance is
+stamped by the caller and never authored by a model, after two incidents that
+demonstrated why. Every generated artefact records what did <em>not</em> happen
+to it, so an unverified rule cannot be mistaken for a verified one. Extraction
+cost fell 23× with no measured quality loss, and the two defects that did appear
+were found by held-out testing and fixed.</p>
+
+<h4>What needs your decision</h4>
+<p>The approval gate is disconnected: unreviewed rules reach users, and approval
+is a no-op in both directions. Everything else in Section 10 can be scheduled.
+That one I would not ship past, and the reason it is a decision rather than a
+fix is that closing it naively drops the served rule base from 1,503 to 8.</p>
+
+<h4>What is deferred deliberately</h4>
+<p>The legacy Qdrant matcher, the five unbridgeable books, and prompt caching —
+each with a recorded rationale rather than an assumption, and each listed above
+rather than left implicit.</p>
+
+<div class="box">
+<span class="lbl">Verification note</span>
+<p>Engine loads 1,503 rules. Test suite: 2,000 passed, 1 skipped. Both re-run
+immediately before this document was produced. Qdrant and Postgres counts are
+marked <span class="muted">last measured</span> in §3 because they require live
+services.</p>
+</div>
+
+</body>
+</html>

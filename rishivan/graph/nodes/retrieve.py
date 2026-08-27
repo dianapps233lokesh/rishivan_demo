@@ -150,6 +150,12 @@ def _match_rules(state: RishivanState, embed_fn, search_query: str, routing: dic
         matched = hits_from_reading(
             reading, engine=engine, domain=routing.get("primary"),
             limit=MAX_MATCHED_RULES,
+            # The question's own words gate what may be shown. Gating on the
+            # answering Rishi's domains was circular - Medhan owns health, so
+            # every Medhan question admitted every death rule. This argument
+            # went missing when the panel moved off `rank_true_rules`, taking
+            # the Eight Rishis §9 gate with it.
+            question=state["question"],
         )
         # `gather` reports what each Rishi computed and wants rules true of the
         # chart, which is exactly the fired set rather than the ten displayed.

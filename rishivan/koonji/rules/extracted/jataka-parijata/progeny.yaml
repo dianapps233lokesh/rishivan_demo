@@ -1,0 +1,722 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.HEALTH.CH18V95.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.progeny: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v95
+    quote: >-
+      If Mars occupy the depression Navamsa in its exaltation house, there will be according
+      to the astrologers, death among the children and brothers of the person concerned, during
+      the dasa of the planet.
+    quote_sha256: fa3415ff2a0a09e91b41e4faa75d51ba518338c39434fb47ef6bcc54249c16d9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.capricorn
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mars
+        dignity: dignity.debilitated
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      death among the children and brothers of the person concerned, during the dasa of the
+      planet
+- id: JATAKAPARIJATA.PROGENY.CH17V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v11
+    quote: >-
+      If the 5th house belong to a Varga of Saturn and be aspected by Mercury but not by Jupiter,
+      Mars or the Sun, the person concerned will have a क्षेत्रज (Kshetraja) son.
+    quote_sha256: 7b3638021a62266d31d284a4fbc44afdea8e22731dd7f74781d6667876398895
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: bhava.05
+        - aspects:
+            subject: graha.mars
+            target: bhava.05
+        - aspects:
+            subject: graha.sun
+            target: bhava.05
+    - aspects:
+        subject: graha.mercury
+        target: bhava.05
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.capricorn
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.aquarius
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will have a Kshetraja son
+- id: JATAKAPARIJATA.PROGENY.CH17V11.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v11
+    quote: >-
+      The same will be the case if the house in question belong to a Varga of Mercury, be
+      aspected by Saturn and be at the same time devoid of the aspect of Jupiter, Mars or
+      the Sun.
+    quote_sha256: 6c14fd1fd31d28d320bef25f353344ae87523707a8186d5981bdb5090af182be
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: bhava.05
+        - aspects:
+            subject: graha.mars
+            target: bhava.05
+        - aspects:
+            subject: graha.sun
+            target: bhava.05
+    - aspects:
+        subject: graha.saturn
+        target: bhava.05
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.gemini
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.virgo
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the person concerned will have a Kshetraja son
+- id: JATAKAPARIJATA.PROGENY.CH17V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v12
+    quote: >-
+      When the lord of the 5th bhava or of the 9th from the Lagna occupies the 7th bhava or
+      an even Rasi and is aspected by or in conjunction with the Moon or Venus, a good number
+      of daughters would be born.
+    quote_sha256: b16909846aca846b15aa53ddc2b3d080270275c1e5243c936f3b285346056bff
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.07
+    - any:
+      - aspects:
+          subject: graha.moon
+          target: lord.bhava.05
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.05
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.moon
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.venus
+      - aspects:
+          subject: graha.moon
+          target: lord.bhava.09
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.09
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.moon
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.venus
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: a good number of daughters would be born
+- id: JATAKAPARIJATA.PROGENY.CH17V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v18
+    quote: >-
+      When the lord of the 1st bhava, occupies the 5th and the lord of the latter possesses
+      strength and Jupiter also is in full strength, there will undoubtedly be a son.
+    quote_sha256: 5fbe05cd30e654f9692531275ecb0a1d75a0bcfb2bbbb74ee4def673b27da68b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+    - strength:
+        subject: lord.bhava.05
+        op: '>='
+        value: 1.0
+    - strength:
+        subject: graha.jupiter
+        op: '>='
+        value: 1.0
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: there will undoubtedly be a son
+- id: JATAKAPARIJATA.PROGENY.CH17V2632.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v26-32
+    quote: >-
+      When Jupiter occupying the 5th bhava is seen by a malefic planet, the loss of issues
+      results in consequence of a deity's curse.
+    quote_sha256: c5c03c28c45c2242b88f83a3b947e7b08cf33669c6596c6d5136da1ddb17f480
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+    - any:
+      - aspects:
+          subject: graha.sun
+          target: graha.jupiter
+      - aspects:
+          subject: graha.mars
+          target: graha.jupiter
+      - aspects:
+          subject: graha.saturn
+          target: graha.jupiter
+      - aspects:
+          subject: graha.rahu
+          target: graha.jupiter
+      - aspects:
+          subject: graha.ketu
+          target: graha.jupiter
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the loss of issues results in consequence of a deity's curse
+- id: JATAKAPARIJATA.PROGENY.CH17V2632.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v26-32
+    quote: >-
+      If Jupiter be in conjunction with or aspected by the lord of the 6th bhava, the loss
+      of children is due to the curse of Brahmins.
+    quote_sha256: 3010b70b7e6715a16d26771c28f1a36a766d9be488ad029be453cbccd2329bb9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - conjunct:
+        subject: graha.jupiter
+        other: lord.bhava.06
+    - aspects:
+        subject: lord.bhava.06
+        target: graha.jupiter
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the loss of children is due to the curse of Brahmins
+- id: JATAKAPARIJATA.PROGENY.CH17V2829.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v28-29
+    quote: >-
+      When Vrishabha, Simha, Vrischika or Kanya is the Lagna and the Moon is in the 5th bhava,
+      the female born will have few sons
+    quote_sha256: e63774c033075c995d9bfbd94125a4bcff88597e5fdea690c214d56fa73b2268
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.leo
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.scorpio
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.virgo
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the female born will have few sons
+- id: JATAKAPARIJATA.PROGENY.CH17V6.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v6
+    quote: >-
+      If the lords of the 5th, the 9th and the 7th bhavas which are the initiatory planets
+      in respect to an offspring be in a दुःस्थान (Dustthana) and if the 5th bhava be aspected
+      by a malefic planet, the person concerned will be childless.
+    quote_sha256: 395b4fe9d65d6ccb30b125861c12408e0b639617ce0d44953ecee9a3f82d217d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: lord.bhava.05
+    - in_dusthana:
+        subject: lord.bhava.09
+    - in_dusthana:
+        subject: lord.bhava.07
+    - any:
+      - aspects:
+          subject: graha.sun
+          target: bhava.05
+      - aspects:
+          subject: graha.mars
+          target: bhava.05
+      - aspects:
+          subject: graha.saturn
+          target: bhava.05
+      - aspects:
+          subject: graha.rahu
+          target: bhava.05
+      - aspects:
+          subject: graha.ketu
+          target: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the person concerned will be childless
+- id: JATAKAPARIJATA.PROGENY.CH18V101.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v101
+    quote: >-
+      Brigandage, loss of wealth and honor, loss of children, death among cattle, misfortunes
+      of all kinds await a person in Ketu's bhukti in Rahu dasa.
+    quote_sha256: 7a41cc3f8745a0127e6acd25ed0b4e0f74899fa2d9be1d9244d9fd73720470a4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: loss of children
+- id: JATAKAPARIJATA.PROGENY.CH18V141.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v141
+    quote: >-
+      When Jupiter has its bhukti in Budha dasa, a person will incur the hatred of friends,
+      relatives and elders; will have additions to wealth and children, and will be liable
+      to risk from diseases and the like.
+    quote_sha256: 7d51243f64fc6e216aef112964e4014418bef33f7db570cee3a116c8257af21c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: additions to children
+- id: JATAKAPARIJATA.PROGENY.CH18V152.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+    domain.wealth: 0.8
+    domain.health: 0.8
+    domain.property: 0.8
+    domain.status: 0.8
+    domain.spiritual: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v152
+    quote: >-
+      Approbation of Gods Brahmanas and elders, king's good will, exemption from ailments
+      and acquisition of lands and children may be looked for in Jupiter's bhukti in Ketu's
+      dasa
+    quote_sha256: 8fce6698bc43615a6d9ec332b554b6d35c63dfb2459c71f7b77db37fa2154d5b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.ketu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: acquisition of children may be looked for in Jupiter's bhukti in Ketu's dasa
+- id: JATAKAPARIJATA.PROGENY.CH18V98.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v98
+    quote: >-
+      Total disappearance of ailments and enemies, royal favor, accession of wealth, acquisition
+      of children and great perseverence will mark Jupiter's bhukti in Rahu's dasa.
+    quote_sha256: 9650cc0eab4c3ea6356c272b81e25f6e0bca474be244fbe6373e7e1fbc3b1ae9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: acquisition of children
+- id: JATAKAPARIJATA.PROGENY.CH9V107.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: >-
+      when Venus occupies such a position the effect is that the person will be happy in the
+      society of his children
+    quote_sha256: 0b78d5f407a7451451d0531eeedd9b36f8fdda3ca8f11f0ae9a214a816e7b78a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.friendly
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the effect is that the person will be happy in the society of his children
+- id: JATAKAPARIJATA.PROGENY.CH9V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+    domain.relationship: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v11
+    quote: >-
+      If the Moon in his transit occupies an उपचय (Upachaya) place and be aspected by Jupiter
+      on the 5th day after menstruation, the woman joins her husband and conceives.
+    quote_sha256: 9631d7100fc5546b6b5685fd88fcb74d0d1cb7077f9274f942a0a1e85b7bf662
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.11
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the woman joins her husband and conceives
+- id: JATAKAPARIJATA.PROGENY.CH9V20.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+    domain.health: 0.4
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v20
+    quote: >-
+      If a woman's menses set in when the Moon is in an अनुपचय place and aspected by Mars,
+      they become favourable to conception and not otherwise.
+    quote_sha256: 319eac4b2cee539a6c77e3495c76df9ffbd1e09b884e9ff3f9e2e84933270b49
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        in_upachaya:
+          subject: graha.moon
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: they become favourable to conception
+- id: JATAKAPARIJATA.PROGENY.CH9V22.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v22
+    quote: >-
+      Saturn not being in the rising sign but occupying an odd house therefrom, also brings
+      about the birth of a male child.
+    quote_sha256: c2770aaaf64821ab5fe8921b3ce8c8cb1279322ef36b03e676f8c635464e6386
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.01
+    - any:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.11
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: birth of a male child
+- id: JATAKAPARIJATA.PROGENY.CH9V96.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v96
+    quote: >-
+      if the Moon be in a मीननवांश (Meena navamsa), the person born will have a soft voice,
+      but speak spiritedly, will visit holy places and be blessed with sons
+    quote_sha256: 9288a6836e360fb5b93461e7a406eae2789b7e44033e64740bbedec8d4db3127
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    varga_occupies:
+      varga: varga.d9
+      subject: graha.moon
+      rashi: rashi.pisces
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: blessed with sons

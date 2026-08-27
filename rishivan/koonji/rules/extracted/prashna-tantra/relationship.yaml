@@ -1,0 +1,228 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.RELATIONSHIP.CH2V1011.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.status: 0.35
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v10-11
+    quote: >-
+      There will be marriage very soon if (a) the 7th lord occupying the ascendant aspects
+      the lord of the rising sign
+    quote_sha256: 745fe61d2e9eca603b20b15b840102720f1b29f336bed8fedf13f5581bdea6a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.01
+    - aspects:
+        subject: lord.bhava.07
+        target: lord.bhava.01
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: there will be marriage very soon
+- id: PRASHNATANTRA.RELATIONSHIP.CH2V1011.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.status: 0.35
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v10-11
+    quote: >-
+      the marriage takes place after delay if the 7th lord not occupying the Lagna aspects
+      the ascendant lord.
+    quote_sha256: 1306895495ed035436caa7d010452814cb671929d0af9dcc88b53249c771b862
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        occupies_bhava:
+          subject: lord.bhava.07
+          bhava: bhava.01
+    - aspects:
+        subject: lord.bhava.07
+        target: lord.bhava.01
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: moderate
+    text: the marriage takes place after delay
+- id: PRASHNATANTRA.RELATIONSHIP.CH2V125.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v125
+    quote: >-
+      If the lords of the ascendant and the 11th are in mutual friendly Muthasila there will
+      be real friendship between the querent and the quesited.
+    quote_sha256: a8e58e5e0e157dcaac226fa05ec5f456f210ce905b2a76715e75a6f090fb7c40
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: lord.bhava.01
+        other: lord.bhava.11
+        distance: dist.05
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: there will be real friendship between the querent and the quesited
+- id: PRASHNATANTRA.RELATIONSHIP.CH2V68.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v68
+    quote: >-
+      According as Saturn happening to be lord of the ascendant or the 7th occupies a Kendra,
+      the querent or the bride will have the upper hand.
+    quote_sha256: 77d1b83a639bec83926c4952342800fbba7663273fb92054a942a2d36f23d10e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - in_kendra:
+        subject: lord.bhava.01
+    - occupies_rashi:
+        subject: lord.bhava.01
+        rashi: rashi.capricorn
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the querent will have the upper hand
+- id: PRASHNATANTRA.RELATIONSHIP.CH2V69.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v69
+    quote: >-
+      If both the planets are in the same sign, infer that the couple will quarrel but become
+      reconciled.
+    quote_sha256: 8f2044ee33176f629f6cf941e719d61ac979911a6624daf2f42c87c8e9b0653f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: moderate
+    text: the couple will quarrel but become reconciled
+- id: PRASHNATANTRA.RELATIONSHIP.CH2V80.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v80
+    quote: >-
+      she may be considered to have committed adultery in her own house if the lord of the
+      ascendant or the Moon is in degree conjunction with Mars.
+    quote_sha256: 9f60cadd3539d2247fccf25e38c005e51c16c7f98e5b88a504d907a00e098d16
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: committed adultery in her own house
+- id: PRASHNATANTRA.RELATIONSHIP.CH4V3738.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.temperament: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch4.v37-38
+    quote: >-
+      When the Moon having Ithasala with benefics is in a Kendra, the querent will enjoy with
+      pleasure and happiness.
+    quote_sha256: 4afcabb384c6d7e506134b2e6633e915b0e77cdc15fa8219e693589c4dca841c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.moon
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the querent will enjoy with pleasure and happiness

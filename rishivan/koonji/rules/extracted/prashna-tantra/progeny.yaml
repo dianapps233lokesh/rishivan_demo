@@ -1,0 +1,909 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.PROGENY.CH2V2526.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v25-26
+    quote: If the Lagna or the Moon is in Muthaseela with the lord of the 5th.
+    quote_sha256: 4ebbfd65e1441c18b9f3b1ca895f7b5d304560c8b39d5d930940a31a750d4624
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - aspects:
+        subject: lord.bhava.05
+        target: bhava.01
+    - aspects:
+        subject: lord.bhava.05
+        target: graha.moon
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: he will have children
+- id: PRASHNATANTRA.PROGENY.CH2V2526.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v25-26
+    quote: >-
+      The querent will have a child early if the 5th lord is in Lagna and the lord of Lagna
+      and the Moon are in the 5th.
+    quote_sha256: c0748df29ba0e79578d82e27b6d7b2a8eb3e55257d82d4c766df4ef296169858
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: The querent will have a child early
+- id: PRASHNATANTRA.PROGENY.CH2V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v27
+    quote: If there is Nakta Yoga, the birth of issue will be delayed.
+    quote_sha256: 9719a346e1a891548f52e336ffd444e9d02521dde1286e28c391a7be7c346526
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: moderate
+    text: the birth of issue will be delayed
+- id: PRASHNATANTRA.PROGENY.CH2V27.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v27
+    quote: >-
+      If the ascendant is a dual sign and is conjoined with benefics, there will be birth
+      of twins.
+    quote_sha256: d9e76e02f7fdd835a4505aa0d744d7ffa50e7f5322093271048d54af02673cca
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.gemini
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.virgo
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.sagittarius
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.pisces
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: there will be birth of twins
+- id: PRASHNATANTRA.PROGENY.CH2V2728.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v27-28
+    quote: >-
+      If the Lagna and the lord of the 5th are in masculine signs then a male issue will be
+      born.
+    quote_sha256: 6ff36511e59e3aa63a206c7adce4dae97cbc20b3677742f3f6d799fdb7511f20
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: lord.bhava.05
+        rashi: rashi.aries
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: a male issue will be born
+- id: PRASHNATANTRA.PROGENY.CH2V30.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v30
+    quote: >-
+      If the Moon or Mercury is in the 5th or in conjunction with (or aspecting) the lord
+      of the 5th or the lord of the 5th is exalted, the querent will get a legitimate issue.
+    quote_sha256: ed68a1a040a8d7bb3d70016dfa8738abb2bcdd177d9312f6a81a4bee0b0dff29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.moon
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get a legitimate issue
+- id: PRASHNATANTRA.PROGENY.CH2V30.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v30
+    quote: >-
+      If the Moon or Mercury is in the 5th or in conjunction with (or aspecting) the lord
+      of the 5th or the lord of the 5th is exalted, the querent will get a legitimate issue.
+    quote_sha256: ed68a1a040a8d7bb3d70016dfa8738abb2bcdd177d9312f6a81a4bee0b0dff29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mercury
+      bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get a legitimate issue
+- id: PRASHNATANTRA.PROGENY.CH2V30.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v30
+    quote: >-
+      If the Moon or Mercury is in the 5th or in conjunction with (or aspecting) the lord
+      of the 5th or the lord of the 5th is exalted, the querent will get a legitimate issue.
+    quote_sha256: ed68a1a040a8d7bb3d70016dfa8738abb2bcdd177d9312f6a81a4bee0b0dff29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.moon
+      other: lord.bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get a legitimate issue
+- id: PRASHNATANTRA.PROGENY.CH2V30.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v30
+    quote: >-
+      If the Moon or Mercury is in the 5th or in conjunction with (or aspecting) the lord
+      of the 5th or the lord of the 5th is exalted, the querent will get a legitimate issue.
+    quote_sha256: ed68a1a040a8d7bb3d70016dfa8738abb2bcdd177d9312f6a81a4bee0b0dff29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    conjunct:
+      subject: graha.mercury
+      other: lord.bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get a legitimate issue
+- id: PRASHNATANTRA.PROGENY.CH2V30.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v30
+    quote: >-
+      If the Moon or Mercury is in the 5th or in conjunction with (or aspecting) the lord
+      of the 5th or the lord of the 5th is exalted, the querent will get a legitimate issue.
+    quote_sha256: ed68a1a040a8d7bb3d70016dfa8738abb2bcdd177d9312f6a81a4bee0b0dff29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    aspects:
+      subject: graha.moon
+      target: lord.bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get a legitimate issue
+- id: PRASHNATANTRA.PROGENY.CH2V30.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v30
+    quote: >-
+      If the Moon or Mercury is in the 5th or in conjunction with (or aspecting) the lord
+      of the 5th or the lord of the 5th is exalted, the querent will get a legitimate issue.
+    quote_sha256: ed68a1a040a8d7bb3d70016dfa8738abb2bcdd177d9312f6a81a4bee0b0dff29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    aspects:
+      subject: graha.mercury
+      target: lord.bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get a legitimate issue
+- id: PRASHNATANTRA.PROGENY.CH2V30.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v30
+    quote: >-
+      If the Moon or Mercury is in the 5th or in conjunction with (or aspecting) the lord
+      of the 5th or the lord of the 5th is exalted, the querent will get a legitimate issue.
+    quote_sha256: ed68a1a040a8d7bb3d70016dfa8738abb2bcdd177d9312f6a81a4bee0b0dff29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    dignity:
+      subject: lord.bhava.05
+      dignity: dignity.exalted
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the querent will get a legitimate issue
+- id: PRASHNATANTRA.PROGENY.CH2V4143.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v41-43
+    quote: >-
+      Birth of a child should be predicted if the lord of the 1st is in the 5th and the lord
+      of the 5th is in the 1st subject to benefic aspects.
+    quote_sha256: f4d795a728282b33d64470f4d1d8e0935cd55785678e373b72b276ed32a779f4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.01
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.01
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.01
+      - aspects:
+          subject: graha.mercury
+          target: lord.bhava.01
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.05
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.05
+      - aspects:
+          subject: graha.mercury
+          target: lord.bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: birth of an issue should be predicted
+- id: PRASHNATANTRA.PROGENY.CH2V4143.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v41-43
+    quote: Otherwise these will be no issue.
+    quote_sha256: 52dcb84646a63a81e0627a31a1ce5037f79f850d91de3ff781a76cdd7f34fb33
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    not:
+      all:
+      - occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: lord.bhava.05
+          bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: there will be no issue
+- id: PRASHNATANTRA.PROGENY.CH2V4143.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v41-43
+    quote: or Jupiter, Mercury or Venus rises in the ascendant, there will be birth of an
+      issue.
+    quote_sha256: 42945f86809d1c18de67300f2ef0466c0f6425b1514d680242d693e9ae82fbef
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: there will be birth of an issue
+- id: PRASHNATANTRA.PROGENY.CH2V79.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+    domain.relationship: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v79
+    quote: >-
+      The conception is due to the husband if the lords of the ascendant and the 5th are aspected
+      by or conjoined with benefics
+    quote_sha256: fcece05a727eacd889a0e2cb189204975c384cd33072234f1813df93e8d28c77
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - aspects:
+          subject: lord.bhava.01
+          target: graha.jupiter
+      - aspects:
+          subject: lord.bhava.01
+          target: graha.venus
+      - aspects:
+          subject: lord.bhava.01
+          target: graha.mercury
+      - aspects:
+          subject: lord.bhava.01
+          target: graha.moon
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.01
+          other: graha.moon
+      - aspects:
+          subject: lord.bhava.05
+          target: graha.jupiter
+      - aspects:
+          subject: lord.bhava.05
+          target: graha.venus
+      - aspects:
+          subject: lord.bhava.05
+          target: graha.mercury
+      - aspects:
+          subject: lord.bhava.05
+          target: graha.moon
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.venus
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.05
+          other: graha.moon
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: The conception is due to the husband
+- id: PRASHNATANTRA.PROGENY.CH2V79.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+    domain.relationship: 0.5
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v79
+    quote: if aspected by Saturn and Mars, it is due to another person.
+    quote_sha256: 2017f9afedc80071445733ceb3533b82214455063e17bd4120c41b52d93fe3ee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - aspects:
+          subject: graha.saturn
+          target: lord.bhava.01
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.01
+      - aspects:
+          subject: graha.saturn
+          target: lord.bhava.05
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: it is due to another person
+- id: PRASHNATANTRA.PROGENY.CH3V117.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v117
+    quote: >-
+      The querent can never have children when there is no mutual aspect between the lords
+      of the 1st and the 5th
+    quote_sha256: 4deeb4754e3454bd958661c3ef7a8b91488db8fa896f3bfe371f9b8a42142836
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    not:
+      any:
+      - aspects:
+          subject: lord.bhava.01
+          target: lord.bhava.05
+      - aspects:
+          subject: lord.bhava.05
+          target: lord.bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: The querent can never have children
+- id: PRASHNATANTRA.PROGENY.CH3V118.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v118
+    quote: >-
+      The querent will have very few number of issues if the 5th house happens to be Leo,
+      Taurus, Scorpio or Virgo and the 5th house from the query ascendant or from the birth
+      ascendant or from birth Moon are occupied or aspected by malefics.
+    quote_sha256: d6756efd460cd7967ab9e28fc11a39702a20afab572959f8d90e73b0b1d947ee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.leo
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.taurus
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.scorpio
+      - bhava_in_rashi:
+          bhava: bhava.05
+          rashi: rashi.virgo
+    - occupant_count:
+        bhava: bhava.05
+        op: '>='
+        n: 1
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: slight
+    text: The querent will have very few number of issues
+- id: PRASHNATANTRA.PROGENY.CH3V119.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v119
+    quote: >-
+      When the Sun or Saturn is in the 8th identical with his own sign, the querent's wife
+      is a vandhya.
+    quote_sha256: f11a67646903202c1cbf58daed2f81ba45db18037216b6066dbdbdd0c1e71eb8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.08
+      - dignity:
+          subject: graha.sun
+          dignity: dignity.own_sign
+    - all:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.08
+      - dignity:
+          subject: graha.saturn
+          dignity: dignity.own_sign
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the querent's wife is a vandhya
+- id: PRASHNATANTRA.PROGENY.CH3V119.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v119
+    quote: If Mercury or the Moon is in the 8th, the querent will get a daughter.
+    quote_sha256: fddf820ec96294a0ad26265a3a0c475f2c8e33c8e8ea1dcadb8f5602c44b364a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: the querent will get a daughter
+- id: PRASHNATANTRA.PROGENY.CH3V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+    domain.health: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v12
+    quote: >-
+      The wife of the querent will deliver a dead child if the 8th is occupied by Jupiter
+      or Venus.
+    quote_sha256: 066dec15980bdba79d4b8a968fc2c7c8b46002d0e26c0dae59d414940e9c721a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: The wife of the querent will deliver a dead child
+- id: PRASHNATANTRA.PROGENY.CH3V12.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+    domain.health: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v12
+    quote: She will have abortion if Mars is in the 8th.
+    quote_sha256: f594b531f8a910c62581603c1bb8b896fbef86df5158e2ac573b48372304b117
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.mars
+      bhava: bhava.08
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: She will have abortion
+- id: PRASHNATANTRA.PROGENY.CH3V12.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v12
+    quote: >-
+      If the strong lord of the 8th is in the 8th, the querent's wife cannot secrete the type
+      of ovum that could be fertilized.
+    quote_sha256: fe84bb0ece78ca0e038e625585028679d3bb5042480a0b630e3325567d118305
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.08
+    - strength:
+        subject: lord.bhava.08
+        op: '>='
+        value: 1.0
+  indicates:
+    claim: progeny.children
+    polarity: negative
+    magnitude: strong
+    text: the querent's wife cannot secrete the type of ovum that could be fertilized
+- id: PRASHNATANTRA.PROGENY.CH3V123.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v123
+    quote: When the lord of Lagna and the 5th are in odd signs, male issues will be born.
+    quote_sha256: 6e4ded7284e7c0a8321bb7caf7371af975dc57716db27fa99af5fcf290c70070
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d1
+        subject: lord.bhava.01
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d1
+        subject: lord.bhava.05
+        rashi: rashi.aries
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: male issues will be born
+- id: PRASHNATANTRA.PROGENY.CH3V124.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v124
+    quote: >-
+      The issue will be a male when the lord of the 5th is in a masculine sign and the lord
+      of the Lagna is also in the 5th aspected by male planets.
+    quote_sha256: 00844170bf5b14e07eead512474aab68d7bec6e3080bb102cfd7bf4cb89384e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d1
+        subject: lord.bhava.05
+        rashi: rashi.aries
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.05
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: moderate
+    text: The issue will be a male
+- id: PRASHNATANTRA.PROGENY.CH3V126.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.progeny: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v126
+    quote: >-
+      When Saturn occupies an odd place counted from the ascendant, the querent will have
+      male issues.
+    quote_sha256: d4c79f2556ab0b892bcb6d7285db787055f974b422d468d7c6231da84e762c04
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.01
+  indicates:
+    claim: progeny.children
+    polarity: positive
+    magnitude: strong
+    text: the querent will have male issues

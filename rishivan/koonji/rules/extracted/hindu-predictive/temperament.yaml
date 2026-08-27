@@ -1,0 +1,541 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: HINDUPREDICTIVE.EDUCATION.CH36V13.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.5
+    domain.temperament: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v13
+    quote: Hasta.-Enterprising, intelligent, shameless, polite, cruel, pilfering habits.
+    quote_sha256: 082a72b9edbb2e935f5a7fb1aab0b4292eac82c4301eaebb29bca8b35b406f29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.hasta
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: intelligent
+- id: HINDUPREDICTIVE.PROPERTY.CH20V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.85
+    domain.status: 0.85
+    domain.temperament: 0.85
+    domain.longevity: 0.85
+    domain.health: 0.85
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v4
+    quote: Lord of the 10th powerful with three planets in the 12th, 2nd, 1st and 7th houses
+    quote_sha256: ba98c51fd1df4f4a26607859677a8872ec82894c9bba50da4b93d1612a846eb1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.10
+        op: '>='
+        value: 5
+    - occupant_count:
+        bhava: bhava.12
+        op: '>='
+        n: 3
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: >-
+      Landed estates, free from encumbrance, high family traditions, exalted soul, courageous,
+      expert in sciences and arts, long-lived, free from any kind of diseases.
+- id: HINDUPREDICTIVE.RECORDAPPLICATION.CH35V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.status: 0.8
+    domain.temperament: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v8
+    quote: >-
+      Birth Data :- Male, born on 21st August 1858, at 10-15 p.m. (48° 13' N. and 16° 23'
+      E.) Planetary Positions :- Ascendant and Jupiter - Taurus ; Saturn - Cancer ; the Sun
+      and Kethu - Leo ; Venus and Mercury - Virgo ; Mars - Scorpio ; the Moon - Capricorn
+      ; Rahu - Aquarius. General Remarks :- An ill-starred Prince ; his death reverberated
+      sensationally throughout Europe ; handsome and passionate ; still decorum ; quarrels
+      with parents ; loveless marriage in 23rd year ; clandestine prostitution ; death from
+      gunshot.
+    quote_sha256: 8c0bed9c1d569973857a531f271d419ff33b5878e6996e4dd58a9abfe27ed0f3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.taurus
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.10
+  example:
+    reading: >-
+      An ill-starred Prince ; his death reverberated sensationally throughout Europe ; handsome
+      and passionate ; still decorum ; quarrels with parents ; loveless marriage in 23rd year
+      ; clandestine prostitution ; death from gunshot.
+- id: HINDUPREDICTIVE.SPIRITUAL.CH20V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.temperament: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v18
+    quote: >-
+      Lord of the 2nd in the 9th, and the lord of the 9th in the 2nd and the lord of ascendant
+      in a quadrant or a trine—Religiously inclined
+    quote_sha256: 95bccb190df196427c109e8a00910386e803e1cd7614e8505daaacd79dc88567
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.02
+    - any:
+      - in_kendra:
+          subject: lord.bhava.01
+      - in_trikona:
+          subject: lord.bhava.01
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: Religiously inclined
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH20V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.temperament: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch20.v6
+    quote: >-
+      Matsya yoga (Fish combination).—Malefics in birth and 9th, benefics and malefics in
+      the 5th and malefics in the 4th and 8th.--Lover of astrology, sympathetic temperament
+      and religious mentality.
+    quote_sha256: 0dc23565c2f8b3d7c4e6a24261456d26fbee9abd08e91a85e7b1afd358436abb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.sun
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: Lover of astrology, sympathetic temperament and religious mentality
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH29V30.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.95
+    domain.health: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch29.v30
+    quote: Weak Moon in the 12th with Saturn will bring about insanity to the native.
+    quote_sha256: 009c01c417a0e5e99a4e437d319fddad897a5720de3a5d522aebcde5c463fce7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+    - strength_band:
+        subject: graha.moon
+        band: band.weak
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: will bring about insanity to the native
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH30V2.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v2
+    quote: if in Jupiter—virtuous, modesty and dignified
+    quote_sha256: 1ec80c2b36fdfb212f8df89683fb7fc735b75527c5e57e39e16ccab433c0675a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.pisces
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: virtuous, modesty and dignified
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH30V2.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v2
+    quote: if in Mercury—cunning
+    quote_sha256: 8bf878d678264a1f4fb42c63e0238ef81fae7e7dc11de292ceb8400a1f847c15
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.gemini
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.virgo
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: cunning
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH30V2.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.5
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v2
+    quote: if in Saturn—dependent and depraved
+    quote_sha256: 343cf9c8fd2cde513e639b3f4e4159ff28a8d02ca28050ed5ebb562f37aac2e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.capricorn
+    - varga_occupies:
+        varga: varga.d30
+        subject: lord.bhava.01
+        rashi: rashi.aquarius
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: dependent and depraved
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v13
+    quote: Hasta.-Enterprising, intelligent, shameless, polite, cruel, pilfering habits.
+    quote_sha256: 082a72b9edbb2e935f5a7fb1aab0b4292eac82c4301eaebb29bca8b35b406f29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.hasta
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: Enterprising
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V13.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v13
+    quote: Hasta.-Enterprising, intelligent, shameless, polite, cruel, pilfering habits.
+    quote_sha256: 082a72b9edbb2e935f5a7fb1aab0b4292eac82c4301eaebb29bca8b35b406f29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.hasta
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: shameless
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V13.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v13
+    quote: Hasta.-Enterprising, intelligent, shameless, polite, cruel, pilfering habits.
+    quote_sha256: 082a72b9edbb2e935f5a7fb1aab0b4292eac82c4301eaebb29bca8b35b406f29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.hasta
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: polite
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V13.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v13
+    quote: Hasta.-Enterprising, intelligent, shameless, polite, cruel, pilfering habits.
+    quote_sha256: 082a72b9edbb2e935f5a7fb1aab0b4292eac82c4301eaebb29bca8b35b406f29
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.hasta
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: cruel
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V23.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v23
+    quote: Dhanishta.-Wealthy, courageous, greedy fond of mutic.
+    quote_sha256: 2257ff5b8c362cd8bf36ae3dae7a840a442fa5ed6d5fe7521aecbb95ae22ba11
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.dhanishta
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: courageous, greedy fond of music
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V26.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v26
+    quote: Uttarabhadra. - Good conversationalist
+    quote_sha256: 170b449cc2ced236455737f5b5ad862cec0c3c873359b172122374340b6e97f9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.uttara_bhadrapada
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: moderate
+    text: Good conversationalist
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 0.9
+    domain.status: 0.7
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v4
+    quote: Rohini. - Truthful, pure, renowned, clean, moral principles, handsome firm views.
+    quote_sha256: 00e941416879c009f32eb04d542fb2640952ebc052c845494564045449b8c845
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.rohini
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: Truthful, pure, renowned, clean, moral principles, handsome firm views
+- id: HINDUPREDICTIVE.TEMPERAMENT.CH36V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.temperament: 1.0
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch36.v6
+    quote: Aridra.-Dissimulating, sinful, ungrateful, haughty, mischievous, proud, and debaucherous.
+    quote_sha256: 3f8d4748b7b27be41c84a175ef2b778e76fdbcdbbaa1319650c67c21a1778559
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.ardra
+  indicates:
+    claim: temperament.disposition
+    polarity: positive
+    magnitude: strong
+    text: Dissimulating, sinful, ungrateful, haughty, mischievous, proud, and debaucherous

@@ -58,9 +58,37 @@ _UNCERTAINTY_MINUTES: dict[BirthConfidence, float] = {
 }
 
 
+def uncertainty_minutes(confidence: BirthConfidence) -> float:
+    """How far the recorded clock time could be out, in minutes.
+
+    The quantity every other uncertainty here is derived from. Public because
+    the ascendant is not the only thing a wrong birth time moves: each graha
+    moves at its own rate, and `varga.select` needs the clock error to work
+    those out. It used to reach for `arc_uncertainty_degrees` instead, which is
+    the ascendant's figure, and applied it to the grahas as well - a category
+    error that made the varga rescue arithmetically unsatisfiable.
+    """
+    return _UNCERTAINTY_MINUTES[confidence]
+
+
 def arc_uncertainty_degrees(confidence: BirthConfidence) -> float:
-    """How far the ascendant could be wrong, given this confidence."""
-    return _UNCERTAINTY_MINUTES[confidence] / 60.0 * ASCENDANT_DEGREES_PER_HOUR
+    """How far *the ascendant* could be wrong, given this confidence.
+
+    Specific to the ascendant, despite the general name. Nothing else in a chart
+    moves at 15 degrees an hour.
+    """
+    return uncertainty_minutes(confidence) / 60.0 * ASCENDANT_DEGREES_PER_HOUR
+
+
+def drift_degrees(confidence: BirthConfidence, speed_deg_per_day: float) -> float:
+    """How far a body moving at this speed could be out, given this confidence.
+
+    The graha counterpart of `arc_uncertainty_degrees`. At quarter-hour
+    precision the ascendant could be 3.75 degrees out; the Moon could be 0.13
+    out and Saturn 0.001. Those are the numbers that decide whether a division
+    is readable, and they differ by three orders of magnitude.
+    """
+    return abs(speed_deg_per_day) * uncertainty_minutes(confidence) / (24.0 * 60.0)
 
 
 def min_confidence_for_arc(arc_degrees: float) -> BirthConfidence:

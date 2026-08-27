@@ -46,6 +46,7 @@ def rishi_node(state: RishivanState, *, client) -> dict:
         timing=state.get("timing"),
         unreviewed=bool(state.get("reading_is_unreviewed")),
         findings=tuple((state.get("findings_for") or {}).get(rishi, ())),
+        stated_facts=state.get("stated_facts") or (),
     )
 
     try:

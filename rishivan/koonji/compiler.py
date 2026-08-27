@@ -763,11 +763,24 @@ def compile_rules(
     # Only build the index over rules that survived, and only when nothing is
     # broken - an index over a corpus with a known error is a trap.
     if result.ok:
+        # Attributed to the rule, not to `<corpus>`. `gate` drops errors that
+        # name a rule and can only warn about ones that do not, so an
+        # unattributed index failure let the offending rule through to disk and
+        # broke `Engine.from_rules` on the next start.
+        failures: list[tuple[str, str]] = []
         try:
-            result.index = RuleIndex.build(rules, registry)
-        except (EmptyCore, ValueError) as exc:
+            result.index = RuleIndex.build(
+                rules,
+                registry,
+                on_error=lambda rule_id, exc: failures.append((rule_id, str(exc))),
+            )
+        except (EmptyCore, ValueError) as exc:  # pragma: no cover - belt and braces
             result.diagnostics.append(
                 Diagnostic("error", "core", "<corpus>", str(exc))
+            )
+        for rule_id, message in failures:
+            result.diagnostics.append(
+                Diagnostic("error", "core", rule_id, f"{rule_id}: {message}")
             )
     return result
 

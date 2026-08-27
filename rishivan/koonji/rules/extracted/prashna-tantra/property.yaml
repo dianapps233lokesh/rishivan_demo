@@ -1,0 +1,416 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: PRASHNATANTRA.OBSTACLE.CH3V102.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v102
+    quote: >-
+      According as such a debilitated planet happens to be the Moon, Venus, Saturn, Jupiter
+      or Mars, the thief will respectively be the owner's mother, wife, son, an important
+      member of the house or brother or the son. The lord of the 7th must be debilitated to
+      indicate the person described in the above stanza.
+    quote_sha256: 7da2a992fc83dffb550f66d5fc62a470bc7c4e2b193a6115d0210ff3e1e4e789
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.debilitated
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the thief will be the owner's mother
+- id: PRASHNATANTRA.OBSTACLE.CH3V102.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v102
+    quote: >-
+      According as such a debilitated planet happens to be the Moon, Venus, Saturn, Jupiter
+      or Mars, the thief will respectively be the owner's mother, wife, son, an important
+      member of the house or brother or the son. The lord of the 7th must be debilitated to
+      indicate the person described in the above stanza.
+    quote_sha256: 7da2a992fc83dffb550f66d5fc62a470bc7c4e2b193a6115d0210ff3e1e4e789
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the thief will be the owner's wife
+- id: PRASHNATANTRA.OBSTACLE.CH3V102.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v102
+    quote: >-
+      According as such a debilitated planet happens to be the Moon, Venus, Saturn, Jupiter
+      or Mars, the thief will respectively be the owner's mother, wife, son, an important
+      member of the house or brother or the son. The lord of the 7th must be debilitated to
+      indicate the person described in the above stanza.
+    quote_sha256: 7da2a992fc83dffb550f66d5fc62a470bc7c4e2b193a6115d0210ff3e1e4e789
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.debilitated
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the thief will be the owner's son
+- id: PRASHNATANTRA.OBSTACLE.CH3V102.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v102
+    quote: >-
+      According as such a debilitated planet happens to be the Moon, Venus, Saturn, Jupiter
+      or Mars, the thief will respectively be the owner's mother, wife, son, an important
+      member of the house or brother or the son. The lord of the 7th must be debilitated to
+      indicate the person described in the above stanza.
+    quote_sha256: 7da2a992fc83dffb550f66d5fc62a470bc7c4e2b193a6115d0210ff3e1e4e789
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.debilitated
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the thief will be an important member of the house
+- id: PRASHNATANTRA.OBSTACLE.CH3V102.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v102
+    quote: >-
+      According as such a debilitated planet happens to be the Moon, Venus, Saturn, Jupiter
+      or Mars, the thief will respectively be the owner's mother, wife, son, an important
+      member of the house or brother or the son. The lord of the 7th must be debilitated to
+      indicate the person described in the above stanza. For Mars, the thief could be either
+      a brother or a son.
+    quote_sha256: 299e5005420da4221fc4f4d51cdedcde50a522a8984fe82f1638205ae43e1ead
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.07
+        bhava: bhava.07
+    - dignity:
+        subject: lord.bhava.07
+        dignity: dignity.debilitated
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.debilitated
+  indicates:
+    claim: obstacle.general
+    polarity: positive
+    magnitude: strong
+    text: the thief could be either a brother or a son
+- id: PRASHNATANTRA.PROPERTY.CH2V21.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v21
+    quote: If a malefic occupies the 4th, the cultivator will dispense with the land.
+    quote_sha256: 70d5baae8609899de10842e5a3a3ae7d905058bc804ae9e08ddf9f2ac4f489e5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.04
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: the cultivator will dispense with the land
+- id: PRASHNATANTRA.PROPERTY.CH2V2223.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v22-23
+    quote: >-
+      If the lord of the 10th is in the 10th aspected by or associated with benefics, there
+      will be a good crop.
+    quote_sha256: 02a5815570483e7227434362b9ab0752010e07d13472659995660da73bb54ec5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.10
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: there will be a good crop
+- id: PRASHNATANTRA.PROPERTY.CH2V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v25
+    quote: If malefics are in the 4th, final result will be unfavourable.
+    quote_sha256: a6a78e1dc2d02471a156885ad0efa9abc651cba79a865b35c75485b93d649b48
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.04
+        op: '>='
+        n: 1
+  indicates:
+    claim: property.land_and_home
+    polarity: negative
+    magnitude: strong
+    text: final result will be unfavourable
+- id: PRASHNATANTRA.PROPERTY.CH3V5152.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.career: 0.4
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v51-52
+    quote: The fortress will be secured quickly when Rahu is in the 7th.
+    quote_sha256: e947ad683a58e3ea3052abf5f74f1d0c626fe4cf6898260bf708f8024a23b6d5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: The fortress will be secured quickly
+- id: PRASHNATANTRA.PROPERTY.CH3V91.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v91
+    quote: >-
+      The lost property will be recovered if the lord of the Lagna is in the 7th in Ithasala
+      with the 7th lord.
+    quote_sha256: 79266db76eff1e33c2b24771fc8927ad205de4e064247c42988f80216b3d4d03
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.07
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.07
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: The lost property will be recovered
+- id: PRASHNATANTRA.PROPERTY.CH3V91.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.6
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch3.v91
+    quote: The thief himself will return the property when the lord of the 8th is in the ascendant.
+    quote_sha256: a02d502f65efb3814b967c9c815f1e0a67ad31fc96368d8161811857b8a831e1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.01
+  indicates:
+    claim: property.land_and_home
+    polarity: positive
+    magnitude: strong
+    text: The thief himself will return the property
+- id: PRASHNATANTRA.WEALTH.CH2V24.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.9
+    domain.wealth: 0.7
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v24
+    quote: Whoever be the lessee, he will suffer if malefics are in the 7th.
+    quote_sha256: 00c19f38a686483f54be791e8d8339797817a37b885baeb2f47eba48b523149d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.mars
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the lessee will suffer
+- id: PRASHNATANTRA.WEALTH.CH2V25.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.property: 0.95
+    domain.wealth: 0.8
+  source:
+    book: prashna-tantra
+    edition: prashna-tantra
+    locator: ch2.v25
+    quote: If benefics are in the 10th, good revenue from the property is indicated.
+    quote_sha256: e8a32b4e8fee12c9a8ec129988bb4959a3415a7f3c9e81256bd9441d72e5b860
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.10
+        op: '>='
+        n: 1
+  indicates:
+    claim: wealth.income_flow
+    polarity: positive
+    magnitude: strong
+    text: good revenue from the property is indicated

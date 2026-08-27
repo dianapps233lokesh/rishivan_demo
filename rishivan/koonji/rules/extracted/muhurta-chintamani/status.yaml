@@ -1,0 +1,239 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.CAREER.CH10V3.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v3
+    quote: >-
+      if there are Malefic Planets in the 4th and the 7th Houses, the King will be without
+      rights
+    quote_sha256: fed11f50f2ee96094bff1027cbe3db64b305e32971ccc43300911d1aa338f42a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.04
+        op: '>='
+        n: 1
+  indicates:
+    claim: career.stability_and_authority
+    polarity: negative
+    magnitude: strong
+    text: the King will be without rights
+- id: MUHURTACHINTAMANI.CAREER.CH10V3.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch10.v3
+    quote: >-
+      if there are Malefic Planets in the 4th and the 7th Houses, the King will be without
+      rights
+    quote_sha256: fed11f50f2ee96094bff1027cbe3db64b305e32971ccc43300911d1aa338f42a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.07
+        op: '>='
+        n: 1
+  indicates:
+    claim: career.stability_and_authority
+    polarity: negative
+    magnitude: strong
+    text: the King will be without rights
+- id: MUHURTACHINTAMANI.CAREER.CH5V51.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.85
+    domain.status: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v51
+    quote: >-
+      and if Saturn is placed in an Angle he becomes a servant to the Mlechhas or the low
+      born dirty men.
+    quote_sha256: a0ff16dbc095e4828274325123b8e88b25c502d8ec231360e713c58303e72e8c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.saturn
+  indicates:
+    claim: career.disruption
+    polarity: positive
+    magnitude: strong
+    text: he becomes a servant to the Mlechhas or the low born dirty men
+- id: MUHURTACHINTAMANI.GENERAL.CH5V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.5
+    domain.spiritual: 0.5
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch5.v41
+    quote: Venus, Jupiter, the Moon and the Ascendant Lord are not in the 6th and the 8th
+      House
+    quote_sha256: 641717cadb2d2e5b13840969b52689a5601be731c8444f644c76471e984fe2e4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    not:
+      any:
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.venus
+          bhava: bhava.08
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      The Lagna or the Ascendant chosen for the doing of Upanayana should be such in which
+      Venus is not in the 6th and the 8th House
+- id: MUHURTACHINTAMANI.STATUS.CH11V72.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v72
+    quote: >-
+      If Jupiter be situated in the Ascendant, in the 10th or the 11th House there be the
+      situation of the Malefic Planets, then by making journey in an Ascendant having such
+      combination of Planets, the king has the obtainment of kingdom.
+    quote_sha256: efc85c6f75a811c35215f476f54bc2062786c1f4334d11ab0bc05f0d19528091
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - any:
+      - occupant_count:
+          bhava: bhava.10
+          op: '>='
+          n: 1
+      - occupant_count:
+          bhava: bhava.11
+          op: '>='
+          n: 1
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the king has the obtainment of kingdom
+- id: MUHURTACHINTAMANI.STATUS.CH11V74.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.status: 0.95
+    domain.travel: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch11.v74
+    quote: >-
+      If in the Ascendant there be Venus, in the 7th House there be Jupiter, in the 6th House
+      Mars, in the 4th House Mercury and in the 3rd House Saturn, the king gets victory.
+    quote_sha256: 90c7e2439613b770bdd9641ba96f7b717f00bf8b714b2162215154ab0fb9733c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.03
+  indicates:
+    claim: status.recognition
+    polarity: positive
+    magnitude: strong
+    text: the king gets victory
+- id: MUHURTACHINTAMANI.THE.CH3V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.career: 0.8
+    domain.status: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch3.v16
+    quote: If the Sun is strong the king should be seen
+    quote_sha256: 026ea06f3870303c558df61498c76ba9581428a3d3cef9a1f1ead07ec5fa8355
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.sun
+        band: band.strong
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: the king should be seen

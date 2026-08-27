@@ -1,0 +1,325 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: MUHURTACHINTAMANI.HEALTH.CH6V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+    domain.health: 0.85
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v4
+    quote: If there is the Moon in the 6/8 Houses in the Horary Chart
+    quote_sha256: 7b0d73d39dcc6d9b32c6fff9cdad8d4b2f96fc08767bbf9d91da2850639f5b3a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the girl (about whose marriage the astrologer has been asked) will get widowed in the
+      8 years from the date of her marriage
+- id: MUHURTACHINTAMANI.MARRIAGE.CH3V16.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: direct_subject
+  domains:
+    domain.relationship: 0.9
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch3.v16
+    quote: if Jupiter, marriage
+    quote_sha256: 21f452945ccb5b247fd8314b9bb9d188af4f243d28986b00f421367db264ac6f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength_band:
+        subject: graha.jupiter
+        band: band.strong
+  remedy:
+    injunction: prescription
+    acts_on: native
+    action: marriage
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v2
+    quote: >-
+      If the Moon is in the 10/11/3/7/5 Houses in the Horary Chart (Ascendant at the time
+      of asking) and Jupiter aspects her fully, then the marriage will be performed soon
+    quote_sha256: b5b117273cb7ec612afa20dc8d1b2a198282d04c2c327960ffbc83640dd4e78b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.10
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.11
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.03
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.05
+    - aspects:
+        subject: graha.jupiter
+        target: graha.moon
+  indicates:
+    claim: relationship.marriage_timing
+    polarity: positive
+    magnitude: strong
+    text: the marriage will be performed soon
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V46.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v46
+    quote: >-
+      If the 8th Rashi or sign from the Natal Ascendant and Janama Rashi is there in the Ascendant
+      at Marriage, then such marriage is not auspicious.
+    quote_sha256: f08b26e471428866b07cd839715589a16aaeada540e1814a0a2fffa9475168bb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - house_distance:
+        subject: graha.sun
+        other: graha.moon
+        distance: dist.08
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: such marriage is not auspicious
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V67.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v67
+    quote: >-
+      If in the 7th Sign from the Ascendant at marriage or from the Moon there is situated
+      some Planet, it causes the Dosha or Defect named Jamitra'. The marriage Samskar is not
+      auspicious in it
+    quote_sha256: 152365fd15a481fa4fe72dfeb7401f048c8c28c2bea7cebb39977b9e3e6d43c0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupant_count:
+        bhava: bhava.07
+        op: '>='
+        n: 1
+    - occupies_bhava_from:
+        subject: graha.sun
+        bhava: bhava.07
+        reference: ref.moon
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: it causes the Dosha or Defect named Jamitra. The marriage Samskar is not auspicious
+      in it
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V84.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v84
+    quote: >-
+      If a marriage is done in the Navamsha of the Sagittarius, Libra, Virgo, Gemini or Pisces
+      sign, then the girl married thus certainly remains faithful to her husband.
+    quote_sha256: a2d32396fb20697cb7ae8ad69d89a86cf1ba2330c779584acd470e4b68badab2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.sagittarius
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the girl married thus certainly remains faithful to her husband
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V84.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v84
+    quote: >-
+      If a marriage is done in the Navamsha of the Sagittarius, Libra, Virgo, Gemini or Pisces
+      sign, then the girl married thus certainly remains faithful to her husband.
+    quote_sha256: a2d32396fb20697cb7ae8ad69d89a86cf1ba2330c779584acd470e4b68badab2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.libra
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the girl married thus certainly remains faithful to her husband
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V84.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v84
+    quote: >-
+      If a marriage is done in the Navamsha of the Sagittarius, Libra, Virgo, Gemini or Pisces
+      sign, then the girl married thus certainly remains faithful to her husband.
+    quote_sha256: a2d32396fb20697cb7ae8ad69d89a86cf1ba2330c779584acd470e4b68badab2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.virgo
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the girl married thus certainly remains faithful to her husband
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V84.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v84
+    quote: >-
+      If a marriage is done in the Navamsha of the Sagittarius, Libra, Virgo, Gemini or Pisces
+      sign, then the girl married thus certainly remains faithful to her husband.
+    quote_sha256: a2d32396fb20697cb7ae8ad69d89a86cf1ba2330c779584acd470e4b68badab2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.gemini
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the girl married thus certainly remains faithful to her husband
+- id: MUHURTACHINTAMANI.RELATIONSHIP.CH6V84.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.relationship: 0.95
+  source:
+    book: muhurta-chintamani
+    edition: muhurtachintamani
+    locator: ch6.v84
+    quote: >-
+      If a marriage is done in the Navamsha of the Sagittarius, Libra, Virgo, Gemini or Pisces
+      sign, then the girl married thus certainly remains faithful to her husband.
+    quote_sha256: a2d32396fb20697cb7ae8ad69d89a86cf1ba2330c779584acd470e4b68badab2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: lord.bhava.01
+        rashi: rashi.pisces
+  indicates:
+    claim: relationship.harmony
+    polarity: positive
+    magnitude: strong
+    text: the girl married thus certainly remains faithful to her husband

@@ -93,6 +93,10 @@ def intake_node(
     ''')
     return {
         "classification": classification,
+        # Lifted out of the classification onto state in its own right. Every
+        # consumer would otherwise reach through `classification`, and a key
+        # three dicts deep is one nobody notices has stopped being written.
+        "stated_facts": classification.get("stated_facts") or [],
         "primary_rishi": rishi,
         "rishi_title": get_persona(rishi).title,
         "query_domain": domain,

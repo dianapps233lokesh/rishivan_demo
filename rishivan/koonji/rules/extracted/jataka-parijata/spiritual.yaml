@@ -1,0 +1,357 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.GENERAL.CH9V76.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.5
+    domain.health: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v76
+    quote: >-
+      Jupiter in a Kendra position and possessed of exceeding strength, with clear bright
+      rays, can singly and to a certainty destroy a multitude of evils
+    quote_sha256: 4bdb15780861a41a2cb9b933080640687089ba9aebd54d03e76b73c2c58916e5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.jupiter
+    - strength:
+        subject: graha.jupiter
+        op: '>='
+        value: 1.0
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: extreme
+    text: destroy a multitude of evils however difficult they may be to tide over
+- id: JATAKAPARIJATA.SPIRITUAL.CH17V101.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v101
+    quote: >-
+      When the lord of the 9th bhava being benefic and in strength is aspected or associated
+      with Jupiter or Venus, the person born will engage in the recitation of prayers, holy
+      contemplation or abstract meditation on the nature of the Spirit, according as the portion
+      occupied by the lord of the 9th bhava belongs to a moveable, immoveable or a dual Rasi.
+    quote_sha256: 3beb7a6212264ba6edfe1dda52da23dab768c39bd502a6932a4a016589a2cb9b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.friendly
+    - any:
+      - aspects:
+          subject: graha.jupiter
+          target: lord.bhava.09
+      - aspects:
+          subject: graha.venus
+          target: lord.bhava.09
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.jupiter
+      - conjunct:
+          subject: lord.bhava.09
+          other: graha.venus
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will engage in the recitation of prayers, holy contemplation or abstract
+      meditation on the nature of the Spirit
+- id: JATAKAPARIJATA.SPIRITUAL.CH17V37.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.85
+    domain.relationship: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v37
+    quote: >-
+      When a malefic planet is in the 7th bhava, the woman concerned will without doubt devote
+      herself to the asceticism answering to the planet in the 9th bhava.
+    quote_sha256: 590c783bf55881dca4a6d5900a3b4121e168624279a240f9dacd1e90b54a6d5c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the woman concerned will without doubt devote herself to the asceticism answering to
+      the planet in the 9th bhava
+- id: JATAKAPARIJATA.SPIRITUAL.CH17V83.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v83
+    quote: >-
+      If the 12th bhava, with Saturn and Rahu or Ketu in it, is occupied by the lord of the
+      8th bhava or aspected by the lord of the 6th, the person born goes to hell.
+    quote_sha256: 762a8c5ab8e60df48a8b847a818b2066172b0018af1b43cc1fa5857830b4b7ea
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.12
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.12
+      - occupies_bhava:
+          subject: graha.ketu
+          bhava: bhava.12
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.08
+          bhava: bhava.12
+      - aspects:
+          subject: lord.bhava.06
+          target: bhava.12
+  indicates:
+    claim: spiritual.inclination
+    polarity: negative
+    magnitude: extreme
+    text: the person born goes to hell
+- id: JATAKAPARIJATA.SPIRITUAL.CH17V83.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v83
+    quote: >-
+      If Jupiter be in the Lagna, identical with Dhanus and with the Mesha Navamsa rising,
+      Venus occupy the 7th, and the Moon the sign Kanya, the person born under this yoga reaches
+      the seat of the highest happiness at last.
+    quote_sha256: f74d2b2103f97b4dcb4c4b3e73cd5e5f421f2a6432ac2acb40bceee02a55526d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.jupiter
+        rashi: rashi.aries
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.07
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: extreme
+    text: reaches the seat of the highest happiness at last
+- id: JATAKAPARIJATA.SPIRITUAL.CH17V96.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.temperament: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v96
+    quote: When there is a malefic planet in the 9th bhava, the person born will be sinful.
+    quote_sha256: 0975bd7ffd7de02ade1c0dc8ac02445a8d3e8a777094299660bdec52aaa4501d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the person born will be sinful
+- id: JATAKAPARIJATA.SPIRITUAL.CH18V103.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch18.v103
+    quote: >-
+      Love of charitable acts, contentment, cessation of all violence and outrage and the
+      spread of a contagious disease will mark the Sun's bhukti in Rahu dasa.
+    quote_sha256: e00e79d35f3f7992868e4ac65d347a042e15c9cb5830484ed81ab106ba00a55e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.antar
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: Love of charitable acts, contentment, cessation of all violence and outrage
+- id: JATAKAPARIJATA.SPIRITUAL.CH9V105.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.spiritual: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: >-
+      if Jupiter be the planet occupying स्वक्षेत्र (Swakshetra), the person born will be
+      devoted to poetry, the arts, traditional doctrines and the sacred scriptures
+    quote_sha256: 1c6cab84d50e2d84817e39cd50cf5c5233e0d2b56da5d17f5f0aa8ab30d7598d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.own_sign
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will be devoted to poetry, the arts, traditional doctrines and the sacred
+      scriptures
+- id: JATAKAPARIJATA.SPIRITUAL.CH9V131.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+    domain.status: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v131
+    quote: >-
+      When a benefic planet in its exaltation occupies a benefic वर्ग (Varga) in the 12th
+      bhava and is aspected by planets both benefic and malefic, the astrologer can predict
+      great celestial happiness
+    quote_sha256: 7c19877b7b99d8798aceb0050b3c34d49d72d435406193c348812984773849f7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.12
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.exalted
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: extreme
+    text: great celestial happiness
+- id: JATAKAPARIJATA.WEALTH.CH9V104.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.7
+    domain.spiritual: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v104
+    quote: if Mercury, rich and devoted to religious prayers
+    quote_sha256: 8ed6749730ae4456aa0b377a8c777a21ff521634e60a913f12d708a466f2c9f5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.moolatrikona
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: rich and devoted to religious prayers

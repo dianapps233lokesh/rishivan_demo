@@ -37,6 +37,7 @@ from rishivan.koonji.compiler import CompileResult, Diagnostic, compile_rules
 from rishivan.koonji.convert import ConversionReport, convert_corpus
 from rishivan.koonji.corpus import Unit, load_corpus, to_passages
 from rishivan.koonji.emit import round_trips, write_grouped
+from rishivan.koonji.index import RuleIndex
 from rishivan.koonji.registry import Registry, seed_registry
 from rishivan.koonji.urf import Rule
 
@@ -129,7 +130,34 @@ def gate(
                 continue
         kept.append(rule)
 
-    report.compiled = len(result.rules) - len(fatal)
+    # Index the survivors. `compile_rules` only builds an index when the whole
+    # corpus is clean -- deliberately, since an index over a broken corpus is a
+    # trap -- but that means a book containing ANY other error never has its
+    # index errors found at all. That is exactly how a 1,536-variant rule
+    # reached disk: three unrelated rules failed typecheck in the same run, so
+    # `result.ok` was False, the index was never built, and the explosion
+    # surfaced only when the engine next tried to start and refused.
+    index_failures: dict[str, str] = {}
+    RuleIndex.build(
+        kept,
+        registry,
+        on_error=lambda rule_id, exc: index_failures.setdefault(
+            rule_id, f"index: {rule_id}: {exc}"
+        ),
+    )
+    if index_failures:
+        report.dropped.update(index_failures)
+        kept = [rule for rule in kept if rule.rule_id not in index_failures]
+
+    # Counted from what survived, not derived by subtraction. The old form was
+    # `len(result.rules) - len(fatal)`, which assumes every id in `fatal` is
+    # also in `result.rules` -- and a rule that fails an early pass is named in
+    # a diagnostic but never becomes a `Rule`, so it was subtracted without ever
+    # having been added. Hindu Predictive reported "111 rules written" with 112
+    # on disk, and a document set where everything fails reports a NEGATIVE
+    # count. Adding the index failures to that expression would have compounded
+    # it. `kept` is the list actually written, so counting it cannot drift.
+    report.compiled = len(kept) + len(report.round_trip_failures)
     return kept, report, result
 
 
@@ -305,7 +333,7 @@ def extract_books(
     write: bool = True,
     fast_model: str = "gemini-2.5-flash",
     deep_model: str = "gemini-2.5-pro",
-    on_passage: Optional[Callable[[int, int, Any], None]] = None,
+    on_passage: Optional[Callable[[int, int, Any, Any, str], None]] = None,
     workers: int = 1,
     single_call: bool = False,
 ) -> ExtractRun:
@@ -344,6 +372,14 @@ def extract_books(
     ):
         if error is not None:
             run.failures[passage.passage_id] = error
+            # Reported, not just recorded. A failed passage used to `continue`
+            # before reaching `on_passage`, so a verbose run printed nothing at
+            # all for it -- the progress log simply skipped a number, and the
+            # only account of the failure arrived in the summary after the run
+            # had finished. On a two-hour book that is the difference between
+            # noticing a systematic failure at minute three and at minute 120.
+            if on_passage is not None:
+                on_passage(i, len(passages), passage, None, error)
             continue
 
         # Only used when the client carries no budget - a scripted one in
@@ -366,7 +402,7 @@ def extract_books(
             docs.append(emit_doc(candidate.rule))
 
         if on_passage is not None:
-            on_passage(i, len(passages), result)
+            on_passage(i, len(passages), passage, result, "")
 
     # The budget is the authority on the bill, not the sum of per-passage
     # attributions. A passage that raised still spent whatever it spent before

@@ -1,0 +1,188 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: HINDUPREDICTIVE.CAREER.CH17V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch17.v4
+    quote: >-
+      The combination of Mars and Jupiter also causes Rajayoga (combination for political
+      success).
+    quote_sha256: 27a7630498445becda52611f6fe516377a0a4fc6c444643aa313c5c42f26c7d2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - conjunct:
+        subject: graha.mars
+        other: graha.jupiter
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: causes Rajayoga (combination for political success)
+- id: HINDUPREDICTIVE.CAREER.CH30V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch30.v7
+    quote: >-
+      If Jupiter is well posited in the Shadvargas and is powerfully aspected by the Moon,
+      the woman's husband will get a responsible and lucrative position as a minister or as
+      an equal to a king.
+    quote_sha256: bc8ef965805b7f226bbda72c265223814230aa7903617d390aef43f903bed558
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d6
+        subject: graha.jupiter
+        dignity: dignity.exalted
+    - aspects:
+        subject: graha.moon
+        target: graha.jupiter
+  indicates:
+    claim: career.stability_and_authority
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the woman's husband will get a responsible and lucrative position as a minister or as
+      an equal to a king
+- id: HINDUPREDICTIVE.RECORDAPPLICATION.CH35V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v10
+    quote: >-
+      Expert physicist; revolutionised the electric world; inventor of wireless; mark the
+      Sun in Aries.
+    quote_sha256: c7e961dbaa22fc435584f3fb3f171a72c5985c2f46a357ad991218e07317e6f8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.gemini
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.aries
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.03
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.11
+  example:
+    reading: Expert physicist; revolutionised the electric world; inventor of wireless
+- id: HINDUPREDICTIVE.RECORDAPPLICATION.CH35V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: record_application
+  domains:
+    domain.career: 0.9
+    domain.status: 0.8
+  source:
+    book: hindu-predictive
+    edition: hindupredictiveastrology-raman
+    locator: ch35.v13
+    quote: >-
+      General Remarks :—A great Indian leader ; always incarceration ; a strong opponent of
+      British rule in India ; inflexible and obstinate ; perverted views in social reforms
+      ; great sufferer.
+    quote_sha256: 9026ffd956cf74b84cab965d5dbf5d560d0e1a4e42aaf951bcccaada5bb92c1e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.libra
+    - occupies_rashi:
+        subject: graha.mars
+        rashi: rashi.libra
+    - occupies_rashi:
+        subject: graha.venus
+        rashi: rashi.libra
+    - occupies_rashi:
+        subject: graha.mercury
+        rashi: rashi.libra
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.virgo
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.cancer
+    - occupies_rashi:
+        subject: graha.rahu
+        rashi: rashi.cancer
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.aries
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.scorpio
+    - occupies_rashi:
+        subject: graha.ketu
+        rashi: rashi.capricorn
+  example:
+    reading: >-
+      A great Indian leader; always incarceration; a strong opponent of British rule in India;
+      inflexible and obstinate; perverted views in social reforms; great sufferer.

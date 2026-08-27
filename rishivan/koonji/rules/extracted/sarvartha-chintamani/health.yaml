@@ -1,0 +1,5271 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.EDUCATION.CH2V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.education: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v28
+    quote: >-
+      During the Main period of the lord of the 5th house, and the Sub-ruling period of malefics,
+      the native gets confusion of intellect and bad food.
+    quote_sha256: a91fa96281fde493efb8ebf59ca7d1474452a0f4cc92f14f71e7cae0feb52bb2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.05
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.antar
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: confusion of intellect and bad food
+- id: SARVARTHACHINTAMANI.FAMILY.CH13V23.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v23
+    quote: >-
+      The ruling period of Sun when it is located in the Navamsha of its sign of exaltation
+      (Aries), gives to the native means of livelihood, constant personal influence, much
+      wealth, many pleasure giving recreations, wife, robes, income by day and night, & the
+      destruction of the paternal side.
+    quote_sha256: c2709e1d27e10b85cd779e5ec90e69434f8b15be9873867982416aeb58d18a9b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.sun
+        rashi: rashi.aries
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: destruction of the paternal side
+- id: SARVARTHACHINTAMANI.FAMILY.CH14V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v47
+    quote: >-
+      During the ruling period of Mars when it is in its sign of exaltation but in the Navamsha
+      of its sign of debilitation, the native gets death of his brothers & trouble from the
+      ruler, fire & poison.
+    quote_sha256: 05cc0eaf3273fd8868c58f5df3f91a084ee5dad8f64675812578e32450bd6283
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.exalted
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mars
+        dignity: dignity.debilitated
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: death of his brothers
+- id: SARVARTHACHINTAMANI.FAMILY.CH16V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v9
+    quote: >-
+      During the ruling period of Rahu located in the 4th house, the native loses his mother
+      or himself
+    quote_sha256: 1914f736f722ac53dcba68aa5f0c84f3498123d87443abc3073f0c689205d605
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+  indicates:
+    claim: family.mother
+    polarity: negative
+    magnitude: strong
+    text: the native loses his mother or himself
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V39.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.wealth: 0.3
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v39
+    quote: >-
+      If the 9th or 10th house from the 1st is occupied by Mars and aspected by malefics,
+      the yoga indicates death of the brother of the mother.
+    quote_sha256: 87c8933d3d72bfe29baccfb290d3d463aac6a0f4294092f423b73928295ba201
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.09
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.10
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: family.siblings
+    polarity: positive
+    magnitude: strong
+    text: death of the brother of the mother
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V50.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.temperament: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v50
+    quote: >-
+      If the lord of the 3rd house along with Moon is located in 6th, 8th or 12th house, the
+      native drinks the milk of women other than his own i.e. his mother dies soon after his
+      birth.
+    quote_sha256: 8cdc7c02e54c188d7b4209940d95f9891cd2a6830fc2f04bdcee5a0edd7dff67
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.moon
+    - in_dusthana:
+        subject: lord.bhava.03
+  indicates:
+    claim: family.mother
+    polarity: positive
+    magnitude: strong
+    text: the mother dies soon after his birth
+- id: SARVARTHACHINTAMANI.FAMILY.CH7V51.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v51
+    quote: >-
+      The location of the lord of 9th, Sun, & Saturn in the 6th house indicates the death
+      of father during the night.
+    quote_sha256: 2bf7ff0e951cf04bb0de1d89c6657b0004dc052399fb78dffc0c5e83b4ca7f9d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.06
+  indicates:
+    claim: family.father
+    polarity: negative
+    magnitude: strong
+    text: death of father during the night
+- id: SARVARTHACHINTAMANI.GENERAL.CH5V10.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v10
+    quote: if the two are associated with Jupiter, there would be absense of disease
+    quote_sha256: eb290c0f98d0f6a9c423a09e0805c5a29771cc177f0e7a34722b22bf0a9a4970
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.jupiter
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.jupiter
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: there would be absense of disease
+- id: SARVARTHACHINTAMANI.HEALTH.CH10V14.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch10.v14
+    quote: >-
+      One suffers physically in the three dasas called Vipat, Pratyari and Vadha. Particularly,
+      when the governing planet involved is aspected by malefics.
+    quote_sha256: 8baa6dcac42bd2763ec1d97a608999abc8bee887f938fbbd3dd2f2f0ad6eb68e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: One suffers physically in the three dasas called Vipat, Pratyari and Vadha
+- id: SARVARTHACHINTAMANI.HEALTH.CH13V13.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v13
+    quote: >-
+      During the ruling period of Moon occupying its sign of debilitation, the native gets
+      trouble & dangers
+    quote_sha256: fd0b4aef8509731a8c8354be6fdef329aaf06968e1a0e3a86a6907a91ca22bbc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dignity:
+        subject: graha.moon
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native gets trouble & dangers
+- id: SARVARTHACHINTAMANI.HEALTH.CH13V17.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.travel: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v17
+    quote: >-
+      During the ruling period of Moon situated with a malefic planet, the native suffers
+      from fire, wrath of thieves, ruler; loss of son, wife, pleasure, relatives, travels
+      abroad & does immoral acts.
+    quote_sha256: 745b8fcf554a1dc677c6723cbe5f2dfe4d9d501a11bc01ac1d8fd879245fbee6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      suffers from fire, wrath of thieves, ruler; loss of son, wife, pleasure, relatives,
+      travels abroad & does immoral acts
+- id: SARVARTHACHINTAMANI.HEALTH.CH13V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v27
+    quote: >-
+      During the ruling period of Sun in the 8th house, there is trouble to the body or trouble
+      from fire, intermittant fever, trouble to eyes, cough or asthma, loose motions, & fall
+      from position or office.
+    quote_sha256: e8f75cb35258d10607335c603847412a46d7262e644be750a71432e94635826e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      trouble to the body or trouble from fire, intermittant fever, trouble to eyes, cough
+      or asthma, loose motions
+- id: SARVARTHACHINTAMANI.HEALTH.CH13V32.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v32
+    quote: >-
+      During the ruling period of the Sun located in the 7th house, there is disease to wife,
+      or even her death
+    quote_sha256: a265b3653e3013fb77356f878388b1e0c97e04509e3d8580a43d1e8355d5721e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: disease to wife, or even her death
+- id: SARVARTHACHINTAMANI.HEALTH.CH13V40.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v40
+    quote: >-
+      If Sun is devoid of this strength, the native gets trouble from the government, fire
+      and thieves.
+    quote_sha256: 39e40a7cd7f29191952ff84b7477ba7c2a12d53ee6f9b41ecf2281b8ea807438
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - strength_band:
+        subject: graha.sun
+        band: band.weak
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native gets trouble from the government, fire and thieves.
+- id: SARVARTHACHINTAMANI.HEALTH.CH13V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v7
+    quote: During the Sun occupying its highest degree (10th) of debilitation, one gets into
+      danger
+    quote_sha256: 275ac2fc3c689ca307a5b1673f949517e05a902f5e8e4ed95009e5d38be0bc3c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.sun
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: one gets into danger
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V10.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v10
+    quote: >-
+      But has trouble from thieves, fire, disease of the eyes, loss of lands & agriculture,
+      also meets rift, wrath & sorrow.
+    quote_sha256: 3739c47a538553d6d8122c2f8fa0e352bfe92ffa3091d6ca11de6745c8bbaa10
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.friendly
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: has trouble from thieves, fire, disease of the eyes
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v16
+    quote: >-
+      During the ruling period of Mars located with a benefic planet one gets small physical
+      comfort, the body becomes emaciated through disease.
+    quote_sha256: 7bb261416657ee1ffb6a9baa13470b6af20984e1b2c431984dd22ba4afd7621a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - any:
+      - conjunct:
+          subject: graha.mars
+          other: graha.jupiter
+      - conjunct:
+          subject: graha.mars
+          other: graha.venus
+      - conjunct:
+          subject: graha.mars
+          other: graha.mercury
+      - conjunct:
+          subject: graha.mars
+          other: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the body becomes emaciated through disease
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V25.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v25
+    quote: >-
+      During the ruling period of Mars located in the 3rd house. the native gets happiness.
+      The native gets rid of enemies.
+    quote_sha256: 9afa04d60298a3b4da5614b356421b543ac60f7a8a28be4396795be0d206d564
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.03
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: The native gets rid of enemies
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V25.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v25
+    quote: >-
+      & if it is in inimical sign the native gets trouble from property & brothers and severe
+      disease.
+    quote_sha256: a4dde7b7d663429ae5f21ba0888168263863daac37921d5630e396bc32c89231
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.05
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.inimical
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: severe disease
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V27.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v27
+    quote: >-
+      During the ruling period of Mars located in the 8th house, there is much sorrow & fear,
+      the native suffers from boils, small pox etc. there is distaste for food
+    quote_sha256: 733a085224b1873546f6380733a9d62568c991f159b90a5d1e4ba63fd3ae3a6c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: >-
+      there is much sorrow & fear, the native suffers from boils, small pox etc. there is
+      distaste for food
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V34.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v34
+    quote: >-
+      In the last portion of the ruling period of Mars there is separation from brothers and
+      trouble from son, wife, fire, colic pains, urinal troubles. This will be particularly
+      so if Mars is not in Gochar (excellence) (see shloka 17).
+    quote_sha256: 6c18fd73067359f26e817c1394065fe9a640c8759ff01268c7646ff9b8b83eee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: trouble from fire, colic pains, urinal troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V39.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v39
+    quote: >-
+      During the ruling period of Mercury endowed with "Kaal" strength, the native gets good
+      health, excellent comforts, destruction of enemies.
+    quote_sha256: 827f9ac60d9aa0191b0fe57f3c487ba5f829c1099513dfdc12f3c1684d4e2390
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - strength:
+        subject: graha.mercury
+        op: '>='
+        value: 1.0
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: the native gets good health, excellent comforts, destruction of enemies
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.6
+    domain.travel: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v41
+    quote: >-
+      During the ruling period of Mars in retrogression, there is much fear & trouble from
+      thieves, fire, & serpents.
+    quote_sha256: 9350210f3f34cfaa47fba46fcef0671840c3425dd282d116111583de779f5a4b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - retrograde:
+        subject: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: there is much fear & trouble from thieves, fire, & serpents
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v43
+    quote: >-
+      During the ruling period of Mercury located in malefic Shashti amsha, the native is
+      in great danger from thieves, fire & the ruler, provided Mercury is devoid of any benefic
+      influence by association or aspect.
+    quote_sha256: a925cf4cb46f0a7b2cbae2846d0d89ea58e3e1111a878411bbe137ee51c0ed1c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mercury
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d30
+        subject: graha.mercury
+        dignity: dignity.inimical
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native is in great danger from thieves, fire & the ruler
+- id: SARVARTHACHINTAMANI.HEALTH.CH14V47.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v47
+    quote: >-
+      During the ruling period of Mars when it is in its sign of exaltation but in the Navamsha
+      of its sign of debilitation, the native gets death of his brothers & trouble from the
+      ruler, fire & poison.
+    quote_sha256: 05cc0eaf3273fd8868c58f5df3f91a084ee5dad8f64675812578e32450bd6283
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - dignity:
+        subject: graha.mars
+        dignity: dignity.exalted
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mars
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: trouble from the ruler, fire & poison
+- id: SARVARTHACHINTAMANI.HEALTH.CH15V2.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v2
+    quote: >-
+      During the ruling period of Jupiter located in Cancer, the native gets up in prospects,
+      & is honoured by the government. He goes abroad, & gets ruling powers but is afflicted
+      with sorrow.
+    quote_sha256: 679846467b0f1f846713c93787a491fbfc2077bc5b606d09615b58aafd26fec7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.maha
+    - occupies_rashi:
+        subject: graha.jupiter
+        rashi: rashi.cancer
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: afflicted with sorrow
+- id: SARVARTHACHINTAMANI.HEALTH.CH15V2.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v2
+    quote: Sorrow would result if Jupiter is afflicted.
+    quote_sha256: c732985a8a9fc4cc1795e60bbeeb562e1f48f858f79f5125f5a30699f1e6155d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.saturn
+        target: graha.jupiter
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Sorrow would result
+- id: SARVARTHACHINTAMANI.HEALTH.CH15V29.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.wealth: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v29
+    quote: >-
+      During the ruling period of Venus located in the 8th house, the native gets injury from
+      weapons, fire, thieves, obstacles from friends, a little of comfort & some wealth.
+    quote_sha256: 5bae88600eda461f58c17f3d345de7899a109bc196f2f65b77690ffcdb594f16
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native gets injury from weapons, fire, thieves, obstacles from friends
+- id: SARVARTHACHINTAMANI.HEALTH.CH15V36.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.career: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v36
+    quote: He may also get trouble from thieves, enemies, ruler or fire
+    quote_sha256: 821b21ee0cc93892ecae6d3ad380af2b3e7e2e39986e7cdde56aadc10f4d4bb0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - strength_band:
+        subject: graha.saturn
+        band: band.strong
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: trouble from thieves, enemies, ruler or fire
+- id: SARVARTHACHINTAMANI.HEALTH.CH15V44.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v44
+    quote: >-
+      During the ruling period of Saturn occupying the sign of its debilitation but the Navamsha
+      of the sign of its exaltation, the native experiences troubles in the early part of
+      the period
+    quote_sha256: 5c3034110be66f4ea5406a6d9523359d134ac65fd13d8f11a091547f9c87f0b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - dignity:
+        subject: graha.saturn
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.saturn
+        dignity: dignity.exalted
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: experiences troubles in the early part of the period
+- id: SARVARTHACHINTAMANI.HEALTH.CH15V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v5
+    quote: >-
+      During the ruling period of Venus located in the highest degree of its sign of debilitation,
+      the native, has much passion, disease
+    quote_sha256: 4c83cc0e4f3ae608b8db7787f097fbc33cfa378dd9cea4a772282469fc8eaf19
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: disease
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v10
+    quote: >-
+      During the ruling period of Rahu, located in the 4th house, the native suffers from
+      thieves, fire & imprisonment.
+    quote_sha256: d05a8886bcf97c4a98fa279c7ba657408816d8837191ccc4359998348e87e852
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from thieves, fire & imprisonment
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V1114.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.wealth: 0.7
+    domain.career: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v11-14
+    quote: >-
+      During the sub period of a malefic planet located in 6th house to that occupied by the
+      main dasa lord, the native suffers through thieves, debts, & bodily troubles, and gets
+      shaky in the position he holds.
+    quote_sha256: 1f3977b5f077841d2440fefbce35220f2881a2c827eee094c737a0544090f5c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.01
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native suffers through thieves, debts, & bodily troubles, and gets shaky in the
+      position he holds
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V12.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v12
+    quote: >-
+      During the ruling period of Rahu located in the 6th house, the native gets losses &
+      fear from thieves, fire & the ruler, loss of semen, colic pains, consumption, bilious
+      diseases, fault in the skin or, even death.
+    quote_sha256: c8df9d428b9c778ac13b5206c9adeecfd0614c6788279122f38a1585cf895b04
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: suffers from colic pains, consumption, bilious diseases, fault in the skin or, even
+      death
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V1821.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.career: 0.6
+    domain.longevity: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v18-21
+    quote: >-
+      During the same period of Sun and the sub periods of malefic planets, there is much
+      trouble, dis-ease, pains, mean service of others and even death.
+    quote_sha256: 573f54cf7e0d7c5da9d3ade79ba5f641b6edece0107901771ccb290dfdb7eeab
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: there is much trouble, dis-ease, pains, mean service of others and even death
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.longevity: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v2
+    quote: Rahu located in the 6th, 8th or 12th house from lagna gives trouble in its ruling
+      period.
+    quote_sha256: ad14670831c36df878c2b23acf029927f664cb7d9b213222c069ecd9e1474bca
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.12
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: gives trouble in its ruling period
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v23
+    quote: >-
+      During the ruling period of Rahu located in a malefic sign, the native gets emaciation
+      of body...
+    quote_sha256: b7a1f2f37cf7db6d828bc34505cc5bb4152800f0b4287ec5ebd0ca02ae35251c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - varga_dignity:
+        varga: varga.d1
+        subject: graha.rahu
+        dignity: dignity.inimical
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: emaciation of body
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V47.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v4-7
+    quote: >-
+      During the sub periods of the malefic planets in the main period of Saturn located in
+      the 5th or 9th house, the native gets much sorrow, loss of father, son & loss of the
+      results of his efforts. (4) Also he has diseases arising out of nervous and eye troubles.
+    quote_sha256: 872e9a503673c35db140d61914906f8d31556bd0dac9ba75a43b3d20b8abf6e4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.maha
+    - any:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.05
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.09
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: diseases arising out of nervous and eye troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V6.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.relationship: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v6
+    quote: He loses relatives by poison, fire, weapons etc.
+    quote_sha256: b5a747026d243e31f910dae242bc6d98679375986bb451e147ff5100ee2f720c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: negative
+    magnitude: strong
+    text: he loses relatives by poison, fire, weapons etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V710.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.7
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v7-10
+    quote: >-
+      During the main ruling period of Rahu placed in the 3 cardinal houses other than the
+      Ascendant, and in the sub period of the malefic planets events like house being burnt,
+      trouble to eyes, disease, trouble to wife & sons take place.
+    quote_sha256: 9e48141c10844f3d39161e2875ae29e100049880572fcec0178270e5133a117d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.12
+        level: level.antar
+    - any:
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.04
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: graha.rahu
+          bhava: bhava.10
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: events like house being burnt, trouble to eyes, disease, trouble to wife & sons
+      take place
+- id: SARVARTHACHINTAMANI.HEALTH.CH16V912.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.career: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v9-12
+    quote: >-
+      During the sub periods of malefics in the main period of Mars located in the 6th house,
+      the native gets trouble. He gets trouble from thieves, fire and government, boils, consumption
+      & urinal troubles.
+    quote_sha256: 6a8d2cf1020aafb01dda70745431919fb3be76303bf3c9d717322ab717382b60
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: boils, consumption & urinal troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH17V35.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch17.v3-5
+    quote: >-
+      All malefic planets if located in kendras give bad results. They give poverty & many
+      troubles like cough, asthma, spleen, trouble in rectum and belly.
+    quote_sha256: 9046a5af5082de3f2f606a7002f21dede18482217581fae43923e77dba6fa1eb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: many troubles like cough, asthma, spleen, trouble in rectum and belly
+- id: SARVARTHACHINTAMANI.HEALTH.CH1V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.career: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch1.v47
+    quote: Planets located in the 6th, 8th or 12th house lose their influence.
+    quote_sha256: b230ce07854a7972eb074b5573fd2bf40658486fa67341b181e0bba2227e6d02
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - in_dusthana:
+        subject: graha.sun
+    - in_dusthana:
+        subject: graha.moon
+    - in_dusthana:
+        subject: graha.mars
+    - in_dusthana:
+        subject: graha.mercury
+    - in_dusthana:
+        subject: graha.jupiter
+    - in_dusthana:
+        subject: graha.venus
+    - in_dusthana:
+        subject: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: Planets located in the 6th, 8th or 12th house lose their influence.
+- id: SARVARTHACHINTAMANI.HEALTH.CH1V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch1.v7
+    quote: >-
+      The sign that is afflicted by the association etc of malefic Planets denotes trouble
+      in the limb it represents.
+    quote_sha256: 4d10f7c8d498ac4aa04b97b47cd05f76ade549140544d5d2d65171a20b32a569
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: trouble in the limb represented by the sign
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V29.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v29
+    quote: >-
+      During the Main ruling period of the lord of the 6th house and the Sub-period of malefic
+      planets the native suffers from the orders of the king, from thieves or from chronically
+      bad habits as also from diseases like seminal troubles, colic pains, consumption, or
+      bile.
+    quote_sha256: 1f7acf215d0dd181db9ad025b7e837d06f789a541dd93a535149ba2a63c19dbf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.06
+        level: level.maha
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from diseases like seminal troubles, colic pains, consumption,
+      or bile
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v35
+    quote: >-
+      During the Main ruling period of the lord of the 12th house and the Sub-period of Saturn,
+      Sun or Mars there is mental grief, consumption, loss of honour and wealth.
+    quote_sha256: 01f3afe26a71d52ebab9b400789ced1e2c2325f216c6dcacb1a19a91d73faebc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.12
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.saturn
+        level: level.antar
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: mental grief, consumption
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v41
+    quote: >-
+      When at the time of Nishek Lagna, there is, in that lagna, Mercury or Saturn aspected
+      by malefics, the birth will be only of a piece of flesh. But not so if that Ascendant
+      is aspected by benefics.
+    quote_sha256: d2b2cbb0a80f0370842ca0a9563ff224f7fbc89d7ca522a9afd77bfe33b36eb0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mercury
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the birth will be only of a piece of flesh
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V4346.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v43-46
+    quote: >-
+      If the lord of the lagna is in the 10th house and Rahu in the lagna, the child's feet
+      come out of the womb first.
+    quote_sha256: bd0af4e6464a19cf0c9ba5b233a042f967770e861d1eeb6eda2099fa63b3a864
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the child's feet come out of the womb first
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V4346.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v43-46
+    quote: >-
+      If the lord of the 8th house and Rahu are in the lagna the child is enveloped in serpent
+      like umbilical cord.
+    quote_sha256: ae8df73ad6caec9c67ad6d5eb7bd7b2c7d9ef6aa1664619d535d7b47c41b12a2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.08
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the child is enveloped in serpent like umbilical cord
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V4748.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v47-48
+    quote: If malefic occupies the Ascendant and many malefics aspect the lagna
+    quote_sha256: bc7dbde3f0f570e99b348a9da05398f087e4795af060f57dd173e4208428bafd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_dusthana:
+        subject: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native is enveloped with the cord
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V54.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v54
+    quote: >-
+      If the lord of the 6th house is located in the Ascendant in the sign of Mercury and
+      the lord of the Ascendant occupies the sign of Mercury the man along with his wife is
+      impotent.
+    quote_sha256: 992b3d9b87e885e2c7a862433fa6c352f3daead6692105255e12526ac74bd338
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.01
+    - occupies_rashi:
+        subject: lord.bhava.06
+        rashi: rashi.gemini
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - occupies_rashi:
+        subject: lord.bhava.01
+        rashi: rashi.gemini
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the man along with his wife is impotent
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V54.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v54
+    quote: >-
+      If the lord of the 6th house is located in the Ascendant in the sign of Mercury and
+      the lord of the Ascendant occupies the sign of Mercury the man along with his wife is
+      impotent.
+    quote_sha256: 992b3d9b87e885e2c7a862433fa6c352f3daead6692105255e12526ac74bd338
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.01
+    - occupies_rashi:
+        subject: lord.bhava.06
+        rashi: rashi.virgo
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.01
+    - occupies_rashi:
+        subject: lord.bhava.01
+        rashi: rashi.virgo
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the man along with his wife is impotent
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V5557.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v55-57
+    quote: When Sun and Moon aspect each other.
+    quote_sha256: 52911582dd5bf8058acf0d474c9b625db00d0c8299741a738d543226cd14b660
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.sun
+        target: graha.moon
+    - aspects:
+        subject: graha.moon
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: birth of impotent persons
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V5557.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v55-57
+    quote: When the lord of the lagna is with Mercury.
+    quote_sha256: 1f412cd8fe4ca4aecc3108b9318f9e5b79249af2979604ebd080f160a03274dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: birth of impotent persons
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V6970.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v69-70
+    quote: >-
+      Good bodily health should be predicted when the lord of the Ascendant is situated in
+      his sign of exaltation
+    quote_sha256: 6775e3e9e01e9b56c18bb57769735b69da897bc2e8bd1a553dfc288da18cedfe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.01
+        dignity: dignity.exalted
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: Good bodily health should be predicted
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V7375.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v73-75
+    quote: If the lord of the lagna is located with a malefic planet, it harms the health
+      etc.
+    quote_sha256: 0377bce6dda8dceca3231daf82944e97ca5334e4cc0bfd41fb4907da63d809ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: it harms the health etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V8586.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.temperament: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v85-86
+    quote: >-
+      If there is a watery sign in the Ascendant associated with benefic planets, the native
+      will have a fat body.
+    quote_sha256: 8e7cd4b9d977d247caa4beb33b1549fa95c50c7f2caec4db9c1f5eed9d058531
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: the native will have a fat body
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V8788.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v87-88
+    quote: >-
+      If the Ascendant sign belongs to a benefic planet and it is aspec-ted by any malefic
+      planet, the native has a fat body.
+    quote_sha256: bf3baa848d10ff71c4d2434c8aa420e56410ed2a726f4acfbe727e506d5b2cf2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.taurus
+    - aspects:
+        subject: graha.saturn
+        target: bhava.01
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: moderate
+    text: the native has a fat body
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V89.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v89
+    quote: >-
+      If the Sun located in the Ascendant is aspected by Mars, the native suffers from breathing
+      trouble, consumption, spleen trouble.
+    quote_sha256: 3cafd927db0b7482f00e0ebdefc09f1893753977dc1505364a9ef86d8c7430c3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.01
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from breathing trouble, consumption, spleen trouble
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V89.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v89
+    quote: >-
+      If Mars in the Ascendant is aspected by Sun and Saturn, the native is prone to suffer
+      from hurt by sword etc.
+    quote_sha256: ad2039e9482361276f590b0f4fb05179b248352c7072911e7687cd4dbc9f41e0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.01
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+    - aspects:
+        subject: graha.saturn
+        target: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native is prone to suffer from hurt by sword etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH2V90.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v90
+    quote: >-
+      If Ketu is in the Ascendant and is aspected by many malefic planets then surely the
+      native suffers from the Pishaachaas and thieves.
+    quote_sha256: 7666c7447831744f7dc1629fea1813fda35dd416ff1d475e7520ca8601411512
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from the Pishaachaas and thieves
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v10
+    quote: >-
+      If the lord of the 2nd house is located with the Sun and Mars or is aspected by them,
+      the native has redness in the corners of his eyes.
+    quote_sha256: 864c0fe1e99c549165c8a3dc9cf401a60f64fadb972e1ee131d43dbcfd8ff6ee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.sun
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.mars
+    - all:
+      - aspects:
+          subject: graha.sun
+          target: lord.bhava.02
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native has redness in the corners of his eyes
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V111112.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v111-112
+    quote: >-
+      If the lord of the 4th is located in the 4th house along with the lord of the lagna
+      and is aspected by the lord of the 10th house, the man falls in well, river, tank etc.
+    quote_sha256: 9e40cff2662a13d0d357d8d2a8b9a82acf6a376e499257a146d179b5c2ff6bf1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.04
+        bhava: bhava.04
+    - conjunct:
+        subject: lord.bhava.04
+        other: lord.bhava.01
+    - aspects:
+        subject: lord.bhava.10
+        target: lord.bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the man falls in well, river, tank etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V1115.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v1115
+    quote: >-
+      If the lord of the 2nd house is with Saturn and other malefic planets. the native has
+      brain trouble.
+    quote_sha256: 66323031f7d50308ea8710583c72f0e60d1f75bac684325eab9e1cd7196382c2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native has brain trouble
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V1115.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v1115
+    quote: >-
+      The trouble is in consequence of the anger of the authorities if the malefic with Saturn
+      is the Sun
+    quote_sha256: 73735abb6caf9cb9a7045cc6b49505c82442a3d7ce8e1a107bf01e07cdf32b19
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: The trouble is in consequence of the anger of the authorities
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V1115.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v1115
+    quote: and it is from heat if Mars is with Saturn.
+    quote_sha256: 5b806f9b18de6098c7ff2c34295c3dd2dc348862044727e5f63e17a488e41be6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: it is from heat
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V113.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v113
+    quote: >-
+      If the fourth house contains Sun and Mars & is in association with or aspected by the
+      lord of the 10th house or by the lord of the 4th house the native is injured by stone.
+    quote_sha256: 06d49f5d6dab6266a77cc927fdb4596c1cbbf976dd7d3ab664be4389d22f53b1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.04
+    - any:
+      - conjunct:
+          subject: graha.sun
+          other: lord.bhava.10
+      - conjunct:
+          subject: graha.mars
+          other: lord.bhava.10
+      - aspects:
+          subject: lord.bhava.10
+          target: bhava.04
+      - conjunct:
+          subject: graha.sun
+          other: lord.bhava.04
+      - conjunct:
+          subject: graha.mars
+          other: lord.bhava.04
+      - aspects:
+          subject: lord.bhava.04
+          target: bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native is injured by stone
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V1133.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v1133
+    quote: >-
+      If the lord of the 2nd house is located in the 6th house with Rahu or is located in
+      that house with the lord of the sign occupied by Rahu, the native gets disease in his
+      teeth or their fall in the sub ruling period of any of the two i.e. the lord of the
+      2nd house or Rahu.
+    quote_sha256: 384f3efd688ba4da09e9d479855064e21cf0121db2a1164070df4b44f3998265
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.06
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.rahu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native gets disease in his teeth or their fall
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V114.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v114
+    quote: >-
+      If the lord of the 4th house is associated with Saturn and Rahu and aspected by Mars
+      & is without any benefic aspect, the native is injured by stone.
+    quote_sha256: 2b8821a634a54770ef97ec3fab4ff0b52da4100c0c7c3a8670952f787b533735
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.04
+        other: graha.rahu
+    - aspects:
+        subject: graha.mars
+        target: lord.bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native is injured by stone
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V116.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v116
+    quote: If the lord of the 2nd house is in the 6th house along with Mercury Rahu or Ketu
+    quote_sha256: 4bfd3e0606643a0323e8a674f437962a8840985d31ed8923759010a9308f5592
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.06
+    - any:
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.mercury
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.rahu
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.ketu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the native will have disease in the upper portion of the organ of speech in the sub
+      period of Rahu
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V117.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.status: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v117
+    quote: >-
+      If the lords of the 10th and the 6th houses are in occupation of the Navamsha of their
+      sign of debilitation, are located in lagna, with malefic planet and with Venus and the
+      lord of the 2nd house, the native loses his eyes under the orders of the king (government).
+    quote_sha256: 1111423161733b42b2f6b5a71a4bceef0fcb405245e3b34fcc402fb3282275dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.10
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.06
+        dignity: dignity.debilitated
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native loses his eyes under the orders of the king (government)
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V120.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v120
+    quote: >-
+      If the lord of the 2nd house is in the lagna along with Saturn and Mars, this yoga leads
+      to the ear being cut.
+    quote_sha256: b7f7992936f3c4536693172cb9e51593b9afdc93bdc521e31fc75837074e9647
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.01
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the ear being cut
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V120.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v120
+    quote: >-
+      Another yoga is constituted for the same result if the lord of the 6th house is in the
+      lagna along with the lord of the 2nd house and Gulik is in the 8th house with Mars.
+    quote_sha256: 4eff996712755870e648d2d6b4292719206486854ff73e4a9630487377b84ee4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.06
+        bhava: bhava.01
+    - conjunct:
+        subject: lord.bhava.06
+        other: lord.bhava.02
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.08
+    - conjunct:
+        subject: graha.saturn
+        other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: ear being cut
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V145.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v145
+    quote: >-
+      In case the lord of the 2nd house is in the 1st, 7th, 8th or 2nd in the company of Sun
+      & aspected by Mars
+    quote_sha256: 4d425886d1a8c5b4fcba82cd4cc27357987006c3ebafe52835b0457a1b0d3640
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: lord.bhava.02
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: lord.bhava.02
+          bhava: bhava.07
+      - occupies_bhava:
+          subject: lord.bhava.02
+          bhava: bhava.08
+      - occupies_bhava:
+          subject: lord.bhava.02
+          bhava: bhava.02
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.sun
+    - aspects:
+        subject: graha.mars
+        target: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native has wounds on his face or suffers through fire in that part of the body
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V145.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v145
+    quote: >-
+      if it is with Mars aspected by Sun the native has wounds on his face or suffers through
+      fire in that part of the body.
+    quote_sha256: 343979d0f890b8fe6296a804bf341441316cfb12aa16030afab0b74b04a007bf
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.mars
+    - aspects:
+        subject: graha.sun
+        target: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native has wounds on his face or suffers through fire in that part of the body
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V147.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v147
+    quote: >-
+      If Mars occupies 1st, 12th, 6th or the 7th house and is with Mandi and aspected by Sun;
+      and Mars is eclipsed, in inimical sign, in its sign of debilitation, the man suffers
+      from troubles of the blood.
+    quote_sha256: 428ca25c34ff7e76e29730ff4db7c377b4acd5aebbc9395a5392295b68a625b3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.01
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.12
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.07
+    - conjunct:
+        subject: graha.mars
+        other: graha.ketu
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+    - combust:
+        subject: graha.mars
+    - any:
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.inimical
+      - dignity:
+          subject: graha.mars
+          dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the man suffers from troubles of the blood
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V148.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v148
+    quote: >-
+      If Mars is located with Mandi in the 2nd or the 8th house & the lord of the 2nd is also
+      associated with or aspected by Mandi, the native suffers from severe blood troubles.
+    quote_sha256: 51efb3d49251d38ffe97b146ed2fb76bd5365b153c604fcf36c7622773435260
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.02
+      - occupies_bhava:
+          subject: graha.mars
+          bhava: bhava.08
+    - conjunct:
+        subject: graha.mars
+        other: graha.ketu
+    - any:
+      - conjunct:
+          subject: lord.bhava.02
+          other: graha.ketu
+      - aspects:
+          subject: graha.ketu
+          target: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from severe blood troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V149.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v149
+    quote: If Saturn is in the 2nd house with a malefic the man gets bitten by a dog.
+    quote_sha256: 75e082238dae77b183212b1e1fdf70a26fd72eadaa7e8d9a4088981f34c07c62
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - in_dusthana:
+        subject: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the man gets bitten by a dog
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V149.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v149
+    quote: In case Saturn is with the lord of the 2nd house or aspects it the same result
+      follows.
+    quote_sha256: 08c319c31f2ea3fdfd7d1933739480c85e7b46ff1d823a545ea189600dc25334
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - conjunct:
+        subject: graha.saturn
+        other: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the man gets bitten by a dog
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V149.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v149
+    quote: In case Saturn is with the lord of the 2nd house or aspects it the same result
+      follows.
+    quote_sha256: 08c319c31f2ea3fdfd7d1933739480c85e7b46ff1d823a545ea189600dc25334
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - aspects:
+        subject: graha.saturn
+        target: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the man gets bitten by a dog
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V152.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v152
+    quote: >-
+      If the lord of 2nd house & that of the 1st house are weak, located in a malefic Navamsha
+      the native suffers through some nervous trouble in the organ of speech.
+    quote_sha256: a44c4673d5cbd63177d9c501816d01f3de5f8e5ae42a476871274864ed17bae2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.02
+        op: <
+        value: 300.0
+    - strength:
+        subject: lord.bhava.01
+        op: <
+        value: 300.0
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.02
+        dignity: dignity.debilitated
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.01
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native suffers through some nervous trouble in the organ of speech
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V152.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v152
+    quote: >-
+      If the lord of the 2nd house. is without strength and aspected by malefics the native
+      has defective speech (stammering etc).
+    quote_sha256: 315cf97ba907d5a06addb78b70ea416358299a834767428ead465d19863566a6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - strength:
+        subject: lord.bhava.02
+        op: <
+        value: 300.0
+    - any:
+      - aspects:
+          subject: graha.sun
+          target: lord.bhava.02
+      - aspects:
+          subject: graha.mars
+          target: lord.bhava.02
+      - aspects:
+          subject: graha.saturn
+          target: lord.bhava.02
+      - aspects:
+          subject: graha.rahu
+          target: lord.bhava.02
+      - aspects:
+          subject: graha.ketu
+          target: lord.bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native has defective speech (stammering etc)
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V2.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v2
+    quote: >-
+      If the lord of the first house along with that of the 2nd house is located in any of
+      the bad houses 6th, 8th or 12th, the man gets his bones broken.
+    quote_sha256: 2dae5c1283b20dbb334dc52acfeaaafd59d08ccab5c04693c6f784daa80c33fa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: lord.bhava.02
+    - in_dusthana:
+        subject: lord.bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the man gets his bones broken
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V2.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v2
+    quote: >-
+      If the lord of the 2nd house along with Venus and Moon is located in the Ascendant the
+      man becomes "Night blind". If, however, it is with a benefic or is in its sign of exaltation
+      the night blindness does not take place.
+    quote_sha256: ecd7cb6bb946e89cf62b1dc03970e030e29752dd11879222d2451e34ed4a125f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.venus
+    - conjunct:
+        subject: lord.bhava.02
+        other: graha.moon
+    - occupies_bhava:
+        subject: lord.bhava.02
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the man becomes Night blind
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V4.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v4
+    quote: >-
+      If the Sun and Moon are in Leo Ascendant & are aspected by Mars and Saturn, loss of
+      eye should be predicted. In case the yoga is one where the aspected planets, Sun and
+      Moon, and the aspecting planets (Mars & Saturn) are both associated with natural benefic
+      planet, the blindness does not take place. The native has only unrestful eyes.
+    quote_sha256: 124f130fcf4d796292e344f507634520e9fb1267dd4c4907fa3851d6319a73e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.sun
+        rashi: rashi.leo
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.leo
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.leo
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+    - aspects:
+        subject: graha.saturn
+        target: graha.sun
+    - not:
+        any:
+        - conjunct:
+            subject: graha.sun
+            other: graha.jupiter
+        - conjunct:
+            subject: graha.sun
+            other: graha.venus
+        - conjunct:
+            subject: graha.sun
+            other: graha.mercury
+        - conjunct:
+            subject: graha.moon
+            other: graha.jupiter
+        - conjunct:
+            subject: graha.moon
+            other: graha.venus
+        - conjunct:
+            subject: graha.moon
+            other: graha.mercury
+        - aspects:
+            subject: graha.jupiter
+            target: graha.sun
+        - aspects:
+            subject: graha.venus
+            target: graha.sun
+        - aspects:
+            subject: graha.mercury
+            target: graha.sun
+        - aspects:
+            subject: graha.jupiter
+            target: graha.moon
+        - aspects:
+            subject: graha.venus
+            target: graha.moon
+        - aspects:
+            subject: graha.mercury
+            target: graha.moon
+        - conjunct:
+            subject: graha.mars
+            other: graha.jupiter
+        - conjunct:
+            subject: graha.mars
+            other: graha.venus
+        - conjunct:
+            subject: graha.mars
+            other: graha.mercury
+        - conjunct:
+            subject: graha.saturn
+            other: graha.jupiter
+        - conjunct:
+            subject: graha.saturn
+            other: graha.venus
+        - conjunct:
+            subject: graha.saturn
+            other: graha.mercury
+        - aspects:
+            subject: graha.jupiter
+            target: graha.mars
+        - aspects:
+            subject: graha.venus
+            target: graha.mars
+        - aspects:
+            subject: graha.mercury
+            target: graha.mars
+        - aspects:
+            subject: graha.jupiter
+            target: graha.saturn
+        - aspects:
+            subject: graha.venus
+            target: graha.saturn
+        - aspects:
+            subject: graha.mercury
+            target: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: loss of eye should be predicted
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V43.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v43
+    quote: >-
+      If Jupiter is in the Ascendant, with the lord of the 3rd house, there comes danger from
+      animals.
+    quote_sha256: 75a0bb6175148e836b71827b352d8dac19d5c6f8291fa5501cc5a0e842ccc9f1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.jupiter
+        other: lord.bhava.03
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there comes danger from animals
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V44.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v44
+    quote: >-
+      If the lord of the 3rd house is with Rahu in lagna & also with the lord of the sign
+      occupied by Rahu, the native may be bitten by a serpent.
+    quote_sha256: 11f8c50799a2c44000aa973fe2a3d10e4ebfdecee116c392fd8f2994910d652d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.03
+        bhava: bhava.01
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.rahu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native may be bitten by a serpent
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V44.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v44
+    quote: If the lord of the 3rd house is with Mercury, there is disease in the throat.
+    quote_sha256: d5eb4b810f1adf0249c80d2b0b6cd7c4707723d28e92fdbc2e3d22ec92c6b4a4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there is disease in the throat
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V45.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v45
+    quote: >-
+      If there is a planet in the 3rd house in its sign of debilitation, or it is in an inimical
+      sign in that house, and eclipsed, & aspected by malefics, there is danger from poison
+      either by its use or by its consumption.
+    quote_sha256: e9bc10304426ea9bf7a525ef962bfacbee55e067db38abef17f10aec46930851
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.12
+        op: '>='
+        n: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: there is danger from poison either by its use or by its consumption
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v47
+    quote: >-
+      The native suffers from throat troubles if there is a malefic planet particularly Mandi
+      in the 3rd house.
+    quote_sha256: b1001e01c132bd1ab3a054be9d43509ab2df15328f66ec4330a573c5ff9f88fe
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.03
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: The native suffers from throat troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V48.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v48
+    quote: >-
+      If Saturn located in the 3rd house is with Mandi & has no benefic influence over it
+      the native has nervous trouble in the ear
+    quote_sha256: 862d1f86b5da445f08d8d675857c0b9b849bf5253fbc3387d5d0ffd260803d79
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.03
+    - conjunct:
+        subject: graha.saturn
+        other: graha.ketu
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: graha.saturn
+        - aspects:
+            subject: graha.venus
+            target: graha.saturn
+        - aspects:
+            subject: graha.mercury
+            target: graha.saturn
+        - aspects:
+            subject: graha.moon
+            target: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native has nervous trouble in the ear
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v5
+    quote: >-
+      If there is a malefic planet in the 2nd house & the lord of the 2nd house is under the
+      aspect of benefic planet, the native has his eyes as if closed.
+    quote_sha256: cf7d44626046c9cdf1a4634cd88cdf45607143397640c20f1695b5b9ae4384ba
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.02
+        op: '>='
+        n: 1
+    - aspects:
+        subject: lord.bhava.02
+        target: graha.jupiter
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native has his eyes as if closed
+- id: SARVARTHACHINTAMANI.HEALTH.CH3V5.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch3.v5
+    quote: >-
+      If the lord of the lagna is with many malefic planets & aspected by Saturn, the native
+      has disease in his eyes.
+    quote_sha256: 5602f2368611683e2f28915250de02ee47e2ecd181c56876cd6587346de8e01a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.01
+        op: '>='
+        n: 2
+    - aspects:
+        subject: graha.saturn
+        target: lord.bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native has disease in his eyes
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v10
+    quote: >-
+      If the two planets i.e. the lord of the lagna and the lord of the 6th house are associated
+      with Mercury there will be mental trouble to the native
+    quote_sha256: 0951129c489cc59227457229fe8b6940ee26c38aeb7ef62bcbe88477ea5107f7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.mercury
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there will be mental trouble to the native
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V10.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v10
+    quote: if with Saturn it indicates chronic type of nervous troubles
+    quote_sha256: aad3f37e50ae15a821380a9a98ae38e267b08b4e96e5c0ec68cc5523b1f42f3c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.saturn
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: it indicates chronic type of nervous troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V10.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v10
+    quote: >-
+      If the lord of the 1st and the 6th houses are located with Rahu or Ketu trouble comes
+      by snake bite, thieves, fire & from nervous disorders.
+    quote_sha256: aa5d322ed3433eb9a7820f7f5e758293ca1a140603280efa2c56db92aea79d04
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.rahu
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.rahu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: trouble comes by snake bite, thieves, fire & from nervous disorders
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V10.X0006
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v10
+    quote: >-
+      If the lord of the 1st and the 6th houses are located with Rahu or Ketu trouble comes
+      by snake bite, thieves, fire & from nervous disorders.
+    quote_sha256: aa5d322ed3433eb9a7820f7f5e758293ca1a140603280efa2c56db92aea79d04
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.ketu
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.ketu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: trouble comes by snake bite, thieves, fire & from nervous disorders
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V1920.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v19-20
+    quote: If Rahu, Moon are eclipsed by the rays of the Sun, the native gets his belly cut
+      open.
+    quote_sha256: 6dd45e37c22fd37c8179b88d87cac008a67e7177f19b0e7ab26bc5f0e52dcf48
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.rahu
+        other: graha.sun
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native gets his belly cut open
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v28
+    quote: >-
+      If Sun and Mars aspect each other & are located in each other's Navamsha, the native
+      dies as a result of fight with another individual in a duel.
+    quote_sha256: 73ffa917844c34801f1fe6f1f82290103435110adbf1bf2214a3f066e1d8adcb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.sun
+        target: graha.mars
+    - aspects:
+        subject: graha.mars
+        target: graha.sun
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.sun
+        rashi: rashi.aries
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mars
+        rashi: rashi.leo
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native dies as a result of fight with another individual in a duel
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v33
+    quote: >-
+      If Moon is located in the 6th house with malefic & is also aspected by malefic and in
+      a malefic Navamsha, the native suffers from windy troubles.
+    quote_sha256: 8fba0bf92a19a11c248c204982d163a5ba6404a283a8350bf62e9d558d737383
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.moon
+        dignity: dignity.inimical
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native suffers from windy troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V33.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v33
+    quote: If it be Mars in such conditions the native suffers through heat & defective blood.
+    quote_sha256: 0141d8e5062d0fb7b2d08d8ea22b5495cb44cd4cc5118e04500d6d1390bea6d8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.06
+    - varga_dignity:
+        varga: varga.d9
+        subject: graha.mars
+        dignity: dignity.inimical
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native suffers through heat & defective blood
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v34
+    quote: >-
+      If Mercury is similarly situated in the 6th house, the native suffers particularly from
+      phlegm and windy troubles.
+    quote_sha256: aee2348916e44522510a7ff051f9f821778c66be454c768e58f1b430db651ca3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native suffers particularly from phlegm and windy troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V34.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v34
+    quote: If Jupiter is in 6th he suffers similarly. There is swollen region in the body.
+    quote_sha256: 23b82269646c8847bf8f07cbb6719556bbf1d2df7ded998876ee0ab607cfb2f5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: There is swollen region in the body
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V34.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v34
+    quote: If it be Venus the native suffers from loose motions.
+    quote_sha256: 7a629daa38eaebee63c7929e4e9354c5fb199baf43f143e41f84856b76db5b77
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the native suffers from loose motions
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v35
+    quote: >-
+      If Saturn be similarly situated under malefic influence in the 6th house, the native
+      suffers from colic trouble.
+    quote_sha256: 83e8b6bcbb4ad51a4fd9b9634490789f68d35b06b86a54d43403b75339f8bdf3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.06
+    - in_dusthana:
+        subject: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from colic trouble
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V35.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v35
+    quote: >-
+      If Rahu or Ketu are so situated in the 6th house, the native should be declared as suffering
+      through some dead spirit.
+    quote_sha256: d4e55b46a9f88b3c4688329df18c34a81f34cf36b1da3b4f6c727aef37db2d2d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.06
+    - in_dusthana:
+        subject: graha.rahu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native should be declared as suffering through some dead spirit
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V35.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v35
+    quote: >-
+      If Rahu or Ketu are so situated in the 6th house, the native should be declared as suffering
+      through some dead spirit.
+    quote_sha256: d4e55b46a9f88b3c4688329df18c34a81f34cf36b1da3b4f6c727aef37db2d2d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.06
+    - in_dusthana:
+        subject: graha.ketu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native should be declared as suffering through some dead spirit
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v36
+    quote: >-
+      If Moon is located in the 6th house with Mars the native suffers from mental aberration
+      & jaundice etc.
+    quote_sha256: 8b1c3a85279d87ad1be8102c8fd165a1dba62d7fd168026025e7b2eaae304e60
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from mental aberration & jaundice etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V36.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v36
+    quote: If Moon in the 6th is with Mars and Sun, the native suffers from colic pains etc.
+    quote_sha256: e0361df3260494a4333bb6c453ef669ca26d3fe9c674fc81de92fdd21e9b6fcc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from colic pains etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V40.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v40
+    quote: >-
+      If Moon is located in a watery sign in the 6th house & the lord of the 6th house is
+      also located in a watery sign aspected by Mercury, the native suffers from urinal troubles.
+    quote_sha256: 2671bd7c3bf02894693f74f043a519c5fdb571e489e5611da47302cb65448096
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - any:
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.scorpio
+      - occupies_rashi:
+          subject: graha.moon
+          rashi: rashi.pisces
+    - any:
+      - occupies_rashi:
+          subject: lord.bhava.06
+          rashi: rashi.cancer
+      - occupies_rashi:
+          subject: lord.bhava.06
+          rashi: rashi.scorpio
+      - occupies_rashi:
+          subject: lord.bhava.06
+          rashi: rashi.pisces
+    - aspects:
+        subject: graha.mercury
+        target: lord.bhava.06
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from urinal troubles
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.education: 0.75
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v47
+    quote: >-
+      If there is no beneflc planet in the 5th house, also this house contains Saturn, Mandi
+      & Rahu, & the lord of the 5th house is aspected by malefic, the native often loses memory.
+    quote_sha256: f7710acacd001e3ce82298ff8e561380b4573087cd42c6b5063fa67e2ec488b9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.05
+        op: ==
+        n: 0
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.05
+    - aspects:
+        subject: lord.bhava.12
+        target: lord.bhava.05
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native often loses memory.
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V67.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v67
+    quote: If the lord of the 5th house is located in the 8th house & is with the lord of
+      the 8th
+    quote_sha256: e172ed129dd8778b514944a1bf0458b60b2266f6f554ab4005f0ba89e45596a0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.08
+    - conjunct:
+        subject: lord.bhava.05
+        other: lord.bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the disease in the belly is indicated
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v7
+    quote: >-
+      If the planets Moon and Mercury are in the lagna under the influence of Rahu. the disease
+      of leprosy would be there, but not when the lord of the lagna is also in the lagna.
+    quote_sha256: d5355b1fdd322affe495a1139d2696909e80a7287fa2a66a34671df9d68f1f59
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.01
+    - conjunct:
+        subject: graha.moon
+        other: graha.rahu
+    - not:
+        occupies_bhava:
+          subject: lord.bhava.01
+          bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the disease of leprosy would be there
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V9.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v9
+    quote: >-
+      If the lord of the lagna & that of the 6th house are both located with the Sun, the
+      yoga indicates fever in the body
+    quote_sha256: 4f6ff338ffa0cf0c53a8208784e1cbaeee2ecde0a72cc03103e580fab0828db7
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.sun
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.sun
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: fever in the body
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V9.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v9
+    quote: if the two are with Moon the trouble will be caused by water
+    quote_sha256: abba627145846f83c9701c4475d31492738bcb5fd169136be5f88f55d93c78f8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.moon
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the trouble will be caused by water
+- id: SARVARTHACHINTAMANI.HEALTH.CH5V9.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v9
+    quote: If the two are with Mars the trouble is from battle or from wounds boils etc.
+    quote_sha256: 7ccd79af82a9da08c4d0952e5d2bef34cb8b36145faa681e12d59e727de04f4a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.01
+        other: graha.mars
+    - conjunct:
+        subject: lord.bhava.06
+        other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the trouble is from battle or from wounds boils etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v36
+    quote: >-
+      If a weak Moon (as defined in shloka 35) is located in the 8th house with Mars, Rahu
+      & Saturn, even then the results stated in shloka 35 follow.
+    quote_sha256: 1c83ab7ce6c1d8ce2e24886c70eaf47cba48610eef0943feaed498626f1f3d1f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.08
+    - conjunct:
+        subject: graha.moon
+        other: graha.mars
+    - conjunct:
+        subject: graha.moon
+        other: graha.rahu
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from epilepsy or of trouble from the souls of the dead
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v47
+    quote: >-
+      If Sun and Moon are in the 12th house without the aspect of benefics the native becomes
+      blind.
+    quote_sha256: ac2f01cc391698314bf26606be7941fbaadfb09880954d3e5b56c006ac609a17
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: graha.sun
+        - aspects:
+            subject: graha.venus
+            target: graha.sun
+        - aspects:
+            subject: graha.mercury
+            target: graha.sun
+        - aspects:
+            subject: graha.jupiter
+            target: graha.moon
+        - aspects:
+            subject: graha.venus
+            target: graha.moon
+        - aspects:
+            subject: graha.mercury
+            target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native becomes blind
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V47.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v47
+    quote: >-
+      If one of them is in the 6th and the other in 12th without benefic aspect the man is
+      blind by one eye.
+    quote_sha256: cc461b9a78967830d82b8198ab0fd7968e551d949762fd9347954f1fad253b1d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - not:
+        any:
+        - aspects:
+            subject: graha.jupiter
+            target: graha.sun
+        - aspects:
+            subject: graha.venus
+            target: graha.sun
+        - aspects:
+            subject: graha.mercury
+            target: graha.sun
+        - aspects:
+            subject: graha.jupiter
+            target: graha.moon
+        - aspects:
+            subject: graha.venus
+            target: graha.moon
+        - aspects:
+            subject: graha.mercury
+            target: graha.moon
+    - any:
+      - all:
+        - occupies_bhava:
+            subject: graha.sun
+            bhava: bhava.06
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.12
+      - all:
+        - occupies_bhava:
+            subject: graha.moon
+            bhava: bhava.06
+        - occupies_bhava:
+            subject: graha.sun
+            bhava: bhava.12
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the man is blind by one eye
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V48.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.longevity: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v48
+    quote: >-
+      If Sun and Moon are in the 12th and the lord of the 12th in the 1st house, the yoga
+      indicates destruction of body.
+    quote_sha256: 6f61d61c02f733096c7be20fe0f87a2efda925b3b75b512714d7debe60d3f70a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.12
+    - occupies_bhava:
+        subject: lord.bhava.12
+        bhava: bhava.01
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: destruction of body
+- id: SARVARTHACHINTAMANI.HEALTH.CH7V57.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v57
+    quote: >-
+      If there are many malefic planets in the 8th house, disease on or near the rectum should
+      be declared, not however, when there is benefic influence on the 8th house.
+    quote_sha256: 6d02cf1562b3e78070955b23fc44202a40a6cb314e2cec16f02fab74197f02dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.08
+        op: '>='
+        n: 2
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: disease on or near the rectum should be declared
+- id: SARVARTHACHINTAMANI.HEALTH.CH8V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v12
+    quote: >-
+      If there is the influence of malefic planets on the 11th house, there will be trouble
+      to the ear.
+    quote_sha256: 99e691ac9ecc03a829c3c57b354d1ba28ed76a979dd4b0877084a20f240d5c51
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.11
+        op: '>='
+        n: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there will be trouble to the ear
+- id: SARVARTHACHINTAMANI.HEALTH.CH8V25.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v25
+    quote: >-
+      If the lord of the 12th house is located with a benefic planet & in the Navamsha of
+      a benefic planet & is influenced by a benefic planet, the yoga indicates the possession
+      of good healthy eyes.
+    quote_sha256: e036882cbe5813ee28630b926b497247b0989e4eb41507122330a6c20dd86b3b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.12
+        other: graha.jupiter
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.12
+        dignity: dignity.exalted
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.12
+  indicates:
+    claim: health.vitality
+    polarity: positive
+    magnitude: strong
+    text: the possession of good healthy eyes
+- id: SARVARTHACHINTAMANI.HEALTH.CH8V33.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v33
+    quote: >-
+      In cases where the 10th house is occupied by malefics, the yoga indicates the weakness
+      of knees.
+    quote_sha256: 1b1b8dbd736a46924bc16c76c0a36c189b3e04ef30addc968f318279fe968b6b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.10
+        op: '>='
+        n: 1
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: weakness of knees
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V11.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v11
+    quote: >-
+      If Sun and Moon are in lagna or a trinal house, or if Saturn and Jupiter are in kendra,
+      the native suffers from mental derangement if the birth has taken place on a Saturday
+      or Tuesday.
+    quote_sha256: 0fafd41024a3c3135547efc57f72613aa4dee48b8a5e4a4159010725744fb0b9
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - all:
+        - any:
+          - occupies_bhava:
+              subject: graha.sun
+              bhava: bhava.01
+          - in_trikona:
+              subject: graha.sun
+        - any:
+          - occupies_bhava:
+              subject: graha.moon
+              bhava: bhava.01
+          - in_trikona:
+              subject: graha.moon
+      - all:
+        - in_kendra:
+            subject: graha.saturn
+        - in_kendra:
+            subject: graha.jupiter
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from mental derangement
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V12.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+    domain.temperament: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v12
+    quote: >-
+      If Moon and Mercury are located in kendras and are not located in any benefic Navamsha,
+      the native gets mental derangement.
+    quote_sha256: d4b840e13ae778228c2e9d84425b5ac95ca087e11cb4daef05b7063c009b1494
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_kendra:
+        subject: graha.moon
+    - in_kendra:
+        subject: graha.mercury
+    - not:
+        any:
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.moon
+            dignity: dignity.friendly
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.moon
+            dignity: dignity.exalted
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.moon
+            dignity: dignity.moolatrikona
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.moon
+            dignity: dignity.own_sign
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.mercury
+            dignity: dignity.friendly
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.mercury
+            dignity: dignity.exalted
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.mercury
+            dignity: dignity.moolatrikona
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.mercury
+            dignity: dignity.own_sign
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native gets mental derangement
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V17.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v17
+    quote: >-
+      If the lord of the lagna is located in the 12th house, the 10th house is occupied by
+      malefics, Mars is with Moon, the native getting underserved bad name, lives away from
+      his home, lives on charity & suffers physically.
+    quote_sha256: c8d355a2435f8f2512fa80d2575240f36f689f31c996c950bda0fffe50f44c90
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.01
+        bhava: bhava.12
+    - occupant_count:
+        bhava: bhava.10
+        op: '>'
+        n: 0
+    - conjunct:
+        subject: graha.mars
+        other: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: suffers physically
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v18
+    quote: >-
+      If Saturn and Mars are located together in the 6th or 8th house. the native suffers
+      from epilepsy.
+    quote_sha256: edc2ff2eff82b3f6a2d295cb6729fef4471c3d2956beedf19bc251ff95fefcd8
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.saturn
+        other: graha.mars
+    - any:
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.06
+      - occupies_bhava:
+          subject: graha.saturn
+          bhava: bhava.08
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from epilepsy
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V19.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v19
+    quote: >-
+      If all malefic planets are located in the 8th house, Moon and Venus are together in
+      kendra, the yoga so formed goes under the name of "Gad" (disease). The native in this
+      yoga suffers from epilepsy.
+    quote_sha256: b60bc645d3d2584e5061a6322f500197af631e134e02ccf7c5b2520b9a6c3576
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.08
+        op: ==
+        n: 3
+    - conjunct:
+        subject: graha.moon
+        other: graha.venus
+    - in_kendra:
+        subject: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: The native in this yoga suffers from epilepsy.
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.85
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v35
+    quote: >-
+      Moon in 10th, Mercury in 7th, Saturn in 2nd gives impairment of a limb & rift with ones
+      own people.
+    quote_sha256: 5c4831a79e0b5d794427d1b3742e2cab9f01636c8636078bb89bc0a1915fca48
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: impairment of a limb & rift with ones own people
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V35.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+    domain.relationship: 0.75
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v35
+    quote: >-
+      Moon in 10th, Mercury in 7th, Saturn in 2nd gives impairment of a limb & rift with ones
+      own people. If the planets are in the Navamshas of debilitation signs or of inimical
+      signs, the result is more certain.
+    quote_sha256: ee59c424a079a1cef166be4fd7c75ab3b0a72e992930dc81ffae9b6d40c6890f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.07
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.02
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.debilitated
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.moon
+          dignity: dignity.inimical
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.mercury
+          dignity: dignity.debilitated
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.mercury
+          dignity: dignity.inimical
+    - any:
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.saturn
+          dignity: dignity.debilitated
+      - varga_dignity:
+          varga: varga.d9
+          subject: graha.saturn
+          dignity: dignity.inimical
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: impairment of a limb & rift with ones own people
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v36
+    quote: >-
+      If Moon occupies the middle portion of the sign Sagittarius i.e. its 5th Navamsha, and
+      is aspected by Saturn & Mars or is associated with them
+    quote_sha256: c63379f7622df22a23e0c0107f3c1a1ece6adea525c73eedf08f337666be4262
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.aries
+    - any:
+      - all:
+        - aspects:
+            subject: graha.saturn
+            target: graha.moon
+        - aspects:
+            subject: graha.mars
+            target: graha.moon
+      - all:
+        - conjunct:
+            subject: graha.moon
+            other: graha.saturn
+        - conjunct:
+            subject: graha.moon
+            other: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from leprosy
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V36.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v36
+    quote: >-
+      or if Moon any where in the birth chart is located in the Navamsha of Capricorn, Cancer
+      or Taurus & is aspected by Saturn and Mars
+    quote_sha256: 80b0f488746a265619046eaf38ec0886063e6af8d4c9fd5bdd418e1683dd5ee4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.capricorn
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.cancer
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.taurus
+    - aspects:
+        subject: graha.saturn
+        target: graha.moon
+    - aspects:
+        subject: graha.mars
+        target: graha.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from leprosy
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V37.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v37
+    quote: >-
+      If Moon is with Mandi and is located in Cancer, Aquarius or Scorpio Navamsha the native
+      suffers from belly troubles such as colic.
+    quote_sha256: ac4939f8fe7ba6680b2867533244fe8f7ab42836f3e340952af03a11d53af8b5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.moon
+        other: graha.mandika
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.cancer
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.aquarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: graha.moon
+          rashi: rashi.scorpio
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from belly troubles such as colic
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V4546.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.9
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v45-46
+    quote: >-
+      If the Sun is in the 4th house, aspected by malefics, the yoga indicates excessive heat
+      in the body which goes away after some time.
+    quote_sha256: cbeb6afdf6e9c1eacd71ec818ff1349b9a70948212f4ed0f697079cc12c32f52
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.04
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: excessive heat in the body which goes away after some time
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V47.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v47
+    quote: >-
+      If Venus is located in its sign of debilitation in the 9th house alongwith a malefic
+      & under the aspect of a malefic it proves injurious to teeth.
+    quote_sha256: ddcf6d99cf1fe2143a7d00e0d43cdca9251596abb87ea09419fb422f57b66d01
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+    - varga_dignity:
+        varga: varga.d1
+        subject: graha.venus
+        dignity: dignity.debilitated
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: it proves injurious to teeth
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V47.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v47
+    quote: If Venus is located with Rahu, the native loses his ear
+    quote_sha256: 5be3d5738eed4cc75258256fafe6e10961204cccd494ce8c6773b07ffc6fe8aa
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.rahu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native loses his ear
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V5253.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v52-53
+    quote: If Rahu is there i.e. in the trinal house, being bitten by dogs is feared
+    quote_sha256: e6aa8745f365d3158df00a8596a4f15522352a671b7dabe77683526feb63024f
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_trikona:
+        subject: graha.rahu
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: being bitten by dogs is feared
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V5253.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v52-53
+    quote: if Mars is there fear comes from tortoise.
+    quote_sha256: 5651ecba2ed6f31eb57255b1ba86aa77a2bee2c233f1105d1da58a151e7ace88
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_trikona:
+        subject: graha.mars
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: fear comes from tortoise
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V5253.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v52-53
+    quote: If Mercury is there the fear of being bitten by flies
+    quote_sha256: cae633434d9498d7ce178c675c3c958f8ead58afaac631a59476b645d53b0141
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_trikona:
+        subject: graha.mercury
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the fear of being bitten by flies
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V5253.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v52-53
+    quote: if it is Venus there is fear of loss of sleep or there is trouble from women
+    quote_sha256: 8eb9364fb226362904b333eabd9dfeb2b9ce3b3efdc286ea64c552df59202654
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_trikona:
+        subject: graha.venus
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there is fear of loss of sleep or there is trouble from women
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V5253.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v52-53
+    quote: if it is Saturn there is fear of fall from height.
+    quote_sha256: b31a9a8a7be8bd5bb15f40217b66e448d066b03ee9ef614d97154b8e3b3b4e5c
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_trikona:
+        subject: graha.saturn
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: there is fear of fall from height
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v6
+    quote: >-
+      If Moon is located in the 7th house with Saturn & is in between malefics i.e. one malefic
+      is in 6th and the other in 8th house the native suffers from diseases like asthama,
+      consumption, spleen trouble, colic, etc.
+    quote_sha256: 68381b1442527fbd321ab1a13989e350c5b948a9b5492eea43606090a1bc1ec1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.07
+    - conjunct:
+        subject: graha.moon
+        other: graha.saturn
+    - occupies_bhava_from:
+        subject: graha.mars
+        bhava: bhava.06
+        reference: ref.moon
+    - occupies_bhava_from:
+        subject: graha.saturn
+        bhava: bhava.08
+        reference: ref.moon
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native suffers from diseases like asthama, consumption, spleen trouble, colic,
+      etc.
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V60.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v60
+    quote: If Mars occupies the 7th house the woman has very small sized breasts.
+    quote_sha256: 928feb219309a0296a646b629bd3b7c4fa14d9649fa2822b26348d02bd06e7b5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the woman has very small sized breasts
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V60.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v60
+    quote: If Saturn, Rahu or Ketu is in the 7th she has long breasts.
+    quote_sha256: c7ea26f95e6d585e1cb99bb324fcd2916f230962b262e7b184f331e325e4a2d5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: she has long breasts
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V60.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v60
+    quote: If Saturn, Rahu or Ketu is in the 7th she has long breasts.
+    quote_sha256: c7ea26f95e6d585e1cb99bb324fcd2916f230962b262e7b184f331e325e4a2d5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: she has long breasts
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V60.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v60
+    quote: If Saturn, Rahu or Ketu is in the 7th she has long breasts.
+    quote_sha256: c7ea26f95e6d585e1cb99bb324fcd2916f230962b262e7b184f331e325e4a2d5
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.ketu
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: she has long breasts
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V60.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v60
+    quote: If Sun is there the breasts are hard.
+    quote_sha256: ff8a970569801e38341349cba77d680641d413eed65a837eee6bcd52f22680b6
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: moderate
+    text: the breasts are hard
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V89.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v8-9
+    quote: The Sun & Moon in Leo or Cancer reduce the body much.
+    quote_sha256: 497e3878fc8ca42199d10d1149def41dfe07129c4dd95b089be4267f0276e42e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - occupies_bhava:
+          subject: graha.sun
+          bhava: bhava.01
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.leo
+    - all:
+      - occupies_bhava:
+          subject: graha.moon
+          bhava: bhava.01
+      - bhava_in_rashi:
+          bhava: bhava.01
+          rashi: rashi.cancer
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: reduce the body much
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V89.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v8-9
+    quote: >-
+      If Sun, Moon, Mars and Saturn occupy respectively the 8th, 6th, 2nd & 12th house, the
+      native loses eyes through the humour of the strongest of the afflicting planet.
+    quote_sha256: 98b6305057c38c874c84368972c6fa92bf85eec994a7d1d92e1ff84c92c988da
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.08
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.06
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.02
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.12
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: extreme
+    text: the native loses eyes through the humour of the strongest of the afflicting planet
+- id: SARVARTHACHINTAMANI.HEALTH.CH9V89.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v8-9
+    quote: If Jupiter is in lagna, Mars in 7th, the native gets mental derangement.
+    quote_sha256: 0f4603ad8eafcac5dfcc407aa739c60c8dfd89b620bff4107ee745fb685c2214
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.07
+  indicates:
+    claim: health.affliction
+    polarity: positive
+    magnitude: strong
+    text: the native gets mental derangement
+- id: SARVARTHACHINTAMANI.RELATIONSHIP.CH14V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.8
+    domain.relationship: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch14.v34
+    quote: >-
+      In the last portion of the ruling period of Mars there is separation from brothers and
+      trouble from son, wife, fire, colic pains, urinal troubles. This will be particularly
+      so if Mars is not in Gochar (excellence) (see shloka 17).
+    quote_sha256: 6c18fd73067359f26e817c1394065fe9a640c8759ff01268c7646ff9b8b83eee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.mars
+        level: level.maha
+  indicates:
+    claim: relationship.discord
+    polarity: positive
+    magnitude: strong
+    text: separation from brothers and trouble from son, wife
+- id: SARVARTHACHINTAMANI.WEALTH.CH13V28.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.health: 0.9
+    domain.relationship: 0.7
+    domain.property: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v28
+    quote: >-
+      During the ruling period of Sun in the 12th house, the native gets sorrow, losses, weak
+      health, loss of wife, relatives, sons, lands.
+    quote_sha256: a9d110e272ba31af56ff7fc01ebbbfbe83a59d21262bda976e978654de22cede
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.12
+  indicates:
+    claim: wealth.loss
+    polarity: positive
+    magnitude: strong
+    text: the native gets sorrow, losses, weak health, loss of wife, relatives, sons, lands

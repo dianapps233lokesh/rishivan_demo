@@ -1,0 +1,1161 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: SARVARTHACHINTAMANI.EDUCATION.CH12V23.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.spiritual: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v23
+    quote: >-
+      If Saturn occupying Aries is in kendra or a trine, benefics in kendra or Sun & Mercury
+      are in kendra, the native is a learned man, religious, wise, & lives for 70 years.
+    quote_sha256: e1ada817fe78371dba887e92301688f717897058baec3b09f4b51a932d1dbd27
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.aries
+    - any:
+      - in_kendra:
+          subject: graha.saturn
+      - in_trikona:
+          subject: graha.saturn
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the native is a learned man
+- id: SARVARTHACHINTAMANI.GENERAL.CH11V1.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.health: 0.5
+    domain.spiritual: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch11.v1
+    quote: Jupiter in the lagna is particularly qualified to destroy the evil result of weak
+      planets
+    quote_sha256: e0ecd367d657d5b43f28fe43ea93e9eccf36fbe0489e967bea799a496ec95ed0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+  indicates:
+    claim: general.protection
+    polarity: positive
+    magnitude: strong
+    text: destroys the evil result of weak planets
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH12V81.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.temperament: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch12.v81
+    quote: >-
+      If Saturn occupies Libra, if Sun is in a fixed sign with Mercury, Moon is in Taurus,
+      Venus in Gemini, Jupiter in Cancer lagna, the native is equal to a Muni (81)
+    quote_sha256: 79b31ab00af062602e35db8076c80b04113ad49a77f5166281ec829f80f5e56e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.saturn
+        rashi: rashi.libra
+    - any:
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.taurus
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.leo
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.scorpio
+      - occupies_rashi:
+          subject: graha.sun
+          rashi: rashi.aquarius
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.taurus
+    - occupies_rashi:
+        subject: graha.venus
+        rashi: rashi.gemini
+    - bhava_in_rashi:
+        bhava: bhava.01
+        rashi: rashi.cancer
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native is equal to a Muni
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH13V18.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.wealth: 0.7
+    domain.property: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch13.v18
+    quote: >-
+      During the ruling period of Moon when it is situated with a benefic planet, one engages
+      himself in good actions & gets cattle, lands, gold, clothes, & ornaments, dips in holy
+      waters and comfort from other woman.
+    quote_sha256: eda4b2b760b6119a863ff5ea56411ebcf7c2688b06f67268a587da0e9cac50fc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - any:
+      - conjunct:
+          subject: graha.moon
+          other: graha.jupiter
+      - conjunct:
+          subject: graha.moon
+          other: graha.venus
+      - conjunct:
+          subject: graha.moon
+          other: graha.mercury
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: one engages himself in good actions & dips in holy waters
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH15V10.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.wealth: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch15.v10
+    quote: >-
+      During the rulig period of Venus located in the sign of its friend, the native does
+      good to others, gives evidence of his knowing arts. engages in having orchard of "Supari"
+      a hard ingredient of betal & used in its whole form for worship purposes & spends money
+      on worship of diety & on the welfare of humanity.
+    quote_sha256: fbe989b43a9d43918395ab14f1306cd8ca01497c7a9532b51a70ab40f67c41dd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - dignity:
+        subject: graha.venus
+        dignity: dignity.friendly
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: spends money on worship of diety & on the welfare of humanity
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH16V16.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.status: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v16
+    quote: >-
+      During the ruling period of Rahu located in the 10th house, the native acts in the direction
+      of good karmas, hears Sacred Texts from Puranas etc & gets his body purified by bath
+      in the sacred waters of the Ganges.
+    quote_sha256: 14a2e1b8b33b05826f7806d027c5b1438240e8f98b3d58e42116fdf36f031472
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.rahu
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.rahu
+        bhava: bhava.10
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: >-
+      acts in the direction of good karmas, hears Sacred Texts from Puranas etc & gets his
+      body purified by bath in the sacred waters of the Ganges
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH16V1720.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.career: 0.8
+    domain.spiritual: 0.8
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v17-20
+    quote: >-
+      During the sub periods of benefic planets in the main period of Moon located in the
+      10th house, the native remains devoted to his duties and to religious literature, &
+      charity.
+    quote_sha256: 07e5085740cb3aa221c0b0b4002337a284fc5fbb6b9201b28e19b6235bf633bc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.moon
+        level: level.maha
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.jupiter
+        level: level.antar
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.10
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native remains devoted to his duties and to religious literature, & charity
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH16V1821.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.wealth: 0.7
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v18-21
+    quote: >-
+      If the Sun having its main dasa is located in the 9th house and the sub period is of
+      benefic planets one engages himself in good moral deeds, charity, religious sacrifices,
+      & great enjoyments.
+    quote_sha256: 4f47929b25193dd1986da0bfacb44107ced50ddb33dbbc044c450e89d59a35a4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.sun
+        level: level.maha
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: one engages himself in good moral deeds, charity, religious sacrifices, & great
+      enjoyments
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH16V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.progeny: 0.7
+    domain.relationship: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch16.v8
+    quote: >-
+      During the main ruling period of Venus located in a trinal house & the sub period of
+      benefic planet, the native undertakes good actions, he worships Gods, & Brahmins & there
+      is the prosperity of sons & wife.
+    quote_sha256: 5930ebad7d12e4c71afb93c3c9b13009172864c8f427c741d5b28b625825fceb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: graha.venus
+        level: level.maha
+    - in_trikona:
+        subject: graha.venus
+    - dasha_active:
+        system: dasha_system.vimshottari
+        subject: lord.bhava.01
+        level: level.antar
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the native undertakes good actions, he worships Gods, & Brahmins & there is the prosperity
+      of sons & wife
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH2V111113.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+    domain.education: 0.85
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch2.v111-113
+    quote: >-
+      If all the planets are located in kendra or trine or the 2nd house in the Navamsha sign
+      belonging to Jupiter, the native takes to sanyas from childhood & lives till the end
+      of a yuga & is the author of many books.
+    quote_sha256: a430d196a6801348016d67956f5e61af6fd0684d09bfd250c7522f3c80fa0159
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.sun
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.moon
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mars
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.mercury
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.jupiter
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.venus
+        rashi: rashi.sagittarius
+    - varga_occupies:
+        varga: varga.d9
+        subject: graha.saturn
+        rashi: rashi.sagittarius
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: extreme
+    text: the native takes to sanyas from childhood
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH5V64.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.wealth: 0.6
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch5.v64
+    quote: >-
+      If the lord of the 5th house is located in the 9th house and is located with benefic
+      planets & aspaced also by such planets, the native is always engaged in feeding others.
+    quote_sha256: 2f91cf482fe6b5dbf8d7bace701c28428a3364b17bbad7ae0049c15a776cd926
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.09
+    - conjunct:
+        subject: lord.bhava.05
+        other: graha.jupiter
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native is always engaged in feeding others
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH7V53.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.status: 0.4
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v53
+    quote: >-
+      If the lord of the 5th house is located in the 9th house, & is associated with the lord
+      of the 10th or the 9th house & is aspected by the lord of the 1st house, the native
+      gets articles in charity.
+    quote_sha256: 229f5a33b499a3f0189626018a1b3c14d6a0da2e936360d4425c39b27956481e
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.05
+        bhava: bhava.09
+    - any:
+      - conjunct:
+          subject: lord.bhava.05
+          other: lord.bhava.10
+      - conjunct:
+          subject: lord.bhava.05
+          other: lord.bhava.09
+      - exchange:
+          subject: lord.bhava.05
+          other: lord.bhava.10
+      - exchange:
+          subject: lord.bhava.05
+          other: lord.bhava.09
+    - aspects:
+        subject: lord.bhava.01
+        target: lord.bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native gets articles in charity
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH7V54.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.wealth: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v54
+    quote: >-
+      If the lord of the 9th house is located in a kendra or a trinal house and is aspected
+      by the lord of the 10th house, or is located in its highest degree of exaltation, the
+      native gets articles in charity.
+    quote_sha256: 30efad95cd84b22ff215aaa2646c6a122d859767f79d3ba67381032e691781fb
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - any:
+        - in_kendra:
+            subject: lord.bhava.09
+        - in_trikona:
+            subject: lord.bhava.09
+      - aspects:
+          subject: lord.bhava.10
+          target: lord.bhava.09
+    - dignity:
+        subject: lord.bhava.09
+        dignity: dignity.exalted
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native gets articles in charity
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH7V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.9
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v7
+    quote: >-
+      If Jupiter or Venus occupies its own or a friendly Navamsha & 192 the lord of the 9th
+      house & a benefic planet in strength, the native becomes the head of a religious institution.
+    quote_sha256: 1f3be70cc4ec70c66a8573c2337225c80e524a5575072e3518b0b25566107cfd
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - all:
+      - any:
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.jupiter
+            dignity: dignity.own_sign
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.jupiter
+            dignity: dignity.friendly
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.09
+    - all:
+      - any:
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.venus
+            dignity: dignity.own_sign
+        - varga_dignity:
+            varga: varga.d9
+            subject: graha.venus
+            dignity: dignity.friendly
+      - occupies_bhava:
+          subject: lord.bhava.09
+          bhava: bhava.09
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native becomes the head of a religious institution
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH7V8.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch7.v8
+    quote: >-
+      If the lord of the 9th house occupies the Navamsha sign of Jupiter, Venus or Mercury
+      and is aspected by benefics & is located in between benefics, the native becomes religious.
+    quote_sha256: 64dba0ad36b6fbf8ab3138c7dfb0cbc6ec4a4176b131d7fb02c8282a33753c8a
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - any:
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.09
+          rashi: rashi.sagittarius
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.09
+          rashi: rashi.pisces
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.09
+          rashi: rashi.taurus
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.09
+          rashi: rashi.libra
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.09
+          rashi: rashi.gemini
+      - varga_occupies:
+          varga: varga.d9
+          subject: lord.bhava.09
+          rashi: rashi.virgo
+    - aspects:
+        subject: graha.jupiter
+        target: lord.bhava.09
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native becomes religious
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V34.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v34
+    quote: >-
+      If Venus is located in the 5th house with Moon or if the 5th is aspected by Moon and
+      Venus, the native worships a female diety.
+    quote_sha256: 06d19a821c7c7ed2dcb4870a49e5d8989e05cfa758887c9111f9115fcc172661
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+    - conjunct:
+        subject: graha.venus
+        other: graha.moon
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native worships a female diety
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V34.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v34
+    quote: >-
+      If Venus is located in the 5th house with Moon or if the 5th is aspected by Moon and
+      Venus, the native worships a female diety.
+    quote_sha256: 06d19a821c7c7ed2dcb4870a49e5d8989e05cfa758887c9111f9115fcc172661
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: graha.moon
+        target: bhava.05
+    - aspects:
+        subject: graha.venus
+        target: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native worships a female diety
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V35.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 1.0
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v35
+    quote: If the 5th house is occupied by a male planet, the native worships a male deity.
+    quote_sha256: 86b38d675a7cb8b67b18640eb3ae2269e23a3eff13b519d883af51933763003b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupant_count:
+        bhava: bhava.05
+        op: '>='
+        n: 1
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native worships a male deity
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V36.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v36
+    quote: >-
+      If Moon is influencing, by location and aspect, the 5th house, the native worships "Yakshini".
+    quote_sha256: bac229375150d3303234084caf0ae0df6d26be44909d72c8979c08aecf541a9d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.moon
+        bhava: bhava.05
+    - aspects:
+        subject: graha.moon
+        target: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native worships Yakshini
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V36.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v36
+    quote: If Mercury influences this house, the native worships "Skanda" or "Bhairava".
+    quote_sha256: 075410deaebc4e62ae529869aecadff13f33cfc17737572e72b9c3428241afcc
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+    - aspects:
+        subject: graha.mercury
+        target: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native worships Skanda or Bhairava
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V37.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v37
+    quote: If Mercury is in 5th, the native worships "Sharada" or "Vishnu"
+    quote_sha256: ccb392405203aeceece85a7eea5e1d9f93415feb2a509252a1344fb3163131ca
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native worships Sharada or Vishnu
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V37.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v37
+    quote: '& a Satvic devata if it is Jupiter.'
+    quote_sha256: fe174c6f8d072fbbe37f65b059df416aa06bec490a13f1904bf9861a8c137c35
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native worships a Satvic devata
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V37.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v37
+    quote: If it is Venus, he worships "Chamunda" devi.
+    quote_sha256: 40edd73435f88f5fd85ccb8aab1e78c559237f3d8c54ff1bc834c5670063c605
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: the native worships Chamunda devi
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V38.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v38
+    quote: >-
+      If Saturn influences the 5th house the native worships some spirit of the dead & takes
+      his abode in a burning ghat.
+    quote_sha256: 1fdc40671394afbfae70312e1a32560edd5faa6ed3be1ceb1bc1f5da8adad0d1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    any:
+    - occupies_bhava:
+        subject: graha.saturn
+        bhava: bhava.05
+    - aspects:
+        subject: graha.saturn
+        target: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native worships some spirit of the dead & takes his abode in a burning ghat
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V38.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v38
+    quote: If Rahu or Ketu are there the devta worshipped is one that harms others.
+    quote_sha256: 7305691c6021e9e39b219d9b344baff4e7976312d2092739e249c947534e20e3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.rahu
+      bhava: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the devta worshipped is one that harms others
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V38.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v38
+    quote: If Rahu or Ketu are there the devta worshipped is one that harms others.
+    quote_sha256: 7305691c6021e9e39b219d9b344baff4e7976312d2092739e249c947534e20e3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    occupies_bhava:
+      subject: graha.ketu
+      bhava: bhava.05
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the devta worshipped is one that harms others
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V41.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v41
+    quote: >-
+      The diety will be favourable to the native if the lord of the 5th is a friend of the
+      lord of the lagna.
+    quote_sha256: 897f52758d250d257a8eaad5a63a94464d123de83904e767ab1a19ea59cd2004
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: lord.bhava.05
+        dignity: dignity.friendly
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: moderate
+    text: The diety will be favourable to the native
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v5
+    quote: >-
+      If in the Pisces in the 10th house, there is Mars with benefics, one gets liberation
+      or moksha.
+    quote_sha256: 866d99bb4ad9befa9c3a812d74dfe15693c60c91233be22a84b6596a8da43a38
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - bhava_in_rashi:
+        bhava: bhava.10
+        rashi: rashi.pisces
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.10
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: one gets liberation or moksha
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V6.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v6
+    quote: >-
+      If Jupiter occupies the 10th house, and Venus occupies its sign of exaltation in any
+      kendra, one gets purified by a sacred bath in the Ganges.
+    quote_sha256: 1912940ea6356b8269dbe520a7117bfa74832558fcfd7102599b5b109d22a131
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.10
+    - all:
+      - varga_dignity:
+          varga: varga.d1
+          subject: graha.venus
+          dignity: dignity.exalted
+      - in_kendra:
+          subject: graha.venus
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: one gets purified by a sacred bath in the Ganges
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V7.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v7
+    quote: >-
+      If Mercury is in the 12th house, and the lord of the 12th house is in his sign of exaltation,
+      the native has meritorious results enabling him to have the said sacred baths.
+    quote_sha256: df7eaec133de6edbd7069214cc71c1e44d2703498971db1bbe8b1d5f2841e2e2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.12
+    - dignity:
+        subject: lord.bhava.12
+        dignity: dignity.exalted
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the native has meritorious results enabling him to have the said sacred baths
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V910.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v9-10
+    quote: >-
+      If the lord of the 10th is in the 10th in Gopur etc amsha the man engages himself in
+      acts of renovation of old (sacred) places wells & tanks.
+    quote_sha256: 2a9d2020aabd9312823c49fab3baa9c4763deea1e53c5df95d18551dd7a810ee
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.10
+        bhava: bhava.10
+    - varga_dignity:
+        varga: varga.d9
+        subject: lord.bhava.10
+        dignity: dignity.exalted
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: the man engages himself in acts of renovation of old (sacred) places wells & tanks
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH8V910.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.8
+    domain.status: 0.5
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch8.v9-10
+    quote: >-
+      He does so if the lord of the 10th is situated in Mridu amsha under benefic aspect &
+      under the aspect of the lord of the 9th house.
+    quote_sha256: 132a6bf1b72225f56890867fbc27af3b8c4ae6bf25531772d58fcc6091aeb89b
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - aspects:
+        subject: lord.bhava.09
+        target: lord.bhava.10
+  indicates:
+    claim: spiritual.inclination
+    polarity: positive
+    magnitude: strong
+    text: engages himself in acts of renovation of old (sacred) places wells & tanks
+- id: SARVARTHACHINTAMANI.SPIRITUAL.CH9V42.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.spiritual: 0.95
+  source:
+    book: sarvartha-chintamani
+    edition: sarvartha-chintamani
+    locator: ch9.v42
+    quote: >-
+      If the lord of the 9th house is in 12th unaspected by benefics & malefic planets are
+      in kendras, the native is devoid of spiritual knowledge and meditation
+    quote_sha256: 7aeca0bc026562e018553a207530f7df20b1c26334e3ee4541d7d82403ad2ba0
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: lord.bhava.09
+        bhava: bhava.12
+  indicates:
+    claim: spiritual.inclination
+    polarity: negative
+    magnitude: strong
+    text: the native is devoid of spiritual knowledge and meditation

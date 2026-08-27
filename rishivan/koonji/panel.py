@@ -56,6 +56,18 @@ class KoonjiHit:
     `r.remedies` rather than a `getattr`. Absent, it raises inside the node's
     broad `except Exception` and the panel silently comes back empty -- which
     is exactly what happened, and why the test that catches it exists."""
+    sensitivities: set = field(default_factory=set)
+    """Claim categories this rule carries - death, diagnosis, intimate.
+
+    Eight Rishis §9. The panel turns these into "traditional indication, not a
+    prediction", and `hits_from_reading` drops a rule outright when the question
+    did not ask for the category at all. `rag.rules.RuleHit` has carried this
+    since the safety gate was written; `KoonjiHit` was built to replace it
+    without the two being compared attribute by attribute, so the field was
+    simply absent and the app raised on the first question that reached the
+    caption reading it.
+    """
+
     active: Optional[bool] = None
     """True when a timing condition is running now, False when it is dormant,
     None when the rule has no timing at all.
@@ -102,7 +114,12 @@ def _effects_of(rule) -> list[dict]:
 
 
 def hits_from_reading(
-    reading, *, engine, domain: str | None = None, limit: int = MAX_PANEL_RULES
+    reading,
+    *,
+    engine,
+    domain: str | None = None,
+    limit: int = MAX_PANEL_RULES,
+    question: str = "",
 ) -> list[KoonjiHit]:
     """The fired rules of a reading, strongest first.
 
@@ -110,9 +127,23 @@ def hits_from_reading(
     itself overrules, and putting it in a panel headed "rules that match this
     chart" would assert what the book denies -- the engine already tracks it
     under `cancelled_by` for the audit trail.
+
+    `question` drives the Eight Rishis §9 gate, and is gated on the question's
+    own words rather than the answering Rishi's domains -- that was tried and is
+    circular, since Medhan owns health, so every Medhan question admitted every
+    death rule. This function replaced `rag.rules.rank_true_rules`, which did
+    the same filtering, and the argument was dropped in the move: a rule naming
+    the manner of the querent's death became free to appear under a question
+    about their love life.
+
+    Passing no question disables the gate rather than withholding everything.
+    `question_admits` answers False for an empty string, so defaulting to
+    filtering would silently empty the panel for every caller that has no
+    question to hand -- tooling and tests included.
     """
     if reading is None:
         return []
+    from rishivan.knowledge.match.safety import sensitivities, withhold_reasons
     by_id = {r.rule_id: r for r in engine.bundle.rules}
 
     hits: list[KoonjiHit] = []
@@ -124,7 +155,7 @@ def hits_from_reading(
             continue
         provenance = rule.provenance
         condition = _condition_dict(rule)
-        hits.append(KoonjiHit(
+        hit = KoonjiHit(
             rule_key=rule.rule_id,
             condition=condition,
             condition_text=describe_condition(condition),
@@ -148,7 +179,16 @@ def hits_from_reading(
             rule_category=("timing" if rule.qualifiers.timing else "formation"),
             tier=provenance.authority_tier or "S5",
             active=_active(rule, firing),
-        ))
+        )
+        # Dropped, not merely flagged. A rule predicting the manner of the
+        # querent's death is wrong on a question about marriage before any
+        # question of tone arises, so it does not reach the panel at all; the
+        # flag on what survives is for the rules that ARE admissible and still
+        # need framing as a traditional indication rather than a prediction.
+        if question and withhold_reasons(hit, question):
+            continue
+        hit.sensitivities = sensitivities(hit)
+        hits.append(hit)
 
     hits.sort(key=lambda h: -h.relevance)
     return hits[:limit]

@@ -1,0 +1,465 @@
+# GENERATED - do not edit by hand.
+#   python -m rishivan.koonji extract
+#
+# Extracted by a single model call in extract.py, then compiled
+# and round-tripped. Candidates that failed validation are NOT
+# here - they are in the review queue.
+#
+# NO ADVERSARIAL VERIFIER RAN. Single-call extraction skips it
+# because review is manual; a rule nothing examined and a rule
+# that passed a verifier are different things.
+#
+# Nothing here has been read by a reviewer either; `candidate`
+# means exactly that.
+
+- id: JATAKAPARIJATA.EDUCATION.CH17V3537.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.temperament: 0.5
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v35-37
+    quote: if with Mercury, he will be endowed with an excellent understanding
+    quote_sha256: ff18bbfae42e22d3c7925e239a61a9fea2b5b0940904dc7f55b8d0a2d08a6480
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: lord.bhava.03
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he will be endowed with an excellent understanding
+- id: JATAKAPARIJATA.EDUCATION.CH17V56.X0003
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v56
+    quote: if Mercury, he will be learned
+    quote_sha256: 47ad8eee6578146f89cfb9fd435225e62d40fc1f9d1526f09bd810d035179c13
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.mercury
+        bhava: bhava.10
+        reference: ref.moon
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he will be learned
+- id: JATAKAPARIJATA.EDUCATION.CH17V57.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.wealth: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v57
+    quote: >-
+      if the Sun in the same position be associated with Mercury, the person born will have
+      a knowledge of the stars and will evince a fondness for such objects as valuable articles
+      obtained from water, women and ornaments
+    quote_sha256: f1cd97ce274009c934e99080d0ea1b72e5125221ba95abf8350290ddb8997e24
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava_from:
+        subject: graha.sun
+        bhava: bhava.10
+        reference: ref.moon
+    - conjunct:
+        subject: graha.sun
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: >-
+      the person born will have a knowledge of the stars and will evince a fondness for such
+      objects as valuable articles obtained from water, women and ornaments
+- id: JATAKAPARIJATA.EDUCATION.CH17V76.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.spiritual: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      If Mars and Mercury be together in the 9th bhava, the person born will be learned in
+      the sacred books and devoted to pleasure and ease
+    quote_sha256: 12fa236dae400d25b260ef4af17a38182379e0ce96394a2c4192d93ad4e468b2
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mars
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the person born will be learned in the sacred books and devoted to pleasure and
+      ease
+- id: JATAKAPARIJATA.EDUCATION.CH17V76.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+    domain.wealth: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v76
+    quote: >-
+      When Mercury and Jupiter are found together in the 9th bhava, the person born will be
+      keen-witted, wise, wealthy and learned.
+    quote_sha256: b131e4bc003bca8934211835e2ec73d7fab2263dd93218e8aa584c39be945ba3
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - conjunct:
+        subject: graha.mercury
+        other: graha.jupiter
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: the person born will be keen-witted, wise, wealthy and learned
+- id: JATAKAPARIJATA.EDUCATION.CH17V81.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol2
+    locator: ch17.v81
+    quote: >-
+      The Sun and Jupiter combining with Venus in the 9th bhava make the person born rakish,
+      wealthy and learned.
+    quote_sha256: 6a4fed4d0f6cdd977c8c1bf850b97a2fbf359b60bd4a39bb16c77a61ac775a09
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.sun
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.09
+    - occupies_bhava:
+        subject: graha.venus
+        bhava: bhava.09
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: learned
+- id: JATAKAPARIJATA.EDUCATION.CH9V105.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v105
+    quote: if Mercury, he will be learned
+    quote_sha256: 47ad8eee6578146f89cfb9fd435225e62d40fc1f9d1526f09bd810d035179c13
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - dignity:
+        subject: graha.mercury
+        dignity: dignity.own_sign
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: he will be learned
+- id: JATAKAPARIJATA.EDUCATION.CH9V107.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v107
+    quote: >-
+      when Jupiter occupies the house of a friendly planet, the person born will delight in
+      the society of the learned and the virtuous
+    quote_sha256: e9ce5a57a5dcb0d2a4e748282166f141af91c893f2b45ecdfd0278230e3eb92d
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.jupiter
+        bhava: bhava.01
+    - dignity:
+        subject: graha.jupiter
+        dignity: dignity.friendly
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: the person born will delight in the society of the learned and the virtuous
+- id: JATAKAPARIJATA.EDUCATION.CH9V3.X0005
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v3
+    quote: >-
+      If Mars and Mercury be together, the person born in the yoga will be eloquent and clever
+      in medicine and fine arts.
+    quote_sha256: 4113f064bff207f91ff9bbbf46b1d62df949277ff0c80d10228aa3c6679bec06
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.mars
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: will be eloquent and clever in medicine and fine arts
+- id: JATAKAPARIJATA.EDUCATION.CH9V5.X0001
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v5
+    quote: >-
+      If Venus be in conjunction with Mercury, the person born will be versed in the sacred
+      books
+    quote_sha256: 468d4a50047bb94593ce7b593b2a1f80c08f507510afbf6c4f4b62d941908733
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - conjunct:
+        subject: graha.venus
+        other: graha.mercury
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: versed in the sacred books
+- id: JATAKAPARIJATA.EDUCATION.CH9V68.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.85
+    domain.wealth: 0.8
+    domain.relationship: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v68
+    quote: >-
+      If Mercury be in that bhava, the person born will be a forlorn creature without friends
+      or relatives, while growing up to be a pandit distinguished for sterling knowledge and
+      affluence.
+    quote_sha256: dbf688395adab7bdfbea3506e0ad8f0c7ce26a2c3b417d77aa41447cd035b398
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.04
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: >-
+      the person born will be a forlorn creature without friends or relatives, while growing
+      up to be a pandit distinguished for sterling knowledge and affluence
+- id: JATAKAPARIJATA.EDUCATION.CH9V84.X0007
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v84
+    quote: not dull but with some valuable learning
+    quote_sha256: 06d69b2e1a6ea2c1af73fe3828fd9f507027ae6a0f7b39fef86c9b3231b4f947
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.krittika
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: with some valuable learning
+- id: JATAKAPARIJATA.EDUCATION.CH9V84.X0008
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v84
+    quote: if in रोहिणी (Rohini), he will know the weak points of others, be lean, enlightened
+    quote_sha256: b6ec36045bb3f497c6882104f96e49b2151d00eebdc14e18ef795be1b26a12b4
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - in_nakshatra:
+        subject: graha.moon
+        nakshatra: nakshatra.rohini
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: moderate
+    text: enlightened
+- id: JATAKAPARIJATA.EDUCATION.CH9V92.X0002
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.education: 0.8
+    domain.temperament: 0.7
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v92
+    quote: >-
+      if the Moon be in Kanya at a person's birth, the latter will be afflicted with a craving
+      for sensual enjoyment, of graceful address, eminent in learning and prosperous
+    quote_sha256: cd2d7ae83a84f0408dc09a3cfbcac11e8424f08c00b172937810e7d5f25676ed
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_rashi:
+        subject: graha.moon
+        rashi: rashi.virgo
+  indicates:
+    claim: education.learning
+    polarity: positive
+    magnitude: strong
+    text: eminent in learning
+- id: JATAKAPARIJATA.WEALTH.CH9V94.X0004
+  version: 1.0.0
+  status: candidate
+  school: school.parashari
+  assertion: assert_claim
+  domains:
+    domain.wealth: 0.8
+    domain.education: 0.9
+  source:
+    book: jataka-parijata
+    edition: jatakaparijata-sastri-vol1
+    locator: ch9.v94
+    quote: >-
+      when the occupant of the 11th bhava is Mercury, the person born will possess an acute
+      intellect, be famed for his learning and in possession of wealth
+    quote_sha256: 0a1405fafdf88b37b28cbe95381057df4b9c4d7a146fa64f944003648cba09a1
+    authority_tier: S0
+    review:
+      state: unreviewed
+  when:
+    all:
+    - occupies_bhava:
+        subject: graha.mercury
+        bhava: bhava.11
+  indicates:
+    claim: wealth.accumulation
+    polarity: positive
+    magnitude: moderate
+    text: in possession of wealth
