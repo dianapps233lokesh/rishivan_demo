@@ -286,6 +286,65 @@ def chart_state():
     return build_chart_state(compute_chart(BIRTH), when=WHEN)
 
 
+class TestNoFalsePrecision:
+    """A predicted event gets a month, never a day.
+
+    Astrology is a calculated inference, and `2027-03-29` asserts a confidence
+    the method cannot carry. The competitor product understood this: its prose
+    says "between November 2026 and September 2027" and "late 2026", and the only
+    day-level dates it prints are transit boundaries in its reference footer.
+
+    The exact dates stay in the FACTS blocks. They are inputs - the model needs
+    them to reason without drifting, and `ground_truth_rules` needs them to stop
+    it inventing any. Only the granularity of the reply changes.
+    """
+
+    def test_the_reply_rounds_predicted_dates_to_months(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("OUTPUT"):]
+        assert "month and the year" in block or "month and year" in block
+
+    def test_day_precision_on_an_event_is_forbidden(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("OUTPUT"):]
+        assert "never a day" in block.lower()
+
+    def test_the_facts_keep_their_exact_dates(self, facts):
+        """Rounding the inputs would let the model drift, and would break the
+        anti-invention rule that depends on verbatim copying."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert "2027-02-12" in prompt  # an antardasha boundary, to the day
+
+    def test_it_explains_why_the_inputs_are_exact_and_the_output_is_not(self, facts):
+        """Otherwise the two rules read as a contradiction and the model picks
+        one at random."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("OUTPUT"):]
+        assert "reason" in block.lower()
+
+    def test_computed_clock_windows_keep_their_exact_times(self, facts):
+        """Rahu Kaal and muhurta are arithmetic for a stated date, not claims
+        about a life. `ground_truth_rules` exists because the model got those
+        wrong in production, and a blanket rounding rule would undo it."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("OUTPUT"):]
+        assert "Rahu Kaal" in block or "clock time" in block
+
+    def test_guarantee_language_is_forbidden_outright(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        lowered = prompt.lower()
+        assert "guarantee" in lowered
+        assert "calculated inference" in lowered or "not a guarantee" in lowered
+
+    def test_the_ledger_rounds_too(self, facts):
+        """It is part of the answer the seeker reads, not a debug panel."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        block = prompt[prompt.index("ASTRO REFERENCE"):]
+        assert "Nov 2026" in block or "month" in block.lower()
+
+
 class TestTheOutputShape:
     """Rewritten after comparing against a competitor product.
 
