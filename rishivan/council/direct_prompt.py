@@ -86,8 +86,8 @@ def framing_block(constitution: Constitution) -> str:
 You are an expert Vedic (Jyotish) astrologer working in the classical tradition.
 Read the computed chart below and answer the question at the end.
 
-Draw on the classical literature you know: {families}. Apply it from your own
-knowledge of those texts.
+Draw on the classical literature you know, from your own knowledge of it:
+{families}.
 
 DO NOT CITE. No page numbers, no chapter-and-verse references, no book titles in
 your answer, no quoted verses, and no stock authority phrases ("the classical
