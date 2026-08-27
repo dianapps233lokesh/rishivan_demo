@@ -116,15 +116,21 @@ def derive_facts(chart: Chart, when: datetime | None = None) -> list[str]:
 
     facts.extend(derive_dasha_facts(chart, when))
 
-    # Today's transiting Moon nakshatra — the literal answer to "which
-    # nakshatra is running for me right now?" Distinct from both the birth
-    # nakshatra above (fixed at birth) and the dasha lord above (a planet,
-    # not a nakshatra — Vimshottari dasha periods are planetary).
-    from rishivan.chart.transit import transit_chart
-    today = transit_chart()
-    tm = today.planets["Moon"]
+    # The transiting Moon's nakshatra — the literal answer to "which nakshatra
+    # is running for me right now?" Distinct from both the birth nakshatra above
+    # (fixed at birth) and the dasha lord above (a planet, not a nakshatra —
+    # Vimshottari dasha periods are planetary).
+    #
+    # Cast for `when`, not for the wall clock. It used to call `transit_chart()`
+    # with no argument, so this one line ignored the `when` every other fact in
+    # the list honours — a prompt could state the Moon in Aquarius here and in
+    # Capricorn two blocks down, both labelled as now. The Moon moves a sign
+    # every 2.25 days, which is what made the divergence visible.
+    from rishivan.chart.transit import chart_for_moment
+    moment = when or datetime.now()
+    tm = chart_for_moment(moment).planets["Moon"]
     facts.append(
-        f"Nakshatra running today (transiting Moon, not birth nakshatra): "
+        f"Transiting Moon on {moment.date()} (not the birth nakshatra): "
         f"{tm.nakshatra}, pada {tm.pada}, Moon in {tm.rashi}."
     )
 

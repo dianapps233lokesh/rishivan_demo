@@ -107,3 +107,47 @@ class TestChandraBala:
 
     def test_an_unknown_sign_returns_none(self):
         assert chandra_bala("Nonsense", "Aries") is None
+
+
+class TestTheTransitingMoonHonoursWhen:
+    """`derive_facts` used to cast the transiting Moon for the wall clock.
+
+    Every other fact in that list honours `when` — the dasha facts certainly do —
+    but the Moon line called `transit_chart()` with no argument. So a prompt built
+    for a stated date could state the Moon in one sign there and in another two
+    blocks down, both labelled as current. The Moon changes sign every 2.25 days,
+    which is what made the divergence show up at all.
+    """
+
+    def test_the_moon_line_is_cast_for_the_given_moment(self):
+        from datetime import datetime
+
+        from rishivan.chart.ephemeris import BirthData, compute_chart
+        from rishivan.chart.facts import derive_facts
+
+        chart = compute_chart(BirthData(
+            year=1990, month=1, day=1, hour=12, minute=0,
+            tz_offset_hours=5.5, lat=28.6139, lon=77.2090,
+        ))
+        early = [f for f in derive_facts(chart, when=datetime(2026, 1, 1, 12, 0))
+                 if f.startswith("Transiting Moon on")]
+        later = [f for f in derive_facts(chart, when=datetime(2026, 8, 27, 12, 0))
+                 if f.startswith("Transiting Moon on")]
+        assert early and later
+        assert "2026-01-01" in early[0]
+        assert "2026-08-27" in later[0]
+        assert early[0] != later[0]
+
+    def test_it_no_longer_claims_to_be_today(self):
+        """The label said "running today" whatever date it was cast for."""
+        from datetime import datetime
+
+        from rishivan.chart.ephemeris import BirthData, compute_chart
+        from rishivan.chart.facts import derive_facts
+
+        chart = compute_chart(BirthData(
+            year=1990, month=1, day=1, hour=12, minute=0,
+            tz_offset_hours=5.5, lat=28.6139, lon=77.2090,
+        ))
+        facts = derive_facts(chart, when=datetime(2026, 1, 1, 12, 0))
+        assert not any("running today" in f for f in facts)

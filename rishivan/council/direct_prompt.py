@@ -147,154 +147,89 @@ it is arithmetic pretending to be a prediction.
 """.strip()
 
 
-# ── The chart, scoped to the question ────────────────────────────────────────
-
-_PLANET_SEQUENCE = (
-    "Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu",
-)
-"""The order an astrologer reads grahas in - `chart.facts._PLANET_ORDER`."""
-
-_PLANET_FACT = re.compile(
-    r"^(Sun|Moon|Mars|Mercury|Jupiter|Venus|Saturn|Rahu|Ketu) is in "
-)
-"""A per-planet placement line from `facts.derive_facts`. Anchored, so a
-conjunction line naming several planets is not mistaken for one."""
-
-_LUMINARIES = ("Sun is in", "Moon is in")
-"""Framework whatever the domain. Every §4-11 protocol opens on the chart
-framework, and no reading of any domain proceeds without the two lights."""
+# ── Sorting the fact list into what each bundle needs ────────────────────────
 
 _PERIOD_PREFIXES = ("Mahadasha timeline", "Currently running")
-"""The only lines carrying a date. They get their own labelled block because
-every date the model is allowed to write has to be copied from one of them."""
-
-_CONJUNCTION_HOUSE = re.compile(
-    r"^Conjunction: .* in the (\d{1,2})(?:st|nd|rd|th) house"
-)
+"""The dated lines. They belong to the period bundles, never to a placement."""
 
 _HOUSE_RULER = re.compile(
     r"^The (\d{1,2})(?:st|nd|rd|th) house \([^)]*\) is ruled by (\w+)"
 )
-"""The lord of a house, from the house's own fact line.
+"""A house and its lord. Read to decide which planets the question rests on:
+prema names Venus and Jupiter, but the 7th lord is whatever the lagna made it."""
 
-Read in a first pass so the lords of the domain's houses can be promoted
-alongside them. The house line only names the lord — "ruled by Mercury, placed
-in the 11th house" — while the lord's own line carries its sign, nakshatra, pada
-and retrogression, which is what judging a 7th lord actually takes. Handing the
-model the name and hiding the condition is the worse half of both options.
+_TRANSITING_MOON = "Transiting Moon on"
+"""The one transit fact `derive_facts` mixes into the natal list.
 
-Derived from the facts rather than from the chart on purpose: `scoped_chart`
-stays a function of the fact list alone, which is what keeps it pure and its
-snapshot honest.
+It used to land in the natal block, and a reading duly conjoined it with the
+transiting node to invent "Moon conjunct Rahu in Aquarius, house 2" - two
+transiting bodies presented as a natal conjunction. It now goes only to questions
+about a specific day, where it is the actual subject.
 """
 
 
-def _domain_lords(chart_facts: list[str], constitution: Constitution) -> set[str]:
-    """Lowercased planets ruling any house in this domain's coverage."""
-    lords = set()
+_VARGA_LINE = re.compile(r"\((D\d{1,2})\)")
+"""A divisional placement line, dropped here because `_varga_block` renders the
+same divisions from the chart. Both printed every placement twice."""
+
+_PLANET_LINE = re.compile(
+    r"^(Sun|Moon|Mars|Mercury|Jupiter|Venus|Saturn|Rahu|Ketu) is in "
+)
+"""A per-planet placement line. Matched only so it can be DROPPED: `fact_table`
+renders the same information with dignity and strength attached, and two
+renderings in two shapes is the fusion this replaced."""
+
+
+def _partition(chart_facts: list[str]) -> dict[str, list[str]]:
+    """Fact lines by the bundle that owns them.
+
+    Per-planet placement lines are deliberately dropped: `fact_table` renders
+    every one of them with its dignity and strength attached, and a second
+    rendering in a different shape is exactly what the table exists to remove.
+    """
+    out: dict[str, list[str]] = {
+        "framework": [], "lords": [], "conjunctions": [], "yogas": [],
+        "periods": [], "transiting_moon": [], "other": [],
+    }
+    for fact in chart_facts:
+        if fact.startswith(_FRAMEWORK):
+            out["framework"].append(fact)
+        elif fact.startswith(_PERIOD_PREFIXES):
+            out["periods"].append(fact)
+        elif fact.startswith(_TRANSITING_MOON):
+            out["transiting_moon"].append(fact)
+        elif _HOUSE_RULER.match(fact):
+            out["lords"].append(fact)
+        elif fact.startswith("Conjunction:"):
+            out["conjunctions"].append(fact)
+        elif fact.startswith("Yoga:"):
+            out["yogas"].append(fact)
+        elif _SUBJECT_HOUSE.match(fact) or _PLANET_LINE.match(fact):
+            pass  # the table has these, complete
+        elif _VARGA_LINE.search(fact):
+            # `chart_natal_node` appends varga facts to this list and
+            # `_varga_block` renders the same divisions from the chart, so
+            # keeping both printed every divisional placement twice.
+            pass
+        else:
+            out["other"].append(fact)
+    return out
+
+
+def _question_planets(chart_facts: list[str], constitution: Constitution) -> set[str]:
+    """Which planets this question rests on: the domain's own, plus the lords of
+    its houses.
+
+    The second half is what a planet list cannot anticipate. For a marriage
+    question prema names Venus and Jupiter, and the 7th lord is whichever graha
+    the lagna assigned - Mercury on the test chart, in neither list.
+    """
+    planets = {p.capitalize() for p in constitution.planets}
     for fact in chart_facts:
         match = _HOUSE_RULER.match(fact)
         if match and int(match.group(1)) in constitution.houses:
-            lords.add(match.group(2).lower())
-    return lords
-
-
-def _tier(fact: str, constitution: Constitution, lords: frozenset[str]) -> str:
-    """Which block a fact belongs in. Checked in priority order.
-
-    Framework first, so the lagna and the luminaries are never demoted by a
-    domain that does not name them. Periods next, so a dated line is never
-    filed as a placement.
-    """
-    if fact.startswith(_FRAMEWORK) or fact.startswith(_LUMINARIES):
-        return "framework"
-    if fact.startswith(_PERIOD_PREFIXES):
-        return "periods"
-
-    subject = _SUBJECT_HOUSE.match(fact)
-    if subject is not None:
-        house = int(subject.group(1))
-        # The 1st house and its lord are the framework step in every protocol,
-        # whether or not the domain lists house 1 in its coverage.
-        if house == 1:
-            return "framework"
-        return "primary" if house in constitution.houses else "wider"
-
-    planet = _PLANET_FACT.match(fact)
-    if planet is not None:
-        name = planet.group(1).lower()
-        # Either the domain names this planet outright, or it rules one of the
-        # domain's houses. The second half matters more than it looks: for a
-        # marriage question prema names Venus and Jupiter, but the 7th lord is
-        # whatever the lagna made it - here Mercury, which no planet list could
-        # have anticipated.
-        owned = name in {p.lower() for p in constitution.planets} or name in lords
-        return "primary" if owned else "wider"
-
-    if fact.startswith("Yoga:"):
-        # "major combinations" is a step in every protocol.
-        return "primary"
-
-    conjunction = _CONJUNCTION_HOUSE.match(fact)
-    if conjunction is not None:
-        return (
-            "primary"
-            if int(conjunction.group(1)) in constitution.houses
-            else "wider"
-        )
-
-    return "wider"
-
-
-_HEADINGS = (
-    ("framework", "CHART FRAMEWORK — read these first, whatever the question:"),
-    ("primary", None),  # filled in at render time; it names the houses
-    ("periods",
-     "COMPUTED PERIODS — boundaries, not predictions. Every date and clock time\n"
-     "you write must be copied verbatim from these lines:"),
-    ("wider",
-     "WIDER CHART — real, and yours to synthesise at the end. Do not lead from "
-     "these:"),
-)
-
-
-def scoped_chart(chart_facts: list[str], constitution: Constitution) -> str:
-    """Chart facts in four labelled blocks, scoped to the question's domain.
-
-    Nothing is withheld. Every §4-11 protocol ends in whole-chart synthesis, so
-    the wider chart is demoted and labelled rather than dropped — the same
-    decision `prompts.coverage_facts` made, for the same reason.
-    """
-    if not chart_facts:
-        return "No chart was computed for this question."
-
-    # Two passes. The first learns which planets rule the domain's houses, which
-    # the second needs before it can decide where a planet's own line belongs.
-    lords = frozenset(_domain_lords(chart_facts, constitution))
-
-    buckets: dict[str, list[str]] = {
-        "framework": [], "primary": [], "periods": [], "wider": [],
-    }
-    for fact in chart_facts:
-        buckets[_tier(fact, constitution, lords)].append(fact)
-
-    houses = ", ".join(str(h) for h in sorted(constitution.primary_houses))
-    primary_heading = (
-        f"PRIMARY EVIDENCE FOR THIS QUESTION — house {houses} is the subject; "
-        "the rest is its context:"
-    )
-
-    sections = []
-    for name, heading in _HEADINGS:
-        facts = buckets[name]
-        if not facts:
-            continue
-        sections.append(
-            (primary_heading if name == "primary" else heading)
-            + "\n"
-            + "\n".join(f"  - {fact}" for fact in facts)
-        )
-    return "\n\n".join(sections)
+            planets.add(match.group(2).capitalize())
+    return planets
 
 
 # ── The whole prompt ─────────────────────────────────────────────────────────
@@ -708,30 +643,46 @@ def transit_block(natal, when, *, lat=None, lon=None, tz_offset=None) -> str:
             + (f" ({'; '.join(span)})" if span else "")
         )
 
-    # Saturn against the natal Moon. Reported either way: "not running" is an
-    # answer a seeker who has been told otherwise deserves to hear.
-    moon = natal.planets.get("Moon")
-    saturn = transiting.planets.get("Saturn")
-    if moon is not None and saturn is not None:
-        offset = ((RASHIS.index(saturn.rashi) - RASHIS.index(moon.rashi)) % 12) + 1
-        where = (
-            f"Saturn is in the {_ORDINAL.get(offset, offset)} sign from your "
-            f"natal Moon in {moon.rashi}"
-        )
-        leg = _SADE_SATI_LEGS.get(offset)
-        lines.append(
-            f"  - Sade sati: RUNNING, {leg} leg ({where})"
-            if leg
-            else f"  - Sade sati: not running ({where}; it runs only from the "
-                 "12th, 1st and 2nd)"
-        )
-
     if not lines:
         return ""
     return (
         "TRANSITS NOW - the slow planets, and which of YOUR houses they are\n"
         "crossing. Dates are the sign changes; for a retrograde planet that is "
         "the\nnext crossing rather than a permanent exit:\n" + "\n".join(lines)
+    )
+
+
+def sade_sati_line(natal, transiting) -> str:
+    """Saturn against the natal Moon.
+
+    Split out of `transit_block` so a question profile can ask for it without
+    asking for the whole transit table - a marriage question wants it, a
+    temperament question wants neither.
+
+    Reported either way. "Not running" is an answer a seeker who has been told
+    otherwise by a relative deserves to hear, and it is the single most
+    asked-about transit in the tradition.
+    """
+    if natal is None or transiting is None:
+        return ""
+    from rishivan.chart.ephemeris import RASHIS
+
+    moon = natal.planets.get("Moon")
+    saturn = transiting.planets.get("Saturn")
+    if moon is None or saturn is None:
+        return ""
+
+    offset = ((RASHIS.index(saturn.rashi) - RASHIS.index(moon.rashi)) % 12) + 1
+    where = (
+        f"Saturn is in the {_ORDINAL.get(offset, offset)} sign from your natal "
+        f"Moon in {moon.rashi}"
+    )
+    leg = _SADE_SATI_LEGS.get(offset)
+    if leg:
+        return f"Sade sati: RUNNING, {leg} leg ({where})."
+    return (
+        f"Sade sati: not running ({where}; it runs only from the 12th, 1st "
+        "and 2nd)."
     )
 
 
@@ -848,16 +799,157 @@ def _sub_period_block(chart, when) -> str:
     return "\n\n".join(blocks)
 
 
+# ── Blocks a profile may ask for ─────────────────────────────────────────────
+
+def _listed(heading: str, facts: list[str]) -> str:
+    if not facts:
+        return ""
+    return heading + "\n" + "\n".join(f"  - {fact}" for fact in facts)
+
+
+def _panchang_block(state, day_offset: int) -> str:
+    """The daily windows for the date the question is about.
+
+    This is the block whose absence produced the worst failure in the lane. Asked
+    "Can I travel foreign tomorrow?" the reading answered "late 2026 or early
+    2027" - because it had a decade of dasha boundaries and nothing at all about
+    tomorrow, and a model with the wrong facts answers the question its facts fit.
+
+    `compute_panchang` already took an arbitrary date and `relative_day_offset`
+    already parsed "tomorrow"; neither had ever been called from this lane.
+
+    Clock times stay exact. The granularity rule rounds PREDICTIONS to months;
+    these are arithmetic for a stated date and the rule exempts them by name.
+    """
+    from datetime import timedelta
+
+    from rishivan.chart.panchang import compute_panchang
+
+    when = state.get("query_time")
+    if when is None:
+        return ""
+    day = (when + timedelta(days=day_offset)).date()
+    panchang = compute_panchang(
+        day,
+        lat=state.get("lat") or 28.6139,
+        lon=state.get("lon") or 77.2090,
+        tz_offset=state.get("tz_offset") or 5.5,
+        place=state.get("place") or "",
+    )
+    label = {0: "TODAY", 1: "TOMORROW"}.get(day_offset, f"DAY +{day_offset}")
+    return (
+        f"DAILY WINDOWS FOR {label} — computed for this date and place. These are\n"
+        "clock times, not predictions: copy them to the minute, exactly as "
+        "printed:\n" + panchang.summary()
+    )
+
+
+def _bala_block(natal, transiting, *, want_tara: bool, want_chandra: bool) -> str:
+    """The Moon's strength for an undertaking on the date in question.
+
+    What a "should I do this on Tuesday" question is actually judged on, and what
+    the lane had never computed - see `chart/bala.py`.
+    """
+    if natal is None or transiting is None:
+        return ""
+    from rishivan.chart.bala import chandra_bala, tara_bala
+
+    natal_moon = natal.planets.get("Moon")
+    transit_moon = transiting.planets.get("Moon")
+    if natal_moon is None or transit_moon is None:
+        return ""
+
+    lines = []
+    if want_tara:
+        tara = tara_bala(natal_moon.nakshatra, transit_moon.nakshatra)
+        if tara is not None:
+            lines.append(f"  - {tara.describe()}")
+    if want_chandra:
+        chandra = chandra_bala(natal_moon.rashi, transit_moon.rashi)
+        if chandra is not None:
+            lines.append(f"  - {chandra.describe()}")
+    if not lines:
+        return ""
+    return (
+        "THE MOON'S STRENGTH FOR THIS UNDERTAKING — computed. A favourable tara "
+        "or\nchandra bala is permission, never a promise; an unfavourable one is "
+        "friction,\nnever a prohibition:\n" + "\n".join(lines)
+    )
+
+
+def _unavailable_block(unavailable: tuple[str, ...]) -> str:
+    """What this reading cannot draw on, said once.
+
+    Declared up front rather than discovered per step. A reading told nothing
+    about its own gaps pads the step it cannot support - "interlocking dispositor
+    dynamics validate institutional elevation" is filler in the shape of an
+    answer, and it appeared because a Jaimini step was asked for and no Jaimini
+    fact existed.
+    """
+    if not unavailable:
+        return ""
+    return (
+        "EVIDENCE NOT AVAILABLE for this reading. Do not reason from these, do "
+        "not\ninfer them, and do not pad a step with them. Work the step from "
+        "what you\nhave, or let it lower your confidence in silence:\n"
+        + "\n".join(f"  - {item}" for item in unavailable)
+    )
+
+
 def build_direct_prompt(state) -> str:
     """The whole prompt, from state, with no I/O.
 
-    Pure so that the golden snapshot is a real snapshot and `test_no_network` is
-    a real guarantee. The model call lives in `council/direct.py` — the same
-    split `answer_plan` and `narrate` already use, for the same reason: what is
-    said and how it is sent are separate concerns, and only one of them is
-    testable without credentials.
+    Two things govern what goes in. `constitution` says which houses and planets
+    the domain rests on; `QuestionProfile` says which KINDS of fact the question
+    needs. The second was missing, and its absence is why every question - a
+    marriage timing, a character reading, a "can I fly tomorrow" - received the
+    same sixty facts, and why a question about tomorrow was answered with a
+    ten-year dasha forecast.
+
+    Pure, so the golden snapshot is a real snapshot and `test_no_network` is a
+    real guarantee. The model call lives in `council/direct.py`.
     """
+    from rishivan.council.fact_table import (
+        natal_rows, render_table, transit_rows,
+    )
+    from rishivan.council.question_profile import Bundle, profile_for
+
     constitution = constitution_for(state.get("koonji_domain") or "")
+    profile = profile_for(
+        state["question"], koonji_domain=state.get("koonji_domain") or ""
+    )
+    wants = profile.wants
+
+    chart = state.get("chart")
+    when = state.get("query_time")
+    facts = _partition(
+        without_withheld_vargas(
+            state.get("chart_facts") or [], state.get("vargas")
+        )
+    )
+
+    transiting = None
+    moon_on_the_day = None
+    if chart is not None and when is not None:
+        from datetime import timedelta
+
+        from rishivan.chart.transit import chart_for_moment
+
+        lat = state.get("lat") or 28.6139
+        lon = state.get("lon") or 77.2090
+        tz = state.get("tz_offset") or 5.5
+
+        if wants(Bundle.TRANSITS_SLOW) or wants(Bundle.SADE_SATI):
+            transiting = chart_for_moment(when, lat=lat, lon=lon, tz_offset=tz)
+        if wants(Bundle.TARA_BALA) or wants(Bundle.CHANDRA_BALA):
+            # Cast for the DATE ASKED ABOUT, not for today. Tara and chandra bala
+            # are entirely about the Moon, and the Moon changes sign every 2.25
+            # days - computing them for today to answer a question about
+            # tomorrow gets the answer wrong roughly a third of the time.
+            moon_on_the_day = chart_for_moment(
+                when + timedelta(days=profile.day_offset),
+                lat=lat, lon=lon, tz_offset=tz,
+            )
 
     parts = [framing_block(constitution)]
 
@@ -868,41 +960,95 @@ def build_direct_prompt(state) -> str:
     parts.append(method_block(constitution))
     parts.append(ground_truth_rules())
 
-    today = today_block(state.get("query_time"))
+    today = today_block(when)
     if today:
         parts.append(today)
 
-    parts.append(scoped_chart(
-        without_withheld_vargas(
-            state.get("chart_facts") or [], state.get("vargas")
+    if facts["framework"]:
+        parts.append(_listed("THE FRAME OF THE CHART:", facts["framework"]))
+
+    # One table, both frames. Transit rows join it only if the question needs
+    # them - a temperament reading timed against a transit becomes a forecast
+    # nobody asked for.
+    rows = []
+    if chart is not None:
+        rows += natal_rows(chart, state.get("chart_state"))
+        if transiting is not None and wants(Bundle.TRANSITS_SLOW):
+            rows += transit_rows(chart, transiting)
+    table = render_table(
+        rows,
+        primary=_question_planets(
+            state.get("chart_facts") or [], constitution
         ),
-        constitution,
+    )
+    parts.append(table if table else (
+        "No chart was computed for this question - no birth details were given. "
+        "Say\nso plainly rather than reading a chart you were not shown."
     ))
 
-    condition = _condition_block(state.get("chart_state"))
-    if condition:
-        parts.append(condition)
+    if wants(Bundle.HOUSE_LORDS) and facts["lords"]:
+        parts.append(_listed(
+            "THE HOUSES AND WHO RULES THEM — a house is judged through its lord, "
+            "and\nwhere that lord sits:", facts["lords"],
+        ))
 
-    varga = _varga_block(state.get("chart"), state.get("vargas"))
-    if varga:
-        parts.append(varga)
+    if wants(Bundle.YOGAS) and facts["yogas"]:
+        parts.append(_listed("COMBINATIONS DETECTED:", facts["yogas"]))
 
-    transits = transit_block(
-        state.get("chart"), state.get("query_time"),
-        lat=state.get("lat"), lon=state.get("lon"),
-        tz_offset=state.get("tz_offset"),
+    if wants(Bundle.CONJUNCTIONS) and facts["conjunctions"]:
+        parts.append(_listed("CONJUNCTIONS (natal):", facts["conjunctions"]))
+
+    if wants(Bundle.VARGAS):
+        varga = _varga_block(chart, state.get("vargas"))
+        if varga:
+            parts.append(varga)
+
+    if wants(Bundle.SADE_SATI):
+        sade = sade_sati_line(chart, transiting)
+        if sade:
+            parts.append(sade)
+
+    if wants(Bundle.TRANSITS_SLOW):
+        transits = transit_block(
+            chart, when,
+            lat=state.get("lat"), lon=state.get("lon"),
+            tz_offset=state.get("tz_offset"),
+        )
+        if transits:
+            parts.append(transits)
+
+    if wants(Bundle.DASHA_CURRENT) and facts["periods"]:
+        parts.append(
+            "COMPUTED PERIODS — boundaries, not predictions. Every date you write\n"
+            "must trace to one of these lines:\n"
+            + "\n".join(f"  - {fact}" for fact in facts["periods"])
+        )
+
+    if wants(Bundle.DASHA_FORWARD):
+        sub_periods = _sub_period_block(chart, when)
+        if sub_periods:
+            parts.append(sub_periods)
+
+    if wants(Bundle.PANCHANG_FOR_DATE):
+        panchang = _panchang_block(state, profile.day_offset)
+        if panchang:
+            parts.append(panchang)
+        # `facts["transiting_moon"]` is deliberately not printed here. The bala
+        # block below names the Moon's nakshatra and sign for the date asked
+        # about, and the fact line is cast for `query_time` - so printing both
+        # put two different Moons in one prompt, each labelled as current.
+
+    bala = _bala_block(
+        chart, moon_on_the_day,
+        want_tara=wants(Bundle.TARA_BALA),
+        want_chandra=wants(Bundle.CHANDRA_BALA),
     )
-    if transits:
-        parts.append(transits)
+    if bala:
+        parts.append(bala)
 
-    sub_periods = _sub_period_block(
-        state.get("chart"), state.get("query_time")
-    )
-    if sub_periods:
-        parts.append(sub_periods)
-
-    if state.get("panchang"):
-        parts.append(f"PANCHANG FOR THE DATE IN QUESTION:\n{state['panchang']}")
+    unavailable = _unavailable_block(profile.unavailable)
+    if unavailable:
+        parts.append(unavailable)
 
     parts.append(_OUTPUT_BLOCK)
     parts.append(f"THE QUESTION: {state['question']}")

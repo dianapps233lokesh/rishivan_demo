@@ -73,58 +73,54 @@ offer one as an answer to a question about the future, however well it fits.
 
 ---
 
-CHART FRAMEWORK — read these first, whatever the question:
+THE FRAME OF THE CHART:
   - Ascendant (Lagna) is Pisces.
   - Birth nakshatra (Janma Nakshatra): Dhanishta, pada 4.
-  - Sun is in Sagittarius in the 10th house (Purva Ashadha nakshatra, pada 2).
-  - Moon is in Aquarius in the 12th house (Dhanishta nakshatra, pada 4).
+
+---
+
+THE CHART — every position, natal and transiting, in one table. The FRAME
+column says which. A natal row is what the birth chart promises; a transit
+row is only where a planet is passing now. Never read a transit row as a
+placement in the birth chart, and never move a judgement between frames.
+Rows marked * bear directly on the question asked; the rest is real and is
+yours to synthesise, but do not lead from it.
+
+ FRAME    PLANET   SIGN         HOUSE  DIGNITY     STRENGTH    NOTES
+ natal    Sun      Sagittarius  10     neutral     strong      aspected by Jupiter; Purva Ashadha
+ natal    Moon     Aquarius     12     neutral     weak        aspected by Jupiter, Mars, Saturn; Dhanishta
+*natal    Mars     Scorpio      9      own_sign    strong      vargottama; Anuradha
+*natal    Mercury  Capricorn    11     neutral     moderate    retrograde; vargottama; aspected by Ketu; Uttara Ashadha
+*natal    Jupiter  Gemini       4      neutral     moderate    retrograde; aspected by Mars, Saturn, Sun; Ardra
+*natal    Venus    Capricorn    11     neutral     weak        retrograde; aspected by Ketu; Shravana
+*natal    Saturn   Sagittarius  10     neutral     very_weak   combust; aspected by Jupiter; Purva Ashadha
+ natal    Rahu     Capricorn    11     neutral     strong      retrograde; aspected by Ketu; Dhanishta
+ natal    Ketu     Cancer       5      neutral     weak        retrograde; aspected by Mercury, Rahu, Venus; Ashlesha
+*transit  Jupiter  Cancer       5      -           -           Ashlesha
+*transit  Saturn   Pisces       1      -           -           retrograde; Revati
+ transit  Rahu     Aquarius     12     -           -           retrograde; Dhanishta
+ transit  Ketu     Leo          6      -           -           retrograde; Magha
+
+---
+
+THE HOUSES AND WHO RULES THEM — a house is judged through its lord, and
+where that lord sits:
   - The 1st house (self, body, personality) is ruled by Jupiter, placed in the 4th house.
-
-PRIMARY EVIDENCE FOR THIS QUESTION — house 7 is the subject; the rest is its context:
-  - Mars is in Scorpio in the 9th house (Anuradha nakshatra, pada 4).
-  - Mercury is in Capricorn in the 11th house (Uttara Ashadha nakshatra, pada 2) (retrograde).
-  - Jupiter is in Gemini in the 4th house (Ardra nakshatra, pada 2) (retrograde).
-  - Venus is in Capricorn in the 11th house (Shravana nakshatra, pada 1) (retrograde).
-  - Saturn is in Sagittarius in the 10th house (Purva Ashadha nakshatra, pada 3).
   - The 2nd house (wealth, family, speech) is ruled by Mars, placed in the 9th house.
-  - The 7th house (marriage, spouse, partnerships) is ruled by Mercury, placed in the 11th house.
-  - The 8th house (longevity, transformation, sudden events) is ruled by Venus, placed in the 11th house.
-  - The 11th house (gains, income, friends) is ruled by Saturn, placed in the 10th house.
-  - Conjunction: Mercury, Venus, Rahu are together in the 11th house.
-
-COMPUTED PERIODS — boundaries, not predictions. Every date and clock time
-you write must be copied verbatim from these lines:
-  - Mahadasha timeline from birth: Mars (1990-01-01 to 1990-02-09), Rahu (1990-02-09 to 2008-02-09), Jupiter (2008-02-09 to 2024-02-09), Saturn (2024-02-09 to 2043-02-08), Mercury (2043-02-08 to 2060-02-09), Ketu (2060-02-09 to 2067-02-08), Venus (2067-02-08 to 2087-02-08), Sun (2087-02-08 to 2093-02-08), Moon (2093-02-08 to 2103-02-09).
-  - Currently running: Saturn Mahadasha, Saturn Antardasha, Rahu Pratyantardasha.
-
-WIDER CHART — real, and yours to synthesise at the end. Do not lead from these:
-  - Rahu is in Capricorn in the 11th house (Dhanishta nakshatra, pada 1) (retrograde).
-  - Ketu is in Cancer in the 5th house (Ashlesha nakshatra, pada 3) (retrograde).
   - The 3rd house (siblings, courage, communication) is ruled by Venus, placed in the 11th house.
   - The 4th house (mother, home, property, inner peace) is ruled by Mercury, placed in the 11th house.
   - The 5th house (children, education, creativity) is ruled by Moon, placed in the 12th house.
   - The 6th house (disease, enemies, debts, service) is ruled by Sun, placed in the 10th house.
+  - The 7th house (marriage, spouse, partnerships) is ruled by Mercury, placed in the 11th house.
+  - The 8th house (longevity, transformation, sudden events) is ruled by Venus, placed in the 11th house.
   - The 9th house (fortune, dharma, father, higher learning) is ruled by Mars, placed in the 9th house.
   - The 10th house (career, status, public life) is ruled by Jupiter, placed in the 4th house.
+  - The 11th house (gains, income, friends) is ruled by Saturn, placed in the 10th house.
   - The 12th house (loss, expenses, foreign lands, liberation) is ruled by Saturn, placed in the 10th house.
-  - Conjunction: Sun, Saturn are together in the 10th house.
-  - Nakshatra running today (transiting Moon, not birth nakshatra): Dhanishta, pada 3, Moon in Aquarius.
 
 ---
 
-PLANETARY CONDITION - computed, and authoritative. Do not re-derive any
-of it from the signs and houses above; where your own reading of the chart
-disagrees with a line here, this is what the calculation says:
-Strength bands come from `parashari.partial.v1`, running partial - treat them as estimates, not measurements.
-  - Sun: dignity neutral; strength strong; functionally malefic; aspected by Jupiter
-  - Moon: dignity neutral; strength weak; functionally benefic; aspected by Jupiter, Mars, Saturn
-  - Mars: dignity own_sign; strength strong; functionally benefic; vargottama
-  - Mercury: dignity neutral; strength moderate; functionally neutral; retrograde; vargottama; aspected by Ketu
-  - Jupiter: dignity neutral; strength moderate; functionally benefic; retrograde; aspected by Mars, Saturn, Sun
-  - Venus: dignity neutral; strength weak; functionally malefic; retrograde; aspected by Ketu
-  - Saturn: dignity neutral; strength very_weak; functionally malefic; COMBUST; aspected by Jupiter
-  - Rahu: dignity neutral; strength strong; functionally malefic; retrograde; aspected by Ketu
-  - Ketu: dignity neutral; strength weak; functionally benefic; retrograde; aspected by Mercury, Rahu, Venus
+Sade sati: RUNNING, setting leg (Saturn is in the 2nd sign from your natal Moon in Aquarius).
 
 ---
 
@@ -135,7 +131,13 @@ next crossing rather than a permanent exit:
   - Saturn transiting Pisces retrograde, crossing your 1st house from your lagna (in this sign since 2025-03-29; leaves it 2027-06-03)
   - Rahu transiting Aquarius retrograde, crossing your 12th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
   - Ketu transiting Leo retrograde, crossing your 6th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
-  - Sade sati: RUNNING, setting leg (Saturn is in the 2nd sign from your natal Moon in Aquarius)
+
+---
+
+COMPUTED PERIODS — boundaries, not predictions. Every date you write
+must trace to one of these lines:
+  - Mahadasha timeline from birth: Mars (1990-01-01 to 1990-02-09), Rahu (1990-02-09 to 2008-02-09), Jupiter (2008-02-09 to 2024-02-09), Saturn (2024-02-09 to 2043-02-08), Mercury (2043-02-08 to 2060-02-09), Ketu (2060-02-09 to 2067-02-08), Venus (2067-02-08 to 2087-02-08), Sun (2087-02-08 to 2093-02-08), Moon (2093-02-08 to 2103-02-09).
+  - Currently running: Saturn Mahadasha, Saturn Antardasha, Rahu Pratyantardasha.
 
 ---
 
@@ -171,6 +173,13 @@ Pratyantardashas within the running Saturn antardasha (2024-02-09 to 2027-02-12)
   - Mars: 2026-02-01 to 2026-04-06 [past]
   - Rahu: 2026-04-06 to 2026-09-18 [RUNNING NOW]
   - Jupiter: 2026-09-18 to 2027-02-12 [future]
+
+---
+
+EVIDENCE NOT AVAILABLE for this reading. Do not reason from these, do not
+infer them, and do not pad a step with them. Work the step from what you
+have, or let it lower your confidence in silence:
+  - Jaimini karakas and Upapada — the fact vocabulary does not express them
 
 ---
 

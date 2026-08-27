@@ -12,7 +12,6 @@ from rishivan.chart.ephemeris import BirthData, compute_chart
 from rishivan.chart.facts import derive_facts
 from rishivan.council.direct_prompt import (
     build_direct_prompt, constitution_for, framing_block, method_block,
-    scoped_chart,
 )
 from rishivan.graph.state import initial_state
 
@@ -29,13 +28,10 @@ def facts():
 
 
 def _block(text: str, heading: str) -> str:
-    """The text under one heading, up to the next heading."""
+    """The text under one heading, up to the next block separator."""
     start = text.index(heading)
     rest = text[start + len(heading):]
-    ends = [rest.index(h) for h in (
-        "CHART FRAMEWORK", "PRIMARY EVIDENCE", "COMPUTED PERIODS", "WIDER CHART",
-    ) if h in rest]
-    return rest[:min(ends)] if ends else rest
+    return rest[:rest.index("\n\n---\n\n")] if "\n\n---\n\n" in rest else rest
 
 
 class TestDomainResolution:
@@ -130,147 +126,12 @@ class TestFramingBlock:
             assert word not in block
 
 
-class TestScopedChart:
-    def test_all_four_blocks_are_present(self, facts):
-        text = scoped_chart(facts, constitution_for("domain.relationship"))
-        for heading in ("CHART FRAMEWORK", "PRIMARY EVIDENCE",
-                        "COMPUTED PERIODS", "WIDER CHART"):
-            assert heading in text
-
-    def test_the_lagna_and_birth_nakshatra_are_always_framework(self, facts):
-        text = scoped_chart(facts, constitution_for("domain.career"))
-        framework = _block(text, "CHART FRAMEWORK")
-        assert "Ascendant (Lagna)" in framework
-        assert "Birth nakshatra" in framework
-
-    def test_the_luminaries_are_always_framework(self, facts):
-        """Every §4-11 protocol opens on the chart framework, and no reading of
-        any domain proceeds without the Sun and the Moon."""
-        framework = _block(
-            scoped_chart(facts, constitution_for("domain.wealth")),
-            "CHART FRAMEWORK",
-        )
-        assert "Sun is in" in framework
-        assert "Moon is in" in framework
-
-    def test_a_marriage_question_puts_the_seventh_house_in_primary(self, facts):
-        primary = _block(
-            scoped_chart(facts, constitution_for("domain.relationship")),
-            "PRIMARY EVIDENCE",
-        )
-        assert "The 7th house" in primary
-
-    def test_a_marriage_question_puts_venus_and_jupiter_in_primary(self, facts):
-        primary = _block(
-            scoped_chart(facts, constitution_for("domain.relationship")),
-            "PRIMARY EVIDENCE",
-        )
-        assert "Venus is in" in primary
-        assert "Jupiter is in" in primary
-
-    def test_a_career_question_puts_the_tenth_house_in_primary(self, facts):
-        primary = _block(
-            scoped_chart(facts, constitution_for("domain.career")),
-            "PRIMARY EVIDENCE",
-        )
-        assert "The 10th house" in primary
-
-    def test_a_career_question_leaves_an_uncovered_house_in_the_wider_chart(self, facts):
-        """House 12, not house 7: `karma`'s coverage genuinely includes the 7th
-        (§7 reads it for partnership in business), so asserting on 7 would prove
-        nothing about whether the gate works."""
-        primary = _block(
-            scoped_chart(facts, constitution_for("domain.career")),
-            "PRIMARY EVIDENCE",
-        )
-        assert "The 12th house" not in primary
-
-    def test_the_house_a_fact_is_about_beats_the_house_a_planet_sits_in(self):
-        """"Mars is in Virgo in the 7th house" is ABOUT Mars, not about the 7th.
-        Filing it under house 7 is the bug `_SUBJECT_HOUSE`'s anchor exists to
-        prevent, and this pins it from the direct lane's side.
-
-        Synthetic facts, not the real chart: the real one puts these planets
-        wherever the ephemeris puts them, and a test whose assertion depends on
-        that is a test that passes for the wrong reason.
-
-        The 7th lord here is Venus, deliberately not Mars — making Mars the lord
-        would promote it legitimately and this test would prove nothing."""
-        planet_in_seventh = (
-            "Mars is in Virgo in the 7th house (Chitra nakshatra, pada 1)."
-        )
-        seventh_itself = (
-            "The 7th house (marriage, spouse, partnerships) is ruled by Venus, "
-            "placed in the 7th house."
-        )
-        text = scoped_chart(
-            ["Ascendant (Lagna) is Pisces.", planet_in_seventh, seventh_itself],
-            constitution_for("domain.relationship"),
-        )
-        primary = _block(text, "PRIMARY EVIDENCE")
-        wider = _block(text, "WIDER CHART")
-        # The house fact is about house 7, which prema owns.
-        assert seventh_itself in primary
-        # Mars is not in prema's planet set (venus, jupiter), so sitting in the
-        # 7th must not promote it.
-        assert planet_in_seventh in wider
-        assert planet_in_seventh not in primary
-
-    def test_the_lord_of_a_covered_house_is_promoted_with_its_own_placement(self, facts):
-        """The spec asks for the domain's houses "with their lords", and the
-        house line only names the lord — "ruled by Mercury, placed in the 11th".
-        Mercury's OWN line carries the sign, nakshatra, pada and retrogression,
-        which is what judging a 7th lord actually requires. Leaving it in the
-        wider block hands the model the lord's name and hides its condition.
-
-        For this chart the 7th lord is Mercury, which is NOT in prema's planet
-        set (venus, jupiter) — so this can only pass if lordship promotes it.
-        """
-        text = scoped_chart(facts, constitution_for("domain.relationship"))
-        primary = _block(text, "PRIMARY EVIDENCE")
-        assert "The 7th house (marriage, spouse, partnerships) is ruled by Mercury" in primary
-        assert "Mercury is in" in primary
-
-    def test_a_lord_of_an_uncovered_house_is_not_promoted(self, facts):
-        """Ketu rules nothing and is in no domain's planet set, so nothing may
-        lift it out of the wider chart. Without this the promotion rule could
-        quietly admit everything and still look like it worked."""
-        wider = _block(
-            scoped_chart(facts, constitution_for("domain.relationship")),
-            "WIDER CHART",
-        )
-        assert "Ketu is in" in wider
-
-    def test_the_mahadasha_timeline_lands_in_computed_periods(self, facts):
-        periods = _block(
-            scoped_chart(facts, constitution_for("domain.relationship")),
-            "COMPUTED PERIODS",
-        )
-        assert "Mahadasha timeline from birth" in periods
-        assert "Currently running" in periods
-
-    def test_computed_periods_says_boundaries_not_predictions(self, facts):
-        text = scoped_chart(facts, constitution_for("domain.relationship"))
-        assert "not predictions" in text.lower()
-
-    def test_the_wider_chart_is_labelled_but_not_withheld(self, facts):
-        """Every protocol ends in whole-chart synthesis, so nothing is dropped —
-        it is demoted and labelled."""
-        text = scoped_chart(facts, constitution_for("domain.relationship"))
-        assert "do not lead from these" in text.lower()
-        wider = _block(text, "WIDER CHART")
-        assert "The 3rd house" in wider
-
-    def test_every_fact_appears_exactly_once(self, facts):
-        """A fact in two blocks is a fact with two priorities."""
-        text = scoped_chart(facts, constitution_for("domain.relationship"))
-        for fact in facts:
-            assert text.count(fact) == 1, f"appears {text.count(fact)}x: {fact}"
-
-    def test_no_facts_is_stated_rather_than_rendered_empty(self):
-        text = scoped_chart([], constitution_for("domain.relationship"))
-        assert "no chart" in text.lower()
-        assert "CHART FRAMEWORK" not in text
+# `TestScopedChart` lived here and is deliberately gone. It asserted the
+# four-block layout - CHART FRAMEWORK / PRIMARY EVIDENCE / COMPUTED PERIODS /
+# WIDER CHART - which `fact_table.render_table` replaced with one table after a
+# reading built an entire chart out of transit positions. What those tests
+# checked (relevance marking, subject-versus-location, nothing withheld) is now
+# checked in `tests/council/test_fact_table.py` against the shape that shipped.
 
 
 def _state(question="when will I marry?", **kw):
@@ -645,117 +506,12 @@ class TestSubPeriodBoundaries:
         assert "will happen" in lowered or "never state that an event will" in lowered
 
 
-class TestPlanetaryCondition:
-    """What Swiss Ephemeris already worked out, sent instead of re-derived.
-
-    `PlanetDiagnosis` carries dignity, combustion, strength, vargottama,
-    functional nature and received aspects. None of it reached the prompt, so a
-    real reading re-derived exaltation from raw signs (correctly, as it happens)
-    and then asserted "there are no conflicting malefic afflictions to the 10th
-    house or its ruler" - on a chart where the Sun and the Moon sat in the same
-    nakshatra pada. It had no aspect data and no combustion flag to check
-    against, so the claim was not a judgement, it was a guess in the shape of
-    one.
-    """
-
-    def test_the_block_is_present_when_a_diagnosis_exists(self, facts, chart_state):
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        assert "PLANETARY CONDITION" in prompt
-
-    def test_it_is_absent_without_a_diagnosis(self, facts):
-        prompt = build_direct_prompt(_state(chart_facts=facts))
-        assert "PLANETARY CONDITION" not in prompt
-
-    def test_every_graha_gets_a_line(self, facts, chart_state):
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        for graha in ("Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus",
-                      "Saturn", "Rahu", "Ketu"):
-            assert graha in block, f"{graha} has no condition line"
-
-    def test_dignity_is_stated_not_left_to_be_inferred(self, facts, chart_state):
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        assert "dignity" in block.lower()
-
-    def test_strength_bands_are_stated(self, facts, chart_state):
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        assert any(b in block for b in ("very_weak", "weak", "moderate",
-                                        "strong", "very_strong"))
-
-    def test_the_partial_system_caveat_is_stated_once(self, facts, chart_state):
-        """`is_estimated` says the strength system ran partial. Sending the
-        bands and hiding that would dress a partial calculation as a full one -
-        but nine identical parentheticals is a caveat nobody reads, so it goes
-        in the header once, naming the system."""
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        assert chart_state.strength_system in block
-        assert block.count("estimates, not measurements") == 1
-
-    def test_the_conventional_graha_order_is_used(self, facts, chart_state):
-        """`ChartState.planets` arrives alphabetical, which no astrologer reads
-        in - and which would not line up with the placement lines above it."""
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        positions = [
-            block.index(f"- {graha}:")
-            for graha in ("Sun", "Moon", "Mars", "Mercury", "Jupiter",
-                          "Venus", "Saturn", "Rahu", "Ketu")
-        ]
-        assert positions == sorted(positions)
-
-    def test_combustion_is_reported(self, facts, chart_state):
-        """The failure this block exists for. A combust graha is a graha whose
-        promise the tradition discounts, and no amount of sign-and-house data
-        reveals it."""
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        assert "combust" in block.lower()
-
-    def test_received_aspects_name_only_grahas(self, facts, chart_state):
-        """`aspects_received` mixes grahas with karaka and lord symbols -
-        `karaka.ayu`, `lord.bhava.09`. Those are internal join keys, and pasting
-        them into a prompt asks the model to interpret this repo's vocabulary
-        rather than a chart."""
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        assert "karaka." not in block
-        assert "lord.bhava" not in block
-        assert "graha." not in block
-        assert "aspected by" in block
-
-    def test_the_registry_symbols_are_humanised(self, facts, chart_state):
-        """`dignity.neutral` and `graha.moon` are registry symbols. The rule
-        engine needs them; a reading prompt does not."""
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        block = prompt[prompt.index("PLANETARY CONDITION"):]
-        assert "dignity." not in block
-
-    def test_it_tells_the_model_not_to_recompute_them(self, facts, chart_state):
-        prompt = build_direct_prompt(_state(
-            chart_facts=facts, chart_state=chart_state,
-        ))
-        assert "do not re-derive" in prompt.lower()
+# `TestPlanetaryCondition` lived here and is deliberately gone. It asserted a
+# separate PLANETARY CONDITION block carrying dignity, strength, combustion and
+# aspects with no sign and no house — which is exactly why a reading joined those
+# judgements to the wrong planets and wrote "Venus debilitated in Virgo" about a
+# chart whose natal Venus is exalted in Pisces. Those columns are now part of the
+# single table, and `tests/council/test_fact_table.py` asserts them there.
 
 
 class TestBuildDirectPrompt:
@@ -764,7 +520,7 @@ class TestBuildDirectPrompt:
         order = [
             "expert Vedic (Jyotish) astrologer",
             "READING METHOD",
-            "CHART FRAMEWORK",
+            "THE CHART",
             "ASTRO REFERENCE",
             "THE QUESTION",
         ]
@@ -916,21 +672,26 @@ class TestBuildDirectPrompt:
         assert "D10" in prompt
         assert "not used" in prompt.lower()
 
-    def test_an_admitted_varga_keeps_its_facts(self, facts):
-        """The filter must key on the withheld list, not on being a varga."""
+    def test_an_admitted_varga_is_rendered_from_the_chart(self, facts):
+        """The filter must key on the withheld list, not on being a varga.
+
+        Rendered from the chart by `_varga_block` rather than from the fact list:
+        `chart_natal_node` appends varga facts to `chart_facts` AND `_varga_block`
+        renders the same divisions, so keeping both printed every divisional
+        placement twice."""
         from rishivan.varga.confidence import BirthConfidence
         from rishivan.varga.select import VargaSelection
 
-        d9 = ["Navamsha chart (D9): Venus is in Leo in the house 3."]
         prompt = build_direct_prompt(_state(
-            chart_facts=facts + d9,
+            chart_facts=facts,
             chart=compute_chart(BIRTH),
             vargas=VargaSelection(
                 selected=("D9",), withheld=(),
                 confidence=BirthConfidence.MINUTE,
             ),
         ))
-        assert "Navamsha chart (D9): Venus is in Leo" in prompt
+        assert "(D9)" in prompt
+        assert "DIVISIONAL CHARTS" in prompt
 
     def test_withheld_vargas_are_stated_not_silent(self, facts):
         from rishivan.varga.confidence import BirthConfidence
@@ -1012,3 +773,113 @@ def test_no_network(monkeypatch, facts):
     monkeypatch.setattr(builtins, "__import__", guarded)
     prompt = build_direct_prompt(_state(chart_facts=facts))
     assert "READING METHOD" in prompt
+
+
+class TestTheProfileDrivesTheFacts:
+    """The prompt now carries what the question needs, and not the rest.
+
+    Before this, all four question kinds received an identical sixty-fact prompt.
+    A date question got a ten-year dasha forecast and no panchang, so it answered
+    "late 2026 or early 2027" to a question about tomorrow.
+    """
+
+    def _prompt(self, question, domain, facts, **kw):
+        state = _state(question, koonji_domain=domain, chart_facts=facts, **kw)
+        return build_direct_prompt(state)
+
+    def test_a_date_question_gets_a_panchang_for_that_date(self, facts):
+        prompt = self._prompt(
+            "can I travel foreign tomorrow?", "domain.travel", facts,
+            chart=compute_chart(BIRTH),
+        )
+        assert "Rahu Kaal" in prompt
+        # WHEN is 2026-08-25, so "tomorrow" is the 26th - not today's date.
+        assert "2026-08-26" in prompt
+
+    def test_a_date_question_gets_tara_and_chandra_bala(self, facts):
+        prompt = self._prompt(
+            "can I travel foreign tomorrow?", "domain.travel", facts,
+            chart=compute_chart(BIRTH),
+        )
+        assert "Tara bala" in prompt
+        assert "Chandra bala" in prompt
+
+    def test_a_date_question_gets_no_ten_year_forecast(self, facts):
+        """What produced the wrong answer."""
+        prompt = self._prompt(
+            "can I travel foreign tomorrow?", "domain.travel", facts,
+            chart=compute_chart(BIRTH),
+        )
+        assert "Antardashas within the following" not in prompt
+
+    def test_a_character_question_gets_no_transits(self, facts):
+        prompt = self._prompt(
+            "what is my personality like?", "domain.temperament", facts,
+            chart=compute_chart(BIRTH),
+        )
+        assert "TRANSITS NOW" not in prompt
+        assert "Sade sati" not in prompt
+
+    def test_a_timing_question_gets_transits_and_forward_periods(self, facts):
+        prompt = self._prompt(
+            "when will I get married?", "domain.relationship", facts,
+            chart=compute_chart(BIRTH),
+        )
+        assert "TRANSITS NOW" in prompt
+        assert "Antardashas within the following" in prompt
+
+    def test_a_timing_question_gets_no_panchang(self, facts):
+        prompt = self._prompt(
+            "when will I get married?", "domain.relationship", facts,
+            chart=compute_chart(BIRTH),
+        )
+        # "Rahu Kaal" also appears in the OUTPUT granularity carve-out, so
+        # assert on the block heading rather than the phrase.
+        assert "DAILY WINDOWS FOR" not in prompt
+
+    def test_the_three_kinds_produce_genuinely_different_prompts(self, facts):
+        """Scoping that is wired but inert is the failure mode this replaces,
+        arriving one layer further in."""
+        kw = dict(facts=facts, chart=compute_chart(BIRTH))
+        a = self._prompt("when will I get married?", "domain.relationship", **kw)
+        b = self._prompt("can I travel foreign tomorrow?", "domain.travel", **kw)
+        c = self._prompt("what is my personality like?", "domain.temperament", **kw)
+        assert len({a, b, c}) == 3
+        # And the character prompt must be the smallest of the three.
+        assert len(c) < len(a)
+        assert len(c) < len(b)
+
+    def test_there_is_exactly_one_planetary_table(self, facts):
+        prompt = self._prompt(
+            "when will I get married?", "domain.relationship", facts,
+            chart=compute_chart(BIRTH), chart_state=None,
+        )
+        assert len([ln for ln in prompt.splitlines() if "PLANET" in ln]) == 1
+
+    def test_the_old_five_block_layout_is_gone(self, facts):
+        prompt = self._prompt(
+            "when will I get married?", "domain.relationship", facts,
+            chart=compute_chart(BIRTH),
+        )
+        for banned in ("CHART FRAMEWORK", "PRIMARY EVIDENCE FOR THIS QUESTION",
+                       "WIDER CHART", "PLANETARY CONDITION"):
+            assert banned not in prompt
+
+    def test_unavailable_evidence_is_declared_once(self, facts):
+        """So a gap is stated rather than discovered per step, and the model does
+        not pad the step it cannot support."""
+        prompt = self._prompt(
+            "when will I get married?", "domain.relationship", facts,
+            chart=compute_chart(BIRTH),
+        )
+        assert "EVIDENCE NOT AVAILABLE" in prompt
+        assert "Jaimini" in prompt
+
+    def test_the_profile_reason_is_not_in_the_prompt(self, facts):
+        """It is for the trace and for a reviewer, not for the model - telling it
+        which bundles were selected invites it to reason about our plumbing."""
+        prompt = self._prompt(
+            "when will I get married?", "domain.relationship", facts,
+            chart=compute_chart(BIRTH),
+        )
+        assert "fact bundles" not in prompt
