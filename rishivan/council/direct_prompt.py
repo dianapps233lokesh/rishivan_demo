@@ -333,6 +333,34 @@ def ground_truth_rules() -> str:
     )
 
 
+def without_withheld_vargas(chart_facts: list[str], selection) -> list[str]:
+    """Chart facts minus any belonging to a division §7 refused to admit.
+
+    Two subsystems decide about vargas and they can disagree. `chart_natal_node`
+    appends varga facts for whatever `relevant_vargas` the intake classifier
+    named; `varga_select` decides admissibility from birth-time precision, and
+    knows nothing about that list. When they disagree the facts arrive anyway.
+
+    A real prompt carried ten D10 placements under WIDER CHART and, below them,
+    "D10 ... I have not used it. Do not reason from these." That is a prompt
+    arguing with itself, and the model has no way to referee it - a reader of
+    the reading cannot tell whether the D10 evidence was used or not, which is
+    exactly the thing the withheld list exists to make clear.
+
+    The facts go; the *statement* that the division was withheld stays, since
+    dropping both would leave a silence indistinguishable from a division that
+    was never relevant.
+    """
+    if selection is None or not selection.withheld:
+        return chart_facts
+    # Varga fact lines from `local_varga.varga_facts` all carry the code
+    # parenthesised - "Dashamsha chart (D10): ..." and "In your Dashamsha chart
+    # (D10): Ascendant is ...". Matching on that rather than on the varga name
+    # keeps this working if the display names are ever reworded.
+    codes = tuple(f"({w.code})" for w in selection.withheld)
+    return [fact for fact in chart_facts if not any(c in fact for c in codes)]
+
+
 def history_block(conversation) -> str:
     """The transcript, with none of the voice instructions around it.
 
@@ -445,7 +473,12 @@ def build_direct_prompt(state) -> str:
 
     parts.append(method_block(constitution))
     parts.append(ground_truth_rules())
-    parts.append(scoped_chart(state.get("chart_facts") or [], constitution))
+    parts.append(scoped_chart(
+        without_withheld_vargas(
+            state.get("chart_facts") or [], state.get("vargas")
+        ),
+        constitution,
+    ))
 
     varga = _varga_block(state.get("chart"), state.get("vargas"))
     if varga:

@@ -383,6 +383,60 @@ class TestBuildDirectPrompt:
         ))
         assert "DIVISIONAL CHARTS" not in prompt
 
+    def test_a_withheld_varga_does_not_leak_its_facts_in(self, facts):
+        """The prompt must not supply evidence it forbids in the same breath.
+
+        `chart_natal_node` appends varga facts for whatever `relevant_vargas`
+        the intake classifier named; `varga_select` decides admissibility
+        independently from birth-time precision. When they disagree the facts
+        arrive anyway, so a real prompt carried ten D10 placements under WIDER
+        CHART and, below them, "D10: I have not used it. Do not reason from
+        these." The model has no way to referee that, and should not have to.
+        """
+        from rishivan.varga.confidence import BirthConfidence
+        from rishivan.varga.select import VargaSelection, WithheldVarga
+
+        d10 = [
+            "In your Dashamsha chart (D10): Ascendant is Sagittarius.",
+            "Dashamsha chart (D10): Sun is in Virgo in the house 10 "
+            "(Hasta nakshatra, pada 2).",
+        ]
+        prompt = build_direct_prompt(_state(
+            "will I get a promotion?",
+            koonji_domain="domain.career",
+            chart=compute_chart(BIRTH),
+            chart_facts=facts + d10,
+            vargas=VargaSelection(
+                selected=(), withheld=(WithheldVarga(
+                    code="D10", required=BirthConfidence.MINUTE,
+                    actual=BirthConfidence.HOUR,
+                    reason="birth time recorded to the hour",
+                ),),
+                confidence=BirthConfidence.HOUR,
+            ),
+        ))
+        assert "Dashamsha chart (D10)" not in prompt
+        # Still SAID it was withheld, and why. Dropping the facts silently
+        # would be the other half of the same mistake.
+        assert "D10" in prompt
+        assert "not used" in prompt.lower()
+
+    def test_an_admitted_varga_keeps_its_facts(self, facts):
+        """The filter must key on the withheld list, not on being a varga."""
+        from rishivan.varga.confidence import BirthConfidence
+        from rishivan.varga.select import VargaSelection
+
+        d9 = ["Navamsha chart (D9): Venus is in Leo in the house 3."]
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts + d9,
+            chart=compute_chart(BIRTH),
+            vargas=VargaSelection(
+                selected=("D9",), withheld=(),
+                confidence=BirthConfidence.MINUTE,
+            ),
+        ))
+        assert "Navamsha chart (D9): Venus is in Leo" in prompt
+
     def test_withheld_vargas_are_stated_not_silent(self, facts):
         from rishivan.varga.confidence import BirthConfidence
         from rishivan.varga.select import VargaSelection, WithheldVarga
