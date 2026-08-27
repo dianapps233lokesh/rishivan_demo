@@ -31,10 +31,19 @@ WHEN = datetime(2026, 8, 25, 12, 0)
 
 @pytest.fixture
 def prompt():
+    """As close to a real prompt as the fixture can get.
+
+    `chart_state` is included deliberately: it carries the §6 diagnosis, and a
+    snapshot that omitted it would not cover the block most likely to be
+    reworded — the computed dignity, combustion and aspect lines.
+    """
+    from rishivan.chartstate.build import build_chart_state
+
     state = initial_state("when will I marry?", query_time=WHEN)
     state["koonji_domain"] = "domain.relationship"
     state["chart"] = compute_chart(BIRTH)
     state["chart_facts"] = derive_facts(state["chart"], when=WHEN)
+    state["chart_state"] = build_chart_state(state["chart"], when=WHEN)
     return build_direct_prompt(state)
 
 

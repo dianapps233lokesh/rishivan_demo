@@ -136,6 +136,11 @@ it is arithmetic pretending to be a prediction.
 
 # ── The chart, scoped to the question ────────────────────────────────────────
 
+_PLANET_SEQUENCE = (
+    "Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu",
+)
+"""The order an astrologer reads grahas in - `chart.facts._PLANET_ORDER`."""
+
 _PLANET_FACT = re.compile(
     r"^(Sun|Moon|Mars|Mercury|Jupiter|Venus|Saturn|Rahu|Ketu) is in "
 )
@@ -382,6 +387,98 @@ def history_block(conversation) -> str:
     )
 
 
+def _symbol(value) -> str:
+    """`dignity.neutral` -> `neutral`, `graha.moon` -> `Moon`.
+
+    Registry symbols are namespaced because the rule engine matches on them. A
+    reading prompt does not, and asking the model to interpret this repo's join
+    keys spends its attention on our vocabulary instead of the chart.
+    """
+    if value is None:
+        return ""
+    text = str(getattr(value, "value", value))
+    return text.rsplit(".", 1)[-1]
+
+
+def _condition_line(planet) -> str:
+    """One graha's computed condition, in the order a reading needs it.
+
+    Dignity and strength first because every §4-11 protocol has a strength step;
+    the flags next because each one is a discount the tradition applies and none
+    of them is visible in a sign-and-house line; received aspects last because
+    they are the context for the rest.
+    """
+    name = _symbol(planet.graha).capitalize()
+    parts = [f"dignity {_symbol(planet.dignity)}"]
+
+    if planet.strength is not None:
+        # The `is_estimated` caveat is stated once in the header rather than on
+        # every line: nine identical parentheticals cost 300 characters to say
+        # one thing, and a caveat repeated nine times is a caveat nobody reads.
+        parts.append(f"strength {_symbol(planet.strength.band)}")
+
+    if planet.functional_nature:
+        parts.append(f"functionally {planet.functional_nature}")
+    for flag, label in (
+        (planet.combust, "COMBUST"),
+        (planet.retrograde, "retrograde"),
+        (planet.vargottama, "vargottama"),
+    ):
+        if flag:
+            parts.append(label)
+
+    # Grahas only. `aspects_received` also carries karaka.* and lord.bhava.*
+    # symbols, which are join keys rather than aspecting bodies.
+    aspects = [
+        _symbol(a).capitalize()
+        for a in (planet.aspects_received or ())
+        if str(a).startswith("graha.")
+    ]
+    if aspects:
+        parts.append(f"aspected by {', '.join(aspects)}")
+
+    return f"  - {name}: {'; '.join(parts)}"
+
+
+def _condition_block(chart_state) -> str:
+    """Blueprint §6's diagnosis, sent rather than left to be re-derived.
+
+    Everything here is computed, and until now none of it reached the prompt.
+    The cost was measurable in a real reading: the model re-derived exaltation
+    from raw signs, then wrote "there are no conflicting malefic afflictions to
+    the 10th house or its ruler" about a chart whose Sun and Moon shared a
+    nakshatra pada. It had no combustion flag and no aspect list to check, so
+    that sentence was a guess wearing the clothes of a judgement.
+    """
+    if chart_state is None or not chart_state.planets:
+        return ""
+
+    # Conventional order, matching the placement lines above, so a reader
+    # cross-referencing the two blocks is not re-sorting in their head. The
+    # `planets` tuple arrives alphabetical, which no astrologer reads in.
+    order = {name: index for index, name in enumerate(_PLANET_SEQUENCE)}
+    planets = sorted(
+        chart_state.planets,
+        key=lambda p: order.get(_symbol(p.graha).capitalize(), 99),
+    )
+
+    estimated = any(
+        p.strength is not None and p.strength.is_estimated for p in planets
+    )
+    caveat = (
+        f"\nStrength bands come from `{chart_state.strength_system}`"
+        + (", running partial - treat them as estimates, not measurements."
+           if estimated else ".")
+    )
+    return (
+        "PLANETARY CONDITION - computed, and authoritative. Do not re-derive any\n"
+        "of it from the signs and houses above; where your own reading of the "
+        "chart\ndisagrees with a line here, this is what the calculation says:"
+        + caveat + "\n"
+        + "\n".join(_condition_line(p) for p in planets)
+    )
+
+
 def _varga_block(chart, selection) -> str:
     """Divisional placements for the divisions §7 admitted, and why any were not.
 
@@ -479,6 +576,10 @@ def build_direct_prompt(state) -> str:
         ),
         constitution,
     ))
+
+    condition = _condition_block(state.get("chart_state"))
+    if condition:
+        parts.append(condition)
 
     varga = _varga_block(state.get("chart"), state.get("vargas"))
     if varga:

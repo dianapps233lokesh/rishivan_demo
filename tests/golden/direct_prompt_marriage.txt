@@ -93,6 +93,22 @@ WIDER CHART — real, and yours to synthesise at the end. Do not lead from these
 
 ---
 
+PLANETARY CONDITION - computed, and authoritative. Do not re-derive any
+of it from the signs and houses above; where your own reading of the chart
+disagrees with a line here, this is what the calculation says:
+Strength bands come from `parashari.partial.v1`, running partial - treat them as estimates, not measurements.
+  - Sun: dignity neutral; strength strong; functionally malefic; aspected by Jupiter
+  - Moon: dignity neutral; strength weak; functionally benefic; aspected by Jupiter, Mars, Saturn
+  - Mars: dignity own_sign; strength strong; functionally benefic; vargottama
+  - Mercury: dignity neutral; strength moderate; functionally neutral; retrograde; vargottama; aspected by Ketu
+  - Jupiter: dignity neutral; strength moderate; functionally benefic; retrograde; aspected by Mars, Saturn, Sun
+  - Venus: dignity neutral; strength weak; functionally malefic; retrograde; aspected by Ketu
+  - Saturn: dignity neutral; strength very_weak; functionally malefic; COMBUST; aspected by Jupiter
+  - Rahu: dignity neutral; strength strong; functionally malefic; retrograde; aspected by Ketu
+  - Ketu: dignity neutral; strength weak; functionally benefic; retrograde; aspected by Mercury, Rahu, Venus
+
+---
+
 OUTPUT — write in this order, as plain analytical prose:
 
   1. The method steps, worked through in order. One short paragraph each,

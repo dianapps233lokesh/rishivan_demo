@@ -270,6 +270,125 @@ def _state(question="when will I marry?", **kw):
     return s
 
 
+@pytest.fixture(scope="module")
+def chart_state():
+    from rishivan.chartstate.build import build_chart_state
+    return build_chart_state(compute_chart(BIRTH), when=WHEN)
+
+
+class TestPlanetaryCondition:
+    """What Swiss Ephemeris already worked out, sent instead of re-derived.
+
+    `PlanetDiagnosis` carries dignity, combustion, strength, vargottama,
+    functional nature and received aspects. None of it reached the prompt, so a
+    real reading re-derived exaltation from raw signs (correctly, as it happens)
+    and then asserted "there are no conflicting malefic afflictions to the 10th
+    house or its ruler" - on a chart where the Sun and the Moon sat in the same
+    nakshatra pada. It had no aspect data and no combustion flag to check
+    against, so the claim was not a judgement, it was a guess in the shape of
+    one.
+    """
+
+    def test_the_block_is_present_when_a_diagnosis_exists(self, facts, chart_state):
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        assert "PLANETARY CONDITION" in prompt
+
+    def test_it_is_absent_without_a_diagnosis(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "PLANETARY CONDITION" not in prompt
+
+    def test_every_graha_gets_a_line(self, facts, chart_state):
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        for graha in ("Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus",
+                      "Saturn", "Rahu", "Ketu"):
+            assert graha in block, f"{graha} has no condition line"
+
+    def test_dignity_is_stated_not_left_to_be_inferred(self, facts, chart_state):
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        assert "dignity" in block.lower()
+
+    def test_strength_bands_are_stated(self, facts, chart_state):
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        assert any(b in block for b in ("very_weak", "weak", "moderate",
+                                        "strong", "very_strong"))
+
+    def test_the_partial_system_caveat_is_stated_once(self, facts, chart_state):
+        """`is_estimated` says the strength system ran partial. Sending the
+        bands and hiding that would dress a partial calculation as a full one -
+        but nine identical parentheticals is a caveat nobody reads, so it goes
+        in the header once, naming the system."""
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        assert chart_state.strength_system in block
+        assert block.count("estimates, not measurements") == 1
+
+    def test_the_conventional_graha_order_is_used(self, facts, chart_state):
+        """`ChartState.planets` arrives alphabetical, which no astrologer reads
+        in - and which would not line up with the placement lines above it."""
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        positions = [
+            block.index(f"- {graha}:")
+            for graha in ("Sun", "Moon", "Mars", "Mercury", "Jupiter",
+                          "Venus", "Saturn", "Rahu", "Ketu")
+        ]
+        assert positions == sorted(positions)
+
+    def test_combustion_is_reported(self, facts, chart_state):
+        """The failure this block exists for. A combust graha is a graha whose
+        promise the tradition discounts, and no amount of sign-and-house data
+        reveals it."""
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        assert "combust" in block.lower()
+
+    def test_received_aspects_name_only_grahas(self, facts, chart_state):
+        """`aspects_received` mixes grahas with karaka and lord symbols -
+        `karaka.ayu`, `lord.bhava.09`. Those are internal join keys, and pasting
+        them into a prompt asks the model to interpret this repo's vocabulary
+        rather than a chart."""
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        assert "karaka." not in block
+        assert "lord.bhava" not in block
+        assert "graha." not in block
+        assert "aspected by" in block
+
+    def test_the_registry_symbols_are_humanised(self, facts, chart_state):
+        """`dignity.neutral` and `graha.moon` are registry symbols. The rule
+        engine needs them; a reading prompt does not."""
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        block = prompt[prompt.index("PLANETARY CONDITION"):]
+        assert "dignity." not in block
+
+    def test_it_tells_the_model_not_to_recompute_them(self, facts, chart_state):
+        prompt = build_direct_prompt(_state(
+            chart_facts=facts, chart_state=chart_state,
+        ))
+        assert "do not re-derive" in prompt.lower()
+
+
 class TestBuildDirectPrompt:
     def test_the_blocks_appear_in_order(self, facts):
         prompt = build_direct_prompt(_state(chart_facts=facts))
