@@ -22,7 +22,17 @@ database — which is what makes the golden-snapshot test possible and what
 
 from __future__ import annotations
 
+import re
+
 from rishivan.council.constitution import Constitution
+from rishivan.council.prompts import _FRAMEWORK, _SUBJECT_HOUSE
+
+"""`_FRAMEWORK` and `_SUBJECT_HOUSE` are imported from `prompts` rather than
+copied, and the privacy is knowingly crossed. `_SUBJECT_HOUSE` encodes the
+subject-versus-location distinction — "Sun is in Sagittarius in the 6th house"
+is about the Sun, not about the 6th — and a second copy of that anchored regex
+is a second thing that can drift away from the first. Same package, one
+definition."""
 
 DEFAULT_CONSTITUTION_KEY = "atma"
 """Where an unroutable question lands.
@@ -122,3 +132,148 @@ Do not reach your verdict before step {last}. The order is the method: a promise
 that was never established cannot be timed, and a window with no promise behind
 it is arithmetic pretending to be a prediction.
 """.strip()
+
+
+# ── The chart, scoped to the question ────────────────────────────────────────
+
+_PLANET_FACT = re.compile(
+    r"^(Sun|Moon|Mars|Mercury|Jupiter|Venus|Saturn|Rahu|Ketu) is in "
+)
+"""A per-planet placement line from `facts.derive_facts`. Anchored, so a
+conjunction line naming several planets is not mistaken for one."""
+
+_LUMINARIES = ("Sun is in", "Moon is in")
+"""Framework whatever the domain. Every §4-11 protocol opens on the chart
+framework, and no reading of any domain proceeds without the two lights."""
+
+_PERIOD_PREFIXES = ("Mahadasha timeline", "Currently running")
+"""The only lines carrying a date. They get their own labelled block because
+every date the model is allowed to write has to be copied from one of them."""
+
+_CONJUNCTION_HOUSE = re.compile(
+    r"^Conjunction: .* in the (\d{1,2})(?:st|nd|rd|th) house"
+)
+
+_HOUSE_RULER = re.compile(
+    r"^The (\d{1,2})(?:st|nd|rd|th) house \([^)]*\) is ruled by (\w+)"
+)
+"""The lord of a house, from the house's own fact line.
+
+Read in a first pass so the lords of the domain's houses can be promoted
+alongside them. The house line only names the lord — "ruled by Mercury, placed
+in the 11th house" — while the lord's own line carries its sign, nakshatra, pada
+and retrogression, which is what judging a 7th lord actually takes. Handing the
+model the name and hiding the condition is the worse half of both options.
+
+Derived from the facts rather than from the chart on purpose: `scoped_chart`
+stays a function of the fact list alone, which is what keeps it pure and its
+snapshot honest.
+"""
+
+
+def _domain_lords(chart_facts: list[str], constitution: Constitution) -> set[str]:
+    """Lowercased planets ruling any house in this domain's coverage."""
+    lords = set()
+    for fact in chart_facts:
+        match = _HOUSE_RULER.match(fact)
+        if match and int(match.group(1)) in constitution.houses:
+            lords.add(match.group(2).lower())
+    return lords
+
+
+def _tier(fact: str, constitution: Constitution, lords: frozenset[str]) -> str:
+    """Which block a fact belongs in. Checked in priority order.
+
+    Framework first, so the lagna and the luminaries are never demoted by a
+    domain that does not name them. Periods next, so a dated line is never
+    filed as a placement.
+    """
+    if fact.startswith(_FRAMEWORK) or fact.startswith(_LUMINARIES):
+        return "framework"
+    if fact.startswith(_PERIOD_PREFIXES):
+        return "periods"
+
+    subject = _SUBJECT_HOUSE.match(fact)
+    if subject is not None:
+        house = int(subject.group(1))
+        # The 1st house and its lord are the framework step in every protocol,
+        # whether or not the domain lists house 1 in its coverage.
+        if house == 1:
+            return "framework"
+        return "primary" if house in constitution.houses else "wider"
+
+    planet = _PLANET_FACT.match(fact)
+    if planet is not None:
+        name = planet.group(1).lower()
+        # Either the domain names this planet outright, or it rules one of the
+        # domain's houses. The second half matters more than it looks: for a
+        # marriage question prema names Venus and Jupiter, but the 7th lord is
+        # whatever the lagna made it - here Mercury, which no planet list could
+        # have anticipated.
+        owned = name in {p.lower() for p in constitution.planets} or name in lords
+        return "primary" if owned else "wider"
+
+    if fact.startswith("Yoga:"):
+        # "major combinations" is a step in every protocol.
+        return "primary"
+
+    conjunction = _CONJUNCTION_HOUSE.match(fact)
+    if conjunction is not None:
+        return (
+            "primary"
+            if int(conjunction.group(1)) in constitution.houses
+            else "wider"
+        )
+
+    return "wider"
+
+
+_HEADINGS = (
+    ("framework", "CHART FRAMEWORK — read these first, whatever the question:"),
+    ("primary", None),  # filled in at render time; it names the houses
+    ("periods",
+     "COMPUTED PERIODS — boundaries, not predictions. Every date and clock time\n"
+     "you write must be copied verbatim from these lines:"),
+    ("wider",
+     "WIDER CHART — real, and yours to synthesise at the end. Do not lead from "
+     "these:"),
+)
+
+
+def scoped_chart(chart_facts: list[str], constitution: Constitution) -> str:
+    """Chart facts in four labelled blocks, scoped to the question's domain.
+
+    Nothing is withheld. Every §4-11 protocol ends in whole-chart synthesis, so
+    the wider chart is demoted and labelled rather than dropped — the same
+    decision `prompts.coverage_facts` made, for the same reason.
+    """
+    if not chart_facts:
+        return "No chart was computed for this question."
+
+    # Two passes. The first learns which planets rule the domain's houses, which
+    # the second needs before it can decide where a planet's own line belongs.
+    lords = frozenset(_domain_lords(chart_facts, constitution))
+
+    buckets: dict[str, list[str]] = {
+        "framework": [], "primary": [], "periods": [], "wider": [],
+    }
+    for fact in chart_facts:
+        buckets[_tier(fact, constitution, lords)].append(fact)
+
+    houses = ", ".join(str(h) for h in sorted(constitution.primary_houses))
+    primary_heading = (
+        f"PRIMARY EVIDENCE FOR THIS QUESTION — house {houses} is the subject; "
+        "the rest is its context:"
+    )
+
+    sections = []
+    for name, heading in _HEADINGS:
+        facts = buckets[name]
+        if not facts:
+            continue
+        sections.append(
+            (primary_heading if name == "primary" else heading)
+            + "\n"
+            + "\n".join(f"  - {fact}" for fact in facts)
+        )
+    return "\n\n".join(sections)
