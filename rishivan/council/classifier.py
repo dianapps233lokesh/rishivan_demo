@@ -287,7 +287,15 @@ def classify_query(
                 is_followup = is_probable_followup(question, conversation)
             if is_followup:
                 rishi = conversation.current_rishi or rishi
-        print(f"orchestrator classification is primary rishi is {rishi}, domain classified is {domain}, supporting rishis are {result.get("supporting_rishis", [])}, intent classified is {intent}, varga code is {varga_code}, relevant vargas are {relevant_vargas}, dasha level is {dasha_level}")
+        # Logged rather than printed: it fired on every request and shared
+        # stdout with the direct lane's prompt dump, which is there to be
+        # copy-pasted into other platforms.
+        logger.debug(
+            "classified: rishi=%s domain=%s supporting=%s intent=%s "
+            "varga=%s relevant_vargas=%s dasha_level=%s",
+            rishi, domain, result.get("supporting_rishis", []), intent,
+            varga_code, relevant_vargas, dasha_level,
+        )
         return {
             "is_smalltalk_or_gibberish": is_smalltalk_or_gibberish,
             "primary_rishi": rishi,

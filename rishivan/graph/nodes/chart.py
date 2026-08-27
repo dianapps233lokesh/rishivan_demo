@@ -11,9 +11,12 @@ arithmetic: Swiss Ephemeris plus the vendored varga engine, zero network calls.
 
 from __future__ import annotations
 
+import logging
 from datetime import datetime, timedelta
 
 from rishivan.graph.state import RishivanState
+
+logger = logging.getLogger(__name__)
 
 DEFAULT_LAT = 28.6139
 DEFAULT_LON = 77.2090
@@ -39,9 +42,12 @@ def chart_natal_node(state: RishivanState) -> dict:
     from rishivan.chart.local_varga import varga_facts, varga_table_markdown
 
     chart = compute_chart(state["birth_data"])
-    print(f"\n\n======== chart computed is {chart}")
     chart_facts = derive_facts(chart)
-    print(f"\n\n==============facts derived are {chart_facts}")
+    # Logged rather than printed. Dumping the whole chart object and all ~30
+    # facts to stdout on every request buried the direct lane's prompt dump,
+    # which is there to be copy-pasted into other platforms.
+    logger.debug("natal chart computed: %s", chart)
+    logger.debug("chart facts derived (%d): %s", len(chart_facts), chart_facts)
     tables: dict[str, str] = {}
 
     covered = {"D1"}
