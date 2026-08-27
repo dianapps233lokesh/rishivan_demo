@@ -117,6 +117,19 @@ class RishivanState(TypedDict, total=False):
     the output. `test_state.py` now walks every node's returns against these
     annotations for exactly this reason."""
 
+    direct_prompt: str
+    """The whole prompt the direct lane sends, assembled by
+    `council/direct_prompt.py`.
+
+    In state rather than built at the call site for two reasons. It is what
+    `council_consult` streams from, mirroring how narration already reads the
+    `AnswerPlan` out of state instead of recomputing it. And it is what the
+    console dump and the UI expander print, so what is shown is provably the
+    string that was sent rather than a second assembly of it.
+
+    Declared here because LangGraph discards writes to undeclared channels
+    silently - see `context_text` above for what that cost last time."""
+
     life_domain: str | None
     contributor_reports: tuple
     """The `ContributorReport` objects, kept apart from the `contributors` dict
