@@ -14,8 +14,8 @@ from langgraph.graph import END, START, StateGraph
 
 from rishivan.graph import edges as R
 from rishivan.graph.nodes import (
-    answer, answer_plan, chart, diagnosis, ground, hierarchy, intake, koonji,
-    persist, rishi, sakshi, synthesis, timing, varga,
+    answer, answer_plan, chart, diagnosis, direct, ground, hierarchy, intake,
+    koonji, persist, rishi, sakshi, synthesis, timing, varga,
 )  # noqa: F401 - `answer` re-exported for callers still importing it
 from rishivan.graph.nodes import retrieve as retrieval
 from rishivan.graph.state import RishivanState
@@ -128,6 +128,73 @@ STATIC_EDGES: dict[str, str] = {
 }
 
 
+DIRECT_NODE_NAMES = (
+    "intake", "warmth",
+    "chart_natal", "chart_moment", "panchang", "chart_state", "hierarchy",
+    "varga_select", "dasha_windows",
+    "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
+    "render_numerology",
+    "direct_read", "persist",
+)
+"""The direct lane's nodes. Every computational one survives; retrieval, the
+rule engine and the council do not."""
+
+DIRECT_EDGE_MAPS: dict[str, dict[str, str]] = {
+    # The routers are not edited, and that is the point of this table. Both
+    # retrieval routers return the label "retrieve", meaning "go and do the
+    # reading"; which node begins that reading is the graph's business. So the
+    # direct lane is a different resolution of the same vocabulary, and
+    # `tests/graph/test_edges.py`'s table stays valid as written.
+    "intake": {
+        "warmth": "warmth",
+        "chart_natal": "chart_natal",
+        "chart_moment": "chart_moment",
+        "panchang": "panchang",
+        # `ground` in the default lane. Here the chartless path goes through the
+        # diagnosis so `hierarchy_node` still runs and the method block still
+        # gets a domain - a question with no chart needs a protocol too.
+        "retrieve": "chart_state",
+    },
+    "chart_natal": {
+        "chart_render": "chart_render",
+        "panchang": "panchang",
+        "retrieve": "chart_state",
+    },
+    "chart_moment": {
+        "chart_render": "chart_render",
+        "panchang": "panchang",
+        "retrieve": "chart_state",
+    },
+    "chart_render": {
+        "render_varga": "render_varga",
+        "render_dasha": "render_dasha",
+        "render_ashtakavarga": "render_ashtakavarga",
+        "render_numerology": "render_numerology",
+    },
+}
+
+DIRECT_STATIC_EDGES: dict[str, str] = {
+    "warmth": END,
+    "panchang": "chart_state",
+    "chart_state": "hierarchy",
+    "hierarchy": "varga_select",
+    # koonji_read is gone, so the chain shortens by one. `dasha_windows` is
+    # bound with `assume_promise=True` below, because the promise it used to
+    # read came from the reading this lane does not take.
+    "varga_select": "dasha_windows",
+    "dasha_windows": "direct_read",
+    "render_varga": END,
+    "render_dasha": END,
+    "render_ashtakavarga": END,
+    "render_numerology": END,
+    # Traced like any other lane. `persist_node` reads `reading` and
+    # `answer_plan` with `.get()` and tolerates both being None, and this is the
+    # lane under evaluation - the one whose traces are most worth having.
+    "direct_read": "persist",
+    "persist": END,
+}
+
+
 def _chart_render_passthrough(state: RishivanState) -> dict:
     """`chart_render` is a branch point with no work of its own.
 
@@ -143,7 +210,70 @@ def _fan_out_passthrough(state: RishivanState) -> dict:
     return {}
 
 
-def build_graph(*, store, client, checkpointer=None, trace_sink=None):
+def build_graph(*, store, client, checkpointer=None, trace_sink=None,
+                direct: bool = False):
+    """The council graph, or the direct lane.
+
+    Two topologies over one node set rather than two builders, so a change to a
+    shared node cannot land in one lane and miss the other.
+
+    `direct=True` drops retrieval, the rule engine and the council, and sends
+    one prompt built from the classical method. See
+    `docs/superpowers/specs/2026-08-27-direct-call-reading-design.md`.
+    """
+    if direct:
+        return _build_direct(
+            store=store, client=client, checkpointer=checkpointer,
+            trace_sink=trace_sink,
+        )
+    return _build_council(
+        store=store, client=client, checkpointer=checkpointer,
+        trace_sink=trace_sink,
+    )
+
+
+def _build_direct(*, store, client, checkpointer, trace_sink):
+    g = StateGraph(RishivanState)
+
+    g.add_node("intake", partial(intake.intake_node, client=client))
+    g.add_node("warmth", intake.warmth_node)
+    g.add_node("chart_natal", chart.chart_natal_node)
+    g.add_node("chart_moment", chart.chart_moment_node)
+    g.add_node("panchang", chart.panchang_node)
+    g.add_node("chart_state", diagnosis.chart_state_node)
+    g.add_node("hierarchy", hierarchy.hierarchy_node)
+    g.add_node("varga_select", varga.varga_select_node)
+    # The promise the retrieval lane reads off a fired rule has no source here.
+    g.add_node(
+        "dasha_windows",
+        partial(timing.dasha_windows_node, assume_promise=True),
+    )
+    g.add_node("chart_render", _chart_render_passthrough)
+    g.add_node("render_varga", chart.render_varga_node)
+    g.add_node("render_dasha", chart.render_dasha_node)
+    g.add_node("render_ashtakavarga", chart.render_ashtakavarga_node)
+    g.add_node("render_numerology", chart.render_numerology_node)
+    g.add_node("direct_read", direct.direct_read_node)
+    g.add_node("persist", partial(persist.persist_node, sink=trace_sink))
+
+    g.add_edge(START, "intake")
+    g.add_conditional_edges(
+        "intake", R.route_after_intake, DIRECT_EDGE_MAPS["intake"]
+    )
+    for node in ("chart_natal", "chart_moment"):
+        g.add_conditional_edges(
+            node, R.route_after_chart, DIRECT_EDGE_MAPS[node]
+        )
+    g.add_conditional_edges(
+        "chart_render", R.route_chart_kind, DIRECT_EDGE_MAPS["chart_render"]
+    )
+    for source, destination in DIRECT_STATIC_EDGES.items():
+        g.add_edge(source, destination)
+
+    return g.compile(checkpointer=checkpointer)
+
+
+def _build_council(*, store, client, checkpointer, trace_sink):
     g = StateGraph(RishivanState)
 
     g.add_node("intake", partial(intake.intake_node, client=client))
