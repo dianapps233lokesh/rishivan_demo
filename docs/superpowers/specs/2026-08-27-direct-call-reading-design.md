@@ -321,3 +321,93 @@ added later by changing what consumes it rather than how it is built.
 
 The persona also comes back later. Nothing in this lane's design blocks it: the
 Rishi voice becomes a narration step over this same material.
+
+---
+
+## Revisions, after the first real output
+
+The lane was built, a career prompt was run through a browser platform, and the
+answer it produced changed three things in this design. Recorded here rather
+than edited in above, because what the design got wrong is worth keeping.
+
+**What held.** The method block worked: the model walked all ten protocol steps
+in order, declared the D10 step unsupported instead of bluffing it, and cited
+nothing. Not one date in the answer was invented — every one appeared verbatim
+in the prompt, so the `_GROUND_TRUTH_WARNING` discipline carried over intact.
+
+### 1. `assume_promise` did not hold, and is reverted
+
+The design's position was that the arithmetic could run with a fabricated
+promise as long as the prompt labelled the stages "period boundaries, not a
+prediction" and asked the model for the promise judgement. It did not judge. It
+wrote:
+
+> You will receive your major career promotion during 2026-08-27 to 2027-08-07.
+
+High confidence, no promise verdict anywhere. The reason is visible in the block
+itself: `activation` and `trigger` were the **same range**, and both began on the
+query date, because `windows_between` anchors to `start=now`. The block contained
+no event — it was the ten-year horizon restated. A range that begins today reads
+as imminent whatever sits above it, and no label survives that.
+
+So `dasha_windows` leaves the direct topology, `assume_promise` is deleted from
+the timing node, and the chain shortens to `hierarchy → varga_select →
+direct_read`. In place of the window the prompt derives, from the chart:
+
+* the antardashas of the running mahadasha, and
+* the pratyantardashas of the running antardasha.
+
+That is the granularity a timing answer needs — a mahadasha runs six to twenty
+years and cannot time anything — and none of those boundaries starts today.
+
+Two instructions changed with it. The timing step now requires a promise verdict
+in one sentence *before any date may be written*, and a "no" ends the step. And
+the no-certainty rule, which covered only health, treatment and death, now
+covers dated claims of every kind: "never state that an event WILL happen, on a
+date or in a window".
+
+### 2. The prompt was arguing with itself about D10
+
+It supplied ten D10 placements under WIDER CHART and, below them, "D10 … I have
+not used it. Do not reason from these." `chart_natal_node` appends varga facts
+for whatever `relevant_vargas` the intake classifier named; `varga_select`
+decides admissibility from birth-time precision and knows nothing about that
+list. When they disagree, both verdicts shipped.
+
+`without_withheld_vargas` drops the facts and keeps the statement. Dropping both
+would leave a silence indistinguishable from a division nobody needed.
+
+### 3. The computed diagnosis was never being sent
+
+`PlanetDiagnosis` has carried `dignity`, `combust`, `strength`, `vargottama`,
+`functional_nature`, `aspects_received`, `dispositor` and `nakshatra_lord` since
+Phase 2. **None of it reached the prompt.** The chart block was sign, house,
+nakshatra, pada and retrogression only.
+
+The cost was legible in the output. The model re-derived exaltation from raw
+signs — correctly — and then wrote "there are no conflicting malefic afflictions
+to the 10th house or its ruler" about a chart whose Sun and Moon sat in the same
+nakshatra *pada*. That is a new-moon birth: the lagna lord is dark, and the model
+had cited that same Moon as a Raja Yoga component. With no combustion flag and no
+aspect list in front of it, the sentence could not have been a judgement.
+
+A `PLANETARY CONDITION` block now carries it, marked authoritative over the
+model's own reading. Registry symbols are humanised (`dignity.neutral` →
+`neutral`); `karaka.*` and `lord.bhava.*` entries are filtered out of the aspect
+lists, since those are join keys rather than aspecting bodies; grahas are in
+conventional order so the two blocks line up; and the partial-strength-system
+caveat is stated once rather than nine times.
+
+This is the largest of the three. Everything in it was already computed and
+simply withheld.
+
+### Still open
+
+**Steps the facts cannot support get padded rather than declared.** Step 4 (D10)
+was correctly declared unsupported, but step 9 (cross-school confirmation)
+produced "interlocking dispositor dynamics and nakshatra dispositors validate
+institutional elevation" — filler in the shape of an answer. Step 8 (transit)
+reached for the transiting Moon's nakshatra, which moves every 2¼ days and is
+noise at career scale, because the prompt carries no real transit data. Either
+supply transit positions or name transit as unavailable; the current prompt does
+neither, and the model fills the gap.
