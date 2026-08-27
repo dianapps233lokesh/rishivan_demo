@@ -276,6 +276,42 @@ def chart_state():
     return build_chart_state(compute_chart(BIRTH), when=WHEN)
 
 
+class TestTheReadingKnowsWhatDayItIs:
+    """The prompt carried period boundaries and never said which moment it was
+    being read from.
+
+    "Currently running: Sun Mahadasha, Venus Antardasha" names the period but not
+    the date, so nothing in the prompt distinguished a period that had ended from
+    one still to come. A real reading of "when will I get married?" duly offered
+    `Saturn: 2024-06-12 to 2025-05-25` as "an earlier period of potential
+    activation" - a window that closed sixteen months before the question was
+    asked. `query_time` was in state the whole time and simply never rendered.
+    """
+
+    def test_todays_date_appears(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "2026-08-25" in prompt
+
+    def test_the_weekday_is_given_since_the_rules_forbid_deriving_one(self, facts):
+        """`ground_truth_rules` says "Copy the weekday from the Date line. Do not
+        work it out yourself" - so there had better be a Date line."""
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert WHEN.strftime("%A") in prompt
+
+    def test_it_says_a_closed_period_cannot_carry_a_future_event(self, facts):
+        prompt = build_direct_prompt(_state(chart_facts=facts))
+        assert "cannot carry" in prompt.lower()
+
+    def test_a_missing_query_time_does_not_invent_one(self):
+        """Better no date than a fabricated one - and `datetime.now()` here would
+        make the golden snapshot unpinnable as a side effect."""
+        state = initial_state("when will I marry?")
+        state["koonji_domain"] = "domain.relationship"
+        state["query_time"] = None
+        prompt = build_direct_prompt(state)
+        assert "TODAY" not in prompt
+
+
 class TestSubPeriodBoundaries:
     """Timing granularity, without a window that reads as a forecast.
 
@@ -310,6 +346,46 @@ class TestSubPeriodBoundaries:
         ))
         assert "CANDIDATE WINDOW" not in prompt
         assert "activation:" not in prompt
+
+    def test_every_period_is_marked_past_running_or_future(self, facts):
+        """The failure this fixes. Without a marker the model cannot tell a
+        window that has closed from one still ahead, and it offered a closed one
+        as a forecast."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        block = prompt[prompt.index("Antardashas within"):]
+        assert "[past]" in block
+        assert "[RUNNING NOW]" in block
+        assert "[future]" in block
+
+    def test_exactly_one_antardasha_is_marked_running(self, facts):
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        block = prompt[
+            prompt.index("Antardashas within"):prompt.index("Pratyantardashas")
+        ]
+        assert block.count("[RUNNING NOW]") == 1
+
+    def test_the_next_mahadasha_is_broken_down_too(self, facts):
+        """A "when" question whose answer falls after the current mahadasha had
+        nowhere to land: the model correctly named the next mahadasha and then
+        could not time anything inside it, because no breakdown was supplied."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        # Saturn runs 2024-02-09 to 2043-02-08 on this chart; Mercury follows.
+        assert "Antardashas within the following Mercury mahadasha" in prompt
+
+    def test_the_following_mahadasha_periods_are_all_future(self, facts):
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        block = prompt[prompt.index("following Mercury mahadasha"):]
+        head = block[:block.index("Pratyantardashas")] if "Pratyantardashas" in block else block
+        assert "[past]" not in head
+        assert "[RUNNING NOW]" not in head
 
     def test_sub_periods_need_a_chart_not_a_timing_report(self, facts):
         """Derived from the chart directly, so nothing depends on the timing

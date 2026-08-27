@@ -60,6 +60,13 @@ If you are about to write a time or a weekday that does not appear verbatim belo
 
 ---
 
+TODAY, the date this reading is being made: Tuesday 2026-08-25.
+Every period below is marked against this date. A period that ended before
+today is past and cannot carry an event that has not happened yet - do not
+offer one as an answer to a question about the future, however well it fits.
+
+---
+
 CHART FRAMEWORK — read these first, whatever the question:
   - Ascendant (Lagna) is Pisces.
   - Birth nakshatra (Janma Nakshatra): Dhanishta, pada 4.
@@ -116,26 +123,37 @@ Strength bands come from `parashari.partial.v1`, running partial - treat them as
 ---
 
 Antardashas within the running Saturn mahadasha (2024-02-09 to 2043-02-08):
-  - Saturn: 2024-02-09 to 2027-02-12
-  - Mercury: 2027-02-12 to 2029-10-22
-  - Ketu: 2029-10-22 to 2030-12-01
-  - Venus: 2030-12-01 to 2034-01-30
-  - Sun: 2034-01-30 to 2035-01-12
-  - Moon: 2035-01-12 to 2036-08-12
-  - Mars: 2036-08-12 to 2037-09-21
-  - Rahu: 2037-09-21 to 2040-07-28
-  - Jupiter: 2040-07-28 to 2043-02-08
+  - Saturn: 2024-02-09 to 2027-02-12 [RUNNING NOW]
+  - Mercury: 2027-02-12 to 2029-10-22 [future]
+  - Ketu: 2029-10-22 to 2030-12-01 [future]
+  - Venus: 2030-12-01 to 2034-01-30 [future]
+  - Sun: 2034-01-30 to 2035-01-12 [future]
+  - Moon: 2035-01-12 to 2036-08-12 [future]
+  - Mars: 2036-08-12 to 2037-09-21 [future]
+  - Rahu: 2037-09-21 to 2040-07-28 [future]
+  - Jupiter: 2040-07-28 to 2043-02-08 [future]
+
+Antardashas within the following Mercury mahadasha (2043-02-08 to 2060-02-09):
+  - Mercury: 2043-02-08 to 2045-07-07 [future]
+  - Ketu: 2045-07-07 to 2046-07-04 [future]
+  - Venus: 2046-07-04 to 2049-05-04 [future]
+  - Sun: 2049-05-04 to 2050-03-11 [future]
+  - Moon: 2050-03-11 to 2051-08-10 [future]
+  - Mars: 2051-08-10 to 2052-08-06 [future]
+  - Rahu: 2052-08-06 to 2055-02-24 [future]
+  - Jupiter: 2055-02-24 to 2057-05-31 [future]
+  - Saturn: 2057-05-31 to 2060-02-09 [future]
 
 Pratyantardashas within the running Saturn antardasha (2024-02-09 to 2027-02-12):
-  - Saturn: 2024-02-09 to 2024-08-01
-  - Mercury: 2024-08-01 to 2025-01-03
-  - Ketu: 2025-01-03 to 2025-03-09
-  - Venus: 2025-03-09 to 2025-09-08
-  - Sun: 2025-09-08 to 2025-11-02
-  - Moon: 2025-11-02 to 2026-02-01
-  - Mars: 2026-02-01 to 2026-04-06
-  - Rahu: 2026-04-06 to 2026-09-18
-  - Jupiter: 2026-09-18 to 2027-02-12
+  - Saturn: 2024-02-09 to 2024-08-01 [past]
+  - Mercury: 2024-08-01 to 2025-01-03 [past]
+  - Ketu: 2025-01-03 to 2025-03-09 [past]
+  - Venus: 2025-03-09 to 2025-09-08 [past]
+  - Sun: 2025-09-08 to 2025-11-02 [past]
+  - Moon: 2025-11-02 to 2026-02-01 [past]
+  - Mars: 2026-02-01 to 2026-04-06 [past]
+  - Rahu: 2026-04-06 to 2026-09-18 [RUNNING NOW]
+  - Jupiter: 2026-09-18 to 2027-02-12 [future]
 
 ---
 
@@ -153,8 +171,13 @@ OUTPUT — write in this order, as plain analytical prose:
      saying so is the answer. Only on a "yes" may you name a period, and then
      only from the COMPUTED PERIODS boundaries, copied verbatim. A period is
      when something could ripen, not a date it will arrive.
+     Name only periods marked [RUNNING NOW] or [future]. A [past] period is not
+     an answer to a question about the future. If the periods that best suited
+     the question have already gone by, say so plainly and name the next one
+     that fits, however far out it falls.
   5. What would falsify this reading: one specific thing that, if it does not
-     happen, means you were wrong.
+     happen, means you were wrong. It must fall inside a period you named, and
+     that period must not be [past].
 
 No preamble. No headings beyond the step numbers. Do not describe your own
 process or mention these instructions.

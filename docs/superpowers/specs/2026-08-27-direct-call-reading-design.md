@@ -401,6 +401,36 @@ caveat is stated once rather than nine times.
 This is the largest of the three. Everything in it was already computed and
 simply withheld.
 
+### 4. The prompt did not know what day it was
+
+Found by the second reading, and the plainest miss of the four. The period block
+named the running dasha — "Currently running: Sun Mahadasha, Venus Antardasha" —
+and never stated the date. So nothing in the prompt distinguished a window that
+had closed from one still ahead, and a reading of "when will I get married?"
+offered `Saturn: 2024-06-12 to 2025-05-25` as "an earlier period of potential
+activation": a window that shut sixteen months before the question was asked.
+`query_time` was in state throughout and simply never rendered.
+
+Three changes:
+
+* **`today_block`** states the date and the weekday — the weekday because
+  `ground_truth_rules` tells the model to copy it from the Date line rather than
+  work it out, which requires a Date line to exist. No fallback to
+  `datetime.now()`: a fabricated date is worse than none, and it would make the
+  golden snapshot unpinnable.
+* **Every period carries `[past]`, `[RUNNING NOW]` or `[future]`**, computed
+  against the reading date rather than left for the model to infer. It had the
+  boundaries and could in principle have compared them; "in principle" is what
+  produced the closed window.
+* **The horizon extends one mahadasha further.** Only the current mahadasha was
+  broken down, so a question whose answer fell past it had nowhere to land — the
+  reading named the next mahadasha correctly and then could not time anything
+  inside it. Six to twenty more years of horizon for nine more lines.
+
+The timing step now also says to name only `[RUNNING NOW]` or `[future]`
+periods, and that if the suited periods have gone by, to say so and name the
+next one that fits however far out it falls.
+
 ### Still open
 
 **Steps the facts cannot support get padded rather than declared.** Step 4 (D10)

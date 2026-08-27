@@ -307,8 +307,13 @@ OUTPUT — write in this order, as plain analytical prose:
      saying so is the answer. Only on a "yes" may you name a period, and then
      only from the COMPUTED PERIODS boundaries, copied verbatim. A period is
      when something could ripen, not a date it will arrive.
+     Name only periods marked [RUNNING NOW] or [future]. A [past] period is not
+     an answer to a question about the future. If the periods that best suited
+     the question have already gone by, say so plainly and name the next one
+     that fits, however far out it falls.
   5. What would falsify this reading: one specific thing that, if it does not
-     happen, means you were wrong.
+     happen, means you were wrong. It must fall inside a period you named, and
+     that period must not be [past].
 
 No preamble. No headings beyond the step numbers. Do not describe your own
 process or mention these instructions.
@@ -529,6 +534,51 @@ def _varga_block(chart, selection) -> str:
     return "\n\n".join(blocks)
 
 
+def today_block(when) -> str:
+    """The moment the reading is being made.
+
+    Omitted from the first version of this prompt, and the omission was not
+    cosmetic: the period block named the running dasha without ever saying what
+    the date was, so nothing distinguished a window that had closed from one
+    still ahead. A reading of "when will I get married?" duly offered an
+    antardasha that had ended sixteen months before the question was asked, as
+    "an earlier period of potential activation".
+
+    The weekday is spelled out because `ground_truth_rules` tells the model to
+    copy the weekday from the Date line rather than work it out - which requires
+    there to be a Date line.
+
+    No fallback to `datetime.now()`. A fabricated date is worse than none, and
+    it would make the golden snapshot unpinnable as a side effect.
+    """
+    if when is None:
+        return ""
+    return (
+        f"TODAY, the date this reading is being made: "
+        f"{when.strftime('%A %Y-%m-%d')}.\n"
+        "Every period below is marked against this date. A period that ended "
+        "before\ntoday is past and cannot carry an event that has not happened "
+        "yet - do not\noffer one as an answer to a question about the future, "
+        "however well it fits."
+    )
+
+
+def _period_marker(period, when) -> str:
+    """`[past]`, `[RUNNING NOW]` or `[future]`, against the reading date.
+
+    Computed rather than left implicit. The model has the boundaries and the
+    date and could in principle compare them, but "in principle" is what
+    produced a closed window presented as a forecast.
+    """
+    if when is None:
+        return ""
+    if period.end <= when:
+        return " [past]"
+    if period.start <= when:
+        return " [RUNNING NOW]"
+    return " [future]"
+
+
 def _sub_period_block(chart, when) -> str:
     """Antardasha and pratyantardasha boundaries for the periods running now.
 
@@ -550,30 +600,49 @@ def _sub_period_block(chart, when) -> str:
     """
     if chart is None:
         return ""
-    from rishivan.chart.dasha import current_periods, sub_periods
+    from rishivan.chart.dasha import (
+        current_periods, mahadasha_timeline, sub_periods,
+    )
 
     running = current_periods(chart, when)
     maha, antar = running.get("maha"), running.get("antar")
     if maha is None:
         return ""
 
-    blocks = []
-    antars = sub_periods(maha, "antar")
-    blocks.append(
+    def rows(periods) -> str:
+        return "\n".join(
+            f"  - {p.lord}: {p.start.date()} to {p.end.date()}"
+            f"{_period_marker(p, when)}"
+            for p in periods
+        )
+
+    blocks = [
         f"Antardashas within the running {maha.lord} mahadasha "
         f"({maha.start.date()} to {maha.end.date()}):\n"
-        + "\n".join(
-            f"  - {p.lord}: {p.start.date()} to {p.end.date()}" for p in antars
-        )
+        + rows(sub_periods(maha, "antar"))
+    ]
+
+    # The mahadasha after this one, broken down too. Without it a "when"
+    # question whose answer falls past the current mahadasha has nowhere to
+    # land: a reading named the next mahadasha correctly and then could not
+    # time anything inside it, because only the current one was supplied. One
+    # further mahadasha is 6-20 years of forward horizon for nine more lines.
+    timeline = mahadasha_timeline(chart)
+    following = next(
+        (p for p in timeline if p.start >= maha.end), None
     )
+    if following is not None:
+        blocks.append(
+            f"Antardashas within the following {following.lord} mahadasha "
+            f"({following.start.date()} to {following.end.date()}):\n"
+            + rows(sub_periods(following, "antar"))
+        )
+
     if antar is not None:
         blocks.append(
             f"Pratyantardashas within the running {antar.lord} antardasha "
             f"({antar.start.date()} to {antar.end.date()}):\n"
-            + "\n".join(
-                f"  - {p.lord}: {p.start.date()} to {p.end.date()}"
-                for p in sub_periods(antar, "pratyantar")
-            )
+            + rows(sub_periods(antar, "pratyantar"))
         )
     return "\n\n".join(blocks)
 
@@ -597,6 +666,11 @@ def build_direct_prompt(state) -> str:
 
     parts.append(method_block(constitution))
     parts.append(ground_truth_rules())
+
+    today = today_block(state.get("query_time"))
+    if today:
+        parts.append(today)
+
     parts.append(scoped_chart(
         without_withheld_vargas(
             state.get("chart_facts") or [], state.get("vargas")
