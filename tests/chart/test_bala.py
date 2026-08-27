@@ -99,5 +99,11 @@ class TestChandraBala:
     def test_it_wraps(self):
         assert chandra_bala("Pisces", "Aries").house == 2
 
+    def test_the_description_ordinalises_properly(self):
+        """"the 1th sign" is the kind of thing a seeker notices and a test does
+        not, unless the test looks."""
+        assert "1st sign" in chandra_bala("Aries", "Aries").describe()
+        assert "3rd sign" in chandra_bala("Aries", "Gemini").describe()
+
     def test_an_unknown_sign_returns_none(self):
         assert chandra_bala("Nonsense", "Aries") is None

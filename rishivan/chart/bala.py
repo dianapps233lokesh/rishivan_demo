@@ -71,10 +71,12 @@ class ChandraBala:
     transit_rashi: str
 
     def describe(self) -> str:
+        from rishivan.chart.facts import _ORDINAL
+
         return (
             f"Chandra bala: the Moon is transiting {self.transit_rashi}, the "
-            f"{self.house}th sign from your natal Moon in {self.natal_rashi} — "
-            f"{self.verdict}"
+            f"{_ORDINAL.get(self.house, self.house)} sign from your natal Moon "
+            f"in {self.natal_rashi} — {self.verdict}"
         )
 
 
