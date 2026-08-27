@@ -44,16 +44,22 @@ class TestDirectTopology:
     def test_the_computational_nodes_all_survive(self, direct_graph):
         nodes = _nodes(direct_graph)
         for kept in ("intake", "warmth", "chart_natal", "chart_moment", "panchang",
-                     "chart_state", "hierarchy", "varga_select", "dasha_windows",
+                     "chart_state", "hierarchy", "varga_select",
                      "chart_render", "render_varga", "render_dasha",
                      "render_ashtakavarga", "render_numerology", "persist"):
             assert kept in nodes, f"{kept} must survive into the direct lane"
 
-    def test_the_reading_chain_skips_koonji(self, direct_graph):
-        assert ("varga_select", "dasha_windows") in _edge_pairs(direct_graph)
+    def test_the_reading_chain_skips_koonji_and_the_timing_node(self, direct_graph):
+        """`dasha_windows` times a promise, and the promise comes from rules this
+        lane does not fire. It briefly ran with `assume_promise=True` and the
+        model copied the resulting window out as a dated forecast, so the lane
+        derives plain antardasha boundaries in the prompt instead."""
+        assert ("varga_select", "direct_read") in _edge_pairs(direct_graph)
+        assert "dasha_windows" not in _nodes(direct_graph)
 
-    def test_dasha_windows_leads_to_the_direct_read(self, direct_graph):
-        assert ("dasha_windows", "direct_read") in _edge_pairs(direct_graph)
+    def test_the_default_lane_keeps_its_timing_node(self, default_graph):
+        """It works there, because a fired rule establishes the promise."""
+        assert ("koonji_read", "dasha_windows") in _edge_pairs(default_graph)
 
     def test_the_lane_is_traced_like_any_other(self, direct_graph):
         """persist_node reads reading and answer_plan with .get() and tolerates

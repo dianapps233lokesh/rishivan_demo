@@ -276,6 +276,65 @@ def chart_state():
     return build_chart_state(compute_chart(BIRTH), when=WHEN)
 
 
+class TestSubPeriodBoundaries:
+    """Timing granularity, without a window that reads as a forecast.
+
+    The CANDIDATE WINDOW block this replaces was copied straight out as a dated
+    prediction: "You will receive your major career promotion during 2026-08-27
+    to 2027-08-07." Its activation and trigger ranges were *identical* and both
+    began on the query date, because `windows_between` anchors to `start=now` -
+    so the block contained no event, only the horizon restated. A range that
+    begins today reads as imminent whatever label sits above it.
+
+    The mahadasha timeline alone is too coarse to time anything (spans of six to
+    twenty years). The antardashas inside the running mahadasha, and the
+    pratyantardashas inside the running antardasha, are the granularity a timing
+    answer actually needs - and they are boundaries, not verdicts.
+    """
+
+    def test_the_running_antardashas_are_listed(self, facts):
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert "Antardashas within the running" in prompt
+
+    def test_the_running_pratyantardashas_are_listed(self, facts):
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert "Pratyantardashas within the running" in prompt
+
+    def test_the_candidate_window_block_is_gone(self, facts):
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert "CANDIDATE WINDOW" not in prompt
+        assert "activation:" not in prompt
+
+    def test_sub_periods_need_a_chart_not_a_timing_report(self, facts):
+        """Derived from the chart directly, so nothing depends on the timing
+        node having run or on a promise flag having been fabricated."""
+        assert "Antardashas within the running" not in build_direct_prompt(
+            _state(chart_facts=facts)
+        )
+
+    def test_a_promise_verdict_is_required_before_any_date(self, facts):
+        """The instruction that replaces the label the model ignored."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        assert "before you write any date" in prompt.lower()
+
+    def test_certainty_is_forbidden_for_dated_claims_not_only_for_health(self, facts):
+        """The old rule covered health and death only, and the model wrote "You
+        will receive your major career promotion" with a peak window."""
+        prompt = build_direct_prompt(_state(
+            chart=compute_chart(BIRTH), chart_facts=facts,
+        ))
+        lowered = prompt.lower()
+        assert "will happen" in lowered or "never state that an event will" in lowered
+
+
 class TestPlanetaryCondition:
     """What Swiss Ephemeris already worked out, sent instead of re-derived.
 

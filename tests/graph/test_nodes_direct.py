@@ -56,23 +56,26 @@ class TestDirectReadNode:
         assert list(inspect.signature(direct_read_node).parameters) == ["state"]
 
 
-class TestTimingWithoutAReading:
-    def test_no_window_without_a_promise_is_still_the_default(self, chart):
-        """Unchanged behaviour for the retrieval lane. A dasha window with no
-        grounded promise is how a period becomes a prediction nobody made."""
+class TestTheTimingNodeStillRefusesToInventAPromise:
+    """`assume_promise` existed briefly and was removed. This is its epitaph.
+
+    The direct lane passed `assume_promise=True` so the five-stage arithmetic
+    would run without a rule engine behind it, on the theory that the prompt
+    could label the stages as boundaries and let the model decide whether
+    anything was promised. The model did not decide - it wrote "you will receive
+    your major career promotion during <activation range>". Because the stages
+    anchor to `start=now`, a fabricated promise makes every window begin today,
+    which reads as imminent whatever the label says.
+
+    So the node is back to its original rule, and the direct lane derives plain
+    antardasha boundaries in the prompt instead.
+    """
+
+    def test_no_promise_means_no_window(self, chart):
         state = _state(chart=chart, chart_state=build_chart_state(chart, when=WHEN))
         report = dasha_windows_node(state)["timing"]
-        window = report.by_system[report.primary]
-        assert window.promise is False
+        assert report.by_system[report.primary].promise is False
 
-    def test_assume_promise_produces_a_window(self, chart):
-        """The direct lane has no rule engine to establish a promise, so the
-        arithmetic runs and the MODEL judges whether anything is promised."""
-        state = _state(chart=chart, chart_state=build_chart_state(chart, when=WHEN))
-        report = dasha_windows_node(state, assume_promise=True)["timing"]
-        window = report.by_system[report.primary]
-        assert window.promise is True
-        assert window.activation is not None
-
-    def test_assume_promise_still_returns_none_without_a_chart(self):
-        assert dasha_windows_node(_state(), assume_promise=True)["timing"] is None
+    def test_there_is_no_way_to_ask_it_to_assume_one(self):
+        import inspect
+        assert list(inspect.signature(dasha_windows_node).parameters) == ["state"]

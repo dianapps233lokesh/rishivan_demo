@@ -42,7 +42,6 @@ def prompt_for(
     """
     from rishivan.council.direct_prompt import build_direct_prompt
     from rishivan.graph.nodes.hierarchy import hierarchy_node
-    from rishivan.graph.nodes.timing import dasha_windows_node
     from rishivan.graph.nodes.varga import varga_select_node
     from rishivan.graph.state import initial_state
 
@@ -76,9 +75,11 @@ def prompt_for(
         state["chart_facts"] = derive_facts(chart, when=moment)
         state["chart_state"] = build_chart_state(chart, when=moment)
 
+    # `dasha_windows_node` is deliberately not run. It times a promise, and the
+    # promise comes from a rule engine this lane does not use; the prompt derives
+    # its own antardasha boundaries from the chart.
     state.update(hierarchy_node(state))
     state.update(varga_select_node(state))
-    state.update(dasha_windows_node(state, assume_promise=True))
 
     return build_direct_prompt(state)
 

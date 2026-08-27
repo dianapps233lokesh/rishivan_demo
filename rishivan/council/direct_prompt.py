@@ -97,7 +97,13 @@ worth less than no citation at all. State what the principle IS. Do not say
 where you read it.
 
 Never present a health diagnosis, a treatment, or death as a certainty. These
-are traditional interpretations; keep their uncertainty intact.{forbidden}
+are traditional interpretations; keep their uncertainty intact.
+
+Never state that an event WILL happen, on a date or in a window. A dasha period
+is when a thing could ripen, never proof that it will, and a period that happens
+to be running now is not evidence that anything is imminent. Write "this is the
+period that would carry it" and not "you will receive it then". This holds for
+every subject, not only the tender ones.{forbidden}
 """.strip()
 
 
@@ -295,9 +301,12 @@ OUTPUT — write in this order, as plain analytical prose:
      hedging it into meaninglessness.
   3. Your confidence, and what it rests on. If two indications disagree, say
      so — a disagreement reported is worth more than a verdict averaged.
-  4. The timing. Use ONLY dates and periods that appear verbatim in the
-     COMPUTED PERIODS block. If nothing there supports a window, say that
-     instead of estimating one.
+  4. The timing. Before you write any date at all, state your promise verdict
+     in one sentence: does this chart carry the thing asked about, yes or no,
+     and on what basis. A "no" ends the step - there is nothing to time, and
+     saying so is the answer. Only on a "yes" may you name a period, and then
+     only from the COMPUTED PERIODS boundaries, copied verbatim. A period is
+     when something could ripen, not a date it will arrive.
   5. What would falsify this reading: one specific thing that, if it does not
      happen, means you were wrong.
 
@@ -520,35 +529,53 @@ def _varga_block(chart, selection) -> str:
     return "\n\n".join(blocks)
 
 
-def _timing_block(report) -> str:
-    """The computed five-stage window, labelled as arithmetic.
+def _sub_period_block(chart, when) -> str:
+    """Antardasha and pratyantardasha boundaries for the periods running now.
 
-    `promise` here came from `assume_promise=True`, not from a fired rule — the
-    rule engine does not run in this lane. So the stages are period boundaries
-    the model may time a judgement against, and the label has to say that
-    plainly or they read as a forecast the system endorsed.
+    This replaces a five-stage `EventWindow` block, and the reason is worth
+    keeping. That block was copied straight out of a real prompt as a dated
+    forecast - "You will receive your major career promotion during 2026-08-27
+    to 2027-08-07" - and its `activation` and `trigger` ranges were *identical*,
+    both beginning on the query date, because `windows_between` anchors to
+    `start=now`. It contained no event. It was the horizon restated, and a range
+    that begins today reads as imminent whatever label sits above it. The
+    `promise` flag it rested on was fabricated by `assume_promise=True` rather
+    than established by anything.
+
+    Sub-period boundaries carry no such implication. They are the granularity a
+    timing answer needs - a mahadasha runs six to twenty years, which cannot
+    time anything - and they say only when a period runs, never what it means.
+    Deriving them here from the chart also means this lane no longer depends on
+    the timing node or on a promise nobody made.
     """
-    if report is None:
+    if chart is None:
         return ""
-    window = report.by_system.get(report.primary) if report.primary else None
-    if window is None:
+    from rishivan.chart.dasha import current_periods, sub_periods
+
+    running = current_periods(chart, when)
+    maha, antar = running.get("maha"), running.get("antar")
+    if maha is None:
         return ""
-    stages = [
-        (label, getattr(window, label))
-        for label in ("activation", "trigger", "peak", "fading")
-    ]
-    lines = [
-        f"  - {label}: {r.start.date()} to {r.end.date()}"
-        for label, r in stages if r is not None
-    ]
-    if not lines:
-        return ""
-    return (
-        "CANDIDATE WINDOW — dasha arithmetic over the next ten years. These are\n"
-        "period boundaries, not a prediction, and nothing has judged whether this\n"
-        "chart promises the thing asked about. That judgement is yours:\n"
-        + "\n".join(lines)
+
+    blocks = []
+    antars = sub_periods(maha, "antar")
+    blocks.append(
+        f"Antardashas within the running {maha.lord} mahadasha "
+        f"({maha.start.date()} to {maha.end.date()}):\n"
+        + "\n".join(
+            f"  - {p.lord}: {p.start.date()} to {p.end.date()}" for p in antars
+        )
     )
+    if antar is not None:
+        blocks.append(
+            f"Pratyantardashas within the running {antar.lord} antardasha "
+            f"({antar.start.date()} to {antar.end.date()}):\n"
+            + "\n".join(
+                f"  - {p.lord}: {p.start.date()} to {p.end.date()}"
+                for p in sub_periods(antar, "pratyantar")
+            )
+        )
+    return "\n\n".join(blocks)
 
 
 def build_direct_prompt(state) -> str:
@@ -585,9 +612,11 @@ def build_direct_prompt(state) -> str:
     if varga:
         parts.append(varga)
 
-    timing = _timing_block(state.get("timing"))
-    if timing:
-        parts.append(timing)
+    sub_periods = _sub_period_block(
+        state.get("chart"), state.get("query_time")
+    )
+    if sub_periods:
+        parts.append(sub_periods)
 
     if state.get("panchang"):
         parts.append(f"PANCHANG FOR THE DATE IN QUESTION:\n{state['panchang']}")

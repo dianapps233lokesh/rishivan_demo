@@ -131,11 +131,16 @@ STATIC_EDGES: dict[str, str] = {
 DIRECT_NODE_NAMES = (
     "intake", "warmth",
     "chart_natal", "chart_moment", "panchang", "chart_state", "hierarchy",
-    "varga_select", "dasha_windows",
+    "varga_select",
     "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
     "render_numerology",
     "direct_read", "persist",
 )
+"""No `dasha_windows`. It times a promise, and the promise comes from a rule
+engine this lane does not run - so it produced nothing usable here, and briefly
+produced something worse: a window fabricated by `assume_promise=True` that the
+model copied out as a dated forecast. The prompt derives its own antardasha
+boundaries from the chart instead."""
 """The direct lane's nodes. Every computational one survives; retrieval, the
 rule engine and the council do not."""
 
@@ -177,12 +182,11 @@ DIRECT_STATIC_EDGES: dict[str, str] = {
     "warmth": END,
     "panchang": "chart_state",
     "chart_state": "hierarchy",
+    # koonji_read AND dasha_windows are both gone: the first fires rules this
+    # lane does not use, and the second times a promise only those rules could
+    # have established. The prompt derives its own period boundaries.
     "hierarchy": "varga_select",
-    # koonji_read is gone, so the chain shortens by one. `dasha_windows` is
-    # bound with `assume_promise=True` below, because the promise it used to
-    # read came from the reading this lane does not take.
-    "varga_select": "dasha_windows",
-    "dasha_windows": "direct_read",
+    "varga_select": "direct_read",
     "render_varga": END,
     "render_dasha": END,
     "render_ashtakavarga": END,
@@ -243,11 +247,6 @@ def _build_direct(*, store, client, checkpointer, trace_sink):
     g.add_node("chart_state", diagnosis.chart_state_node)
     g.add_node("hierarchy", hierarchy.hierarchy_node)
     g.add_node("varga_select", varga.varga_select_node)
-    # The promise the retrieval lane reads off a fired rule has no source here.
-    g.add_node(
-        "dasha_windows",
-        partial(timing.dasha_windows_node, assume_promise=True),
-    )
     g.add_node("chart_render", _chart_render_passthrough)
     g.add_node("render_varga", chart.render_varga_node)
     g.add_node("render_dasha", chart.render_dasha_node)
