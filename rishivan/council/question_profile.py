@@ -169,7 +169,25 @@ class QuestionProfile:
         return bundle in self.bundles
 
 
-def profile_for(question: str, *, koonji_domain: str = "") -> QuestionProfile:
+NO_BIRTH_CHART_UNAVAILABLE = (
+    "the birth chart itself — no birth details were given, so this reading is "
+    "cast for the moment the question was asked (prashna), not from a nativity",
+    "Vimshottari dasha — it is counted from the birth Moon, which is not known",
+    "tara bala and chandra bala — both compare the transiting Moon against the "
+    "BIRTH Moon, and there is no birth Moon here",
+)
+"""What a reading with no birth data cannot have, and must say so.
+
+Every one of these failed silently before. The prompt asked for a Dasha step and
+printed no periods; it printed a tara bala computed by comparing the moment
+chart's Moon against itself, which is always Janma and always unfavourable, and a
+reading built real advice on it.
+"""
+
+
+def profile_for(
+    question: str, *, koonji_domain: str = "", has_birth_chart: bool = True
+) -> QuestionProfile:
     """The fact set this question requires, and what it cannot have.
 
     `koonji_domain` is taken rather than re-derived: `hierarchy_node` already
@@ -182,6 +200,18 @@ def profile_for(question: str, *, koonji_domain: str = "") -> QuestionProfile:
     day_offset = relative_day_offset(question)
     kind = _kind(question, day_offset)
     bundles = FLOOR | _PER_KIND[kind]
+    unavailable = _ALWAYS_UNAVAILABLE
+
+    if not has_birth_chart:
+        # Everything that compares a birth placement against a moving one
+        # degenerates without a nativity. Tara bala came back Janma every single
+        # time - the Moon measured against itself - and the dasha bundles asked
+        # for periods nobody could compute.
+        bundles -= {
+            Bundle.DASHA_CURRENT, Bundle.DASHA_FORWARD,
+            Bundle.TARA_BALA, Bundle.CHANDRA_BALA, Bundle.SADE_SATI,
+        }
+        unavailable = unavailable + NO_BIRTH_CHART_UNAVAILABLE
 
     when = {0: "today", 1: "tomorrow", 2: "the day after tomorrow"}.get(
         day_offset, f"{day_offset} days from now"
@@ -192,5 +222,5 @@ def profile_for(question: str, *, koonji_domain: str = "") -> QuestionProfile:
     )
     return QuestionProfile(
         kind=kind, day_offset=day_offset, bundles=bundles,
-        unavailable=_ALWAYS_UNAVAILABLE, reason=reason,
+        unavailable=unavailable, reason=reason,
     )

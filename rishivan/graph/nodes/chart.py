@@ -100,6 +100,7 @@ def chart_moment_node(state: RishivanState) -> dict:
     )
     return {
         "chart": chart,
+        "chart_kind": "prashna",
         "chart_summary": summarize(chart),
         "chart_facts": derive_muhurta_facts(chart),
     }

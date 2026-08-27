@@ -79,10 +79,11 @@ THE FRAME OF THE CHART:
 
 ---
 
-THE CHART — every position, natal and transiting, in one table. The FRAME
-column says which. A natal row is what the birth chart promises; a transit
-row is only where a planet is passing now. Never read a transit row as a
-placement in the birth chart, and never move a judgement between frames.
+THE CHART — every position in one table. The FRAME column says which
+chart each row belongs to. A natal row is what the birth chart
+promises; a transit row is only where a planet is passing now. Never
+read a transit row as a placement in the birth chart, and never move
+a judgement from one frame to the other.
 Rows marked * bear directly on the question asked; the rest is real and is
 yours to synthesise, but do not lead from it.
 
@@ -229,7 +230,11 @@ The facts above are given to the day for a reason, and it is not so you can quot
 them: you need the exact boundaries to reason without drifting, and to be unable
 to invent a date that is not there. Reason in days; write in months.
 
-One exception: a question asking for a computed clock window.
+Two exceptions. A question about a named day - "can I travel tomorrow" - is
+answered for that day, so name it: the date is the question's own, not a
+prediction you narrowed to it.
+
+And a question asking for a computed clock window.
 Rahu Kaal, a hora, a muhurta, sunrise — those are arithmetic for a stated date
 rather than a claim about anyone's life, so give those times exactly as printed,
 to the minute, and copy them character for character.

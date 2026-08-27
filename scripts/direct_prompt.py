@@ -72,7 +72,24 @@ def prompt_for(
 
         chart = compute_chart(birth)
         state["chart"] = chart
+        state["chart_kind"] = "natal"
         state["chart_facts"] = derive_facts(chart, when=moment)
+        state["chart_state"] = build_chart_state(chart, when=moment)
+    else:
+        # No birth details: cast for the moment of asking and SAY SO. Labelling
+        # a prashna chart `natal` told the model that a planet passing through a
+        # sign that afternoon was a birth placement, and it read it as one.
+        from rishivan.chart.facts import derive_muhurta_facts
+        from rishivan.chart.transit import chart_for_moment
+        from rishivan.chartstate.build import build_chart_state
+
+        chart = chart_for_moment(
+            moment, lat=lat or 28.6139, lon=lon or 77.2090,
+            tz_offset=tz_offset, place=place or "Query location",
+        )
+        state["chart"] = chart
+        state["chart_kind"] = "prashna"
+        state["chart_facts"] = derive_muhurta_facts(chart)
         state["chart_state"] = build_chart_state(chart, when=moment)
 
     # `dasha_windows_node` is deliberately not run. It times a promise, and the

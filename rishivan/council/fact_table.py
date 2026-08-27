@@ -75,8 +75,17 @@ def _symbol(value) -> str:
     return str(getattr(value, "value", value)).rsplit(".", 1)[-1]
 
 
-def natal_rows(chart, chart_state) -> list[PlanetRow]:
-    """The birth chart, with its judgements on the same lines as its placements.
+def natal_rows(chart, chart_state, *, frame: str = "natal") -> list[PlanetRow]:
+    """One chart's placements, with its judgements on the same lines.
+
+    `frame` is a parameter and not the literal string "natal" because this lane
+    does not always have a birth chart. A muhurta or prashna question with no
+    birth data is answered from a chart cast at the moment of asking, and
+    labelling those rows `natal` told the model they were the seeker's birth
+    placements. They were then read as exactly that — and a reading of "can I
+    travel tomorrow" described a debilitated natal Venus that was really Venus
+    passing through Virgo that afternoon. The frame column exists to stop
+    precisely that, so it has to be true.
 
     `chart_state` may be None — the placements still render and the judgement
     columns come back blank. A blank column is honest; a missing row is not.
@@ -112,7 +121,7 @@ def natal_rows(chart, chart_state) -> list[PlanetRow]:
             )
 
         rows.append(PlanetRow(
-            frame="natal", planet=name, sign=position.rashi,
+            frame=frame, planet=name, sign=position.rashi,
             house=position.house, nakshatra=position.nakshatra,
             dignity=dignity, strength=strength,
             flags=tuple(flags), aspects=aspects,
@@ -160,11 +169,25 @@ def render_table(rows: list[PlanetRow], *, primary: set[str]) -> str:
     if not rows:
         return ""
 
-    lines = [
-        "THE CHART — every position, natal and transiting, in one table. The FRAME",
-        "column says which. A natal row is what the birth chart promises; a transit",
-        "row is only where a planet is passing now. Never read a transit row as a",
-        "placement in the birth chart, and never move a judgement between frames.",
+    frames = {row.frame for row in rows}
+    if "natal" in frames:
+        preamble = [
+            "THE CHART — every position in one table. The FRAME column says which",
+            "chart each row belongs to. A natal row is what the birth chart",
+            "promises; a transit row is only where a planet is passing now. Never",
+            "read a transit row as a placement in the birth chart, and never move",
+            "a judgement from one frame to the other.",
+        ]
+    else:
+        # No natal rows at all, so do not explain them. The preamble used to
+        # describe "what the birth chart promises" above a table containing no
+        # birth chart, which invited the reader to look for one.
+        preamble = [
+            "THE CHART — cast for the moment the question was asked. Every row is",
+            "marked `prashna` in the FRAME column because that is what it is:",
+            "there is no birth chart here, and no row below is a birth placement.",
+        ]
+    lines = preamble + [
         "Rows marked * bear directly on the question asked; the rest is real and is",
         "yours to synthesise, but do not lead from it.",
         "",

@@ -117,6 +117,16 @@ class RishivanState(TypedDict, total=False):
     the output. `test_state.py` now walks every node's returns against these
     annotations for exactly this reason."""
 
+    chart_kind: str
+    """`natal` or `prashna` — which kind of chart `chart` holds.
+
+    `chart_moment_node` casts for the moment of asking and discards `birth_data`,
+    so a MUHURTA or PRASHNA classification leaves no nativity in state at all.
+    Nothing recorded that, and the direct lane's table duly labelled those rows
+    `natal` — telling the model that Venus passing through Virgo that afternoon
+    was the seeker's birth Venus. It read it as exactly that.
+    """
+
     direct_prompt: str
     """The whole prompt the direct lane sends, assembled by
     `council/direct_prompt.py`.
@@ -229,6 +239,7 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         message="",
         chart=None,
         chart_summary=None,
+        chart_kind="natal",
         chart_facts=None,
         chart_tokens={},
         chart_table=None,

@@ -216,19 +216,47 @@ def _partition(chart_facts: list[str]) -> dict[str, list[str]]:
     return out
 
 
-def _question_planets(chart_facts: list[str], constitution: Constitution) -> set[str]:
+def _house_lord_lines(chart) -> list[str]:
+    """The twelve houses, their lords, and where those lords sit.
+
+    Built from `chart.house_lords` rather than fished out of the fact list.
+    `derive_facts` emits these lines and `derive_muhurta_facts` does not, so a
+    prompt built on the moment-chart path had no lords at all - a FLOOR bundle
+    silently unsatisfied, which is precisely what a floor exists to prevent.
+    """
+    if chart is None:
+        return []
+    from rishivan.chart.facts import _HOUSE_TOPIC, _ORDINAL
+
+    lines = []
+    for house in range(1, 13):
+        lord = chart.house_lords[house]
+        position = chart.planets.get(lord)
+        where = (
+            f"placed in the {_ORDINAL[position.house]} house"
+            if position is not None else "position unknown"
+        )
+        lines.append(
+            f"The {_ORDINAL[house]} house ({_HOUSE_TOPIC[house]}) is ruled by "
+            f"{lord}, {where}."
+        )
+    return lines
+
+
+def _question_planets(chart, constitution: Constitution) -> set[str]:
     """Which planets this question rests on: the domain's own, plus the lords of
     its houses.
 
     The second half is what a planet list cannot anticipate. For a marriage
     question prema names Venus and Jupiter, and the 7th lord is whichever graha
-    the lagna assigned - Mercury on the test chart, in neither list.
+    the lagna assigned. Read off the chart rather than off the fact strings, so
+    it works whichever fact builder ran - a travel reading left Venus in the 9th
+    unmarked because the lord lines it parsed were not there.
     """
     planets = {p.capitalize() for p in constitution.planets}
-    for fact in chart_facts:
-        match = _HOUSE_RULER.match(fact)
-        if match and int(match.group(1)) in constitution.houses:
-            planets.add(match.group(2).capitalize())
+    if chart is not None:
+        for house in constitution.houses:
+            planets.add(chart.house_lords[house].capitalize())
     return planets
 
 
@@ -281,7 +309,11 @@ The facts above are given to the day for a reason, and it is not so you can quot
 them: you need the exact boundaries to reason without drifting, and to be unable
 to invent a date that is not there. Reason in days; write in months.
 
-One exception: a question asking for a computed clock window.
+Two exceptions. A question about a named day - "can I travel tomorrow" - is
+answered for that day, so name it: the date is the question's own, not a
+prediction you narrowed to it.
+
+And a question asking for a computed clock window.
 Rahu Kaal, a hora, a muhurta, sunrise — those are arithmetic for a stated date
 rather than a claim about anyone's life, so give those times exactly as printed,
 to the minute, and copy them character for character.
@@ -915,8 +947,18 @@ def build_direct_prompt(state) -> str:
     from rishivan.council.question_profile import Bundle, profile_for
 
     constitution = constitution_for(state.get("koonji_domain") or "")
+
+    # Which chart is in hand. `chart_moment_node` casts for the moment of asking
+    # and discards birth_data entirely, so a MUHURTA or PRASHNA classification
+    # leaves no nativity at all - and labelling those rows `natal` told the model
+    # they were the seeker's birth placements.
+    is_natal = state.get("chart_kind", "natal") == "natal"
+    frame = "natal" if is_natal else "prashna"
+
     profile = profile_for(
-        state["question"], koonji_domain=state.get("koonji_domain") or ""
+        state["question"],
+        koonji_domain=state.get("koonji_domain") or "",
+        has_birth_chart=is_natal and state.get("chart") is not None,
     )
     wants = profile.wants
 
@@ -964,6 +1006,22 @@ def build_direct_prompt(state) -> str:
     if today:
         parts.append(today)
 
+    if not is_natal:
+        parts.append(
+            "THIS IS A PRASHNA READING. No birth details were given, so the chart "
+            "below\nis cast for the moment the question was asked - it is not a "
+            "nativity. Read the\nlagna, the lagna lord and the Moon of THIS "
+            "moment, and the house of the matter\nasked about. Do not describe "
+            "any placement below as something the seeker was\nborn with, and do "
+            "not speak of lifelong tendencies: this chart answers one\nquestion "
+            "asked at one moment, and nothing more.\n\n"
+            "Where a step in the reading method says NATAL, there is no nativity "
+            "to read\nit from - take the lagna and lagna lord of THIS moment as "
+            "what carries the\nmatter instead. Where a step names a dasha, skip "
+            "it: Vimshottari is counted\nfrom the birth Moon, and that is not "
+            "known here."
+        )
+
     if facts["framework"]:
         parts.append(_listed("THE FRAME OF THE CHART:", facts["framework"]))
 
@@ -972,24 +1030,22 @@ def build_direct_prompt(state) -> str:
     # nobody asked for.
     rows = []
     if chart is not None:
-        rows += natal_rows(chart, state.get("chart_state"))
-        if transiting is not None and wants(Bundle.TRANSITS_SLOW):
+        rows += natal_rows(chart, state.get("chart_state"), frame=frame)
+        # No transit rows on the prashna path. The chart IS the current sky
+        # there, so every transit row duplicated a chart row exactly - and a
+        # doubled fact reads as corroboration.
+        if transiting is not None and wants(Bundle.TRANSITS_SLOW) and is_natal:
             rows += transit_rows(chart, transiting)
-    table = render_table(
-        rows,
-        primary=_question_planets(
-            state.get("chart_facts") or [], constitution
-        ),
-    )
+    table = render_table(rows, primary=_question_planets(chart, constitution))
     parts.append(table if table else (
         "No chart was computed for this question - no birth details were given. "
         "Say\nso plainly rather than reading a chart you were not shown."
     ))
 
-    if wants(Bundle.HOUSE_LORDS) and facts["lords"]:
+    if wants(Bundle.HOUSE_LORDS):
         parts.append(_listed(
             "THE HOUSES AND WHO RULES THEM — a house is judged through its lord, "
-            "and\nwhere that lord sits:", facts["lords"],
+            "and\nwhere that lord sits:", _house_lord_lines(chart),
         ))
 
     if wants(Bundle.YOGAS) and facts["yogas"]:
