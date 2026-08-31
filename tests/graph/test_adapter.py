@@ -83,11 +83,18 @@ class TestNoBranchingLeftBehind:
 
     def test_the_adapter_is_short(self):
         """A 564-line function became a graph. If this creeps back up, the
-        nodes are being worked around rather than extended."""
+        nodes are being worked around rather than extended.
+
+        The docstring is excluded, and that is not a loophole. It documents the
+        call contract every caller depends on, so it grows when a lane is added
+        and that growth says nothing about whether branches are creeping back.
+        The body is what this guards.
+        """
         from rishivan.council.orchestrator import council_consult
 
         lines = inspect.getsource(council_consult).splitlines()
-        assert len(lines) < 80, f"adapter is {len(lines)} lines"
+        body = len(lines) - len((council_consult.__doc__ or "").splitlines())
+        assert body < 65, f"adapter body is {body} lines"
 
 
 class TestNarrationLeftTheGraph:

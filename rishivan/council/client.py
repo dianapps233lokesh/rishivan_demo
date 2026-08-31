@@ -72,12 +72,20 @@ def get_vertex_client(
 
 MODELS = {
     "flash": "gemini-3.7-flash",
-    "pro":   "gemini-3.7-flash",
+    "pro":   "gemini-3.1-pro-preview",
     "embed": "text-embedding-004",
 }
-"""Tier -> model. `embed` must stay `text-embedding-004`: it is what the Qdrant
-collections were built with, and a different embedder makes every stored vector
-incomparable without re-embedding the corpus."""
+"""Tier -> model.
+
+`pro` and `flash` were the same string until the two-call direct lane needed
+them not to be. They now name genuinely different models, and the split is the
+lane's entire premise: `council/analyse.py` works out what the chart carries on
+`pro`, `council/narrate_verdict.py` says it warmly on `flash`. Point them at one
+model again and the second call becomes a round trip that buys nothing.
+
+`embed` must stay `text-embedding-004`: it is what the Qdrant collections were
+built with, and a different embedder makes every stored vector incomparable
+without re-embedding the corpus."""
 
 
 def model_name(tier: str = "flash") -> str:

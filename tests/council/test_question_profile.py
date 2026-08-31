@@ -14,9 +14,8 @@ were already keyword tables in this repo (`relative_day_offset`,
 
 import pytest
 
-from rishivan.council.question_profile import (
-    FLOOR, Bundle, QuestionKind, profile_for,
-)
+from rishivan.council.question_profile import QuestionKind, profile_for
+from rishivan.council.requirements.catalog import FLOOR
 
 
 class TestQuestionKind:
@@ -47,7 +46,7 @@ class TestQuestionKind:
         running real questions through the table rather than by a test."""
         profile = profile_for("will I be wealthy?", koonji_domain="domain.wealth")
         assert profile.kind is QuestionKind.WHEN_WILL
-        assert Bundle.DASHA_FORWARD in profile.bundles
+        assert profile.needs("block.dasha.forward")
 
     def test_a_trailing_space_stops_will_i_firing_inside_a_word(self):
         """"willing", "willow". The space in "will i " is load-bearing."""
@@ -110,88 +109,170 @@ class TestTheFloor:
             ("what is my nature?", "domain.temperament"),
             ("this job or that one?", "domain.career"),
         ):
-            bundles = profile_for(question, koonji_domain=domain).bundles
-            assert FLOOR <= bundles, question
+            profile = profile_for(question, koonji_domain=domain)
+            for requirement in FLOOR:
+                assert profile.needs(requirement.key), f"{question}: {requirement.key}"
 
-    def test_the_floor_names_what_it_names(self):
-        assert FLOOR == frozenset({
-            Bundle.NATAL_PLACEMENTS, Bundle.HOUSE_LORDS,
-            Bundle.PLANET_CONDITION, Bundle.DASHA_CURRENT,
-        })
+    def test_the_floor_is_always_band_one(self):
+        """The floor is what a verdict rests on. Demoted to corroboration it
+        would still be present and would no longer be leading, which is the same
+        failure with a subtler cause."""
+        profile = profile_for("when will I marry?",
+                              koonji_domain="domain.relationship")
+        floor = {r.key for r in FLOOR}
+        for requirement in profile.requirements.requires:
+            if requirement.key in floor:
+                assert requirement.priority == 1, requirement.key
+                assert requirement.mandatory, requirement.key
 
 
-class TestBundlesPerKind:
+class TestTheDomainDecidesTheFacts:
+    """The gap this module was written to close and then did not.
+
+    `koonji_domain` was accepted for two commits and used only to build the
+    `reason` string, so a marriage timing question and a career timing question
+    received byte-identical facts. A marriage reading therefore leant on general
+    dasha strength and never once named the 7th lord's condition.
+    """
+
+    def test_marriage_and_career_ask_for_different_things(self):
+        marriage = profile_for("when will I marry?",
+                               koonji_domain="domain.relationship")
+        career = profile_for("when will I be promoted?",
+                             koonji_domain="domain.career")
+        assert {r.key for r in marriage.requirements.requires} != {
+            r.key for r in career.requirements.requires
+        }
+
+    def test_a_marriage_question_requires_the_seventh_house_and_its_lord(self):
+        profile = profile_for("when will I marry?",
+                              koonji_domain="domain.relationship")
+        assert profile.needs("block.house.7")
+        assert profile.needs("house.7.lord.house")
+        assert profile.needs("planet.venus.dignity")
+
+    def test_a_marriage_question_requires_the_navamsa_lords_not_just_the_navamsa(self):
+        """"D9 confirmation" is a protocol step, not a dump of placements. The
+        lane sent raw D9 positions and left the model to work out which lord
+        mattered, which is where it started asserting agreement that was not
+        there."""
+        profile = profile_for("when will I marry?",
+                              koonji_domain="domain.relationship")
+        assert profile.needs("d9.house.1.lord.house")
+        assert profile.needs("d9.house.7.lord.house")
+        assert profile.needs("block.varga_confirms.d9")
+
+    def test_a_career_question_requires_the_tenth_and_the_d10(self):
+        profile = profile_for("when will I be promoted?",
+                              koonji_domain="domain.career")
+        assert profile.needs("block.house.10")
+        assert profile.needs("d10.house.10.lord.house")
+        assert not profile.needs("block.kuja_dosha")
+
+    def test_the_protocol_step_travels_with_the_requirement(self):
+        """A fact that serves no step is a fact somebody should justify, and a
+        missing fact whose step is known reads as "step 5 was skipped" rather
+        than "something was"."""
+        profile = profile_for("when will I marry?",
+                              koonji_domain="domain.relationship")
+        for requirement in profile.requirements.requires:
+            assert requirement.step >= 1, requirement.key
+
+
+class TestRequirementsPerKind:
     def test_a_timing_question_gets_forward_periods_and_transits(self):
-        bundles = profile_for(
-            "when will I get married?", koonji_domain="domain.relationship"
-        ).bundles
-        assert Bundle.DASHA_FORWARD in bundles
-        assert Bundle.TRANSITS_SLOW in bundles
-        assert Bundle.SADE_SATI in bundles
+        profile = profile_for("when will I get married?",
+                              koonji_domain="domain.relationship")
+        assert profile.needs("block.dasha.forward")
+        assert profile.needs("block.transits_slow")
+        assert profile.needs("block.sade_sati")
+
+    def test_a_timing_question_reaches_the_third_dasha_level(self):
+        """An antardasha is ~18 months wide. `dasha.current_periods` has walked
+        down to pratyantar since it was written and no prompt ever printed it."""
+        profile = profile_for("when will I get married?",
+                              koonji_domain="domain.relationship")
+        assert profile.needs("block.dasha.pratyantar")
 
     def test_a_timing_question_does_not_get_a_panchang(self):
         """"When will I marry" is not answered by tomorrow's Rahu Kaal, and
         sending it invites the model to reach for it."""
-        bundles = profile_for(
-            "when will I get married?", koonji_domain="domain.relationship"
-        ).bundles
-        assert Bundle.PANCHANG_FOR_DATE not in bundles
-        assert Bundle.TARA_BALA not in bundles
+        profile = profile_for("when will I get married?",
+                              koonji_domain="domain.relationship")
+        assert not profile.needs("block.panchang")
+        assert not profile.needs("block.tara_bala")
 
     def test_a_date_question_gets_the_muhurta_facts(self):
         """The whole reason this module exists."""
-        bundles = profile_for(
-            "can I travel foreign tomorrow?", koonji_domain="domain.travel"
-        ).bundles
-        assert Bundle.PANCHANG_FOR_DATE in bundles
-        assert Bundle.TARA_BALA in bundles
-        assert Bundle.CHANDRA_BALA in bundles
+        profile = profile_for("can I travel foreign tomorrow?",
+                              koonji_domain="domain.travel")
+        assert profile.needs("block.panchang")
+        assert profile.needs("block.tara_bala")
+        assert profile.needs("block.chandra_bala")
 
     def test_a_date_question_does_not_get_a_ten_year_dasha_forecast(self):
         """It was given one, and answered "late 2026 or early 2027" to a question
         about tomorrow."""
-        bundles = profile_for(
-            "can I travel foreign tomorrow?", koonji_domain="domain.travel"
-        ).bundles
-        assert Bundle.DASHA_FORWARD not in bundles
+        profile = profile_for("can I travel foreign tomorrow?",
+                              koonji_domain="domain.travel")
+        assert not profile.needs("block.dasha.forward")
 
     def test_a_character_question_gets_no_timing_at_all(self):
         """A temperament reading timed against a transit becomes a forecast
         nobody asked for."""
-        bundles = profile_for(
-            "what is my personality like?", koonji_domain="domain.temperament"
-        ).bundles
-        assert Bundle.TRANSITS_SLOW not in bundles
-        assert Bundle.DASHA_FORWARD not in bundles
-        assert Bundle.PANCHANG_FOR_DATE not in bundles
-        assert Bundle.YOGAS in bundles
+        profile = profile_for("what is my personality like?",
+                              koonji_domain="domain.temperament")
+        assert not profile.needs("block.transits_slow")
+        assert not profile.needs("block.dasha.forward")
+        assert not profile.needs("block.panchang")
+        assert profile.needs("block.yogas")
 
-    def test_every_kind_produces_fewer_bundles_than_the_whole_menu(self):
+    def test_no_question_asks_for_everything(self):
         """Scoping that admits everything is scoping that is wired but inert."""
-        whole = set(Bundle)
+        from rishivan.council.requirements.catalog import catalogue
+
+        everything = {r.key for e in catalogue().values() for r in e.requires}
         for question, domain in (
             ("when will I marry?", "domain.relationship"),
             ("can I travel tomorrow?", "domain.travel"),
             ("what is my nature?", "domain.temperament"),
         ):
-            assert profile_for(question, koonji_domain=domain).bundles < whole
+            asked = {
+                r.key
+                for r in profile_for(question, koonji_domain=domain)
+                .requirements.requires
+            }
+            assert asked < everything, question
 
 
 class TestUnavailable:
-    def test_it_names_what_the_question_wanted_and_cannot_have(self):
-        """Declared once, so a gap is stated rather than discovered per step -
-        and so the model does not substitute the facts it does have."""
-        profile = profile_for(
-            "when will I get married?", koonji_domain="domain.relationship"
-        )
+    def test_a_prashna_reading_says_what_it_cannot_have(self):
+        """Every one of these failed silently before. Tara bala came back Janma
+        every time - the moment chart's Moon measured against itself - and a
+        reading built real advice on it."""
+        profile = profile_for("when will I get married?",
+                              koonji_domain="domain.relationship",
+                              has_birth_chart=False)
         assert profile.unavailable
-        assert any("Jaimini" in u for u in profile.unavailable)
+        assert any("Vimshottari" in u for u in profile.unavailable)
 
-    def test_a_character_question_claims_no_missing_timing(self):
-        profile = profile_for(
-            "what is my nature?", koonji_domain="domain.temperament"
-        )
-        assert not any("transit" in u.lower() for u in profile.unavailable)
+    def test_a_prashna_reading_stops_asking_for_the_dasha(self):
+        profile = profile_for("when will I get married?",
+                              koonji_domain="domain.relationship",
+                              has_birth_chart=False)
+        assert not profile.needs("block.dasha.current")
+        assert not profile.needs("block.dasha.forward")
+        assert not profile.needs("block.tara_bala")
+
+    def test_a_natal_reading_claims_nothing_missing_up_front(self):
+        """What is genuinely uncomputable is now discovered while assembling the
+        prompt - `_requirement_blocks` reports it against the protocol step it
+        served - rather than asserted here as a constant. A hardcoded list said
+        "Jaimini karakas and Upapada" on every question, including the ones that
+        never asked for them."""
+        profile = profile_for("what is my nature?",
+                              koonji_domain="domain.temperament")
+        assert profile.unavailable == ()
 
 
 class TestReason:
@@ -203,6 +284,14 @@ class TestReason:
         )
         assert profile.reason
         assert "tomorrow" in profile.reason.lower() or "day" in profile.reason.lower()
+
+    def test_the_reason_names_where_the_requirements_came_from(self):
+        """Mongo or the built-in catalogue. A demo silently running on the
+        fallback while somebody edits Atlas and sees nothing change is a
+        confusing afternoon."""
+        profile = profile_for("when will I marry?",
+                              koonji_domain="domain.relationship")
+        assert profile.requirements.source.value in profile.reason
 
 
 class TestGapsFoundByProbingRealQuestions:
@@ -216,7 +305,7 @@ class TestGapsFoundByProbingRealQuestions:
         `mentions_panchang` already existed and was never consulted."""
         profile = profile_for("What is the Rahu Kaal today?", koonji_domain="")
         assert profile.kind is QuestionKind.OK_ON_DATE
-        assert Bundle.PANCHANG_FOR_DATE in profile.bundles
+        assert profile.needs("block.panchang")
 
     def test_hora_and_muhurta_questions_route_the_same_way(self):
         for question in ("which hora is running now?",
@@ -233,4 +322,4 @@ class TestGapsFoundByProbingRealQuestions:
             "How is my health going forward?", koonji_domain="domain.health"
         )
         assert profile.kind is QuestionKind.WHEN_WILL
-        assert Bundle.DASHA_FORWARD in profile.bundles
+        assert profile.needs("block.dasha.forward")

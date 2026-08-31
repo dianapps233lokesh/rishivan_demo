@@ -31,12 +31,29 @@ def _state(question="when will I marry?", **kw):
 
 
 class TestDirectReadNode:
-    def test_it_writes_the_prompt_and_nothing_else(self, chart):
+    def test_it_writes_the_prompt_and_its_audit_and_nothing_else(self, chart):
         out = direct_read_node(_state(
             chart=chart, chart_facts=derive_facts(chart, when=WHEN),
         ))
-        assert set(out) == {"direct_prompt"}
+        assert set(out) == {"direct_prompt", "requirement_report"}
         assert "READING METHOD" in out["direct_prompt"]
+
+    def test_the_report_says_what_was_required_and_what_was_met(self, chart):
+        """Which requirements went unmet is a fact about the READING. The model
+        is told the same thing in plainer words by the unavailable block; this
+        copy is so "how often does a marriage question run without its D9" is a
+        query rather than a guess."""
+        out = direct_read_node(_state(
+            chart=chart, chart_facts=derive_facts(chart, when=WHEN),
+        ))
+        report = out["requirement_report"]
+        assert report["required"] > 0
+        assert report["satisfied"] <= report["required"]
+        assert report["source"] in ("mongo", "builtin")
+        assert report["constitution"]
+
+    def test_both_keys_are_declared_in_the_state_schema(self):
+        assert "requirement_report" in RishivanState.__annotations__
 
     def test_the_key_is_declared_in_the_state_schema(self):
         """LangGraph discards writes to undeclared channels SILENTLY. That has
@@ -51,9 +68,14 @@ class TestDirectReadNode:
 
     def test_it_makes_no_model_call(self):
         """The signature takes no client, which is the guarantee. Asserted
-        anyway, because a later edit adding one would be easy and silent."""
+        anyway, because a later edit adding one would be easy and silent.
+
+        Named rather than positional: `for_analysis` was added when the two-call
+        lane needed the other OUTPUT block, and pinning the whole parameter list
+        made this test fail for a change that touched nothing it cares about.
+        The absence of a client is the whole assertion."""
         import inspect
-        assert list(inspect.signature(direct_read_node).parameters) == ["state"]
+        assert "client" not in inspect.signature(direct_read_node).parameters
 
 
 class TestTheTimingNodeStillRefusesToInventAPromise:

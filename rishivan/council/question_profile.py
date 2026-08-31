@@ -25,6 +25,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+from typing import Any
 
 
 class QuestionKind(str, Enum):
@@ -34,59 +35,13 @@ class QuestionKind(str, Enum):
     WHICH_OPTION = "which_option"
 
 
-class Bundle(str, Enum):
-    """The closed menu. Nothing may be requested that is not here."""
+"""The fact menu, the floor and the per-kind table all moved to
+`council/requirements/`. They are not duplicated here, and that is the point:
+two tables deciding which facts a question gets is two tables that will
+disagree, and the disagreement is invisible in fluent prose. What stays in this
+module is the one thing the registry cannot do - reading a question and deciding
+what KIND it is."""
 
-    NATAL_PLACEMENTS = "natal_placements"
-    HOUSE_LORDS = "house_lords"
-    CONJUNCTIONS = "conjunctions"
-    YOGAS = "yogas"
-    PLANET_CONDITION = "planet_condition"
-    DASHA_CURRENT = "dasha_current"
-    DASHA_FORWARD = "dasha_forward"
-    TRANSITS_SLOW = "transits_slow"
-    SADE_SATI = "sade_sati"
-    PANCHANG_FOR_DATE = "panchang_for_date"
-    TARA_BALA = "tara_bala"
-    CHANDRA_BALA = "chandra_bala"
-    VARGAS = "vargas"
-    ASHTAKAVARGA = "ashtakavarga"
-    NUMEROLOGY = "numerology"
-
-
-FLOOR: frozenset[Bundle] = frozenset({
-    Bundle.NATAL_PLACEMENTS,
-    Bundle.HOUSE_LORDS,
-    Bundle.PLANET_CONDITION,
-    Bundle.DASHA_CURRENT,
-})
-"""Present for every question, and not negotiable.
-
-The placements say what the chart is, the lords say who governs what, the
-condition says how strong any of it is, and the running period says what is live.
-A reading missing any of the four is wrong in a way that reads as fluent.
-"""
-
-_PER_KIND: dict[QuestionKind, frozenset[Bundle]] = {
-    QuestionKind.WHEN_WILL: frozenset({
-        Bundle.DASHA_FORWARD, Bundle.TRANSITS_SLOW, Bundle.SADE_SATI,
-        Bundle.YOGAS, Bundle.VARGAS,
-    }),
-    # No DASHA_FORWARD. A ten-year forecast is not an answer about tomorrow, and
-    # sending one is how a question about tomorrow got answered with 2027.
-    QuestionKind.OK_ON_DATE: frozenset({
-        Bundle.PANCHANG_FOR_DATE, Bundle.TARA_BALA, Bundle.CHANDRA_BALA,
-        Bundle.TRANSITS_SLOW,
-    }),
-    # No transits, no forward periods. A temperament reading timed against a
-    # transit becomes a forecast nobody asked for.
-    QuestionKind.WHAT_IS_IT_LIKE: frozenset({
-        Bundle.YOGAS, Bundle.CONJUNCTIONS, Bundle.VARGAS,
-    }),
-    QuestionKind.WHICH_OPTION: frozenset({
-        Bundle.PANCHANG_FOR_DATE, Bundle.TRANSITS_SLOW, Bundle.VARGAS,
-    }),
-}
 
 _TIMING_PHRASES = (
     "when will", "when do", "when can", "when am i", "how soon",
@@ -144,16 +99,34 @@ def _kind(question: str, day_offset: int) -> QuestionKind:
     return QuestionKind.WHAT_IS_IT_LIKE
 
 
-_ALWAYS_UNAVAILABLE = (
-    "Jaimini karakas and Upapada — the fact vocabulary does not express them",
+_NEEDS_A_NATIVITY = (
+    "block.dasha.current", "block.dasha.forward", "block.dasha.pratyantar",
+    "block.tara_bala", "block.chandra_bala", "block.sade_sati",
 )
-"""What no question can have, whatever it asks.
 
-Declared rather than left silent: `graph/README.md` records that the corpus holds
-no yoga-typed claims and `constitution.blocked_concepts` lists Atmakaraka and
-Karakamsha. A reading asked for a Jaimini step will otherwise pad it, which is
-what happened - "interlocking dispositor dynamics validate institutional
-elevation" is filler in the shape of an answer.
+_NEEDS_A_NATIVITY_PREFIXES = ("karaka.", "from_arudha_lagna.")
+"""Techniques that describe a NATIVE, and so describe nobody on a prashna chart.
+
+The chara karakas rank the native's own grahas by degree to name their karmic
+significators; an arudha pada is derived from the birth lagna. Computed off the
+moment a question was asked they still produce a graha and a sign, and the
+answer is about 2:32 that afternoon rather than about the seeker.
+
+That is not hypothetical. A prashna marriage reading returned "Darakaraka Sun in
+the 6th house - the specific indicator for the spouse is also caught in a house
+of disputes", weighted it `moderate`, and used it to support a verdict that the
+chart carried no promise. Same defect as the tara bala failure recorded in
+`NO_BIRTH_CHART_UNAVAILABLE`: a birth-relative technique fed something that is
+not a birth, returning a confident answer to a question nobody asked.
+"""
+"""Requirements that degenerate without a birth chart rather than failing.
+
+Every one of these failed silently before. Tara bala came back Janma every time
+- the moment chart's Moon measured against itself - and a reading built real
+advice on it. Dropped rather than left to return None, because a mandatory
+requirement that returns None is DECLARED missing, and declaring "the dasha
+could not be computed" on a prashna reading is noise: it was never available and
+`NO_BIRTH_CHART_UNAVAILABLE` already says so, once, in plain words.
 """
 
 
@@ -161,12 +134,15 @@ elevation" is filler in the shape of an answer.
 class QuestionProfile:
     kind: QuestionKind
     day_offset: int
-    bundles: frozenset[Bundle]
+    requirements: Any
+    """The `RequirementSet` for this (domain, kind), from Mongo or the built-in
+    catalogue. Carries its own `source`, so whatever renders it can say which."""
+
     unavailable: tuple[str, ...] = field(default=())
     reason: str = ""
 
-    def wants(self, bundle: Bundle) -> bool:
-        return bundle in self.bundles
+    def needs(self, key: str) -> bool:
+        return any(r.key == key for r in self.requirements.requires)
 
 
 NO_BIRTH_CHART_UNAVAILABLE = (
@@ -175,6 +151,10 @@ NO_BIRTH_CHART_UNAVAILABLE = (
     "Vimshottari dasha — it is counted from the birth Moon, which is not known",
     "tara bala and chandra bala — both compare the transiting Moon against the "
     "BIRTH Moon, and there is no birth Moon here",
+    "the Jaimini chara karakas and the arudha padas — Darakaraka ranks the "
+    "NATIVE'S grahas by degree and an arudha is counted from the BIRTH lagna, "
+    "so computed from the moment of asking they describe this afternoon rather "
+    "than the seeker. Do not name a spouse significator in this reading",
 )
 """What a reading with no birth data cannot have, and must say so.
 
@@ -190,37 +170,44 @@ def profile_for(
 ) -> QuestionProfile:
     """The fact set this question requires, and what it cannot have.
 
-    `koonji_domain` is taken rather than re-derived: `hierarchy_node` already
-    settled it from `koonji.router`'s table, and two modules deciding the domain
-    separately is how `varga_select` and `dasha_windows` spent a phase reading a
-    key nothing wrote.
+    `koonji_domain` is now load-bearing. It was accepted here for two commits and
+    used only to build the `reason` string, so a marriage timing question and a
+    career timing question received byte-identical facts - which is why a
+    marriage reading leant on general dasha strength and never named the 7th
+    lord's condition. `hierarchy_node` settles the domain from `koonji.router`'s
+    table and it is taken rather than re-derived, on the same argument as before.
     """
     from rishivan.chart.panchang import relative_day_offset
+    from rishivan.council.requirements.store import requirements_for
+    from rishivan.council.requirements.types import Requirement, RequirementSet
 
     day_offset = relative_day_offset(question)
     kind = _kind(question, day_offset)
-    bundles = FLOOR | _PER_KIND[kind]
-    unavailable = _ALWAYS_UNAVAILABLE
+    requirements = requirements_for(koonji_domain, kind.value)
+    unavailable: tuple[str, ...] = ()
 
     if not has_birth_chart:
-        # Everything that compares a birth placement against a moving one
-        # degenerates without a nativity. Tara bala came back Janma every single
-        # time - the Moon measured against itself - and the dasha bundles asked
-        # for periods nobody could compute.
-        bundles -= {
-            Bundle.DASHA_CURRENT, Bundle.DASHA_FORWARD,
-            Bundle.TARA_BALA, Bundle.CHANDRA_BALA, Bundle.SADE_SATI,
-        }
-        unavailable = unavailable + NO_BIRTH_CHART_UNAVAILABLE
+        requirements = RequirementSet(
+            domain=requirements.domain, kind=requirements.kind,
+            constitution=requirements.constitution,
+            requires=tuple(
+                r for r in requirements.requires
+                if r.key not in _NEEDS_A_NATIVITY
+                and not r.key.startswith(_NEEDS_A_NATIVITY_PREFIXES)
+            ),
+            source=requirements.source, notes=requirements.notes,
+        )
+        unavailable = NO_BIRTH_CHART_UNAVAILABLE
 
     when = {0: "today", 1: "tomorrow", 2: "the day after tomorrow"}.get(
         day_offset, f"{day_offset} days from now"
     )
     reason = (
         f"{kind.value}: routed to {koonji_domain or 'no domain'}, about {when}. "
-        f"{len(bundles)} of {len(Bundle)} fact bundles."
+        f"{len(requirements.requires)} requirements from "
+        f"{requirements.source.value}."
     )
     return QuestionProfile(
-        kind=kind, day_offset=day_offset, bundles=bundles,
+        kind=kind, day_offset=day_offset, requirements=requirements,
         unavailable=unavailable, reason=reason,
     )

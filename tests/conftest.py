@@ -86,7 +86,17 @@ def no_telemetry_writes(monkeypatch):
     Tests that genuinely want the store patch it back themselves — see
     `tests/store/test_mongo.py`.
     """
+    from rishivan.council.requirements import store
     from rishivan.store import mongo
 
     monkeypatch.setattr(mongo, "is_configured", lambda: False)
     monkeypatch.setattr(mongo, "client", lambda: None)
+
+    # The requirements catalogue caches per PROCESS, not per test, so a cache
+    # populated before this fixture applied would survive it and every later
+    # test would silently assert against whatever is in Atlas today. Cleared on
+    # the way in and the way out: the suite must describe the code, not the
+    # cluster.
+    store.reset()
+    yield
+    store.reset()

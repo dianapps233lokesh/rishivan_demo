@@ -140,6 +140,38 @@ class RishivanState(TypedDict, total=False):
     Declared here because LangGraph discards writes to undeclared channels
     silently - see `context_text` above for what that cost last time."""
 
+    requirement_report: dict
+    """What the question required, what it got, and where the table came from.
+
+    Beside the prompt rather than inside it: which requirements went unmet is a
+    fact about the READING, and the model is already told the same thing in
+    plainer words by the unavailable block. This copy is for the trace and the
+    UI, where "how often does a marriage question run without its D9?" should be
+    a query rather than a guess."""
+
+    verdict: Any
+    """What the reasoning call decided, gated — a `council.verdict.Verdict`, or
+    `None` when the analysis failed.
+
+    Two-call direct lane only. Plain data on purpose: this is the whole reason
+    pro's call sits inside the graph while flash's does not. A `Verdict` is
+    frozen dataclasses and tuples, so the checkpointer persists it and a
+    follow-up turn resumes with the reasoning that produced the last answer
+    rather than re-deriving it — which is also what stops turn 14 disagreeing
+    with turn 13 about a window."""
+
+    verdict_error: str
+    """Why the reasoning call failed, for the trace. Never shown to a reader."""
+
+    verdict_attempted: bool
+    """Whether the analysis node ran at all.
+
+    This, not a flag threaded down from the caller, is how `narrate.stream_for`
+    tells a failed two-call turn from a single-call one: both leave a
+    `direct_prompt` in state and neither leaves a verdict, and answering a
+    failed analysis with the single-call prompt would quietly hand back a
+    different lane's reading."""
+
     life_domain: str | None
     contributor_reports: tuple
     """The `ContributorReport` objects, kept apart from the `contributors` dict
@@ -272,6 +304,10 @@ def initial_state(question: str, **kw: Any) -> RishivanState:
         revisions=0,
         council_summary="",
         convergence={},
+        requirement_report={},
+        verdict=None,
+        verdict_error="",
+        verdict_attempted=False,
         answer_plan=None,
         is_warmth=False,
         answer_stream=None,

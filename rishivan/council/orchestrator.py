@@ -38,6 +38,7 @@ def council_consult(
     place: str = "",
     conversation=None,         # rishivan.council.conversation.Conversation
     direct: bool = False,      # the direct lane; thread_id stays last, see below
+    two_call: bool = False,    # ...split into a reasoning call and a narration one
     thread_id: str | None = None,
 ) -> dict:
     """Full Council consultation, run as a graph.
@@ -61,6 +62,12 @@ def council_consult(
     `direct=True` takes the direct lane and adds `direct_prompt` to the result;
     `docs/superpowers/specs/2026-08-27-direct-call-reading-design.md` says why.
 
+    `two_call=True` splits that lane's single call in two: `pro` decides what the
+    chart carries, a gate drops anything the prompt did not license, and `flash`
+    narrates what survives. It adds `verdict` to the result and means nothing
+    without `direct=True`. Both flags default False, so every existing caller
+    gets exactly the behaviour it had.
+
     Returns a dict with keys:
       primary_rishi, rishi_title, query_domain, classification,
       chart_summary, chart_facts, sources, search_query, answer_stream
@@ -71,7 +78,8 @@ def council_consult(
 
     checkpointer, config = runtime_for(thread_id)
     graph = build_graph(store=store, client=client,
-                        checkpointer=checkpointer, direct=direct)
+                        checkpointer=checkpointer, direct=direct,
+                        two_call=two_call)
     final = graph.invoke(initial_state(
         question,
         rishi_override=rishi_override,
@@ -96,7 +104,8 @@ def council_consult(
     result["answer_plan"] = final.get("answer_plan")
     # Set only on the paths that produce them, and read with `.get()` by every
     # caller. Promising them unconditionally would be a new contract.
-    for optional in ("routing", "panchang", "life_domain", "direct_prompt"):
+    for optional in ("routing", "panchang", "life_domain", "direct_prompt",
+                     "verdict", "requirement_report"):
         if final.get(optional):
             result[optional] = final[optional]
     if final.get("context_text"):

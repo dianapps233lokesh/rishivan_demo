@@ -278,6 +278,18 @@ def _recorded(stream, final):
             pass
 
 
+def _today(when) -> str:
+    """Today, in the shape the narrator should write it.
+
+    The narration prompt is stripped of every ISO date on purpose, so this is
+    the one date that crosses - and it crosses as prose, because it is what
+    lets "tomorrow" mean the right day rather than a date the model derived.
+    """
+    if when is None:
+        return ""
+    return f"{when.day} {when.strftime('%B %Y')}"
+
+
 def stream_for(final, *, client):
     """The stream a finished run should hand back, or None.
 
@@ -291,12 +303,35 @@ def stream_for(final, *, client):
     Lives here rather than as a branch in `council_consult`, because that
     adapter is meant to be branch-free and a test asserts it.
     """
+    if final.get("verdict") is not None:
+        # The two-call direct lane, and it worked. Pro settled what the chart
+        # carries; flash is handed that and nothing else - not the chart, not
+        # the periods, not the method - so it cannot assert anything pro did
+        # not license. The same subtractive argument as `plan.allowed` below,
+        # in a lane with no rule base to draw a licence from.
+        from rishivan.council.narrate_verdict import stream_verdict
+
+        return _recorded(
+            stream_verdict(
+                final["verdict"], client=client, question=final["question"],
+                today=_today(final.get("query_time")),
+            ),
+            final,
+        )
+    if final.get("verdict_attempted"):
+        # Two-call, and the reasoning call failed twice. Deliberately NOT
+        # answered from `direct_prompt`: that prompt asks for a structured
+        # verdict, and falling back to the single-call lane would quietly hand
+        # the reader a different lane's reading and make an A/B unreadable.
+        from rishivan.council.narrate_verdict import FAILED
+
+        return iter((FAILED,))
     if final.get("direct_prompt"):
-        # The direct lane. One call did the reading and the writing both, so
-        # there is no plan to narrate from - the prompt IS what left the graph.
-        # Dispatched on the state key rather than on a flag threaded down from
-        # the caller: which lane ran is a fact about the run, and the run
-        # already recorded it.
+        # The single-call direct lane. One call did the reading and the writing
+        # both, so there is no plan to narrate from - the prompt IS what left
+        # the graph. Dispatched on the state key rather than on a flag threaded
+        # down from the caller: which lane ran is a fact about the run, and the
+        # run already recorded it.
         from rishivan.council.direct import stream_direct
 
         return _recorded(

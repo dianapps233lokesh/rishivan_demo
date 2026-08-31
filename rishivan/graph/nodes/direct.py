@@ -15,7 +15,15 @@ from __future__ import annotations
 from rishivan.graph.state import RishivanState
 
 
-def direct_read_node(state: RishivanState) -> dict:
-    from rishivan.council.direct_prompt import build_direct_prompt
+def direct_read_node(state: RishivanState, *, for_analysis: bool = False) -> dict:
+    """The prompt, for whichever half of the lane is about to read it.
 
-    return {"direct_prompt": build_direct_prompt(state)}
+    `for_analysis` is bound by the builder, not decided here, because which lane
+    is running is a fact about the graph rather than about this turn. It swaps
+    the closing OUTPUT block and nothing else: both lanes reason over the same
+    chart, the same method and the same facts, and only the recipient differs.
+    """
+    from rishivan.council.direct_prompt import build_with_report
+
+    prompt, report = build_with_report(state, for_analysis=for_analysis)
+    return {"direct_prompt": prompt, "requirement_report": report}

@@ -289,21 +289,43 @@ def _build_birth_data():
 birth_data = _build_birth_data()
 
 # ── Reading lane ──────────────────────────────────────────────────────────────
-# Two lanes, switchable, because the point is to compare them. The retrieval
-# pipeline stays exactly as it was; see
+# Three lanes, switchable, because the point is to compare them. The retrieval
+# pipeline stays exactly as it was, and the one-call direct lane stays exactly
+# as it was, so the two-call lane can be measured against both rather than
+# replacing either; see
 # docs/superpowers/specs/2026-08-27-direct-call-reading-design.md.
 # `key=` writes it to session_state, which is where the consult call reads it —
 # so there is nothing to assign here.
-st.toggle(
-    "Direct reading (no corpus)",
-    value=False,
-    key="direct_mode",
+LANES: dict[str, tuple[bool, bool]] = {
+    "Council — books, rules and eight Rishis": (False, False),
+    "Direct — one call": (True, False),
+    "Direct — two calls (pro reasons, flash writes)": (True, True),
+}
+"""label -> (direct, two_call), which is exactly what `council_consult` takes.
+
+A table rather than two toggles. Two independent switches offer four
+combinations and only three of them mean anything — `two_call` without `direct`
+is not a lane, it is a question about the council pipeline that this control
+cannot answer.
+"""
+
+st.radio(
+    "Reading lane",
+    list(LANES),
+    index=0,
+    key="lane",
     help=(
-        "Answer from the model's own knowledge of the classical texts, with the "
-        "computed chart and the classical reading method in one prompt — no page "
-        "retrieval, no rule engine, no council. The full prompt is printed to the "
-        "terminal, and shown below the answer, so it can be pasted into other "
-        "platforms and compared."
+        "**Council** retrieves pages from the 15-book corpus, fires the rule "
+        "engine and runs the eight Rishis.\n\n"
+        "**Direct — one call** answers from the model's own knowledge of the "
+        "classical texts, with the computed chart and the reading method in one "
+        "prompt. The full prompt is printed below, so it can be pasted into "
+        "other platforms and compared.\n\n"
+        "**Direct — two calls** splits that: a stronger model works out what the "
+        "chart carries and returns it as structured findings, a gate removes "
+        "anything the computed facts did not license, and a cheaper model writes "
+        "the answer from what survives — without ever seeing the chart. Slower "
+        "and dearer per question."
     ),
 )
 
@@ -383,7 +405,10 @@ if ask_btn and question.strip():
         birth_data=birth_data,
         query_time=dt.datetime.now(),
         conversation=_convo,
-        direct=st.session_state.get("direct_mode", False),
+        **dict(zip(
+            ("direct", "two_call"),
+            LANES[st.session_state.get("lane") or next(iter(LANES))],
+        )),
         thread_id=st.session_state.thread_id,
     )
 
@@ -736,10 +761,99 @@ if ask_btn and question.strip():
             if result.get("direct_prompt"):
                 with st.expander("📋 The exact prompt", expanded=False):
                     st.caption(
-                        f"{len(result['direct_prompt']):,} characters. Paste "
-                        "this into another platform to compare."
+                        f"{len(result['direct_prompt']):,} characters. "
+                        + ("This one asks for structured findings rather than "
+                           "prose, so it will not paste usefully into a browser "
+                           "chat — the one-call lane is the pasteable one."
+                           if result.get("verdict") is not None else
+                           "Paste this into another platform to compare.")
                     )
                     st.code(result["direct_prompt"], language="text")
+
+            # What the question required, what it got, and where the table came
+            # from. Rendered above the verdict because it is the frame for it:
+            # a thin reading with four unmet requirements is a different object
+            # from a thin reading that had everything and found little.
+            report = result.get("requirement_report")
+            if report:
+                met, needed = report["satisfied"], report["required"]
+                icon = "✅" if met == needed else "⚠️"
+                with st.expander(
+                    f"{icon} What this question required — {met}/{needed} available",
+                    expanded=False,
+                ):
+                    st.caption(
+                        f"Routed to `{report['domain'] or 'no domain'}` as a "
+                        f"`{report['kind']}` question, read by the "
+                        f"`{report['constitution']}` protocol. Requirements "
+                        f"loaded from **{report['source']}**."
+                    )
+                    if report["source"] == "builtin":
+                        st.warning(
+                            "The requirements table could not be read from "
+                            "MongoDB, so this reading used the built-in copy. "
+                            "It is fully specified — but anything edited in "
+                            "Atlas is not in effect. Run "
+                            "`python -m scripts.seed_requirements --check`.",
+                            icon="⚠️",
+                        )
+                    if report["missing"]:
+                        st.markdown("**Required, and not available:**")
+                        st.caption(
+                            "The model was told each of these explicitly, so it "
+                            "works the step from what it has rather than padding "
+                            "it from general knowledge."
+                        )
+                        for item in report["missing"]:
+                            st.markdown(f"- ➖ {item}")
+                    else:
+                        st.markdown(
+                            "Every fact this question's protocol calls for was "
+                            "computed and sent."
+                        )
+
+            # What the reasoning call decided, and what the gate took off it
+            # before the narrator saw any of it. Rendered from the result rather
+            # than recomputed, for the same reason the prompt above is: a second
+            # derivation is how a panel starts lying about what actually ran.
+            verdict = result.get("verdict")
+            if verdict is not None:
+                with st.expander("🧠 What the reasoning call decided", expanded=False):
+                    st.markdown(
+                        f"**The chart carries it:** `{verdict.promise}`  \n"
+                        f"**The answer:** {verdict.headline}"
+                    )
+                    if verdict.not_happening:
+                        st.markdown(f"**What will not happen:** {verdict.not_happening}")
+                    for factor in verdict.factors:
+                        st.markdown(
+                            f"- `{factor.weight}` **{factor.fact}** — "
+                            f"{factor.consequence}"
+                        )
+                    if verdict.windows:
+                        from rishivan.council.narrate_verdict import month_span
+                        st.markdown("**Periods the narrator was allowed to name**")
+                        for window in verdict.windows:
+                            st.markdown(
+                                f"- {window.label or 'period'}: "
+                                f"{month_span(window.start, window.end)} "
+                                f"(`{window.start}` to `{window.end}`)"
+                            )
+                    for item in verdict.disagreements:
+                        st.markdown(f"- ⚖️ {item}")
+                    for item in verdict.unsupported:
+                        st.markdown(f"- ➖ could not be run: {item}")
+                    if verdict.falsifier:
+                        st.caption(f"Falsifier: {verdict.falsifier}")
+                    if verdict.dropped:
+                        st.markdown("**Removed before the narrator saw it**")
+                        st.caption(
+                            "Each of these was asserted by the reasoning call and "
+                            "did not trace to a computed fact, so it never reached "
+                            "the answer."
+                        )
+                        for reason in verdict.dropped:
+                            st.markdown(f"- ❌ {reason}")
 
             page_groups = result.get("sources", [])
 

@@ -31,6 +31,7 @@ def prompt_for(
     lon: float | None = None,
     tz_offset: float = 5.5,
     when: str | None = None,
+    for_analysis: bool = False,
 ) -> str:
     """The prompt, from plain strings.
 
@@ -98,7 +99,7 @@ def prompt_for(
     state.update(hierarchy_node(state))
     state.update(varga_select_node(state))
 
-    return build_direct_prompt(state)
+    return build_direct_prompt(state, for_analysis=for_analysis)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -116,11 +117,19 @@ def main(argv: list[str] | None = None) -> int:
                         dest="tz_offset", help="hours from UT (default IST)")
     parser.add_argument("--when", help="read the chart at this date "
                                       "(YYYY-MM-DD), default now")
+    parser.add_argument(
+        "--analysis", action="store_true",
+        help="print the two-call lane's reasoning prompt instead of the "
+             "one-call reading prompt. Everything above the OUTPUT block is "
+             "identical; this tail asks for structured findings, so it is for "
+             "reading rather than for pasting into a browser chat.",
+    )
     args = parser.parse_args(argv)
 
     print(prompt_for(
         args.question, dob=args.dob, tob=args.tob, place=args.place,
         lat=args.lat, lon=args.lon, tz_offset=args.tz_offset, when=args.when,
+        for_analysis=args.analysis,
     ))
     return 0
 

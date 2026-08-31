@@ -691,7 +691,36 @@ class TestBuildDirectPrompt:
             ),
         ))
         assert "(D9)" in prompt
-        assert "DIVISIONAL CHARTS" in prompt
+        assert "THE D9 — computed placements" in prompt
+
+    def test_a_withheld_varga_yields_no_divisional_fact_at_all(self, facts):
+        """§7's policy declines a division whose arc the birth time cannot
+        support. Every varga producer gates on that selection, and this pins it:
+        the D9 lord producers read the varga engine directly and, for one commit,
+        stated "the 7th house is Taurus, ruled by Venus" on a chart whose D9 had
+        just been withheld two blocks earlier."""
+        from rishivan.varga.confidence import BirthConfidence
+        from rishivan.varga.select import VargaSelection, WithheldVarga
+
+        prompt = build_direct_prompt(_state(
+            question="when will I marry?",
+            koonji_domain="domain.relationship",
+            chart_facts=facts,
+            chart=compute_chart(BIRTH),
+            vargas=VargaSelection(
+                selected=(),
+                withheld=(WithheldVarga(
+                    code="D9", required=BirthConfidence.MINUTE,
+                    actual=BirthConfidence.HOUR,
+                    reason="birth time recorded to the hour",
+                ),),
+                confidence=BirthConfidence.HOUR,
+            ),
+        ))
+        assert "THE D9 — computed placements" not in prompt
+        assert "of the D9" not in prompt
+        # ...and the step it served is declared missing rather than skipped.
+        assert "D9 confirmation" in prompt
 
     def test_withheld_vargas_are_stated_not_silent(self, facts):
         from rishivan.varga.confidence import BirthConfidence
@@ -773,6 +802,30 @@ def test_no_network(monkeypatch, facts):
     monkeypatch.setattr(builtins, "__import__", guarded)
     prompt = build_direct_prompt(_state(chart_facts=facts))
     assert "READING METHOD" in prompt
+
+    # The analysis tail travels the same path and must stay as free of I/O.
+    # Asserted inside the same guard rather than in a second test, so a stray
+    # import added to the shared body is caught whichever tail is asked for.
+    analysis = build_direct_prompt(_state(chart_facts=facts), for_analysis=True)
+    assert "READING METHOD" in analysis
+
+
+def test_the_two_tails_differ_only_in_who_the_answer_is_for(facts):
+    """One builder, two recipients.
+
+    The chart, the method, the facts and the question are identical; only the
+    closing OUTPUT block changes. If these ever diverge above the tail, the
+    two-call lane is reasoning over a different chart from the one-call lane and
+    the comparison between them stops meaning anything.
+    """
+    state = _state(chart_facts=facts)
+    reading = build_direct_prompt(state)
+    analysis = build_direct_prompt(state, for_analysis=True)
+
+    marker = "\n\n---\n\nOUTPUT"
+    assert reading.split(marker)[0] == analysis.split(marker)[0]
+    assert "You are the reasoning half" in analysis
+    assert "You are the reasoning half" not in reading
 
 
 class TestTheProfileDrivesTheFacts:

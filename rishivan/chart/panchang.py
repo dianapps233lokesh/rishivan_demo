@@ -11,10 +11,13 @@ time via an explicit UTC offset, disc-centre sunrise without refraction.
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from datetime import date
 
 import swisseph as swe
+
+logger = logging.getLogger(__name__)
 
 # Which eighth of the day belongs to each window, indexed by Python's
 # weekday() (Monday=0 … Sunday=6). Parts are 0-based from sunrise.
@@ -55,18 +58,73 @@ class Panchang:
     gulika: Window
     day_lord: str
     hora_lord_now: str | None = None
+    limbs: object | None = None
+    """The four computed limbs at sunrise - a `chart.limbs.Limbs`, or None when
+    the ephemeris lookup failed.
+
+    **This class was named `Panchang` while computing none of the panchang.** It
+    held the windows: sunrise, sunset, Rahu Kaal, Yamaganda, Gulika, the hora.
+    Every one of those is arithmetic on sunrise and every one was right. But the
+    word names five limbs - vara, tithi, nakshatra, yoga, karana - and four were
+    absent, so a reading that stated a tithi produced one from the model's
+    training data. A wrong Rahu Kaal is checkable against any almanac; a wrong
+    tithi reads exactly like a right one.
+
+    Taken AT SUNRISE, which is the convention a panchang prints: the tithi
+    running when the day begins is the day's tithi, however early it gives way.
+    Each limb carries the moment it ends, because "Ekadashi today" is not
+    actionable if it ended at 07:12."""
 
     def summary(self) -> str:
         """Ground-truth block for the prompt; every value here is computed."""
-        return "\n".join([
+        lines = [
             f"Date: {self.day.isoformat()} ({self.weekday})"
             f"{f' at {self.place}' if self.place else ''}",
             f"Sunrise: {self.sunrise}   Sunset: {self.sunset}",
+        ]
+        if self.limbs is not None:
+            lines += self._limb_lines()
+        lines += [
             f"Rahu Kaal: {self.rahu_kaal.start} to {self.rahu_kaal.end}",
             f"Yamaganda: {self.yamaganda.start} to {self.yamaganda.end}",
             f"Gulika Kaal: {self.gulika.start} to {self.gulika.end}",
             f"Lord of the day: {self.day_lord}",
-        ])
+        ]
+        return "\n".join(lines)
+
+    def _limb_lines(self) -> list[str]:
+        """The four limbs, each with the moment it gives way.
+
+        The five are printed together and labelled, because "panchang" means
+        these five and a block that prints two of them under that heading
+        invites the model to supply the rest.
+        """
+        def _until(moment) -> str:
+            """When it gives way, dated when that is not today.
+
+            A bare "until 03:45" beside a 06:02 sunrise reads as already past,
+            which inverts the fact: a nakshatra ending at 03:45 tomorrow runs
+            for the whole of today. These are the values the model converts into
+            "you have until...", so an off-by-a-day here becomes wrong advice.
+            """
+            if moment is None:
+                return ""
+            if moment.date() == self.day:
+                return f" until {moment:%H:%M}"
+            if (moment.date() - self.day).days == 1:
+                return f" until {moment:%H:%M} tomorrow"
+            return f" until {moment:%H:%M} on {moment:%Y-%m-%d}"
+
+        limbs = self.limbs
+        return [
+            f"Tithi: {limbs.tithi.name}"
+            f" ({limbs.tithi.paksha} paksha, {limbs.tithi.number} of 15)"
+            f"{_until(limbs.tithi_ends)}",
+            f"Nakshatra: {limbs.nakshatra.name} pada {limbs.nakshatra.pada}"
+            f"{_until(limbs.nakshatra_ends)}",
+            f"Yoga: {limbs.yoga.name}{_until(limbs.yoga_ends)}",
+            f"Karana: {limbs.karana.name}{_until(limbs.karana_ends)}",
+        ]
 
 
 def _fmt(hours: float) -> str:
@@ -99,6 +157,7 @@ def compute_panchang(
     tz_offset: float = 5.5,
     place: str = "",
     now_hour: float | None = None,
+    with_limbs: bool = True,
 ) -> Panchang:
     """Daily timing windows for one date and place.
 
@@ -108,6 +167,20 @@ def compute_panchang(
     jd_midnight = swe.julday(day.year, day.month, day.day, 0.0) - tz_offset / 24.0
     sunrise = _sun_event(jd_midnight, lat, lon, True, tz_offset)
     sunset = _sun_event(jd_midnight, lat, lon, False, tz_offset)
+
+    limbs = None
+    if with_limbs:
+        from rishivan.chart.limbs import limbs_at
+
+        try:
+            # At sunrise, in UT. The tithi running when the day begins is the
+            # day's tithi, which is the convention every printed panchang uses.
+            limbs = limbs_at(jd_midnight + sunrise / 24.0, tz_offset)
+        except Exception:  # noqa: BLE001
+            # A failed limb lookup must not cost the reader their windows, which
+            # are computed and correct. It costs them four lines, and the block
+            # simply omits them rather than guessing.
+            logger.warning("could not compute the panchang limbs", exc_info=True)
 
     # Guard the polar / date-boundary case where sunset lands before sunrise.
     day_length = (sunset - sunrise) % 24
@@ -128,6 +201,7 @@ def compute_panchang(
         hora_lord_now=(
             hora_lord(day, sunrise, now_hour) if now_hour is not None else None
         ),
+        limbs=limbs,
     )
 
 
@@ -149,6 +223,17 @@ _PANCHANG_TERMS = (
     "sunrise", "sunset", "panchang", "panchanga", "muhurat", "muhurta",
     "auspicious time", "shubh time", "shubh muhurat", "good time today",
     "inauspicious time", "राहु काल", "राहुकाल", "शुभ मुहूर्त", "पंचांग",
+    # The limbs themselves. They are computed now, and until they were, routing
+    # a question here would have handed back a block that did not contain the
+    # answer - so the terms were correctly absent and are correctly here.
+    "tithi", "करण", "karana", "paksha", "ekadashi", "amavasya", "purnima",
+    "pournami", "तिथि",
+    # Multi-word only. A bare "nakshatra" is usually "what is MY nakshatra",
+    # which is a natal question, and a bare "yoga" collides with the
+    # astrological yogas - "which yogas do I have" is not a question about
+    # today. Routing either to the daily windows would answer the wrong one.
+    "nakshatra today", "today's nakshatra", "nakshatra of the day",
+    "yoga today", "today's yoga",
 )
 
 _RELATIVE_DAYS = {

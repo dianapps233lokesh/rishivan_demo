@@ -129,6 +129,21 @@ def predictions() -> Optional[Any]:
     return collection(settings.MONGODB_PREDICTIONS_COLLECTION)
 
 
+def requirements() -> Optional[Any]:
+    """What each kind of question requires. One document per (domain, kind).
+
+    **Unlike everything else in this module, this collection is on the critical
+    path.** Telemetry is a byproduct and may fail silently; requirements decide
+    which facts a reading is built from, and a silent `None` here would mean a
+    reading that quietly decided it needed nothing. `council/requirements/store.py`
+    therefore distinguishes "the cluster is unreachable" from "the collection is
+    empty" and falls back to the built-in catalogue for the first, loudly.
+    """
+    from rishivan.config import settings
+
+    return collection(settings.MONGODB_REQUIREMENTS_COLLECTION)
+
+
 def ping() -> bool:
     """Is the cluster actually reachable? Never raises."""
     conn = client()

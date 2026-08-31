@@ -441,3 +441,64 @@ reached for the transiting Moon's nakshatra, which moves every 2¼ days and is
 noise at career scale, because the prompt carries no real transit data. Either
 supply transit positions or name transit as unavailable; the current prompt does
 neither, and the model fills the gap.
+
+---
+
+## The two-call lane, built 2026-08-29
+
+The section above says two-call direct "remains the design most likely to be
+right for production, because separating 'what is true' from 'how it is said' is
+the largest available quality lever with these models". It is now built, as a
+**third lane beside** the single-call one rather than a replacement — the
+single-call prompt stays pasteable, so the browser comparison this spec exists
+for still runs, and the two lanes can be A/B'd against each other on one
+question.
+
+```
+... varga_select → direct_read → analyse → persist → END
+                                    ↓
+                        (outside the graph) narrate_verdict
+```
+
+**What was right in the original design.** The prompt builder being a pure
+function returning a string is what made this cheap: `build_direct_prompt` grew
+a `for_analysis` flag that swaps the closing OUTPUT block and nothing else. Both
+lanes reason over an identical chart, method and fact set, which is what keeps
+the comparison between them meaningful. One builder, two tails, pinned by
+`test_the_two_tails_differ_only_in_who_the_answer_is_for`.
+
+**What the split turned out to buy, beyond the obvious.** Three things that were
+not in the original argument:
+
+1. **The timing rule became structural.** The single-call prompt asked one model
+   to reason in days and write in months. Now `pro` returns ISO dates, Python
+   rounds them with `month_span`, and `flash` is never shown a day at all — so a
+   day-exact forecast is not a rule it can break, it is a string it does not
+   have. Pinned by `test_no_iso_date_reaches_the_narrator`.
+2. **A gate became possible.** `verdict.apply_gate` drops a window whose dates
+   the prompt never printed, a `past` window, every window under an `absent`
+   promise, and a factor naming a graha the prompt never printed. Nothing is
+   rewritten or hedged — removed, so the narrator cannot cite it. This is the
+   `plan.allowed` discipline in a lane with no rule base to draw a licence from.
+3. **This lane can finally have a template fallback.** `direct.py` argues there
+   is none because there is no plan to compose from. A `Verdict` is a plan, so
+   `narrate_verdict.render_template` writes a real answer — the one pro reached,
+   with its factors, its months and its falsifier — when flash is unreachable.
+
+**What was left deliberately loose.** Houses are not gated. They print as bare
+integers in a table column, so a literal-substring test would drop true factors,
+and a gate that removes correct material is worse than the looser one it
+replaced. A body outside the nine grahas is likewise not caught — inventing a
+tenth planet is a different failure from misattributing a real one, and
+`test_a_factor_naming_an_unprinted_graha_is_dropped` pins that boundary rather
+than leaving it to be discovered.
+
+**What did not change.** `MODELS["pro"]` finally names a different model from
+`MODELS["flash"]`, which it had not since the tier map was written. No node was
+deleted, no router edited, and `DIRECT_STATIC_EDGES` is shared with one entry
+overridden by `TWO_CALL_STATIC_EDGES` rather than copied.
+
+**Still unmeasured.** Whether two-call actually beats one-call on this corpus of
+questions, and whether `pro`'s reasoning is worth its price on the easy ones.
+Both lanes now run from the same UI on the same question, which is what that
+measurement needs.

@@ -14,7 +14,7 @@ from langgraph.graph import END, START, StateGraph
 
 from rishivan.graph import edges as R
 from rishivan.graph.nodes import (
-    answer, answer_plan, chart, diagnosis, direct, ground, hierarchy, intake,
+    analyse, answer, answer_plan, chart, diagnosis, direct, ground, hierarchy, intake,
     koonji, persist, rishi, sakshi, synthesis, timing, varga,
 )  # noqa: F401 - `answer` re-exported for callers still importing it
 from rishivan.graph.nodes import retrieve as retrieval
@@ -136,6 +136,13 @@ DIRECT_NODE_NAMES = (
     "render_numerology",
     "direct_read", "persist",
 )
+TWO_CALL_NODE_NAMES = DIRECT_NODE_NAMES + ("analyse",)
+"""The same nodes, plus the reasoning call.
+
+`analyse` is the only node in either lane that uses the `pro` tier. It sits
+between the prompt and the narrator and does both halves of the seam in one
+place: it makes the call, and it gates what comes back against the very prompt
+that was sent."""
 """No `dasha_windows`. It times a promise, and the promise comes from a rule
 engine this lane does not run - so it produced nothing usable here, and briefly
 produced something worse: a window fabricated by `assume_promise=True` that the
@@ -199,6 +206,22 @@ DIRECT_STATIC_EDGES: dict[str, str] = {
 }
 
 
+TWO_CALL_STATIC_EDGES: dict[str, str] = {
+    # The one edge the second shape changes. `direct_read` writes an analysis
+    # prompt instead of a reading prompt, `analyse` calls pro and gates what
+    # comes back, and `persist` traces the turn exactly as before.
+    "direct_read": "analyse",
+    "analyse": "persist",
+}
+"""Overrides on `DIRECT_STATIC_EDGES`, declared rather than branched.
+
+A second full table would be a second place to add a node and forget. Sharing
+the first and overriding one entry keeps the difference between the two shapes
+readable as a difference — which is the same reason `DIRECT_EDGE_MAPS` re-maps
+the routers' labels instead of editing the routers.
+"""
+
+
 def _chart_render_passthrough(state: RishivanState) -> dict:
     """`chart_render` is a branch point with no work of its own.
 
@@ -215,20 +238,26 @@ def _fan_out_passthrough(state: RishivanState) -> dict:
 
 
 def build_graph(*, store, client, checkpointer=None, trace_sink=None,
-                direct: bool = False):
-    """The council graph, or the direct lane.
+                direct: bool = False, two_call: bool = False):
+    """The council graph, or the direct lane, in one of its two shapes.
 
-    Two topologies over one node set rather than two builders, so a change to a
-    shared node cannot land in one lane and miss the other.
+    Topologies over one node set rather than separate builders, so a change to a
+    shared node cannot land in one lane and miss the others.
 
     `direct=True` drops retrieval, the rule engine and the council, and sends
     one prompt built from the classical method. See
     `docs/superpowers/specs/2026-08-27-direct-call-reading-design.md`.
+
+    `two_call=True` splits that one call in two: `pro` works out what the chart
+    carries and returns a `Verdict`, a gate removes anything the prompt did not
+    license, and `flash` narrates what survives. It only means anything
+    alongside `direct=True` — the council lane already separates deciding from
+    saying, through `answer_plan` and `narrate`.
     """
     if direct:
         return _build_direct(
             store=store, client=client, checkpointer=checkpointer,
-            trace_sink=trace_sink,
+            trace_sink=trace_sink, two_call=two_call,
         )
     return _build_council(
         store=store, client=client, checkpointer=checkpointer,
@@ -236,7 +265,7 @@ def build_graph(*, store, client, checkpointer=None, trace_sink=None,
     )
 
 
-def _build_direct(*, store, client, checkpointer, trace_sink):
+def _build_direct(*, store, client, checkpointer, trace_sink, two_call=False):
     g = StateGraph(RishivanState)
 
     g.add_node("intake", partial(intake.intake_node, client=client))
@@ -252,7 +281,12 @@ def _build_direct(*, store, client, checkpointer, trace_sink):
     g.add_node("render_dasha", chart.render_dasha_node)
     g.add_node("render_ashtakavarga", chart.render_ashtakavarga_node)
     g.add_node("render_numerology", chart.render_numerology_node)
-    g.add_node("direct_read", direct.direct_read_node)
+    g.add_node(
+        "direct_read",
+        partial(direct.direct_read_node, for_analysis=two_call),
+    )
+    if two_call:
+        g.add_node("analyse", partial(analyse.analyse_node, client=client))
     g.add_node("persist", partial(persist.persist_node, sink=trace_sink))
 
     g.add_edge(START, "intake")
@@ -267,7 +301,12 @@ def _build_direct(*, store, client, checkpointer, trace_sink):
         "chart_render", R.route_chart_kind, DIRECT_EDGE_MAPS["chart_render"]
     )
     for source, destination in DIRECT_STATIC_EDGES.items():
+        if two_call and source in TWO_CALL_STATIC_EDGES:
+            continue
         g.add_edge(source, destination)
+    if two_call:
+        for source, destination in TWO_CALL_STATIC_EDGES.items():
+            g.add_edge(source, destination)
 
     return g.compile(checkpointer=checkpointer)
 

@@ -79,6 +79,11 @@ THE FRAME OF THE CHART:
 
 ---
 
+════════ RULE ON THIS ════════
+The classical method for this question says the verdict rests on the facts in
+this section. Ground your answer in them. Nothing after this section may carry
+the verdict on its own.
+
 THE CHART — every position in one table. The FRAME column says which
 chart each row belongs to. A natal row is what the birth chart
 promises; a transit row is only where a planet is passing now. Never
@@ -102,7 +107,17 @@ yours to synthesise, but do not lead from it.
  transit  Rahu     Aquarius     12     -           -           retrograde; Dhanishta
  transit  Ketu     Leo          6      -           -           retrograde; Magha
 
----
+THE 7TH HOUSE — computed diagnosis, authoritative. Do not re-derive
+any of it from the table above:
+  sign: Virgo
+  lord: Mercury, placed in the 11th house
+  lord's strength: moderate
+  lord's dispositor: Saturn
+  occupants: none
+  aspected by: Saturn
+  natural significators: Venus
+  benefic influence: -0.12 (mixed)
+    - aspected by saturn (functional malefic)
 
 THE HOUSES AND WHO RULES THEM — a house is judged through its lord, and
 where that lord sits:
@@ -119,28 +134,36 @@ where that lord sits:
   - The 11th house (gains, income, friends) is ruled by Saturn, placed in the 10th house.
   - The 12th house (loss, expenses, foreign lands, liberation) is ruled by Saturn, placed in the 10th house.
 
----
+PLANETARY CONDITION - computed, and authoritative. Do not re-derive any
+of it from the signs and houses above; where your own reading of the chart
+disagrees with a line here, this is what the calculation says:
+Strength bands come from `parashari.partial.v1`, running partial - treat them as estimates, not measurements.
+  - Sun: dignity neutral; strength strong; functionally malefic; aspected by Jupiter
+  - Moon: dignity neutral; strength weak; functionally benefic; aspected by Jupiter, Mars, Saturn
+  - Mars: dignity own_sign; strength strong; functionally benefic; vargottama
+  - Mercury: dignity neutral; strength moderate; functionally neutral; retrograde; vargottama; aspected by Ketu
+  - Jupiter: dignity neutral; strength moderate; functionally benefic; retrograde; aspected by Mars, Saturn, Sun
+  - Venus: dignity neutral; strength weak; functionally malefic; retrograde; aspected by Ketu
+  - Saturn: dignity neutral; strength very_weak; functionally malefic; COMBUST; aspected by Jupiter
+  - Rahu: dignity neutral; strength strong; functionally malefic; retrograde; aspected by Ketu
+  - Ketu: dignity neutral; strength weak; functionally benefic; retrograde; aspected by Mercury, Rahu, Venus
 
-Sade sati: RUNNING, setting leg (Saturn is in the 2nd sign from your natal Moon in Aquarius).
+  the 7th lord is Mercury, in Capricorn, in the 11th house
 
----
+  Jupiter: dignity neutral; strength moderate; functionally benefic
 
-TRANSITS NOW - the slow planets, and which of YOUR houses they are
-crossing. Dates are the sign changes; for a retrograde planet that is the
-next crossing rather than a permanent exit:
-  - Jupiter transiting Cancer, crossing your 5th house from your lagna (in this sign since 2026-06-01; leaves it 2026-11-01)
-  - Saturn transiting Pisces retrograde, crossing your 1st house from your lagna (in this sign since 2025-03-29; leaves it 2027-06-03)
-  - Rahu transiting Aquarius retrograde, crossing your 12th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
-  - Ketu transiting Leo retrograde, crossing your 6th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
+  Venus: dignity neutral; strength weak; functionally malefic
 
----
+MANGAL (KUJA) DOSHA — computed: not present.
+  convention used: Mars in houses 1, 2, 4, 7, 8 or 12, counted separately from the Lagna, from the Moon and from Venus. North Indian house set — several South Indian lineages omit the 2nd.
+  from the Lagna: Mars sits in the 9th — clear
+  from the Moon: Mars sits in the 10th — clear
+  from Venus: Mars sits in the 11th — clear
 
 COMPUTED PERIODS — boundaries, not predictions. Every date you write
 must trace to one of these lines:
   - Mahadasha timeline from birth: Mars (1990-01-01 to 1990-02-09), Rahu (1990-02-09 to 2008-02-09), Jupiter (2008-02-09 to 2024-02-09), Saturn (2024-02-09 to 2043-02-08), Mercury (2043-02-08 to 2060-02-09), Ketu (2060-02-09 to 2067-02-08), Venus (2067-02-08 to 2087-02-08), Sun (2087-02-08 to 2093-02-08), Moon (2093-02-08 to 2103-02-09).
   - Currently running: Saturn Mahadasha, Saturn Antardasha, Rahu Pratyantardasha.
-
----
 
 Antardashas within the running Saturn mahadasha (2024-02-09 to 2043-02-08):
   - Saturn: 2024-02-09 to 2027-02-12 [RUNNING NOW]
@@ -175,12 +198,130 @@ Pratyantardashas within the running Saturn antardasha (2024-02-09 to 2027-02-12)
   - Rahu: 2026-04-06 to 2026-09-18 [RUNNING NOW]
   - Jupiter: 2026-09-18 to 2027-02-12 [future]
 
+WINDOWS THAT COULD CARRY THIS EVENT — computed, NEAREST FIRST.
+Each is a period ruled by a graha that carries this question: the lord of
+the house the matter sits in, or its natural significator. This is the
+search already done for you - do not go looking through the period lists
+above for a different one.
+
+**Prefer the nearest window that fits.** A later period ruled by the same
+graha is not a better answer for being longer: the mahadasha sets the era,
+the antardasha the theme, and the PRATYANTARDASHA is when a thing lands.
+Reach past a near window only if you can say what disqualifies it, and then
+say that out loud.
+
+Rows marked * are ruled by the lord of the house the matter SITS in, and
+are the stronger claim. Unmarked rows are ruled by a house that bears on
+it - for work, the 6th of service and the 11th of gains. An unmarked
+window nearer than a marked one is often the real answer: the thing
+arrives through the supporting house and is confirmed by the primary.
+
+  2024-02-09 to 2027-02-12  Saturn/Saturn            antar       Saturn (11th lord) [running now]
+ *2026-09-18 to 2027-02-12  Saturn/Saturn/Jupiter    pratyantar  Jupiter (natural significator) [0.1 yr away]
+ *2027-02-12 to 2027-07-01  Saturn/Mercury/Mercury   pratyantar  Mercury (7th lord) [0.5 yr away]
+ *2027-02-12 to 2029-10-22  Saturn/Mercury           antar       Mercury (7th lord) [0.5 yr away]
+ *2027-08-27 to 2028-02-07  Saturn/Mercury/Venus     pratyantar  Venus (natural significator) [1.0 yr away]
+  2028-06-17 to 2028-08-14  Saturn/Mercury/Mars      pratyantar  Mars (2nd lord) [1.8 yr away]
+ *2029-01-08 to 2029-05-19  Saturn/Mercury/Jupiter   pratyantar  Jupiter (natural significator) [2.4 yr away]
+  2029-05-19 to 2029-10-22  Saturn/Mercury/Saturn    pratyantar  Saturn (11th lord) [2.7 yr away]
+ *2029-11-14 to 2030-01-21  Saturn/Ketu/Venus        pratyantar  Venus (natural significator) [3.2 yr away]
+  2030-03-16 to 2030-04-08  Saturn/Ketu/Mars         pratyantar  Mars (2nd lord) [3.6 yr away]
+ *2030-06-08 to 2030-08-01  Saturn/Ketu/Jupiter      pratyantar  Jupiter (natural significator) [3.8 yr away]
+  2030-08-01 to 2030-10-04  Saturn/Ketu/Saturn       pratyantar  Saturn (11th lord) [3.9 yr away]
+  ...and 25 more beyond these, further out. Not hidden - just later than anything worth naming here.
+
+---
+
+════════ CORROBORATE ════════
+Use these to confirm, qualify or contradict the section above. A contradiction
+here is evidence: report it rather than resolving it quietly.
+
+  from the Moon (Chandra lagna): the 7th is Leo, ruled by Sun, who sits in the 11th from the Moon
+
+THE 11TH HOUSE — computed diagnosis, authoritative. Do not re-derive
+any of it from the table above:
+  sign: Capricorn
+  lord: Saturn, placed in the 10th house
+  lord's strength: very_weak
+  lord's dispositor: Jupiter
+  occupants: Mercury, Rahu, Venus
+  aspected by: Ketu
+  natural significators: Jupiter
+  benefic influence: -0.38 (afflicted)
+    - rahu occupies it (functional malefic)
+    - venus occupies it (functional malefic)
+    - aspected by ketu (functional benefic)
+  a period ruling this house is RUNNING NOW
+
+THE 2ND HOUSE — computed diagnosis, authoritative. Do not re-derive
+any of it from the table above:
+  sign: Aries
+  lord: Mars, placed in the 9th house
+  lord's strength: strong
+  lord's dispositor: Mars
+  occupants: none
+  natural significators: Jupiter
+  benefic influence: +0.00 (mixed)
+    - no occupant and no aspect from a functional benefic or malefic
+
+THE 8TH HOUSE — computed diagnosis, authoritative. Do not re-derive
+any of it from the table above:
+  sign: Libra
+  lord: Venus, placed in the 11th house
+  lord's strength: weak
+  lord's dispositor: Saturn
+  occupants: none
+  aspected by: Jupiter
+  natural significators: Saturn
+  benefic influence: +0.12 (mixed)
+    - aspected by jupiter (functional benefic)
+  a period ruling this house is RUNNING NOW
+
+UPAPADA LAGNA (UL) — computed: Libra, the 8th house from the lagna, ruled by Venus.
+  derived from the 12th lord Saturn, counted the same distance again.
+
+DARAKARAKA (THE SPOUSE) — computed: Mercury, in Capricorn, in the 11th house at 2.01°.
+  method: Seven-karaka Parashari scheme: the seven grahas ranked by degrees traversed in their own sign, highest first. The nodes are excluded.
+
+THE PERIOD RUNNING NOW, TO THE THIRD LEVEL — computed boundaries, not
+predictions. The third level narrows the second; it does not license a
+sharper claim than the chart supports:
+  Mahadasha Saturn: 2024-02-09 to 2043-02-08
+  Antardasha Saturn/Saturn: 2024-02-09 to 2027-02-12
+  Pratyantardasha Saturn/Saturn/Rahu: 2026-04-06 to 2026-09-18
+
+TRANSITS NOW - the slow planets, and which of YOUR houses they are
+crossing. Dates are the sign changes; for a retrograde planet that is the
+next crossing rather than a permanent exit:
+  - Jupiter transiting Cancer, crossing your 5th house from your lagna (in this sign since 2026-06-01; leaves it 2026-11-01)
+  - Saturn transiting Pisces retrograde, crossing your 1st house from your lagna (in this sign since 2025-03-29; leaves it 2027-06-03)
+  - Rahu transiting Aquarius retrograde, crossing your 12th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
+  - Ketu transiting Leo retrograde, crossing your 6th house from your lagna (in this sign since 2025-05-18; leaves it 2026-12-06)
+
+---
+
+════════ CONTEXT ════════
+Background. Real, and yours to synthesise, but do not lead from it.
+
+Sade sati: RUNNING, setting leg (Saturn is in the 2nd sign from your natal Moon in Aquarius).
+
+DOUBLE TRANSIT OVER THE 7TH HOUSE — computed for today: PARTIAL.
+Jupiter and Saturn are read together for the activation of a house; a
+partial touch times differently from a full one, so say which half is
+missing rather than reporting a yes or a no:
+  Jupiter does not touch the house — no
+  Jupiter aspects its lord Mercury (7th aspect) — yes
+  Saturn aspects the house (7th aspect) — yes
+  Saturn does not touch its lord Mercury — no
+
 ---
 
 EVIDENCE NOT AVAILABLE for this reading. Do not reason from these, do not
 infer them, and do not pad a step with them. Work the step from what you
 have, or let it lower your confidence in silence:
-  - Jaimini karakas and Upapada — the fact vocabulary does not express them
+  - step 4 (D9 confirmation): the D9's placements - required for this question, and this chart does not yield it
+  - step 4 (D9 confirmation): d9.house.1.lord.house (in the D9) - required for this question, and this chart does not yield it
+  - step 4 (D9 confirmation): d9.house.7.lord.house (in the D9) - required for this question, and this chart does not yield it
 
 ---
 

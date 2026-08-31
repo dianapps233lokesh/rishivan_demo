@@ -86,15 +86,33 @@ def chart_moment_node(state: RishivanState) -> dict:
     from rishivan.chart.transit import chart_for_moment
     from rishivan.council.domains import QueryDomain
 
+    from rishivan.varga.confidence import BirthConfidence
+
     now = state.get("query_time") or datetime.now()
     if state["query_domain"] == QueryDomain.MUHURTA:
         # Without an explicit target, honour the day the question names -
         # "is tomorrow good?" must not be answered from today's sky.
-        moment = state.get("target_time") or (
+        target = state.get("target_time")
+        moment = target or (
             now + timedelta(days=relative_day_offset(state["question"]))
         )
+        # A named target is a moment somebody chose. "Tomorrow" is a DAY, and
+        # the clock time here is just today's carried forward - so the ascendant
+        # is arbitrary within that day and every division that depends on it
+        # must stay withheld.
+        confidence = BirthConfidence.EXACT if target else BirthConfidence.UNKNOWN
     else:
         moment = now
+        confidence = BirthConfidence.EXACT
+
+    # **Stated, not inferred.** `resolve_confidence` falls through to
+    # `infer_confidence(birth_data)`, and this node discards `birth_data` - so a
+    # prashna chart resolved to UNKNOWN and `select_vargas` withheld the D9 from
+    # EVERY prashna reading, explaining itself with "needs a birth time known to
+    # the minute; yours is recorded to the hour" about a chart that has no birth
+    # time at all. The confidence machinery measures uncertainty in a REMEMBERED
+    # birth time; there is none here. This moment is a timestamp we generated,
+    # and we know it to the second.
 
     chart = chart_for_moment(
         moment,
@@ -108,6 +126,7 @@ def chart_moment_node(state: RishivanState) -> dict:
         "chart_kind": "prashna",
         "chart_summary": summarize(chart, label="Moment"),
         "chart_facts": derive_muhurta_facts(chart),
+        "birth_confidence": confidence,
     }
 
 

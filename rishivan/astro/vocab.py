@@ -27,7 +27,17 @@ BASE_PREFIXES = (
     "nakshatra.",
     "numerology.",
     "transit.",
+    "karaka.",
 )
+"""`karaka.` is recognised by the grammar and emitted by nothing yet.
+
+Jaimini's chara karakas — Darakaraka for the spouse, Atmakaraka for the self —
+are named in the reading protocols (`CONSTITUTIONS['prema'].protocol` step 5 is
+"Jaimini indicators") and listed in `blocked_concepts` because no computation
+produced them. Recognising the prefix is what lets a question REQUIRE one and
+have its absence declared, instead of the requirement being unspellable and the
+gap therefore invisible. `SUPPORTED_CONDITION_TYPES` is untouched: no rule can
+yet fire on a karaka, and widening the grammar does not change that."""
 
 EMITTED_VARGA_SCOPES = ("d2.", "d7.", "d9.", "d10.", "d12.", "d30.")
 """Wealth D2, children D7, marriage D9, career D10, parents D12, health D30. D1 is the

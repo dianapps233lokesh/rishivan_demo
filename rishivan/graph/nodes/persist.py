@@ -117,6 +117,39 @@ def _vargas_dict(selection) -> Optional[dict]:
     }
 
 
+def _verdict_dict(state: RishivanState) -> Optional[dict]:
+    """The reasoning call's output, and the gate's audit line, as plain data.
+
+    `dropped` is the row worth having. It is the only record that a window or a
+    factor was asserted by the model and then removed for not tracing to a
+    computed fact — the reader never sees it, and without this the gate does its
+    work invisibly and nobody can tell a clean run from a heavily-pruned one.
+
+    `verdict_error` is carried on the same key for a failed analysis, so a lost
+    turn leaves a reason behind rather than a silence.
+    """
+    verdict = state.get("verdict")
+    if verdict is None:
+        error = state.get("verdict_error") or ""
+        return {"failed": error} if error else None
+    return {
+        "promise": verdict.promise,
+        "headline": verdict.headline,
+        "factors": [
+            {"fact": f.fact, "consequence": f.consequence, "weight": f.weight}
+            for f in verdict.factors
+        ],
+        "windows": [
+            {"start": w.start, "end": w.end, "label": w.label, "status": w.status}
+            for w in verdict.windows
+        ],
+        "disagreements": list(verdict.disagreements),
+        "unsupported": list(verdict.unsupported),
+        "falsifier": verdict.falsifier,
+        "dropped": list(verdict.dropped),
+    }
+
+
 def build_trace(state: RishivanState) -> dict:
     """Everything needed to replay and argue with one answer."""
     return {
@@ -132,6 +165,12 @@ def build_trace(state: RishivanState) -> dict:
         "koonji": _koonji_trace(state),
         "council": _council_dict(state),
         "answer_plan": _plan_dict(state.get("answer_plan")),
+        # Two-call direct lane only; None everywhere else, so no other lane's
+        # trace shape changes.
+        "verdict": _verdict_dict(state),
+        # Which facts the question required and which it went without. The
+        # single most useful row for "why was that reading thin" after the fact.
+        "requirements": state.get("requirement_report") or None,
         "vargas": _vargas_dict(state.get("vargas")),
         "sources": [
             s.get("book_slug") or s.get("document_id")

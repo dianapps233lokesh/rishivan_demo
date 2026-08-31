@@ -354,6 +354,107 @@ instructions.
 """.strip()
 
 
+_ANALYSIS_OUTPUT_BLOCK = """
+OUTPUT
+
+You are the reasoning half of a two-step reading. **You do not write to the
+seeker.** A second model turns what you return into prose for them, and it will
+see your output and nothing else - not this chart, not these periods, not this
+method. Anything you leave out is unavailable to it, permanently. Anything you
+put in, it will say.
+
+Return the structured verdict, and nothing besides it. No prose, no preamble, no
+commentary on your own process.
+
+How to fill it, field by field.
+
+**promise** comes first and governs everything after it. Settle whether the
+chart carries the thing asked about AT ALL before you look at a single date. If
+it does not, say `absent` - and then there is nothing to time, every window you
+might have listed is void, and the honest reading is that the chart does not
+speak to this. `contested` is for a chart that carries it and argues with
+itself; use it rather than picking a side quietly.
+
+**headline** is the answer in one sentence, written as a finding rather than as
+a summary. "The promotion lands between November 2026 and September 2027, not
+before." Under an absent promise it says so instead. The narrator leads with
+this, so a headline that describes your reasoning becomes a reading that opens
+by clearing its throat.
+
+**not_happening** is what will NOT occur. This is what separates a forecast from
+a horoscope, and it is the line a seeker uses to tell whether you committed to
+anything. Leave it empty only when the question genuinely does not admit one.
+
+**factors** is where the chart enters. One entry per computed factor that
+actually bears on the answer, each already translated:
+
+    fact:        "Saturn, house 6 (career chart)"
+    consequence: "one senior person keeps slowing your file, and they are not
+                  going to become your supporter"
+
+The `fact` half must trace to a line printed above - a placement, a period, a
+transit, a condition. If you cannot point at the line it came from, leave the
+entry out. The `consequence` half must be something the seeker could check
+against their own life. Never "marital harmony is evaluated through the 7th
+house": that is the method describing itself, the seeker did not ask how
+astrology works, and the narrator has no way to repair it because it cannot see
+what you were looking at. Sanskrit and D-codes belong in `fact`, never in
+`consequence`.
+
+Order them by how much they carry, heaviest first, and set `weight` honestly. A
+weak factor marked strong is worse than one you omitted.
+
+**windows** — and before the dates, the LEVEL, because getting that wrong is how
+this reading goes wrong. A mahadasha sets the era, an antardasha sets the theme,
+and a PRATYANTARDASHA is when a thing actually lands. Timing an event to an
+antardasha alone times it to a three-year band, which is not an answer to "when".
+
+**Take the nearest window that fits.** The block headed "WINDOWS THAT COULD CARRY
+THIS EVENT" has already done the search, across both levels, nearest first — use
+it rather than hunting through the period lists for something else. A later
+period ruled by the same graha is not the better answer for being longer. If you
+reach past a near window, say what disqualifies it, in the reading.
+
+windows carry ISO dates, copied character for character from the computed
+periods above. **Do not derive a boundary, ever** - not by adding a dasha
+fraction, not by rounding, not by reasoning about what must come next. A date
+that does not appear verbatim above is discarded before the narrator sees it,
+so deriving one costs you the window rather than gaining you a prediction. Mark
+`status` from the labels printed above: `past`, `running`, `future`. A past
+window is not an answer about the future; list it only if the answer genuinely
+turns on something already over, and expect it to be dropped.
+
+You reason in days because you need exact boundaries not to drift. The seeker
+is told months - the narrator does that conversion, and it needs the exact
+dates to do it from.
+
+**exact_times** is the one exception to all of the above: Rahu Kaal, a hora, a
+muhurta, sunrise. Arithmetic for a stated date rather than a claim about
+anyone's life. Copy the value exactly as printed, to the minute, character for
+character. These reach the seeker at full precision.
+
+**disagreements** is for indications that genuinely point different ways. Report
+the disagreement; do not average it. A reported disagreement is worth more to
+the seeker than a verdict you smoothed, and averaging tells them something false
+with more confidence than either indication had.
+
+**unsupported** is for steps of the method you could not run, and why. Declaring
+a step unsupported is a correct outcome. Padding it from general knowledge is
+not.
+
+**Write these for the seeker, not for us.** They are printed in the answer, so
+copy nothing from the EVIDENCE NOT AVAILABLE block above - that block is
+addressed to you and is written in this system's own words. "step 4 (D9
+confirmation): the D9's placements - required for this question, and this chart
+does not yield it" reached a reader verbatim and read as a fault report.
+Write "the marriage chart could not be cast from a birth time recorded only to
+the hour" instead: name the step in plain English, say what it cost, and stop.
+
+**falsifier** is one specific observable that, if it does not occur, means you
+were wrong. It must fall inside a window you listed.
+""".strip()
+
+
 _PAGES_LINE = "classical pages further down"
 """The one line of `_GROUND_TRUTH_WARNING` that does not survive into this lane.
 
@@ -504,7 +605,14 @@ def _condition_block(chart_state) -> str:
     # Conventional order, matching the placement lines above, so a reader
     # cross-referencing the two blocks is not re-sorting in their head. The
     # `planets` tuple arrives alphabetical, which no astrologer reads in.
-    order = {name: index for index, name in enumerate(_PLANET_SEQUENCE)}
+    # `fact_table._SEQUENCE` is the order an astrologer reads grahas in, and is
+    # imported rather than restated. This line referred to a `_PLANET_SEQUENCE`
+    # that was never defined in this module - the block was written, never
+    # called, and would have raised NameError the first time anything asked for
+    # it. The requirement registry asks for it, which is how it came to light.
+    from rishivan.council.fact_table import _SEQUENCE
+
+    order = {name: index for index, name in enumerate(_SEQUENCE)}
     planets = sorted(
         chart_state.planets,
         key=lambda p: order.get(_symbol(p.graha).capitalize(), 99),
@@ -527,7 +635,7 @@ def _condition_block(chart_state) -> str:
     )
 
 
-def _varga_block(chart, selection) -> str:
+def _varga_block(chart, selection, *, notes_only: bool = False) -> str:
     """Divisional placements for the divisions §7 admitted, and why any were not.
 
     The placements rather than the codes. "D9 was selected" tells the model
@@ -536,6 +644,11 @@ def _varga_block(chart, selection) -> str:
     The withheld list is stated rather than dropped: "D60 needs a birth time to
     the minute and yours is recorded to the hour, so it was not used" is the
     sentence this selection exists to make available.
+
+    `notes_only` returns just that withheld list. The placements themselves are
+    now a requirement (`block.varga.d9`) so they land in the band the table gave
+    them, but a division DECLINED is not a fact any requirement asked for - it is
+    a fact about the reading, and it is reported whatever was asked.
 
     D1 is skipped. It is not a division of the chart, it *is* the chart, and the
     framework and primary blocks already carry every one of its placements.
@@ -549,12 +662,13 @@ def _varga_block(chart, selection) -> str:
     from rishivan.chart.local_varga import varga_facts
 
     lines: list[str] = []
-    for code in selection.selected:
-        if code == "D1":
-            continue
-        facts = varga_facts(chart, code)
-        if facts:
-            lines.extend(f"  - {fact}" for fact in facts)
+    if not notes_only:
+        for code in selection.selected:
+            if code == "D1":
+                continue
+            facts = varga_facts(chart, code)
+            if facts:
+                lines.extend(f"  - {fact}" for fact in facts)
     blocks = []
     if lines:
         blocks.append(
@@ -831,6 +945,99 @@ def _sub_period_block(chart, when) -> str:
     return "\n\n".join(blocks)
 
 
+_BAND_HEADERS: dict[int, str] = {
+    1: (
+        "════════ RULE ON THIS ════════\n"
+        "The classical method for this question says the verdict rests on the "
+        "facts in\nthis section. Ground your answer in them. Nothing after this "
+        "section may carry\nthe verdict on its own."
+    ),
+    2: (
+        "════════ CORROBORATE ════════\n"
+        "Use these to confirm, qualify or contradict the section above. A "
+        "contradiction\nhere is evidence: report it rather than resolving it "
+        "quietly."
+    ),
+    3: (
+        "════════ CONTEXT ════════\n"
+        "Background. Real, and yours to synthesise, but do not lead from it."
+    ),
+}
+"""What each priority band tells the model.
+
+The ordering used to be fixed in this file regardless of what was asked: the
+same block sequence for a marriage question and a muhurta. Now the requirement
+table chooses the order and these headers say what the order MEANS - which is
+the half that a reordering alone would not have bought. A model handed twelve
+undifferentiated blocks treats them as twelve equal facts, and the whole
+complaint about the first two-call output was that it weighted general strength
+the same as the seventh house.
+"""
+
+
+def _protocol_step(constitution_key: str, step: int) -> str:
+    """The classical step a requirement serves, named.
+
+    Missing facts read very differently with it: "step 5 (Jaimini indicators):
+    Darakaraka" says which part of the reading was skipped, where the bare key
+    says only that something was.
+    """
+    if not constitution_key or step < 1:
+        return ""
+    from rishivan.council.constitution import CONSTITUTIONS
+
+    constitution = CONSTITUTIONS.get(constitution_key)
+    if constitution is None or step > len(constitution.protocol):
+        return ""
+    return f"step {step} ({constitution.protocol[step - 1]})"
+
+
+def _requirement_blocks(profile, ctx) -> tuple[list[str], list[str]]:
+    """Render what this question requires, and report what it could not get.
+
+    Two kinds of absence, kept apart because they mean different things to a
+    reader and to whoever is fixing the system:
+
+      * **No producer at all.** Nothing in this codebase computes it, for any
+        chart. Always declared, mandatory or not - `prema`'s protocol step 5 is
+        "Jaimini indicators" and `blocked_concepts` has said Darakaraka is
+        unavailable since the constitutions were written. Stating it is the
+        honest half of a reading that skips the step.
+      * **A producer that returned nothing.** The capability exists; this chart
+        or this moment did not yield it. Declared only when mandatory, because
+        "no sade sati" on a chart with no Saturn transit is not news.
+    """
+    from rishivan.council.requirements.producers import known, label, produce
+
+    rendered: list[str] = []
+    missing: list[str] = []
+    constitution_key = getattr(profile.requirements, "constitution", "")
+
+    for priority, group in profile.requirements.by_band().items():
+        blocks: list[str] = []
+        for requirement in group:
+            text = produce(requirement.key, ctx)
+            if text:
+                blocks.append(text)
+                continue
+            step = _protocol_step(constitution_key, requirement.step)
+            where = f"{step}: " if step else ""
+            if not known(requirement.key):
+                missing.append(
+                    f"{where}{label(requirement.key)} - this system does not "
+                    f"compute it at all"
+                )
+            elif requirement.mandatory:
+                missing.append(
+                    f"{where}{label(requirement.key)} - required for this "
+                    f"question, and this chart does not yield it"
+                )
+        if blocks:
+            header = _BAND_HEADERS.get(priority, _BAND_HEADERS[3])
+            rendered.append(header + "\n\n" + "\n\n".join(blocks))
+    return rendered, missing
+
+
 # ── Blocks a profile may ask for ─────────────────────────────────────────────
 
 def _listed(heading: str, facts: list[str]) -> str:
@@ -928,8 +1135,23 @@ def _unavailable_block(unavailable: tuple[str, ...]) -> str:
     )
 
 
-def build_direct_prompt(state) -> str:
+def build_direct_prompt(state, *, for_analysis: bool = False) -> str:
+    """The prompt alone. See `build_with_report` for the prompt and its audit.
+
+    Kept as the one-value function because every existing caller wants a string
+    and the golden snapshot asserts one. The report is additive."""
+    return build_with_report(state, for_analysis=for_analysis)[0]
+
+
+def build_with_report(state, *, for_analysis: bool = False) -> tuple[str, dict]:
     """The whole prompt, from state, with no I/O.
+
+    `for_analysis` swaps the closing OUTPUT block and changes nothing else. Both
+    lanes reason over exactly the same chart, the same method and the same facts;
+    what differs is only who the answer is being written for. Keeping one builder
+    rather than two is what stops a fix to the fact selection landing in one lane
+    and missing the other - the same argument `build_graph` makes for holding two
+    topologies over one node set.
 
     Two things govern what goes in. `constitution` says which houses and planets
     the domain rests on; `QuestionProfile` says which KINDS of fact the question
@@ -941,10 +1163,8 @@ def build_direct_prompt(state) -> str:
     Pure, so the golden snapshot is a real snapshot and `test_no_network` is a
     real guarantee. The model call lives in `council/direct.py`.
     """
-    from rishivan.council.fact_table import (
-        natal_rows, render_table, transit_rows,
-    )
-    from rishivan.council.question_profile import Bundle, profile_for
+    from rishivan.council.question_profile import profile_for
+    from rishivan.council.requirements.producers import Context
 
     constitution = constitution_for(state.get("koonji_domain") or "")
 
@@ -953,14 +1173,13 @@ def build_direct_prompt(state) -> str:
     # leaves no nativity at all - and labelling those rows `natal` told the model
     # they were the seeker's birth placements.
     is_natal = state.get("chart_kind", "natal") == "natal"
-    frame = "natal" if is_natal else "prashna"
 
     profile = profile_for(
         state["question"],
         koonji_domain=state.get("koonji_domain") or "",
         has_birth_chart=is_natal and state.get("chart") is not None,
     )
-    wants = profile.wants
+    needs = {r.key for r in profile.requirements.requires}
 
     chart = state.get("chart")
     when = state.get("query_time")
@@ -970,6 +1189,8 @@ def build_direct_prompt(state) -> str:
         )
     )
 
+    # Computed once and handed to every producer. Eleven producers each casting
+    # their own transit chart is eleven ephemeris calls for one answer.
     transiting = None
     moon_on_the_day = None
     if chart is not None and when is not None:
@@ -981,9 +1202,11 @@ def build_direct_prompt(state) -> str:
         lon = state.get("lon") or 77.2090
         tz = state.get("tz_offset") or 5.5
 
-        if wants(Bundle.TRANSITS_SLOW) or wants(Bundle.SADE_SATI):
+        if needs & {"block.transits_slow", "block.sade_sati"} or any(
+            key.startswith("block.transit.") for key in needs
+        ):
             transiting = chart_for_moment(when, lat=lat, lon=lon, tz_offset=tz)
-        if wants(Bundle.TARA_BALA) or wants(Bundle.CHANDRA_BALA):
+        if needs & {"block.tara_bala", "block.chandra_bala"}:
             # Cast for the DATE ASKED ABOUT, not for today. Tara and chandra bala
             # are entirely about the Moon, and the Moon changes sign every 2.25
             # days - computing them for today to answer a question about
@@ -992,6 +1215,12 @@ def build_direct_prompt(state) -> str:
                 when + timedelta(days=profile.day_offset),
                 lat=lat, lon=lon, tz_offset=tz,
             )
+
+    ctx = Context(
+        state=state, chart=chart, chart_state=state.get("chart_state"),
+        when=when, transiting=transiting, moon_on_the_day=moon_on_the_day,
+        facts=facts, day_offset=profile.day_offset, is_natal=is_natal,
+    )
 
     parts = [framing_block(constitution)]
 
@@ -1025,88 +1254,41 @@ def build_direct_prompt(state) -> str:
     if facts["framework"]:
         parts.append(_listed("THE FRAME OF THE CHART:", facts["framework"]))
 
-    # One table, both frames. Transit rows join it only if the question needs
-    # them - a temperament reading timed against a transit becomes a forecast
-    # nobody asked for.
-    rows = []
-    if chart is not None:
-        rows += natal_rows(chart, state.get("chart_state"), frame=frame)
-        # No transit rows on the prashna path. The chart IS the current sky
-        # there, so every transit row duplicated a chart row exactly - and a
-        # doubled fact reads as corroboration.
-        if transiting is not None and wants(Bundle.TRANSITS_SLOW) and is_natal:
-            rows += transit_rows(chart, transiting)
-    table = render_table(rows, primary=_question_planets(chart, constitution))
-    parts.append(table if table else (
-        "No chart was computed for this question - no birth details were given. "
-        "Say\nso plainly rather than reading a chart you were not shown."
-    ))
-
-    if wants(Bundle.HOUSE_LORDS):
-        parts.append(_listed(
-            "THE HOUSES AND WHO RULES THEM — a house is judged through its lord, "
-            "and\nwhere that lord sits:", _house_lord_lines(chart),
-        ))
-
-    if wants(Bundle.YOGAS) and facts["yogas"]:
-        parts.append(_listed("COMBINATIONS DETECTED:", facts["yogas"]))
-
-    if wants(Bundle.CONJUNCTIONS) and facts["conjunctions"]:
-        parts.append(_listed("CONJUNCTIONS (natal):", facts["conjunctions"]))
-
-    if wants(Bundle.VARGAS):
-        varga = _varga_block(chart, state.get("vargas"))
-        if varga:
-            parts.append(varga)
-
-    if wants(Bundle.SADE_SATI):
-        sade = sade_sati_line(chart, transiting)
-        if sade:
-            parts.append(sade)
-
-    if wants(Bundle.TRANSITS_SLOW):
-        transits = transit_block(
-            chart, when,
-            lat=state.get("lat"), lon=state.get("lon"),
-            tz_offset=state.get("tz_offset"),
-        )
-        if transits:
-            parts.append(transits)
-
-    if wants(Bundle.DASHA_CURRENT) and facts["periods"]:
+    if chart is None:
         parts.append(
-            "COMPUTED PERIODS — boundaries, not predictions. Every date you write\n"
-            "must trace to one of these lines:\n"
-            + "\n".join(f"  - {fact}" for fact in facts["periods"])
+            "No chart was computed for this question - no birth details were "
+            "given. Say\nso plainly rather than reading a chart you were not shown."
         )
 
-    if wants(Bundle.DASHA_FORWARD):
-        sub_periods = _sub_period_block(chart, when)
-        if sub_periods:
-            parts.append(sub_periods)
+    # Everything from here is chosen by the requirement table, ordered by the
+    # band it was assigned and, inside a band, by the protocol step it serves.
+    # The vargas the §7 policy withheld are still reported: a division declined
+    # for low birth confidence is a fact about the reading, not an omission.
+    rendered, missing = _requirement_blocks(profile, ctx)
+    parts.extend(rendered)
 
-    if wants(Bundle.PANCHANG_FOR_DATE):
-        panchang = _panchang_block(state, profile.day_offset)
-        if panchang:
-            parts.append(panchang)
-        # `facts["transiting_moon"]` is deliberately not printed here. The bala
-        # block below names the Moon's nakshatra and sign for the date asked
-        # about, and the fact line is cast for `query_time` - so printing both
-        # put two different Moons in one prompt, each labelled as current.
+    varga_notes = _varga_block(chart, state.get("vargas"), notes_only=True)
+    if varga_notes:
+        parts.append(varga_notes)
 
-    bala = _bala_block(
-        chart, moon_on_the_day,
-        want_tara=wants(Bundle.TARA_BALA),
-        want_chandra=wants(Bundle.CHANDRA_BALA),
-    )
-    if bala:
-        parts.append(bala)
-
-    unavailable = _unavailable_block(profile.unavailable)
+    unavailable = _unavailable_block(tuple(missing) + profile.unavailable)
     if unavailable:
         parts.append(unavailable)
 
-    parts.append(_OUTPUT_BLOCK)
+    parts.append(_ANALYSIS_OUTPUT_BLOCK if for_analysis else _OUTPUT_BLOCK)
     parts.append(f"THE QUESTION: {state['question']}")
 
-    return "\n\n---\n\n".join(parts)
+    # The audit half. Which requirements were asked for, which could not be met,
+    # and whether the table came from Mongo or the built-in copy - all three are
+    # facts about the reading rather than about the chart, so they travel beside
+    # the prompt instead of inside it.
+    report = {
+        "domain": profile.requirements.domain,
+        "kind": profile.kind.value,
+        "constitution": profile.requirements.constitution,
+        "source": profile.requirements.source.value,
+        "required": len(profile.requirements.requires),
+        "satisfied": len(profile.requirements.requires) - len(missing),
+        "missing": list(missing),
+    }
+    return "\n\n---\n\n".join(parts), report

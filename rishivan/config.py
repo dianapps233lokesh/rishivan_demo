@@ -172,6 +172,18 @@ class Settings:
         )
 
     @cached_property
+    def MONGODB_REQUIREMENTS_COLLECTION(self) -> str:
+        """What each question kind requires.
+
+        NOT derived from `MONGODB_COLLECTION_NAME` the way the prediction ledger
+        is, and the difference is deliberate: a second client-test round wants a
+        fresh telemetry collection and the SAME requirements. Deriving it would
+        silently empty the table every time somebody renamed the test round, and
+        an empty requirements table is a reading built from nothing.
+        """
+        return _secret("MONGODB_REQUIREMENTS_COLLECTION", "question_requirements")
+
+    @cached_property
     def MONGODB_RETENTION_DAYS(self) -> int:
         """TTL on telemetry documents. Zero disables expiry.
 
