@@ -11,7 +11,12 @@ markdown-it-py>=3.0        # renders the streamed answer
 google-genai>=2.14.0       # Gemini API + Vertex AI
 google-auth>=2.35          # service-account credentials for Vertex
 qdrant-client>=1.18.0      # vector search over the 15-book corpus
-pyswisseph>=2.10.3.2       # Swiss Ephemeris — charts, dashas, panchang
+# Swiss Ephemeris — charts, dashas, panchang. NOT a floating pin by accident:
+# 2.10.3.2 is the newest release, and its newest wheel is cp311. Deploy this on
+# Python 3.11 or the host compiles it, links it without libstdc++, and it fails
+# at import with `undefined symbol: _ZSt7nothrow`. See README's deploy section
+# and rishivan/chart/__init__.py.
+pyswisseph>=2.10.3.2
 geopy>=2.4                 # place name -> latitude/longitude (Nominatim)
 
 # Koonji Extraction Engine M1 — the BPHS bridge (scripts/bridge_bphs.py).

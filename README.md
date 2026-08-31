@@ -129,6 +129,20 @@ On [share.streamlit.io](https://share.streamlit.io) → **New app**:
 | Repository | `<org>/<repo>` |
 | Branch | `main` |
 | Main file path | `streamlit_app.py` |
+| **Advanced settings → Python version** | **3.11** |
+
+**The Python version is not optional and cannot be changed later.**
+`pyswisseph` publishes no wheel above cp311, so on 3.12+ Community Cloud
+compiles the Swiss Ephemeris from source, links it without libstdc++, and every
+request dies at `import swisseph` with `undefined symbol: _ZSt7nothrow` — a
+full-page traceback, not a degraded reading. On 3.11 a manylinux wheel is
+installed and nothing is compiled at all, which also removes the slow cold
+start noted under Known limits.
+
+Community Cloud has no `runtime.txt` and no in-place version switch: to change
+it you delete the app and deploy it again. `rishivan/chart/__init__.py` carries
+a best-effort repair that preloads the C++ runtime so a 3.12+ deployment works
+anyway, but it is a safety net for an app already running, not the fix.
 
 ### 3. Add the secrets
 
@@ -240,8 +254,9 @@ rishivan/
   be invented. Frame this as an honesty guarantee.
 - **15 of the blueprint's 22 knowledge layers are not ingested** — numerology,
   Vastu, dreams, Lal Kitab, KP, Jaimini. Roadmap, not defect.
-- **First load is slow.** Streamlit Cloud builds `pyswisseph` on cold start;
-  expect a couple of minutes on the very first deploy.
+- **First load is slow** if the app was deployed on Python 3.12 or newer —
+  Streamlit Cloud has to build `pyswisseph` from source. Deploy on 3.11 and it
+  installs a prebuilt wheel instead. See the deployment section.
 
 ---
 
