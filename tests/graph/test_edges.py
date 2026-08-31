@@ -138,7 +138,18 @@ class TestChartKind:
         ("numerology", "render_numerology"),
         ("ashtakavarga", "render_ashtakavarga"),
         ("dasha", "render_dasha"),
-        ("rashi", "render_varga"),
+        ("shadbala", "render_shadbala"),
+        ("varga", "render_varga"),
+        # Not a `chart_type` the classifier emits, and that is the point: an
+        # unrecognised kind is REPORTED now. It used to fall through to
+        # `render_varga`, whose `varga_code` then defaulted to "D1" - so "show
+        # me my shadbala chart" returned a Rashi table and said nothing about
+        # having answered a different question.
+        ("rashi", "render_unsupported"),
+        ("kp", "render_unsupported"),
+        ("sudarshana", "render_unsupported"),
+        # Empty means no kind was settled at all, which is the varga default and
+        # is a different case from a kind we recognise and cannot draw.
         ("", "render_varga"),
     ])
     def test_each_chart_kind_has_a_renderer(self, kind, expected):

@@ -200,6 +200,10 @@ rishivan/
   chart/                    # Swiss Ephemeris: placements, facts, tokens, dignity, dasha
     jaimini.py              #   chara karakas and the arudha padas (Upapada)
     dosha.py                #   Mangal (Kuja) dosha, from lagna, Moon and Venus
+    limbs.py                #   tithi, nakshatra, yoga, karana + when each ends
+    muhurta.py              #   Choghadiya and Abhijit, crossed with the bad windows
+    shadbala.py             #   the six-fold strength, in Virupas
+    timing_windows.py       #   upcoming periods ruled by a question's significators
   rag/                      # Qdrant store, page retrieval, rule retrieval and ranking
   council/                  # classifier, orchestrator, personas, prompts
     requirements/           #   what each question requires: Mongo + a code fallback

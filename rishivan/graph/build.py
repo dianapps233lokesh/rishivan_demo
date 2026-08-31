@@ -25,7 +25,7 @@ NODE_NAMES = (
     "chart_natal", "chart_moment", "panchang", "chart_state", "hierarchy",
     "varga_select", "koonji_read", "dasha_windows",
     "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
-    "render_numerology",
+    "render_numerology", "render_shadbala", "render_unsupported",
     "ground", "council_routing", "retrieve",
     "fan_out", "rishi", "sakshi", "re_examine", "synthesis",
     "answer_plan", "persist", "insufficient",
@@ -57,6 +57,8 @@ EDGE_MAPS: dict[str, dict[str, str]] = {
         "render_dasha": "render_dasha",
         "render_ashtakavarga": "render_ashtakavarga",
         "render_numerology": "render_numerology",
+        "render_shadbala": "render_shadbala",
+        "render_unsupported": "render_unsupported",
     },
     # Retrieval no longer goes straight to prose. `fan_out` is the council;
     # `insufficient` is unchanged and still short-circuits, because nothing
@@ -108,6 +110,8 @@ STATIC_EDGES: dict[str, str] = {
     "render_dasha": END,
     "render_ashtakavarga": END,
     "render_numerology": END,
+    "render_shadbala": END,
+    "render_unsupported": END,
     # The council. `rishi` is one node reached by many `Send`s; `sakshi` audits
     # the reports it produced; `re_examine` fans back out to the Rishis a
     # finding names, at most once, and returns through `sakshi` - which is why
@@ -133,7 +137,7 @@ DIRECT_NODE_NAMES = (
     "chart_natal", "chart_moment", "panchang", "chart_state", "hierarchy",
     "varga_select",
     "chart_render", "render_varga", "render_dasha", "render_ashtakavarga",
-    "render_numerology",
+    "render_numerology", "render_shadbala", "render_unsupported",
     "direct_read", "persist",
 )
 TWO_CALL_NODE_NAMES = DIRECT_NODE_NAMES + ("analyse",)
@@ -182,6 +186,8 @@ DIRECT_EDGE_MAPS: dict[str, dict[str, str]] = {
         "render_dasha": "render_dasha",
         "render_ashtakavarga": "render_ashtakavarga",
         "render_numerology": "render_numerology",
+        "render_shadbala": "render_shadbala",
+        "render_unsupported": "render_unsupported",
     },
 }
 
@@ -198,6 +204,8 @@ DIRECT_STATIC_EDGES: dict[str, str] = {
     "render_dasha": END,
     "render_ashtakavarga": END,
     "render_numerology": END,
+    "render_shadbala": END,
+    "render_unsupported": END,
     # Traced like any other lane. `persist_node` reads `reading` and
     # `answer_plan` with `.get()` and tolerates both being None, and this is the
     # lane under evaluation - the one whose traces are most worth having.
@@ -281,6 +289,8 @@ def _build_direct(*, store, client, checkpointer, trace_sink, two_call=False):
     g.add_node("render_dasha", chart.render_dasha_node)
     g.add_node("render_ashtakavarga", chart.render_ashtakavarga_node)
     g.add_node("render_numerology", chart.render_numerology_node)
+    g.add_node("render_shadbala", chart.render_shadbala_node)
+    g.add_node("render_unsupported", chart.render_unsupported_node)
     g.add_node(
         "direct_read",
         partial(direct.direct_read_node, for_analysis=two_call),
@@ -329,6 +339,8 @@ def _build_council(*, store, client, checkpointer, trace_sink):
     g.add_node("render_dasha", chart.render_dasha_node)
     g.add_node("render_ashtakavarga", chart.render_ashtakavarga_node)
     g.add_node("render_numerology", chart.render_numerology_node)
+    g.add_node("render_shadbala", chart.render_shadbala_node)
+    g.add_node("render_unsupported", chart.render_unsupported_node)
     g.add_node("ground", ground.ground_node)
     g.add_node("council_routing", ground.council_routing_node)
     g.add_node(

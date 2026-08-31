@@ -178,6 +178,51 @@ def _rendered(table: str | None, subject: str) -> dict:
     }
 
 
+def render_shadbala_node(state: RishivanState) -> dict:
+    """The six-fold strength table.
+
+    Was reachable by nothing. "show me my shadbala chart" fell through
+    `classifier.py`'s `chart_type not in (...)` guard to `"varga"`, then
+    `varga_code` defaulted to `"D1"`, and the reader got a Rashi chart with no
+    hint that they had asked for something else.
+    """
+    from rishivan.chart.shadbala import compute_shadbala, render_markdown
+
+    chart = state.get("chart")
+    if chart is None:
+        return _rendered(None, "planetary strength without a birth chart")
+    try:
+        result = compute_shadbala(
+            chart,
+            lat=state.get("lat") or DEFAULT_LAT,
+            lon=state.get("lon") or DEFAULT_LON,
+            tz_offset=state.get("tz_offset", 5.5),
+        )
+    except Exception:  # noqa: BLE001
+        logger.warning("could not compute shadbala", exc_info=True)
+        return _rendered(None, "Shadbala for this chart")
+    return _rendered(render_markdown(result), "Shadbala for this chart")
+
+
+def render_unsupported_node(state: RishivanState) -> dict:
+    """A chart we cannot draw, said out loud.
+
+    The failure this replaces was silent: ANY unrecognised chart request became
+    a D1 Rashi chart. "Show me my KP chart", "show me my sudarshana chakra" and
+    "show me my shadbala" all returned the same table under a different
+    question, and nothing in the output said so.
+    """
+    asked = (state.get("classification") or {}).get("chart_type") or "that chart"
+    return {
+        "chart_table": None,
+        "chart_table_error": (
+            f"I can't draw {asked} — this system does not compute it. "
+            f"It can show divisional charts (D1 through D60), the Vimshottari "
+            f"dasha table, Sarvashtakavarga, numerology and Shadbala."
+        ),
+    }
+
+
 def render_varga_node(state: RishivanState) -> dict:
     from rishivan.chart.local_varga import varga_table_markdown
 

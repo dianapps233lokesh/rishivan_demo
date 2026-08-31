@@ -16,6 +16,10 @@ from rishivan.council.personas import ALL_RISHI_NAMES
 
 logger = logging.getLogger(__name__)
 
+_CHART_TYPES = ("varga", "numerology", "ashtakavarga", "dasha", "shadbala")
+"""Every chart kind that has a renderer. Anything else becomes `unsupported`
+and is reported to the reader, rather than quietly becoming a D1."""
+
 # Kept in sync with app.astro.kundli.varga.VARGA_REGISTRY (the main repo's
 # pure-arithmetic engine that actually computes these) — not imported
 # directly, since this module is pure LLM routing and has no chart-engine
@@ -93,7 +97,9 @@ question that needs interpreting?
   mulank mean for me?"). These are answered by the Rishi, in prose, as normal.
 
 When intent is "chart", also say which kind:
-- "chart_type": "varga" (a divisional birth chart), "numerology" (mulank/
+- "chart_type": "shadbala" for any request about planetary STRENGTH — shadbala,
+  bala, "how strong is my Saturn", "planetary strength table", ishta/kashta.
+  Then: "varga" (a divisional birth chart), "numerology" (mulank/
   bhagyaank), "ashtakavarga" (the benefic bindu/point table — NOT a
   divisional chart, so never map "ashtakavarga"/"sarvashtakavarga"/"bindu
   table"/"SAV" requests to varga_code "D1" or any other D-code), or "dasha"
@@ -172,7 +178,7 @@ Return ONLY a JSON object (no markdown, no explanation):
   "supporting_rishis": ["<optional secondary rishis who may contribute>"],
   "search_query": "<the optimised retrieval query>",
   "intent": "<chart|fact>",
-  "chart_type": "<varga|numerology|ashtakavarga|dasha — only meaningful when intent is chart>",
+  "chart_type": "<varga|numerology|ashtakavarga|dasha|shadbala — only meaningful when intent is chart>",
   "varga_code": "<D1|D2|D3|D4|D7|D9|D10|D12|D16|D20|D24|D27|D30|D40|D45|D60 — only meaningful when chart_type is varga>",
   "relevant_vargas": ["<codes from D2|D3|D4|D7|D9|D10|D12|D16|D20|D24|D27|D30|D40|D45|D60 — only meaningful when intent is fact; [] if none apply>"],
   "dasha_level": "<maha|antar|pratyantar|all|none — only meaningful when intent is fact>",
@@ -256,8 +262,12 @@ def classify_query(
         if intent not in ("chart", "fact"):
             intent = "fact"
         chart_type = result.get("chart_type", "varga")
-        if chart_type not in ("varga", "numerology", "ashtakavarga", "dasha"):
-            chart_type = "varga"
+        if chart_type not in _CHART_TYPES:
+            # NOT silently "varga". That default is what turned "show me my
+            # shadbala chart" into a D1 Rashi table: an unknown kind became
+            # varga, and varga_code then defaulted to D1. `unsupported` routes
+            # to a node that says which chart it cannot draw.
+            chart_type = "unsupported"
         varga_code = str(result.get("varga_code", "D1")).upper()
         if varga_code not in _VARGA_CODES:
             varga_code = "D1"

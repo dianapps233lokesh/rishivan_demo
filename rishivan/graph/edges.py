@@ -82,9 +82,10 @@ def route_after_chart(state: RishivanState) -> str:
 
 
 def route_chart_kind(state: RishivanState) -> str:
-    """render_numerology · render_ashtakavarga · render_dasha · render_varga
+    """render_numerology · render_ashtakavarga · render_dasha · render_shadbala
+    · render_unsupported · render_varga
 
-    Four destinations, one per kind. Numerology's missing-birth-date case is
+    One destination per kind, plus a destination for the kinds we do not draw. Numerology's missing-birth-date case is
     handled inside its renderer rather than as a fifth destination, because the
     orchestrator treats it as a table it could not compute - a
     `chart_table_error` - and not as a request for more input.
@@ -96,6 +97,15 @@ def route_chart_kind(state: RishivanState) -> str:
         return "render_ashtakavarga"
     if kind == "dasha":
         return "render_dasha"
+    if kind == "shadbala":
+        return "render_shadbala"
+    if kind and kind != "varga":
+        # A chart we do not draw, said out loud. This branch is the whole
+        # correction: ANY unrecognised chart_type used to fall through to
+        # `render_varga`, whose `varga_code` then defaulted to "D1" - so "show
+        # me my shadbala chart" returned a Rashi chart and nothing in the output
+        # mentioned that a different question had been answered.
+        return "render_unsupported"
     return "render_varga"
 
 
